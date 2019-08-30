@@ -1,0 +1,32 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2018-11-26T05:30:50Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "robomaker:ListDeploymentJobs", 
+                        "robomaker:BatchDescribeSimulationJob", 
+                        "robomaker:DescribeFleet", 
+                        "robomaker:DescribeSimulationApplication", 
+                        "robomaker:DescribeRobotApplication", 
+                        "robomaker:ListFleets", 
+                        "robomaker:ListSimulationJobs", 
+                        "robomaker:DescribeDeploymentJob", 
+                        "robomaker:DescribeSimulationJob", 
+                        "robomaker:DescribeRobot", 
+                        "robomaker:ListRobots", 
+                        "robomaker:ListRobotApplications", 
+                        "robomaker:ListSimulationApplications"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "VisualEditor0"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
