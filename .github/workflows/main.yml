@@ -18,20 +18,21 @@ env:
 jobs:
   terraform:
     name: 'Build & Deploy'
+    permissions:
+      id-token: write
+      contents: write
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
 
       - name: AWS IAM Assume Role
-        uses: aws-actions/configure-aws-credentials@v1
+        uses: aws-actions/configure-aws-credentials@master
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.REGION }}
           role-to-assume: ${{ secrets.ROLE_TO_ASSUME }}
           role-duration-seconds: 1200
-          role-session-name: GH-Actions-${{ env.project }}
+          role-session-name: GH-Actions-${{ env.project }}-${{ env.env }}
 
       - name: Who Am I?
         run: aws sts get-caller-identity
