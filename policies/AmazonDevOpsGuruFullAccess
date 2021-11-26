@@ -66,11 +66,19 @@
                         "iam:GetServiceLinkedRoleDeletionStatus"
                     ],
                     "Resource": "arn:aws:iam::*:role/aws-service-role/devops-guru.amazonaws.com/AWSServiceRoleForDevOpsGuru"
+                },
+                {
+                    "Sid": "RDSDescribeDBInstancesAccess",
+                    "Effect": "Allow",
+                    "Action": [
+                        "rds:DescribeDBInstances"
+                    ],
+                    "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2020-12-01T16:38:12Z"
+        "CreateDate": "2021-11-26T20:39:13Z"
     }
 }
