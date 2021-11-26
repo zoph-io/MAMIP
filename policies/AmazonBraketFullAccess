@@ -8,9 +8,28 @@
                     "Action": [
                         "s3:GetObject",
                         "s3:PutObject",
-                        "s3:ListBucket"
+                        "s3:ListBucket",
+                        "s3:CreateBucket",
+                        "s3:PutBucketPublicAccessBlock",
+                        "s3:PutBucketPolicy"
                     ],
                     "Resource": "arn:aws:s3:::amazon-braket-*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "ecr:GetDownloadUrlForLayer",
+                        "ecr:BatchGetImage",
+                        "ecr:BatchCheckLayerAvailability"
+                    ],
+                    "Resource": "arn:aws:ecr:*:*:repository/amazon-braket*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "ecr:GetAuthorizationToken"
+                    ],
+                    "Resource": "*"
                 },
                 {
                     "Effect": "Allow",
@@ -23,7 +42,7 @@
                         "logs:TestMetricFilter",
                         "logs:FilterLogEvents"
                     ],
-                    "Resource": "arn:aws:logs:*:*:log-group:/aws/braket:*"
+                    "Resource": "arn:aws:logs:*:*:log-group:/aws/braket*"
                 },
                 {
                     "Effect": "Allow",
@@ -86,10 +105,10 @@
                     }
                 },
                 {
+                    "Effect": "Allow",
                     "Action": [
                         "iam:PassRole"
                     ],
-                    "Effect": "Allow",
                     "Resource": "arn:aws:iam::*:role/service-role/AmazonBraketServiceSageMakerNotebookRole*",
                     "Condition": {
                         "StringLike": {
@@ -98,11 +117,53 @@
                             ]
                         }
                     }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "iam:PassRole"
+                    ],
+                    "Resource": "arn:aws:iam::*:role/AmazonBraketJobsExecutionRole*",
+                    "Condition": {
+                        "StringLike": {
+                            "iam:PassedToService": [
+                                "braket.amazonaws.com"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "logs:GetQueryResults"
+                    ],
+                    "Resource": [
+                        "arn:aws:logs:*:*:log-group:*"
+                    ]
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "logs:PutLogEvents",
+                        "logs:CreateLogStream",
+                        "logs:CreateLogGroup"
+                    ],
+                    "Resource": "arn:aws:logs:*:*:log-group:/aws/braket*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "cloudwatch:PutMetricData",
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "cloudwatch:namespace": "/aws/braket"
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v2",
-        "IsDefaultVersion": false,
-        "CreateDate": "2021-02-18T07:48:38Z"
+        "VersionId": "v3",
+        "IsDefaultVersion": true,
+        "CreateDate": "2021-11-26T19:32:02Z"
     }
 }
