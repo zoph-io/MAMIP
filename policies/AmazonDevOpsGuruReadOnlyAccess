@@ -49,11 +49,19 @@
                         "cloudwatch:GetMetricData"
                     ],
                     "Resource": "*"
+                },
+                {
+                    "Sid": "RDSDescribeDBInstancesAccess",
+                    "Effect": "Allow",
+                    "Action": [
+                        "rds:DescribeDBInstances"
+                    ],
+                    "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v3",
-        "IsDefaultVersion": false,
-        "CreateDate": "2021-06-14T22:34:43Z"
+        "VersionId": "v4",
+        "IsDefaultVersion": true,
+        "CreateDate": "2021-11-26T21:05:22Z"
     }
 }
