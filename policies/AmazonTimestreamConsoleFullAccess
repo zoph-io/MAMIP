@@ -51,11 +51,18 @@
                         "dbqms:DeleteQueryHistory"
                     ],
                     "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "s3:ListAllMyBuckets"
+                    ],
+                    "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-05-20T00:48:09Z"
+        "CreateDate": "2021-11-26T23:43:50Z"
     }
 }

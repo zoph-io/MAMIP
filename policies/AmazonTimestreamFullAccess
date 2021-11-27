@@ -34,11 +34,18 @@
                             "kms:ViaService": "timestream.*.amazonaws.com"
                         }
                     }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "s3:ListAllMyBuckets"
+                    ],
+                    "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2020-09-30T21:47:14Z"
+        "CreateDate": "2021-11-26T23:42:00Z"
     }
 }
