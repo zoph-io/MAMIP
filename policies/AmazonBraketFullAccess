@@ -123,7 +123,7 @@
                     "Action": [
                         "iam:PassRole"
                     ],
-                    "Resource": "arn:aws:iam::*:role/AmazonBraketJobsExecutionRole*",
+                    "Resource": "arn:aws:iam::*:role/service-role/AmazonBraketJobsExecutionRole*",
                     "Condition": {
                         "StringLike": {
                             "iam:PassedToService": [
@@ -162,8 +162,8 @@
                 }
             ]
         },
-        "VersionId": "v3",
-        "IsDefaultVersion": false,
-        "CreateDate": "2021-11-26T19:32:02Z"
+        "VersionId": "v4",
+        "IsDefaultVersion": true,
+        "CreateDate": "2021-11-28T05:31:50Z"
     }
 }
