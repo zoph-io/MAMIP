@@ -1,9 +1,10 @@
-## AWS Access Analyzer - Findings - 2021-11-26
+## AWS Access Analyzer - Findings - 2021-11-28
 
-- Policies analyzed: `901`
-- Errors: `158`
+- Policies analyzed: `904`
+- Errors: `164`
   - [`AWSBackupServiceLinkedRolePolicyForBackup`](./AWSBackupServiceLinkedRolePolicyForBackup.json)
   - [`AWSElasticDisasterRecoveryReplicationServerPolicy`](./AWSElasticDisasterRecoveryReplicationServerPolicy.json)
+  - [`AmazonTimestreamReadOnlyAccess`](./AmazonTimestreamReadOnlyAccess.json)
   - [`AWSApplicationMigrationVCenterClientPolicy`](./AWSApplicationMigrationVCenterClientPolicy.json)
   - [`AmazonSageMakerGroundTruthExecution`](./AmazonSageMakerGroundTruthExecution.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
@@ -24,6 +25,7 @@
   - [`AWSElasticDisasterRecoveryServiceRolePolicy`](./AWSElasticDisasterRecoveryServiceRolePolicy.json)
   - [`AWSElasticDisasterRecoveryAgentInstallationPolicy`](./AWSElasticDisasterRecoveryAgentInstallationPolicy.json)
   - [`AWSElasticDisasterRecoveryAgentPolicy`](./AWSElasticDisasterRecoveryAgentPolicy.json)
+  - [`AmazonBraketJobsExecutionPolicy`](./AmazonBraketJobsExecutionPolicy.json)
   - [`AmazonLaunchWizard_Fullaccess`](./AmazonLaunchWizard_Fullaccess.json)
   - [`AWSBackupServiceRolePolicyForRestores`](./AWSBackupServiceRolePolicyForRestores.json)
 - Sec_Warnings: `11`
