@@ -1,33 +1,15 @@
-## AWS Access Analyzer - Findings - 2021-11-28
+## AWS Access Analyzer - Findings - 2021-11-29
 
-- Policies analyzed: `904`
-- Errors: `164`
-  - [`AWSBackupServiceLinkedRolePolicyForBackup`](./AWSBackupServiceLinkedRolePolicyForBackup.json)
-  - [`AWSElasticDisasterRecoveryReplicationServerPolicy`](./AWSElasticDisasterRecoveryReplicationServerPolicy.json)
-  - [`AmazonTimestreamReadOnlyAccess`](./AmazonTimestreamReadOnlyAccess.json)
-  - [`AWSApplicationMigrationVCenterClientPolicy`](./AWSApplicationMigrationVCenterClientPolicy.json)
+- Policies analyzed: `906`
+- Errors: `39`
   - [`AmazonSageMakerGroundTruthExecution`](./AmazonSageMakerGroundTruthExecution.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
-  - [`AWSBackupOperatorAccess`](./AWSBackupOperatorAccess.json)
   - [`AmazonInspector2ServiceRolePolicy`](./AmazonInspector2ServiceRolePolicy.json)
+  - [`AWSIotRoboRunnerReadOnly`](./AWSIotRoboRunnerReadOnly.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
-  - [`AWSApplicationMigrationReadOnlyAccess`](./AWSApplicationMigrationReadOnlyAccess.json)
-  - [`AWSElasticDisasterRecoveryReadOnlyAccess`](./AWSElasticDisasterRecoveryReadOnlyAccess.json)
-  - [`AWSElasticDisasterRecoveryConversionServerPolicy`](./AWSElasticDisasterRecoveryConversionServerPolicy.json)
-  - [`AWSElasticDisasterRecoveryFailbackPolicy`](./AWSElasticDisasterRecoveryFailbackPolicy.json)
+  - [`AWSIotRoboRunnerFullAccess`](./AWSIotRoboRunnerFullAccess.json)
   - [`AWSAuditManagerAdministratorAccess`](./AWSAuditManagerAdministratorAccess.json)
-  - [`AWSElasticDisasterRecoveryRecoveryInstancePolicy`](./AWSElasticDisasterRecoveryRecoveryInstancePolicy.json)
-  - [`AWSElasticDisasterRecoveryFailbackInstallationPolicy`](./AWSElasticDisasterRecoveryFailbackInstallationPolicy.json)
-  - [`AmazonDevOpsGuruOrganizationsAccess`](./AmazonDevOpsGuruOrganizationsAccess.json)
-  - [`AWSBackupServiceRolePolicyForBackup`](./AWSBackupServiceRolePolicyForBackup.json)
-  - [`AWSElasticDisasterRecoveryConsoleFullAccess`](./AWSElasticDisasterRecoveryConsoleFullAccess.json)
-  - [`AWSBackupFullAccess`](./AWSBackupFullAccess.json)
-  - [`AWSElasticDisasterRecoveryServiceRolePolicy`](./AWSElasticDisasterRecoveryServiceRolePolicy.json)
-  - [`AWSElasticDisasterRecoveryAgentInstallationPolicy`](./AWSElasticDisasterRecoveryAgentInstallationPolicy.json)
-  - [`AWSElasticDisasterRecoveryAgentPolicy`](./AWSElasticDisasterRecoveryAgentPolicy.json)
   - [`AmazonBraketJobsExecutionPolicy`](./AmazonBraketJobsExecutionPolicy.json)
-  - [`AmazonLaunchWizard_Fullaccess`](./AmazonLaunchWizard_Fullaccess.json)
-  - [`AWSBackupServiceRolePolicyForRestores`](./AWSBackupServiceRolePolicyForRestores.json)
 - Sec_Warnings: `11`
   - [`AWSDataPipelineRole`](./AWSDataPipelineRole.json)
   - [`AWSServiceRoleForAmazonEKSNodegroup`](./AWSServiceRoleForAmazonEKSNodegroup.json)
@@ -38,9 +20,8 @@
   - [`AdministratorAccess`](./AdministratorAccess.json)
   - [`AmazonElasticMapReduceFullAccess`](./AmazonElasticMapReduceFullAccess.json)
   - [`AWSElasticBeanstalkService`](./AWSElasticBeanstalkService.json)
-- Suggestions: `39`
+- Suggestions: `37`
   - [`AWSDataPipelineRole`](./AWSDataPipelineRole.json)
-  - [`AmazonRDSCustomServiceRolePolicy`](./AmazonRDSCustomServiceRolePolicy.json)
   - [`AmazonAppStreamServiceAccess`](./AmazonAppStreamServiceAccess.json)
   - [`AmazonRedshiftAllCommandsFullAccess`](./AmazonRedshiftAllCommandsFullAccess.json)
   - [`SecurityAudit`](./SecurityAudit.json)
@@ -55,7 +36,6 @@
   - [`AWSGlueConsoleFullAccess`](./AWSGlueConsoleFullAccess.json)
   - [`AWSBatchFullAccess`](./AWSBatchFullAccess.json)
   - [`AWSLakeFormationDataAdmin`](./AWSLakeFormationDataAdmin.json)
-  - [`AmazonRDSCustomPreviewServiceRolePolicy`](./AmazonRDSCustomPreviewServiceRolePolicy.json)
   - [`AmazonElasticMapReduceFullAccess`](./AmazonElasticMapReduceFullAccess.json)
   - [`AWSElasticBeanstalkService`](./AWSElasticBeanstalkService.json)
   - [`AWSElasticBeanstalkWebTier`](./AWSElasticBeanstalkWebTier.json)

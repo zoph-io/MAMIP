@@ -85,41 +85,5 @@
                 }
             }
         ]
-    },
-    {
-        "findingDetails": "The service catalog does not exist. Use a valid service name.",
-        "findingType": "ERROR",
-        "issueCode": "INVALID_SERVICE",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service",
-        "locations": [
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 35
-                    },
-                    {
-                        "value": "Resource"
-                    },
-                    {
-                        "index": 1
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 10644,
-                        "line": 1,
-                        "offset": 10644
-                    },
-                    "start": {
-                        "column": 10619,
-                        "line": 1,
-                        "offset": 10619
-                    }
-                }
-            }
-        ]
     }
 ]

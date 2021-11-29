@@ -1,9 +1,9 @@
 [
     {
-        "findingDetails": "The action mgn:DescribeVcenterClients does not exist.",
+        "findingDetails": "The service iotroborunner:* specified in the action does not exist.",
         "findingType": "ERROR",
-        "issueCode": "INVALID_ACTION",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "issueCode": "INVALID_SERVICE_IN_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
         "locations": [
             {
                 "path": [
@@ -15,21 +15,18 @@
                     },
                     {
                         "value": "Action"
-                    },
-                    {
-                        "index": 5
                     }
                 ],
                 "span": {
                     "end": {
-                        "column": 254,
+                        "column": 87,
                         "line": 1,
-                        "offset": 254
+                        "offset": 87
                     },
                     "start": {
-                        "column": 226,
+                        "column": 70,
                         "line": 1,
-                        "offset": 226
+                        "offset": 70
                     }
                 }
             }
