@@ -23,7 +23,9 @@
                         "ec2:DescribeTransitGatewayVpcAttachments",
                         "ec2:DescribeTransitGateways",
                         "ec2:DescribeTags",
-                        "ec2:DescribeTransitGateways"
+                        "ec2:DescribeTransitGateways",
+                        "ec2:DescribeAccountAttributes",
+                        "ec2:DescribeInternetGateways"
                     ],
                     "Resource": "*"
                 },
@@ -238,11 +240,21 @@
                             "iam:AWSServiceName": "refactor-spaces.amazonaws.com"
                         }
                     }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "iam:CreateServiceLinkedRole",
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:AWSServiceName": "elasticloadbalancing.amazonaws.com"
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v1",
-        "IsDefaultVersion": false,
-        "CreateDate": "2021-11-29T07:12:55Z"
+        "VersionId": "v2",
+        "IsDefaultVersion": true,
+        "CreateDate": "2021-11-29T14:07:52Z"
     }
 }
