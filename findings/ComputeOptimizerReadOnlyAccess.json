@@ -1,0 +1,74 @@
+[
+    {
+        "findingDetails": "The action compute-optimizer:GetRecommendationPreferences does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 9
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 588,
+                        "line": 1,
+                        "offset": 588
+                    },
+                    "start": {
+                        "column": 540,
+                        "line": 1,
+                        "offset": 540
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The action compute-optimizer:GetEffectiveRecommendationPreferences does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 10
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 647,
+                        "line": 1,
+                        "offset": 647
+                    },
+                    "start": {
+                        "column": 590,
+                        "line": 1,
+                        "offset": 590
+                    }
+                }
+            }
+        ]
+    }
+]
