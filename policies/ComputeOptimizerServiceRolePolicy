@@ -30,11 +30,20 @@
                         "cloudwatch:GetMetricData"
                     ],
                     "Resource": "*"
+                },
+                {
+                    "Sid": "AutoScalingAccess",
+                    "Effect": "Allow",
+                    "Action": [
+                        "autoscaling:DescribeAutoScalingInstances",
+                        "autoscaling:DescribeAutoScalingGroups"
+                    ],
+                    "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v1",
-        "IsDefaultVersion": false,
-        "CreateDate": "2019-12-03T08:45:19Z"
+        "VersionId": "v2",
+        "IsDefaultVersion": true,
+        "CreateDate": "2021-11-29T16:04:07Z"
     }
 }
