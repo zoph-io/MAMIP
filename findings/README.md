@@ -1,9 +1,10 @@
 ## AWS Access Analyzer - Findings - 2021-11-29
 
-- Policies analyzed: `910`
-- Errors: `49`
+- Policies analyzed: `912`
+- Errors: `53`
   - [`AWSMigrationHubRefactorSpacesFullAccess`](./AWSMigrationHubRefactorSpacesFullAccess.json)
   - [`AmazonSageMakerGroundTruthExecution`](./AmazonSageMakerGroundTruthExecution.json)
+  - [`AmazonCloudWatchRUMFullAccess`](./AmazonCloudWatchRUMFullAccess.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AmazonCloudWatchEvidentlyReadOnlyAccess`](./AmazonCloudWatchEvidentlyReadOnlyAccess.json)
   - [`AmazonInspector2ServiceRolePolicy`](./AmazonInspector2ServiceRolePolicy.json)
@@ -12,6 +13,7 @@
   - [`AmazonCloudWatchEvidentlyFullAccess`](./AmazonCloudWatchEvidentlyFullAccess.json)
   - [`AWSIotRoboRunnerFullAccess`](./AWSIotRoboRunnerFullAccess.json)
   - [`AWSAuditManagerAdministratorAccess`](./AWSAuditManagerAdministratorAccess.json)
+  - [`AmazonCloudWatchRUMReadOnlyAccess`](./AmazonCloudWatchRUMReadOnlyAccess.json)
   - [`AmazonBraketJobsExecutionPolicy`](./AmazonBraketJobsExecutionPolicy.json)
 - Sec_Warnings: `11`
   - [`AWSDataPipelineRole`](./AWSDataPipelineRole.json)
