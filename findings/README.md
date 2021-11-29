@@ -1,6 +1,6 @@
 ## AWS Access Analyzer - Findings - 2021-11-29
 
-- Policies analyzed: `912`
+- Policies analyzed: `913`
 - Errors: `55`
   - [`AWSMigrationHubRefactorSpacesFullAccess`](./AWSMigrationHubRefactorSpacesFullAccess.json)
   - [`AmazonSageMakerGroundTruthExecution`](./AmazonSageMakerGroundTruthExecution.json)
