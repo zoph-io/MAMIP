@@ -1,0 +1,38 @@
+[
+    {
+        "findingDetails": "The action dataexchange:SendApiAsset does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 10
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 367,
+                        "line": 1,
+                        "offset": 367
+                    },
+                    "start": {
+                        "column": 340,
+                        "line": 1,
+                        "offset": 340
+                    }
+                }
+            }
+        ]
+    }
+]
