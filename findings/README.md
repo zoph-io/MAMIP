@@ -1,6 +1,6 @@
 ## AWS Access Analyzer - Findings - 2021-11-30
 
-- Policies analyzed: `915`
+- Policies analyzed: `916`
 - Errors: `30`
   - [`AmazonSageMakerGroundTruthExecution`](./AmazonSageMakerGroundTruthExecution.json)
   - [`AmazonWorkSpacesWebReadOnly`](./AmazonWorkSpacesWebReadOnly.json)
