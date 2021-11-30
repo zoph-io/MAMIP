@@ -1,41 +1,5 @@
 [
     {
-        "findingDetails": "The service refactor-spaces:* specified in the action does not exist.",
-        "findingType": "ERROR",
-        "issueCode": "INVALID_SERVICE_IN_ACTION",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
-        "locations": [
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 0
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 0
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 115,
-                        "line": 1,
-                        "offset": 115
-                    },
-                    "start": {
-                        "column": 96,
-                        "line": 1,
-                        "offset": 96
-                    }
-                }
-            }
-        ]
-    },
-    {
         "findingDetails": "The 2 action(s) are redundant because they provide similar permissions. Update the policy to remove the redundant action such as: ec2:DescribeTransitGateways.",
         "findingType": "SUGGESTION",
         "issueCode": "REDUNDANT_ACTION",

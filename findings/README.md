@@ -1,23 +1,11 @@
-## AWS Access Analyzer - Findings - 2021-11-29
+## AWS Access Analyzer - Findings - 2021-11-30
 
-- Policies analyzed: `913`
-- Errors: `57`
-  - [`AWSMigrationHubRefactorSpacesFullAccess`](./AWSMigrationHubRefactorSpacesFullAccess.json)
+- Policies analyzed: `914`
+- Errors: `13`
   - [`AmazonSageMakerGroundTruthExecution`](./AmazonSageMakerGroundTruthExecution.json)
-  - [`AmazonCloudWatchRUMFullAccess`](./AmazonCloudWatchRUMFullAccess.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
-  - [`AmazonCloudWatchEvidentlyReadOnlyAccess`](./AmazonCloudWatchEvidentlyReadOnlyAccess.json)
-  - [`AmazonInspector2ServiceRolePolicy`](./AmazonInspector2ServiceRolePolicy.json)
-  - [`AWSIotRoboRunnerReadOnly`](./AWSIotRoboRunnerReadOnly.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
-  - [`AmazonCloudWatchEvidentlyFullAccess`](./AmazonCloudWatchEvidentlyFullAccess.json)
-  - [`AWSIotRoboRunnerFullAccess`](./AWSIotRoboRunnerFullAccess.json)
   - [`AWSAuditManagerAdministratorAccess`](./AWSAuditManagerAdministratorAccess.json)
-  - [`AWSDataExchangeProviderFullAccess`](./AWSDataExchangeProviderFullAccess.json)
-  - [`ComputeOptimizerReadOnlyAccess`](./ComputeOptimizerReadOnlyAccess.json)
-  - [`AmazonCloudWatchRUMReadOnlyAccess`](./AmazonCloudWatchRUMReadOnlyAccess.json)
-  - [`AWSDataExchangeSubscriberFullAccess`](./AWSDataExchangeSubscriberFullAccess.json)
-  - [`AmazonBraketJobsExecutionPolicy`](./AmazonBraketJobsExecutionPolicy.json)
 - Sec_Warnings: `11`
   - [`AWSDataPipelineRole`](./AWSDataPipelineRole.json)
   - [`AWSServiceRoleForAmazonEKSNodegroup`](./AWSServiceRoleForAmazonEKSNodegroup.json)
