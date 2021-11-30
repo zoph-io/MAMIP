@@ -50,7 +50,13 @@
                 {
                     "Effect": "Allow",
                     "Action": [
-                        "iam:GetRole",
+                        "iam:GetRole"
+                    ],
+                    "Resource": "arn:aws:iam::*:role/*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
                         "iam:PassRole"
                     ],
                     "Resource": "arn:aws:iam::*:role/*",
@@ -62,8 +68,8 @@
                 }
             ]
         },
-        "VersionId": "v4",
+        "VersionId": "v5",
         "IsDefaultVersion": true,
-        "CreateDate": "2020-10-09T22:23:38Z"
+        "CreateDate": "2021-11-30T19:26:49Z"
     }
 }
