@@ -1,9 +1,10 @@
 ## AWS Access Analyzer - Findings - 2021-12-01
 
 - Policies analyzed: `916`
-- Errors: `32`
+- Errors: `33`
   - [`AmazonWorkSpacesWebReadOnly`](./AmazonWorkSpacesWebReadOnly.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
+  - [`AdministratorAccess-Amplify`](./AdministratorAccess-Amplify.json)
   - [`AmazonSageMakerReadOnly`](./AmazonSageMakerReadOnly.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AWSAuditManagerAdministratorAccess`](./AWSAuditManagerAdministratorAccess.json)

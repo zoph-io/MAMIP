@@ -61,6 +61,42 @@
         ]
     },
     {
+        "findingDetails": "The service amplifyuibuilder:* specified in the action does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_SERVICE_IN_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 2
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 6
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 5499,
+                        "line": 1,
+                        "offset": 5499
+                    },
+                    "start": {
+                        "column": 5479,
+                        "line": 1,
+                        "offset": 5479
+                    }
+                }
+            }
+        ]
+    },
+    {
         "findingDetails": "Using the iam:PassRole action with wildcards (*) in the resource can be overly permissive because it allows iam:PassRole permissions on multiple resources. We recommend that you specify resource ARNs or add the iam:PassedToService condition key to your statement.",
         "findingType": "SECURITY_WARNING",
         "issueCode": "PASS_ROLE_WITH_STAR_IN_RESOURCE",
@@ -78,19 +114,19 @@
                         "value": "Action"
                     },
                     {
-                        "index": 59
+                        "index": 60
                     }
                 ],
                 "span": {
                     "end": {
-                        "column": 7129,
+                        "column": 7151,
                         "line": 1,
-                        "offset": 7129
+                        "offset": 7151
                     },
                     "start": {
-                        "column": 7115,
+                        "column": 7137,
                         "line": 1,
-                        "offset": 7115
+                        "offset": 7137
                     }
                 }
             },
@@ -108,14 +144,14 @@
                 ],
                 "span": {
                     "end": {
-                        "column": 7754,
+                        "column": 7776,
                         "line": 1,
-                        "offset": 7754
+                        "offset": 7776
                     },
                     "start": {
-                        "column": 7751,
+                        "column": 7773,
                         "line": 1,
-                        "offset": 7751
+                        "offset": 7773
                     }
                 }
             }
@@ -144,14 +180,14 @@
                 ],
                 "span": {
                     "end": {
-                        "column": 9444,
+                        "column": 9466,
                         "line": 1,
-                        "offset": 9444
+                        "offset": 9466
                     },
                     "start": {
-                        "column": 9415,
+                        "column": 9437,
                         "line": 1,
-                        "offset": 9415
+                        "offset": 9437
                     }
                 }
             },
@@ -169,14 +205,14 @@
                 ],
                 "span": {
                     "end": {
-                        "column": 10408,
+                        "column": 10430,
                         "line": 1,
-                        "offset": 10408
+                        "offset": 10430
                     },
                     "start": {
-                        "column": 10405,
+                        "column": 10427,
                         "line": 1,
-                        "offset": 10405
+                        "offset": 10427
                     }
                 }
             }
@@ -205,14 +241,14 @@
                 ],
                 "span": {
                     "end": {
-                        "column": 9496,
+                        "column": 9518,
                         "line": 1,
-                        "offset": 9496
+                        "offset": 9518
                     },
                     "start": {
-                        "column": 9482,
+                        "column": 9504,
                         "line": 1,
-                        "offset": 9482
+                        "offset": 9504
                     }
                 }
             },
@@ -230,14 +266,14 @@
                 ],
                 "span": {
                     "end": {
-                        "column": 10408,
+                        "column": 10430,
                         "line": 1,
-                        "offset": 10408
+                        "offset": 10430
                     },
                     "start": {
-                        "column": 10405,
+                        "column": 10427,
                         "line": 1,
-                        "offset": 10405
+                        "offset": 10427
                     }
                 }
             }
