@@ -12,9 +12,13 @@
                         "sagemaker:GetDeviceRegistration",
                         "sagemaker:GetDeviceFleetReport",
                         "sagemaker:GetSearchSuggestions",
+                        "sagemaker:BatchGetRecord",
                         "sagemaker:GetRecord",
                         "sagemaker:Search",
-                        "sagemaker:BatchGetRecord"
+                        "sagemaker:QueryLineage",
+                        "sagemaker:GetLineageGroupPolicy",
+                        "sagemaker:BatchDescribeModelPackage",
+                        "sagemaker:GetModelPackageGroupPolicy"
                     ],
                     "Resource": "*"
                 },
@@ -41,8 +45,8 @@
                 }
             ]
         },
-        "VersionId": "v10",
+        "VersionId": "v11",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-06-10T20:19:55Z"
+        "CreateDate": "2021-12-01T16:29:20Z"
     }
 }
