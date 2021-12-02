@@ -120,11 +120,18 @@
                         "redshift:DescribeDataShares"
                     ],
                     "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "apigateway:GET"
+                    ],
+                    "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v5",
+        "VersionId": "v6",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-11-01T18:55:49Z"
+        "CreateDate": "2021-12-02T16:14:27Z"
     }
 }
