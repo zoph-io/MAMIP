@@ -14,11 +14,36 @@
                         "elasticloadbalancing:DescribeLoadBalancers"
                     ],
                     "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "acm:ImportCertificate",
+                        "acm:AddTagsToCertificate"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:RequestTag/emr-container:endpoint:managed-certificate": "true"
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "acm:DeleteCertificate"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/emr-container:endpoint:managed-certificate": "true"
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2020-12-09T00:38:19Z"
+        "CreateDate": "2021-12-03T19:55:44Z"
     }
 }
