@@ -11,11 +11,13 @@
                         "lookoutvision:DescribeModel",
                         "lookoutvision:DescribeProject",
                         "lookoutvision:DescribeTrialDetection",
+                        "lookoutvision:DescribeModelPackagingJob",
                         "lookoutvision:ListDatasetEntries",
                         "lookoutvision:ListModels",
                         "lookoutvision:ListProjects",
                         "lookoutvision:ListTagsForResource",
-                        "lookoutvision:ListTrialDetections"
+                        "lookoutvision:ListTrialDetections",
+                        "lookoutvision:ListModelPackagingJobs"
                     ],
                     "Resource": "*"
                 },
@@ -47,8 +49,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-05-11T19:32:02Z"
+        "CreateDate": "2021-12-09T02:46:29Z"
     }
 }
