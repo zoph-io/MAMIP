@@ -1,7 +1,7 @@
-## AWS Access Analyzer - Findings - 2021-12-09
+## AWS Access Analyzer - Findings - 2021-12-10
 
 - Policies analyzed: `916`
-- Errors: `20`
+- Errors: `21`
   - [`AmazonLookoutVisionConsoleReadOnlyAccess`](./AmazonLookoutVisionConsoleReadOnlyAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
   - [`AdministratorAccess-Amplify`](./AdministratorAccess-Amplify.json)
@@ -9,6 +9,7 @@
   - [`AmazonLookoutVisionReadOnlyAccess`](./AmazonLookoutVisionReadOnlyAccess.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AWSAuditManagerAdministratorAccess`](./AWSAuditManagerAdministratorAccess.json)
+  - [`AmazonRoute53RecoveryControlConfigReadOnlyAccess`](./AmazonRoute53RecoveryControlConfigReadOnlyAccess.json)
   - [`AmazonSageMakerGroundTruthExecution`](./AmazonSageMakerGroundTruthExecution.json)
 - Sec_Warnings: `11`
   - [`AdministratorAccess-Amplify`](./AdministratorAccess-Amplify.json)
