@@ -1,0 +1,24 @@
+{
+    "PolicyVersion": {
+        "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "cloudwatch:PutMetricData"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "cloudwatch:namespace": "AWS/Private5G"
+                        }
+                    }
+                }
+            ]
+        },
+        "VersionId": "v1",
+        "IsDefaultVersion": true,
+        "CreateDate": "2021-12-16T23:17:46Z"
+    }
+}
