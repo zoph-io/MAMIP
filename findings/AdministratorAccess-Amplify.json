@@ -61,42 +61,6 @@
         ]
     },
     {
-        "findingDetails": "The service amplifyuibuilder:* specified in the action does not exist.",
-        "findingType": "ERROR",
-        "issueCode": "INVALID_SERVICE_IN_ACTION",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
-        "locations": [
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 2
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 6
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 5499,
-                        "line": 1,
-                        "offset": 5499
-                    },
-                    "start": {
-                        "column": 5479,
-                        "line": 1,
-                        "offset": 5479
-                    }
-                }
-            }
-        ]
-    },
-    {
         "findingDetails": "Using the iam:PassRole action with wildcards (*) in the resource can be overly permissive because it allows iam:PassRole permissions on multiple resources. We recommend that you specify resource ARNs or add the iam:PassedToService condition key to your statement.",
         "findingType": "SECURITY_WARNING",
         "issueCode": "PASS_ROLE_WITH_STAR_IN_RESOURCE",
