@@ -9,6 +9,7 @@
                         "cognito-idp:DescribeUserPool",
                         "cognito-idp:CreateUserPoolClient",
                         "cognito-idp:DeleteUserPoolClient",
+                        "cognito-idp:UpdateUserPoolClient",
                         "cognito-idp:DescribeUserPoolClient",
                         "cognito-idp:AdminInitiateAuth",
                         "cognito-idp:AdminUserGlobalSignOut",
@@ -26,14 +27,17 @@
                     "Resource": "*",
                     "Condition": {
                         "StringLike": {
-                            "iam:PassedToService": "cognito-identity.amazonaws.com"
+                            "iam:PassedToService": [
+                                "cognito-identity.amazonaws.com",
+                                "cognito-identity-us-gov.amazonaws.com"
+                            ]
                         }
                     }
                 }
             ]
         },
-        "VersionId": "v1",
-        "IsDefaultVersion": false,
-        "CreateDate": "2018-02-28T22:29:18Z"
+        "VersionId": "v2",
+        "IsDefaultVersion": true,
+        "CreateDate": "2021-12-20T14:04:44Z"
     }
 }
