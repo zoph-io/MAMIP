@@ -105,6 +105,14 @@
                         "ec2:DescribeVolume*",
                         "ec2:DescribeVpc*",
                         "ec2:DescribeVpnGateways",
+                        "ec2:DescribeCarrierGateways",
+                        "ec2:DescribeLocalGateways",
+                        "ec2:DescribeLocalGatewayVirtualInterfaces",
+                        "ec2:DescribeLocalGatewayVirtualInterfaceGroups",
+                        "ec2:DescribeLocalGatewayRouteTables",
+                        "ec2:DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations",
+                        "ec2:DescribeLocalGatewayRouteTableVpcAssociations",
+                        "ec2:SearchLocalGatewayRoutes",
                         "ecr:DescribeRepositories",
                         "ecr:ListImages",
                         "ecs:List*",
@@ -222,8 +230,8 @@
                 }
             ]
         },
-        "VersionId": "v11",
+        "VersionId": "v12",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-06-11T19:27:03Z"
+        "CreateDate": "2021-12-21T02:53:03Z"
     }
 }
