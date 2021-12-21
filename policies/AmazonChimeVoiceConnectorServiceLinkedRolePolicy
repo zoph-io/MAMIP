@@ -11,11 +11,51 @@
                     "Resource": [
                         "*"
                     ]
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "kinesisvideo:GetDataEndpoint",
+                        "kinesisvideo:PutMedia",
+                        "kinesisvideo:UpdateDataRetention",
+                        "kinesisvideo:DescribeStream",
+                        "kinesisvideo:CreateStream"
+                    ],
+                    "Resource": [
+                        "arn:aws:kinesisvideo:*:*:stream/ChimeVoiceConnector-*"
+                    ]
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "kinesisvideo:ListStreams"
+                    ],
+                    "Resource": [
+                        "*"
+                    ]
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "SNS:Publish"
+                    ],
+                    "Resource": [
+                        "arn:aws:sns:*:*:ChimeVoiceConnector-Streaming*"
+                    ]
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "sqs:SendMessage"
+                    ],
+                    "Resource": [
+                        "arn:aws:sqs:*:*:ChimeVoiceConnector-Streaming*"
+                    ]
                 }
             ]
         },
-        "VersionId": "v1",
-        "IsDefaultVersion": false,
-        "CreateDate": "2019-09-30T22:16:42Z"
+        "VersionId": "v2",
+        "IsDefaultVersion": true,
+        "CreateDate": "2021-12-21T00:08:05Z"
     }
 }
