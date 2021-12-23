@@ -191,6 +191,7 @@
                     "Action": [
                         "lambda:CreateFunction",
                         "lambda:DeleteFunction",
+                        "lambda:DeleteFunctionConcurrency",
                         "lambda:GetFunction",
                         "lambda:GetFunctionConfiguration",
                         "lambda:ListTags",
@@ -230,8 +231,8 @@
                 }
             ]
         },
-        "VersionId": "v4",
+        "VersionId": "v5",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-08-12T21:28:43Z"
+        "CreateDate": "2021-12-23T01:01:48Z"
     }
 }
