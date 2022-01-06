@@ -9,7 +9,6 @@
                     "Action": [
                         "events:PutRule",
                         "events:DeleteRule",
-                        "events:DescribeRule",
                         "events:PutTargets",
                         "events:RemoveTargets"
                     ],
@@ -19,6 +18,14 @@
                             "events:ManagedBy": "fis.amazonaws.com"
                         }
                     }
+                },
+                {
+                    "Sid": "EventBridgeDescribe",
+                    "Effect": "Allow",
+                    "Action": [
+                        "events:DescribeRule"
+                    ],
+                    "Resource": "*"
                 },
                 {
                     "Sid": "Tagging",
@@ -55,8 +62,8 @@
                 }
             ]
         },
-        "VersionId": "v3",
+        "VersionId": "v4",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-06-30T13:50:04Z"
+        "CreateDate": "2022-01-06T16:43:13Z"
     }
 }
