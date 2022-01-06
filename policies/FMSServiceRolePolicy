@@ -21,7 +21,9 @@
                         "waf-regional:DisassociateWebACL",
                         "elasticloadbalancing:SetWebACL",
                         "apigateway:SetWebACL",
-                        "elasticloadbalancing:SetSecurityGroups"
+                        "elasticloadbalancing:SetSecurityGroups",
+                        "waf:ListTagsForResource",
+                        "waf-regional:ListTagsForResource"
                     ],
                     "Resource": [
                         "arn:aws:waf:*:*:webacl/*",
@@ -51,7 +53,8 @@
                         "waf:CreateWebACL",
                         "waf-regional:CreateWebACL",
                         "waf:GetChangeToken",
-                        "waf-regional:GetChangeToken"
+                        "waf-regional:GetChangeToken",
+                        "waf-regional:GetWebACLForResource"
                     ],
                     "Resource": [
                         "arn:aws:waf:*:*:*",
@@ -165,7 +168,10 @@
                         "shield:DescribeEmergencyContactSettings",
                         "shield:UpdateEmergencyContactSettings",
                         "elasticloadbalancing:DescribeLoadBalancers",
-                        "ec2:DescribeAddresses"
+                        "ec2:DescribeAddresses",
+                        "shield:EnableApplicationLayerAutomaticResponse",
+                        "shield:DisableApplicationLayerAutomaticResponse",
+                        "shield:UpdateApplicationLayerAutomaticResponse"
                     ],
                     "Resource": "*"
                 },
@@ -409,7 +415,8 @@
                     "Condition": {
                         "StringEquals": {
                             "iam:AWSServiceName": [
-                                "network-firewall.amazonaws.com"
+                                "network-firewall.amazonaws.com",
+                                "shield.amazonaws.com"
                             ]
                         }
                     }
@@ -525,8 +532,8 @@
                 }
             ]
         },
-        "VersionId": "v21",
+        "VersionId": "v22",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-11-18T19:05:49Z"
+        "CreateDate": "2022-01-06T21:30:04Z"
     }
 }
