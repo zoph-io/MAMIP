@@ -21,11 +21,13 @@
                         "elasticfilesystem:CreateMountTarget",
                         "elasticfilesystem:CreateTags",
                         "elasticfilesystem:CreateAccessPoint",
+                        "elasticfilesystem:CreateReplicationConfiguration",
                         "elasticfilesystem:DeleteFileSystem",
                         "elasticfilesystem:DeleteMountTarget",
                         "elasticfilesystem:DeleteTags",
                         "elasticfilesystem:DeleteAccessPoint",
                         "elasticfilesystem:DeleteFileSystemPolicy",
+                        "elasticfilesystem:DeleteReplicationConfiguration",
                         "elasticfilesystem:DescribeAccountPreferences",
                         "elasticfilesystem:DescribeBackupPolicy",
                         "elasticfilesystem:DescribeFileSystems",
@@ -35,6 +37,7 @@
                         "elasticfilesystem:DescribeMountTargetSecurityGroups",
                         "elasticfilesystem:DescribeTags",
                         "elasticfilesystem:DescribeAccessPoints",
+                        "elasticfilesystem:DescribeReplicationConfigurations",
                         "elasticfilesystem:ModifyMountTargetSecurityGroups",
                         "elasticfilesystem:PutAccountPreferences",
                         "elasticfilesystem:PutBackupPolicy",
@@ -57,7 +60,7 @@
                     "Effect": "Allow",
                     "Resource": "*",
                     "Condition": {
-                        "StringLike": {
+                        "StringEquals": {
                             "iam:AWSServiceName": [
                                 "elasticfilesystem.amazonaws.com"
                             ]
@@ -66,8 +69,8 @@
                 }
             ]
         },
-        "VersionId": "v7",
+        "VersionId": "v8",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-05-10T14:25:43Z"
+        "CreateDate": "2022-01-10T19:03:16Z"
     }
 }

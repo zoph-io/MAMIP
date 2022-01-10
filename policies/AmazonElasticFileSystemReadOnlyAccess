@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Effect": "Allow",
                     "Action": [
                         "cloudwatch:DescribeAlarmsForMetric",
                         "cloudwatch:GetMetricData",
@@ -23,16 +24,16 @@
                         "elasticfilesystem:DescribeMountTargetSecurityGroups",
                         "elasticfilesystem:DescribeTags",
                         "elasticfilesystem:DescribeAccessPoints",
+                        "elasticfilesystem:DescribeReplicationConfigurations",
                         "elasticfilesystem:ListTagsForResource",
                         "kms:ListAliases"
                     ],
-                    "Effect": "Allow",
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v6",
+        "VersionId": "v7",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-05-10T14:20:55Z"
+        "CreateDate": "2022-01-10T18:53:37Z"
     }
 }

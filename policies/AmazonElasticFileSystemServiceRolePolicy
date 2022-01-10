@@ -51,7 +51,7 @@
                     ],
                     "Resource": "*",
                     "Condition": {
-                        "StringLike": {
+                        "StringEquals": {
                             "iam:AWSServiceName": [
                                 "backup.amazonaws.com"
                             ]
@@ -71,11 +71,21 @@
                             "iam:PassedToService": "backup.amazonaws.com"
                         }
                     }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "elasticfilesystem:DescribeFileSystems",
+                        "elasticfilesystem:CreateReplicationConfiguration",
+                        "elasticfilesystem:DescribeReplicationConfigurations",
+                        "elasticfilesystem:DeleteReplicationConfiguration"
+                    ],
+                    "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v3",
+        "VersionId": "v4",
         "IsDefaultVersion": true,
-        "CreateDate": "2020-07-16T19:27:41Z"
+        "CreateDate": "2022-01-10T19:27:33Z"
     }
 }
