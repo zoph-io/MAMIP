@@ -1,0 +1,110 @@
+[
+    {
+        "findingDetails": "The action elasticfilesystem:CreateReplicationConfiguration does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 16
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 623,
+                        "line": 1,
+                        "offset": 623
+                    },
+                    "start": {
+                        "column": 573,
+                        "line": 1,
+                        "offset": 573
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The action elasticfilesystem:DeleteReplicationConfiguration does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 22
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 867,
+                        "line": 1,
+                        "offset": 867
+                    },
+                    "start": {
+                        "column": 817,
+                        "line": 1,
+                        "offset": 817
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The action elasticfilesystem:DescribeReplicationConfigurations does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 32
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 1324,
+                        "line": 1,
+                        "offset": 1324
+                    },
+                    "start": {
+                        "column": 1271,
+                        "line": 1,
+                        "offset": 1271
+                    }
+                }
+            }
+        ]
+    }
+]
