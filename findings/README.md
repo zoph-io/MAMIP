@@ -1,6 +1,6 @@
-## AWS Access Analyzer - Findings - 2022-01-10
+## AWS Access Analyzer - Findings - 2022-01-11
 
-- Policies analyzed: `919`
+- Policies analyzed: `920`
 - Errors: `20`
   - [`AmazonElasticFileSystemServiceRolePolicy`](./AmazonElasticFileSystemServiceRolePolicy.json)
   - [`AmazonElasticFileSystemReadOnlyAccess`](./AmazonElasticFileSystemReadOnlyAccess.json)
