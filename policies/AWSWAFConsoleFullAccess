@@ -22,7 +22,10 @@
                         "appsync:SetWebACL",
                         "waf-regional:*",
                         "waf:*",
-                        "wafv2:*"
+                        "wafv2:*",
+                        "s3:ListAllMyBuckets",
+                        "logs:DescribeResourcePolicies",
+                        "logs:DescribeLogGroups"
                     ],
                     "Resource": "*"
                 },
@@ -32,10 +35,7 @@
                         "logs:CreateLogDelivery",
                         "logs:DeleteLogDelivery"
                     ],
-                    "Resource": [
-                        "arn:aws:s3:::aws-waf-logs-*",
-                        "arn:aws:logs:*:*:aws-waf-logs-*"
-                    ],
+                    "Resource": "*",
                     "Effect": "Allow"
                 },
                 {
@@ -52,19 +52,22 @@
                 {
                     "Sid": "GrantLogDeliveryPermissionForCloudWatchLogGroup",
                     "Action": [
-                        "logs:PutResourcePolicy",
-                        "logs:DescribeResourcePolicies",
-                        "logs:DescribeLogGroups"
+                        "logs:PutResourcePolicy"
                     ],
-                    "Resource": [
-                        "arn:aws:logs:*:*:aws-waf-logs-*"
-                    ],
-                    "Effect": "Allow"
+                    "Resource": "*",
+                    "Effect": "Allow",
+                    "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "aws:CalledVia": [
+                                "wafv2.amazonaws.com"
+                            ]
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v3",
+        "VersionId": "v4",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-11-15T19:33:52Z"
+        "CreateDate": "2022-01-11T19:34:04Z"
     }
 }
