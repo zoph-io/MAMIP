@@ -1,13 +1,10 @@
 ## AWS Access Analyzer - Findings - 2022-01-11
 
 - Policies analyzed: `920`
-- Errors: `20`
-  - [`AmazonElasticFileSystemServiceRolePolicy`](./AmazonElasticFileSystemServiceRolePolicy.json)
-  - [`AmazonElasticFileSystemReadOnlyAccess`](./AmazonElasticFileSystemReadOnlyAccess.json)
+- Errors: `13`
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AmazonSageMakerGroundTruthExecution`](./AmazonSageMakerGroundTruthExecution.json)
   - [`AWSAuditManagerAdministratorAccess`](./AWSAuditManagerAdministratorAccess.json)
-  - [`AmazonElasticFileSystemFullAccess`](./AmazonElasticFileSystemFullAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
 - Sec_Warnings: `11`
   - [`AWSServiceRoleForAmazonEKSNodegroup`](./AWSServiceRoleForAmazonEKSNodegroup.json)
