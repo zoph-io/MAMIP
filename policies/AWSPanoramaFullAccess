@@ -71,6 +71,15 @@
                 {
                     "Effect": "Allow",
                     "Action": [
+                        "logs:DescribeLogGroups"
+                    ],
+                    "Resource": [
+                        "arn:aws:logs:*:*:log-group:*"
+                    ]
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
                         "cloudwatch:ListMetrics",
                         "cloudwatch:GetMetricData",
                         "cloudwatch:GetMetricStatistics"
@@ -94,8 +103,8 @@
                 }
             ]
         },
-        "VersionId": "v3",
+        "VersionId": "v4",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-10-28T15:37:05Z"
+        "CreateDate": "2022-01-12T21:21:04Z"
     }
 }
