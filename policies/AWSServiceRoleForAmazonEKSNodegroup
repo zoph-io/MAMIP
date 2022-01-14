@@ -62,7 +62,8 @@
                         "autoscaling:TerminateInstanceInAutoScalingGroup",
                         "autoscaling:CompleteLifecycleAction",
                         "autoscaling:PutLifecycleHook",
-                        "autoscaling:PutNotificationConfiguration"
+                        "autoscaling:PutNotificationConfiguration",
+                        "autoscaling:EnableMetricsCollection"
                     ],
                     "Resource": "arn:aws:autoscaling:*:*:*:autoScalingGroupName/eks-*"
                 },
@@ -172,8 +173,8 @@
                 }
             ]
         },
-        "VersionId": "v5",
+        "VersionId": "v6",
         "IsDefaultVersion": true,
-        "CreateDate": "2020-08-31T19:07:38Z"
+        "CreateDate": "2022-01-14T00:33:26Z"
     }
 }
