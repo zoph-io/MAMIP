@@ -192,17 +192,25 @@
                     "Resource": "arn:aws:backup-gateway:*:*:vm/*"
                 },
                 {
-                    "Sid": "ListTagsForDynamoDBTable",
                     "Effect": "Allow",
                     "Action": [
-                        "dynamodb:ListTagsOfResource"
+                        "dynamodb:ListTagsOfResource",
+                        "dynamodb:DescribeTable"
                     ],
                     "Resource": "arn:aws:dynamodb:*:*:table/*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "storagegateway:DescribeCachediSCSIVolumes",
+                        "storagegateway:DescribeStorediSCSIVolumes"
+                    ],
+                    "Resource": "arn:aws:storagegateway:*:*:gateway/*/volume/*"
                 }
             ]
         },
-        "VersionId": "v6",
+        "VersionId": "v7",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-11-23T22:00:49Z"
+        "CreateDate": "2022-01-14T19:17:42Z"
     }
 }
