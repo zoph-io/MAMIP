@@ -20,11 +20,18 @@
                         "ec2:DescribeImages"
                     ],
                     "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "s3:GetAccountPublicAccessBlock"
+                    ],
+                    "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2018-09-28T16:35:54Z"
+        "CreateDate": "2022-01-15T01:45:33Z"
     }
 }
