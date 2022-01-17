@@ -67,6 +67,16 @@
                 {
                     "Effect": "Allow",
                     "Action": [
+                        "ec2:StartInstances",
+                        "ec2:StopInstances"
+                    ],
+                    "Resource": [
+                        "arn:aws:license-manager:*:*:license-configuration:*"
+                    ]
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
                         "iam:ListInstanceProfiles",
                         "iam:GetInstanceProfile"
                     ],
@@ -90,8 +100,8 @@
                 }
             ]
         },
-        "VersionId": "v7",
+        "VersionId": "v8",
         "IsDefaultVersion": true,
-        "CreateDate": "2020-10-06T12:43:49Z"
+        "CreateDate": "2022-01-17T14:06:15Z"
     }
 }
