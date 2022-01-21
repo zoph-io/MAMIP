@@ -296,11 +296,24 @@
                         "wafv2:GetLoggingConfiguration"
                     ],
                     "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "logs:CreateLogStream",
+                        "logs:CreateLogGroup"
+                    ],
+                    "Resource": "arn:aws:logs:*:*:log-group:/aws/config/*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "logs:PutLogEvents",
+                    "Resource": "arn:aws:logs:*:*:log-group:/aws/config/*:log-stream:config-rule-evaluation/*"
                 }
             ]
         },
-        "VersionId": "v27",
+        "VersionId": "v28",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-09-08T18:12:00Z"
+        "CreateDate": "2022-01-21T18:35:45Z"
     }
 }
