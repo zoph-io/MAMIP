@@ -1,6 +1,6 @@
-## AWS Access Analyzer - Findings - 2022-01-20
+## AWS Access Analyzer - Findings - 2022-01-21
 
-- Policies analyzed: `921`
+- Policies analyzed: `922`
 - Errors: `13`
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AWSAuditManagerAdministratorAccess`](./AWSAuditManagerAdministratorAccess.json)
