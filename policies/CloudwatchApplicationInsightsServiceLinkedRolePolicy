@@ -351,11 +351,30 @@
                         "sqs:ListQueues"
                     ],
                     "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "logs:DeleteSubscriptionFilter"
+                    ],
+                    "Resource": [
+                        "arn:aws:logs:*:*:log-group:*"
+                    ]
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "logs:PutSubscriptionFilter"
+                    ],
+                    "Resource": [
+                        "arn:aws:logs:*:*:log-group:*",
+                        "arn:aws:logs:*:*:destination:AmazonCloudWatch-ApplicationInsights-LogIngestionDestination*"
+                    ]
                 }
             ]
         },
-        "VersionId": "v18",
+        "VersionId": "v19",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-11-11T23:03:50Z"
+        "CreateDate": "2022-01-25T17:51:32Z"
     }
 }
