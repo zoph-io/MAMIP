@@ -56,7 +56,7 @@
                         "ec2:CreateTags",
                         "ec2:CreateVolume"
                     ],
-                    "Resource": "*",
+                    "Resource": "arn:aws:ec2:*:*:volume/*",
                     "Condition": {
                         "ForAllValues:StringEquals": {
                             "aws:TagKeys": [
@@ -164,8 +164,8 @@
                 }
             ]
         },
-        "VersionId": "v8",
+        "VersionId": "v9",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-05-24T23:05:02Z"
+        "CreateDate": "2022-01-27T23:01:20Z"
     }
 }
