@@ -47,7 +47,11 @@
                         "cognito-identity:List*",
                         "cognito-identity:LookupDeveloperIdentity",
                         "cognito-identity:Describe*",
-                        "cognito-idp:Describe*",
+                        "cognito-idp:DescribeResourceServer",
+                        "cognito-idp:DescribeRiskConfiguration",
+                        "cognito-idp:DescribeUserImportJob",
+                        "cognito-idp:DescribeUserPool",
+                        "cognito-idp:DescribeUserPoolDomain",
                         "cognito-idp:List*",
                         "cognito-sync:Describe*",
                         "cognito-sync:GetBulkPublishDetails",
@@ -200,7 +204,6 @@
                         "swf:List*",
                         "waf:Get*",
                         "waf:List*",
-                        "workspaces:Describe*",
                         "workdocs:Describe*",
                         "workmail:Describe*",
                         "workmail:Get*",
@@ -211,8 +214,8 @@
                 }
             ]
         },
-        "VersionId": "v5",
+        "VersionId": "v6",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-06-11T19:46:10Z"
+        "CreateDate": "2022-02-02T15:11:42Z"
     }
 }
