@@ -56,14 +56,16 @@
                         "rds:DescribeDBClusters",
                         "rds:DescribeDBInstances",
                         "ecs:DescribeClusters",
+                        "ecs:DescribeTasks",
+                        "ecs:ListTasks",
                         "eks:DescribeNodegroup"
                     ],
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v4",
+        "VersionId": "v5",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-01-06T16:43:13Z"
+        "CreateDate": "2022-02-07T11:13:04Z"
     }
 }
