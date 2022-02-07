@@ -7,11 +7,20 @@
                     "Effect": "Allow",
                     "Action": "organizations:*",
                     "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "account:PutAlternateContact",
+                        "account:DeleteAlternateContact",
+                        "account:GetAlternateContact"
+                    ],
+                    "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2018-11-06T20:31:57Z"
+        "CreateDate": "2022-02-07T18:26:04Z"
     }
 }

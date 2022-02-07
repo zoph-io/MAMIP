@@ -10,11 +10,18 @@
                         "organizations:List*"
                     ],
                     "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "account:GetAlternateContact"
+                    ],
+                    "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2018-11-06T20:32:38Z"
+        "CreateDate": "2022-02-07T18:17:19Z"
     }
 }

@@ -29,7 +29,6 @@
                         "organizations:ListRoots",
                         "organizations:ListChildren",
                         "organizations:ListDelegatedAdministrators",
-                        "rds:DescribeDBInstances",
                         "pi:GetResourceMetrics",
                         "tag:GetResources",
                         "lambda:GetFunction",
@@ -51,7 +50,13 @@
                         "dynamodb:DescribeStream",
                         "dynamodb:ListStreams",
                         "elasticloadbalancing:DescribeLoadBalancers",
-                        "elasticloadbalancing:DescribeLoadBalancerAttributes"
+                        "elasticloadbalancing:DescribeLoadBalancerAttributes",
+                        "rds:DescribeDBInstances",
+                        "rds:DescribeDBClusters",
+                        "rds:DescribeOptionGroups",
+                        "rds:DescribeDBClusterParameters",
+                        "rds:DescribeDBInstanceAutomatedBackups",
+                        "rds:DescribeAccountAttributes"
                     ],
                     "Resource": "*"
                 },
@@ -93,11 +98,43 @@
                             "aws:ResourceTag/DevOps-GuruInsightSsmOpsItemRelated": "true"
                         }
                     }
+                },
+                {
+                    "Sid": "AllowCreateManagedRule",
+                    "Effect": "Allow",
+                    "Action": "events:PutRule",
+                    "Resource": "arn:aws:events:*:*:rule/DevOpsGuruManagedRule*"
+                },
+                {
+                    "Sid": "AllowAccessManagedRule",
+                    "Effect": "Allow",
+                    "Action": [
+                        "events:DescribeRule",
+                        "events:ListTargetsByRule"
+                    ],
+                    "Resource": "arn:aws:events:*:*:rule/DevOpsGuruManagedRule*"
+                },
+                {
+                    "Sid": "AllowOtherOperationsOnManagedRule",
+                    "Effect": "Allow",
+                    "Action": [
+                        "events:DeleteRule",
+                        "events:EnableRule",
+                        "events:DisableRule",
+                        "events:PutTargets",
+                        "events:RemoveTargets"
+                    ],
+                    "Resource": "arn:aws:events:*:*:rule/DevOpsGuruManagedRule*",
+                    "Condition": {
+                        "StringEquals": {
+                            "events:ManagedBy": "devops-guru.amazonaws.com"
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v5",
+        "VersionId": "v6",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-11-24T01:23:43Z"
+        "CreateDate": "2022-02-07T19:30:10Z"
     }
 }
