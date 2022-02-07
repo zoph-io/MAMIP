@@ -1,9 +1,8 @@
 ## AWS Access Analyzer - Findings - 2022-02-07
 
 - Policies analyzed: `922`
-- Errors: `14`
+- Errors: `13`
   - [`AmazonSageMakerGroundTruthExecution`](./AmazonSageMakerGroundTruthExecution.json)
-  - [`ComprehendReadOnly`](./ComprehendReadOnly.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
   - [`AWSAuditManagerAdministratorAccess`](./AWSAuditManagerAdministratorAccess.json)
