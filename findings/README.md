@@ -1,6 +1,6 @@
-## AWS Access Analyzer - Findings - 2022-02-07
+## AWS Access Analyzer - Findings - 2022-02-10
 
-- Policies analyzed: `922`
+- Policies analyzed: `921`
 - Errors: `13`
   - [`AmazonSageMakerGroundTruthExecution`](./AmazonSageMakerGroundTruthExecution.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
@@ -52,7 +52,7 @@
   - [`IAMFullAccess`](./IAMFullAccess.json)
 - Fails: `1`
   - [`AWSSupportServiceRolePolicy`](./AWSSupportServiceRolePolicy.json)
-- Deprecated: `38`
+- Deprecated: `39`
   - `ServerMigrationServiceRole`
   - `AWS_Config_Role`
   - `TagGovernancePolicy`
@@ -68,6 +68,7 @@
   - `AmazonEC2ContainerServiceFullAccess`
   - `AmazonLaunchWizardFullaccess`
   - `AmazonEC2SpotFleetRole`
+  - `AmazonLambdaRolePolicyForLaunchWizardSAP`
   - `AWSServiceRoleForGammaInternalAmazonEKSNodegroup`
   - `AWSOpsWorksRole`
   - `AmazonConnectFullAccess`
