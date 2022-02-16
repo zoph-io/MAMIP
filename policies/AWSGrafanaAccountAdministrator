@@ -23,7 +23,7 @@
                     "Action": [
                         "grafana:*"
                     ],
-                    "Resource": "arn:aws:grafana:*:*:/workspaces*"
+                    "Resource": "*"
                 },
                 {
                     "Sid": "GrafanaIAMPassRolePermission",
@@ -38,8 +38,8 @@
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-10-13T22:13:18Z"
+        "CreateDate": "2022-02-15T22:36:18Z"
     }
 }
