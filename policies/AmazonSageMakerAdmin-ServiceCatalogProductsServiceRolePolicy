@@ -123,7 +123,8 @@
                 {
                     "Effect": "Allow",
                     "Action": [
-                        "cognito-idp:CreateUserPool"
+                        "cognito-idp:CreateUserPool",
+                        "cognito-idp:TagResource"
                     ],
                     "Resource": "*",
                     "Condition": {
@@ -329,6 +330,7 @@
                         "s3:PutBucketPublicAccessBlock",
                         "s3:PutBucketLogging",
                         "s3:PutEncryptionConfiguration",
+                        "s3:PutBucketCORS",
                         "s3:PutBucketTagging",
                         "s3:PutObjectTagging"
                     ],
@@ -394,8 +396,8 @@
                 }
             ]
         },
-        "VersionId": "v3",
+        "VersionId": "v4",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-09-15T20:00:26Z"
+        "CreateDate": "2022-02-16T19:52:11Z"
     }
 }
