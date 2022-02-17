@@ -134,7 +134,7 @@
                     ],
                     "Resource": [
                         "arn:aws:ec2:*::snapshot/*",
-                        "arn:aws:ec2:*::launch-template/*"
+                        "arn:aws:ec2:*:*:launch-template/*"
                     ],
                     "Condition": {
                         "StringEquals": {
@@ -355,8 +355,8 @@
                 }
             ]
         },
-        "VersionId": "v15",
-        "IsDefaultVersion": false,
-        "CreateDate": "2022-02-16T18:01:43Z"
+        "VersionId": "v16",
+        "IsDefaultVersion": true,
+        "CreateDate": "2022-02-17T00:01:44Z"
     }
 }
