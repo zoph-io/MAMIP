@@ -21,6 +21,10 @@
                 {
                     "Effect": "Allow",
                     "Action": [
+                        "ec2:DescribeKeyPairs",
+                        "ec2:DescribeTags",
+                        "ec2:DescribeNetworkInterfaces",
+                        "ec2:DescribePlacementGroups",
                         "ec2:DescribeAccountAttributes",
                         "ec2:DescribeAvailabilityZones",
                         "ec2:DescribeImages",
@@ -39,11 +43,26 @@
                         "ec2:GetEbsDefaultKmsKeyId"
                     ],
                     "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "license-manager:ListLicenseConfigurations",
+                    "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "elasticloadbalancing:DescribeLoadBalancers",
+                    "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "iam:ListInstanceProfiles",
+                    "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-04-07T06:56:05Z"
+        "CreateDate": "2022-02-22T11:16:56Z"
     }
 }
