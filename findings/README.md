@@ -1,6 +1,6 @@
-## AWS Access Analyzer - Findings - 2022-02-18
+## AWS Access Analyzer - Findings - 2022-02-22
 
-- Policies analyzed: `923`
+- Policies analyzed: `927`
 - Errors: `13`
   - [`AmazonSageMakerGroundTruthExecution`](./AmazonSageMakerGroundTruthExecution.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
