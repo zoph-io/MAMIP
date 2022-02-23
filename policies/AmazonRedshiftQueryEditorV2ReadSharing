@@ -26,6 +26,19 @@
                     }
                 },
                 {
+                    "Sid": "ResourceGroupsTaggingPermissions",
+                    "Effect": "Allow",
+                    "Action": [
+                        "tag:GetResources"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:CalledViaLast": "sqlworkbench.amazonaws.com"
+                        }
+                    }
+                },
+                {
                     "Sid": "AmazonRedshiftQueryEditorV2NonResourceLevelPermissions",
                     "Effect": "Allow",
                     "Action": [
@@ -43,7 +56,8 @@
                         "sqlworkbench:ListTabs",
                         "sqlworkbench:UpdateFolder",
                         "sqlworkbench:ListRedshiftClusters",
-                        "sqlworkbench:DriverExecute"
+                        "sqlworkbench:DriverExecute",
+                        "sqlworkbench:ListTaggedResources"
                     ],
                     "Resource": "*"
                 },
@@ -112,7 +126,8 @@
                         "sqlworkbench:GetConnection",
                         "sqlworkbench:GetSavedQuery",
                         "sqlworkbench:ListSavedQueryVersions",
-                        "sqlworkbench:ListTagsForResource"
+                        "sqlworkbench:ListTagsForResource",
+                        "sqlworkbench:AssociateQueryWithTab"
                     ],
                     "Resource": "*",
                     "Condition": {
@@ -152,8 +167,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-09-24T14:22:21Z"
+        "CreateDate": "2022-02-23T17:03:58Z"
     }
 }

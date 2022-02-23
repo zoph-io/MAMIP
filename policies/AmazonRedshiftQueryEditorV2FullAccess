@@ -30,6 +30,19 @@
                     "Resource": "arn:aws:secretsmanager:*:*:sqlworkbench!*"
                 },
                 {
+                    "Sid": "ResourceGroupsTaggingPermissions",
+                    "Effect": "Allow",
+                    "Action": [
+                        "tag:GetResources"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:CalledViaLast": "sqlworkbench.amazonaws.com"
+                        }
+                    }
+                },
+                {
                     "Sid": "AmazonRedshiftQueryEditorV2Permissions",
                     "Effect": "Allow",
                     "Action": "sqlworkbench:*",
@@ -37,8 +50,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-09-24T14:06:02Z"
+        "CreateDate": "2022-02-23T17:05:06Z"
     }
 }
