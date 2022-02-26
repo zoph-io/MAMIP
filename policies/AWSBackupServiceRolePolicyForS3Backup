@@ -51,7 +51,9 @@
                         "s3:ListBucket",
                         "s3:GetBucketVersioning",
                         "s3:GetBucketLocation",
-                        "s3:PutInventoryConfiguration"
+                        "s3:PutInventoryConfiguration",
+                        "s3:GetBucketNotification",
+                        "s3:PutBucketNotification"
                     ],
                     "Resource": "arn:aws:s3:::*"
                 },
@@ -74,8 +76,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
-        "IsDefaultVersion": false,
-        "CreateDate": "2022-02-18T17:40:24Z"
+        "VersionId": "v2",
+        "IsDefaultVersion": true,
+        "CreateDate": "2022-02-26T00:01:09Z"
     }
 }
