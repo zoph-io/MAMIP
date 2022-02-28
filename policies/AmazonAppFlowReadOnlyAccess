@@ -6,11 +6,13 @@
                 {
                     "Effect": "Allow",
                     "Action": [
+                        "appflow:DescribeConnector",
                         "appflow:DescribeConnectors",
                         "appflow:DescribeConnectorProfiles",
                         "appflow:DescribeFlows",
                         "appflow:DescribeFlowExecution",
                         "appflow:DescribeConnectorFields",
+                        "appflow:ListConnectors",
                         "appflow:ListConnectorFields",
                         "appflow:ListTagsForResource"
                     ],
@@ -18,8 +20,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2020-06-02T23:26:51Z"
+        "CreateDate": "2022-02-28T20:42:58Z"
     }
 }
