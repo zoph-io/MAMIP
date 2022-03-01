@@ -16,12 +16,12 @@
                 },
                 {
                     "Sid": "KMSListAccess",
+                    "Effect": "Allow",
                     "Action": [
                         "kms:ListKeys",
                         "kms:DescribeKey",
                         "kms:ListAliases"
                     ],
-                    "Effect": "Allow",
                     "Resource": "*"
                 },
                 {
@@ -105,11 +105,19 @@
                             "secretsmanager:ResourceTag/aws:secretsmanager:owningService": "appflow"
                         }
                     }
+                },
+                {
+                    "Sid": "LambdaListFunctions",
+                    "Effect": "Allow",
+                    "Action": [
+                        "lambda:ListFunctions"
+                    ],
+                    "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2020-12-07T22:49:15Z"
+        "CreateDate": "2022-02-28T23:11:23Z"
     }
 }
