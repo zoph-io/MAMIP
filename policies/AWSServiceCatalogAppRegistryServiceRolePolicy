@@ -29,7 +29,8 @@
                         "resource-groups:GetGroup",
                         "resource-groups:GetTags",
                         "resource-groups:Tag",
-                        "resource-groups:Untag"
+                        "resource-groups:Untag",
+                        "resource-groups:GetGroupConfiguration"
                     ],
                     "Resource": "*",
                     "Condition": {
@@ -40,8 +41,8 @@
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-08-11T19:49:17Z"
+        "CreateDate": "2022-03-04T21:06:44Z"
     }
 }
