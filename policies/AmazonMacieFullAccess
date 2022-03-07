@@ -5,26 +5,30 @@
             "Statement": [
                 {
                     "Effect": "Allow",
-                    "Resource": "*",
                     "Action": [
-                        "macie:*",
                         "macie2:*"
-                    ]
+                    ],
+                    "Resource": "*"
                 },
                 {
                     "Effect": "Allow",
                     "Action": "iam:CreateServiceLinkedRole",
-                    "Resource": "*",
+                    "Resource": "arn:aws:iam::*:role/AWSServiceRoleForAmazonMacie",
                     "Condition": {
                         "StringLike": {
                             "iam:AWSServiceName": "macie.amazonaws.com"
                         }
                     }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "pricing:GetProducts",
+                    "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v3",
+        "VersionId": "v4",
         "IsDefaultVersion": true,
-        "CreateDate": "2020-05-13T19:05:16Z"
+        "CreateDate": "2022-03-07T18:08:14Z"
     }
 }
