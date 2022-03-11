@@ -1,4 +1,4 @@
-## AWS Access Analyzer - Findings - 2022-03-07
+## AWS Access Analyzer - Findings - 2022-03-11
 
 - Policies analyzed: `928`
 - Errors: `14`
@@ -17,7 +17,7 @@
   - [`AWSElasticBeanstalkService`](./AWSElasticBeanstalkService.json)
   - [`IAMFullAccess`](./IAMFullAccess.json)
   - [`AmazonElasticMapReduceFullAccess`](./AmazonElasticMapReduceFullAccess.json)
-- Suggestions: `37`
+- Suggestions: `40`
   - [`AWSElasticBeanstalkWorkerTier`](./AWSElasticBeanstalkWorkerTier.json)
   - [`AWSGlueConsoleFullAccess`](./AWSGlueConsoleFullAccess.json)
   - [`AWSMigrationHubRefactorSpacesFullAccess`](./AWSMigrationHubRefactorSpacesFullAccess.json)
@@ -34,14 +34,16 @@
   - [`AmazonCodeGuruReviewerServiceRolePolicy`](./AmazonCodeGuruReviewerServiceRolePolicy.json)
   - [`AWSDataPipelineRole`](./AWSDataPipelineRole.json)
   - [`AWSElasticBeanstalkRoleCore`](./AWSElasticBeanstalkRoleCore.json)
+  - [`AWS_ConfigRole`](./AWS_ConfigRole.json)
   - [`AWSLakeFormationDataAdmin`](./AWSLakeFormationDataAdmin.json)
   - [`AWSDeepRacerFullAccess`](./AWSDeepRacerFullAccess.json)
   - [`AWSElasticBeanstalkService`](./AWSElasticBeanstalkService.json)
   - [`AWSBatchFullAccess`](./AWSBatchFullAccess.json)
+  - [`AWSConfigServiceRolePolicy`](./AWSConfigServiceRolePolicy.json)
   - [`AWSMarketplaceFullAccess`](./AWSMarketplaceFullAccess.json)
   - [`AmazonElasticMapReduceFullAccess`](./AmazonElasticMapReduceFullAccess.json)
   - [`AWSDeepLensLambdaFunctionAccessPolicy`](./AWSDeepLensLambdaFunctionAccessPolicy.json)
-- Warnings: `9`
+- Warnings: `11`
   - [`AlexaForBusinessFullAccess`](./AlexaForBusinessFullAccess.json)
   - [`ReadOnlyAccess`](./ReadOnlyAccess.json)
   - [`AmazonLaunchWizard_Fullaccess`](./AmazonLaunchWizard_Fullaccess.json)
@@ -49,7 +51,9 @@
   - [`PowerUserAccess`](./PowerUserAccess.json)
   - [`AdministratorAccess-Amplify`](./AdministratorAccess-Amplify.json)
   - [`AdministratorAccess`](./AdministratorAccess.json)
+  - [`AWS_ConfigRole`](./AWS_ConfigRole.json)
   - [`AWSOrganizationsServiceTrustPolicy`](./AWSOrganizationsServiceTrustPolicy.json)
+  - [`AWSConfigServiceRolePolicy`](./AWSConfigServiceRolePolicy.json)
   - [`IAMFullAccess`](./IAMFullAccess.json)
 - Fails: `1`
   - [`AWSSupportServiceRolePolicy`](./AWSSupportServiceRolePolicy.json)
