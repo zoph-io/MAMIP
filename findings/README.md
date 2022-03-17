@@ -1,13 +1,12 @@
-## AWS Access Analyzer - Findings - 2022-03-15
+## AWS Access Analyzer - Findings - 2022-03-17
 
 - Policies analyzed: `928`
-- Errors: `15`
+- Errors: `14`
   - [`AmazonSageMakerGroundTruthExecution`](./AmazonSageMakerGroundTruthExecution.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AWSDataExchangeProviderFullAccess`](./AWSDataExchangeProviderFullAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
   - [`AWSAuditManagerAdministratorAccess`](./AWSAuditManagerAdministratorAccess.json)
-  - [`AmazonDevOpsGuruReadOnlyAccess`](./AmazonDevOpsGuruReadOnlyAccess.json)
 - Sec_Warnings: `11`
   - [`AWSServiceRoleForAmazonEKSNodegroup`](./AWSServiceRoleForAmazonEKSNodegroup.json)
   - [`AmazonElasticMapReduceRole`](./AmazonElasticMapReduceRole.json)
