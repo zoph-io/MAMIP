@@ -51,11 +51,20 @@
                     "Resource": [
                         "arn:aws:sqs:*:*:ChimeVoiceConnector-Streaming*"
                     ]
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "polly:SynthesizeSpeech"
+                    ],
+                    "Resource": [
+                        "*"
+                    ]
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-12-21T00:08:05Z"
+        "CreateDate": "2022-03-17T16:18:11Z"
     }
 }
