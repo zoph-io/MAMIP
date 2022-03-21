@@ -161,7 +161,8 @@
                     "Effect": "Allow",
                     "Action": [
                         "ecr:CreateRepository",
-                        "ecr:DeleteRepository"
+                        "ecr:DeleteRepository",
+                        "ecr:TagResource"
                     ],
                     "Resource": [
                         "arn:aws:ecr:*:*:repository/sagemaker-*"
@@ -361,6 +362,7 @@
                     ]
                 },
                 {
+                    "Effect": "Allow",
                     "Action": [
                         "sagemaker:CreateImage",
                         "sagemaker:DeleteImage",
@@ -370,8 +372,7 @@
                     ],
                     "Resource": [
                         "arn:aws:sagemaker:*:*:image/*"
-                    ],
-                    "Effect": "Allow"
+                    ]
                 },
                 {
                     "Effect": "Allow",
@@ -396,8 +397,8 @@
                 }
             ]
         },
-        "VersionId": "v4",
+        "VersionId": "v5",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-02-16T19:52:11Z"
+        "CreateDate": "2022-03-21T17:33:28Z"
     }
 }

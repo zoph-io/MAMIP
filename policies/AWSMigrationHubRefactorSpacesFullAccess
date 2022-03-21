@@ -85,13 +85,6 @@
                 },
                 {
                     "Effect": "Allow",
-                    "Action": [
-                        "ec2:CreateTags"
-                    ],
-                    "Resource": "*"
-                },
-                {
-                    "Effect": "Allow",
                     "Action": "ec2:DeleteVpcEndpointServiceConfigurations",
                     "Resource": "*",
                     "Condition": {
@@ -253,8 +246,8 @@
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-11-29T14:07:52Z"
+        "CreateDate": "2022-03-21T17:41:49Z"
     }
 }
