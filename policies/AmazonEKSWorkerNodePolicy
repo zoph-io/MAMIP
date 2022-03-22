@@ -4,8 +4,10 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Effect": "Allow",
                     "Action": [
                         "ec2:DescribeInstances",
+                        "ec2:DescribeInstanceTypes",
                         "ec2:DescribeRouteTables",
                         "ec2:DescribeSecurityGroups",
                         "ec2:DescribeSubnets",
@@ -14,13 +16,12 @@
                         "ec2:DescribeVpcs",
                         "eks:DescribeCluster"
                     ],
-                    "Resource": "*",
-                    "Effect": "Allow"
+                    "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2018-05-27T21:09:01Z"
+        "CreateDate": "2022-03-21T22:39:36Z"
     }
 }
