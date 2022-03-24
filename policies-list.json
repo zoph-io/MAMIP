@@ -414,7 +414,7 @@
             "Arn": "arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM",
             "Path": "/service-role/",
             "DefaultVersionId": "v8",
-            "AttachmentCount": 1,
+            "AttachmentCount": 0,
             "PermissionsBoundaryUsageCount": 0,
             "IsAttachable": true,
             "CreateDate": "2015-05-29T17:48:35+00:00",
@@ -2610,7 +2610,7 @@
             "Arn": "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore",
             "Path": "/",
             "DefaultVersionId": "v2",
-            "AttachmentCount": 0,
+            "AttachmentCount": 1,
             "PermissionsBoundaryUsageCount": 0,
             "IsAttachable": true,
             "CreateDate": "2019-03-15T17:22:12+00:00",
@@ -6997,6 +6997,18 @@
             "UpdateDate": "2020-05-19T20:01:21+00:00"
         },
         {
+            "PolicyName": "AWSIdentitySyncReadOnlyAccess",
+            "PolicyId": "ANPAZKAPJZG4E7AMNPBT3",
+            "Arn": "arn:aws:iam::aws:policy/AWSIdentitySyncReadOnlyAccess",
+            "Path": "/",
+            "DefaultVersionId": "v1",
+            "AttachmentCount": 0,
+            "PermissionsBoundaryUsageCount": 0,
+            "IsAttachable": true,
+            "CreateDate": "2022-03-23T23:29:52+00:00",
+            "UpdateDate": "2022-03-23T23:29:52+00:00"
+        },
+        {
             "PolicyName": "AWSAuditManagerAdministratorAccess",
             "PolicyId": "ANPAZKAPJZG4EBAFCQQJX",
             "Arn": "arn:aws:iam::aws:policy/AWSAuditManagerAdministratorAccess",
@@ -7175,6 +7187,18 @@
             "IsAttachable": true,
             "CreateDate": "2021-11-29T15:08:38+00:00",
             "UpdateDate": "2021-11-29T15:08:38+00:00"
+        },
+        {
+            "PolicyName": "AWSIdentitySyncFullAccess",
+            "PolicyId": "ANPAZKAPJZG4ERMGGBXIS",
+            "Arn": "arn:aws:iam::aws:policy/AWSIdentitySyncFullAccess",
+            "Path": "/",
+            "DefaultVersionId": "v1",
+            "AttachmentCount": 0,
+            "PermissionsBoundaryUsageCount": 0,
+            "IsAttachable": true,
+            "CreateDate": "2022-03-23T23:29:33+00:00",
+            "UpdateDate": "2022-03-23T23:29:33+00:00"
         },
         {
             "PolicyName": "AmazonSageMakerServiceCatalogProductsFirehoseServiceRolePolicy",
