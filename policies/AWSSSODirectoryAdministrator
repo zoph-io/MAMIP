@@ -8,14 +8,15 @@
                     "Effect": "Allow",
                     "Action": [
                         "sso-directory:*",
+                        "identitystore:*",
                         "sso:ListDirectoryAssociations"
                     ],
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2020-08-18T17:17:40Z"
+        "CreateDate": "2022-03-25T20:31:19Z"
     }
 }
