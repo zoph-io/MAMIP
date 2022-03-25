@@ -1,0 +1,89 @@
+[
+    {
+        "findingDetails": "The 11251 characters in the identity policy, excluding whitespace, exceed the 10240 character maximum for inline and managed policies. We recommend that you use multiple granular policies.",
+        "findingType": "WARNING",
+        "issueCode": "POLICY_SIZE_EXCEEDS_IDENTITY_POLICY_QUOTA",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-general-warning-policy-size-exceeds-identity-policy-quota",
+        "locations": [
+            {
+                "path": [],
+                "span": {
+                    "end": {
+                        "column": 11622,
+                        "line": 1,
+                        "offset": 11622
+                    },
+                    "start": {
+                        "column": 0,
+                        "line": 1,
+                        "offset": 0
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The 2 action(s) are redundant because they provide similar permissions. Update the policy to remove the redundant action such as: ecr:DescribeImageReplicationStatus.",
+        "findingType": "SUGGESTION",
+        "issueCode": "REDUNDANT_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 1
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 4
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 450,
+                        "line": 1,
+                        "offset": 450
+                    },
+                    "start": {
+                        "column": 414,
+                        "line": 1,
+                        "offset": 414
+                    }
+                }
+            },
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 1
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 6
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 516,
+                        "line": 1,
+                        "offset": 516
+                    },
+                    "start": {
+                        "column": 480,
+                        "line": 1,
+                        "offset": 480
+                    }
+                }
+            }
+        ]
+    }
+]

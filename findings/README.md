@@ -1,6 +1,6 @@
-## AWS Access Analyzer - Findings - 2022-03-24
+## AWS Access Analyzer - Findings - 2022-03-25
 
-- Policies analyzed: `930`
+- Policies analyzed: `933`
 - Errors: `30`
   - [`AmazonSageMakerGroundTruthExecution`](./AmazonSageMakerGroundTruthExecution.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
@@ -18,7 +18,7 @@
   - [`AWSElasticBeanstalkService`](./AWSElasticBeanstalkService.json)
   - [`IAMFullAccess`](./IAMFullAccess.json)
   - [`AmazonElasticMapReduceFullAccess`](./AmazonElasticMapReduceFullAccess.json)
-- Suggestions: `40`
+- Suggestions: `41`
   - [`AWSElasticBeanstalkWorkerTier`](./AWSElasticBeanstalkWorkerTier.json)
   - [`AWSGlueConsoleFullAccess`](./AWSGlueConsoleFullAccess.json)
   - [`AWSMigrationHubRefactorSpacesFullAccess`](./AWSMigrationHubRefactorSpacesFullAccess.json)
@@ -44,7 +44,8 @@
   - [`AWSMarketplaceFullAccess`](./AWSMarketplaceFullAccess.json)
   - [`AmazonElasticMapReduceFullAccess`](./AmazonElasticMapReduceFullAccess.json)
   - [`AWSDeepLensLambdaFunctionAccessPolicy`](./AWSDeepLensLambdaFunctionAccessPolicy.json)
-- Warnings: `11`
+  - [`AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy.json)
+- Warnings: `12`
   - [`AlexaForBusinessFullAccess`](./AlexaForBusinessFullAccess.json)
   - [`ReadOnlyAccess`](./ReadOnlyAccess.json)
   - [`AmazonLaunchWizard_Fullaccess`](./AmazonLaunchWizard_Fullaccess.json)
@@ -56,6 +57,7 @@
   - [`AWSOrganizationsServiceTrustPolicy`](./AWSOrganizationsServiceTrustPolicy.json)
   - [`AWSConfigServiceRolePolicy`](./AWSConfigServiceRolePolicy.json)
   - [`IAMFullAccess`](./IAMFullAccess.json)
+  - [`AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy.json)
 - Fails: `1`
   - [`AWSSupportServiceRolePolicy`](./AWSSupportServiceRolePolicy.json)
 - Deprecated: `39`
