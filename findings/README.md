@@ -1,4 +1,4 @@
-## AWS Access Analyzer - Findings - 2022-03-25
+## AWS Access Analyzer - Findings - 2022-03-28
 
 - Policies analyzed: `933`
 - Errors: `30`
@@ -45,7 +45,7 @@
   - [`AmazonElasticMapReduceFullAccess`](./AmazonElasticMapReduceFullAccess.json)
   - [`AWSDeepLensLambdaFunctionAccessPolicy`](./AWSDeepLensLambdaFunctionAccessPolicy.json)
   - [`AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy.json)
-- Warnings: `12`
+- Warnings: `13`
   - [`AlexaForBusinessFullAccess`](./AlexaForBusinessFullAccess.json)
   - [`ReadOnlyAccess`](./ReadOnlyAccess.json)
   - [`AmazonLaunchWizard_Fullaccess`](./AmazonLaunchWizard_Fullaccess.json)
@@ -56,6 +56,7 @@
   - [`AWS_ConfigRole`](./AWS_ConfigRole.json)
   - [`AWSOrganizationsServiceTrustPolicy`](./AWSOrganizationsServiceTrustPolicy.json)
   - [`AWSConfigServiceRolePolicy`](./AWSConfigServiceRolePolicy.json)
+  - [`FMSServiceRolePolicy`](./FMSServiceRolePolicy.json)
   - [`IAMFullAccess`](./IAMFullAccess.json)
   - [`AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy.json)
 - Fails: `1`
