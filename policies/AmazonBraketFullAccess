@@ -18,6 +18,13 @@
                 {
                     "Effect": "Allow",
                     "Action": [
+                        "s3:ListAllMyBuckets"
+                    ],
+                    "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
                         "ecr:GetDownloadUrlForLayer",
                         "ecr:BatchGetImage",
                         "ecr:BatchCheckLayerAvailability"
@@ -162,8 +169,8 @@
                 }
             ]
         },
-        "VersionId": "v4",
+        "VersionId": "v5",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-11-28T05:31:50Z"
+        "CreateDate": "2022-03-31T19:03:33Z"
     }
 }

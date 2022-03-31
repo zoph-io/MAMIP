@@ -135,6 +135,40 @@
                 {
                     "Effect": "Allow",
                     "Action": [
+                        "ebs:CompleteSnapshot",
+                        "ebs:StartSnapshot",
+                        "ebs:PutSnapshotBlock"
+                    ],
+                    "Resource": "arn:aws:ec2:*::snapshot/*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "ec2:DeleteSnapshot",
+                        "ec2:DeleteTags"
+                    ],
+                    "Resource": "arn:aws:ec2:*::snapshot/*",
+                    "Condition": {
+                        "Null": {
+                            "aws:ResourceTag/aws:backup:source-resource": "false"
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "ec2:CreateTags",
+                    "Resource": "arn:aws:ec2:*::snapshot/*",
+                    "Condition": {
+                        "ForAllValues:StringEquals": {
+                            "aws:TagKeys": [
+                                "aws:backup:source-resource"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
                         "ec2:RunInstances"
                     ],
                     "Resource": "*"
@@ -205,8 +239,8 @@
                 }
             ]
         },
-        "VersionId": "v10",
+        "VersionId": "v11",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-11-23T22:00:41Z"
+        "CreateDate": "2022-03-31T18:21:27Z"
     }
 }
