@@ -6,14 +6,15 @@
                 {
                     "Effect": "Allow",
                     "Action": [
-                        "route53-recovery-cluster:GetRoutingControlState"
+                        "route53-recovery-cluster:GetRoutingControlState",
+                        "route53-recovery-cluster:ListRoutingControls"
                     ],
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-08-18T17:36:01Z"
+        "CreateDate": "2022-04-01T17:37:55Z"
     }
 }
