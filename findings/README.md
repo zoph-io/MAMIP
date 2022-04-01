@@ -1,12 +1,13 @@
-## AWS Access Analyzer - Findings - 2022-03-31
+## AWS Access Analyzer - Findings - 2022-04-01
 
 - Policies analyzed: `933`
-- Errors: `30`
+- Errors: `31`
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AWSAuditManagerAdministratorAccess`](./AWSAuditManagerAdministratorAccess.json)
   - [`AWSIdentitySyncFullAccess`](./AWSIdentitySyncFullAccess.json)
   - [`AmazonSageMakerGroundTruthExecution`](./AmazonSageMakerGroundTruthExecution.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
+  - [`AmazonRoute53RecoveryClusterReadOnlyAccess`](./AmazonRoute53RecoveryClusterReadOnlyAccess.json)
   - [`AWSIdentitySyncReadOnlyAccess`](./AWSIdentitySyncReadOnlyAccess.json)
 - Sec_Warnings: `11`
   - [`AmazonDynamoDBFullAccesswithDataPipeline`](./AmazonDynamoDBFullAccesswithDataPipeline.json)
