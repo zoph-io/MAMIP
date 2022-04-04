@@ -1,0 +1,153 @@
+[
+    {
+        "findingDetails": "The 12085 characters in the identity policy, excluding whitespace, exceed the 10240 character maximum for inline and managed policies. We recommend that you use multiple granular policies.",
+        "findingType": "WARNING",
+        "issueCode": "POLICY_SIZE_EXCEEDS_IDENTITY_POLICY_QUOTA",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-general-warning-policy-size-exceeds-identity-policy-quota",
+        "locations": [
+            {
+                "path": [],
+                "span": {
+                    "end": {
+                        "column": 12475,
+                        "line": 1,
+                        "offset": 12475
+                    },
+                    "start": {
+                        "column": 0,
+                        "line": 1,
+                        "offset": 0
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The 2 resource ARN(s) are redundant because they reference the same resource. Review the use of wildcards (*), or remove the resource arn:aws:sagemaker:*:*:device-fleet/*/device/* to remove the redundancy.",
+        "findingType": "SUGGESTION",
+        "issueCode": "REDUNDANT_RESOURCE",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-resource",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 4
+                    },
+                    {
+                        "value": "Resource"
+                    },
+                    {
+                        "index": 9
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 10314,
+                        "line": 1,
+                        "offset": 10314
+                    },
+                    "start": {
+                        "column": 10267,
+                        "line": 1,
+                        "offset": 10267
+                    }
+                }
+            },
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 4
+                    },
+                    {
+                        "value": "Resource"
+                    },
+                    {
+                        "index": 10
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 10354,
+                        "line": 1,
+                        "offset": 10354
+                    },
+                    "start": {
+                        "column": 10316,
+                        "line": 1,
+                        "offset": 10316
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The 2 resource ARN(s) are redundant because they reference the same resource. Review the use of wildcards (*), or remove the resource arn:aws:sagemaker:*:*:pipeline/*/execution/* to remove the redundancy.",
+        "findingType": "SUGGESTION",
+        "issueCode": "REDUNDANT_RESOURCE",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-resource",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 4
+                    },
+                    {
+                        "value": "Resource"
+                    },
+                    {
+                        "index": 34
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 11445,
+                        "line": 1,
+                        "offset": 11445
+                    },
+                    "start": {
+                        "column": 11411,
+                        "line": 1,
+                        "offset": 11411
+                    }
+                }
+            },
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 4
+                    },
+                    {
+                        "value": "Resource"
+                    },
+                    {
+                        "index": 35
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 11493,
+                        "line": 1,
+                        "offset": 11493
+                    },
+                    "start": {
+                        "column": 11447,
+                        "line": 1,
+                        "offset": 11447
+                    }
+                }
+            }
+        ]
+    }
+]

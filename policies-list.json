@@ -845,12 +845,12 @@
             "PolicyId": "ANPAIEBAQNOFUCLFJ3UHG",
             "Arn": "arn:aws:iam::aws:policy/AWSSecurityHubReadOnlyAccess",
             "Path": "/",
-            "DefaultVersionId": "v2",
+            "DefaultVersionId": "v3",
             "AttachmentCount": 0,
             "PermissionsBoundaryUsageCount": 0,
             "IsAttachable": true,
             "CreateDate": "2018-11-28T01:34:29+00:00",
-            "UpdateDate": "2019-06-25T22:45:52+00:00"
+            "UpdateDate": "2022-04-04T17:46:51+00:00"
         },
         {
             "PolicyName": "AWSConfigRoleForOrganizations",
@@ -2490,7 +2490,7 @@
             "Arn": "arn:aws:iam::aws:policy/SecurityAudit",
             "Path": "/",
             "DefaultVersionId": "v35",
-            "AttachmentCount": 1,
+            "AttachmentCount": 2,
             "PermissionsBoundaryUsageCount": 0,
             "IsAttachable": true,
             "CreateDate": "2015-02-06T18:41:01+00:00",
@@ -6637,6 +6637,18 @@
             "UpdateDate": "2021-05-11T19:24:54+00:00"
         },
         {
+            "PolicyName": "AmazonSageMakerServiceCatalogProductsLambdaServiceRolePolicy",
+            "PolicyId": "ANPAZKAPJZG4CMUQVI4HY",
+            "Arn": "arn:aws:iam::aws:policy/service-role/AmazonSageMakerServiceCatalogProductsLambdaServiceRolePolicy",
+            "Path": "/service-role/",
+            "DefaultVersionId": "v1",
+            "AttachmentCount": 0,
+            "PermissionsBoundaryUsageCount": 0,
+            "IsAttachable": true,
+            "CreateDate": "2022-04-04T16:34:43+00:00",
+            "UpdateDate": "2022-04-04T16:34:43+00:00"
+        },
+        {
             "PolicyName": "AWSCodeDeployRoleForCloudFormation",
             "PolicyId": "ANPAZKAPJZG4CO24UTMFH",
             "Arn": "arn:aws:iam::aws:policy/service-role/AWSCodeDeployRoleForCloudFormation",
@@ -8033,12 +8045,12 @@
             "PolicyId": "ANPAZKAPJZG4H4EGQA254",
             "Arn": "arn:aws:iam::aws:policy/service-role/AWSIoTFleetHubFederationAccess",
             "Path": "/service-role/",
-            "DefaultVersionId": "v4",
+            "DefaultVersionId": "v5",
             "AttachmentCount": 0,
             "PermissionsBoundaryUsageCount": 0,
             "IsAttachable": true,
             "CreateDate": "2020-12-15T08:08:05+00:00",
-            "UpdateDate": "2021-11-15T23:28:19+00:00"
+            "UpdateDate": "2022-04-04T18:03:01+00:00"
         },
         {
             "PolicyName": "AWSProtonSyncServiceRolePolicy",
@@ -8639,6 +8651,18 @@
             "IsAttachable": true,
             "CreateDate": "2019-12-23T19:47:15+00:00",
             "UpdateDate": "2019-12-23T19:47:15+00:00"
+        },
+        {
+            "PolicyName": "AmazonEBSCSIDriverPolicy",
+            "PolicyId": "ANPAZKAPJZG4IV6FHD2UE",
+            "Arn": "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy",
+            "Path": "/service-role/",
+            "DefaultVersionId": "v1",
+            "AttachmentCount": 0,
+            "PermissionsBoundaryUsageCount": 0,
+            "IsAttachable": true,
+            "CreateDate": "2022-04-04T17:24:29+00:00",
+            "UpdateDate": "2022-04-04T17:24:29+00:00"
         },
         {
             "PolicyName": "MigrationHubDMSAccessServiceRolePolicy",

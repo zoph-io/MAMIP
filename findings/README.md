@@ -1,14 +1,13 @@
-## AWS Access Analyzer - Findings - 2022-04-01
+## AWS Access Analyzer - Findings - 2022-04-04
 
-- Policies analyzed: `933`
-- Errors: `31`
+- Policies analyzed: `935`
+- Errors: `15`
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AWSAuditManagerAdministratorAccess`](./AWSAuditManagerAdministratorAccess.json)
-  - [`AWSIdentitySyncFullAccess`](./AWSIdentitySyncFullAccess.json)
   - [`AmazonSageMakerGroundTruthExecution`](./AmazonSageMakerGroundTruthExecution.json)
+  - [`AWSSecurityHubReadOnlyAccess`](./AWSSecurityHubReadOnlyAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
   - [`AmazonRoute53RecoveryClusterReadOnlyAccess`](./AmazonRoute53RecoveryClusterReadOnlyAccess.json)
-  - [`AWSIdentitySyncReadOnlyAccess`](./AWSIdentitySyncReadOnlyAccess.json)
 - Sec_Warnings: `11`
   - [`AmazonDynamoDBFullAccesswithDataPipeline`](./AmazonDynamoDBFullAccesswithDataPipeline.json)
   - [`AWSServiceRoleForAmazonEKSNodegroup`](./AWSServiceRoleForAmazonEKSNodegroup.json)
@@ -19,7 +18,7 @@
   - [`AWSDataPipelineRole`](./AWSDataPipelineRole.json)
   - [`AdministratorAccess-Amplify`](./AdministratorAccess-Amplify.json)
   - [`AdministratorAccess`](./AdministratorAccess.json)
-- Suggestions: `41`
+- Suggestions: `43`
   - [`AWSDeepRacerFullAccess`](./AWSDeepRacerFullAccess.json)
   - [`AWSElasticBeanstalkWebTier`](./AWSElasticBeanstalkWebTier.json)
   - [`AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy.json)
@@ -39,6 +38,7 @@
   - [`DataScientist`](./DataScientist.json)
   - [`AWSElasticBeanstalkRoleCore`](./AWSElasticBeanstalkRoleCore.json)
   - [`SecurityAudit`](./SecurityAudit.json)
+  - [`AmazonSageMakerServiceCatalogProductsLambdaServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsLambdaServiceRolePolicy.json)
   - [`AmazonLaunchWizard_Fullaccess`](./AmazonLaunchWizard_Fullaccess.json)
   - [`AWSDataPipelineRole`](./AWSDataPipelineRole.json)
   - [`AWSDeepLensLambdaFunctionAccessPolicy`](./AWSDeepLensLambdaFunctionAccessPolicy.json)
@@ -46,7 +46,7 @@
   - [`AWSElasticBeanstalkWorkerTier`](./AWSElasticBeanstalkWorkerTier.json)
   - [`AWS_ConfigRole`](./AWS_ConfigRole.json)
   - [`AWSElasticBeanstalkCustomPlatformforEC2Role`](./AWSElasticBeanstalkCustomPlatformforEC2Role.json)
-- Warnings: `13`
+- Warnings: `14`
   - [`AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy.json)
   - [`ReadOnlyAccess`](./ReadOnlyAccess.json)
   - [`AWSConfigServiceRolePolicy`](./AWSConfigServiceRolePolicy.json)
@@ -55,6 +55,7 @@
   - [`PowerUserAccess`](./PowerUserAccess.json)
   - [`FMSServiceRolePolicy`](./FMSServiceRolePolicy.json)
   - [`SecurityAudit`](./SecurityAudit.json)
+  - [`AmazonSageMakerServiceCatalogProductsLambdaServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsLambdaServiceRolePolicy.json)
   - [`AmazonLaunchWizard_Fullaccess`](./AmazonLaunchWizard_Fullaccess.json)
   - [`AWS_ConfigRole`](./AWS_ConfigRole.json)
   - [`AWSOrganizationsServiceTrustPolicy`](./AWSOrganizationsServiceTrustPolicy.json)

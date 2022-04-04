@@ -1,0 +1,38 @@
+[
+    {
+        "findingDetails": "The action securityhub:BatchGet* does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 2
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 135,
+                        "line": 1,
+                        "offset": 135
+                    },
+                    "start": {
+                        "column": 112,
+                        "line": 1,
+                        "offset": 112
+                    }
+                }
+            }
+        ]
+    }
+]
