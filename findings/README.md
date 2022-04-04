@@ -1,11 +1,12 @@
 ## AWS Access Analyzer - Findings - 2022-04-04
 
 - Policies analyzed: `935`
-- Errors: `15`
+- Errors: `16`
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AWSAuditManagerAdministratorAccess`](./AWSAuditManagerAdministratorAccess.json)
   - [`AmazonSageMakerGroundTruthExecution`](./AmazonSageMakerGroundTruthExecution.json)
   - [`AWSSecurityHubReadOnlyAccess`](./AWSSecurityHubReadOnlyAccess.json)
+  - [`AWSIoTFleetHubFederationAccess`](./AWSIoTFleetHubFederationAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
   - [`AmazonRoute53RecoveryClusterReadOnlyAccess`](./AmazonRoute53RecoveryClusterReadOnlyAccess.json)
 - Sec_Warnings: `11`
