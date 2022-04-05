@@ -28,14 +28,17 @@
                     "Resource": "*",
                     "Condition": {
                         "StringEquals": {
-                            "cloudwatch:namespace": "AWS/WorkSpacesWeb"
+                            "cloudwatch:namespace": [
+                                "AWS/WorkSpacesWeb",
+                                "AWS/Usage"
+                            ]
                         }
                     }
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-11-30T13:15:53Z"
+        "CreateDate": "2022-04-05T22:01:09Z"
     }
 }
