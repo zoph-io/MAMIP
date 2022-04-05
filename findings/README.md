@@ -1,6 +1,6 @@
-## AWS Access Analyzer - Findings - 2022-04-04
+## AWS Access Analyzer - Findings - 2022-04-05
 
-- Policies analyzed: `935`
+- Policies analyzed: `936`
 - Errors: `16`
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AWSAuditManagerAdministratorAccess`](./AWSAuditManagerAdministratorAccess.json)
