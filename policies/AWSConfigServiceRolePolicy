@@ -41,12 +41,16 @@
                         "batch:DescribeJobQueues",
                         "batch:ListTagsForResource",
                         "cloudformation:DescribeType",
+                        "cloudformation:GetResource",
+                        "cloudformation:ListResources",
                         "cloudformation:ListTypes",
                         "cloudfront:ListDistributions",
                         "cloudfront:ListTagsForResource",
                         "cloudtrail:DescribeTrails",
+                        "cloudtrail:GetEventDataStore",
                         "cloudtrail:GetEventSelectors",
                         "cloudtrail:GetTrailStatus",
+                        "cloudtrail:ListEventDataStores",
                         "cloudtrail:ListTags",
                         "cloudwatch:DescribeAlarms",
                         "codedeploy:GetDeploymentConfig",
@@ -60,11 +64,15 @@
                         "config:Put*",
                         "config:Select*",
                         "dax:DescribeClusters",
+                        "dax:DescribeParameterGroups",
+                        "dax:DescribeParameters",
+                        "dax:DescribeSubnetGroups",
                         "dax:ListTags",
                         "dms:DescribeCertificates",
                         "dms:DescribeEventSubscriptions",
                         "dms:DescribeReplicationInstances",
                         "dms:DescribeReplicationSubnetGroups",
+                        "dms:DescribeReplicationTasks",
                         "dms:ListTagsForResource",
                         "dynamodb:DescribeContinuousBackups",
                         "dynamodb:DescribeGlobalTable",
@@ -219,6 +227,7 @@
                         "organizations:DescribeOrganization",
                         "organizations:DescribePolicy",
                         "organizations:ListParents",
+                        "organizations:ListPolicies",
                         "organizations:ListPoliciesForTarget",
                         "rds:DescribeDBClusterParameterGroups",
                         "rds:DescribeDBClusterParameters",
@@ -361,8 +370,8 @@
                 }
             ]
         },
-        "VersionId": "v30",
+        "VersionId": "v31",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-03-11T21:29:26Z"
+        "CreateDate": "2022-04-06T21:41:38Z"
     }
 }
