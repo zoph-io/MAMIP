@@ -1,107 +1,108 @@
-## AWS Access Analyzer - Findings - 2022-04-06
+## AWS Access Analyzer - Findings - 2022-04-08
 
 - Policies analyzed: `937`
-- Errors: `17`
-  - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
-  - [`AWSAuditManagerAdministratorAccess`](./AWSAuditManagerAdministratorAccess.json)
+- Errors: `19`
+  - [`AmazonEventBridgeReadOnlyAccess`](./AmazonEventBridgeReadOnlyAccess.json)
   - [`AmazonSageMakerGroundTruthExecution`](./AmazonSageMakerGroundTruthExecution.json)
-  - [`AWSSecurityHubReadOnlyAccess`](./AWSSecurityHubReadOnlyAccess.json)
-  - [`AWSIoTFleetHubFederationAccess`](./AWSIoTFleetHubFederationAccess.json)
-  - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
+  - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AccessAnalyzerServiceRolePolicy`](./AccessAnalyzerServiceRolePolicy.json)
+  - [`AWSIoTFleetHubFederationAccess`](./AWSIoTFleetHubFederationAccess.json)
+  - [`AWSAuditManagerAdministratorAccess`](./AWSAuditManagerAdministratorAccess.json)
+  - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
   - [`AmazonRoute53RecoveryClusterReadOnlyAccess`](./AmazonRoute53RecoveryClusterReadOnlyAccess.json)
+  - [`AWSSecurityHubReadOnlyAccess`](./AWSSecurityHubReadOnlyAccess.json)
 - Sec_Warnings: `11`
+  - [`IAMFullAccess`](./IAMFullAccess.json)
+  - [`AWSDataPipelineRole`](./AWSDataPipelineRole.json)
+  - [`AdministratorAccess`](./AdministratorAccess.json)
+  - [`AmazonElasticMapReduceFullAccess`](./AmazonElasticMapReduceFullAccess.json)
   - [`AmazonDynamoDBFullAccesswithDataPipeline`](./AmazonDynamoDBFullAccesswithDataPipeline.json)
   - [`AWSServiceRoleForAmazonEKSNodegroup`](./AWSServiceRoleForAmazonEKSNodegroup.json)
-  - [`AmazonElasticMapReduceFullAccess`](./AmazonElasticMapReduceFullAccess.json)
-  - [`IAMFullAccess`](./IAMFullAccess.json)
-  - [`AWSElasticBeanstalkService`](./AWSElasticBeanstalkService.json)
-  - [`AmazonElasticMapReduceRole`](./AmazonElasticMapReduceRole.json)
-  - [`AWSDataPipelineRole`](./AWSDataPipelineRole.json)
   - [`AdministratorAccess-Amplify`](./AdministratorAccess-Amplify.json)
-  - [`AdministratorAccess`](./AdministratorAccess.json)
-- Suggestions: `43`
-  - [`AWSDeepRacerFullAccess`](./AWSDeepRacerFullAccess.json)
-  - [`AWSElasticBeanstalkWebTier`](./AWSElasticBeanstalkWebTier.json)
-  - [`AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy.json)
-  - [`AmazonAppStreamServiceAccess`](./AmazonAppStreamServiceAccess.json)
-  - [`AmazonElasticMapReduceFullAccess`](./AmazonElasticMapReduceFullAccess.json)
-  - [`NeptuneConsoleFullAccess`](./NeptuneConsoleFullAccess.json)
-  - [`SystemAdministrator`](./SystemAdministrator.json)
-  - [`AWSConfigServiceRolePolicy`](./AWSConfigServiceRolePolicy.json)
-  - [`AWSGlueConsoleFullAccess`](./AWSGlueConsoleFullAccess.json)
-  - [`AWSBatchFullAccess`](./AWSBatchFullAccess.json)
-  - [`AmazonRedshiftAllCommandsFullAccess`](./AmazonRedshiftAllCommandsFullAccess.json)
+  - [`AmazonElasticMapReduceRole`](./AmazonElasticMapReduceRole.json)
   - [`AWSElasticBeanstalkService`](./AWSElasticBeanstalkService.json)
+- Suggestions: `43`
+  - [`SystemAdministrator`](./SystemAdministrator.json)
+  - [`SecurityAudit`](./SecurityAudit.json)
+  - [`SupportUser`](./SupportUser.json)
   - [`AWSMarketplaceFullAccess`](./AWSMarketplaceFullAccess.json)
-  - [`AWSMigrationHubRefactorSpacesFullAccess`](./AWSMigrationHubRefactorSpacesFullAccess.json)
-  - [`AWSLakeFormationDataAdmin`](./AWSLakeFormationDataAdmin.json)
-  - [`AmazonCodeGuruReviewerServiceRolePolicy`](./AmazonCodeGuruReviewerServiceRolePolicy.json)
+  - [`AmazonAppStreamServiceAccess`](./AmazonAppStreamServiceAccess.json)
+  - [`AmazonLaunchWizard_Fullaccess`](./AmazonLaunchWizard_Fullaccess.json)
+  - [`AWSGlueConsoleFullAccess`](./AWSGlueConsoleFullAccess.json)
+  - [`AWSDataPipelineRole`](./AWSDataPipelineRole.json)
+  - [`AWS_ConfigRole`](./AWS_ConfigRole.json)
   - [`DataScientist`](./DataScientist.json)
   - [`AWSElasticBeanstalkRoleCore`](./AWSElasticBeanstalkRoleCore.json)
-  - [`SecurityAudit`](./SecurityAudit.json)
-  - [`AmazonSageMakerServiceCatalogProductsLambdaServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsLambdaServiceRolePolicy.json)
-  - [`AmazonLaunchWizard_Fullaccess`](./AmazonLaunchWizard_Fullaccess.json)
-  - [`AWSDataPipelineRole`](./AWSDataPipelineRole.json)
-  - [`AWSDeepLensLambdaFunctionAccessPolicy`](./AWSDeepLensLambdaFunctionAccessPolicy.json)
-  - [`SupportUser`](./SupportUser.json)
+  - [`AmazonElasticMapReduceFullAccess`](./AmazonElasticMapReduceFullAccess.json)
   - [`AWSElasticBeanstalkWorkerTier`](./AWSElasticBeanstalkWorkerTier.json)
-  - [`AWS_ConfigRole`](./AWS_ConfigRole.json)
+  - [`AWSBatchFullAccess`](./AWSBatchFullAccess.json)
+  - [`AWSDeepRacerFullAccess`](./AWSDeepRacerFullAccess.json)
+  - [`AmazonSageMakerServiceCatalogProductsLambdaServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsLambdaServiceRolePolicy.json)
+  - [`AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy.json)
+  - [`NeptuneConsoleFullAccess`](./NeptuneConsoleFullAccess.json)
+  - [`AWSDeepLensLambdaFunctionAccessPolicy`](./AWSDeepLensLambdaFunctionAccessPolicy.json)
+  - [`AWSElasticBeanstalkWebTier`](./AWSElasticBeanstalkWebTier.json)
+  - [`AWSMigrationHubRefactorSpacesFullAccess`](./AWSMigrationHubRefactorSpacesFullAccess.json)
+  - [`AmazonRedshiftAllCommandsFullAccess`](./AmazonRedshiftAllCommandsFullAccess.json)
+  - [`AWSConfigServiceRolePolicy`](./AWSConfigServiceRolePolicy.json)
+  - [`AWSElasticBeanstalkService`](./AWSElasticBeanstalkService.json)
+  - [`AmazonCodeGuruReviewerServiceRolePolicy`](./AmazonCodeGuruReviewerServiceRolePolicy.json)
+  - [`AWSLakeFormationDataAdmin`](./AWSLakeFormationDataAdmin.json)
   - [`AWSElasticBeanstalkCustomPlatformforEC2Role`](./AWSElasticBeanstalkCustomPlatformforEC2Role.json)
 - Warnings: `14`
-  - [`AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy.json)
-  - [`ReadOnlyAccess`](./ReadOnlyAccess.json)
-  - [`AWSConfigServiceRolePolicy`](./AWSConfigServiceRolePolicy.json)
+  - [`SecurityAudit`](./SecurityAudit.json)
   - [`AlexaForBusinessFullAccess`](./AlexaForBusinessFullAccess.json)
   - [`IAMFullAccess`](./IAMFullAccess.json)
-  - [`PowerUserAccess`](./PowerUserAccess.json)
-  - [`FMSServiceRolePolicy`](./FMSServiceRolePolicy.json)
-  - [`SecurityAudit`](./SecurityAudit.json)
-  - [`AmazonSageMakerServiceCatalogProductsLambdaServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsLambdaServiceRolePolicy.json)
   - [`AmazonLaunchWizard_Fullaccess`](./AmazonLaunchWizard_Fullaccess.json)
-  - [`AWS_ConfigRole`](./AWS_ConfigRole.json)
-  - [`AWSOrganizationsServiceTrustPolicy`](./AWSOrganizationsServiceTrustPolicy.json)
-  - [`AdministratorAccess-Amplify`](./AdministratorAccess-Amplify.json)
   - [`AdministratorAccess`](./AdministratorAccess.json)
+  - [`PowerUserAccess`](./PowerUserAccess.json)
+  - [`AWS_ConfigRole`](./AWS_ConfigRole.json)
+  - [`AmazonSageMakerServiceCatalogProductsLambdaServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsLambdaServiceRolePolicy.json)
+  - [`AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy.json)
+  - [`AdministratorAccess-Amplify`](./AdministratorAccess-Amplify.json)
+  - [`AWSOrganizationsServiceTrustPolicy`](./AWSOrganizationsServiceTrustPolicy.json)
+  - [`AWSConfigServiceRolePolicy`](./AWSConfigServiceRolePolicy.json)
+  - [`FMSServiceRolePolicy`](./FMSServiceRolePolicy.json)
+  - [`ReadOnlyAccess`](./ReadOnlyAccess.json)
 - Fails: `1`
   - [`AWSSupportServiceRolePolicy`](./AWSSupportServiceRolePolicy.json)
 - Deprecated: `39`
-  - `AWS_Config_Role`
-  - `AmazonLambdaRolePolicyForLaunchWizardSAP`
-  - `AmazonMechanicalTurkCrowdFullAccess`
-  - `AWSOpsWorksRegisterCLI`
-  - `AmazonApplicationWizardFullaccess`
-  - `AWSBackupAdminPolicy`
-  - `AmazonEverestServicePolicy`
-  - `AWSServiceRoleForCodeGuruProfiler`
-  - `AmazonLaunchWizardFullaccess`
-  - `AWSOpsWorksRole`
-  - `AWSElasticBeanstalkFullAccess`
-  - `AmazonMachineLearningRoleforRedshiftDataSource`
-  - `AWSServiceRoleForThorInternalDevPolicy`
-  - `AmazonConnectFullAccess`
-  - `AWSLambdaReadOnlyAccess`
-  - `AmazonEC2RolePolicyForApplicationWizard`
   - `AmazonMechanicalTurkCrowdReadOnlyAccess`
-  - `TagGovernancePolicy`
-  - `AmazonEC2ReportsAccess`
-  - `AWSElasticBeanstalkReadOnlyAccess`
-  - `ServerMigrationServiceRole`
-  - `TagPoliciesServiceRolePolicy`
-  - `ServiceCatalogEndUserAccess`
-  - `AWSRoboMakerFullAccess`
-  - `AWSCodeArtifactReadOnlyAccess.json`
-  - `AWSLambdaReplicatorInternal`
-  - `AWSOpsWorksFullAccess`
-  - `AmazonEC2SpotFleetRole`
-  - `AWSBackupOperatorPolicy`
-  - `AWSECRPullThroughCacheServiceRolePolicy`
-  - `AWSB9InternalServicePolicy`
-  - `AWSLambdaFullAccess`
-  - `AWSServiceRoleForGammaInternalAmazonEKSNodegroup`
   - `CheesepuffsServiceRolePolicy`
-  - `AWSCloudTrailFullAccess`
-  - `AWSSchemasServiceRolePolicy`
+  - `AWSServiceRoleForCodeGuruProfiler`
   - `AmazonMachineLearningRoleforRedshiftDataSourceV2`
-  - `ServiceCatalogAdminReadOnlyAccess`
+  - `AmazonEverestServicePolicy`
+  - `AWSLambdaReadOnlyAccess`
+  - `AWSOpsWorksRegisterCLI`
   - `AmazonEC2ContainerServiceFullAccess`
+  - `AmazonEC2ReportsAccess`
+  - `AmazonEC2RolePolicyForApplicationWizard`
+  - `TagPoliciesServiceRolePolicy`
+  - `AWSRoboMakerFullAccess`
+  - `AmazonLambdaRolePolicyForLaunchWizardSAP`
+  - `AWSSchemasServiceRolePolicy`
+  - `AmazonMachineLearningRoleforRedshiftDataSource`
+  - `AWSECRPullThroughCacheServiceRolePolicy`
+  - `AWSServiceRoleForThorInternalDevPolicy`
+  - `AWSOpsWorksFullAccess`
+  - `AWSLambdaFullAccess`
+  - `AWSB9InternalServicePolicy`
+  - `AWSBackupOperatorPolicy`
+  - `AWSElasticBeanstalkFullAccess`
+  - `AWSLambdaReplicatorInternal`
+  - `AmazonApplicationWizardFullaccess`
+  - `AmazonConnectFullAccess`
+  - `ServerMigrationServiceRole`
+  - `AWSBackupAdminPolicy`
+  - `AmazonEC2SpotFleetRole`
+  - `AWSCodeArtifactReadOnlyAccess.json`
+  - `AWSElasticBeanstalkReadOnlyAccess`
+  - `AWS_Config_Role`
+  - `AmazonLaunchWizardFullaccess`
+  - `ServiceCatalogEndUserAccess`
+  - `AmazonMechanicalTurkCrowdFullAccess`
+  - `TagGovernancePolicy`
+  - `AWSOpsWorksRole`
+  - `ServiceCatalogAdminReadOnlyAccess`
+  - `AWSServiceRoleForGammaInternalAmazonEKSNodegroup`
+  - `AWSCloudTrailFullAccess`
