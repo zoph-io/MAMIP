@@ -1,0 +1,34 @@
+{
+    "PolicyVersion": {
+        "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "aws-marketplace:Subscribe",
+                        "aws-marketplace:Unsubscribe"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "aws-marketplace:ProductId": [
+                                "34850061-abaf-402d-92df-94325c9e947f"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "aws-marketplace:ViewSubscriptions"
+                    ],
+                    "Resource": "*"
+                }
+            ]
+        },
+        "VersionId": "v1",
+        "IsDefaultVersion": true,
+        "CreateDate": "2022-04-11T20:58:08Z"
+    }
+}

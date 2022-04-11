@@ -75,7 +75,6 @@
                         "sqs:GetQueueUrl",
                         "sqs:ReceiveMessage",
                         "sqs:SendMessage",
-                        "sqs:SendMessageBatch",
                         "sqs:SetQueueAttributes"
                     ],
                     "Resource": "arn:aws:sqs:*:*:*GroundTruth*"
@@ -130,8 +129,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2020-07-09T19:30:20Z"
+        "CreateDate": "2022-04-11T21:22:37Z"
     }
 }
