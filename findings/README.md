@@ -1,9 +1,8 @@
-## AWS Access Analyzer - Findings - 2022-04-08
+## AWS Access Analyzer - Findings - 2022-04-11
 
-- Policies analyzed: `937`
-- Errors: `19`
+- Policies analyzed: `938`
+- Errors: `18`
   - [`AmazonEventBridgeReadOnlyAccess`](./AmazonEventBridgeReadOnlyAccess.json)
-  - [`AmazonSageMakerGroundTruthExecution`](./AmazonSageMakerGroundTruthExecution.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AccessAnalyzerServiceRolePolicy`](./AccessAnalyzerServiceRolePolicy.json)
   - [`AWSIoTFleetHubFederationAccess`](./AWSIoTFleetHubFederationAccess.json)
