@@ -1,15 +1,13 @@
-## AWS Access Analyzer - Findings - 2022-04-11
+## AWS Access Analyzer - Findings - 2022-04-12
 
 - Policies analyzed: `938`
-- Errors: `18`
+- Errors: `16`
   - [`AmazonEventBridgeReadOnlyAccess`](./AmazonEventBridgeReadOnlyAccess.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AccessAnalyzerServiceRolePolicy`](./AccessAnalyzerServiceRolePolicy.json)
   - [`AWSIoTFleetHubFederationAccess`](./AWSIoTFleetHubFederationAccess.json)
   - [`AWSAuditManagerAdministratorAccess`](./AWSAuditManagerAdministratorAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
-  - [`AmazonRoute53RecoveryClusterReadOnlyAccess`](./AmazonRoute53RecoveryClusterReadOnlyAccess.json)
-  - [`AWSSecurityHubReadOnlyAccess`](./AWSSecurityHubReadOnlyAccess.json)
 - Sec_Warnings: `11`
   - [`IAMFullAccess`](./IAMFullAccess.json)
   - [`AWSDataPipelineRole`](./AWSDataPipelineRole.json)
@@ -20,7 +18,7 @@
   - [`AdministratorAccess-Amplify`](./AdministratorAccess-Amplify.json)
   - [`AmazonElasticMapReduceRole`](./AmazonElasticMapReduceRole.json)
   - [`AWSElasticBeanstalkService`](./AWSElasticBeanstalkService.json)
-- Suggestions: `43`
+- Suggestions: `44`
   - [`SystemAdministrator`](./SystemAdministrator.json)
   - [`SecurityAudit`](./SecurityAudit.json)
   - [`SupportUser`](./SupportUser.json)
@@ -28,6 +26,7 @@
   - [`AmazonAppStreamServiceAccess`](./AmazonAppStreamServiceAccess.json)
   - [`AmazonLaunchWizard_Fullaccess`](./AmazonLaunchWizard_Fullaccess.json)
   - [`AWSGlueConsoleFullAccess`](./AWSGlueConsoleFullAccess.json)
+  - [`AWSBugBustServiceRolePolicy`](./AWSBugBustServiceRolePolicy.json)
   - [`AWSDataPipelineRole`](./AWSDataPipelineRole.json)
   - [`AWS_ConfigRole`](./AWS_ConfigRole.json)
   - [`DataScientist`](./DataScientist.json)
