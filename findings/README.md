@@ -1,6 +1,6 @@
-## AWS Access Analyzer - Findings - 2022-04-12
+## AWS Access Analyzer - Findings - 2022-04-13
 
-- Policies analyzed: `938`
+- Policies analyzed: `940`
 - Errors: `16`
   - [`AmazonEventBridgeReadOnlyAccess`](./AmazonEventBridgeReadOnlyAccess.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
