@@ -138,6 +138,7 @@
                         "lambda:ListLayerVersions",
                         "lambda:PublishLayerVersion",
                         "lambda:RemoveLayerVersionPermission",
+                        "lambda:UpdateEventSourceMapping",
                         "dynamodb:CreateTable",
                         "dynamodb:DeleteItem",
                         "dynamodb:DeleteTable",
@@ -362,6 +363,7 @@
                         "cloudfront:TagResource",
                         "cloudfront:UntagResource",
                         "cloudfront:ListTagsForResource",
+                        "cloudfront:DeleteDistribution",
                         "iam:AttachRolePolicy",
                         "iam:CreateRole",
                         "iam:CreateServiceLinkedRole",
@@ -408,8 +410,8 @@
                 }
             ]
         },
-        "VersionId": "v7",
+        "VersionId": "v8",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-12-01T19:07:19Z"
+        "CreateDate": "2022-04-13T22:42:11Z"
     }
 }
