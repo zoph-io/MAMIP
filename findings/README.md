@@ -1,10 +1,10 @@
-## AWS Access Analyzer - Findings - 2022-04-18
+## AWS Access Analyzer - Findings - 2022-04-20
 
-- Policies analyzed: `944`
-- Errors: `15`
-  - [`AmazonEventBridgeReadOnlyAccess`](./AmazonEventBridgeReadOnlyAccess.json)
+- Policies analyzed: `948`
+- Errors: `17`
+  - [`AWSMigrationHubOrchestratorPlugin`](./AWSMigrationHubOrchestratorPlugin.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
-  - [`AWSIoTFleetHubFederationAccess`](./AWSIoTFleetHubFederationAccess.json)
+  - [`AWSMigrationHubOrchestratorConsoleFullAccess`](./AWSMigrationHubOrchestratorConsoleFullAccess.json)
   - [`AWSAuditManagerAdministratorAccess`](./AWSAuditManagerAdministratorAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
 - Sec_Warnings: `11`
@@ -17,7 +17,7 @@
   - [`AdministratorAccess-Amplify`](./AdministratorAccess-Amplify.json)
   - [`AmazonElasticMapReduceRole`](./AmazonElasticMapReduceRole.json)
   - [`AWSElasticBeanstalkService`](./AWSElasticBeanstalkService.json)
-- Suggestions: `44`
+- Suggestions: `46`
   - [`SystemAdministrator`](./SystemAdministrator.json)
   - [`SecurityAudit`](./SecurityAudit.json)
   - [`SupportUser`](./SupportUser.json)
@@ -31,6 +31,7 @@
   - [`DataScientist`](./DataScientist.json)
   - [`AWSElasticBeanstalkRoleCore`](./AWSElasticBeanstalkRoleCore.json)
   - [`AmazonElasticMapReduceFullAccess`](./AmazonElasticMapReduceFullAccess.json)
+  - [`AWSMigrationHubOrchestratorServiceRolePolicy`](./AWSMigrationHubOrchestratorServiceRolePolicy.json)
   - [`AWSElasticBeanstalkWorkerTier`](./AWSElasticBeanstalkWorkerTier.json)
   - [`AWSBatchFullAccess`](./AWSBatchFullAccess.json)
   - [`AWSDeepRacerFullAccess`](./AWSDeepRacerFullAccess.json)
@@ -39,6 +40,7 @@
   - [`NeptuneConsoleFullAccess`](./NeptuneConsoleFullAccess.json)
   - [`AWSDeepLensLambdaFunctionAccessPolicy`](./AWSDeepLensLambdaFunctionAccessPolicy.json)
   - [`AWSElasticBeanstalkWebTier`](./AWSElasticBeanstalkWebTier.json)
+  - [`AWSMigrationHubOrchestratorConsoleFullAccess`](./AWSMigrationHubOrchestratorConsoleFullAccess.json)
   - [`AWSMigrationHubRefactorSpacesFullAccess`](./AWSMigrationHubRefactorSpacesFullAccess.json)
   - [`AmazonRedshiftAllCommandsFullAccess`](./AmazonRedshiftAllCommandsFullAccess.json)
   - [`AWSConfigServiceRolePolicy`](./AWSConfigServiceRolePolicy.json)
