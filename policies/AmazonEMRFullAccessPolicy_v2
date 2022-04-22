@@ -34,8 +34,10 @@
                         "elasticmapreduce:DescribeJobFlows",
                         "elasticmapreduce:DescribeSecurityConfiguration",
                         "elasticmapreduce:DescribeStep",
+                        "elasticmapreduce:DescribeReleaseLabel",
                         "elasticmapreduce:GetBlockPublicAccessConfiguration",
                         "elasticmapreduce:GetManagedScalingPolicy",
+                        "elasticmapreduce:GetAutoTerminationPolicy",
                         "elasticmapreduce:ListBootstrapActions",
                         "elasticmapreduce:ListClusters",
                         "elasticmapreduce:ListEditors",
@@ -74,7 +76,7 @@
                     "Sid": "PassRoleForElasticMapReduce",
                     "Effect": "Allow",
                     "Action": "iam:PassRole",
-                    "Resource": "arn:aws:iam::*:role/EMR_DefaultRole",
+                    "Resource": "arn:aws:iam::*:role/EMR_DefaultRole_V2",
                     "Condition": {
                         "StringLike": {
                             "iam:PassedToService": "elasticmapreduce.amazonaws.com*"
@@ -138,8 +140,8 @@
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-03-23T16:57:10Z"
+        "CreateDate": "2022-04-21T22:31:45Z"
     }
 }

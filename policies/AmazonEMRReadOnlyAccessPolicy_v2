@@ -5,14 +5,17 @@
             "Statement": [
                 {
                     "Sid": "ElasticMapReduceActions",
+                    "Effect": "Allow",
                     "Action": [
                         "elasticmapreduce:DescribeCluster",
                         "elasticmapreduce:DescribeEditor",
                         "elasticmapreduce:DescribeJobFlows",
                         "elasticmapreduce:DescribeSecurityConfiguration",
                         "elasticmapreduce:DescribeStep",
+                        "elasticmapreduce:DescribeReleaseLabel",
                         "elasticmapreduce:GetBlockPublicAccessConfiguration",
                         "elasticmapreduce:GetManagedScalingPolicy",
+                        "elasticmapreduce:GetAutoTerminationPolicy",
                         "elasticmapreduce:ListBootstrapActions",
                         "elasticmapreduce:ListClusters",
                         "elasticmapreduce:ListEditors",
@@ -23,21 +26,20 @@
                         "elasticmapreduce:ListSteps",
                         "elasticmapreduce:ViewEventsFromAllClustersInConsole"
                     ],
-                    "Effect": "Allow",
                     "Resource": "*"
                 },
                 {
                     "Sid": "ViewMetricsInEMRConsole",
+                    "Effect": "Allow",
                     "Action": [
                         "cloudwatch:GetMetricStatistics"
                     ],
-                    "Effect": "Allow",
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-03-12T01:39:16Z"
+        "CreateDate": "2022-04-21T22:31:26Z"
     }
 }
