@@ -1,10 +1,8 @@
-## AWS Access Analyzer - Findings - 2022-04-21
+## AWS Access Analyzer - Findings - 2022-04-22
 
 - Policies analyzed: `948`
-- Errors: `17`
-  - [`AWSMigrationHubOrchestratorPlugin`](./AWSMigrationHubOrchestratorPlugin.json)
+- Errors: `12`
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
-  - [`AWSMigrationHubOrchestratorConsoleFullAccess`](./AWSMigrationHubOrchestratorConsoleFullAccess.json)
   - [`AWSAuditManagerAdministratorAccess`](./AWSAuditManagerAdministratorAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
 - Sec_Warnings: `11`
