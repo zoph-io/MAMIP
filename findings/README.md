@@ -1,6 +1,6 @@
-## AWS Access Analyzer - Findings - 2022-04-22
+## AWS Access Analyzer - Findings - 2022-04-26
 
-- Policies analyzed: `948`
+- Policies analyzed: `947`
 - Errors: `12`
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AWSAuditManagerAdministratorAccess`](./AWSAuditManagerAdministratorAccess.json)
@@ -63,7 +63,7 @@
   - [`ReadOnlyAccess`](./ReadOnlyAccess.json)
 - Fails: `1`
   - [`AWSSupportServiceRolePolicy`](./AWSSupportServiceRolePolicy.json)
-- Deprecated: `39`
+- Deprecated: `40`
   - `AmazonMechanicalTurkCrowdReadOnlyAccess`
   - `CheesepuffsServiceRolePolicy`
   - `AWSServiceRoleForCodeGuruProfiler`
@@ -102,4 +102,5 @@
   - `AWSOpsWorksRole`
   - `ServiceCatalogAdminReadOnlyAccess`
   - `AWSServiceRoleForGammaInternalAmazonEKSNodegroup`
+  - `AmazonMacieSetupRole`
   - `AWSCloudTrailFullAccess`
