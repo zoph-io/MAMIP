@@ -1,8 +1,7 @@
 ## AWS Access Analyzer - Findings - 2022-04-30
 
 - Policies analyzed: `947`
-- Errors: `12`
-  - [`AWSAuditManagerAdministratorAccess`](./AWSAuditManagerAdministratorAccess.json)
+- Errors: `11`
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
 - Sec_Warnings: `11`
