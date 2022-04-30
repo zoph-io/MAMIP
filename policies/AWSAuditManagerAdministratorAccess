@@ -124,8 +124,12 @@
                     "Resource": "*",
                     "Condition": {
                         "StringEquals": {
-                            "events:source": "aws.securityhub",
                             "events:detail-type": "Security Hub Findings - Imported"
+                        },
+                        "ForAllValues:StringEquals": {
+                            "events:source": [
+                                "aws.securityhub"
+                            ]
                         }
                     }
                 },
@@ -153,8 +157,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
-        "IsDefaultVersion": false,
-        "CreateDate": "2020-12-11T20:02:42Z"
+        "VersionId": "v2",
+        "IsDefaultVersion": true,
+        "CreateDate": "2022-04-30T00:02:56Z"
     }
 }
