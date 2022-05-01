@@ -58,11 +58,18 @@
                     "Effect": "Allow",
                     "Action": "iam:ListInstanceProfiles",
                     "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "servicequotas:GetServiceQuota"
+                    ],
+                    "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-02-22T11:16:56Z"
+        "CreateDate": "2022-05-01T08:31:14Z"
     }
 }
