@@ -470,11 +470,18 @@
                         "arn:aws:redshift:*:*:dbuser:*/sagemaker_access*",
                         "arn:aws:redshift:*:*:dbname:*"
                     ]
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "cloudformation:ListStackResources"
+                    ],
+                    "Resource": "arn:aws:cloudformation:*:*:stack/SC-*"
                 }
             ]
         },
-        "VersionId": "v21",
+        "VersionId": "v22",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-09-08T17:12:25Z"
+        "CreateDate": "2022-05-02T06:19:13Z"
     }
 }
