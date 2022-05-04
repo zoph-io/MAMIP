@@ -166,7 +166,7 @@ def output_writer(deprecated, analyzed_count, error, fail, sec_warning, suggesti
     # Craft DEPRECATED.json Policies list
     # Deprecated from this repository Archive, some policies was existing before first commit.
     deprecated_output = open("./DEPRECATED.json", "w")
-    formated_deprecated = json.dumps(deprecated, indent=4, sort_keys=True)
+    formated_deprecated = json.dumps(sorted(deprecated, key=str.lower), indent=4)
     deprecated_output.write(formated_deprecated)
     deprecated_output.close()
 
