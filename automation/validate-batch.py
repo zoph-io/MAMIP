@@ -55,7 +55,7 @@ def validate_policies(deprecated):
                     # Distinct list
                     fail_list = list(OrderedDict.fromkeys(fail_list))
                     # Write errors to a log file
-                    error_output = open("./findings/fails.txt", "w")
+                    error_output = open("./findings/fails.txt", "a")
                     error_output.write(str(f) + '\n')
                     error_output.write(str(e))
                     error_output.close()
@@ -175,11 +175,11 @@ def output_writer(
         stats_output.write("  - [`" + str(i) + "`](./" + str(i) + ".json)\n")
     stats_output.write("- Fails: `" + str(fail) + "`\n")
     for i in fail_list:
-        stats_output.write("  - [`" + str(i) + "`](./" + str(i) + ".json)\n")
+        stats_output.write("  - [`" + str(i) + "`](./fails.txt)\n")
     deprecated_number = len(deprecated)
     stats_output.write("- Deprecated: `" + str(deprecated_number) + "`\n")
     for i in deprecated:
-        stats_output.write("  - `[" + str(i) + "](./" + str(i) + ")`\n")
+        stats_output.write("  - [" + str(i) + "](./" + str(i) + ")\n")
     stats_output.close()
 
     # Craft DEPRECATED.json Policies list
