@@ -179,7 +179,7 @@ def output_writer(
     deprecated_number = len(deprecated)
     stats_output.write("- Deprecated: `" + str(deprecated_number) + "`\n")
     for i in deprecated:
-        stats_output.write("  - `[" + str(i) + "](./" + str(i) + ")`\n")
+        stats_output.write("  - [" + str(i) + "](./" + str(i) + ")\n")
     stats_output.close()
 
     # Craft DEPRECATED.json Policies list
