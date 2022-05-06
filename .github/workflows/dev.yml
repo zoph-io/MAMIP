@@ -1,28 +1,28 @@
-name: '[Dev] MAMIP - Infrastructure GitHub Actions'
+name: "[Dev] MAMIP - Infrastructure GitHub Actions"
 
 on:
   push:
     branches:
-    - dev
+      - dev
   workflow_dispatch:
 
 env:
-  tf_version: '0.13.5'
-  tf_working_dir: './automation/tf-fargate'
-  env: 'dev'
-  project: 'mamip'
-  aws_region: 'eu-west-1'
-  artifacts_bucket: 'mamip-artifacts'
+  tf_version: "0.13.5"
+  tf_working_dir: "./automation/tf-fargate"
+  env: "dev"
+  project: "mamip"
+  aws_region: "eu-west-1"
+  artifacts_bucket: "mamip-artifacts"
 
 jobs:
   terraform:
-    name: 'Build & Deploy'
+    name: "Build & Deploy"
     permissions:
       id-token: write
       contents: write
     runs-on: ubuntu-latest
     steps:
-      - name: 'Checkout'
+      - name: "Checkout"
         uses: actions/checkout@v2
 
       - name: AWS IAM Assume Role
@@ -36,39 +36,39 @@ jobs:
       - name: Who Am I?
         run: aws sts get-caller-identity
 
-      - name: 'Terraform Init'
+      - name: "Terraform Init"
         uses: hashicorp/terraform-github-actions@master
         with:
           tf_actions_version: ${{ env.tf_version }}
-          tf_actions_subcommand: 'init'
+          tf_actions_subcommand: "init"
           tf_actions_working_dir: ${{ env.tf_working_dir }}
           tf_actions_comment: false
           args: '-backend-config="bucket=${{ secrets.TF_STATE_S3_BUCKET }}" -backend-config="key=mamip/terraform-${{ env.env }}.tfstate"'
 
-      - name: 'Terraform Validate'
+      - name: "Terraform Validate"
         uses: hashicorp/terraform-github-actions@master
         with:
           tf_actions_version: ${{ env.tf_version }}
-          tf_actions_subcommand: 'validate'
+          tf_actions_subcommand: "validate"
           tf_actions_working_dir: ${{ env.tf_working_dir }}
           tf_actions_comment: false
 
-      - name: 'Terraform Plan'
+      - name: "Terraform Plan"
         id: plan
         uses: hashicorp/terraform-github-actions@master
         with:
           tf_actions_version: ${{ env.tf_version }}
-          tf_actions_subcommand: 'plan'
+          tf_actions_subcommand: "plan"
           tf_actions_working_dir: ${{ env.tf_working_dir }}
           tf_actions_comment: false
           args: '-var="env=${{ env.env }}" -var="artifacts_bucket=${{ env.artifacts_bucket }}"'
 
-      - name: 'Terraform Apply'
+      - name: "Terraform Apply"
         if: steps.plan.outputs.tf_actions_plan_has_changes == 'true'
         uses: hashicorp/terraform-github-actions@master
         with:
           tf_actions_version: ${{ env.tf_version }}
-          tf_actions_subcommand: 'apply'
+          tf_actions_subcommand: "apply"
           tf_actions_working_dir: ${{ env.tf_working_dir }}
           tf_actions_comment: false
           args: '-var="env=${{ env.env }}"'

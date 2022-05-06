@@ -57,7 +57,7 @@ def validate_policies(deprecated):
                     # Write errors to a log file
                     error_output = open("./findings/fails.txt", "a")
                     error_output.write(str(f) + '\n')
-                    error_output.write(str(e))
+                    error_output.write(str(e) + '\n')
                     error_output.close()
 
                 # Extract findings from response
