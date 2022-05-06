@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DATE=`date +%Y-%m-%d-%H-%M`
+DATE=$(date +%Y-%m-%d-%H-%M)
 WORDTOREMOVE="policies/"
 
 # job preparation (SSH + Git)
@@ -12,21 +12,19 @@ ssh-add /tmp/mamip.key
 git config --global user.name "MAMIP Bot"
 git config --global user.email mamip_bot@github.com
 mkdir -p /root/.ssh/
-ssh-keyscan github.com >> /root/.ssh/known_hosts
+ssh-keyscan github.com >>/root/.ssh/known_hosts
 
 # run the magic
 echo "==> git clone"
 cd /app/
 git clone git@github.com:z0ph/MAMIP.git -q
-if [ -d /app/MAMIP ]
-then
+if [ -d /app/MAMIP ]; then
     cd /app/MAMIP
     echo "==> Run the magic"
-    aws iam list-policies --scope AWS > /app/MAMIP/list-policies.json
+    aws iam list-policies --scope AWS >/app/MAMIP/list-policies.json
     cat /app/MAMIP/list-policies.json | jq -cr '.Policies[] | select(.Arn | contains("iam::aws"))|.Arn +" "+ .DefaultVersionId+" "+.PolicyName' | xargs -n3 sh -c 'aws iam get-policy-version --policy-arn $1 --version-id $2 > "policies/$3"' sh
     # push the changes if any
-    if [[ -n $(git status -s) ]];
-    then
+    if [[ -n $(git status -s) ]]; then
         # Prepare the Tweet
         diff="$(git diff --name-only) $(git ls-files --others --exclude-standard)"
         diff=${diff//$WORDTOREMOVE/}
