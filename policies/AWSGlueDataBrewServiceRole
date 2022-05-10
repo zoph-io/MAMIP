@@ -19,6 +19,15 @@
                 {
                     "Effect": "Allow",
                     "Action": [
+                        "glue:BatchGetCustomEntityTypes"
+                    ],
+                    "Resource": [
+                        "*"
+                    ]
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
                         "s3:ListBucket",
                         "s3:GetObject"
                     ],
@@ -98,8 +107,8 @@
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-11-18T19:44:16Z"
+        "CreateDate": "2022-05-09T23:06:36Z"
     }
 }
