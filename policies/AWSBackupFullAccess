@@ -221,6 +221,16 @@
                     "Resource": "*"
                 },
                 {
+                    "Effect": "Allow",
+                    "Action": "fsx:DescribeVolumes",
+                    "Resource": "arn:aws:fsx:*:*:volume/*/*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "fsx:DescribeStorageVirtualMachines",
+                    "Resource": "arn:aws:fsx:*:*:storage-virtual-machine/*/*"
+                },
+                {
                     "Action": "fsx:DeleteBackup",
                     "Effect": "Allow",
                     "Resource": "arn:aws:fsx:*:*:backup/*",
@@ -271,8 +281,8 @@
                 }
             ]
         },
-        "VersionId": "v9",
+        "VersionId": "v10",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-11-23T22:00:22Z"
+        "CreateDate": "2022-05-13T17:52:29Z"
     }
 }
