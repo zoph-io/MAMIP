@@ -153,7 +153,8 @@
                     "Effect": "Allow",
                     "Action": [
                         "fsx:DescribeFileSystems",
-                        "fsx:ListTagsForResource"
+                        "fsx:ListTagsForResource",
+                        "fsx:DescribeStorageVirtualMachines"
                     ],
                     "Resource": "*",
                     "Condition": {
@@ -164,8 +165,8 @@
                 }
             ]
         },
-        "VersionId": "v9",
+        "VersionId": "v10",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-01-27T23:01:20Z"
+        "CreateDate": "2022-05-16T21:16:38Z"
     }
 }
