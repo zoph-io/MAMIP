@@ -246,11 +246,12 @@
                     "Resource": "arn:aws:fsx:*:*:backup/*"
                 },
                 {
-                    "Action": "fsx:CreateBackup",
                     "Effect": "Allow",
+                    "Action": "fsx:CreateBackup",
                     "Resource": [
                         "arn:aws:fsx:*:*:file-system/*",
-                        "arn:aws:fsx:*:*:backup/*"
+                        "arn:aws:fsx:*:*:backup/*",
+                        "arn:aws:fsx:*:*:volume/*"
                     ]
                 },
                 {
@@ -259,9 +260,17 @@
                     "Resource": "arn:aws:fsx:*:*:file-system/*"
                 },
                 {
-                    "Action": "fsx:ListTagsForResource",
                     "Effect": "Allow",
-                    "Resource": "arn:aws:fsx:*:*:file-system/*"
+                    "Action": "fsx:DescribeVolumes",
+                    "Resource": "arn:aws:fsx:*:*:volume/*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "fsx:ListTagsForResource",
+                    "Resource": [
+                        "arn:aws:fsx:*:*:file-system/*",
+                        "arn:aws:fsx:*:*:volume/*"
+                    ]
                 },
                 {
                     "Action": "fsx:DeleteBackup",
@@ -298,8 +307,8 @@
                 }
             ]
         },
-        "VersionId": "v11",
+        "VersionId": "v12",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-11-23T22:00:34Z"
+        "CreateDate": "2022-05-17T17:31:44Z"
     }
 }
