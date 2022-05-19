@@ -6,14 +6,15 @@
                 {
                     "Effect": "Allow",
                     "Action": [
-                        "iot:*"
+                        "iot:*",
+                        "iotjobsdata:*"
                     ],
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2015-10-08T15:19:49Z"
+        "CreateDate": "2022-05-19T21:39:11Z"
     }
 }
