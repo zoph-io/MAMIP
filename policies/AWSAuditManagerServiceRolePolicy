@@ -133,7 +133,8 @@
                 {
                     "Effect": "Allow",
                     "Action": [
-                        "organizations:DescribePolicy"
+                        "organizations:DescribePolicy",
+                        "organizations:DescribeOrganization"
                     ],
                     "Resource": "*",
                     "Sid": "OrganizationsAccess"
@@ -160,10 +161,13 @@
                     "Action": [
                         "events:PutRule"
                     ],
-                    "Resource": "*",
+                    "Resource": "arn:aws:events:*:*:rule/AuditManagerSecurityHubFindingsReceiver",
                     "Condition": {
                         "StringEquals": {
                             "events:detail-type": "Security Hub Findings - Imported"
+                        },
+                        "Null": {
+                            "events:source": "false"
                         },
                         "ForAllValues:StringEquals": {
                             "events:source": [
@@ -188,8 +192,8 @@
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-11-22T19:36:39Z"
+        "CreateDate": "2022-05-20T16:26:09Z"
     }
 }
