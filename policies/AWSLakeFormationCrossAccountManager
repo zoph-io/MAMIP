@@ -23,7 +23,10 @@
                     "Effect": "Allow",
                     "Action": [
                         "ram:UpdateResourceShare",
-                        "ram:DeleteResourceShare"
+                        "ram:DeleteResourceShare",
+                        "ram:AssociateResourceShare",
+                        "ram:DisassociateResourceShare",
+                        "ram:GetResourceShares"
                     ],
                     "Resource": "*",
                     "Condition": {
@@ -57,8 +60,8 @@
                 }
             ]
         },
-        "VersionId": "v3",
+        "VersionId": "v4",
         "IsDefaultVersion": true,
-        "CreateDate": "2020-12-07T23:11:36Z"
+        "CreateDate": "2022-05-20T22:19:37Z"
     }
 }
