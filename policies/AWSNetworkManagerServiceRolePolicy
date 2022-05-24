@@ -22,14 +22,19 @@
                         "ec2:DescribeTransitGatewayPeeringAttachments",
                         "ec2:DescribeTransitGatewayConnects",
                         "ec2:DescribeTransitGatewayConnectPeers",
-                        "ec2:DescribeRegions"
+                        "ec2:DescribeRegions",
+                        "organizations:DescribeAccount",
+                        "organizations:DescribeOrganization",
+                        "organizations:ListAccounts",
+                        "organizations:ListAWSServiceAccessForOrganization",
+                        "organizations:ListDelegatedAdministrators"
                     ],
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v5",
+        "VersionId": "v6",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-11-23T21:38:47Z"
+        "CreateDate": "2022-05-24T14:42:03Z"
     }
 }
