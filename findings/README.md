@@ -1,7 +1,8 @@
-## AWS Access Analyzer - Findings - 2022-05-25
+## AWS Access Analyzer - Findings - 2022-05-26
 
-- Policies analyzed: `950`
-- Errors: `11`
+- Policies analyzed: `951`
+- Errors: `12`
+  - [`AWSElasticDisasterRecoveryStagingAccountPolicy`](./AWSElasticDisasterRecoveryStagingAccountPolicy.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
 - Sec_Warnings: `11`
