@@ -15,6 +15,8 @@
                         "drs:GetFailbackReplicationConfiguration",
                         "drs:GetLaunchConfiguration",
                         "drs:GetReplicationConfiguration",
+                        "drs:ListExtensibleSourceServers",
+                        "drs:ListStagingAccounts",
                         "drs:ListTagsForResource"
                     ],
                     "Resource": "*"
@@ -28,11 +30,16 @@
                         "ec2:DescribeSubnets"
                     ],
                     "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "iam:ListRoles",
+                    "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-11-17T10:50:05Z"
+        "CreateDate": "2022-05-29T08:27:37Z"
     }
 }

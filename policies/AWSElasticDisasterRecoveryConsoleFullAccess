@@ -57,7 +57,10 @@
                 },
                 {
                     "Effect": "Allow",
-                    "Action": "iam:ListInstanceProfiles",
+                    "Action": [
+                        "iam:ListInstanceProfiles",
+                        "iam:ListRoles"
+                    ],
                     "Resource": "*"
                 },
                 {
@@ -321,8 +324,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-11-17T10:46:29Z"
+        "CreateDate": "2022-05-29T08:40:00Z"
     }
 }
