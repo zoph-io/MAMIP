@@ -1,0 +1,74 @@
+[
+    {
+        "findingDetails": "The action drs:ListExtensibleSourceServers does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 9
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 403,
+                        "line": 1,
+                        "offset": 403
+                    },
+                    "start": {
+                        "column": 370,
+                        "line": 1,
+                        "offset": 370
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The action drs:ListStagingAccounts does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 10
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 430,
+                        "line": 1,
+                        "offset": 430
+                    },
+                    "start": {
+                        "column": 405,
+                        "line": 1,
+                        "offset": 405
+                    }
+                }
+            }
+        ]
+    }
+]
