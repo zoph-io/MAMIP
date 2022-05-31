@@ -188,11 +188,26 @@
                         "arn:aws:glue:*:*:database/license_manager_resource_inventory_db",
                         "arn:aws:glue:*:*:database/license_manager_resource_sync"
                     ]
+                },
+                {
+                    "Sid": "RGPermissions",
+                    "Effect": "Allow",
+                    "Action": [
+                        "resource-groups:PutGroupPolicy"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "aws:CalledVia": [
+                                "ram.amazonaws.com"
+                            ]
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v4",
+        "VersionId": "v5",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-11-18T02:02:15Z"
+        "CreateDate": "2022-05-31T20:50:26Z"
     }
 }
