@@ -119,8 +119,7 @@
                         "arn:aws:ec2:*:*:route-table/*",
                         "arn:aws:ec2:*:*:security-group/*",
                         "arn:aws:ec2:*:*:vpc/*",
-                        "arn:aws:ec2:*:*:internet-gateway/*",
-                        "arn:aws:ec2:*:*:elastic-ip/*"
+                        "arn:aws:ec2:*:*:internet-gateway/*"
                     ],
                     "Condition": {
                         "StringEquals": {
@@ -136,7 +135,8 @@
                         "arn:aws:ec2:*:*:route-table/*",
                         "arn:aws:ec2:*:*:security-group/*",
                         "arn:aws:ec2:*:*:vpc/*",
-                        "arn:aws:ec2:*:*:internet-gateway/*"
+                        "arn:aws:ec2:*:*:internet-gateway/*",
+                        "arn:aws:ec2:*:*:elastic-ip/*"
                     ],
                     "Condition": {
                         "StringEquals": {
@@ -180,8 +180,8 @@
                 }
             ]
         },
-        "VersionId": "v6",
+        "VersionId": "v7",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-05-25T05:09:53Z"
+        "CreateDate": "2022-06-01T00:34:09Z"
     }
 }
