@@ -1,0 +1,35 @@
+[
+    {
+        "findingDetails": "The action backup-gateway:GetGateway does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 28
+                    },
+                    {
+                        "value": "Action"
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 4860,
+                        "line": 1,
+                        "offset": 4860
+                    },
+                    "start": {
+                        "column": 4833,
+                        "line": 1,
+                        "offset": 4833
+                    }
+                }
+            }
+        ]
+    }
+]

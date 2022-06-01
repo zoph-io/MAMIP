@@ -1,9 +1,11 @@
 ## AWS Access Analyzer - Findings - 2022-06-01
 
 - Policies analyzed: `952`
-- Errors: `15`
+- Errors: `17`
   - [`AWSElasticDisasterRecoveryStagingAccountPolicy`](./AWSElasticDisasterRecoveryStagingAccountPolicy.json)
+  - [`AWSBackupOperatorAccess`](./AWSBackupOperatorAccess.json)
   - [`AWSElasticDisasterRecoveryReadOnlyAccess`](./AWSElasticDisasterRecoveryReadOnlyAccess.json)
+  - [`AWSBackupFullAccess`](./AWSBackupFullAccess.json)
   - [`AWSElasticDisasterRecoveryEc2InstancePolicy`](./AWSElasticDisasterRecoveryEc2InstancePolicy.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
