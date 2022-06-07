@@ -1,6 +1,6 @@
 ## AWS Access Analyzer - Findings - 2022-06-07
 
-- Policies analyzed: `953`
+- Policies analyzed: `954`
 - Errors: `14`
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AWSBackupFullAccess`](./AWSBackupFullAccess.json)
