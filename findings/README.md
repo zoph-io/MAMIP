@@ -1,9 +1,8 @@
-## AWS Access Analyzer - Findings - 2022-06-10
+## AWS Access Analyzer - Findings - 2022-06-13
 
 - Policies analyzed: `955`
-- Errors: `12`
+- Errors: `11`
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
-  - [`AWSApplicationMigrationAgentPolicy_v2`](./AWSApplicationMigrationAgentPolicy_v2.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
 - Sec_Warnings: `11`
   - [`IAMFullAccess`](./IAMFullAccess.json)
