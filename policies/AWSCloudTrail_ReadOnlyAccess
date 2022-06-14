@@ -1,0 +1,22 @@
+{
+    "PolicyVersion": {
+        "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "cloudtrail:Get*",
+                        "cloudtrail:Describe*",
+                        "cloudtrail:List*",
+                        "cloudtrail:LookupEvents"
+                    ],
+                    "Resource": "*"
+                }
+            ]
+        },
+        "VersionId": "v1",
+        "IsDefaultVersion": true,
+        "CreateDate": "2022-06-14T17:19:05Z"
+    }
+}
