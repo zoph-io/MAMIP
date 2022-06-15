@@ -1,0 +1,38 @@
+[
+    {
+        "findingDetails": "The action sqlworkbench:GetAccountSettings does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 3
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 6
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 1007,
+                        "line": 1,
+                        "offset": 1007
+                    },
+                    "start": {
+                        "column": 974,
+                        "line": 1,
+                        "offset": 974
+                    }
+                }
+            }
+        ]
+    }
+]
