@@ -1,0 +1,38 @@
+[
+    {
+        "findingDetails": "The action servicecatalog:ListAttributeGroupsForApplication does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 8
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 431,
+                        "line": 1,
+                        "offset": 431
+                    },
+                    "start": {
+                        "column": 381,
+                        "line": 1,
+                        "offset": 381
+                    }
+                }
+            }
+        ]
+    }
+]
