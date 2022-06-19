@@ -1,6 +1,6 @@
-## AWS Access Analyzer - Findings - 2022-06-16
+## AWS Access Analyzer - Findings - 2022-06-19
 
-- Policies analyzed: `955`
+- Policies analyzed: `956`
 - Errors: `16`
   - [`AmazonRedshiftQueryEditorV2ReadWriteSharing`](./AmazonRedshiftQueryEditorV2ReadWriteSharing.json)
   - [`AmazonRedshiftQueryEditorV2NoSharing`](./AmazonRedshiftQueryEditorV2NoSharing.json)
