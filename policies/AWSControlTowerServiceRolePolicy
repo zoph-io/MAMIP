@@ -153,18 +153,34 @@
                 },
                 {
                     "Effect": "Allow",
-                    "Action": "organizations:EnableAWSServiceAccess",
+                    "Action": [
+                        "organizations:EnableAWSServiceAccess",
+                        "organizations:DisableAWSServiceAccess"
+                    ],
                     "Resource": "*",
                     "Condition": {
                         "StringLike": {
-                            "organizations:ServicePrincipal": "config.amazonaws.com"
+                            "organizations:ServicePrincipal": [
+                                "config.amazonaws.com",
+                                "cloudtrail.amazonaws.com"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "iam:CreateServiceLinkedRole",
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:AWSServiceName": "cloudtrail.amazonaws.com"
                         }
                     }
                 }
             ]
         },
-        "VersionId": "v7",
+        "VersionId": "v8",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-06-04T23:00:46Z"
+        "CreateDate": "2022-06-20T21:45:54Z"
     }
 }
