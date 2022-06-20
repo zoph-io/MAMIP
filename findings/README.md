@@ -1,13 +1,10 @@
 ## AWS Access Analyzer - Findings - 2022-06-20
 
 - Policies analyzed: `956`
-- Errors: `16`
-  - [`AmazonRedshiftQueryEditorV2ReadWriteSharing`](./AmazonRedshiftQueryEditorV2ReadWriteSharing.json)
-  - [`AmazonRedshiftQueryEditorV2NoSharing`](./AmazonRedshiftQueryEditorV2NoSharing.json)
+- Errors: `13`
   - [`AWSServiceCatalogAppRegistryReadOnlyAccess`](./AWSServiceCatalogAppRegistryReadOnlyAccess.json)
   - [`AWSServiceCatalogAppRegistryFullAccess`](./AWSServiceCatalogAppRegistryFullAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
-  - [`AmazonRedshiftQueryEditorV2ReadSharing`](./AmazonRedshiftQueryEditorV2ReadSharing.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
 - Sec_Warnings: `11`
   - [`AmazonElasticMapReduceRole`](./AmazonElasticMapReduceRole.json)
