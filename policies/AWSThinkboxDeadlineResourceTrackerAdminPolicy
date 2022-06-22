@@ -198,7 +198,8 @@
                         "lambda:PutFunctionConcurrency",
                         "lambda:TagResource",
                         "lambda:UntagResource",
-                        "lambda:UpdateFunctionCode"
+                        "lambda:UpdateFunctionCode",
+                        "lambda:UpdateFunctionConfiguration"
                     ],
                     "Resource": [
                         "arn:aws:lambda:*:*:function:DeadlineResourceTracker*"
@@ -231,8 +232,8 @@
                 }
             ]
         },
-        "VersionId": "v5",
-        "IsDefaultVersion": false,
-        "CreateDate": "2021-12-23T01:01:48Z"
+        "VersionId": "v6",
+        "IsDefaultVersion": true,
+        "CreateDate": "2022-06-22T18:08:40Z"
     }
 }
