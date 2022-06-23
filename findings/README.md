@@ -1,6 +1,6 @@
-## AWS Access Analyzer - Findings - 2022-06-22
+## AWS Access Analyzer - Findings - 2022-06-23
 
-- Policies analyzed: `956`
+- Policies analyzed: `957`
 - Errors: `13`
   - [`AWSServiceCatalogAppRegistryFullAccess`](./AWSServiceCatalogAppRegistryFullAccess.json)
   - [`AWSServiceCatalogAppRegistryReadOnlyAccess`](./AWSServiceCatalogAppRegistryReadOnlyAccess.json)
