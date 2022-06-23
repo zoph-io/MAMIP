@@ -1,0 +1,25 @@
+{
+    "PolicyVersion": {
+        "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "organizations:DescribeAccount",
+                        "organizations:DescribeOrganization",
+                        "organizations:ListAccounts",
+                        "organizations:ListAccountsForParent",
+                        "organizations:ListChildren",
+                        "organizations:ListParents",
+                        "organizations:ListRoots"
+                    ],
+                    "Resource": "*"
+                }
+            ]
+        },
+        "VersionId": "v1",
+        "IsDefaultVersion": true,
+        "CreateDate": "2022-06-23T17:15:26Z"
+    }
+}
