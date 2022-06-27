@@ -1,9 +1,7 @@
 ## AWS Access Analyzer - Findings - 2022-06-27
 
 - Policies analyzed: `957`
-- Errors: `13`
-  - [`AWSServiceCatalogAppRegistryFullAccess`](./AWSServiceCatalogAppRegistryFullAccess.json)
-  - [`AWSServiceCatalogAppRegistryReadOnlyAccess`](./AWSServiceCatalogAppRegistryReadOnlyAccess.json)
+- Errors: `11`
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
 - Sec_Warnings: `11`
