@@ -12,7 +12,9 @@
                         "iam:PutRolePolicy",
                         "iam:UpdateRole",
                         "iam:UpdateRoleDescription",
-                        "iam:UpdateAssumeRolePolicy"
+                        "iam:UpdateAssumeRolePolicy",
+                        "iam:PutRolePermissionsBoundary",
+                        "iam:DeleteRolePermissionsBoundary"
                     ],
                     "Resource": [
                         "arn:aws:iam::*:role/aws-reserved/sso.amazonaws.com/*"
@@ -137,8 +139,8 @@
                 }
             ]
         },
-        "VersionId": "v15",
+        "VersionId": "v16",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-05-12T21:14:40Z"
+        "CreateDate": "2022-06-28T20:08:47Z"
     }
 }
