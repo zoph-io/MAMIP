@@ -412,6 +412,17 @@
                 {
                     "Effect": "Allow",
                     "Action": [
+                        "glue:UpdateTable"
+                    ],
+                    "Resource": [
+                        "arn:aws:glue:*:*:table/sagemaker_featurestore/*",
+                        "arn:aws:glue:*:*:catalog",
+                        "arn:aws:glue:*:*:database/sagemaker_featurestore"
+                    ]
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
                         "glue:DeleteTable"
                     ],
                     "Resource": [
@@ -480,8 +491,8 @@
                 }
             ]
         },
-        "VersionId": "v22",
+        "VersionId": "v23",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-05-02T06:19:13Z"
+        "CreateDate": "2022-06-29T18:30:43Z"
     }
 }
