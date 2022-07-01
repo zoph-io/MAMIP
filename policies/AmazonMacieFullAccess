@@ -13,7 +13,7 @@
                 {
                     "Effect": "Allow",
                     "Action": "iam:CreateServiceLinkedRole",
-                    "Resource": "arn:aws:iam::*:role/AWSServiceRoleForAmazonMacie",
+                    "Resource": "arn:aws:iam::*:role/aws-service-role/macie.amazonaws.com/AWSServiceRoleForAmazonMacie",
                     "Condition": {
                         "StringLike": {
                             "iam:AWSServiceName": "macie.amazonaws.com"
@@ -27,8 +27,8 @@
                 }
             ]
         },
-        "VersionId": "v4",
+        "VersionId": "v5",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-03-07T18:08:14Z"
+        "CreateDate": "2022-07-01T00:41:53Z"
     }
 }
