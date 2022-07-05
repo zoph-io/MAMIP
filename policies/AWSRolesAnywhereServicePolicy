@@ -1,0 +1,35 @@
+{
+    "PolicyVersion": {
+        "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "cloudwatch:PutMetricData"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "cloudwatch:namespace": [
+                                "AWS/RolesAnywhere",
+                                "AWS/Usage"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "acm-pca:GetCertificateAuthorityCertificate",
+                        "acm-pca:DescribeCertificateAuthority"
+                    ],
+                    "Resource": "arn:aws:acm-pca:*:*:*"
+                }
+            ]
+        },
+        "VersionId": "v1",
+        "IsDefaultVersion": true,
+        "CreateDate": "2022-07-05T15:26:11Z"
+    }
+}
