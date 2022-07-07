@@ -33,6 +33,7 @@
                     "Action": [
                         "cloudwatch:DeleteAlarms",
                         "cloudwatch:DescribeAlarms",
+                        "cloudwatch:GetMetricData",
                         "cloudwatch:PutMetricAlarm"
                     ],
                     "Resource": "*"
@@ -49,8 +50,8 @@
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-06-01T19:31:39Z"
+        "CreateDate": "2022-07-07T15:02:41Z"
     }
 }
