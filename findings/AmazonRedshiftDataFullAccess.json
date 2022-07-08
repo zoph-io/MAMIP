@@ -1,0 +1,74 @@
+[
+    {
+        "findingDetails": "The service redshift-serverless:GetCredentials specified in the action does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_SERVICE_IN_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 3
+                    },
+                    {
+                        "value": "Action"
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 964,
+                        "line": 1,
+                        "offset": 964
+                    },
+                    "start": {
+                        "column": 928,
+                        "line": 1,
+                        "offset": 928
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "Your condition value includes a * or ? character. If you meant to use a wildcard (*, ?), update the condition operator to include Like.",
+        "findingType": "WARNING",
+        "issueCode": "WILDCARD_WITHOUT_LIKE_OPERATOR",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-general-warning-wildcard-without-like-operator",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 3
+                    },
+                    {
+                        "value": "Condition"
+                    },
+                    {
+                        "value": "StringEquals"
+                    },
+                    {
+                        "value": "aws:ResourceTag/RedshiftDataFullAccess"
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 1059,
+                        "line": 1,
+                        "offset": 1059
+                    },
+                    "start": {
+                        "column": 1056,
+                        "line": 1,
+                        "offset": 1056
+                    }
+                }
+            }
+        ]
+    }
+]

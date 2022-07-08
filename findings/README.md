@@ -1,8 +1,9 @@
 ## AWS Access Analyzer - Findings - 2022-07-08
 
 - Policies analyzed: `958`
-- Errors: `12`
+- Errors: `13`
   - [`AmazonRedshiftFullAccess`](./AmazonRedshiftFullAccess.json)
+  - [`AmazonRedshiftDataFullAccess`](./AmazonRedshiftDataFullAccess.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
 - Sec_Warnings: `11`
@@ -46,7 +47,7 @@
   - [`AWSElasticBeanstalkWorkerTier`](./AWSElasticBeanstalkWorkerTier.json)
   - [`AmazonCodeGuruReviewerServiceRolePolicy`](./AmazonCodeGuruReviewerServiceRolePolicy.json)
   - [`AWSLakeFormationDataAdmin`](./AWSLakeFormationDataAdmin.json)
-- Warnings: `13`
+- Warnings: `14`
   - [`AdministratorAccess`](./AdministratorAccess.json)
   - [`AmazonSageMakerServiceCatalogProductsLambdaServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsLambdaServiceRolePolicy.json)
   - [`FMSServiceRolePolicy`](./FMSServiceRolePolicy.json)
@@ -54,6 +55,7 @@
   - [`AlexaForBusinessFullAccess`](./AlexaForBusinessFullAccess.json)
   - [`AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy.json)
   - [`AWSConfigServiceRolePolicy`](./AWSConfigServiceRolePolicy.json)
+  - [`AmazonRedshiftDataFullAccess`](./AmazonRedshiftDataFullAccess.json)
   - [`AWS_ConfigRole`](./AWS_ConfigRole.json)
   - [`AWSOrganizationsServiceTrustPolicy`](./AWSOrganizationsServiceTrustPolicy.json)
   - [`AdministratorAccess-Amplify`](./AdministratorAccess-Amplify.json)
