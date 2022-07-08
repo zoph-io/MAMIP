@@ -1,7 +1,8 @@
-## AWS Access Analyzer - Findings - 2022-07-07
+## AWS Access Analyzer - Findings - 2022-07-08
 
 - Policies analyzed: `958`
-- Errors: `11`
+- Errors: `12`
+  - [`AmazonRedshiftFullAccess`](./AmazonRedshiftFullAccess.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
 - Sec_Warnings: `11`
