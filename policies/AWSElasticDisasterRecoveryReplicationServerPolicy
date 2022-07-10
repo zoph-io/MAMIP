@@ -31,7 +31,9 @@
                         "drs:UpdateAgentReplicationProcessStateForDrs",
                         "drs:NotifyAgentReplicationProgressForDrs",
                         "drs:NotifyAgentConnectedForDrs",
-                        "drs:NotifyAgentDisconnectedForDrs"
+                        "drs:NotifyAgentDisconnectedForDrs",
+                        "drs:NotifyVolumeEventForDrs",
+                        "drs:SendVolumeStatsForDrs"
                     ],
                     "Resource": "*"
                 },
@@ -79,8 +81,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-11-17T13:34:00Z"
+        "CreateDate": "2022-07-10T12:34:15Z"
     }
 }
