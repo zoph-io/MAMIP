@@ -1,0 +1,74 @@
+[
+    {
+        "findingDetails": "The action drs:NotifyVolumeEventForDrs does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 2
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 10
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 741,
+                        "line": 1,
+                        "offset": 741
+                    },
+                    "start": {
+                        "column": 712,
+                        "line": 1,
+                        "offset": 712
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The action drs:SendVolumeStatsForDrs does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 2
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 11
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 770,
+                        "line": 1,
+                        "offset": 770
+                    },
+                    "start": {
+                        "column": 743,
+                        "line": 1,
+                        "offset": 743
+                    }
+                }
+            }
+        ]
+    }
+]

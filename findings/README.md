@@ -1,7 +1,8 @@
-## AWS Access Analyzer - Findings - 2022-07-08
+## AWS Access Analyzer - Findings - 2022-07-10
 
 - Policies analyzed: `958`
-- Errors: `13`
+- Errors: `15`
+  - [`AWSElasticDisasterRecoveryReplicationServerPolicy`](./AWSElasticDisasterRecoveryReplicationServerPolicy.json)
   - [`AmazonRedshiftFullAccess`](./AmazonRedshiftFullAccess.json)
   - [`AmazonRedshiftDataFullAccess`](./AmazonRedshiftDataFullAccess.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
