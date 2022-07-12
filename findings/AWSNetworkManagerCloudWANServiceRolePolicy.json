@@ -1,0 +1,74 @@
+[
+    {
+        "findingDetails": "The action ec2:CreateTransitGatewayRouteTableAnnouncement does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 0
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 119,
+                        "line": 1,
+                        "offset": 119
+                    },
+                    "start": {
+                        "column": 71,
+                        "line": 1,
+                        "offset": 71
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The action ec2:DeleteTransitGatewayRouteTableAnnouncement does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 1
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 169,
+                        "line": 1,
+                        "offset": 169
+                    },
+                    "start": {
+                        "column": 121,
+                        "line": 1,
+                        "offset": 121
+                    }
+                }
+            }
+        ]
+    }
+]

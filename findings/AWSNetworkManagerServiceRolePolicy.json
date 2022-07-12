@@ -1,0 +1,146 @@
+[
+    {
+        "findingDetails": "The action ec2:DescribeTransitGatewayRouteTableAnnouncements does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 22
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 967,
+                        "line": 1,
+                        "offset": 967
+                    },
+                    "start": {
+                        "column": 916,
+                        "line": 1,
+                        "offset": 916
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The action ec2:DescribeTransitGatewayPolicyTables does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 23
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 1009,
+                        "line": 1,
+                        "offset": 1009
+                    },
+                    "start": {
+                        "column": 969,
+                        "line": 1,
+                        "offset": 969
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The action ec2:GetTransitGatewayPolicyTableAssociations does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 24
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 1057,
+                        "line": 1,
+                        "offset": 1057
+                    },
+                    "start": {
+                        "column": 1011,
+                        "line": 1,
+                        "offset": 1011
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The action ec2:GetTransitGatewayPolicyTableEntries does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 25
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 1100,
+                        "line": 1,
+                        "offset": 1100
+                    },
+                    "start": {
+                        "column": 1059,
+                        "line": 1,
+                        "offset": 1059
+                    }
+                }
+            }
+        ]
+    }
+]
