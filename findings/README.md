@@ -1,4 +1,4 @@
-## AWS Access Analyzer - Findings - 2022-07-10
+## AWS Access Analyzer - Findings - 2022-07-12
 
 - Policies analyzed: `958`
 - Errors: `15`
@@ -48,7 +48,7 @@
   - [`AWSElasticBeanstalkWorkerTier`](./AWSElasticBeanstalkWorkerTier.json)
   - [`AmazonCodeGuruReviewerServiceRolePolicy`](./AmazonCodeGuruReviewerServiceRolePolicy.json)
   - [`AWSLakeFormationDataAdmin`](./AWSLakeFormationDataAdmin.json)
-- Warnings: `14`
+- Warnings: `13`
   - [`AdministratorAccess`](./AdministratorAccess.json)
   - [`AmazonSageMakerServiceCatalogProductsLambdaServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsLambdaServiceRolePolicy.json)
   - [`FMSServiceRolePolicy`](./FMSServiceRolePolicy.json)
@@ -56,7 +56,6 @@
   - [`AlexaForBusinessFullAccess`](./AlexaForBusinessFullAccess.json)
   - [`AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy.json)
   - [`AWSConfigServiceRolePolicy`](./AWSConfigServiceRolePolicy.json)
-  - [`AmazonRedshiftDataFullAccess`](./AmazonRedshiftDataFullAccess.json)
   - [`AWS_ConfigRole`](./AWS_ConfigRole.json)
   - [`AWSOrganizationsServiceTrustPolicy`](./AWSOrganizationsServiceTrustPolicy.json)
   - [`AdministratorAccess-Amplify`](./AdministratorAccess-Amplify.json)
