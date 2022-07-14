@@ -1,6 +1,6 @@
-## AWS Access Analyzer - Findings - 2022-07-12
+## AWS Access Analyzer - Findings - 2022-07-14
 
-- Policies analyzed: `959`
+- Policies analyzed: `957`
 - Errors: `21`
   - [`AWSElasticDisasterRecoveryReplicationServerPolicy`](./AWSElasticDisasterRecoveryReplicationServerPolicy.json)
   - [`AWSNetworkManagerCloudWANServiceRolePolicy`](./AWSNetworkManagerCloudWANServiceRolePolicy.json)
@@ -67,7 +67,7 @@
 - Fails: `2`
   - [`ReadOnlyAccess`](./fails.txt)
   - [`AWSSupportServiceRolePolicy`](./fails.txt)
-- Deprecated: `41`
+- Deprecated: `43`
   - [`AmazonMachineLearningRoleforRedshiftDataSource`](../policies/AmazonMachineLearningRoleforRedshiftDataSource)
   - [`AWSECRPullThroughCacheServiceRolePolicy`](../policies/AWSECRPullThroughCacheServiceRolePolicy)
   - [`AWSServiceRoleForCodeGuruProfiler`](../policies/AWSServiceRoleForCodeGuruProfiler)
@@ -103,8 +103,10 @@
   - [`AmazonMacieSetupRole`](../policies/AmazonMacieSetupRole)
   - [`AmazonConnectFullAccess`](../policies/AmazonConnectFullAccess)
   - [`AWSBudgetsActionsRolePolicyForResourceAdministrationWithSSM`](../policies/AWSBudgetsActionsRolePolicyForResourceAdministrationWithSSM)
+  - [`AmazonWorkLinkReadOnly`](../policies/AmazonWorkLinkReadOnly)
   - [`ServiceCatalogEndUserAccess`](../policies/ServiceCatalogEndUserAccess)
   - [`AmazonMachineLearningRoleforRedshiftDataSourceV2`](../policies/AmazonMachineLearningRoleforRedshiftDataSourceV2)
+  - [`AmazonWorkLinkFullAccess`](../policies/AmazonWorkLinkFullAccess)
   - [`AWSElasticBeanstalkFullAccess`](../policies/AWSElasticBeanstalkFullAccess)
   - [`AmazonEC2ContainerServiceFullAccess`](../policies/AmazonEC2ContainerServiceFullAccess)
   - [`AmazonLaunchWizardFullaccess`](../policies/AmazonLaunchWizardFullaccess)
