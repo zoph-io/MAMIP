@@ -1,6 +1,6 @@
-## AWS Access Analyzer - Findings - 2022-07-14
+## AWS Access Analyzer - Findings - 2022-07-15
 
-- Policies analyzed: `957`
+- Policies analyzed: `956`
 - Errors: `21`
   - [`AWSElasticDisasterRecoveryReplicationServerPolicy`](./AWSElasticDisasterRecoveryReplicationServerPolicy.json)
   - [`AWSNetworkManagerCloudWANServiceRolePolicy`](./AWSNetworkManagerCloudWANServiceRolePolicy.json)
@@ -67,7 +67,7 @@
 - Fails: `2`
   - [`ReadOnlyAccess`](./fails.txt)
   - [`AWSSupportServiceRolePolicy`](./fails.txt)
-- Deprecated: `43`
+- Deprecated: `44`
   - [`AmazonMachineLearningRoleforRedshiftDataSource`](../policies/AmazonMachineLearningRoleforRedshiftDataSource)
   - [`AWSECRPullThroughCacheServiceRolePolicy`](../policies/AWSECRPullThroughCacheServiceRolePolicy)
   - [`AWSServiceRoleForCodeGuruProfiler`](../policies/AWSServiceRoleForCodeGuruProfiler)
@@ -79,6 +79,7 @@
   - [`AWSB9InternalServicePolicy`](../policies/AWSB9InternalServicePolicy)
   - [`AWSBackupAdminPolicy`](../policies/AWSBackupAdminPolicy)
   - [`AmazonApplicationWizardFullaccess`](../policies/AmazonApplicationWizardFullaccess)
+  - [`AmazonWorkLinkServiceRolePolicy`](../policies/AmazonWorkLinkServiceRolePolicy)
   - [`AWS_Config_Role`](../policies/AWS_Config_Role)
   - [`AWSCloudTrailFullAccess`](../policies/AWSCloudTrailFullAccess)
   - [`AWSServiceRoleForThorInternalDevPolicy`](../policies/AWSServiceRoleForThorInternalDevPolicy)
