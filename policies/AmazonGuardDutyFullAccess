@@ -14,7 +14,10 @@
                     "Resource": "*",
                     "Condition": {
                         "StringLike": {
-                            "iam:AWSServiceName": "guardduty.amazonaws.com"
+                            "iam:AWSServiceName": [
+                                "guardduty.amazonaws.com",
+                                "malware-protection.guardduty.amazonaws.com"
+                            ]
                         }
                     }
                 },
@@ -30,11 +33,16 @@
                         "organizations:DescribeOrganization"
                     ],
                     "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "iam:GetRole",
+                    "Resource": "arn:aws:iam::*:role/aws-service-role/*guardduty.amazonaws.com/*"
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-02-16T23:39:53Z"
+        "CreateDate": "2022-07-19T20:36:51Z"
     }
 }
