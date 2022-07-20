@@ -144,6 +144,13 @@
                 {
                     "Effect": "Allow",
                     "Action": [
+                        "rds:CreateDBInstance"
+                    ],
+                    "Resource": "arn:aws:rds:*:*:db:*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
                         "ec2:DeleteSnapshot",
                         "ec2:DeleteTags"
                     ],
@@ -286,8 +293,8 @@
                 }
             ]
         },
-        "VersionId": "v12",
+        "VersionId": "v13",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-05-17T17:36:12Z"
+        "CreateDate": "2022-07-19T23:22:51Z"
     }
 }
