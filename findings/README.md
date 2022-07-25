@@ -1,14 +1,11 @@
-## AWS Access Analyzer - Findings - 2022-07-20
+## AWS Access Analyzer - Findings - 2022-07-25
 
 - Policies analyzed: `957`
-- Errors: `21`
+- Errors: `17`
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AWSNetworkManagerCloudWANServiceRolePolicy`](./AWSNetworkManagerCloudWANServiceRolePolicy.json)
-  - [`AmazonRedshiftFullAccess`](./AmazonRedshiftFullAccess.json)
   - [`AWSNetworkManagerServiceRolePolicy`](./AWSNetworkManagerServiceRolePolicy.json)
-  - [`AWSElasticDisasterRecoveryReplicationServerPolicy`](./AWSElasticDisasterRecoveryReplicationServerPolicy.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
-  - [`AmazonRedshiftDataFullAccess`](./AmazonRedshiftDataFullAccess.json)
 - Sec_Warnings: `11`
   - [`AdministratorAccess`](./AdministratorAccess.json)
   - [`AWSServiceRoleForAmazonEKSNodegroup`](./AWSServiceRoleForAmazonEKSNodegroup.json)
