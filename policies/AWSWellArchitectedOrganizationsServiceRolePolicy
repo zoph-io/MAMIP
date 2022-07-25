@@ -6,6 +6,7 @@
                 {
                     "Effect": "Allow",
                     "Action": [
+                        "organizations:ListAWSServiceAccessForOrganization",
                         "organizations:DescribeAccount",
                         "organizations:DescribeOrganization",
                         "organizations:ListAccounts",
@@ -18,8 +19,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
-        "IsDefaultVersion": false,
-        "CreateDate": "2022-06-23T17:15:26Z"
+        "VersionId": "v2",
+        "IsDefaultVersion": true,
+        "CreateDate": "2022-07-25T18:03:31Z"
     }
 }
