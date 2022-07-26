@@ -1,0 +1,254 @@
+[
+    {
+        "findingDetails": "The service vendor-insights:GetProfileAccessTerms specified in the action does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_SERVICE_IN_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 0
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 110,
+                        "line": 1,
+                        "offset": 110
+                    },
+                    "start": {
+                        "column": 71,
+                        "line": 1,
+                        "offset": 71
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The service vendor-insights:ListEntitledSecurityProfiles specified in the action does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_SERVICE_IN_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 1
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 158,
+                        "line": 1,
+                        "offset": 158
+                    },
+                    "start": {
+                        "column": 112,
+                        "line": 1,
+                        "offset": 112
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The service vendor-insights:GetEntitledSecurityProfileSnapshot specified in the action does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_SERVICE_IN_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 2
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 212,
+                        "line": 1,
+                        "offset": 212
+                    },
+                    "start": {
+                        "column": 160,
+                        "line": 1,
+                        "offset": 160
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The service vendor-insights:ListEntitledSecurityProfileSnapshots specified in the action does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_SERVICE_IN_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 3
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 268,
+                        "line": 1,
+                        "offset": 268
+                    },
+                    "start": {
+                        "column": 214,
+                        "line": 1,
+                        "offset": 214
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The action aws-marketplace:CreateAgreementRequest does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 1
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 0
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 360,
+                        "line": 1,
+                        "offset": 360
+                    },
+                    "start": {
+                        "column": 320,
+                        "line": 1,
+                        "offset": 320
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The action aws-marketplace:AcceptAgreementRequest does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 1
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 2
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 441,
+                        "line": 1,
+                        "offset": 441
+                    },
+                    "start": {
+                        "column": 401,
+                        "line": 1,
+                        "offset": 401
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The action aws-marketplace:CancelAgreement does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 1
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 5
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 559,
+                        "line": 1,
+                        "offset": 559
+                    },
+                    "start": {
+                        "column": 526,
+                        "line": 1,
+                        "offset": 526
+                    }
+                }
+            }
+        ]
+    }
+]

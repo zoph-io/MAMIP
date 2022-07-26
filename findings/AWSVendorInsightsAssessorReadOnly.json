@@ -1,0 +1,110 @@
+[
+    {
+        "findingDetails": "The service vendor-insights:ListEntitledSecurityProfiles specified in the action does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_SERVICE_IN_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 0
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 117,
+                        "line": 1,
+                        "offset": 117
+                    },
+                    "start": {
+                        "column": 71,
+                        "line": 1,
+                        "offset": 71
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The service vendor-insights:GetEntitledSecurityProfileSnapshot specified in the action does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_SERVICE_IN_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 1
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 171,
+                        "line": 1,
+                        "offset": 171
+                    },
+                    "start": {
+                        "column": 119,
+                        "line": 1,
+                        "offset": 119
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The service vendor-insights:ListEntitledSecurityProfileSnapshots specified in the action does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_SERVICE_IN_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 2
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 227,
+                        "line": 1,
+                        "offset": 227
+                    },
+                    "start": {
+                        "column": 173,
+                        "line": 1,
+                        "offset": 173
+                    }
+                }
+            }
+        ]
+    }
+]
