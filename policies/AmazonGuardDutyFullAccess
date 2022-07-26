@@ -37,12 +37,12 @@
                 {
                     "Effect": "Allow",
                     "Action": "iam:GetRole",
-                    "Resource": "arn:aws:iam::*:role/aws-service-role/*guardduty.amazonaws.com/*"
+                    "Resource": "arn:aws:iam::*:role/*AWSServiceRoleForAmazonGuardDutyMalwareProtection"
                 }
             ]
         },
-        "VersionId": "v3",
+        "VersionId": "v4",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-07-19T20:36:51Z"
+        "CreateDate": "2022-07-26T18:28:01Z"
     }
 }
