@@ -1,17 +1,12 @@
 ## AWS Access Analyzer - Findings - 2022-07-26
 
 - Policies analyzed: `961`
-- Errors: `59`
+- Errors: `20`
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AWSNetworkManagerCloudWANServiceRolePolicy`](./AWSNetworkManagerCloudWANServiceRolePolicy.json)
-  - [`AWSVendorInsightsAssessorReadOnly`](./AWSVendorInsightsAssessorReadOnly.json)
-  - [`AWSMarketplaceSellerFullAccess`](./AWSMarketplaceSellerFullAccess.json)
-  - [`AWSVendorInsightsVendorReadOnly`](./AWSVendorInsightsVendorReadOnly.json)
   - [`AWSVendorInsightsAssessorFullAccess`](./AWSVendorInsightsAssessorFullAccess.json)
   - [`AWSNetworkManagerServiceRolePolicy`](./AWSNetworkManagerServiceRolePolicy.json)
-  - [`AWSMarketplaceSellerProductsFullAccess`](./AWSMarketplaceSellerProductsFullAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
-  - [`AWSVendorInsightsVendorFullAccess`](./AWSVendorInsightsVendorFullAccess.json)
 - Sec_Warnings: `11`
   - [`AdministratorAccess`](./AdministratorAccess.json)
   - [`AWSServiceRoleForAmazonEKSNodegroup`](./AWSServiceRoleForAmazonEKSNodegroup.json)
