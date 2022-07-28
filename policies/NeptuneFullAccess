@@ -30,18 +30,23 @@
                         "rds:CopyDBClusterParameterGroup",
                         "rds:CopyDBClusterSnapshot",
                         "rds:CopyDBParameterGroup",
+                        "rds:CreateDBClusterEndpoint",
                         "rds:CreateDBClusterParameterGroup",
                         "rds:CreateDBClusterSnapshot",
                         "rds:CreateDBParameterGroup",
                         "rds:CreateDBSubnetGroup",
                         "rds:CreateEventSubscription",
+                        "rds:CreateGlobalCluster",
                         "rds:DeleteDBCluster",
+                        "rds:DeleteDBClusterEndpoint",
                         "rds:DeleteDBClusterParameterGroup",
                         "rds:DeleteDBClusterSnapshot",
                         "rds:DeleteDBInstance",
                         "rds:DeleteDBParameterGroup",
                         "rds:DeleteDBSubnetGroup",
                         "rds:DeleteEventSubscription",
+                        "rds:DeleteGlobalCluster",
+                        "rds:DescribeDBClusterEndpoints",
                         "rds:DescribeAccountAttributes",
                         "rds:DescribeCertificates",
                         "rds:DescribeDBClusterParameterGroups",
@@ -61,29 +66,36 @@
                         "rds:DescribeEventCategories",
                         "rds:DescribeEventSubscriptions",
                         "rds:DescribeEvents",
+                        "rds:DescribeGlobalClusters",
                         "rds:DescribeOptionGroups",
                         "rds:DescribeOrderableDBInstanceOptions",
                         "rds:DescribePendingMaintenanceActions",
                         "rds:DescribeValidDBInstanceModifications",
                         "rds:DownloadDBLogFilePortion",
                         "rds:FailoverDBCluster",
+                        "rds:FailoverGlobalCluster",
                         "rds:ListTagsForResource",
                         "rds:ModifyDBCluster",
+                        "rds:ModifyDBClusterEndpoint",
                         "rds:ModifyDBClusterParameterGroup",
                         "rds:ModifyDBClusterSnapshotAttribute",
                         "rds:ModifyDBInstance",
                         "rds:ModifyDBParameterGroup",
                         "rds:ModifyDBSubnetGroup",
                         "rds:ModifyEventSubscription",
+                        "rds:ModifyGlobalCluster",
                         "rds:PromoteReadReplicaDBCluster",
                         "rds:RebootDBInstance",
+                        "rds:RemoveFromGlobalCluster",
                         "rds:RemoveRoleFromDBCluster",
                         "rds:RemoveSourceIdentifierFromSubscription",
                         "rds:RemoveTagsFromResource",
                         "rds:ResetDBClusterParameterGroup",
                         "rds:ResetDBParameterGroup",
                         "rds:RestoreDBClusterFromSnapshot",
-                        "rds:RestoreDBClusterToPointInTime"
+                        "rds:RestoreDBClusterToPointInTime",
+                        "rds:StartDBCluster",
+                        "rds:StopDBCluster"
                     ],
                     "Effect": "Allow",
                     "Resource": [
@@ -134,11 +146,20 @@
                             "iam:AWSServiceName": "rds.amazonaws.com"
                         }
                     }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "neptune-db:*"
+                    ],
+                    "Resource": [
+                        "*"
+                    ]
                 }
             ]
         },
-        "VersionId": "v5",
+        "VersionId": "v6",
         "IsDefaultVersion": true,
-        "CreateDate": "2020-09-02T17:24:56Z"
+        "CreateDate": "2022-07-28T19:58:27Z"
     }
 }
