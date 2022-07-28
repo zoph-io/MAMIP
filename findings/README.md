@@ -1,10 +1,10 @@
 ## AWS Access Analyzer - Findings - 2022-07-28
 
 - Policies analyzed: `961`
-- Errors: `20`
+- Errors: `18`
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AWSNetworkManagerCloudWANServiceRolePolicy`](./AWSNetworkManagerCloudWANServiceRolePolicy.json)
-  - [`AWSVendorInsightsAssessorFullAccess`](./AWSVendorInsightsAssessorFullAccess.json)
+  - [`AWSBackupServiceLinkedRolePolicyForBackup`](./AWSBackupServiceLinkedRolePolicyForBackup.json)
   - [`AWSNetworkManagerServiceRolePolicy`](./AWSNetworkManagerServiceRolePolicy.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
 - Sec_Warnings: `11`

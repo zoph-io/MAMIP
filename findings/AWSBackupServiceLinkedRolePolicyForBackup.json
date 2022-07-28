@@ -1,0 +1,38 @@
+[
+    {
+        "findingDetails": "The service sysops-sap:GetOperation specified in the action does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_SERVICE_IN_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 22
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 0
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 3831,
+                        "line": 1,
+                        "offset": 3831
+                    },
+                    "start": {
+                        "column": 3806,
+                        "line": 1,
+                        "offset": 3806
+                    }
+                }
+            }
+        ]
+    }
+]
