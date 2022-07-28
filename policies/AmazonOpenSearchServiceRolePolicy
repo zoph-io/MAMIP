@@ -96,11 +96,19 @@
                         "ec2:DescribeTags"
                     ],
                     "Resource": "*"
+                },
+                {
+                    "Sid": "Stmt1480452973196",
+                    "Effect": "Allow",
+                    "Action": [
+                        "acm:DescribeCertificate"
+                    ],
+                    "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v3",
+        "VersionId": "v4",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-09-09T10:43:21Z"
+        "CreateDate": "2022-07-28T13:10:24Z"
     }
 }
