@@ -208,6 +208,7 @@
                         "cloudwatch:Get*",
                         "cloudwatch:List*",
                         "codeartifact:DescribeDomain",
+                        "codeartifact:DescribePackage",
                         "codeartifact:DescribePackageVersion",
                         "codeartifact:DescribeRepository",
                         "codeartifact:GetAuthorizationToken",
@@ -639,8 +640,7 @@
                         "groundstation:ListMissionProfiles",
                         "groundstation:ListSatellites",
                         "groundstation:ListTagsForResource",
-                        "guardduty:DescribeOrganizationConfiguration",
-                        "guardduty:DescribePublishingDestination",
+                        "guardduty:Describe*",
                         "guardduty:Get*",
                         "guardduty:List*",
                         "health:Describe*",
@@ -1364,8 +1364,8 @@
                 }
             ]
         },
-        "VersionId": "v89",
+        "VersionId": "v90",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-07-25T21:19:31Z"
+        "CreateDate": "2022-07-29T19:19:00Z"
     }
 }
