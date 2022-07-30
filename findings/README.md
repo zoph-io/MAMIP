@@ -1,6 +1,6 @@
-## AWS Access Analyzer - Findings - 2022-07-29
+## AWS Access Analyzer - Findings - 2022-07-30
 
-- Policies analyzed: `961`
+- Policies analyzed: `962`
 - Errors: `18`
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AWSNetworkManagerCloudWANServiceRolePolicy`](./AWSNetworkManagerCloudWANServiceRolePolicy.json)
