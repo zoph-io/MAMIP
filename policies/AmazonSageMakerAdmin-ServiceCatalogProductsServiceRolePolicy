@@ -378,6 +378,27 @@
                 {
                     "Effect": "Allow",
                     "Action": [
+                        "sagemaker:AddTags"
+                    ],
+                    "Resource": [
+                        "arn:aws:sagemaker:*:*:endpoint/*",
+                        "arn:aws:sagemaker:*:*:endpoint-config/*",
+                        "arn:aws:sagemaker:*:*:model/*",
+                        "arn:aws:sagemaker:*:*:pipeline/*",
+                        "arn:aws:sagemaker:*:*:project/*",
+                        "arn:aws:sagemaker:*:*:model-package/*"
+                    ],
+                    "Condition": {
+                        "ForAllValues:StringLike": {
+                            "aws:TagKeys": [
+                                "sagemaker:*"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
                         "sagemaker:CreateImage",
                         "sagemaker:DeleteImage",
                         "sagemaker:DescribeImage",
@@ -411,8 +432,8 @@
                 }
             ]
         },
-        "VersionId": "v6",
+        "VersionId": "v7",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-07-14T19:36:42Z"
+        "CreateDate": "2022-08-02T19:12:55Z"
     }
 }
