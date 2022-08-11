@@ -154,6 +154,21 @@
                 {
                     "Effect": "Allow",
                     "Action": [
+                        "drs:DisconnectSourceServer"
+                    ],
+                    "Resource": "arn:aws:drs:*:*:source-server/*",
+                    "Condition": {
+                        "Bool": {
+                            "aws:ViaAWSService": "true"
+                        },
+                        "Null": {
+                            "aws:ResourceTag/AWSApplicationMigrationServiceConfiguredDR": "false"
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
                         "ssm:GetParameter",
                         "ssm:PutParameter"
                     ],
@@ -168,8 +183,8 @@
                 }
             ]
         },
-        "VersionId": "v4",
-        "IsDefaultVersion": false,
-        "CreateDate": "2022-05-31T21:14:49Z"
+        "VersionId": "v5",
+        "IsDefaultVersion": true,
+        "CreateDate": "2022-08-11T16:08:08Z"
     }
 }
