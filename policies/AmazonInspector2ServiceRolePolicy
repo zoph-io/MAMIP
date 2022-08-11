@@ -82,10 +82,7 @@
                         "ssm:DescribeAssociation",
                         "ssm:DescribeInstanceInformation",
                         "ssm:ListAssociations",
-                        "ssm:ListResourceDataSync",
-                        "ssm:StartAssociationsOnce",
-                        "ssm:DeleteAssociation",
-                        "ssm:UpdateAssociation"
+                        "ssm:ListResourceDataSync"
                     ],
                     "Resource": "*"
                 },
@@ -93,12 +90,16 @@
                     "Sid": "GatherInventory",
                     "Effect": "Allow",
                     "Action": [
-                        "ssm:CreateAssociation"
+                        "ssm:CreateAssociation",
+                        "ssm:StartAssociationsOnce",
+                        "ssm:DeleteAssociation",
+                        "ssm:UpdateAssociation"
                     ],
                     "Resource": [
                         "arn:*:ec2:*:*:instance/*",
                         "arn:aws:ssm:*:*:document/AWS-GatherSoftwareInventory",
-                        "arn:*:ssm:*:*:managed-instance/*"
+                        "arn:*:ssm:*:*:managed-instance/*",
+                        "arn:*:ssm:*:*:association/*"
                     ]
                 },
                 {
@@ -129,8 +130,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-11-16T20:27:48Z"
+        "CreateDate": "2022-08-11T18:45:32Z"
     }
 }
