@@ -97,7 +97,7 @@
                     ],
                     "Resource": [
                         "arn:*:ec2:*:*:instance/*",
-                        "arn:aws:ssm:*:*:document/AWS-GatherSoftwareInventory",
+                        "arn:*:ssm:*:*:document/AWS-GatherSoftwareInventory",
                         "arn:*:ssm:*:*:managed-instance/*",
                         "arn:*:ssm:*:*:association/*"
                     ]
@@ -130,8 +130,8 @@
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-08-11T18:45:32Z"
+        "CreateDate": "2022-08-15T17:38:32Z"
     }
 }
