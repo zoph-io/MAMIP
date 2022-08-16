@@ -39,14 +39,18 @@
                         "rekognition:DescribeDataset",
                         "rekognition:UpdateDatasetEntries",
                         "rekognition:DistributeDatasetEntries",
-                        "rekognition:DeleteDataset"
+                        "rekognition:DeleteDataset",
+                        "rekognition:CopyProjectVersion",
+                        "rekognition:PutProjectPolicy",
+                        "rekognition:ListProjectPolicies",
+                        "rekognition:DeleteProjectPolicy"
                     ],
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v3",
+        "VersionId": "v4",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-11-03T02:53:05Z"
+        "CreateDate": "2022-08-16T20:20:43Z"
     }
 }

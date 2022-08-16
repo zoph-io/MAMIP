@@ -16,11 +16,21 @@
                         "account:GetAlternateContact"
                     ],
                     "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "iam:CreateServiceLinkedRole",
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:AWSServiceName": "organizations.amazonaws.com"
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-02-07T18:26:04Z"
+        "CreateDate": "2022-08-16T20:42:36Z"
     }
 }
