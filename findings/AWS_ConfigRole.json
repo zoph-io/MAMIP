@@ -1,6 +1,6 @@
 [
     {
-        "findingDetails": "The 14502 characters in the identity policy, excluding whitespace, exceed the 10240 character maximum for inline and managed policies. We recommend that you use multiple granular policies.",
+        "findingDetails": "The 14659 characters in the identity policy, excluding whitespace, exceed the 10240 character maximum for inline and managed policies. We recommend that you use multiple granular policies.",
         "findingType": "WARNING",
         "issueCode": "POLICY_SIZE_EXCEEDS_IDENTITY_POLICY_QUOTA",
         "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-general-warning-policy-size-exceeds-identity-policy-quota",
@@ -9,9 +9,9 @@
                 "path": [],
                 "span": {
                     "end": {
-                        "column": 14991,
+                        "column": 15154,
                         "line": 1,
-                        "offset": 14991
+                        "offset": 15154
                     },
                     "start": {
                         "column": 0,
@@ -40,103 +40,19 @@
                         "value": "Action"
                     },
                     {
-                        "index": 110
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 3531,
-                        "line": 1,
-                        "offset": 3531
-                    },
-                    "start": {
-                        "column": 3516,
-                        "line": 1,
-                        "offset": 3516
-                    }
-                }
-            },
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 0
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 111
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 3574,
-                        "line": 1,
-                        "offset": 3574
-                    },
-                    "start": {
-                        "column": 3533,
-                        "line": 1,
-                        "offset": 3533
-                    }
-                }
-            },
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 0
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 112
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 3608,
-                        "line": 1,
-                        "offset": 3608
-                    },
-                    "start": {
-                        "column": 3576,
-                        "line": 1,
-                        "offset": 3576
-                    }
-                }
-            },
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 0
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
                         "index": 113
                     }
                 ],
                 "span": {
                     "end": {
-                        "column": 3635,
+                        "column": 3602,
                         "line": 1,
-                        "offset": 3635
+                        "offset": 3602
                     },
                     "start": {
-                        "column": 3610,
+                        "column": 3587,
                         "line": 1,
-                        "offset": 3610
+                        "offset": 3587
                     }
                 }
             },
@@ -157,14 +73,14 @@
                 ],
                 "span": {
                     "end": {
-                        "column": 3657,
+                        "column": 3645,
                         "line": 1,
-                        "offset": 3657
+                        "offset": 3645
                     },
                     "start": {
-                        "column": 3637,
+                        "column": 3604,
                         "line": 1,
-                        "offset": 3637
+                        "offset": 3604
                     }
                 }
             },
@@ -185,14 +101,14 @@
                 ],
                 "span": {
                     "end": {
-                        "column": 3684,
+                        "column": 3679,
                         "line": 1,
-                        "offset": 3684
+                        "offset": 3679
                     },
                     "start": {
-                        "column": 3659,
+                        "column": 3647,
                         "line": 1,
-                        "offset": 3659
+                        "offset": 3647
                     }
                 }
             },
@@ -213,14 +129,14 @@
                 ],
                 "span": {
                     "end": {
-                        "column": 3715,
+                        "column": 3706,
                         "line": 1,
-                        "offset": 3715
+                        "offset": 3706
                     },
                     "start": {
-                        "column": 3686,
+                        "column": 3681,
                         "line": 1,
-                        "offset": 3686
+                        "offset": 3681
                     }
                 }
             },
@@ -241,14 +157,14 @@
                 ],
                 "span": {
                     "end": {
-                        "column": 3748,
+                        "column": 3728,
                         "line": 1,
-                        "offset": 3748
+                        "offset": 3728
                     },
                     "start": {
-                        "column": 3717,
+                        "column": 3708,
                         "line": 1,
-                        "offset": 3717
+                        "offset": 3708
                     }
                 }
             },
@@ -269,14 +185,14 @@
                 ],
                 "span": {
                     "end": {
-                        "column": 3779,
+                        "column": 3755,
                         "line": 1,
-                        "offset": 3779
+                        "offset": 3755
                     },
                     "start": {
-                        "column": 3750,
+                        "column": 3730,
                         "line": 1,
-                        "offset": 3750
+                        "offset": 3730
                     }
                 }
             },
@@ -297,14 +213,98 @@
                 ],
                 "span": {
                     "end": {
-                        "column": 3802,
+                        "column": 3786,
                         "line": 1,
-                        "offset": 3802
+                        "offset": 3786
                     },
                     "start": {
-                        "column": 3781,
+                        "column": 3757,
                         "line": 1,
-                        "offset": 3781
+                        "offset": 3757
+                    }
+                }
+            },
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 120
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 3819,
+                        "line": 1,
+                        "offset": 3819
+                    },
+                    "start": {
+                        "column": 3788,
+                        "line": 1,
+                        "offset": 3788
+                    }
+                }
+            },
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 121
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 3850,
+                        "line": 1,
+                        "offset": 3850
+                    },
+                    "start": {
+                        "column": 3821,
+                        "line": 1,
+                        "offset": 3821
+                    }
+                }
+            },
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 122
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 3873,
+                        "line": 1,
+                        "offset": 3873
+                    },
+                    "start": {
+                        "column": 3852,
+                        "line": 1,
+                        "offset": 3852
                     }
                 }
             }
@@ -328,19 +328,19 @@
                         "value": "Action"
                     },
                     {
-                        "index": 329
+                        "index": 332
                     }
                 ],
                 "span": {
                     "end": {
-                        "column": 10311,
+                        "column": 10382,
                         "line": 1,
-                        "offset": 10311
+                        "offset": 10382
                     },
                     "start": {
-                        "column": 10280,
+                        "column": 10351,
                         "line": 1,
-                        "offset": 10280
+                        "offset": 10351
                     }
                 }
             },
@@ -356,19 +356,19 @@
                         "value": "Action"
                     },
                     {
-                        "index": 330
+                        "index": 333
                     }
                 ],
                 "span": {
                     "end": {
-                        "column": 10344,
+                        "column": 10415,
                         "line": 1,
-                        "offset": 10344
+                        "offset": 10415
                     },
                     "start": {
-                        "column": 10313,
+                        "column": 10384,
                         "line": 1,
-                        "offset": 10313
+                        "offset": 10384
                     }
                 }
             }
