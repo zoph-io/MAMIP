@@ -1,6 +1,6 @@
 ## AWS Access Analyzer - Findings - 2022-08-23
 
-- Policies analyzed: `967`
+- Policies analyzed: `968`
 - Errors: `17`
   - [`AmazonRekognitionCustomLabelsFullAccess`](./AmazonRekognitionCustomLabelsFullAccess.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
