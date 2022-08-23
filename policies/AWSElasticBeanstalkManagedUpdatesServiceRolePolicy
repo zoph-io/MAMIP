@@ -62,7 +62,9 @@
                         "elasticloadbalancing:Describe*",
                         "logs:DescribeLogGroups",
                         "sns:GetTopicAttributes",
-                        "sns:ListSubscriptionsByTopic"
+                        "sns:ListSubscriptionsByTopic",
+                        "rds:DescribeDBEngineVersions",
+                        "rds:DescribeDBInstances"
                     ],
                     "Resource": "*"
                 },
@@ -182,11 +184,33 @@
                         "sns:CreateTopic"
                     ],
                     "Resource": "arn:aws:sns:*:*:ElasticBeanstalkNotifications-Environment-*"
+                },
+                {
+                    "Sid": "EC2LaunchTemplate",
+                    "Effect": "Allow",
+                    "Action": [
+                        "ec2:CreateLaunchTemplate",
+                        "ec2:DeleteLaunchTemplate",
+                        "ec2:CreateLaunchTemplateVersion",
+                        "ec2:DeleteLaunchTemplateVersions"
+                    ],
+                    "Resource": "arn:aws:ec2:*:*:launch-template/*"
+                },
+                {
+                    "Sid": "AllowLaunchTemplateRunInstances",
+                    "Effect": "Allow",
+                    "Action": "ec2:RunInstances",
+                    "Resource": "*",
+                    "Condition": {
+                        "ArnLike": {
+                            "ec2:LaunchTemplate": "arn:aws:ec2:*:*:launch-template/*"
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v5",
-        "IsDefaultVersion": false,
-        "CreateDate": "2020-12-11T18:21:32Z"
+        "VersionId": "v6",
+        "IsDefaultVersion": true,
+        "CreateDate": "2022-08-23T18:07:08Z"
     }
 }
