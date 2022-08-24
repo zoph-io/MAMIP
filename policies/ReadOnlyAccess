@@ -398,6 +398,7 @@
                         "dynamodb:Scan",
                         "ec2:Describe*",
                         "ec2:Get*",
+                        "ec2:ListImagesInRecycleBin",
                         "ec2:ListSnapshotsInRecycleBin",
                         "ec2:SearchLocalGatewayRoutes",
                         "ec2:SearchTransitGatewayRoutes",
@@ -1064,6 +1065,27 @@
                         "networkmanager:ListCoreNetworkPolicyVersions",
                         "networkmanager:ListCoreNetworks",
                         "networkmanager:ListTagsForResource",
+                        "nimble:GetEula",
+                        "nimble:GetFeatureMap",
+                        "nimble:GetLaunchProfile",
+                        "nimble:GetLaunchProfileDetails",
+                        "nimble:GetLaunchProfileInitialization",
+                        "nimble:GetLaunchProfileMember",
+                        "nimble:GetStreamingImage",
+                        "nimble:GetStreamingSession",
+                        "nimble:GetStudio",
+                        "nimble:GetStudioComponent",
+                        "nimble:GetStudioMember",
+                        "nimble:ListEulaAcceptances",
+                        "nimble:ListEulas",
+                        "nimble:ListLaunchProfileMembers",
+                        "nimble:ListLaunchProfiles",
+                        "nimble:ListStreamingImages",
+                        "nimble:ListStreamingSessions",
+                        "nimble:ListStudioComponents",
+                        "nimble:ListStudioMembers",
+                        "nimble:ListStudios",
+                        "nimble:ListTagsForResource",
                         "opsworks-cm:Describe*",
                         "opsworks-cm:List*",
                         "opsworks:Describe*",
@@ -1364,8 +1386,8 @@
                 }
             ]
         },
-        "VersionId": "v90",
+        "VersionId": "v91",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-07-29T19:19:00Z"
+        "CreateDate": "2022-08-24T20:17:43Z"
     }
 }
