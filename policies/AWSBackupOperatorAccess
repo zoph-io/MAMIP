@@ -182,11 +182,16 @@
                     "Effect": "Allow",
                     "Action": "backup-gateway:GetGateway",
                     "Resource": "arn:aws:backup-gateway:*:*:gateway/*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "cloudwatch:GetMetricData",
+                    "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v10",
-        "IsDefaultVersion": false,
-        "CreateDate": "2022-06-01T17:35:31Z"
+        "VersionId": "v11",
+        "IsDefaultVersion": true,
+        "CreateDate": "2022-08-24T22:03:30Z"
     }
 }
