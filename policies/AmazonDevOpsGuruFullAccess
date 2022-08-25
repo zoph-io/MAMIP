@@ -74,11 +74,24 @@
                         "rds:DescribeDBInstances"
                     ],
                     "Resource": "*"
+                },
+                {
+                    "Sid": "CloudWatchLogsFilterLogEventsAccess",
+                    "Effect": "Allow",
+                    "Action": [
+                        "logs:FilterLogEvents"
+                    ],
+                    "Resource": "arn:aws:logs:*:*:log-group:*",
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/DevOps-Guru-Analysis": "true"
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-11-26T20:39:13Z"
+        "CreateDate": "2022-08-25T18:23:41Z"
     }
 }

@@ -83,11 +83,24 @@
                         "pi:DescribeDimensionKeys"
                     ],
                     "Resource": "*"
+                },
+                {
+                    "Sid": "CloudWatchLogsFilterLogEventsAccess",
+                    "Effect": "Allow",
+                    "Action": [
+                        "logs:FilterLogEvents"
+                    ],
+                    "Resource": "arn:aws:logs:*:*:log-group:*",
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/DevOps-Guru-Analysis": "true"
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-12-17T18:43:09Z"
+        "CreateDate": "2022-08-25T18:18:53Z"
     }
 }
