@@ -1,6 +1,6 @@
 ## AWS Access Analyzer - Findings - 2022-08-25
 
-- Policies analyzed: `970`
+- Policies analyzed: `972`
 - Errors: `12`
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
