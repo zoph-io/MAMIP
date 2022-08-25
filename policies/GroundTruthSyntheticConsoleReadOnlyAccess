@@ -1,0 +1,21 @@
+{
+    "PolicyVersion": {
+        "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "sagemaker-groundtruth-synthetic:List*",
+                        "sagemaker-groundtruth-synthetic:Get*",
+                        "s3:ListBucket"
+                    ],
+                    "Resource": "*"
+                }
+            ]
+        },
+        "VersionId": "v1",
+        "IsDefaultVersion": true,
+        "CreateDate": "2022-08-25T15:58:49Z"
+    }
+}
