@@ -14,7 +14,11 @@
                         "apigateway:SetWebACL",
                         "appsync:SetWebACL",
                         "logs:DescribeResourcePolicies",
-                        "logs:DescribeLogGroups"
+                        "logs:DescribeLogGroups",
+                        "cognito-idp:AssociateWebACL",
+                        "cognito-idp:DisassociateWebACL",
+                        "cognito-idp:ListResourcesForWebACL",
+                        "cognito-idp:GetWebACLForResource"
                     ],
                     "Resource": "*"
                 },
@@ -55,8 +59,8 @@
                 }
             ]
         },
-        "VersionId": "v7",
+        "VersionId": "v8",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-01-11T19:33:38Z"
+        "CreateDate": "2022-08-25T20:11:30Z"
     }
 }

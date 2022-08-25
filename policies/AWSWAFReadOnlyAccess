@@ -12,15 +12,17 @@
                         "wafv2:Get*",
                         "wafv2:List*",
                         "wafv2:Describe*",
-                        "wafv2:CheckCapacity"
+                        "wafv2:CheckCapacity",
+                        "cognito-idp:ListResourcesForWebACL",
+                        "cognito-idp:GetWebACLForResource"
                     ],
                     "Effect": "Allow",
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v4",
+        "VersionId": "v5",
         "IsDefaultVersion": true,
-        "CreateDate": "2020-06-22T22:38:54Z"
+        "CreateDate": "2022-08-25T20:12:57Z"
     }
 }
