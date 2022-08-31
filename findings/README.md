@@ -1,4 +1,4 @@
-## AWS Access Analyzer - Findings - 2022-08-30
+## AWS Access Analyzer - Findings - 2022-08-31
 
 - Policies analyzed: `973`
 - Errors: `12`
@@ -46,7 +46,7 @@
   - [`SystemAdministrator`](./SystemAdministrator.json)
   - [`AWSElasticBeanstalkWorkerTier`](./AWSElasticBeanstalkWorkerTier.json)
   - [`AWS_ConfigRole`](./AWS_ConfigRole.json)
-- Warnings: `13`
+- Warnings: `14`
   - [`AWSConfigServiceRolePolicy`](./AWSConfigServiceRolePolicy.json)
   - [`AdministratorAccess-Amplify`](./AdministratorAccess-Amplify.json)
   - [`IAMFullAccess`](./IAMFullAccess.json)
