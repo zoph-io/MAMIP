@@ -4,32 +4,34 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Effect": "Allow",
                     "Action": [
-                        "workspaces:CreateWorkspaces",
-                        "workspaces:DescribeWorkspaces",
-                        "workspaces:RebootWorkspaces",
-                        "workspaces:RebuildWorkspaces",
-                        "workspaces:TerminateWorkspaces",
-                        "workspaces:DescribeWorkspaceDirectories",
-                        "workspaces:DescribeWorkspaceBundles",
-                        "workspaces:ModifyWorkspaceProperties",
-                        "workspaces:StopWorkspaces",
-                        "workspaces:StartWorkspaces",
-                        "workspaces:DescribeWorkspacesConnectionStatus",
+                        "kms:DescribeKey",
+                        "kms:ListAliases",
+                        "kms:ListKeys",
                         "workspaces:CreateTags",
+                        "workspaces:CreateWorkspaces",
+                        "workspaces:CreateWorkspaceImage",
                         "workspaces:DeleteTags",
                         "workspaces:DescribeTags",
-                        "kms:ListKeys",
-                        "kms:ListAliases",
-                        "kms:DescribeKey"
+                        "workspaces:DescribeWorkspaceBundles",
+                        "workspaces:DescribeWorkspaceDirectories",
+                        "workspaces:DescribeWorkspaces",
+                        "workspaces:DescribeWorkspacesConnectionStatus",
+                        "workspaces:ModifyWorkspaceProperties",
+                        "workspaces:ModifySamlProperties",
+                        "workspaces:RebootWorkspaces",
+                        "workspaces:RebuildWorkspaces",
+                        "workspaces:StartWorkspaces",
+                        "workspaces:StopWorkspaces",
+                        "workspaces:TerminateWorkspaces"
                     ],
-                    "Effect": "Allow",
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2016-08-18T23:08:42Z"
+        "CreateDate": "2022-08-31T18:28:53Z"
     }
 }
