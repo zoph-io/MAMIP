@@ -407,11 +407,32 @@
                         "amplify:UpdateBranch"
                     ],
                     "Resource": "*"
+                },
+                {
+                    "Sid": "AmplifySSRViewLogGroups",
+                    "Effect": "Allow",
+                    "Action": "logs:DescribeLogGroups",
+                    "Resource": "arn:aws:logs:*:*:log-group:*"
+                },
+                {
+                    "Sid": "AmplifySSRCreateLogGroup",
+                    "Effect": "Allow",
+                    "Action": "logs:CreateLogGroup",
+                    "Resource": "arn:aws:logs:*:*:log-group:/aws/amplify/*"
+                },
+                {
+                    "Sid": "AmplifySSRPushLogs",
+                    "Effect": "Allow",
+                    "Action": [
+                        "logs:CreateLogStream",
+                        "logs:PutLogEvents"
+                    ],
+                    "Resource": "arn:aws:logs:*:*:log-group:/aws/amplify/*:log-stream:*"
                 }
             ]
         },
-        "VersionId": "v8",
+        "VersionId": "v9",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-04-13T22:42:11Z"
+        "CreateDate": "2022-08-30T23:24:53Z"
     }
 }
