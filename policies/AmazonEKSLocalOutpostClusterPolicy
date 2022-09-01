@@ -44,7 +44,8 @@
                         "arn:aws:ecr:*:*:repository/eks/eks-certificates-controller-public",
                         "arn:aws:ecr:*:*:repository/bottlerocket-admin",
                         "arn:aws:ecr:*:*:repository/bottlerocket-control-eks",
-                        "arn:aws:ecr:*:*:repository/diagnostics-collector-eks"
+                        "arn:aws:ecr:*:*:repository/diagnostics-collector-eks",
+                        "arn:aws:ecr:*:*:repository/kubelet-config-updater"
                     ]
                 },
                 {
@@ -73,8 +74,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-08-24T21:56:47Z"
+        "CreateDate": "2022-09-01T16:30:43Z"
     }
 }
