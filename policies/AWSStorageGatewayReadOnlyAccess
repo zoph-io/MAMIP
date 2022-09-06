@@ -17,11 +17,17 @@
                         "ec2:DescribeSnapshots"
                     ],
                     "Resource": "*"
+                },
+                {
+                    "Sid": "fetchStorageGatewayParams",
+                    "Effect": "Allow",
+                    "Action": "ssm:GetParameters",
+                    "Resource": "arn:aws:ssm:*::parameter/aws/service/storagegateway/*"
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2015-02-06T18:41:10Z"
+        "CreateDate": "2022-09-06T20:24:17Z"
     }
 }

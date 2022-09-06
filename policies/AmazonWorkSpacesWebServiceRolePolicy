@@ -23,6 +23,23 @@
                 {
                     "Effect": "Allow",
                     "Action": [
+                        "ec2:CreateTags"
+                    ],
+                    "Resource": "arn:aws:ec2:*:*:network-interface/*",
+                    "Condition": {
+                        "StringEquals": {
+                            "ec2:CreateAction": "CreateNetworkInterface"
+                        },
+                        "ForAllValues:StringEquals": {
+                            "aws:TagKeys": [
+                                "WorkSpacesWebManaged"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
                         "cloudwatch:PutMetricData"
                     ],
                     "Resource": "*",
@@ -37,8 +54,8 @@
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-04-05T22:01:09Z"
+        "CreateDate": "2022-09-06T20:46:50Z"
     }
 }
