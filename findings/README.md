@@ -1,6 +1,6 @@
-## AWS Access Analyzer - Findings - 2022-09-06
+## AWS Access Analyzer - Findings - 2022-09-07
 
-- Policies analyzed: `973`
+- Policies analyzed: `972`
 - Errors: `12`
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
@@ -15,7 +15,7 @@
   - [`AWSElasticBeanstalkService`](./AWSElasticBeanstalkService.json)
   - [`AmazonDynamoDBFullAccesswithDataPipeline`](./AmazonDynamoDBFullAccesswithDataPipeline.json)
   - [`AdministratorAccess`](./AdministratorAccess.json)
-- Suggestions: `46`
+- Suggestions: `45`
   - [`AWSDeepLensLambdaFunctionAccessPolicy`](./AWSDeepLensLambdaFunctionAccessPolicy.json)
   - [`SupportUser`](./SupportUser.json)
   - [`AWSConfigServiceRolePolicy`](./AWSConfigServiceRolePolicy.json)
@@ -63,7 +63,7 @@
 - Fails: `2`
   - [`AWSSupportServiceRolePolicy`](./fails.txt)
   - [`ReadOnlyAccess`](./fails.txt)
-- Deprecated: `44`
+- Deprecated: `45`
   - [`CheesepuffsServiceRolePolicy`](../policies/CheesepuffsServiceRolePolicy)
   - [`AmazonConnectFullAccess`](../policies/AmazonConnectFullAccess)
   - [`AWSBackupOperatorPolicy`](../policies/AWSBackupOperatorPolicy)
@@ -79,6 +79,7 @@
   - [`AmazonMachineLearningRoleforRedshiftDataSource`](../policies/AmazonMachineLearningRoleforRedshiftDataSource)
   - [`AWSECRPullThroughCacheServiceRolePolicy`](../policies/AWSECRPullThroughCacheServiceRolePolicy)
   - [`AmazonApplicationWizardFullaccess`](../policies/AmazonApplicationWizardFullaccess)
+  - [`AWSCloudTrailReadOnlyAccess`](../policies/AWSCloudTrailReadOnlyAccess)
   - [`AWSBackupAdminPolicy`](../policies/AWSBackupAdminPolicy)
   - [`AWSOpsWorksRole`](../policies/AWSOpsWorksRole)
   - [`AmazonWorkLinkReadOnly`](../policies/AmazonWorkLinkReadOnly)
