@@ -173,15 +173,16 @@
                     "Condition": {
                         "StringEquals": {
                             "cloudwatch:namespace": [
-                                "AWS/Redshift-Serverless"
+                                "AWS/Redshift-Serverless",
+                                "AWS/Redshift"
                             ]
                         }
                     }
                 }
             ]
         },
-        "VersionId": "v7",
+        "VersionId": "v8",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-06-01T00:34:09Z"
+        "CreateDate": "2022-09-07T20:27:51Z"
     }
 }
