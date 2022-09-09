@@ -1,9 +1,10 @@
-## AWS Access Analyzer - Findings - 2022-09-07
+## AWS Access Analyzer - Findings - 2022-09-09
 
-- Policies analyzed: `972`
-- Errors: `12`
+- Policies analyzed: `973`
+- Errors: `16`
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
+  - [`AmazonSageMakerCanvasFullAccess`](./AmazonSageMakerCanvasFullAccess.json)
   - [`AWSBackupServiceLinkedRolePolicyForBackup`](./AWSBackupServiceLinkedRolePolicyForBackup.json)
 - Sec_Warnings: `11`
   - [`AdministratorAccess-Amplify`](./AdministratorAccess-Amplify.json)
