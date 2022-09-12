@@ -26,11 +26,22 @@
                         "acm:DescribeCertificate"
                     ],
                     "Resource": "*"
+                },
+                {
+                    "Sid": "Stmt1480452973136",
+                    "Effect": "Allow",
+                    "Action": "cloudwatch:PutMetricData",
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "cloudwatch:namespace": "AWS/ES"
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v4",
+        "VersionId": "v5",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-08-02T15:31:35Z"
+        "CreateDate": "2022-09-12T15:01:51Z"
     }
 }
