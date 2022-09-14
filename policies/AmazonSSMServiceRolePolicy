@@ -14,6 +14,7 @@
                         "ssm:GetAutomationExecution",
                         "ssm:GetParameters",
                         "ssm:StartAutomationExecution",
+                        "ssm:StopAutomationExecution",
                         "ssm:ListTagsForResource",
                         "ssm:GetCalendarState"
                     ],
@@ -139,6 +140,11 @@
                 },
                 {
                     "Effect": "Allow",
+                    "Action": "cloudwatch:DescribeAlarms",
+                    "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
                     "Action": "iam:PassRole",
                     "Resource": "*",
                     "Condition": {
@@ -212,8 +218,8 @@
                 }
             ]
         },
-        "VersionId": "v13",
+        "VersionId": "v14",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-04-26T20:43:46Z"
+        "CreateDate": "2022-09-14T19:46:49Z"
     }
 }
