@@ -7,6 +7,7 @@
                     "Effect": "Allow",
                     "Action": [
                         "cloudwatch:DescribeAlarms",
+                        "cloudwatch:GetMetricData",
                         "ds:DescribeDirectories",
                         "ec2:DescribeNetworkInterfaceAttribute",
                         "ec2:DescribeSecurityGroups",
@@ -22,8 +23,8 @@
                 }
             ]
         },
-        "VersionId": "v3",
-        "IsDefaultVersion": false,
-        "CreateDate": "2021-06-08T12:21:09Z"
+        "VersionId": "v4",
+        "IsDefaultVersion": true,
+        "CreateDate": "2022-09-22T14:07:26Z"
     }
 }
