@@ -1,12 +1,13 @@
 ## AWS Access Analyzer - Findings - 2022-09-28
 
 - Policies analyzed: `978`
-- Errors: `17`
+- Errors: `18`
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
   - [`AWSSupportPlansReadOnlyAccess`](./AWSSupportPlansReadOnlyAccess.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AWSSupportPlansFullAccess`](./AWSSupportPlansFullAccess.json)
   - [`AWSBackupServiceLinkedRolePolicyForBackup`](./AWSBackupServiceLinkedRolePolicyForBackup.json)
+  - [`AWSMigrationHubStrategyCollector`](./AWSMigrationHubStrategyCollector.json)
 - Sec_Warnings: `11`
   - [`AmazonDynamoDBFullAccesswithDataPipeline`](./AmazonDynamoDBFullAccesswithDataPipeline.json)
   - [`AWSServiceRoleForAmazonEKSNodegroup`](./AWSServiceRoleForAmazonEKSNodegroup.json)
