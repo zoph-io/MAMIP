@@ -4,22 +4,23 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Effect": "Allow",
                     "Action": [
                         "sso:GetManagedApplicationInstance",
                         "sso:GetProfile",
                         "sso:ListProfiles",
+                        "sso:ListProfileAssociations",
                         "sso:AssociateProfile",
                         "sso:ListDirectoryAssociations",
                         "sso-directory:DescribeUsers",
                         "sso-directory:SearchUsers"
                     ],
-                    "Resource": "*",
-                    "Effect": "Allow"
+                    "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2020-12-02T19:06:08Z"
+        "CreateDate": "2022-09-29T20:38:15Z"
     }
 }
