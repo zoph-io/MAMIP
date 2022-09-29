@@ -43,7 +43,7 @@
                         "logs:PutLogEvents"
                     ],
                     "Resource": [
-                        "arn:aws:logs:*:*:log-group:/aws/fsx/*:log-group:*"
+                        "arn:aws:logs:*:*:log-group:/aws/fsx/*"
                     ]
                 },
                 {
@@ -73,11 +73,27 @@
                             ]
                         }
                     }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "ec2:DescribeSecurityGroups",
+                        "ec2:DescribeSubnets",
+                        "ec2:DescribeVpcs"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "aws:CalledVia": [
+                                "fsx.amazonaws.com"
+                            ]
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v3",
+        "VersionId": "v4",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-08-26T13:17:29Z"
+        "CreateDate": "2022-09-29T18:27:51Z"
     }
 }
