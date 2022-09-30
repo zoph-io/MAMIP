@@ -1,6 +1,6 @@
-## AWS Access Analyzer - Findings - 2022-09-29
+## AWS Access Analyzer - Findings - 2022-09-30
 
-- Policies analyzed: `978`
+- Policies analyzed: `979`
 - Errors: `18`
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
   - [`AWSSupportPlansReadOnlyAccess`](./AWSSupportPlansReadOnlyAccess.json)
@@ -18,7 +18,7 @@
   - [`IAMFullAccess`](./IAMFullAccess.json)
   - [`AmazonElasticMapReduceFullAccess`](./AmazonElasticMapReduceFullAccess.json)
   - [`AWSDataPipelineRole`](./AWSDataPipelineRole.json)
-- Suggestions: `45`
+- Suggestions: `46`
   - [`AWSDeepRacerFullAccess`](./AWSDeepRacerFullAccess.json)
   - [`AmazonLaunchWizard_Fullaccess`](./AmazonLaunchWizard_Fullaccess.json)
   - [`AWSElasticBeanstalkCustomPlatformforEC2Role`](./AWSElasticBeanstalkCustomPlatformforEC2Role.json)
@@ -35,6 +35,7 @@
   - [`SupportUser`](./SupportUser.json)
   - [`AmazonRedshiftAllCommandsFullAccess`](./AmazonRedshiftAllCommandsFullAccess.json)
   - [`AWSConfigServiceRolePolicy`](./AWSConfigServiceRolePolicy.json)
+  - [`AppIntegrationsServiceLinkedRolePolicy`](./AppIntegrationsServiceLinkedRolePolicy.json)
   - [`AWSElasticBeanstalkRoleCore`](./AWSElasticBeanstalkRoleCore.json)
   - [`AWSElasticBeanstalkWorkerTier`](./AWSElasticBeanstalkWorkerTier.json)
   - [`AWSBugBustServiceRolePolicy`](./AWSBugBustServiceRolePolicy.json)
