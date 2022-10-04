@@ -1,14 +1,11 @@
-## AWS Access Analyzer - Findings - 2022-09-30
+## AWS Access Analyzer - Findings - 2022-10-04
 
-- Policies analyzed: `979`
-- Errors: `18`
+- Policies analyzed: `978`
+- Errors: `12`
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
-  - [`AWSSupportPlansReadOnlyAccess`](./AWSSupportPlansReadOnlyAccess.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
-  - [`AWSSupportPlansFullAccess`](./AWSSupportPlansFullAccess.json)
   - [`AWSBackupServiceLinkedRolePolicyForBackup`](./AWSBackupServiceLinkedRolePolicyForBackup.json)
-  - [`AWSMigrationHubStrategyCollector`](./AWSMigrationHubStrategyCollector.json)
-- Sec_Warnings: `11`
+- Sec_Warnings: `10`
   - [`AmazonDynamoDBFullAccesswithDataPipeline`](./AmazonDynamoDBFullAccesswithDataPipeline.json)
   - [`AWSServiceRoleForAmazonEKSNodegroup`](./AWSServiceRoleForAmazonEKSNodegroup.json)
   - [`AdministratorAccess`](./AdministratorAccess.json)
@@ -17,8 +14,7 @@
   - [`AdministratorAccess-Amplify`](./AdministratorAccess-Amplify.json)
   - [`IAMFullAccess`](./IAMFullAccess.json)
   - [`AmazonElasticMapReduceFullAccess`](./AmazonElasticMapReduceFullAccess.json)
-  - [`AWSDataPipelineRole`](./AWSDataPipelineRole.json)
-- Suggestions: `46`
+- Suggestions: `45`
   - [`AWSDeepRacerFullAccess`](./AWSDeepRacerFullAccess.json)
   - [`AmazonLaunchWizard_Fullaccess`](./AmazonLaunchWizard_Fullaccess.json)
   - [`AWSElasticBeanstalkCustomPlatformforEC2Role`](./AWSElasticBeanstalkCustomPlatformforEC2Role.json)
@@ -43,7 +39,6 @@
   - [`AmazonElasticMapReduceFullAccess`](./AmazonElasticMapReduceFullAccess.json)
   - [`SecurityAudit`](./SecurityAudit.json)
   - [`AmazonAppStreamServiceAccess`](./AmazonAppStreamServiceAccess.json)
-  - [`AWSDataPipelineRole`](./AWSDataPipelineRole.json)
   - [`NeptuneConsoleFullAccess`](./NeptuneConsoleFullAccess.json)
   - [`AWSDeepLensLambdaFunctionAccessPolicy`](./AWSDeepLensLambdaFunctionAccessPolicy.json)
   - [`AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy.json)
@@ -67,7 +62,7 @@
 - Fails: `2`
   - [`AWSSupportServiceRolePolicy`](./fails.txt)
   - [`ReadOnlyAccess`](./fails.txt)
-- Deprecated: `45`
+- Deprecated: `46`
   - [`AWSOpsWorksRegisterCLI`](../policies/AWSOpsWorksRegisterCLI)
   - [`AWSRoboMakerFullAccess`](../policies/AWSRoboMakerFullAccess)
   - [`ServiceCatalogAdminReadOnlyAccess`](../policies/ServiceCatalogAdminReadOnlyAccess)
@@ -108,6 +103,7 @@
   - [`AWSCodeArtifactReadOnlyAccess.json`](../policies/AWSCodeArtifactReadOnlyAccess.json)
   - [`AmazonMachineLearningRoleforRedshiftDataSource`](../policies/AmazonMachineLearningRoleforRedshiftDataSource)
   - [`AWSLambdaReplicatorInternal`](../policies/AWSLambdaReplicatorInternal)
+  - [`AWSDataPipelineRole`](../policies/AWSDataPipelineRole)
   - [`AWSOpsWorksRole`](../policies/AWSOpsWorksRole)
   - [`AmazonLaunchWizardFullaccess`](../policies/AmazonLaunchWizardFullaccess)
   - [`AmazonEC2ReportsAccess`](../policies/AmazonEC2ReportsAccess)
