@@ -23,7 +23,6 @@
                         "ec2:DescribeTransitGatewayVpcAttachments",
                         "ec2:DescribeTransitGateways",
                         "ec2:DescribeTags",
-                        "ec2:DescribeTransitGateways",
                         "ec2:DescribeAccountAttributes",
                         "ec2:DescribeInternetGateways"
                     ],
@@ -96,9 +95,10 @@
                 {
                     "Effect": "Allow",
                     "Action": [
+                        "elasticloadbalancing:AddTags",
                         "elasticloadbalancing:CreateLoadBalancer"
                     ],
-                    "Resource": "*",
+                    "Resource": "arn:*:elasticloadbalancing:*:*:loadbalancer/net/refactor-spaces-nlb-*",
                     "Condition": {
                         "Null": {
                             "aws:RequestTag/refactor-spaces:application-id": "false"
@@ -246,8 +246,8 @@
                 }
             ]
         },
-        "VersionId": "v3",
+        "VersionId": "v4",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-03-21T17:41:49Z"
+        "CreateDate": "2022-10-06T19:05:50Z"
     }
 }
