@@ -1,6 +1,6 @@
 [
     {
-        "findingDetails": "The 12263 characters in the identity policy, excluding whitespace, exceed the 10240 character maximum for inline and managed policies. We recommend that you use multiple granular policies.",
+        "findingDetails": "The 13151 characters in the identity policy, excluding whitespace, exceed the 10240 character maximum for inline and managed policies. We recommend that you use multiple granular policies.",
         "findingType": "WARNING",
         "issueCode": "POLICY_SIZE_EXCEEDS_IDENTITY_POLICY_QUOTA",
         "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-general-warning-policy-size-exceeds-identity-policy-quota",
@@ -9,218 +9,14 @@
                 "path": [],
                 "span": {
                     "end": {
-                        "column": 12698,
+                        "column": 13620,
                         "line": 1,
-                        "offset": 12698
+                        "offset": 13620
                     },
                     "start": {
                         "column": 0,
                         "line": 1,
                         "offset": 0
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "findingDetails": "The 7 action(s) are redundant because they provide similar permissions. Update the policy to remove the redundant action such as: ec2:DescribeTransitGatewayPeeringAttachments.",
-        "findingType": "SUGGESTION",
-        "issueCode": "REDUNDANT_ACTION",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-action",
-        "locations": [
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 0
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 117
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 3458,
-                        "line": 1,
-                        "offset": 3458
-                    },
-                    "start": {
-                        "column": 3443,
-                        "line": 1,
-                        "offset": 3443
-                    }
-                }
-            },
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 0
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 118
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 3499,
-                        "line": 1,
-                        "offset": 3499
-                    },
-                    "start": {
-                        "column": 3460,
-                        "line": 1,
-                        "offset": 3460
-                    }
-                }
-            },
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 0
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 119
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 3545,
-                        "line": 1,
-                        "offset": 3545
-                    },
-                    "start": {
-                        "column": 3501,
-                        "line": 1,
-                        "offset": 3501
-                    }
-                }
-            },
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 0
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 120
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 3593,
-                        "line": 1,
-                        "offset": 3593
-                    },
-                    "start": {
-                        "column": 3547,
-                        "line": 1,
-                        "offset": 3547
-                    }
-                }
-            },
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 0
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 121
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 3634,
-                        "line": 1,
-                        "offset": 3634
-                    },
-                    "start": {
-                        "column": 3595,
-                        "line": 1,
-                        "offset": 3595
-                    }
-                }
-            },
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 0
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 122
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 3678,
-                        "line": 1,
-                        "offset": 3678
-                    },
-                    "start": {
-                        "column": 3636,
-                        "line": 1,
-                        "offset": 3636
-                    }
-                }
-            },
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 0
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 123
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 3709,
-                        "line": 1,
-                        "offset": 3709
-                    },
-                    "start": {
-                        "column": 3680,
-                        "line": 1,
-                        "offset": 3680
                     }
                 }
             }
@@ -244,19 +40,19 @@
                         "value": "Action"
                     },
                     {
-                        "index": 153
+                        "index": 151
                     }
                 ],
                 "span": {
                     "end": {
-                        "column": 4652,
+                        "column": 4502,
                         "line": 1,
-                        "offset": 4652
+                        "offset": 4502
                     },
                     "start": {
-                        "column": 4624,
+                        "column": 4474,
                         "line": 1,
-                        "offset": 4624
+                        "offset": 4474
                     }
                 }
             },
@@ -272,19 +68,147 @@
                         "value": "Action"
                     },
                     {
-                        "index": 154
+                        "index": 152
                     }
                 ],
                 "span": {
                     "end": {
-                        "column": 4693,
+                        "column": 4543,
                         "line": 1,
-                        "offset": 4693
+                        "offset": 4543
                     },
                     "start": {
-                        "column": 4654,
+                        "column": 4504,
                         "line": 1,
-                        "offset": 4654
+                        "offset": 4504
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The 2 action(s) are redundant because they provide similar permissions. Update the policy to remove the redundant action such as: elasticloadbalancing:Describe*.",
+        "findingType": "SUGGESTION",
+        "issueCode": "REDUNDANT_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 157
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 4755,
+                        "line": 1,
+                        "offset": 4755
+                    },
+                    "start": {
+                        "column": 4723,
+                        "line": 1,
+                        "offset": 4723
+                    }
+                }
+            },
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 163
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 4987,
+                        "line": 1,
+                        "offset": 4987
+                    },
+                    "start": {
+                        "column": 4955,
+                        "line": 1,
+                        "offset": 4955
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The 2 action(s) are redundant because they provide similar permissions. Update the policy to remove the redundant action such as: inspector2:GetFindingsReportStatus.",
+        "findingType": "SUGGESTION",
+        "issueCode": "REDUNDANT_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 211
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 6213,
+                        "line": 1,
+                        "offset": 6213
+                    },
+                    "start": {
+                        "column": 6177,
+                        "line": 1,
+                        "offset": 6177
+                    }
+                }
+            },
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 220
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 6508,
+                        "line": 1,
+                        "offset": 6508
+                    },
+                    "start": {
+                        "column": 6472,
+                        "line": 1,
+                        "offset": 6472
                     }
                 }
             }
@@ -313,14 +237,14 @@
                 ],
                 "span": {
                     "end": {
-                        "column": 12477,
+                        "column": 13399,
                         "line": 1,
-                        "offset": 12477
+                        "offset": 13399
                     },
                     "start": {
-                        "column": 12430,
+                        "column": 13352,
                         "line": 1,
-                        "offset": 12430
+                        "offset": 13352
                     }
                 }
             },
@@ -341,14 +265,14 @@
                 ],
                 "span": {
                     "end": {
-                        "column": 12536,
+                        "column": 13458,
                         "line": 1,
-                        "offset": 12536
+                        "offset": 13458
                     },
                     "start": {
-                        "column": 12479,
+                        "column": 13401,
                         "line": 1,
-                        "offset": 12479
+                        "offset": 13401
                     }
                 }
             }

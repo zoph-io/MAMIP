@@ -1,4 +1,4 @@
-## AWS Access Analyzer - Findings - 2022-10-04
+## AWS Access Analyzer - Findings - 2022-10-06
 
 - Policies analyzed: `978`
 - Errors: `12`
@@ -43,7 +43,6 @@
   - [`AWSDeepLensLambdaFunctionAccessPolicy`](./AWSDeepLensLambdaFunctionAccessPolicy.json)
   - [`AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy.json)
   - [`AWSMigrationHubOrchestratorConsoleFullAccess`](./AWSMigrationHubOrchestratorConsoleFullAccess.json)
-  - [`AWSMigrationHubRefactorSpacesFullAccess`](./AWSMigrationHubRefactorSpacesFullAccess.json)
   - [`AWSGlueConsoleFullAccess`](./AWSGlueConsoleFullAccess.json)
 - Warnings: `14`
   - [`AmazonLaunchWizard_Fullaccess`](./AmazonLaunchWizard_Fullaccess.json)
