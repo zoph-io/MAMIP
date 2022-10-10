@@ -371,11 +371,20 @@
                         "arn:aws:logs:*:*:log-group:*",
                         "arn:aws:logs:*:*:destination:AmazonCloudWatch-ApplicationInsights-LogIngestionDestination*"
                     ]
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "elasticfilesystem:DescribeFileSystems"
+                    ],
+                    "Resource": [
+                        "*"
+                    ]
                 }
             ]
         },
-        "VersionId": "v20",
+        "VersionId": "v21",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-09-03T17:23:50Z"
+        "CreateDate": "2022-10-10T19:01:17Z"
     }
 }
