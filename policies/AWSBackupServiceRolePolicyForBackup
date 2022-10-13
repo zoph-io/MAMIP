@@ -304,11 +304,59 @@
                         "backup-gateway:ListTagsForResource"
                     ],
                     "Resource": "arn:aws:backup-gateway:*:*:vm/*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "cloudformation:GetTemplate",
+                        "cloudformation:DescribeStacks",
+                        "cloudformation:ListStackResources"
+                    ],
+                    "Resource": "arn:aws:cloudformation:*:*:stack/*/*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "redshift:CreateClusterSnapshot",
+                        "redshift:DescribeClusterSnapshots",
+                        "redshift:DescribeTags"
+                    ],
+                    "Resource": [
+                        "arn:aws:redshift:*:*:snapshot:*/*",
+                        "arn:aws:redshift:*:*:cluster:*"
+                    ]
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "redshift:DeleteClusterSnapshot"
+                    ],
+                    "Resource": [
+                        "arn:aws:redshift:*:*:snapshot:*/*"
+                    ]
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "redshift:DescribeClusters"
+                    ],
+                    "Resource": [
+                        "arn:aws:redshift:*:*:cluster:*"
+                    ]
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "redshift:CreateTags"
+                    ],
+                    "Resource": [
+                        "arn:aws:redshift:*:*:snapshot:*/*"
+                    ]
                 }
             ]
         },
-        "VersionId": "v12",
+        "VersionId": "v13",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-05-17T17:31:44Z"
+        "CreateDate": "2022-10-12T22:14:45Z"
     }
 }
