@@ -36,6 +36,13 @@ jobs:
       - name: Who Am I?
         run: aws sts get-caller-identity
 
+      - name: pull-request
+        uses: repo-sync/pull-request@v2
+        with:
+          pr_reviewer: "z0ph"
+          pr_assignee: "z0ph"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: "Terraform Init"
         uses: hashicorp/terraform-github-actions@master
         with:
@@ -93,10 +100,3 @@ jobs:
       - name: Logout of Amazon ECR
         if: always()
         run: docker logout ${{ steps.login-ecr.outputs.registry }}
-
-      - name: pull-request
-        uses: repo-sync/pull-request@v2
-        with:
-          pr_reviewer: "z0ph"
-          pr_assignee: "z0ph"
-          github_token: ${{ secrets.GITHUB_TOKEN }}
