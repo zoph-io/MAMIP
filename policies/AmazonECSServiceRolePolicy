@@ -123,11 +123,59 @@
                         "arn:aws:ecs:*:*:task/*",
                         "arn:aws:ssm:*:*:document/AmazonECS-ExecuteInteractiveCommand"
                     ]
+                },
+                {
+                    "Sid": "CloudMapResourceCreation",
+                    "Effect": "Allow",
+                    "Action": [
+                        "servicediscovery:CreateHttpNamespace",
+                        "servicediscovery:CreateService"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "ForAllValues:StringEquals": {
+                            "aws:TagKeys": [
+                                "AmazonECSManaged"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "Sid": "CloudMapResourceTagging",
+                    "Effect": "Allow",
+                    "Action": "servicediscovery:TagResource",
+                    "Resource": "*",
+                    "Condition": {
+                        "StringLike": {
+                            "aws:RequestTag/AmazonECSManaged": "*"
+                        }
+                    }
+                },
+                {
+                    "Sid": "CloudMapResourceDeletion",
+                    "Effect": "Allow",
+                    "Action": [
+                        "servicediscovery:DeleteService"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "Null": {
+                            "aws:ResourceTag/AmazonECSManaged": "false"
+                        }
+                    }
+                },
+                {
+                    "Sid": "CloudMapResourceDiscovery",
+                    "Effect": "Allow",
+                    "Action": [
+                        "servicediscovery:DiscoverInstances"
+                    ],
+                    "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v8",
+        "VersionId": "v9",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-01-13T20:04:13Z"
+        "CreateDate": "2022-10-14T18:10:03Z"
     }
 }
