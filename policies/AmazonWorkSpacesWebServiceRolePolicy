@@ -51,11 +51,20 @@
                             ]
                         }
                     }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "kinesis:PutRecord",
+                        "kinesis:PutRecords",
+                        "kinesis:DescribeStreamSummary"
+                    ],
+                    "Resource": "arn:aws:kinesis:*:*:stream/amazon-workspaces-web-*"
                 }
             ]
         },
-        "VersionId": "v3",
+        "VersionId": "v4",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-09-06T20:46:50Z"
+        "CreateDate": "2022-10-17T16:43:45Z"
     }
 }
