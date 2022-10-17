@@ -41,7 +41,7 @@
                         "ecr:BatchGetImage"
                     ],
                     "Resource": [
-                        "arn:aws:ecr:*:*:repository/eks/eks-certificates-controller-public",
+                        "arn:aws:ecr:*:*:repository/eks/*",
                         "arn:aws:ecr:*:*:repository/bottlerocket-admin",
                         "arn:aws:ecr:*:*:repository/bottlerocket-control-eks",
                         "arn:aws:ecr:*:*:repository/diagnostics-collector-eks",
@@ -74,8 +74,8 @@
                 }
             ]
         },
-        "VersionId": "v2",
-        "IsDefaultVersion": false,
-        "CreateDate": "2022-09-01T16:30:43Z"
+        "VersionId": "v3",
+        "IsDefaultVersion": true,
+        "CreateDate": "2022-10-17T16:02:34Z"
     }
 }
