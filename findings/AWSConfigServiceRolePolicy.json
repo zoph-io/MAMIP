@@ -1,6 +1,6 @@
 [
     {
-        "findingDetails": "The 23457 characters in the identity policy, excluding whitespace, exceed the 10240 character maximum for inline and managed policies. We recommend that you use multiple granular policies.",
+        "findingDetails": "The 27102 characters in the identity policy, excluding whitespace, exceed the 10240 character maximum for inline and managed policies. We recommend that you use multiple granular policies.",
         "findingType": "WARNING",
         "issueCode": "POLICY_SIZE_EXCEEDS_IDENTITY_POLICY_QUOTA",
         "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-general-warning-policy-size-exceeds-identity-policy-quota",
@@ -9,9 +9,9 @@
                 "path": [],
                 "span": {
                     "end": {
-                        "column": 24242,
+                        "column": 28007,
                         "line": 1,
-                        "offset": 24242
+                        "offset": 28007
                     },
                     "start": {
                         "column": 0,
@@ -23,7 +23,7 @@
         ]
     },
     {
-        "findingDetails": "The 12 action(s) are redundant because they provide similar permissions. Update the policy to remove the redundant action such as: ec2:DescribeClientVpnAuthorizationRules.",
+        "findingDetails": "The 13 action(s) are redundant because they provide similar permissions. Update the policy to remove the redundant action such as: ec2:DescribeClientVpnAuthorizationRules.",
         "findingType": "SUGGESTION",
         "issueCode": "REDUNDANT_ACTION",
         "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-action",
@@ -40,19 +40,19 @@
                         "value": "Action"
                     },
                     {
-                        "index": 139
+                        "index": 172
                     }
                 ],
                 "span": {
                     "end": {
-                        "column": 4467,
+                        "column": 5453,
                         "line": 1,
-                        "offset": 4467
+                        "offset": 5453
                     },
                     "start": {
-                        "column": 4452,
+                        "column": 5438,
                         "line": 1,
-                        "offset": 4452
+                        "offset": 5438
                     }
                 }
             },
@@ -68,19 +68,19 @@
                         "value": "Action"
                     },
                     {
-                        "index": 140
+                        "index": 173
                     }
                 ],
                 "span": {
                     "end": {
-                        "column": 4510,
+                        "column": 5496,
                         "line": 1,
-                        "offset": 4510
+                        "offset": 5496
                     },
                     "start": {
-                        "column": 4469,
+                        "column": 5455,
                         "line": 1,
-                        "offset": 4469
+                        "offset": 5455
                     }
                 }
             },
@@ -96,19 +96,19 @@
                         "value": "Action"
                     },
                     {
-                        "index": 141
+                        "index": 174
                     }
                 ],
                 "span": {
                     "end": {
-                        "column": 4544,
+                        "column": 5530,
                         "line": 1,
-                        "offset": 4544
+                        "offset": 5530
                     },
                     "start": {
-                        "column": 4512,
+                        "column": 5498,
                         "line": 1,
-                        "offset": 4512
+                        "offset": 5498
                     }
                 }
             },
@@ -124,19 +124,19 @@
                         "value": "Action"
                     },
                     {
-                        "index": 142
+                        "index": 175
                     }
                 ],
                 "span": {
                     "end": {
-                        "column": 4571,
+                        "column": 5557,
                         "line": 1,
-                        "offset": 4571
+                        "offset": 5557
                     },
                     "start": {
-                        "column": 4546,
+                        "column": 5532,
                         "line": 1,
-                        "offset": 4546
+                        "offset": 5532
                     }
                 }
             },
@@ -152,19 +152,19 @@
                         "value": "Action"
                     },
                     {
-                        "index": 143
+                        "index": 176
                     }
                 ],
                 "span": {
                     "end": {
-                        "column": 4593,
+                        "column": 5579,
                         "line": 1,
-                        "offset": 4593
+                        "offset": 5579
                     },
                     "start": {
-                        "column": 4573,
+                        "column": 5559,
                         "line": 1,
-                        "offset": 4573
+                        "offset": 5559
                     }
                 }
             },
@@ -180,19 +180,19 @@
                         "value": "Action"
                     },
                     {
-                        "index": 144
+                        "index": 177
                     }
                 ],
                 "span": {
                     "end": {
-                        "column": 4620,
+                        "column": 5606,
                         "line": 1,
-                        "offset": 4620
+                        "offset": 5606
                     },
                     "start": {
-                        "column": 4595,
+                        "column": 5581,
                         "line": 1,
-                        "offset": 4595
+                        "offset": 5581
                     }
                 }
             },
@@ -208,19 +208,19 @@
                         "value": "Action"
                     },
                     {
-                        "index": 145
+                        "index": 178
                     }
                 ],
                 "span": {
                     "end": {
-                        "column": 4651,
+                        "column": 5637,
                         "line": 1,
-                        "offset": 4651
+                        "offset": 5637
                     },
                     "start": {
-                        "column": 4622,
+                        "column": 5608,
                         "line": 1,
-                        "offset": 4622
+                        "offset": 5608
                     }
                 }
             },
@@ -236,19 +236,19 @@
                         "value": "Action"
                     },
                     {
-                        "index": 146
+                        "index": 179
                     }
                 ],
                 "span": {
                     "end": {
-                        "column": 4684,
+                        "column": 5664,
                         "line": 1,
-                        "offset": 4684
+                        "offset": 5664
                     },
                     "start": {
-                        "column": 4653,
+                        "column": 5639,
                         "line": 1,
-                        "offset": 4653
+                        "offset": 5639
                     }
                 }
             },
@@ -264,19 +264,19 @@
                         "value": "Action"
                     },
                     {
-                        "index": 147
+                        "index": 180
                     }
                 ],
                 "span": {
                     "end": {
-                        "column": 4720,
+                        "column": 5697,
                         "line": 1,
-                        "offset": 4720
+                        "offset": 5697
                     },
                     "start": {
-                        "column": 4686,
+                        "column": 5666,
                         "line": 1,
-                        "offset": 4686
+                        "offset": 5666
                     }
                 }
             },
@@ -292,19 +292,19 @@
                         "value": "Action"
                     },
                     {
-                        "index": 148
+                        "index": 181
                     }
                 ],
                 "span": {
                     "end": {
-                        "column": 4756,
+                        "column": 5733,
                         "line": 1,
-                        "offset": 4756
+                        "offset": 5733
                     },
                     "start": {
-                        "column": 4722,
+                        "column": 5699,
                         "line": 1,
-                        "offset": 4722
+                        "offset": 5699
                     }
                 }
             },
@@ -320,19 +320,19 @@
                         "value": "Action"
                     },
                     {
-                        "index": 149
+                        "index": 182
                     }
                 ],
                 "span": {
                     "end": {
-                        "column": 4787,
+                        "column": 5769,
                         "line": 1,
-                        "offset": 4787
+                        "offset": 5769
                     },
                     "start": {
-                        "column": 4758,
+                        "column": 5735,
                         "line": 1,
-                        "offset": 4758
+                        "offset": 5735
                     }
                 }
             },
@@ -348,19 +348,47 @@
                         "value": "Action"
                     },
                     {
-                        "index": 150
+                        "index": 183
                     }
                 ],
                 "span": {
                     "end": {
-                        "column": 4810,
+                        "column": 5800,
                         "line": 1,
-                        "offset": 4810
+                        "offset": 5800
                     },
                     "start": {
-                        "column": 4789,
+                        "column": 5771,
                         "line": 1,
-                        "offset": 4789
+                        "offset": 5771
+                    }
+                }
+            },
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 184
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 5823,
+                        "line": 1,
+                        "offset": 5823
+                    },
+                    "start": {
+                        "column": 5802,
+                        "line": 1,
+                        "offset": 5802
                     }
                 }
             }
