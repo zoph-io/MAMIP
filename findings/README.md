@@ -1,10 +1,13 @@
 ## AWS Access Analyzer - Findings - 2022-10-20
 
 - Policies analyzed: `978`
-- Errors: `12`
+- Errors: `15`
+  - [`AWSSSOMasterAccountAdministrator`](./AWSSSOMasterAccountAdministrator.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AWSBackupServiceLinkedRolePolicyForBackup`](./AWSBackupServiceLinkedRolePolicyForBackup.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
+  - [`AWSSSOMemberAccountAdministrator`](./AWSSSOMemberAccountAdministrator.json)
+  - [`AWSSSODirectoryAdministrator`](./AWSSSODirectoryAdministrator.json)
 - Sec_Warnings: `10`
   - [`AmazonElasticMapReduceFullAccess`](./AmazonElasticMapReduceFullAccess.json)
   - [`AWSElasticBeanstalkService`](./AWSElasticBeanstalkService.json)
