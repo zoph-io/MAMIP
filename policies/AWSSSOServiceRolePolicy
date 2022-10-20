@@ -64,11 +64,10 @@
                     ]
                 },
                 {
-                    "Sid": "IAMSAMLProviderProvisioningActions",
+                    "Sid": "IAMSAMLProviderCreationAction",
                     "Effect": "Allow",
                     "Action": [
-                        "iam:CreateSAMLProvider",
-                        "iam:UpdateSAMLProvider"
+                        "iam:CreateSAMLProvider"
                     ],
                     "Resource": [
                         "arn:aws:iam::*:saml-provider/AWSSSO_*"
@@ -78,6 +77,16 @@
                             "aws:PrincipalOrgMasterAccountId": "${aws:PrincipalAccount}"
                         }
                     }
+                },
+                {
+                    "Sid": "IAMSAMLProviderUpdateAction",
+                    "Effect": "Allow",
+                    "Action": [
+                        "iam:UpdateSAMLProvider"
+                    ],
+                    "Resource": [
+                        "arn:aws:iam::*:saml-provider/AWSSSO_*"
+                    ]
                 },
                 {
                     "Sid": "IAMSAMLProviderCleanupActions",
@@ -139,8 +148,8 @@
                 }
             ]
         },
-        "VersionId": "v16",
+        "VersionId": "v17",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-06-28T20:08:47Z"
+        "CreateDate": "2022-10-20T20:05:47Z"
     }
 }
