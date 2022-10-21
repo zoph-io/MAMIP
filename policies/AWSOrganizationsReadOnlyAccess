@@ -17,11 +17,18 @@
                         "account:GetAlternateContact"
                     ],
                     "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "account:GetContactInformation"
+                    ],
+                    "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v2",
-        "IsDefaultVersion": false,
-        "CreateDate": "2022-02-07T18:17:19Z"
+        "VersionId": "v3",
+        "IsDefaultVersion": true,
+        "CreateDate": "2022-10-21T17:31:21Z"
     }
 }
