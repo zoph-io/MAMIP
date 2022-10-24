@@ -1,6 +1,6 @@
 ## AWS Access Analyzer - Findings - 2022-10-24
 
-- Policies analyzed: `978`
+- Policies analyzed: `979`
 - Errors: `15`
   - [`AWSSSOMasterAccountAdministrator`](./AWSSSOMasterAccountAdministrator.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
