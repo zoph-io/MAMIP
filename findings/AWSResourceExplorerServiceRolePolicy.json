@@ -1,0 +1,110 @@
+[
+    {
+        "findingDetails": "The service resource-explorer-2:GetIndex specified in the action does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_SERVICE_IN_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 1
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 125
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 4213,
+                        "line": 1,
+                        "offset": 4213
+                    },
+                    "start": {
+                        "column": 4183,
+                        "line": 1,
+                        "offset": 4183
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The service resource-explorer-2:ListIndexes specified in the action does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_SERVICE_IN_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 1
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 126
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 4248,
+                        "line": 1,
+                        "offset": 4248
+                    },
+                    "start": {
+                        "column": 4215,
+                        "line": 1,
+                        "offset": 4215
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The service resource-explorer-2:ListViews specified in the action does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_SERVICE_IN_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 1
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 127
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 4281,
+                        "line": 1,
+                        "offset": 4281
+                    },
+                    "start": {
+                        "column": 4250,
+                        "line": 1,
+                        "offset": 4250
+                    }
+                }
+            }
+        ]
+    }
+]
