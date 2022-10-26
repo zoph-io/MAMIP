@@ -26,11 +26,9 @@
                     "Action": [
                         "resource-groups:DeleteGroup",
                         "resource-groups:UpdateGroup",
-                        "resource-groups:GetGroup",
                         "resource-groups:GetTags",
                         "resource-groups:Tag",
-                        "resource-groups:Untag",
-                        "resource-groups:GetGroupConfiguration"
+                        "resource-groups:Untag"
                     ],
                     "Resource": "*",
                     "Condition": {
@@ -38,11 +36,22 @@
                             "aws:ResourceTag/EnableAWSServiceCatalogAppRegistry": "true"
                         }
                     }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "resource-groups:GetGroup",
+                        "resource-groups:GetGroupConfiguration"
+                    ],
+                    "Resource": [
+                        "arn:*:resource-groups:*:*:group/AWS_AppRegistry*",
+                        "arn:*:resource-groups:*:*:group/AWS_CloudFormation_Stack*"
+                    ]
                 }
             ]
         },
-        "VersionId": "v3",
-        "IsDefaultVersion": false,
-        "CreateDate": "2022-03-04T21:06:44Z"
+        "VersionId": "v4",
+        "IsDefaultVersion": true,
+        "CreateDate": "2022-10-26T16:05:52Z"
     }
 }
