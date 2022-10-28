@@ -8,14 +8,16 @@
                     "Action": [
                         "rum:GetAppMonitor",
                         "rum:GetAppMonitorData",
-                        "rum:ListAppMonitors"
+                        "rum:ListAppMonitors",
+                        "rum:ListRumMetricsDestinations",
+                        "rum:BatchGetRumMetricDefinitions"
                     ],
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-11-29T15:43:47Z"
+        "CreateDate": "2022-10-28T18:12:58Z"
     }
 }
