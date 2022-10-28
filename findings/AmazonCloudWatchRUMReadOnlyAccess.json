@@ -1,0 +1,74 @@
+[
+    {
+        "findingDetails": "The action rum:ListRumMetricsDestinations does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 3
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 172,
+                        "line": 1,
+                        "offset": 172
+                    },
+                    "start": {
+                        "column": 140,
+                        "line": 1,
+                        "offset": 140
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The action rum:BatchGetRumMetricDefinitions does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 4
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 208,
+                        "line": 1,
+                        "offset": 208
+                    },
+                    "start": {
+                        "column": 174,
+                        "line": 1,
+                        "offset": 174
+                    }
+                }
+            }
+        ]
+    }
+]
