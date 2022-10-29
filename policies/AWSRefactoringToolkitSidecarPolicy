@@ -8,7 +8,9 @@
                     "Effect": "Allow",
                     "Action": [
                         "ssmmessages:OpenControlChannel",
-                        "ssmmessages:CreateControlChannel"
+                        "ssmmessages:CreateControlChannel",
+                        "ssmmessages:OpenDataChannel",
+                        "ssmmessages:CreateDataChannel"
                     ],
                     "Resource": "*"
                 },
@@ -35,8 +37,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-10-25T16:41:12Z"
+        "CreateDate": "2022-10-29T22:15:51Z"
     }
 }
