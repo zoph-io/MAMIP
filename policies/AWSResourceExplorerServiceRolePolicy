@@ -112,6 +112,7 @@
                         "iam:ListUsers",
                         "kinesis:ListStreamConsumers",
                         "kinesis:ListStreams",
+                        "lambda:ListFunctions",
                         "logs:DescribeDestinations",
                         "logs:DescribeLogGroups",
                         "logs:DescribeLogStreams",
@@ -143,6 +144,7 @@
                         "resource-explorer-2:GetIndex",
                         "resource-explorer-2:ListIndexes",
                         "resource-explorer-2:ListViews",
+                        "s3:GetBucketLocation",
                         "s3:ListAccessPoints",
                         "s3:ListAllMyBuckets",
                         "s3:ListStorageLensConfigurations",
@@ -165,8 +167,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-10-25T20:35:29Z"
+        "CreateDate": "2022-10-31T17:23:15Z"
     }
 }
