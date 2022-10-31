@@ -85,7 +85,8 @@
                         "sts:AssumeRole"
                     ],
                     "Resource": [
-                        "arn:aws:iam::*:role/AWSControlTowerExecution"
+                        "arn:aws:iam::*:role/AWSControlTowerExecution",
+                        "arn:aws:iam::*:role/AWSControlTowerBlueprintAccess"
                     ]
                 },
                 {
@@ -179,8 +180,8 @@
                 }
             ]
         },
-        "VersionId": "v8",
+        "VersionId": "v9",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-06-20T21:45:54Z"
+        "CreateDate": "2022-10-31T19:12:41Z"
     }
 }
