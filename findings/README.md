@@ -1,8 +1,7 @@
-## AWS Access Analyzer - Findings - 2022-11-02
+## AWS Access Analyzer - Findings - 2022-11-03
 
 - Policies analyzed: `988`
-- Errors: `17`
-  - [`AmazonCloudWatchRUMReadOnlyAccess`](./AmazonCloudWatchRUMReadOnlyAccess.json)
+- Errors: `15`
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AWSBackupServiceLinkedRolePolicyForBackup`](./AWSBackupServiceLinkedRolePolicyForBackup.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
