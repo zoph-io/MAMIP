@@ -1,7 +1,8 @@
 ## AWS Access Analyzer - Findings - 2022-11-07
 
-- Policies analyzed: `989`
-- Errors: `21`
+- Policies analyzed: `990`
+- Errors: `22`
+  - [`AWSResourceExplorerFullAccess`](./AWSResourceExplorerFullAccess.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AmazonQLDBConsoleFullAccess`](./AmazonQLDBConsoleFullAccess.json)
   - [`AWSResourceExplorerReadOnlyAccess`](./AWSResourceExplorerReadOnlyAccess.json)
