@@ -1,9 +1,10 @@
 ## AWS Access Analyzer - Findings - 2022-11-07
 
-- Policies analyzed: `988`
-- Errors: `17`
+- Policies analyzed: `989`
+- Errors: `21`
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AmazonQLDBConsoleFullAccess`](./AmazonQLDBConsoleFullAccess.json)
+  - [`AWSResourceExplorerReadOnlyAccess`](./AWSResourceExplorerReadOnlyAccess.json)
   - [`AWSBackupServiceLinkedRolePolicyForBackup`](./AWSBackupServiceLinkedRolePolicyForBackup.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
   - [`AmazonQLDBFullAccess`](./AmazonQLDBFullAccess.json)
