@@ -1,0 +1,26 @@
+{
+    "PolicyVersion": {
+        "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "acm-pca:IssueCertificate",
+                        "acm-pca:GetCertificate",
+                        "acm-pca:DescribeCertificateAuthority"
+                    ],
+                    "Resource": "arn:*:acm-pca:*:*:*",
+                    "Condition": {
+                        "StringLike": {
+                            "aws:ResourceTag/euc-private-ca": "*"
+                        }
+                    }
+                }
+            ]
+        },
+        "VersionId": "v1",
+        "IsDefaultVersion": true,
+        "CreateDate": "2022-11-08T00:25:55Z"
+    }
+}
