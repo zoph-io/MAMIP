@@ -1,6 +1,6 @@
-## AWS Access Analyzer - Findings - 2022-11-07
+## AWS Access Analyzer - Findings - 2022-11-08
 
-- Policies analyzed: `990`
+- Policies analyzed: `991`
 - Errors: `22`
   - [`AWSResourceExplorerFullAccess`](./AWSResourceExplorerFullAccess.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
