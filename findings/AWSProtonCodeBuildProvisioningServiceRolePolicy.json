@@ -1,0 +1,60 @@
+[
+    {
+        "findingDetails": "Using the iam:PassRole action with wildcards (*) in the resource can be overly permissive because it allows iam:PassRole permissions on multiple resources. We recommend that you specify resource ARNs or add the iam:PassedToService condition key to your statement.",
+        "findingType": "SECURITY_WARNING",
+        "issueCode": "PASS_ROLE_WITH_STAR_IN_RESOURCE",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-security-warning-pass-role-with-star-in-resource",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 2
+                    },
+                    {
+                        "value": "Action"
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 697,
+                        "line": 1,
+                        "offset": 697
+                    },
+                    "start": {
+                        "column": 683,
+                        "line": 1,
+                        "offset": 683
+                    }
+                }
+            },
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 2
+                    },
+                    {
+                        "value": "Resource"
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 714,
+                        "line": 1,
+                        "offset": 714
+                    },
+                    "start": {
+                        "column": 711,
+                        "line": 1,
+                        "offset": 711
+                    }
+                }
+            }
+        ]
+    }
+]

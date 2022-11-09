@@ -1,6 +1,6 @@
 ## AWS Access Analyzer - Findings - 2022-11-09
 
-- Policies analyzed: `993`
+- Policies analyzed: `994`
 - Errors: `22`
   - [`AWSResourceExplorerFullAccess`](./AWSResourceExplorerFullAccess.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
@@ -10,12 +10,13 @@
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
   - [`AmazonQLDBFullAccess`](./AmazonQLDBFullAccess.json)
   - [`AWSResourceExplorerServiceRolePolicy`](./AWSResourceExplorerServiceRolePolicy.json)
-- Sec_Warnings: `10`
+- Sec_Warnings: `11`
   - [`AmazonElasticMapReduceFullAccess`](./AmazonElasticMapReduceFullAccess.json)
   - [`AWSElasticBeanstalkService`](./AWSElasticBeanstalkService.json)
   - [`IAMFullAccess`](./IAMFullAccess.json)
   - [`AmazonElasticMapReduceRole`](./AmazonElasticMapReduceRole.json)
   - [`AmazonDynamoDBFullAccesswithDataPipeline`](./AmazonDynamoDBFullAccesswithDataPipeline.json)
+  - [`AWSProtonCodeBuildProvisioningServiceRolePolicy`](./AWSProtonCodeBuildProvisioningServiceRolePolicy.json)
   - [`AdministratorAccess-Amplify`](./AdministratorAccess-Amplify.json)
   - [`AWSServiceRoleForAmazonEKSNodegroup`](./AWSServiceRoleForAmazonEKSNodegroup.json)
   - [`AdministratorAccess`](./AdministratorAccess.json)
