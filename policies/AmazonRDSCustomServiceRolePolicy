@@ -23,7 +23,14 @@
                         "ec2:DescribeSecurityGroups",
                         "ec2:DescribeVolumesModifications",
                         "ec2:DescribeSubnets",
-                        "ec2:DescribeVpcAttribute"
+                        "ec2:DescribeVpcAttribute",
+                        "ec2:SearchTransitGatewayMulticastGroups",
+                        "ec2:GetTransitGatewayMulticastDomainAssociations",
+                        "ec2:DescribeTransitGatewayMulticastDomains",
+                        "ec2:DescribeTransitGateways",
+                        "ec2:DescribeTransitGatewayVpcAttachments",
+                        "ec2:DescribePlacementGroups",
+                        "ec2:DescribeRouteTables"
                     ],
                     "Resource": [
                         "*"
@@ -46,7 +53,8 @@
                         "StringLike": {
                             "aws:ResourceTag/AWSRDSCustom": [
                                 "custom-oracle",
-                                "custom-sqlserver"
+                                "custom-sqlserver",
+                                "custom-oracle-rac"
                             ]
                         }
                     }
@@ -64,7 +72,8 @@
                         "StringLike": {
                             "aws:RequestTag/AWSRDSCustom": [
                                 "custom-oracle",
-                                "custom-sqlserver"
+                                "custom-sqlserver",
+                                "custom-oracle-rac"
                             ]
                         }
                     }
@@ -84,7 +93,8 @@
                         "StringLike": {
                             "aws:ResourceTag/AWSRDSCustom": [
                                 "custom-oracle",
-                                "custom-sqlserver"
+                                "custom-sqlserver",
+                                "custom-oracle-rac"
                             ]
                         }
                     }
@@ -102,7 +112,8 @@
                         "StringLike": {
                             "aws:RequestTag/AWSRDSCustom": [
                                 "custom-oracle",
-                                "custom-sqlserver"
+                                "custom-sqlserver",
+                                "custom-oracle-rac"
                             ]
                         }
                     }
@@ -122,6 +133,40 @@
                     ]
                 },
                 {
+                    "Sid": "eccRunInstances3",
+                    "Effect": "Allow",
+                    "Action": [
+                        "ec2:RunInstances"
+                    ],
+                    "Resource": [
+                        "arn:aws:ec2:*:*:network-interface/*",
+                        "arn:aws:ec2:*::snapshot/*"
+                    ],
+                    "Condition": {
+                        "StringLike": {
+                            "aws:ResourceTag/AWSRDSCustom": [
+                                "custom-oracle-rac"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "Sid": "RequireImdsV2",
+                    "Effect": "Deny",
+                    "Action": "ec2:RunInstances",
+                    "Resource": "arn:aws:ec2:*:*:instance/*",
+                    "Condition": {
+                        "StringNotEquals": {
+                            "ec2:MetadataHttpTokens": "required"
+                        },
+                        "StringLike": {
+                            "aws:RequestTag/AWSRDSCustom": [
+                                "custom-oracle-rac"
+                            ]
+                        }
+                    }
+                },
+                {
                     "Sid": "eccRunInstances3keyPair1",
                     "Effect": "Allow",
                     "Action": [
@@ -135,7 +180,8 @@
                         "StringLike": {
                             "aws:ResourceTag/AWSRDSCustom": [
                                 "custom-oracle",
-                                "custom-sqlserver"
+                                "custom-sqlserver",
+                                "custom-oracle-rac"
                             ]
                         }
                     }
@@ -153,7 +199,8 @@
                         "StringLike": {
                             "aws:RequestTag/AWSRDSCustom": [
                                 "custom-oracle",
-                                "custom-sqlserver"
+                                "custom-sqlserver",
+                                "custom-oracle-rac"
                             ]
                         }
                     }
@@ -171,7 +218,8 @@
                         "StringLike": {
                             "aws:ResourceTag/AWSRDSCustom": [
                                 "custom-oracle",
-                                "custom-sqlserver"
+                                "custom-sqlserver",
+                                "custom-oracle-rac"
                             ]
                         }
                     }
@@ -185,7 +233,8 @@
                         "StringLike": {
                             "aws:RequestTag/AWSRDSCustom": [
                                 "custom-oracle",
-                                "custom-sqlserver"
+                                "custom-sqlserver",
+                                "custom-oracle-rac"
                             ],
                             "ec2:CreateAction": [
                                 "CreateKeyPair",
@@ -213,7 +262,8 @@
                         "StringLike": {
                             "aws:ResourceTag/AWSRDSCustom": [
                                 "custom-oracle",
-                                "custom-sqlserver"
+                                "custom-sqlserver",
+                                "custom-oracle-rac"
                             ]
                         }
                     }
@@ -227,7 +277,8 @@
                         "StringLike": {
                             "aws:RequestTag/AWSRDSCustom": [
                                 "custom-oracle",
-                                "custom-sqlserver"
+                                "custom-sqlserver",
+                                "custom-oracle-rac"
                             ]
                         }
                     }
@@ -245,7 +296,8 @@
                         "StringLike": {
                             "aws:ResourceTag/AWSRDSCustom": [
                                 "custom-oracle",
-                                "custom-sqlserver"
+                                "custom-sqlserver",
+                                "custom-oracle-rac"
                             ]
                         }
                     }
@@ -262,7 +314,8 @@
                         "StringLike": {
                             "aws:ResourceTag/AWSRDSCustom": [
                                 "custom-oracle",
-                                "custom-sqlserver"
+                                "custom-sqlserver",
+                                "custom-oracle-rac"
                             ]
                         }
                     }
@@ -279,7 +332,8 @@
                         "StringLike": {
                             "aws:RequestTag/AWSRDSCustom": [
                                 "custom-oracle",
-                                "custom-sqlserver"
+                                "custom-sqlserver",
+                                "custom-oracle-rac"
                             ]
                         }
                     }
@@ -296,7 +350,8 @@
                         "StringLike": {
                             "aws:ResourceTag/AWSRDSCustom": [
                                 "custom-oracle",
-                                "custom-sqlserver"
+                                "custom-sqlserver",
+                                "custom-oracle-rac"
                             ]
                         }
                     }
@@ -340,15 +395,15 @@
                     "Effect": "Allow",
                     "Action": [
                         "cloudwatch:EnableAlarmActions",
-                        "cloudwatch:DeleteAlarms",
-                        "cloudwatch:DescribeAlarms"
+                        "cloudwatch:DeleteAlarms"
                     ],
                     "Resource": "arn:aws:cloudwatch:*:*:alarm:do-not-delete-rds-custom-*",
                     "Condition": {
                         "StringLike": {
                             "aws:ResourceTag/AWSRDSCustom": [
                                 "custom-oracle",
-                                "custom-sqlserver"
+                                "custom-sqlserver",
+                                "custom-oracle-rac"
                             ]
                         }
                     }
@@ -365,10 +420,19 @@
                         "StringLike": {
                             "aws:RequestTag/AWSRDSCustom": [
                                 "custom-oracle",
-                                "custom-sqlserver"
+                                "custom-sqlserver",
+                                "custom-oracle-rac"
                             ]
                         }
                     }
+                },
+                {
+                    "Sid": "cw3",
+                    "Effect": "Allow",
+                    "Action": [
+                        "cloudwatch:DescribeAlarms"
+                    ],
+                    "Resource": "arn:aws:cloudwatch:*:*:alarm:*"
                 },
                 {
                     "Sid": "ssm1",
@@ -385,7 +449,8 @@
                         "StringLike": {
                             "aws:ResourceTag/AWSRDSCustom": [
                                 "custom-oracle",
-                                "custom-sqlserver"
+                                "custom-sqlserver",
+                                "custom-oracle-rac"
                             ]
                         }
                     }
@@ -401,6 +466,37 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "ssm4",
+                    "Effect": "Allow",
+                    "Action": [
+                        "ssm:PutParameter",
+                        "ssm:AddTagsToResource"
+                    ],
+                    "Resource": "arn:aws:ssm:*:*:parameter/rds/custom-oracle-rac/*",
+                    "Condition": {
+                        "StringLike": {
+                            "aws:RequestTag/AWSRDSCustom": [
+                                "custom-oracle-rac"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "Sid": "ssm5",
+                    "Effect": "Allow",
+                    "Action": [
+                        "ssm:DeleteParameter"
+                    ],
+                    "Resource": "arn:aws:ssm:*:*:parameter/rds/custom-oracle-rac/*",
+                    "Condition": {
+                        "StringLike": {
+                            "aws:ResourceTag/AWSRDSCustom": [
+                                "custom-oracle-rac"
+                            ]
+                        }
+                    }
+                },
+                {
                     "Sid": "eb1",
                     "Effect": "Allow",
                     "Action": [
@@ -412,7 +508,8 @@
                         "StringLike": {
                             "aws:RequestTag/AWSRDSCustom": [
                                 "custom-oracle",
-                                "custom-sqlserver"
+                                "custom-sqlserver",
+                                "custom-oracle-rac"
                             ]
                         }
                     }
@@ -434,7 +531,8 @@
                         "StringLike": {
                             "aws:ResourceTag/AWSRDSCustom": [
                                 "custom-oracle",
-                                "custom-sqlserver"
+                                "custom-sqlserver",
+                                "custom-oracle-rac"
                             ]
                         }
                     }
@@ -451,7 +549,8 @@
                         "StringLike": {
                             "aws:RequestTag/AWSRDSCustom": [
                                 "custom-oracle",
-                                "custom-sqlserver"
+                                "custom-sqlserver",
+                                "custom-oracle-rac"
                             ]
                         }
                     }
@@ -470,15 +569,16 @@
                         "StringLike": {
                             "aws:ResourceTag/AWSRDSCustom": [
                                 "custom-oracle",
-                                "custom-sqlserver"
+                                "custom-sqlserver",
+                                "custom-oracle-rac"
                             ]
                         }
                     }
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-10-08T21:39:12Z"
+        "CreateDate": "2022-11-09T22:17:08Z"
     }
 }
