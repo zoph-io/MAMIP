@@ -6,24 +6,15 @@
                 {
                     "Effect": "Allow",
                     "Action": [
-                        "lookoutequipment:DescribeDataset",
-                        "lookoutequipment:DescribeDataIngestionJob",
-                        "lookoutequipment:DescribeModel",
-                        "lookoutequipment:DescribeInferenceScheduler",
-                        "lookoutequipment:ListDatasets",
-                        "lookoutequipment:ListDataIngestionJobs",
-                        "lookoutequipment:ListModels",
-                        "lookoutequipment:ListInferenceSchedulers",
-                        "lookoutequipment:ListInferenceExecutions",
-                        "lookoutequipment:ListTagsForResource",
-                        "lookoutequipment:ListSensorStatistics"
+                        "lookoutequipment:Describe*",
+                        "lookoutequipment:List*"
                     ],
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v2",
-        "IsDefaultVersion": false,
-        "CreateDate": "2022-06-30T18:33:42Z"
+        "VersionId": "v3",
+        "IsDefaultVersion": true,
+        "CreateDate": "2022-11-10T22:04:33Z"
     }
 }
