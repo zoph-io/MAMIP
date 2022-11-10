@@ -1,0 +1,243 @@
+[
+    {
+        "findingDetails": "The 2 resource ARN(s) are redundant because they reference the same resource. Review the use of wildcards (*), or remove the resource arn:aws:timestream:*:*:database/*/table/* to remove the redundancy.",
+        "findingType": "SUGGESTION",
+        "issueCode": "REDUNDANT_RESOURCE",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-resource",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 22
+                    },
+                    {
+                        "value": "Resource"
+                    },
+                    {
+                        "index": 0
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 3575,
+                        "line": 1,
+                        "offset": 3575
+                    },
+                    "start": {
+                        "column": 3532,
+                        "line": 1,
+                        "offset": 3532
+                    }
+                }
+            },
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 22
+                    },
+                    {
+                        "value": "Resource"
+                    },
+                    {
+                        "index": 1
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 3612,
+                        "line": 1,
+                        "offset": 3612
+                    },
+                    "start": {
+                        "column": 3577,
+                        "line": 1,
+                        "offset": 3577
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The service ssm-sap:GetOperation specified in the action does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_SERVICE_IN_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 28
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 0
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 4510,
+                        "line": 1,
+                        "offset": 4510
+                    },
+                    "start": {
+                        "column": 4488,
+                        "line": 1,
+                        "offset": 4488
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The service ssm-sap:ListDatabases specified in the action does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_SERVICE_IN_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 28
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 1
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 4535,
+                        "line": 1,
+                        "offset": 4535
+                    },
+                    "start": {
+                        "column": 4512,
+                        "line": 1,
+                        "offset": 4512
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The service ssm-sap:GetDatabase specified in the action does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_SERVICE_IN_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 29
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 0
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 4608,
+                        "line": 1,
+                        "offset": 4608
+                    },
+                    "start": {
+                        "column": 4587,
+                        "line": 1,
+                        "offset": 4587
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The service ssm-sap:ListTagsForResource specified in the action does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_SERVICE_IN_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 29
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 1
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 4639,
+                        "line": 1,
+                        "offset": 4639
+                    },
+                    "start": {
+                        "column": 4610,
+                        "line": 1,
+                        "offset": 4610
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The service ssm-sap does not exist. Use a valid service name.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_SERVICE",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 29
+                    },
+                    {
+                        "value": "Resource"
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 4677,
+                        "line": 1,
+                        "offset": 4677
+                    },
+                    "start": {
+                        "column": 4654,
+                        "line": 1,
+                        "offset": 4654
+                    }
+                }
+            }
+        ]
+    }
+]

@@ -1,78 +1,6 @@
 [
     {
-        "findingDetails": "The service sysops-sap:GetOperation specified in the action does not exist.",
-        "findingType": "ERROR",
-        "issueCode": "INVALID_SERVICE_IN_ACTION",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
-        "locations": [
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 22
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 0
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 3831,
-                        "line": 1,
-                        "offset": 3831
-                    },
-                    "start": {
-                        "column": 3806,
-                        "line": 1,
-                        "offset": 3806
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "findingDetails": "The service ssm-sap:GetOperation specified in the action does not exist.",
-        "findingType": "ERROR",
-        "issueCode": "INVALID_SERVICE_IN_ACTION",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
-        "locations": [
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 22
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 1
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 3855,
-                        "line": 1,
-                        "offset": 3855
-                    },
-                    "start": {
-                        "column": 3833,
-                        "line": 1,
-                        "offset": 3833
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "findingDetails": "The action timestream:GetAwsBackupStatus does not exist.",
+        "findingDetails": "The action timestream:StartAwsRestoreJob does not exist.",
         "findingType": "ERROR",
         "issueCode": "INVALID_ACTION",
         "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
@@ -83,25 +11,25 @@
                         "value": "Statement"
                     },
                     {
-                        "index": 23
+                        "index": 34
                     },
                     {
                         "value": "Action"
                     },
                     {
-                        "index": 5
+                        "index": 0
                     }
                 ],
                 "span": {
                     "end": {
-                        "column": 4084,
+                        "column": 5621,
                         "line": 1,
-                        "offset": 4084
+                        "offset": 5621
                     },
                     "start": {
-                        "column": 4053,
+                        "column": 5590,
                         "line": 1,
-                        "offset": 4053
+                        "offset": 5590
                     }
                 }
             }
@@ -119,25 +47,25 @@
                         "value": "Statement"
                     },
                     {
-                        "index": 23
+                        "index": 34
                     },
                     {
                         "value": "Action"
                     },
                     {
-                        "index": 6
+                        "index": 1
                     }
                 ],
                 "span": {
                     "end": {
-                        "column": 4118,
+                        "column": 5655,
                         "line": 1,
-                        "offset": 4118
+                        "offset": 5655
                     },
                     "start": {
-                        "column": 4086,
+                        "column": 5623,
                         "line": 1,
-                        "offset": 4086
+                        "offset": 5623
                     }
                 }
             }
@@ -155,7 +83,7 @@
                         "value": "Statement"
                     },
                     {
-                        "index": 23
+                        "index": 34
                     },
                     {
                         "value": "Resource"
@@ -166,14 +94,14 @@
                 ],
                 "span": {
                     "end": {
-                        "column": 4177,
+                        "column": 5860,
                         "line": 1,
-                        "offset": 4177
+                        "offset": 5860
                     },
                     "start": {
-                        "column": 4134,
+                        "column": 5817,
                         "line": 1,
-                        "offset": 4134
+                        "offset": 5817
                     }
                 }
             },
@@ -183,7 +111,7 @@
                         "value": "Statement"
                     },
                     {
-                        "index": 23
+                        "index": 34
                     },
                     {
                         "value": "Resource"
@@ -194,14 +122,14 @@
                 ],
                 "span": {
                     "end": {
-                        "column": 4214,
+                        "column": 5897,
                         "line": 1,
-                        "offset": 4214
+                        "offset": 5897
                     },
                     "start": {
-                        "column": 4179,
+                        "column": 5862,
                         "line": 1,
-                        "offset": 4179
+                        "offset": 5862
                     }
                 }
             }

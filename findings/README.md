@@ -1,7 +1,7 @@
 ## AWS Access Analyzer - Findings - 2022-11-10
 
-- Policies analyzed: `996`
-- Errors: `34`
+- Policies analyzed: `998`
+- Errors: `73`
   - [`AWSResourceExplorerFullAccess`](./AWSResourceExplorerFullAccess.json)
   - [`AmazonEventBridgeSchedulerFullAccess`](./AmazonEventBridgeSchedulerFullAccess.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
@@ -9,11 +9,17 @@
   - [`AmazonEventBridgeReadOnlyAccess`](./AmazonEventBridgeReadOnlyAccess.json)
   - [`AmazonQLDBConsoleFullAccess`](./AmazonQLDBConsoleFullAccess.json)
   - [`AWSResourceExplorerReadOnlyAccess`](./AWSResourceExplorerReadOnlyAccess.json)
+  - [`AWSBackupOperatorAccess`](./AWSBackupOperatorAccess.json)
   - [`AWSBackupServiceLinkedRolePolicyForBackup`](./AWSBackupServiceLinkedRolePolicyForBackup.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
+  - [`AWSBackupRestoreAccessForSAPHANA`](./AWSBackupRestoreAccessForSAPHANA.json)
+  - [`AWSBackupServiceRolePolicyForBackup`](./AWSBackupServiceRolePolicyForBackup.json)
+  - [`AWSBackupServiceRolePolicyForRestores`](./AWSBackupServiceRolePolicyForRestores.json)
   - [`AmazonEventBridgeSchedulerReadOnlyAccess`](./AmazonEventBridgeSchedulerReadOnlyAccess.json)
   - [`AmazonQLDBFullAccess`](./AmazonQLDBFullAccess.json)
   - [`AWSResourceExplorerServiceRolePolicy`](./AWSResourceExplorerServiceRolePolicy.json)
+  - [`AWSBackupFullAccess`](./AWSBackupFullAccess.json)
+  - [`AWSBackupDataTransferAccess`](./AWSBackupDataTransferAccess.json)
 - Sec_Warnings: `11`
   - [`AmazonElasticMapReduceFullAccess`](./AmazonElasticMapReduceFullAccess.json)
   - [`AWSElasticBeanstalkService`](./AWSElasticBeanstalkService.json)
@@ -24,7 +30,7 @@
   - [`AdministratorAccess-Amplify`](./AdministratorAccess-Amplify.json)
   - [`AWSServiceRoleForAmazonEKSNodegroup`](./AWSServiceRoleForAmazonEKSNodegroup.json)
   - [`AdministratorAccess`](./AdministratorAccess.json)
-- Suggestions: `45`
+- Suggestions: `50`
   - [`AWSMarketplaceFullAccess`](./AWSMarketplaceFullAccess.json)
   - [`AWSElasticBeanstalkWorkerTier`](./AWSElasticBeanstalkWorkerTier.json)
   - [`AmazonCodeGuruReviewerServiceRolePolicy`](./AmazonCodeGuruReviewerServiceRolePolicy.json)
@@ -42,15 +48,20 @@
   - [`AWSDeepLensLambdaFunctionAccessPolicy`](./AWSDeepLensLambdaFunctionAccessPolicy.json)
   - [`AWSElasticBeanstalkService`](./AWSElasticBeanstalkService.json)
   - [`AppIntegrationsServiceLinkedRolePolicy`](./AppIntegrationsServiceLinkedRolePolicy.json)
+  - [`AWSBackupOperatorAccess`](./AWSBackupOperatorAccess.json)
   - [`AWSLakeFormationDataAdmin`](./AWSLakeFormationDataAdmin.json)
+  - [`AWSBackupServiceLinkedRolePolicyForBackup`](./AWSBackupServiceLinkedRolePolicyForBackup.json)
   - [`AmazonRedshiftAllCommandsFullAccess`](./AmazonRedshiftAllCommandsFullAccess.json)
   - [`AWSDeepRacerFullAccess`](./AWSDeepRacerFullAccess.json)
   - [`AWSConfigServiceRolePolicy`](./AWSConfigServiceRolePolicy.json)
+  - [`AWSBackupServiceRolePolicyForBackup`](./AWSBackupServiceRolePolicyForBackup.json)
   - [`AmazonSageMakerServiceCatalogProductsLambdaServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsLambdaServiceRolePolicy.json)
+  - [`AWSBackupServiceRolePolicyForRestores`](./AWSBackupServiceRolePolicyForRestores.json)
   - [`AmazonLaunchWizard_Fullaccess`](./AmazonLaunchWizard_Fullaccess.json)
   - [`SupportUser`](./SupportUser.json)
   - [`AWSGlueConsoleFullAccess`](./AWSGlueConsoleFullAccess.json)
   - [`SystemAdministrator`](./SystemAdministrator.json)
+  - [`AWSBackupFullAccess`](./AWSBackupFullAccess.json)
   - [`AWSBugBustServiceRolePolicy`](./AWSBugBustServiceRolePolicy.json)
   - [`AWSMigrationHubOrchestratorConsoleFullAccess`](./AWSMigrationHubOrchestratorConsoleFullAccess.json)
   - [`DataScientist`](./DataScientist.json)
