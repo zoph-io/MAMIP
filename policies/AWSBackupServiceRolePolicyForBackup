@@ -352,11 +352,52 @@
                     "Resource": [
                         "arn:aws:redshift:*:*:snapshot:*/*"
                     ]
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "timestream:StartAwsBackupJob",
+                        "timestream:GetAwsBackupStatus",
+                        "timestream:ListTables",
+                        "timestream:ListDatabases",
+                        "timestream:ListTagsForResource",
+                        "timestream:DescribeTable",
+                        "timestream:DescribeDatabase"
+                    ],
+                    "Resource": [
+                        "arn:aws:timestream:*:*:database/*/table/*",
+                        "arn:aws:timestream:*:*:database/*"
+                    ]
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "timestream:DescribeEndpoints"
+                    ],
+                    "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "ssm-sap:GetOperation",
+                        "ssm-sap:ListDatabases"
+                    ],
+                    "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "ssm-sap:BackupDatabase",
+                        "ssm-sap:UpdateHanaBackupSettings",
+                        "ssm-sap:GetDatabase",
+                        "ssm-sap:ListTagsForResource"
+                    ],
+                    "Resource": "arn:aws:ssm-sap:*:*:*"
                 }
             ]
         },
-        "VersionId": "v13",
+        "VersionId": "v14",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-10-12T22:14:45Z"
+        "CreateDate": "2022-11-10T22:38:14Z"
     }
 }

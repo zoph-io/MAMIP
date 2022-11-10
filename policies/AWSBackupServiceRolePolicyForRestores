@@ -342,11 +342,36 @@
                         "ec2:DescribeInternetGateways"
                     ],
                     "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "timestream:StartAwsRestoreJob",
+                        "timestream:GetAwsRestoreStatus",
+                        "timestream:ListTables",
+                        "timestream:ListTagsForResource",
+                        "timestream:ListDatabases",
+                        "timestream:DescribeTable",
+                        "timestream:DescribeDatabase"
+                    ],
+                    "Resource": [
+                        "arn:aws:timestream:*:*:database/*/table/*",
+                        "arn:aws:timestream:*:*:database/*"
+                    ]
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "timestream:DescribeEndpoints"
+                    ],
+                    "Resource": [
+                        "*"
+                    ]
                 }
             ]
         },
-        "VersionId": "v14",
+        "VersionId": "v15",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-10-12T22:12:43Z"
+        "CreateDate": "2022-11-10T22:45:54Z"
     }
 }
