@@ -1,8 +1,9 @@
 ## AWS Access Analyzer - Findings - 2022-11-10
 
-- Policies analyzed: `994`
-- Errors: `28`
+- Policies analyzed: `996`
+- Errors: `34`
   - [`AWSResourceExplorerFullAccess`](./AWSResourceExplorerFullAccess.json)
+  - [`AmazonEventBridgeSchedulerFullAccess`](./AmazonEventBridgeSchedulerFullAccess.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AmazonEventBridgeFullAccess`](./AmazonEventBridgeFullAccess.json)
   - [`AmazonEventBridgeReadOnlyAccess`](./AmazonEventBridgeReadOnlyAccess.json)
@@ -10,6 +11,7 @@
   - [`AWSResourceExplorerReadOnlyAccess`](./AWSResourceExplorerReadOnlyAccess.json)
   - [`AWSBackupServiceLinkedRolePolicyForBackup`](./AWSBackupServiceLinkedRolePolicyForBackup.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
+  - [`AmazonEventBridgeSchedulerReadOnlyAccess`](./AmazonEventBridgeSchedulerReadOnlyAccess.json)
   - [`AmazonQLDBFullAccess`](./AmazonQLDBFullAccess.json)
   - [`AWSResourceExplorerServiceRolePolicy`](./AWSResourceExplorerServiceRolePolicy.json)
 - Sec_Warnings: `11`
