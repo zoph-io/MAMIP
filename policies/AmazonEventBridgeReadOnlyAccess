@@ -24,14 +24,33 @@
                         "events:DescribeApiDestination",
                         "events:ListApiDestinations",
                         "events:DescribeEndpoint",
-                        "events:ListEndpoints"
+                        "events:ListEndpoints",
+                        "schemas:DescribeCodeBinding",
+                        "schemas:DescribeDiscoverer",
+                        "schemas:DescribeRegistry",
+                        "schemas:DescribeSchema",
+                        "schemas:ExportSchema",
+                        "schemas:GetCodeBindingSource",
+                        "schemas:GetDiscoveredSchema",
+                        "schemas:GetResourcePolicy",
+                        "schemas:ListDiscoverers",
+                        "schemas:ListRegistries",
+                        "schemas:ListSchemas",
+                        "schemas:ListSchemaVersions",
+                        "schemas:ListTagsForResource",
+                        "schemas:SearchSchemas",
+                        "scheduler:GetSchedule",
+                        "scheduler:GetScheduleGroup",
+                        "scheduler:ListSchedules",
+                        "scheduler:ListScheduleGroups",
+                        "scheduler:ListTagsForResource"
                     ],
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v4",
-        "IsDefaultVersion": false,
-        "CreateDate": "2022-04-08T20:42:18Z"
+        "VersionId": "v5",
+        "IsDefaultVersion": true,
+        "CreateDate": "2022-11-10T18:01:54Z"
     }
 }
