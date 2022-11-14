@@ -1,13 +1,12 @@
-## AWS Access Analyzer - Findings - 2022-11-11
+## AWS Access Analyzer - Findings - 2022-11-14
 
 - Policies analyzed: `998`
-- Errors: `75`
+- Errors: `73`
   - [`AWSResourceExplorerFullAccess`](./AWSResourceExplorerFullAccess.json)
   - [`AmazonEventBridgeSchedulerFullAccess`](./AmazonEventBridgeSchedulerFullAccess.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AmazonEventBridgeFullAccess`](./AmazonEventBridgeFullAccess.json)
   - [`AmazonEventBridgeReadOnlyAccess`](./AmazonEventBridgeReadOnlyAccess.json)
-  - [`AmazonQLDBConsoleFullAccess`](./AmazonQLDBConsoleFullAccess.json)
   - [`AWSResourceExplorerReadOnlyAccess`](./AWSResourceExplorerReadOnlyAccess.json)
   - [`AWSBackupOperatorAccess`](./AWSBackupOperatorAccess.json)
   - [`AWSBackupServiceLinkedRolePolicyForBackup`](./AWSBackupServiceLinkedRolePolicyForBackup.json)
@@ -16,7 +15,6 @@
   - [`AWSBackupServiceRolePolicyForBackup`](./AWSBackupServiceRolePolicyForBackup.json)
   - [`AWSBackupServiceRolePolicyForRestores`](./AWSBackupServiceRolePolicyForRestores.json)
   - [`AmazonEventBridgeSchedulerReadOnlyAccess`](./AmazonEventBridgeSchedulerReadOnlyAccess.json)
-  - [`AmazonQLDBFullAccess`](./AmazonQLDBFullAccess.json)
   - [`AWSResourceExplorerServiceRolePolicy`](./AWSResourceExplorerServiceRolePolicy.json)
   - [`AWSBackupFullAccess`](./AWSBackupFullAccess.json)
   - [`AWSXrayReadOnlyAccess`](./AWSXrayReadOnlyAccess.json)
