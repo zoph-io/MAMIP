@@ -184,15 +184,21 @@
                         "ec2:RevokeSecurityGroupEgress",
                         "ec2:RevokeSecurityGroupIngress",
                         "ec2:UpdateSecurityGroupRuleDescriptionsEgress",
-                        "ec2:UpdateSecurityGroupRuleDescriptionsIngress",
-                        "ec2:DescribeNetworkInterfaceAttribute",
-                        "ec2:DescribeInstances"
+                        "ec2:UpdateSecurityGroupRuleDescriptionsIngress"
                     ],
                     "Resource": [
                         "arn:aws:ec2:*:*:network-interface/*",
                         "arn:aws:ec2:*:*:security-group/*",
                         "arn:aws:ec2:*:*:instance/*"
                     ]
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "ec2:DescribeNetworkInterfaceAttribute",
+                        "ec2:DescribeInstances"
+                    ],
+                    "Resource": "*"
                 },
                 {
                     "Effect": "Allow",
@@ -605,8 +611,8 @@
                 }
             ]
         },
-        "VersionId": "v25",
+        "VersionId": "v26",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-06-24T20:29:28Z"
+        "CreateDate": "2022-11-15T20:51:43Z"
     }
 }
