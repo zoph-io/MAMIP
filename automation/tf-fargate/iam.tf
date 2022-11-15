@@ -32,7 +32,10 @@ data "aws_iam_policy_document" "ecs_service_policy" {
   }
   statement {
     effect    = "Allow"
-    resources = ["arn:aws:sqs:${var.aws_region}:${data.aws_caller_identity.current.account_id}:${var.qtweeter_sqs_name}.fifo"]
+    resources = [
+      "arn:aws:sqs:${var.aws_region}:${data.aws_caller_identity.current.account_id}:${var.qtweeter_sqs_name}.fifo",
+      "arn:aws:sqs:${var.aws_region}:${data.aws_caller_identity.current.account_id}:qmasto-development-sqs-queue.fifo"
+      ]
     actions = [
       "sqs:SendMessage"
     ]
