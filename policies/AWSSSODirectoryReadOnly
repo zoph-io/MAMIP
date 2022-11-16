@@ -12,14 +12,16 @@
                         "sso-directory:List*",
                         "sso-directory:Get*",
                         "identitystore:Describe*",
-                        "identitystore:List*"
+                        "identitystore:List*",
+                        "identitystore-auth:ListSessions",
+                        "identitystore-auth:BatchGetSession"
                     ],
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v3",
+        "VersionId": "v4",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-03-25T20:57:20Z"
+        "CreateDate": "2022-11-16T18:17:48Z"
     }
 }
