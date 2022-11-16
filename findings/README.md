@@ -1,7 +1,7 @@
-## AWS Access Analyzer - Findings - 2022-11-15
+## AWS Access Analyzer - Findings - 2022-11-16
 
 - Policies analyzed: `999`
-- Errors: `73`
+- Errors: `74`
   - [`AWSResourceExplorerFullAccess`](./AWSResourceExplorerFullAccess.json)
   - [`AmazonEventBridgeSchedulerFullAccess`](./AmazonEventBridgeSchedulerFullAccess.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
