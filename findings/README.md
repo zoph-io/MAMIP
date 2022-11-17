@@ -1,23 +1,18 @@
 ## AWS Access Analyzer - Findings - 2022-11-17
 
-- Policies analyzed: `1002`
-- Errors: `71`
-  - [`AmazonEventBridgeSchedulerFullAccess`](./AmazonEventBridgeSchedulerFullAccess.json)
+- Policies analyzed: `1000`
+- Errors: `50`
   - [`AWSSystemsManagerForSAPReadOnlyAccess`](./AWSSystemsManagerForSAPReadOnlyAccess.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
-  - [`AmazonEventBridgeFullAccess`](./AmazonEventBridgeFullAccess.json)
-  - [`AmazonEventBridgeReadOnlyAccess`](./AmazonEventBridgeReadOnlyAccess.json)
   - [`AWSBackupOperatorAccess`](./AWSBackupOperatorAccess.json)
   - [`AWSBackupServiceLinkedRolePolicyForBackup`](./AWSBackupServiceLinkedRolePolicyForBackup.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
   - [`AWSBackupRestoreAccessForSAPHANA`](./AWSBackupRestoreAccessForSAPHANA.json)
   - [`AWSBackupServiceRolePolicyForBackup`](./AWSBackupServiceRolePolicyForBackup.json)
   - [`AWSBackupServiceRolePolicyForRestores`](./AWSBackupServiceRolePolicyForRestores.json)
-  - [`AmazonEventBridgeSchedulerReadOnlyAccess`](./AmazonEventBridgeSchedulerReadOnlyAccess.json)
   - [`AWSSystemsManagerForSAPFullAccess`](./AWSSystemsManagerForSAPFullAccess.json)
   - [`AWSBackupFullAccess`](./AWSBackupFullAccess.json)
   - [`AWSXrayReadOnlyAccess`](./AWSXrayReadOnlyAccess.json)
-  - [`AWSBackupDataTransferAccess`](./AWSBackupDataTransferAccess.json)
 - Sec_Warnings: `11`
   - [`AmazonElasticMapReduceFullAccess`](./AmazonElasticMapReduceFullAccess.json)
   - [`AWSElasticBeanstalkService`](./AWSElasticBeanstalkService.json)
@@ -80,7 +75,7 @@
 - Fails: `2`
   - [`ReadOnlyAccess`](./fails.txt)
   - [`AWSSupportServiceRolePolicy`](./fails.txt)
-- Deprecated: `46`
+- Deprecated: `48`
   - [`AmazonApplicationWizardFullaccess`](../policies/AmazonApplicationWizardFullaccess)
   - [`ServerMigrationServiceRole`](../policies/ServerMigrationServiceRole)
   - [`AWSServiceRoleForCodeGuruProfiler`](../policies/AWSServiceRoleForCodeGuruProfiler)
@@ -113,9 +108,11 @@
   - [`AWSLambdaReplicatorInternal`](../policies/AWSLambdaReplicatorInternal)
   - [`AmazonLaunchWizardFullaccess`](../policies/AmazonLaunchWizardFullaccess)
   - [`AWSServiceRoleForGammaInternalAmazonEKSNodegroup`](../policies/AWSServiceRoleForGammaInternalAmazonEKSNodegroup)
+  - [`AWSCodePipelineReadOnlyAccess`](../policies/AWSCodePipelineReadOnlyAccess)
   - [`AWSCloudTrailReadOnlyAccess`](../policies/AWSCloudTrailReadOnlyAccess)
   - [`AmazonEC2RolePolicyForApplicationWizard`](../policies/AmazonEC2RolePolicyForApplicationWizard)
   - [`AWSECRPullThroughCacheServiceRolePolicy`](../policies/AWSECRPullThroughCacheServiceRolePolicy)
+  - [`AWSCodePipelineFullAccess`](../policies/AWSCodePipelineFullAccess)
   - [`ServiceCatalogAdminReadOnlyAccess`](../policies/ServiceCatalogAdminReadOnlyAccess)
   - [`AWSSchemasServiceRolePolicy`](../policies/AWSSchemasServiceRolePolicy)
   - [`AmazonEC2ReportsAccess`](../policies/AmazonEC2ReportsAccess)
