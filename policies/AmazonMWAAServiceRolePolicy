@@ -77,11 +77,23 @@
                             "aws:TagKeys": "AmazonMWAAManaged"
                         }
                     }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "cloudwatch:PutMetricData",
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "cloudwatch:namespace": [
+                                "AWS/MWAA"
+                            ]
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2020-11-24T14:13:41Z"
+        "CreateDate": "2022-11-17T00:56:25Z"
     }
 }
