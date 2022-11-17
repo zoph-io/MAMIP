@@ -1,8 +1,9 @@
 ## AWS Access Analyzer - Findings - 2022-11-17
 
-- Policies analyzed: `1000`
-- Errors: `66`
+- Policies analyzed: `1002`
+- Errors: `71`
   - [`AmazonEventBridgeSchedulerFullAccess`](./AmazonEventBridgeSchedulerFullAccess.json)
+  - [`AWSSystemsManagerForSAPReadOnlyAccess`](./AWSSystemsManagerForSAPReadOnlyAccess.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AmazonEventBridgeFullAccess`](./AmazonEventBridgeFullAccess.json)
   - [`AmazonEventBridgeReadOnlyAccess`](./AmazonEventBridgeReadOnlyAccess.json)
@@ -13,6 +14,7 @@
   - [`AWSBackupServiceRolePolicyForBackup`](./AWSBackupServiceRolePolicyForBackup.json)
   - [`AWSBackupServiceRolePolicyForRestores`](./AWSBackupServiceRolePolicyForRestores.json)
   - [`AmazonEventBridgeSchedulerReadOnlyAccess`](./AmazonEventBridgeSchedulerReadOnlyAccess.json)
+  - [`AWSSystemsManagerForSAPFullAccess`](./AWSSystemsManagerForSAPFullAccess.json)
   - [`AWSBackupFullAccess`](./AWSBackupFullAccess.json)
   - [`AWSXrayReadOnlyAccess`](./AWSXrayReadOnlyAccess.json)
   - [`AWSBackupDataTransferAccess`](./AWSBackupDataTransferAccess.json)
