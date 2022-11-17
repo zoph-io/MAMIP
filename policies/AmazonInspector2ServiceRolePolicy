@@ -88,6 +88,16 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "LambdaPackageVulnerabilityScanning",
+                    "Effect": "Allow",
+                    "Action": [
+                        "lambda:ListFunctions",
+                        "lambda:GetFunction",
+                        "lambda:GetLayerVersion"
+                    ],
+                    "Resource": "*"
+                },
+                {
                     "Sid": "GatherInventory",
                     "Effect": "Allow",
                     "Action": [
@@ -132,8 +142,8 @@
                 }
             ]
         },
-        "VersionId": "v4",
+        "VersionId": "v5",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-08-23T13:23:52Z"
+        "CreateDate": "2022-11-17T20:32:51Z"
     }
 }
