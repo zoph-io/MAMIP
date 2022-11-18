@@ -51,13 +51,41 @@
                         "iam:ListGroups",
                         "iam:ListRoles",
                         "iam:ListUsers",
-                        "servicecatalog:*",
+                        "servicecatalog:Get*",
+                        "servicecatalog:Scan*",
+                        "servicecatalog:Search*",
+                        "servicecatalog:List*",
+                        "servicecatalog:TagResource",
+                        "servicecatalog:UntagResource",
+                        "servicecatalog:SyncResource",
                         "ssm:DescribeDocument",
                         "ssm:GetAutomationExecution",
                         "ssm:ListDocuments",
                         "ssm:ListDocumentVersions",
                         "config:DescribeConfigurationRecorders",
                         "config:DescribeConfigurationRecorderStatus"
+                    ],
+                    "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "servicecatalog:Accept*",
+                        "servicecatalog:Associate*",
+                        "servicecatalog:Batch*",
+                        "servicecatalog:Copy*",
+                        "servicecatalog:Create*",
+                        "servicecatalog:Delete*",
+                        "servicecatalog:Describe*",
+                        "servicecatalog:Disable*",
+                        "servicecatalog:Disassociate*",
+                        "servicecatalog:Enable*",
+                        "servicecatalog:Execute*",
+                        "servicecatalog:Import*",
+                        "servicecatalog:Provision*",
+                        "servicecatalog:Reject*",
+                        "servicecatalog:Terminate*",
+                        "servicecatalog:Update*"
                     ],
                     "Resource": "*"
                 },
@@ -73,8 +101,8 @@
                 }
             ]
         },
-        "VersionId": "v5",
-        "IsDefaultVersion": false,
-        "CreateDate": "2019-02-06T01:57:54Z"
+        "VersionId": "v6",
+        "IsDefaultVersion": true,
+        "CreateDate": "2022-11-17T23:03:44Z"
     }
 }
