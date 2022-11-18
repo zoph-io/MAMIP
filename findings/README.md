@@ -1,9 +1,10 @@
 ## AWS Access Analyzer - Findings - 2022-11-18
 
 - Policies analyzed: `1001`
-- Errors: `53`
+- Errors: `55`
   - [`AWSSystemsManagerForSAPReadOnlyAccess`](./AWSSystemsManagerForSAPReadOnlyAccess.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
+  - [`AWSProtonReadOnlyAccess`](./AWSProtonReadOnlyAccess.json)
   - [`AWSServiceCatalogAppRegistryReadOnlyAccess`](./AWSServiceCatalogAppRegistryReadOnlyAccess.json)
   - [`AWSServiceCatalogAppRegistryFullAccess`](./AWSServiceCatalogAppRegistryFullAccess.json)
   - [`AWSBackupOperatorAccess`](./AWSBackupOperatorAccess.json)
@@ -12,6 +13,7 @@
   - [`AWSBackupRestoreAccessForSAPHANA`](./AWSBackupRestoreAccessForSAPHANA.json)
   - [`AWSBackupServiceRolePolicyForBackup`](./AWSBackupServiceRolePolicyForBackup.json)
   - [`AWSBackupServiceRolePolicyForRestores`](./AWSBackupServiceRolePolicyForRestores.json)
+  - [`AWSProtonDeveloperAccess`](./AWSProtonDeveloperAccess.json)
   - [`AWSSystemsManagerForSAPFullAccess`](./AWSSystemsManagerForSAPFullAccess.json)
   - [`AWSBackupFullAccess`](./AWSBackupFullAccess.json)
   - [`AWSXrayReadOnlyAccess`](./AWSXrayReadOnlyAccess.json)
