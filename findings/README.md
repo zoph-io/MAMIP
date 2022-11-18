@@ -1,6 +1,6 @@
 ## AWS Access Analyzer - Findings - 2022-11-18
 
-- Policies analyzed: `1000`
+- Policies analyzed: `1001`
 - Errors: `53`
   - [`AWSSystemsManagerForSAPReadOnlyAccess`](./AWSSystemsManagerForSAPReadOnlyAccess.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
