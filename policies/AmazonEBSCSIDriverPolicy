@@ -74,18 +74,6 @@
                 {
                     "Effect": "Allow",
                     "Action": [
-                        "ec2:CreateVolume"
-                    ],
-                    "Resource": "*",
-                    "Condition": {
-                        "StringLike": {
-                            "aws:RequestTag/kubernetes.io/cluster/*": "owned"
-                        }
-                    }
-                },
-                {
-                    "Effect": "Allow",
-                    "Action": [
                         "ec2:DeleteVolume"
                     ],
                     "Resource": "*",
@@ -115,7 +103,7 @@
                     "Resource": "*",
                     "Condition": {
                         "StringLike": {
-                            "ec2:ResourceTag/kubernetes.io/cluster/*": "owned"
+                            "ec2:ResourceTag/kubernetes.io/created-for/pvc/name": "*"
                         }
                     }
                 },
@@ -145,8 +133,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-04-04T17:24:29Z"
+        "CreateDate": "2022-11-18T14:42:46Z"
     }
 }
