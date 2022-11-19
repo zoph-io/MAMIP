@@ -16,11 +16,18 @@
                         "ec2:DescribeSnapshots"
                     ],
                     "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "aws-marketplace:ListTagsForResource"
+                    ],
+                    "Resource": "arn:aws:aws-marketplace:*:*:AWSMarketplace/*"
                 }
             ]
         },
-        "VersionId": "v2",
-        "IsDefaultVersion": false,
-        "CreateDate": "2020-03-05T23:11:53Z"
+        "VersionId": "v3",
+        "IsDefaultVersion": true,
+        "CreateDate": "2022-11-19T00:08:42Z"
     }
 }
