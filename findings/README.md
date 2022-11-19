@@ -1,9 +1,10 @@
-## AWS Access Analyzer - Findings - 2022-11-18
+## AWS Access Analyzer - Findings - 2022-11-19
 
 - Policies analyzed: `1001`
-- Errors: `55`
+- Errors: `58`
   - [`AWSSystemsManagerForSAPReadOnlyAccess`](./AWSSystemsManagerForSAPReadOnlyAccess.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
+  - [`AWSMarketplaceSellerFullAccess`](./AWSMarketplaceSellerFullAccess.json)
   - [`AWSProtonReadOnlyAccess`](./AWSProtonReadOnlyAccess.json)
   - [`AWSServiceCatalogAppRegistryReadOnlyAccess`](./AWSServiceCatalogAppRegistryReadOnlyAccess.json)
   - [`AWSServiceCatalogAppRegistryFullAccess`](./AWSServiceCatalogAppRegistryFullAccess.json)
