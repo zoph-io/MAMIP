@@ -27,7 +27,8 @@
                     "Sid": "EC2ReadPermissions",
                     "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeInstances"
+                        "ec2:DescribeInstances",
+                        "ec2:DescribeVpcPeeringConnections"
                     ],
                     "Resource": "*"
                 },
@@ -78,8 +79,8 @@
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-10-25T19:22:26Z"
+        "CreateDate": "2022-11-21T19:51:42Z"
     }
 }
