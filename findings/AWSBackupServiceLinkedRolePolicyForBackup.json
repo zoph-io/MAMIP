@@ -36,42 +36,6 @@
         ]
     },
     {
-        "findingDetails": "The service ssm-sap:GetOperation specified in the action does not exist.",
-        "findingType": "ERROR",
-        "issueCode": "INVALID_SERVICE_IN_ACTION",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
-        "locations": [
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 22
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 1
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 3855,
-                        "line": 1,
-                        "offset": 3855
-                    },
-                    "start": {
-                        "column": 3833,
-                        "line": 1,
-                        "offset": 3833
-                    }
-                }
-            }
-        ]
-    },
-    {
         "findingDetails": "The action timestream:GetAwsBackupStatus does not exist.",
         "findingType": "ERROR",
         "issueCode": "INVALID_ACTION",
