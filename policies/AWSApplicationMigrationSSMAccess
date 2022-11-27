@@ -1,0 +1,64 @@
+{
+    "PolicyVersion": {
+        "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "ssm:GetCommandInvocation",
+                        "ssm:DescribeInstanceInformation"
+                    ],
+                    "Resource": [
+                        "*"
+                    ],
+                    "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "aws:CalledVia": [
+                                "mgn.amazonaws.com"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "ssm:SendCommand"
+                    ],
+                    "Resource": [
+                        "arn:aws:ssm:*:*:document/*"
+                    ],
+                    "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "aws:CalledVia": [
+                                "mgn.amazonaws.com"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "ssm:SendCommand"
+                    ],
+                    "Resource": [
+                        "arn:aws:ec2:*:*:instance/*"
+                    ],
+                    "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "aws:CalledVia": [
+                                "mgn.amazonaws.com"
+                            ]
+                        },
+                        "Null": {
+                            "aws:ResourceTag/AWSApplicationMigrationServiceManaged": "false"
+                        }
+                    }
+                }
+            ]
+        },
+        "VersionId": "v1",
+        "IsDefaultVersion": true,
+        "CreateDate": "2022-11-27T09:29:05Z"
+    }
+}

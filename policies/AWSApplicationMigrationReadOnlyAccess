@@ -12,7 +12,12 @@
                         "mgn:DescribeReplicationConfigurationTemplates",
                         "mgn:GetLaunchConfiguration",
                         "mgn:DescribeVcenterClients",
-                        "mgn:GetReplicationConfiguration"
+                        "mgn:GetReplicationConfiguration",
+                        "mgn:DescribeLaunchConfigurationTemplates",
+                        "mgn:ListSourceServerActions",
+                        "mgn:ListTemplateActions",
+                        "mgn:ListApplications",
+                        "mgn:ListWaves"
                     ],
                     "Resource": "*"
                 },
@@ -35,8 +40,8 @@
                 }
             ]
         },
-        "VersionId": "v3",
-        "IsDefaultVersion": false,
-        "CreateDate": "2022-05-01T08:32:53Z"
+        "VersionId": "v4",
+        "IsDefaultVersion": true,
+        "CreateDate": "2022-11-27T09:08:30Z"
     }
 }
