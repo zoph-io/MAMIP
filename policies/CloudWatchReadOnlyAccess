@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Effect": "Allow",
                     "Action": [
                         "autoscaling:Describe*",
                         "cloudwatch:Describe*",
@@ -16,16 +17,23 @@
                         "logs:Describe*",
                         "logs:TestMetricFilter",
                         "logs:FilterLogEvents",
+                        "oam:ListSinks",
                         "sns:Get*",
                         "sns:List*"
                     ],
-                    "Effect": "Allow",
                     "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "oam:ListAttachedLinks"
+                    ],
+                    "Resource": "arn:aws:oam:*:*:sink/*"
                 }
             ]
         },
-        "VersionId": "v4",
+        "VersionId": "v5",
         "IsDefaultVersion": true,
-        "CreateDate": "2020-07-17T17:49:09Z"
+        "CreateDate": "2022-11-27T13:08:46Z"
     }
 }
