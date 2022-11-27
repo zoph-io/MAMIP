@@ -1,6 +1,6 @@
 ## AWS Access Analyzer - Findings - 2022-11-27
 
-- Policies analyzed: `1009`
+- Policies analyzed: `1010`
 - Errors: `61`
   - [`AWSBackupServiceLinkedRolePolicyForBackup`](./AWSBackupServiceLinkedRolePolicyForBackup.json)
   - [`CloudWatchLogsCrossAccountSharingConfiguration`](./CloudWatchLogsCrossAccountSharingConfiguration.json)
