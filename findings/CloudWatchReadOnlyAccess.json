@@ -1,0 +1,107 @@
+[
+    {
+        "findingDetails": "The service oam:ListSinks specified in the action does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_SERVICE_IN_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 11
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 305,
+                        "line": 1,
+                        "offset": 305
+                    },
+                    "start": {
+                        "column": 290,
+                        "line": 1,
+                        "offset": 290
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The service oam:ListAttachedLinks specified in the action does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_SERVICE_IN_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 1
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 0
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 405,
+                        "line": 1,
+                        "offset": 405
+                    },
+                    "start": {
+                        "column": 382,
+                        "line": 1,
+                        "offset": 382
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The service oam does not exist. Use a valid service name.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_SERVICE",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 1
+                    },
+                    {
+                        "value": "Resource"
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 444,
+                        "line": 1,
+                        "offset": 444
+                    },
+                    "start": {
+                        "column": 420,
+                        "line": 1,
+                        "offset": 420
+                    }
+                }
+            }
+        ]
+    }
+]
