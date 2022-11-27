@@ -1,12 +1,13 @@
 ## AWS Access Analyzer - Findings - 2022-11-27
 
-- Policies analyzed: `1008`
-- Errors: `51`
+- Policies analyzed: `1009`
+- Errors: `61`
   - [`AWSBackupServiceLinkedRolePolicyForBackup`](./AWSBackupServiceLinkedRolePolicyForBackup.json)
   - [`CloudWatchLogsCrossAccountSharingConfiguration`](./CloudWatchLogsCrossAccountSharingConfiguration.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
   - [`OAMReadOnlyAccess`](./OAMReadOnlyAccess.json)
   - [`CloudWatchReadOnlyAccess`](./CloudWatchReadOnlyAccess.json)
+  - [`CloudWatchCrossAccountSharingConfiguration`](./CloudWatchCrossAccountSharingConfiguration.json)
   - [`OAMFullAccess`](./OAMFullAccess.json)
   - [`AWSApplicationMigrationReadOnlyAccess`](./AWSApplicationMigrationReadOnlyAccess.json)
   - [`AWSBackupServiceRolePolicyForBackup`](./AWSBackupServiceRolePolicyForBackup.json)
