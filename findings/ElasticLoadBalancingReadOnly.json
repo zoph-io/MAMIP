@@ -1,0 +1,107 @@
+[
+    {
+        "findingDetails": "The service arc-zonal-shift:GetManagedResource specified in the action does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_SERVICE_IN_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 2
+                    },
+                    {
+                        "value": "Action"
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 329,
+                        "line": 1,
+                        "offset": 329
+                    },
+                    "start": {
+                        "column": 293,
+                        "line": 1,
+                        "offset": 293
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The service arc-zonal-shift:ListManagedResources specified in the action does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_SERVICE_IN_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 3
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 0
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 464,
+                        "line": 1,
+                        "offset": 464
+                    },
+                    "start": {
+                        "column": 426,
+                        "line": 1,
+                        "offset": 426
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The service arc-zonal-shift:ListZonalShifts specified in the action does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_SERVICE_IN_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 3
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 1
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 499,
+                        "line": 1,
+                        "offset": 499
+                    },
+                    "start": {
+                        "column": 466,
+                        "line": 1,
+                        "offset": 466
+                    }
+                }
+            }
+        ]
+    }
+]
