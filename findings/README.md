@@ -1,7 +1,7 @@
 ## AWS Access Analyzer - Findings - 2022-11-29
 
-- Policies analyzed: `1012`
-- Errors: `68`
+- Policies analyzed: `1013`
+- Errors: `70`
   - [`AWSBackupServiceLinkedRolePolicyForBackup`](./AWSBackupServiceLinkedRolePolicyForBackup.json)
   - [`CloudWatchLogsCrossAccountSharingConfiguration`](./CloudWatchLogsCrossAccountSharingConfiguration.json)
   - [`ElasticLoadBalancingFullAccess`](./ElasticLoadBalancingFullAccess.json)
@@ -18,6 +18,7 @@
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AWSBackupServiceRolePolicyForRestores`](./AWSBackupServiceRolePolicyForRestores.json)
   - [`AWSXrayCrossAccountSharingConfiguration`](./AWSXrayCrossAccountSharingConfiguration.json)
+  - [`AmazonOmicsReadOnlyAccess`](./AmazonOmicsReadOnlyAccess.json)
 - Sec_Warnings: `11`
   - [`AmazonElasticMapReduceRole`](./AmazonElasticMapReduceRole.json)
   - [`AdministratorAccess-Amplify`](./AdministratorAccess-Amplify.json)
