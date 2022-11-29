@@ -16,11 +16,24 @@
                         "ec2:DescribeSecurityGroups"
                     ],
                     "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "arc-zonal-shift:GetManagedResource",
+                    "Resource": "arn:aws:elasticloadbalancing:*:*:loadbalancer/*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "arc-zonal-shift:ListManagedResources",
+                        "arc-zonal-shift:ListZonalShifts"
+                    ],
+                    "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2018-09-20T20:17:09Z"
+        "CreateDate": "2022-11-29T01:44:23Z"
     }
 }
