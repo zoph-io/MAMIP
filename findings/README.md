@@ -1,23 +1,15 @@
-## AWS Access Analyzer - Findings - 2022-11-29
+## AWS Access Analyzer - Findings - 2022-11-30
 
-- Policies analyzed: `1015`
-- Errors: `70`
+- Policies analyzed: `1016`
+- Errors: `38`
   - [`AWSBackupServiceLinkedRolePolicyForBackup`](./AWSBackupServiceLinkedRolePolicyForBackup.json)
-  - [`CloudWatchLogsCrossAccountSharingConfiguration`](./CloudWatchLogsCrossAccountSharingConfiguration.json)
   - [`ElasticLoadBalancingFullAccess`](./ElasticLoadBalancingFullAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
-  - [`OAMReadOnlyAccess`](./OAMReadOnlyAccess.json)
-  - [`CloudWatchReadOnlyAccess`](./CloudWatchReadOnlyAccess.json)
-  - [`AWSWickrFullAccess`](./AWSWickrFullAccess.json)
-  - [`CloudWatchCrossAccountSharingConfiguration`](./CloudWatchCrossAccountSharingConfiguration.json)
   - [`ElasticLoadBalancingReadOnly`](./ElasticLoadBalancingReadOnly.json)
-  - [`OAMFullAccess`](./OAMFullAccess.json)
-  - [`AWSApplicationMigrationReadOnlyAccess`](./AWSApplicationMigrationReadOnlyAccess.json)
   - [`AWSBackupServiceRolePolicyForBackup`](./AWSBackupServiceRolePolicyForBackup.json)
-  - [`CloudWatchFullAccess`](./CloudWatchFullAccess.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AWSBackupServiceRolePolicyForRestores`](./AWSBackupServiceRolePolicyForRestores.json)
-  - [`AWSXrayCrossAccountSharingConfiguration`](./AWSXrayCrossAccountSharingConfiguration.json)
+  - [`AmazonSageMakerModelGovernanceUseAccess`](./AmazonSageMakerModelGovernanceUseAccess.json)
   - [`AmazonOmicsReadOnlyAccess`](./AmazonOmicsReadOnlyAccess.json)
 - Sec_Warnings: `11`
   - [`AmazonElasticMapReduceRole`](./AmazonElasticMapReduceRole.json)
