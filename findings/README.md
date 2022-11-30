@@ -1,6 +1,6 @@
 ## AWS Access Analyzer - Findings - 2022-11-30
 
-- Policies analyzed: `1018`
+- Policies analyzed: `1019`
 - Errors: `41`
   - [`AWSBackupServiceLinkedRolePolicyForBackup`](./AWSBackupServiceLinkedRolePolicyForBackup.json)
   - [`AmazonSageMakerGeospatialFullAccess`](./AmazonSageMakerGeospatialFullAccess.json)
