@@ -1,11 +1,12 @@
 ## AWS Access Analyzer - Findings - 2022-11-30
 
 - Policies analyzed: `1019`
-- Errors: `54`
+- Errors: `57`
   - [`AWSBackupServiceLinkedRolePolicyForBackup`](./AWSBackupServiceLinkedRolePolicyForBackup.json)
   - [`AmazonSageMakerGeospatialFullAccess`](./AmazonSageMakerGeospatialFullAccess.json)
   - [`ElasticLoadBalancingFullAccess`](./ElasticLoadBalancingFullAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
+  - [`AmazonSageMakerFullAccess`](./AmazonSageMakerFullAccess.json)
   - [`ElasticLoadBalancingReadOnly`](./ElasticLoadBalancingReadOnly.json)
   - [`AWSBackupServiceRolePolicyForBackup`](./AWSBackupServiceRolePolicyForBackup.json)
   - [`AmazonDocDBConsoleFullAccess`](./AmazonDocDBConsoleFullAccess.json)
