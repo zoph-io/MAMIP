@@ -1,0 +1,68 @@
+[
+    {
+        "findingDetails": "The service sagemaker-geospatial:GetEarthObservationJob specified in the action does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_SERVICE_IN_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 1
+                    },
+                    {
+                        "value": "Action"
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 338,
+                        "line": 1,
+                        "offset": 338
+                    },
+                    "start": {
+                        "column": 293,
+                        "line": 1,
+                        "offset": 293
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The service sagemaker-geospatial does not exist. Use a valid service name.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_SERVICE",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 1
+                    },
+                    {
+                        "value": "Resource"
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 410,
+                        "line": 1,
+                        "offset": 410
+                    },
+                    "start": {
+                        "column": 352,
+                        "line": 1,
+                        "offset": 352
+                    }
+                }
+            }
+        ]
+    }
+]
