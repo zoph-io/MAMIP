@@ -1,0 +1,29 @@
+{
+    "PolicyVersion": {
+        "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Sid": "EventBridgePipesActions",
+                    "Effect": "Allow",
+                    "Action": "pipes:*",
+                    "Resource": "*"
+                },
+                {
+                    "Sid": "IAMPassRoleAccessForPipes",
+                    "Effect": "Allow",
+                    "Action": "iam:PassRole",
+                    "Resource": "arn:aws:iam::*:role/*",
+                    "Condition": {
+                        "StringLike": {
+                            "iam:PassedToService": "pipes.amazonaws.com"
+                        }
+                    }
+                }
+            ]
+        },
+        "VersionId": "v1",
+        "IsDefaultVersion": true,
+        "CreateDate": "2022-12-01T17:03:20Z"
+    }
+}

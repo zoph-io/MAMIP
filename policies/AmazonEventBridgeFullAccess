@@ -9,7 +9,8 @@
                     "Action": [
                         "events:*",
                         "schemas:*",
-                        "scheduler:*"
+                        "scheduler:*",
+                        "pipes:*"
                     ],
                     "Resource": "*"
                 },
@@ -68,11 +69,22 @@
                             "iam:PassedToService": "scheduler.amazonaws.com"
                         }
                     }
+                },
+                {
+                    "Sid": "IAMPassRoleAccessForPipes",
+                    "Effect": "Allow",
+                    "Action": "iam:PassRole",
+                    "Resource": "arn:aws:iam::*:role/*",
+                    "Condition": {
+                        "StringLike": {
+                            "iam:PassedToService": "pipes.amazonaws.com"
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v3",
-        "IsDefaultVersion": false,
-        "CreateDate": "2022-11-10T18:01:43Z"
+        "VersionId": "v4",
+        "IsDefaultVersion": true,
+        "CreateDate": "2022-12-01T17:00:46Z"
     }
 }
