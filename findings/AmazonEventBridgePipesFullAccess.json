@@ -1,0 +1,35 @@
+[
+    {
+        "findingDetails": "The service pipes:* specified in the action does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_SERVICE_IN_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 113,
+                        "line": 1,
+                        "offset": 113
+                    },
+                    "start": {
+                        "column": 104,
+                        "line": 1,
+                        "offset": 104
+                    }
+                }
+            }
+        ]
+    }
+]

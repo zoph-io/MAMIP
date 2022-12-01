@@ -1,13 +1,18 @@
 ## AWS Access Analyzer - Findings - 2022-12-01
 
-- Policies analyzed: `1020`
-- Errors: `74`
+- Policies analyzed: `1023`
+- Errors: `88`
   - [`AWSVendorInsightsVendorReadOnly`](./AWSVendorInsightsVendorReadOnly.json)
   - [`AWSBackupServiceLinkedRolePolicyForBackup`](./AWSBackupServiceLinkedRolePolicyForBackup.json)
   - [`AmazonSageMakerGeospatialFullAccess`](./AmazonSageMakerGeospatialFullAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
+  - [`AmazonEventBridgePipesFullAccess`](./AmazonEventBridgePipesFullAccess.json)
   - [`AmazonSageMakerFullAccess`](./AmazonSageMakerFullAccess.json)
   - [`CloudWatchEventsReadOnlyAccess`](./CloudWatchEventsReadOnlyAccess.json)
+  - [`CloudWatchEventsFullAccess`](./CloudWatchEventsFullAccess.json)
+  - [`AmazonEventBridgeReadOnlyAccess`](./AmazonEventBridgeReadOnlyAccess.json)
+  - [`AmazonEventBridgePipesOperatorAccess`](./AmazonEventBridgePipesOperatorAccess.json)
+  - [`AmazonEventBridgePipesReadOnlyAccess`](./AmazonEventBridgePipesReadOnlyAccess.json)
   - [`AWSVendorInsightsAssessorReadOnly`](./AWSVendorInsightsAssessorReadOnly.json)
   - [`AWSVendorInsightsVendorFullAccess`](./AWSVendorInsightsVendorFullAccess.json)
   - [`AWSBackupServiceRolePolicyForBackup`](./AWSBackupServiceRolePolicyForBackup.json)
@@ -16,6 +21,7 @@
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AWSBackupServiceRolePolicyForRestores`](./AWSBackupServiceRolePolicyForRestores.json)
   - [`AmazonSageMakerModelGovernanceUseAccess`](./AmazonSageMakerModelGovernanceUseAccess.json)
+  - [`AmazonEventBridgeFullAccess`](./AmazonEventBridgeFullAccess.json)
   - [`AWSVendorInsightsAssessorFullAccess`](./AWSVendorInsightsAssessorFullAccess.json)
 - Sec_Warnings: `11`
   - [`AmazonElasticMapReduceRole`](./AmazonElasticMapReduceRole.json)
