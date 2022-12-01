@@ -1,17 +1,21 @@
-## AWS Access Analyzer - Findings - 2022-11-30
+## AWS Access Analyzer - Findings - 2022-12-01
 
 - Policies analyzed: `1020`
-- Errors: `49`
+- Errors: `71`
+  - [`AWSVendorInsightsVendorReadOnly`](./AWSVendorInsightsVendorReadOnly.json)
   - [`AWSBackupServiceLinkedRolePolicyForBackup`](./AWSBackupServiceLinkedRolePolicyForBackup.json)
   - [`AmazonSageMakerGeospatialFullAccess`](./AmazonSageMakerGeospatialFullAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
   - [`AmazonSageMakerFullAccess`](./AmazonSageMakerFullAccess.json)
+  - [`AWSVendorInsightsAssessorReadOnly`](./AWSVendorInsightsAssessorReadOnly.json)
+  - [`AWSVendorInsightsVendorFullAccess`](./AWSVendorInsightsVendorFullAccess.json)
   - [`AWSBackupServiceRolePolicyForBackup`](./AWSBackupServiceRolePolicyForBackup.json)
   - [`AmazonDocDBConsoleFullAccess`](./AmazonDocDBConsoleFullAccess.json)
   - [`AmazonSageMakerGeospatialExecutionRole`](./AmazonSageMakerGeospatialExecutionRole.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AWSBackupServiceRolePolicyForRestores`](./AWSBackupServiceRolePolicyForRestores.json)
   - [`AmazonSageMakerModelGovernanceUseAccess`](./AmazonSageMakerModelGovernanceUseAccess.json)
+  - [`AWSVendorInsightsAssessorFullAccess`](./AWSVendorInsightsAssessorFullAccess.json)
 - Sec_Warnings: `11`
   - [`AmazonElasticMapReduceRole`](./AmazonElasticMapReduceRole.json)
   - [`AdministratorAccess-Amplify`](./AdministratorAccess-Amplify.json)
