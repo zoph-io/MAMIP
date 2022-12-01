@@ -21,14 +21,25 @@
                         "vendor-insights:ListSecurityProfiles",
                         "vendor-insights:GetSecurityProfile",
                         "vendor-insights:GetSecurityProfileSnapshot",
-                        "vendor-insights:ListSecurityProfileSnapshots"
+                        "vendor-insights:ListSecurityProfileSnapshots",
+                        "vendor-insights:ListTagsForResource"
                     ],
                     "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "artifact:GetReport",
+                        "artifact:GetReportMetadata",
+                        "artifact:GetTermForReport",
+                        "artifact:ListReports"
+                    ],
+                    "Resource": "arn:aws:artifact:*::report/*"
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-07-26T15:05:34Z"
+        "CreateDate": "2022-12-01T00:54:38Z"
     }
 }

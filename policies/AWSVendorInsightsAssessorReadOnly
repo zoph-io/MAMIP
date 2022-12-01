@@ -11,11 +11,21 @@
                         "vendor-insights:ListEntitledSecurityProfileSnapshots"
                     ],
                     "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "artifact:GetReport",
+                        "artifact:GetReportMetadata",
+                        "artifact:GetTermForReport",
+                        "artifact:ListReports"
+                    ],
+                    "Resource": "arn:aws:artifact:*::report/*"
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-07-26T15:05:56Z"
+        "CreateDate": "2022-12-01T00:55:16Z"
     }
 }
