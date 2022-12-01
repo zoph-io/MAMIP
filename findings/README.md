@@ -1,12 +1,13 @@
 ## AWS Access Analyzer - Findings - 2022-12-01
 
 - Policies analyzed: `1020`
-- Errors: `71`
+- Errors: `74`
   - [`AWSVendorInsightsVendorReadOnly`](./AWSVendorInsightsVendorReadOnly.json)
   - [`AWSBackupServiceLinkedRolePolicyForBackup`](./AWSBackupServiceLinkedRolePolicyForBackup.json)
   - [`AmazonSageMakerGeospatialFullAccess`](./AmazonSageMakerGeospatialFullAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
   - [`AmazonSageMakerFullAccess`](./AmazonSageMakerFullAccess.json)
+  - [`CloudWatchEventsReadOnlyAccess`](./CloudWatchEventsReadOnlyAccess.json)
   - [`AWSVendorInsightsAssessorReadOnly`](./AWSVendorInsightsAssessorReadOnly.json)
   - [`AWSVendorInsightsVendorFullAccess`](./AWSVendorInsightsVendorFullAccess.json)
   - [`AWSBackupServiceRolePolicyForBackup`](./AWSBackupServiceRolePolicyForBackup.json)
