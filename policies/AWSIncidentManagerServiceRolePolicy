@@ -26,11 +26,24 @@
                     "Effect": "Allow",
                     "Action": "ssm-contacts:StartEngagement",
                     "Resource": "*"
+                },
+                {
+                    "Sid": "PutMetricDataPermission",
+                    "Effect": "Allow",
+                    "Action": [
+                        "cloudwatch:PutMetricData"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "cloudwatch:namespace": "AWS/IncidentManager"
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-05-10T03:34:45Z"
+        "CreateDate": "2022-12-05T02:11:58Z"
     }
 }
