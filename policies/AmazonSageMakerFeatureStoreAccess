@@ -15,11 +15,34 @@
                         "arn:aws:s3:::*Sagemaker*",
                         "arn:aws:s3:::*sagemaker*"
                     ]
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "s3:GetObject"
+                    ],
+                    "Resource": [
+                        "arn:aws:s3:::*SageMaker*/metadata/*",
+                        "arn:aws:s3:::*Sagemaker*/metadata/*",
+                        "arn:aws:s3:::*sagemaker*/metadata/*"
+                    ]
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "glue:GetTable",
+                        "glue:UpdateTable"
+                    ],
+                    "Resource": [
+                        "arn:aws:glue:*:*:catalog",
+                        "arn:aws:glue:*:*:database/sagemaker_featurestore",
+                        "arn:aws:glue:*:*:table/sagemaker_featurestore/*"
+                    ]
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-02-24T02:18:50Z"
+        "CreateDate": "2022-12-05T14:19:58Z"
     }
 }
