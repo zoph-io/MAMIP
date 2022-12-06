@@ -102,11 +102,23 @@
                         "ssm:GetParameters"
                     ],
                     "Resource": "*"
+                },
+                {
+                    "Sid": "VpcLatticeManagement",
+                    "Effect": "Allow",
+                    "Action": [
+                        "vpc-lattice:DeregisterTargets",
+                        "vpc-lattice:GetTargetGroup",
+                        "vpc-lattice:ListTargets",
+                        "vpc-lattice:ListTargetGroups",
+                        "vpc-lattice:RegisterTargets"
+                    ],
+                    "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v6",
+        "VersionId": "v7",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-10-29T22:06:23Z"
+        "CreateDate": "2022-12-06T20:15:29Z"
     }
 }
