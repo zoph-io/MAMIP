@@ -1,19 +1,12 @@
 ## AWS Access Analyzer - Findings - 2022-12-07
 
 - Policies analyzed: `1023`
-- Errors: `35`
+- Errors: `18`
   - [`AWSBackupServiceLinkedRolePolicyForBackup`](./AWSBackupServiceLinkedRolePolicyForBackup.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
-  - [`AmazonEventBridgePipesFullAccess`](./AmazonEventBridgePipesFullAccess.json)
-  - [`CloudWatchEventsReadOnlyAccess`](./CloudWatchEventsReadOnlyAccess.json)
-  - [`CloudWatchEventsFullAccess`](./CloudWatchEventsFullAccess.json)
-  - [`AmazonEventBridgeReadOnlyAccess`](./AmazonEventBridgeReadOnlyAccess.json)
-  - [`AmazonEventBridgePipesOperatorAccess`](./AmazonEventBridgePipesOperatorAccess.json)
-  - [`AmazonEventBridgePipesReadOnlyAccess`](./AmazonEventBridgePipesReadOnlyAccess.json)
   - [`AWSBackupServiceRolePolicyForBackup`](./AWSBackupServiceRolePolicyForBackup.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AWSBackupServiceRolePolicyForRestores`](./AWSBackupServiceRolePolicyForRestores.json)
-  - [`AmazonEventBridgeFullAccess`](./AmazonEventBridgeFullAccess.json)
 - Sec_Warnings: `11`
   - [`AmazonElasticMapReduceRole`](./AmazonElasticMapReduceRole.json)
   - [`AdministratorAccess-Amplify`](./AdministratorAccess-Amplify.json)
