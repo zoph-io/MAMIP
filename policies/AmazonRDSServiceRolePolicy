@@ -112,11 +112,54 @@
                             ]
                         }
                     }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "secretsmanager:GetRandomPassword"
+                    ],
+                    "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "secretsmanager:DeleteSecret",
+                        "secretsmanager:DescribeSecret",
+                        "secretsmanager:PutSecretValue",
+                        "secretsmanager:RotateSecret",
+                        "secretsmanager:UpdateSecret",
+                        "secretsmanager:UpdateSecretVersionStage",
+                        "secretsmanager:ListSecretVersionIds"
+                    ],
+                    "Resource": [
+                        "arn:aws:secretsmanager:*:*:secret:rds!*"
+                    ],
+                    "Condition": {
+                        "StringLike": {
+                            "secretsmanager:ResourceTag/aws:secretsmanager:owningService": "rds"
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "secretsmanager:TagResource",
+                    "Resource": "arn:aws:secretsmanager:*:*:secret:rds!*",
+                    "Condition": {
+                        "ForAllValues:StringEquals": {
+                            "aws:TagKeys": [
+                                "aws:rds:primaryDBInstanceArn",
+                                "aws:rds:primaryDBClusterArn"
+                            ]
+                        },
+                        "StringLike": {
+                            "secretsmanager:ResourceTag/aws:secretsmanager:owningService": "rds"
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v11",
+        "VersionId": "v12",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-03-21T15:03:27Z"
+        "CreateDate": "2022-12-13T16:24:27Z"
     }
 }
