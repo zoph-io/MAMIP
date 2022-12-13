@@ -86,11 +86,54 @@
                             ]
                         }
                     }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "secretsmanager:GetRandomPassword"
+                    ],
+                    "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "secretsmanager:DeleteSecret",
+                        "secretsmanager:DescribeSecret",
+                        "secretsmanager:PutSecretValue",
+                        "secretsmanager:RotateSecret",
+                        "secretsmanager:UpdateSecret",
+                        "secretsmanager:UpdateSecretVersionStage",
+                        "secretsmanager:ListSecretVersionIds"
+                    ],
+                    "Resource": [
+                        "arn:aws:secretsmanager:*:*:secret:rds-preview-us-east-2!*"
+                    ],
+                    "Condition": {
+                        "StringLike": {
+                            "secretsmanager:ResourceTag/aws:secretsmanager:owningService": "rds-preview-us-east-2"
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "secretsmanager:TagResource",
+                    "Resource": "arn:aws:secretsmanager:*:*:secret:rds-preview-us-east-2!*",
+                    "Condition": {
+                        "ForAllValues:StringEquals": {
+                            "aws:TagKeys": [
+                                "aws:rds:primaryDBInstanceArn",
+                                "aws:rds:primaryDBClusterArn"
+                            ]
+                        },
+                        "StringLike": {
+                            "secretsmanager:ResourceTag/aws:secretsmanager:owningService": "rds-preview-us-east-2"
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v6",
+        "VersionId": "v7",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-06-07T16:55:33Z"
+        "CreateDate": "2022-12-13T15:53:59Z"
     }
 }
