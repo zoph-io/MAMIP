@@ -1,6 +1,6 @@
-## AWS Access Analyzer - Findings - 2022-12-13
+## AWS Access Analyzer - Findings - 2022-12-14
 
-- Policies analyzed: `1023`
+- Policies analyzed: `1024`
 - Errors: `18`
   - [`AWSBackupServiceLinkedRolePolicyForBackup`](./AWSBackupServiceLinkedRolePolicyForBackup.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
