@@ -1,5 +1,113 @@
 [
     {
+        "findingDetails": "The action backup-gateway:GetHypervisor does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 20
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 0
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 3307,
+                        "line": 1,
+                        "offset": 3307
+                    },
+                    "start": {
+                        "column": 3277,
+                        "line": 1,
+                        "offset": 3277
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The action backup-gateway:GetHypervisorPropertyMappings does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 20
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 1
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 3355,
+                        "line": 1,
+                        "offset": 3355
+                    },
+                    "start": {
+                        "column": 3309,
+                        "line": 1,
+                        "offset": 3309
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The action backup-gateway:GetBandwidthRateLimitSchedule does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 22
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 0
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 3607,
+                        "line": 1,
+                        "offset": 3607
+                    },
+                    "start": {
+                        "column": 3561,
+                        "line": 1,
+                        "offset": 3561
+                    }
+                }
+            }
+        ]
+    },
+    {
         "findingDetails": "The 2 resource ARN(s) are redundant because they reference the same resource. Review the use of wildcards (*), or remove the resource arn:aws:timestream:*:*:database/*/table/* to remove the redundancy.",
         "findingType": "SUGGESTION",
         "issueCode": "REDUNDANT_RESOURCE",
@@ -11,7 +119,7 @@
                         "value": "Statement"
                     },
                     {
-                        "index": 22
+                        "index": 24
                     },
                     {
                         "value": "Resource"
@@ -22,14 +130,14 @@
                 ],
                 "span": {
                     "end": {
-                        "column": 3575,
+                        "column": 3909,
                         "line": 1,
-                        "offset": 3575
+                        "offset": 3909
                     },
                     "start": {
-                        "column": 3532,
+                        "column": 3866,
                         "line": 1,
-                        "offset": 3532
+                        "offset": 3866
                     }
                 }
             },
@@ -39,7 +147,7 @@
                         "value": "Statement"
                     },
                     {
-                        "index": 22
+                        "index": 24
                     },
                     {
                         "value": "Resource"
@@ -50,14 +158,14 @@
                 ],
                 "span": {
                     "end": {
-                        "column": 3612,
+                        "column": 3946,
                         "line": 1,
-                        "offset": 3612
+                        "offset": 3946
                     },
                     "start": {
-                        "column": 3577,
+                        "column": 3911,
                         "line": 1,
-                        "offset": 3577
+                        "offset": 3911
                     }
                 }
             }
