@@ -1,0 +1,29 @@
+{
+    "PolicyVersion": {
+        "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Sid": "ListVmTags",
+                    "Effect": "Allow",
+                    "Action": [
+                        "backup-gateway:ListTagsForResource"
+                    ],
+                    "Resource": "arn:aws:backup-gateway:*:*:vm/*"
+                },
+                {
+                    "Sid": "VMTagPermissions",
+                    "Effect": "Allow",
+                    "Action": [
+                        "backup-gateway:TagResource",
+                        "backup-gateway:UntagResource"
+                    ],
+                    "Resource": "arn:aws:backup-gateway:*:*:vm/*"
+                }
+            ]
+        },
+        "VersionId": "v1",
+        "IsDefaultVersion": true,
+        "CreateDate": "2022-12-15T19:43:11Z"
+    }
+}
