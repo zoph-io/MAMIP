@@ -1,12 +1,13 @@
-## AWS Access Analyzer - Findings - 2022-12-14
+## AWS Access Analyzer - Findings - 2022-12-15
 
-- Policies analyzed: `1024`
-- Errors: `18`
+- Policies analyzed: `1025`
+- Errors: `20`
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
   - [`AWSBackupServiceRolePolicyForBackup`](./AWSBackupServiceRolePolicyForBackup.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AWSBackupServiceLinkedRolePolicyForBackup`](./AWSBackupServiceLinkedRolePolicyForBackup.json)
   - [`AWSBackupServiceRolePolicyForRestores`](./AWSBackupServiceRolePolicyForRestores.json)
+  - [`AmazonWorkSpacesAdmin`](./AmazonWorkSpacesAdmin.json)
 - Sec_Warnings: `11`
   - [`AmazonElasticMapReduceFullAccess`](./AmazonElasticMapReduceFullAccess.json)
   - [`AmazonDynamoDBFullAccesswithDataPipeline`](./AmazonDynamoDBFullAccesswithDataPipeline.json)

@@ -1,0 +1,74 @@
+[
+    {
+        "findingDetails": "The action workspaces:CreateStandbyWorkspaces does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 6
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 252,
+                        "line": 1,
+                        "offset": 252
+                    },
+                    "start": {
+                        "column": 216,
+                        "line": 1,
+                        "offset": 216
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The action workspaces:ModifyCertificateBasedAuthProperties does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 13
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 519,
+                        "line": 1,
+                        "offset": 519
+                    },
+                    "start": {
+                        "column": 470,
+                        "line": 1,
+                        "offset": 470
+                    }
+                }
+            }
+        ]
+    }
+]
