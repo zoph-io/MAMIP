@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Effect": "Allow",
                     "Action": [
                         "rds:Describe*",
                         "rds:ListTagsForResource",
@@ -15,22 +16,22 @@
                         "ec2:DescribeVpcAttribute",
                         "ec2:DescribeVpcs"
                     ],
-                    "Effect": "Allow",
                     "Resource": "*"
                 },
                 {
+                    "Effect": "Allow",
                     "Action": [
                         "cloudwatch:GetMetricStatistics",
                         "logs:DescribeLogStreams",
-                        "logs:GetLogEvents"
+                        "logs:GetLogEvents",
+                        "devops-guru:GetResourceCollection"
                     ],
-                    "Effect": "Allow",
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v3",
+        "VersionId": "v4",
         "IsDefaultVersion": true,
-        "CreateDate": "2017-08-28T21:36:32Z"
+        "CreateDate": "2022-12-19T20:44:13Z"
     }
 }
