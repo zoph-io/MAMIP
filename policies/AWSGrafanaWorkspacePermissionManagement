@@ -14,11 +14,27 @@
                         "grafana:ListWorkspaces"
                     ],
                     "Resource": "arn:aws:grafana:*:*:/workspaces*"
+                },
+                {
+                    "Sid": "IAMIdentityCenterPermissions",
+                    "Effect": "Allow",
+                    "Action": [
+                        "sso:DescribeRegisteredRegions",
+                        "sso:GetSharedSsoConfiguration",
+                        "sso:ListDirectoryAssociations",
+                        "sso:GetManagedApplicationInstance",
+                        "sso:ListProfiles",
+                        "sso:AssociateProfile",
+                        "sso:DisassociateProfile",
+                        "sso:GetProfile",
+                        "sso:ListProfileAssociations"
+                    ],
+                    "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-09-21T20:30:06Z"
+        "CreateDate": "2022-12-20T20:27:55Z"
     }
 }
