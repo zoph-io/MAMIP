@@ -1,0 +1,74 @@
+[
+    {
+        "findingDetails": "The action nimble:ListStreamingSessionBackups does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 4
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 7
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 1232,
+                        "line": 1,
+                        "offset": 1232
+                    },
+                    "start": {
+                        "column": 1196,
+                        "line": 1,
+                        "offset": 1196
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The action nimble:GetStreamingSessionBackup does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 4
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 8
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 1268,
+                        "line": 1,
+                        "offset": 1268
+                    },
+                    "start": {
+                        "column": 1234,
+                        "line": 1,
+                        "offset": 1234
+                    }
+                }
+            }
+        ]
+    }
+]
