@@ -1,6 +1,6 @@
-## AWS Access Analyzer - Findings - 2022-12-19
+## AWS Access Analyzer - Findings - 2022-12-20
 
-- Policies analyzed: `1025`
+- Policies analyzed: `1026`
 - Errors: `29`
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
   - [`AWSBackupOperatorAccess`](./AWSBackupOperatorAccess.json)
