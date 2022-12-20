@@ -68,7 +68,9 @@
                         "nimble:StopStreamingSession",
                         "nimble:CreateStreamingSessionStream",
                         "nimble:GetStreamingSessionStream",
-                        "nimble:ListStreamingSessions"
+                        "nimble:ListStreamingSessions",
+                        "nimble:ListStreamingSessionBackups",
+                        "nimble:GetStreamingSessionBackup"
                     ],
                     "Resource": "*",
                     "Condition": {
@@ -80,8 +82,8 @@
             ],
             "Version": "2012-10-17"
         },
-        "VersionId": "v3",
+        "VersionId": "v4",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-11-01T20:01:52Z"
+        "CreateDate": "2022-12-20T19:31:23Z"
     }
 }
