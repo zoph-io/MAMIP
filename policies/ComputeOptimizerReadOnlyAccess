@@ -17,8 +17,12 @@
                         "compute-optimizer:GetLambdaFunctionRecommendations",
                         "compute-optimizer:GetRecommendationPreferences",
                         "compute-optimizer:GetEffectiveRecommendationPreferences",
+                        "compute-optimizer:GetECSServiceRecommendations",
+                        "compute-optimizer:GetECSServiceRecommendationProjectedMetrics",
                         "ec2:DescribeInstances",
                         "ec2:DescribeVolumes",
+                        "ecs:ListServices",
+                        "ecs:ListClusters",
                         "autoscaling:DescribeAutoScalingGroups",
                         "autoscaling:DescribeAutoScalingInstances",
                         "lambda:ListFunctions",
@@ -32,8 +36,8 @@
                 }
             ]
         },
-        "VersionId": "v5",
+        "VersionId": "v6",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-11-29T16:03:07Z"
+        "CreateDate": "2022-12-22T17:34:19Z"
     }
 }
