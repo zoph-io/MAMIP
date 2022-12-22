@@ -178,6 +178,7 @@
                     "Sid": "ELBOperationPermissions",
                     "Effect": "Allow",
                     "Action": [
+                        "elasticloadbalancing:AddTags",
                         "elasticloadbalancing:ApplySecurityGroupsToLoadBalancer",
                         "elasticloadbalancing:ConfigureHealthCheck",
                         "elasticloadbalancing:CreateLoadBalancer",
@@ -268,8 +269,8 @@
                 }
             ]
         },
-        "VersionId": "v3",
+        "VersionId": "v4",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-06-16T22:40:31Z"
+        "CreateDate": "2022-12-22T01:07:07Z"
     }
 }
