@@ -1,11 +1,12 @@
 ## AWS Access Analyzer - Findings - 2022-12-22
 
 - Policies analyzed: `1027`
-- Errors: `31`
+- Errors: `33`
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
   - [`AWSBackupOperatorAccess`](./AWSBackupOperatorAccess.json)
   - [`AWSBackupServiceRolePolicyForBackup`](./AWSBackupServiceRolePolicyForBackup.json)
   - [`AWSBackupFullAccess`](./AWSBackupFullAccess.json)
+  - [`ComputeOptimizerReadOnlyAccess`](./ComputeOptimizerReadOnlyAccess.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AmazonNimbleStudio-StudioUser`](./AmazonNimbleStudio-StudioUser.json)
   - [`AWSBackupServiceLinkedRolePolicyForBackup`](./AWSBackupServiceLinkedRolePolicyForBackup.json)

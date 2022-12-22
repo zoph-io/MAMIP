@@ -1,0 +1,74 @@
+[
+    {
+        "findingDetails": "The action compute-optimizer:GetECSServiceRecommendations does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 11
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 697,
+                        "line": 1,
+                        "offset": 697
+                    },
+                    "start": {
+                        "column": 649,
+                        "line": 1,
+                        "offset": 649
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The action compute-optimizer:GetECSServiceRecommendationProjectedMetrics does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 12
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 762,
+                        "line": 1,
+                        "offset": 762
+                    },
+                    "start": {
+                        "column": 699,
+                        "line": 1,
+                        "offset": 699
+                    }
+                }
+            }
+        ]
+    }
+]
