@@ -14,21 +14,16 @@
                 {
                     "Effect": "Allow",
                     "Action": [
-                        "account:GetAlternateContact"
-                    ],
-                    "Resource": "*"
-                },
-                {
-                    "Effect": "Allow",
-                    "Action": [
-                        "account:GetContactInformation"
+                        "account:GetAlternateContact",
+                        "account:GetContactInformation",
+                        "account:ListRegions"
                     ],
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v3",
+        "VersionId": "v4",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-10-21T17:31:21Z"
+        "CreateDate": "2022-12-22T18:08:03Z"
     }
 }

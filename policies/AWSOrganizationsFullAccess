@@ -13,15 +13,12 @@
                     "Action": [
                         "account:PutAlternateContact",
                         "account:DeleteAlternateContact",
-                        "account:GetAlternateContact"
-                    ],
-                    "Resource": "*"
-                },
-                {
-                    "Effect": "Allow",
-                    "Action": [
+                        "account:GetAlternateContact",
                         "account:GetContactInformation",
-                        "account:PutContactInformation"
+                        "account:PutContactInformation",
+                        "account:ListRegions",
+                        "account:EnableRegion",
+                        "account:DisableRegion"
                     ],
                     "Resource": "*"
                 },
@@ -37,8 +34,8 @@
                 }
             ]
         },
-        "VersionId": "v4",
+        "VersionId": "v5",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-10-21T17:47:25Z"
+        "CreateDate": "2022-12-22T18:22:12Z"
     }
 }
