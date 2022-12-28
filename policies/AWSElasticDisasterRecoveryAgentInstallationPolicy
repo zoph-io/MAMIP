@@ -27,7 +27,7 @@
                 {
                     "Effect": "Allow",
                     "Action": "drs:TagResource",
-                    "Resource": "arn:aws:drs:*:*:recovery-instance/*",
+                    "Resource": "arn:aws:drs:*:*:source-server/*",
                     "Condition": {
                         "StringEquals": {
                             "drs:CreateAction": "CreateRecoveryInstanceForDrs"
@@ -41,8 +41,8 @@
                 }
             ]
         },
-        "VersionId": "v2",
-        "IsDefaultVersion": false,
-        "CreateDate": "2022-07-03T09:11:23Z"
+        "VersionId": "v3",
+        "IsDefaultVersion": true,
+        "CreateDate": "2022-12-28T07:10:44Z"
     }
 }
