@@ -164,7 +164,8 @@
                 {
                     "Effect": "Allow",
                     "Action": [
-                        "ssm:ListCommandInvocations"
+                        "ssm:ListCommandInvocations",
+                        "ssm:GetCommandInvocation"
                     ],
                     "Resource": [
                         "*"
@@ -186,7 +187,10 @@
                     "Action": [
                         "ec2:DescribeInstances",
                         "ec2:DescribeVolumes",
-                        "ec2:DescribeVolumeStatus"
+                        "ec2:DescribeVolumeStatus",
+                        "ec2:DescribeVpcs",
+                        "ec2:DescribeVpcAttribute",
+                        "ec2:DescribeNatGateways"
                     ],
                     "Resource": [
                         "*"
@@ -380,11 +384,37 @@
                     "Resource": [
                         "*"
                     ]
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "route53:GetHostedZone",
+                        "route53:GetHealthCheck",
+                        "route53:ListQueryLoggingConfigs"
+                    ],
+                    "Resource": [
+                        "*"
+                    ]
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "route53resolver:ListFirewallRuleGroupAssociations",
+                        "route53resolver:GetFirewallRuleGroup",
+                        "route53resolver:ListResolverEndpoints",
+                        "route53resolver:GetResolverQueryLogConfig",
+                        "route53resolver:ListResolverQueryLogConfigAssociations",
+                        "route53resolver:GetResolverEndpoint",
+                        "route53resolver:GetFirewallRuleGroupAssociation"
+                    ],
+                    "Resource": [
+                        "*"
+                    ]
                 }
             ]
         },
-        "VersionId": "v21",
+        "VersionId": "v22",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-10-10T19:01:17Z"
+        "CreateDate": "2023-01-04T19:28:35Z"
     }
 }
