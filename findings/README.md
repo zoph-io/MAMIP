@@ -1,6 +1,6 @@
 ## AWS Access Analyzer - Findings - 2023-01-04
 
-- Policies analyzed: `1027`
+- Policies analyzed: `1028`
 - Errors: `15`
   - [`AmazonECS_FullAccess`](./AmazonECS_FullAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
