@@ -208,11 +208,28 @@
                             ]
                         }
                     }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "elasticloadbalancing:AddTags"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "elasticloadbalancing:CreateAction": [
+                                "CreateTargetGroup",
+                                "CreateRule",
+                                "CreateListener",
+                                "CreateLoadBalancer"
+                            ]
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v19",
+        "VersionId": "v20",
         "IsDefaultVersion": true,
-        "CreateDate": "2020-10-12T21:02:23Z"
+        "CreateDate": "2023-01-04T16:26:05Z"
     }
 }
