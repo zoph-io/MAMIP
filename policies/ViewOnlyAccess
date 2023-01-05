@@ -106,6 +106,7 @@
                         "ec2:DescribeRegions",
                         "ec2:DescribeReserved*",
                         "ec2:DescribeRouteTables",
+                        "ec2:DescribeSecurityGroupRules",
                         "ec2:DescribeSecurityGroups",
                         "ec2:DescribeSnapshot*",
                         "ec2:DescribeSpot*",
@@ -205,6 +206,12 @@
                         "redshift:DescribeClusters",
                         "redshift:DescribeEvents",
                         "redshift:ViewQueriesInConsole",
+                        "resource-explorer-2:GetDefaultView",
+                        "resource-explorer-2:GetIndex",
+                        "resource-explorer-2:ListIndexes",
+                        "resource-explorer-2:ListSupportedResourceTypes",
+                        "resource-explorer-2:ListTagsForResource",
+                        "resource-explorer-2:ListViews",
                         "route53:Get*",
                         "route53:List*",
                         "route53domains:List*",
@@ -243,8 +250,8 @@
                 }
             ]
         },
-        "VersionId": "v15",
+        "VersionId": "v16",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-05-06T21:01:44Z"
+        "CreateDate": "2023-01-05T20:51:00Z"
     }
 }
