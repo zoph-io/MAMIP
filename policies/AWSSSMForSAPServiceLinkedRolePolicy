@@ -78,11 +78,24 @@
                             "iam:AWSServiceName": "servicecatalog-appregistry.amazonaws.com"
                         }
                     }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "cloudwatch:PutMetricData",
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "cloudwatch:namespace": [
+                                "AWS/Usage",
+                                "AWS/SSMForSAP"
+                            ]
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-11-16T01:18:21Z"
+        "CreateDate": "2023-01-06T02:41:02Z"
     }
 }
