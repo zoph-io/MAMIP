@@ -26,14 +26,23 @@
                         "chime:UntagMeeting",
                         "chime:UntagResource",
                         "chime:StartMeetingTranscription",
-                        "chime:StopMeetingTranscription"
+                        "chime:StopMeetingTranscription",
+                        "chime:CreateMediaCapturePipeline",
+                        "chime:CreateMediaConcatenationPipeline",
+                        "chime:CreateMediaLiveConnectorPipeline",
+                        "chime:DeleteMediaCapturePipeline",
+                        "chime:DeleteMediaPipeline",
+                        "chime:GetMediaCapturePipeline",
+                        "chime:GetMediaPipeline",
+                        "chime:ListMediaCapturePipelines",
+                        "chime:ListMediaPipelines"
                     ],
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v4",
-        "IsDefaultVersion": false,
-        "CreateDate": "2021-10-21T18:04:27Z"
+        "VersionId": "v5",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-01-10T18:05:12Z"
     }
 }
