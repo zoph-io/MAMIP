@@ -164,14 +164,15 @@
                     "Effect": "Allow",
                     "Action": "apigateway:GET",
                     "Resource": [
+                        "arn:aws:apigateway:*::/restapis/??????????",
                         "arn:aws:apigateway:*::/restapis/*/resources",
                         "arn:aws:apigateway:*::/restapis/*/resources/*/methods/*/integration"
                     ]
                 }
             ]
         },
-        "VersionId": "v8",
+        "VersionId": "v9",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-10-19T08:43:10Z"
+        "CreateDate": "2023-01-10T14:36:48Z"
     }
 }
