@@ -1,0 +1,233 @@
+[
+    {
+        "findingDetails": "The service cleanrooms:* specified in the action does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_SERVICE_IN_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 0
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 112,
+                        "line": 1,
+                        "offset": 112
+                    },
+                    "start": {
+                        "column": 98,
+                        "line": 1,
+                        "offset": 98
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The service cleanrooms does not exist. Use a valid service name.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_SERVICE",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 9
+                    },
+                    {
+                        "value": "Condition"
+                    },
+                    {
+                        "value": "ForAnyValue:StringEquals"
+                    },
+                    {
+                        "value": "aws:CalledVia"
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 1764,
+                        "line": 1,
+                        "offset": 1764
+                    },
+                    "start": {
+                        "column": 1738,
+                        "line": 1,
+                        "offset": 1738
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The service cleanrooms does not exist. Use a valid service name.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_SERVICE",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 11
+                    },
+                    {
+                        "value": "Condition"
+                    },
+                    {
+                        "value": "ForAnyValue:StringEquals"
+                    },
+                    {
+                        "value": "aws:CalledVia"
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 2203,
+                        "line": 1,
+                        "offset": 2203
+                    },
+                    "start": {
+                        "column": 2177,
+                        "line": 1,
+                        "offset": 2177
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The service cleanrooms does not exist. Use a valid service name.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_SERVICE",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 12
+                    },
+                    {
+                        "value": "Condition"
+                    },
+                    {
+                        "value": "ForAnyValue:StringEquals"
+                    },
+                    {
+                        "value": "aws:CalledVia"
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 2402,
+                        "line": 1,
+                        "offset": 2402
+                    },
+                    "start": {
+                        "column": 2376,
+                        "line": 1,
+                        "offset": 2376
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The service cleanrooms does not exist. Use a valid service name.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_SERVICE",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 13
+                    },
+                    {
+                        "value": "Condition"
+                    },
+                    {
+                        "value": "ForAnyValue:StringEquals"
+                    },
+                    {
+                        "value": "aws:CalledVia"
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 2638,
+                        "line": 1,
+                        "offset": 2638
+                    },
+                    "start": {
+                        "column": 2612,
+                        "line": 1,
+                        "offset": 2612
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The service cleanrooms does not exist. Use a valid service name.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_SERVICE",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 14
+                    },
+                    {
+                        "value": "Condition"
+                    },
+                    {
+                        "value": "ForAnyValue:StringEquals"
+                    },
+                    {
+                        "value": "aws:CalledVia"
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 2876,
+                        "line": 1,
+                        "offset": 2876
+                    },
+                    "start": {
+                        "column": 2850,
+                        "line": 1,
+                        "offset": 2850
+                    }
+                }
+            }
+        ]
+    }
+]
