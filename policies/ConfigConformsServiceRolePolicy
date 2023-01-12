@@ -7,10 +7,16 @@
                     "Effect": "Allow",
                     "Action": [
                         "config:PutConfigRule",
-                        "config:DeleteConfigRule",
-                        "config:DescribeConfigRules"
+                        "config:DeleteConfigRule"
                     ],
                     "Resource": "arn:aws:config:*:*:config-rule/aws-service-rule/config-conforms.amazonaws.com*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "config:DescribeConfigRules"
+                    ],
+                    "Resource": "*"
                 },
                 {
                     "Effect": "Allow",
@@ -105,8 +111,8 @@
                 }
             ]
         },
-        "VersionId": "v5",
+        "VersionId": "v6",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-07-26T00:33:20Z"
+        "CreateDate": "2023-01-12T04:17:34Z"
     }
 }
