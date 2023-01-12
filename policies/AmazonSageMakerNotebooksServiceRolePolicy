@@ -5,6 +5,30 @@
             "Statement": [
                 {
                     "Effect": "Allow",
+                    "Action": "elasticfilesystem:CreateAccessPoint",
+                    "Resource": "arn:aws:elasticfilesystem:*:*:file-system/*",
+                    "Condition": {
+                        "StringLike": {
+                            "aws:ResourceTag/ManagedByAmazonSageMakerResource": "*",
+                            "aws:RequestTag/ManagedByAmazonSageMakerResource": "*"
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "elasticfilesystem:DeleteAccessPoint",
+                        "elasticfilesystem:DescribeAccessPoints"
+                    ],
+                    "Resource": "arn:aws:elasticfilesystem:*:*:access-point/*",
+                    "Condition": {
+                        "StringLike": {
+                            "aws:ResourceTag/ManagedByAmazonSageMakerResource": "*"
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
                     "Action": "elasticfilesystem:CreateFileSystem",
                     "Resource": "*",
                     "Condition": {
@@ -95,8 +119,8 @@
                 }
             ]
         },
-        "VersionId": "v5",
-        "IsDefaultVersion": false,
-        "CreateDate": "2020-08-28T22:39:39Z"
+        "VersionId": "v6",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-01-12T20:01:49Z"
     }
 }
