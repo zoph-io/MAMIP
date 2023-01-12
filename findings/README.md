@@ -1,14 +1,13 @@
 ## AWS Access Analyzer - Findings - 2023-01-12
 
 - Policies analyzed: `1033`
-- Errors: `60`
+- Errors: `59`
   - [`AWSBackupServiceLinkedRolePolicyForBackup`](./AWSBackupServiceLinkedRolePolicyForBackup.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AWSCleanRoomsFullAccess`](./AWSCleanRoomsFullAccess.json)
   - [`AWSCleanRoomsReadOnlyAccess`](./AWSCleanRoomsReadOnlyAccess.json)
   - [`AWSCleanRoomsFullAccessNoQuerying`](./AWSCleanRoomsFullAccessNoQuerying.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
-  - [`AmazonECS_FullAccess`](./AmazonECS_FullAccess.json)
 - Sec_Warnings: `11`
   - [`AmazonDynamoDBFullAccesswithDataPipeline`](./AmazonDynamoDBFullAccesswithDataPipeline.json)
   - [`IAMFullAccess`](./IAMFullAccess.json)
