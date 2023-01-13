@@ -1,6 +1,6 @@
 ## AWS Access Analyzer - Findings - 2023-01-13
 
-- Policies analyzed: `1033`
+- Policies analyzed: `1034`
 - Errors: `59`
   - [`AWSBackupServiceLinkedRolePolicyForBackup`](./AWSBackupServiceLinkedRolePolicyForBackup.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
