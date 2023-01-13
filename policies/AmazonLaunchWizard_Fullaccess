@@ -197,7 +197,8 @@
                         "StringEqualsIfExists": {
                             "iam:PassedToService": [
                                 "lambda.amazonaws.com",
-                                "ec2.amazonaws.com"
+                                "ec2.amazonaws.com",
+                                "ec2.amazonaws.com.cn"
                             ]
                         }
                     }
@@ -364,7 +365,9 @@
                             "iam:AWSServiceName": [
                                 "autoscaling.amazonaws.com",
                                 "application-insights.amazonaws.com",
-                                "events.amazonaws.com"
+                                "events.amazonaws.com",
+                                "autoscaling.amazonaws.com.cn",
+                                "events.amazonaws.com.cn"
                             ]
                         }
                     }
@@ -553,7 +556,9 @@
                         "servicecatalog:CreateConstraint",
                         "servicecatalog:CreateProduct",
                         "servicecatalog:AssociatePrincipalWithPortfolio",
-                        "servicecatalog:CreateProvisioningArtifact"
+                        "servicecatalog:CreateProvisioningArtifact",
+                        "servicecatalog:TagResource",
+                        "servicecatalog:UntagResource"
                     ],
                     "Resource": [
                         "arn:aws:servicecatalog:*:*:*/*",
@@ -564,11 +569,38 @@
                             "aws:CalledVia": "launchwizard.amazonaws.com"
                         }
                     }
+                },
+                {
+                    "Sid": "VisualEditor0",
+                    "Effect": "Allow",
+                    "Action": [
+                        "ssm:CreateAssociation",
+                        "ssm:DeleteAssociation"
+                    ],
+                    "Resource": "arn:aws:ssm:*:*:document/AWS-ConfigureAWSPackage",
+                    "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "aws:CalledVia": "launchwizard.amazonaws.com"
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "logs:TagResource",
+                        "logs:UntagResource"
+                    ],
+                    "Resource": "arn:aws:logs:*:*:log-group:LaunchWizard*",
+                    "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "aws:CalledVia": "launchwizard.amazonaws.com"
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v13",
+        "VersionId": "v14",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-04-12T19:16:27Z"
+        "CreateDate": "2023-01-12T23:55:29Z"
     }
 }
