@@ -22,14 +22,15 @@
                 {
                     "Effect": "Allow",
                     "Action": [
+                        "guardduty:GetFindings",
                         "guardduty:ListDetectors"
                     ],
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2020-10-21T22:07:28Z"
+        "CreateDate": "2023-01-17T14:35:33Z"
     }
 }
