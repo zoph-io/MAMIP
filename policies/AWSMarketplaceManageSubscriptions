@@ -20,11 +20,18 @@
                     ],
                     "Effect": "Allow",
                     "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "aws-marketplace:ListPrivateListings"
+                    ],
+                    "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2019-10-28T21:49:43Z"
+        "CreateDate": "2023-01-19T23:45:29Z"
     }
 }

@@ -37,11 +37,18 @@
                         "aws-marketplace:ListPrivateMarketplaceRequests",
                         "aws-marketplace:DescribePrivateMarketplaceRequests"
                     ]
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "aws-marketplace:ListPrivateListings"
+                    ],
+                    "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v3",
+        "VersionId": "v4",
         "IsDefaultVersion": true,
-        "CreateDate": "2019-10-28T21:51:31Z"
+        "CreateDate": "2023-01-19T23:30:25Z"
     }
 }
