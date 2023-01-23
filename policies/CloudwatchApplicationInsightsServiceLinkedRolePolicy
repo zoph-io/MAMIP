@@ -390,6 +390,8 @@
                     "Action": [
                         "route53:GetHostedZone",
                         "route53:GetHealthCheck",
+                        "route53:ListHostedZones",
+                        "route53:ListHealthChecks",
                         "route53:ListQueryLoggingConfigs"
                     ],
                     "Resource": [
@@ -401,8 +403,10 @@
                     "Action": [
                         "route53resolver:ListFirewallRuleGroupAssociations",
                         "route53resolver:GetFirewallRuleGroup",
+                        "route53resolver:ListFirewallRuleGroups",
                         "route53resolver:ListResolverEndpoints",
                         "route53resolver:GetResolverQueryLogConfig",
+                        "route53resolver:ListResolverQueryLogConfigs",
                         "route53resolver:ListResolverQueryLogConfigAssociations",
                         "route53resolver:GetResolverEndpoint",
                         "route53resolver:GetFirewallRuleGroupAssociation"
@@ -413,8 +417,8 @@
                 }
             ]
         },
-        "VersionId": "v22",
+        "VersionId": "v23",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-01-04T19:28:35Z"
+        "CreateDate": "2023-01-23T21:38:30Z"
     }
 }
