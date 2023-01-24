@@ -1,6 +1,6 @@
 ## AWS Access Analyzer - Findings - 2023-01-24
 
-- Policies analyzed: `1036`
+- Policies analyzed: `1037`
 - Errors: `61`
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AWSMarketplaceManageSubscriptions`](./AWSMarketplaceManageSubscriptions.json)
