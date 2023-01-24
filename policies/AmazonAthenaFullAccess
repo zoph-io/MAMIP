@@ -107,11 +107,20 @@
                     "Resource": [
                         "*"
                     ]
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "pricing:GetProducts"
+                    ],
+                    "Resource": [
+                        "*"
+                    ]
                 }
             ]
         },
-        "VersionId": "v8",
+        "VersionId": "v9",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-11-14T21:05:56Z"
+        "CreateDate": "2023-01-24T16:59:23Z"
     }
 }
