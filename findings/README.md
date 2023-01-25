@@ -1,13 +1,11 @@
-## AWS Access Analyzer - Findings - 2023-01-24
+## AWS Access Analyzer - Findings - 2023-01-25
 
 - Policies analyzed: `1037`
-- Errors: `61`
+- Errors: `16`
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AWSMarketplaceManageSubscriptions`](./AWSMarketplaceManageSubscriptions.json)
-  - [`AWSCleanRoomsReadOnlyAccess`](./AWSCleanRoomsReadOnlyAccess.json)
   - [`AWSMarketplaceRead-only`](./AWSMarketplaceRead-only.json)
-  - [`AWSCleanRoomsFullAccess`](./AWSCleanRoomsFullAccess.json)
-  - [`AWSCleanRoomsFullAccessNoQuerying`](./AWSCleanRoomsFullAccessNoQuerying.json)
+  - [`AWSIPAMServiceRolePolicy`](./AWSIPAMServiceRolePolicy.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
   - [`AWSBackupServiceLinkedRolePolicyForBackup`](./AWSBackupServiceLinkedRolePolicyForBackup.json)
 - Sec_Warnings: `11`

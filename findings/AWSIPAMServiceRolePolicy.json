@@ -1,0 +1,74 @@
+[
+    {
+        "findingDetails": "The action ec2:GetIpamDiscoveredResourceCidrs does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 6
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 257,
+                        "line": 1,
+                        "offset": 257
+                    },
+                    "start": {
+                        "column": 221,
+                        "line": 1,
+                        "offset": 221
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The action ec2:GetIpamDiscoveredAccounts does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 7
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 290,
+                        "line": 1,
+                        "offset": 290
+                    },
+                    "start": {
+                        "column": 259,
+                        "line": 1,
+                        "offset": 259
+                    }
+                }
+            }
+        ]
+    }
+]
