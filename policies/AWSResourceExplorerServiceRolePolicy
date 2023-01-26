@@ -101,6 +101,15 @@
                         "elasticloadbalancing:DescribeLoadBalancers",
                         "elasticloadbalancing:DescribeRules",
                         "elasticloadbalancing:DescribeTargetGroups",
+                        "elasticache:DescribeCacheClusters",
+                        "elasticache:DescribeGlobalReplicationGroups",
+                        "elasticache:DescribeCacheParameterGroups",
+                        "elasticache:DescribeReplicationGroups",
+                        "elasticache:DescribeReservedCacheNodes",
+                        "elasticache:DescribeSnapshots",
+                        "elasticache:DescribeCacheSubnetGroups",
+                        "elasticache:DescribeUsers",
+                        "elasticache:DescribeUserGroups",
                         "es:ListDomainNames",
                         "iam:ListGroups",
                         "iam:ListInstanceProfiles",
@@ -112,6 +121,8 @@
                         "iam:ListUsers",
                         "kinesis:ListStreamConsumers",
                         "kinesis:ListStreams",
+                        "lambda:ListCodeSigningConfigs",
+                        "lambda:ListEventSourceMappings",
                         "lambda:ListFunctions",
                         "logs:DescribeDestinations",
                         "logs:DescribeLogGroups",
@@ -159,7 +170,8 @@
                         "ssm:DescribeParameters",
                         "ssm:DescribePatchBaselines",
                         "ssm:ListAssociations",
-                        "ssm:ListDocuments"
+                        "ssm:ListDocuments",
+                        "sqs:ListQueues"
                     ],
                     "Resource": [
                         "*"
@@ -167,8 +179,8 @@
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-10-31T17:23:15Z"
+        "CreateDate": "2023-01-26T14:43:30Z"
     }
 }
