@@ -11,7 +11,9 @@
                         "s3:ListBucket",
                         "s3:GetBucketVersioning",
                         "s3:GetBucketLocation",
-                        "s3:PutBucketVersioning"
+                        "s3:PutBucketVersioning",
+                        "s3:PutBucketOwnershipControls",
+                        "s3:GetBucketOwnershipControls"
                     ],
                     "Resource": [
                         "arn:aws:s3:::*"
@@ -40,7 +42,8 @@
                     "Effect": "Allow",
                     "Action": [
                         "kms:DescribeKey",
-                        "kms:GenerateDataKey"
+                        "kms:GenerateDataKey",
+                        "kms:Decrypt"
                     ],
                     "Resource": "*",
                     "Condition": {
@@ -51,8 +54,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
-        "IsDefaultVersion": false,
-        "CreateDate": "2022-02-18T17:39:37Z"
+        "VersionId": "v2",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-02-07T00:06:00Z"
     }
 }
