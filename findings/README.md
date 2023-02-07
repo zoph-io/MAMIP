@@ -1,6 +1,6 @@
 ## AWS Access Analyzer - Findings - 2023-02-07
 
-- Policies analyzed: `1038`
+- Policies analyzed: `1039`
 - Errors: `14`
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AWSIPAMServiceRolePolicy`](./AWSIPAMServiceRolePolicy.json)
