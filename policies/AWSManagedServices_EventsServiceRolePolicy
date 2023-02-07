@@ -1,0 +1,35 @@
+{
+    "PolicyVersion": {
+        "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "events:DeleteRule",
+                        "events:PutTargets",
+                        "events:PutRule",
+                        "events:RemoveTargets"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "events:ManagedBy": "events.managedservices.amazonaws.com"
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "events:DescribeRule",
+                        "events:ListTargetsByRule"
+                    ],
+                    "Resource": "*"
+                }
+            ]
+        },
+        "VersionId": "v1",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-02-07T18:41:22Z"
+    }
+}
