@@ -20,8 +20,10 @@
                         "ec2:DescribeTags",
                         "ec2:DescribeInstances",
                         "ec2:DescribeSubnets",
+                        "ec2:DescribeVpcs",
                         "elasticmapreduce:ListInstances",
-                        "elasticmapreduce:DescribeCluster"
+                        "elasticmapreduce:DescribeCluster",
+                        "elasticmapreduce:ListSteps"
                     ],
                     "Resource": "*"
                 },
@@ -40,8 +42,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2018-11-16T21:55:25Z"
+        "CreateDate": "2023-02-09T22:39:29Z"
     }
 }
