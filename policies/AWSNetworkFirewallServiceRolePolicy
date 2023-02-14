@@ -8,10 +8,27 @@
                         "ec2:DescribeSubnets",
                         "ec2:DescribeVpcs",
                         "ec2:CreateVpcEndpoint",
-                        "ec2:DescribeVpcEndpoints"
+                        "ec2:DescribeVpcEndpoints",
+                        "ec2:DescribeInstances",
+                        "ec2:DescribeNetworkInterfaces"
                     ],
                     "Effect": "Allow",
                     "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "resource-groups:ListGroupResources",
+                    "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "tag:GetResources",
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:CalledViaLast": "resource-groups.amazonaws.com"
+                        }
+                    }
                 },
                 {
                     "Effect": "Allow",
@@ -40,8 +57,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2020-11-17T17:17:26Z"
+        "CreateDate": "2023-02-14T17:09:19Z"
     }
 }
