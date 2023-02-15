@@ -93,7 +93,8 @@
                     "Action": [
                         "lambda:ListFunctions",
                         "lambda:GetFunction",
-                        "lambda:GetLayerVersion"
+                        "lambda:GetLayerVersion",
+                        "cloudwatch:GetMetricData"
                     ],
                     "Resource": "*"
                 },
@@ -142,8 +143,8 @@
                 }
             ]
         },
-        "VersionId": "v5",
-        "IsDefaultVersion": false,
-        "CreateDate": "2022-11-17T20:32:51Z"
+        "VersionId": "v6",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-02-15T17:01:23Z"
     }
 }
