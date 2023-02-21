@@ -1,0 +1,24 @@
+{
+    "PolicyVersion": {
+        "Document": {
+            "Version": "2012-10-17",
+            "Statement": {
+                "Effect": "Allow",
+                "Action": [
+                    "cloudwatch:PutMetricData"
+                ],
+                "Resource": "*",
+                "Condition": {
+                    "StringEquals": {
+                        "cloudwatch:namespace": [
+                            "AWS/Usage"
+                        ]
+                    }
+                }
+            }
+        },
+        "VersionId": "v1",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-02-21T16:56:31Z"
+    }
+}

@@ -24,11 +24,21 @@
                         "s3:GetBucketPolicyStatus"
                     ],
                     "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "iam:CreateServiceLinkedRole",
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:AWSServiceName": "malware-protection.guardduty.amazonaws.com"
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v4",
+        "VersionId": "v5",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-08-03T23:14:07Z"
+        "CreateDate": "2023-02-21T16:56:23Z"
     }
 }
