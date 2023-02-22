@@ -212,6 +212,7 @@
                         "autoscaling:DeleteAutoScalingGroup",
                         "autoscaling:DeleteLaunchConfiguration",
                         "autoscaling:UpdateAutoScalingGroup",
+                        "autoscaling:CreateOrUpdateTags",
                         "logs:CreateLogStream",
                         "logs:DeleteLogGroup",
                         "logs:DeleteLogStream",
@@ -587,6 +588,19 @@
                 {
                     "Effect": "Allow",
                     "Action": [
+                        "elasticfilesystem:UntagResource",
+                        "elasticfilesystem:TagResource"
+                    ],
+                    "Resource": "arn:aws:elasticfilesystem:*:*:file-system/*",
+                    "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "aws:CalledVia": "launchwizard.amazonaws.com"
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
                         "logs:TagResource",
                         "logs:UntagResource"
                     ],
@@ -599,8 +613,8 @@
                 }
             ]
         },
-        "VersionId": "v14",
+        "VersionId": "v15",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-01-12T23:55:29Z"
+        "CreateDate": "2023-02-22T17:25:14Z"
     }
 }
