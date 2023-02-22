@@ -17,15 +17,18 @@
                     "Action": "cloudwatch:PutMetricData",
                     "Resource": "*",
                     "Condition": {
-                        "StringEquals": {
-                            "cloudwatch:namespace": "AWS/RUM"
+                        "StringLike": {
+                            "cloudwatch:namespace": [
+                                "RUM/CustomMetrics/*",
+                                "AWS/RUM"
+                            ]
                         }
                     }
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-10-26T21:33:26Z"
+        "CreateDate": "2023-02-22T20:35:15Z"
     }
 }
