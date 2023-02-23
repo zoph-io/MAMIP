@@ -7,11 +7,21 @@
                     "Effect": "Allow",
                     "Action": "iotroborunner:*",
                     "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "iam:CreateServiceLinkedRole",
+                    "Resource": "arn:aws:iam::*:role/aws-service-role/iotroborunner.amazonaws.com/AWSServiceRoleForIoTRoboRunner",
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:AWSServiceName": "iotroborunner.amazonaws.com"
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-11-29T03:54:37Z"
+        "CreateDate": "2023-02-23T18:34:44Z"
     }
 }
