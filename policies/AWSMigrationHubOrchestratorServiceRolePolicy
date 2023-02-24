@@ -40,6 +40,13 @@
                     }
                 },
                 {
+                    "Effect": "Allow",
+                    "Action": [
+                        "ec2:DescribeLaunchTemplates"
+                    ],
+                    "Resource": "*"
+                },
+                {
                     "Action": [
                         "mgh:GetHomeRegion"
                     ],
@@ -125,8 +132,8 @@
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-12-21T18:48:26Z"
+        "CreateDate": "2023-02-24T20:28:36Z"
     }
 }
