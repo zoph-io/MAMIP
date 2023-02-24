@@ -1,9 +1,10 @@
 ## AWS Access Analyzer - Findings - 2023-02-24
 
 - Policies analyzed: `1046`
-- Errors: `12`
+- Errors: `18`
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
+  - [`AmazonInspector2ServiceRolePolicy`](./AmazonInspector2ServiceRolePolicy.json)
   - [`AWSBackupServiceLinkedRolePolicyForBackup`](./AWSBackupServiceLinkedRolePolicyForBackup.json)
 - Sec_Warnings: `11`
   - [`IAMFullAccess`](./IAMFullAccess.json)
