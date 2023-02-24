@@ -32,10 +32,16 @@
                     "Effect": "Allow",
                     "Action": [
                         "config:PutConformancePack",
-                        "config:DeleteConformancePack",
-                        "config:DescribeConformancePackStatus"
+                        "config:DeleteConformancePack"
                     ],
                     "Resource": "arn:aws:config:*:*:conformance-pack/aws-service-conformance-pack/config-multiaccountsetup.amazonaws.com/*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "config:DescribeConformancePackStatus"
+                    ],
+                    "Resource": "*"
                 },
                 {
                     "Effect": "Allow",
@@ -68,8 +74,8 @@
                 }
             ]
         },
-        "VersionId": "v4",
+        "VersionId": "v5",
         "IsDefaultVersion": true,
-        "CreateDate": "2020-05-21T22:59:26Z"
+        "CreateDate": "2023-02-24T01:39:49Z"
     }
 }
