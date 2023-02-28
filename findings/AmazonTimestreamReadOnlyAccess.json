@@ -1,0 +1,74 @@
+[
+    {
+        "findingDetails": "The action timestream:DescribeBatchLoadTask does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 12
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 456,
+                        "line": 1,
+                        "offset": 456
+                    },
+                    "start": {
+                        "column": 422,
+                        "line": 1,
+                        "offset": 422
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The action timestream:ListBatchLoadTasks does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 13
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 489,
+                        "line": 1,
+                        "offset": 489
+                    },
+                    "start": {
+                        "column": 458,
+                        "line": 1,
+                        "offset": 458
+                    }
+                }
+            }
+        ]
+    }
+]
