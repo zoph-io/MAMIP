@@ -1,0 +1,37 @@
+{
+    "PolicyVersion": {
+        "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "kms:GenerateDataKey"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "StringLike": {
+                            "kms:ViaService": [
+                                "kinesis.*.amazonaws.com"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "kinesis:PutRecord",
+                        "kinesis:PutRecords",
+                        "kinesis:DescribeStream"
+                    ],
+                    "Resource": [
+                        "arn:aws:kinesis:*:*:stream/chime-messaging-*"
+                    ]
+                }
+            ]
+        },
+        "VersionId": "v1",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-03-03T01:43:49Z"
+    }
+}
