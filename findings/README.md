@@ -1,6 +1,6 @@
-## AWS Access Analyzer - Findings - 2023-03-03
+## AWS Access Analyzer - Findings - 2023-03-06
 
-- Policies analyzed: `1049`
+- Policies analyzed: `1050`
 - Errors: `20`
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
