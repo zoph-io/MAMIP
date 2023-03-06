@@ -1,0 +1,20 @@
+{
+    "PolicyVersion": {
+        "Document": {
+            "Version": "2012-10-17",
+            "Statement": {
+                "Effect": "Allow",
+                "Action": "cloudwatch:PutMetricData",
+                "Resource": "*",
+                "Condition": {
+                    "StringEquals": {
+                        "cloudwatch:namespace": "AWS/DMS/FleetAdvisor"
+                    }
+                }
+            }
+        },
+        "VersionId": "v1",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-03-06T09:10:42Z"
+    }
+}
