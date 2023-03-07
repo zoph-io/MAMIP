@@ -95,11 +95,21 @@
                     "Effect": "Allow",
                     "Action": "iam:DeleteServiceLinkedRole",
                     "Resource": "arn:aws:iam::*:role/aws-service-role/connect.amazonaws.com/AWSServiceRoleForAmazonConnect*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "iam:CreateServiceLinkedRole",
+                    "Resource": "arn:aws:iam::*:role/aws-service-role/profile.amazonaws.com/*",
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:AWSServiceName": "profile.amazonaws.com"
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v3",
+        "VersionId": "v4",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-11-23T22:05:12Z"
+        "CreateDate": "2023-03-07T14:49:25Z"
     }
 }
