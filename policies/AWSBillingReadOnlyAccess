@@ -4,16 +4,47 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "VisualEditor0",
                     "Effect": "Allow",
                     "Action": [
-                        "aws-portal:ViewBilling"
+                        "account:GetAccountInformation",
+                        "aws-portal:ViewBilling",
+                        "billing:GetBillingData",
+                        "billing:GetBillingDetails",
+                        "billing:GetBillingNotifications",
+                        "billing:GetBillingPreferences",
+                        "billing:GetCredits",
+                        "billing:GetContractInformation",
+                        "billing:GetIAMAccessPreference",
+                        "billing:GetSellerOfRecord",
+                        "billing:ListBillingViews",
+                        "consolidatedbilling:ListLinkedAccounts",
+                        "consolidatedbilling:GetAccountBillingRole",
+                        "cur:GetClassicReport",
+                        "cur:GetClassicReportPreferences",
+                        "cur:GetUsageReport",
+                        "freetier:GetFreeTierAlertPreference",
+                        "freetier:GetFreeTierUsage",
+                        "invoicing:GetInvoiceEmailDeliveryPreferences",
+                        "invoicing:GetInvoicePDF",
+                        "invoicing:ListInvoiceSummaries",
+                        "payments:GetPaymentInstrument",
+                        "payments:GetPaymentStatus",
+                        "payments:ListPaymentPreferences",
+                        "purchase-orders:GetPurchaseOrder",
+                        "purchase-orders:ViewPurchaseOrders",
+                        "purchase-orders:ListPurchaseOrderInvoices",
+                        "purchase-orders:ListPurchaseOrders",
+                        "tax:GetTaxRegistrationDocument",
+                        "tax:GetTaxInheritance",
+                        "tax:ListTaxRegistrations"
                     ],
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2020-08-27T20:08:51Z"
+        "CreateDate": "2023-03-08T17:48:14Z"
     }
 }
