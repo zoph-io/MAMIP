@@ -240,6 +240,7 @@
                                 "CreateKeyPair",
                                 "RunInstances",
                                 "CreateVolume",
+                                "CreateSnapshot",
                                 "CreateSnapshots",
                                 "CopySnapshot",
                                 "AllocateAddress"
@@ -325,6 +326,7 @@
                     "Effect": "Allow",
                     "Action": [
                         "ec2:CopySnapshot",
+                        "ec2:CreateSnapshot",
                         "ec2:CreateSnapshots"
                     ],
                     "Resource": "arn:aws:ec2:*::snapshot/*",
@@ -352,6 +354,21 @@
                                 "custom-oracle",
                                 "custom-sqlserver",
                                 "custom-oracle-rac"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "Sid": "eccSnapshot4",
+                    "Effect": "Allow",
+                    "Action": "ec2:CreateSnapshot",
+                    "Resource": [
+                        "arn:aws:ec2:*:*:volume/*"
+                    ],
+                    "Condition": {
+                        "StringLike": {
+                            "aws:ResourceTag/AWSRDSCustom": [
+                                "custom-sqlserver"
                             ]
                         }
                     }
@@ -576,6 +593,41 @@
                     }
                 },
                 {
+                    "Sid": "sqs1",
+                    "Effect": "Allow",
+                    "Action": [
+                        "sqs:CreateQueue",
+                        "sqs:TagQueue"
+                    ],
+                    "Resource": "arn:aws:sqs:*:*:do-not-delete-rds-custom-*",
+                    "Condition": {
+                        "StringLike": {
+                            "aws:RequestTag/AWSRDSCustom": [
+                                "custom-sqlserver"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "Sid": "sqs2",
+                    "Effect": "Allow",
+                    "Action": [
+                        "sqs:GetQueueAttributes",
+                        "sqs:SendMessage",
+                        "sqs:ReceiveMessage",
+                        "sqs:DeleteMessage",
+                        "sqs:DeleteQueue"
+                    ],
+                    "Resource": "arn:aws:sqs:*:*:do-not-delete-rds-custom-*",
+                    "Condition": {
+                        "StringLike": {
+                            "aws:ResourceTag/AWSRDSCustom": [
+                                "custom-sqlserver"
+                            ]
+                        }
+                    }
+                },
+                {
                     "Sid": "servicequota1",
                     "Effect": "Allow",
                     "Action": [
@@ -585,8 +637,8 @@
                 }
             ]
         },
-        "VersionId": "v3",
+        "VersionId": "v4",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-02-21T23:14:53Z"
+        "CreateDate": "2023-03-08T23:32:54Z"
     }
 }
