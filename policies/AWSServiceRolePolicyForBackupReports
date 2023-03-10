@@ -22,6 +22,8 @@
                         "config:SelectResourceConfig",
                         "config:DescribeConfigurationAggregators",
                         "config:SelectAggregateResourceConfig",
+                        "config:DescribeConfigRuleEvaluationStatus",
+                        "config:DescribeConfigRules",
                         "s3:GetBucketLocation"
                     ],
                     "Resource": "*"
@@ -30,8 +32,6 @@
                     "Effect": "Allow",
                     "Action": [
                         "config:GetComplianceDetailsByConfigRule",
-                        "config:DescribeConfigRuleEvaluationStatus",
-                        "config:DescribeConfigRules",
                         "config:PutConfigRule",
                         "config:DeleteConfigRule"
                     ],
@@ -47,8 +47,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-08-19T21:16:45Z"
+        "CreateDate": "2023-03-10T00:51:25Z"
     }
 }
