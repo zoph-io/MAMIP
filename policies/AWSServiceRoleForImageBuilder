@@ -353,11 +353,68 @@
                             "ec2:ResourceTag/CreatedBy": "EC2 Image Builder"
                         }
                     }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "inspector2:ListCoverage",
+                        "inspector2:ListFindings"
+                    ],
+                    "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "ecr:CreateRepository"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:RequestTag/CreatedBy": "EC2 Image Builder"
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "ecr:TagResource"
+                    ],
+                    "Resource": "arn:aws:ecr:*:*:repository/image-builder-*",
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:RequestTag/CreatedBy": "EC2 Image Builder"
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "ecr:BatchDeleteImage"
+                    ],
+                    "Resource": "arn:aws:ecr:*:*:repository/image-builder-*",
+                    "Condition": {
+                        "StringEquals": {
+                            "ecr:ResourceTag/CreatedBy": "EC2 Image Builder"
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "events:DeleteRule",
+                        "events:DescribeRule",
+                        "events:PutRule",
+                        "events:PutTargets",
+                        "events:RemoveTargets"
+                    ],
+                    "Resource": [
+                        "arn:aws:events:*:*:rule/ImageBuilder-*"
+                    ]
                 }
             ]
         },
-        "VersionId": "v17",
+        "VersionId": "v18",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-06-16T00:09:27Z"
+        "CreateDate": "2023-03-13T20:33:11Z"
     }
 }
