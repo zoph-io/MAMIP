@@ -22,6 +22,7 @@
                     "Effect": "Allow",
                     "Action": [
                         "cloudwatch:GetMetricStatistics",
+                        "cloudwatch:ListMetrics",
                         "logs:DescribeLogStreams",
                         "logs:GetLogEvents",
                         "devops-guru:GetResourceCollection"
@@ -30,8 +31,8 @@
                 }
             ]
         },
-        "VersionId": "v4",
-        "IsDefaultVersion": false,
-        "CreateDate": "2022-12-19T20:44:13Z"
+        "VersionId": "v5",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-03-15T14:02:16Z"
     }
 }
