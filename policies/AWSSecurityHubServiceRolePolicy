@@ -16,6 +16,7 @@
                         "config:DescribeConfigurationRecorders",
                         "config:DescribeConfigurationRecorderStatus",
                         "config:DescribeConfigRules",
+                        "config:DescribeConfigRuleEvaluationStatus",
                         "config:BatchGetResourceConfig",
                         "config:SelectResourceConfig",
                         "iam:GenerateCredentialReport",
@@ -32,15 +33,14 @@
                     "Action": [
                         "config:PutConfigRule",
                         "config:DeleteConfigRule",
-                        "config:GetComplianceDetailsByConfigRule",
-                        "config:DescribeConfigRuleEvaluationStatus"
+                        "config:GetComplianceDetailsByConfigRule"
                     ],
                     "Resource": "arn:aws:config:*:*:config-rule/aws-service-rule/*securityhub*"
                 }
             ]
         },
-        "VersionId": "v9",
+        "VersionId": "v10",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-07-14T20:32:48Z"
+        "CreateDate": "2023-03-17T23:50:43Z"
     }
 }
