@@ -1,6 +1,6 @@
 ## AWS Access Analyzer - Findings - 2023-03-20
 
-- Policies analyzed: `1051`
+- Policies analyzed: `1052`
 - Errors: `16`
   - [`AWSBackupServiceLinkedRolePolicyForBackup`](./AWSBackupServiceLinkedRolePolicyForBackup.json)
   - [`AWSApplicationMigrationReadOnlyAccess`](./AWSApplicationMigrationReadOnlyAccess.json)
