@@ -23,10 +23,13 @@
                 {
                     "Effect": "Allow",
                     "Action": [
-                        "ssm:SendCommand"
+                        "ssm:SendCommand",
+                        "ssm:DescribeDocument",
+                        "ssm:StartAutomationExecution"
                     ],
                     "Resource": [
-                        "arn:aws:ssm:*:*:document/*"
+                        "arn:aws:ssm:*:*:document/*",
+                        "arn:aws:ssm:*:*:automation-definition/*:*"
                     ],
                     "Condition": {
                         "ForAnyValue:StringEquals": {
@@ -54,11 +57,26 @@
                             "aws:ResourceTag/AWSApplicationMigrationServiceManaged": "false"
                         }
                     }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "ssm:ListDocuments"
+                    ],
+                    "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "ssm:ListDocumentVersions",
+                        "ssm:GetDocument"
+                    ],
+                    "Resource": "arn:aws:ssm:*:*:document/*"
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-11-27T09:29:05Z"
+        "CreateDate": "2023-03-20T10:57:51Z"
     }
 }
