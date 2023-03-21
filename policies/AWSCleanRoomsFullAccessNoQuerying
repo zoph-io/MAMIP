@@ -38,7 +38,10 @@
                         "cleanrooms:UpdateConfiguredTable",
                         "cleanrooms:UpdateConfiguredTableAnalysisRule",
                         "cleanrooms:UpdateConfiguredTableAssociation",
-                        "cleanrooms:UpdateMembership"
+                        "cleanrooms:UpdateMembership",
+                        "cleanrooms:ListTagsForResource",
+                        "cleanrooms:UntagResource",
+                        "cleanrooms:TagResource"
                     ],
                     "Resource": "*"
                 },
@@ -190,8 +193,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-01-12T16:12:31Z"
+        "CreateDate": "2023-03-21T16:47:14Z"
     }
 }
