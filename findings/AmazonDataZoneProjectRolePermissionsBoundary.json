@@ -1,0 +1,74 @@
+[
+    {
+        "findingDetails": "The service datazone:* specified in the action does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_SERVICE_IN_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 2
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 70
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 2574,
+                        "line": 1,
+                        "offset": 2574
+                    },
+                    "start": {
+                        "column": 2562,
+                        "line": 1,
+                        "offset": 2562
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The service datazone:* specified in the action does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_SERVICE_IN_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 7
+                    },
+                    {
+                        "value": "NotAction"
+                    },
+                    {
+                        "index": 104
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 6334,
+                        "line": 1,
+                        "offset": 6334
+                    },
+                    "start": {
+                        "column": 6322,
+                        "line": 1,
+                        "offset": 6322
+                    }
+                }
+            }
+        ]
+    }
+]
