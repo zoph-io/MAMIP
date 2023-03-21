@@ -1,0 +1,38 @@
+[
+    {
+        "findingDetails": "The action sqlworkbench:GetSchemaInference does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 3
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 20
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 1480,
+                        "line": 1,
+                        "offset": 1480
+                    },
+                    "start": {
+                        "column": 1447,
+                        "line": 1,
+                        "offset": 1447
+                    }
+                }
+            }
+        ]
+    }
+]
