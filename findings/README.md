@@ -1,9 +1,10 @@
 ## AWS Access Analyzer - Findings - 2023-03-21
 
 - Policies analyzed: `1054`
-- Errors: `21`
+- Errors: `24`
   - [`AWSBackupServiceLinkedRolePolicyForBackup`](./AWSBackupServiceLinkedRolePolicyForBackup.json)
   - [`AWSApplicationMigrationReadOnlyAccess`](./AWSApplicationMigrationReadOnlyAccess.json)
+  - [`AWSCleanRoomsFullAccessNoQuerying`](./AWSCleanRoomsFullAccessNoQuerying.json)
   - [`AmazonDataZoneProjectRolePermissionsBoundary`](./AmazonDataZoneProjectRolePermissionsBoundary.json)
   - [`AmazonRedshiftQueryEditorV2ReadWriteSharing`](./AmazonRedshiftQueryEditorV2ReadWriteSharing.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
