@@ -1,0 +1,110 @@
+[
+    {
+        "findingDetails": "The action mediaconnect:DiscoverGatewayPollEndpoint does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 0
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 143,
+                        "line": 1,
+                        "offset": 143
+                    },
+                    "start": {
+                        "column": 101,
+                        "line": 1,
+                        "offset": 101
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The action mediaconnect:PollGateway does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 1
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 171,
+                        "line": 1,
+                        "offset": 171
+                    },
+                    "start": {
+                        "column": 145,
+                        "line": 1,
+                        "offset": 145
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The action mediaconnect:SubmitGatewayStateChange does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 2
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 212,
+                        "line": 1,
+                        "offset": 212
+                    },
+                    "start": {
+                        "column": 173,
+                        "line": 1,
+                        "offset": 173
+                    }
+                }
+            }
+        ]
+    }
+]

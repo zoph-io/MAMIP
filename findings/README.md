@@ -1,7 +1,8 @@
-## AWS Access Analyzer - Findings - 2023-03-21
+## AWS Access Analyzer - Findings - 2023-03-22
 
-- Policies analyzed: `1054`
-- Errors: `24`
+- Policies analyzed: `1055`
+- Errors: `27`
+  - [`MediaConnectGatewayInstanceRolePolicy`](./MediaConnectGatewayInstanceRolePolicy.json)
   - [`AWSBackupServiceLinkedRolePolicyForBackup`](./AWSBackupServiceLinkedRolePolicyForBackup.json)
   - [`AWSApplicationMigrationReadOnlyAccess`](./AWSApplicationMigrationReadOnlyAccess.json)
   - [`AWSCleanRoomsFullAccessNoQuerying`](./AWSCleanRoomsFullAccessNoQuerying.json)
