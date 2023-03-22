@@ -1,0 +1,22 @@
+{
+    "PolicyVersion": {
+        "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Sid": "MediaConnectGateway",
+                    "Effect": "Allow",
+                    "Action": [
+                        "mediaconnect:DiscoverGatewayPollEndpoint",
+                        "mediaconnect:PollGateway",
+                        "mediaconnect:SubmitGatewayStateChange"
+                    ],
+                    "Resource": "*"
+                }
+            ]
+        },
+        "VersionId": "v1",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-03-22T20:43:25Z"
+    }
+}
