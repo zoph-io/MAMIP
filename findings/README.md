@@ -1,6 +1,6 @@
 ## AWS Access Analyzer - Findings - 2023-03-23
 
-- Policies analyzed: `1056`
+- Policies analyzed: `1057`
 - Errors: `28`
   - [`MediaConnectGatewayInstanceRolePolicy`](./MediaConnectGatewayInstanceRolePolicy.json)
   - [`AWSBackupServiceLinkedRolePolicyForBackup`](./AWSBackupServiceLinkedRolePolicyForBackup.json)
