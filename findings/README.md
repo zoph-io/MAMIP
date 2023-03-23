@@ -1,7 +1,7 @@
 ## AWS Access Analyzer - Findings - 2023-03-23
 
 - Policies analyzed: `1056`
-- Errors: `27`
+- Errors: `28`
   - [`MediaConnectGatewayInstanceRolePolicy`](./MediaConnectGatewayInstanceRolePolicy.json)
   - [`AWSBackupServiceLinkedRolePolicyForBackup`](./AWSBackupServiceLinkedRolePolicyForBackup.json)
   - [`AWSApplicationMigrationReadOnlyAccess`](./AWSApplicationMigrationReadOnlyAccess.json)
@@ -12,6 +12,7 @@
   - [`AmazonRedshiftQueryEditorV2ReadSharing`](./AmazonRedshiftQueryEditorV2ReadSharing.json)
   - [`AmazonRedshiftQueryEditorV2NoSharing`](./AmazonRedshiftQueryEditorV2NoSharing.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
+  - [`AmazonChimeVoiceConnectorServiceLinkedRolePolicy`](./AmazonChimeVoiceConnectorServiceLinkedRolePolicy.json)
 - Sec_Warnings: `11`
   - [`AdministratorAccess`](./AdministratorAccess.json)
   - [`IAMFullAccess`](./IAMFullAccess.json)
