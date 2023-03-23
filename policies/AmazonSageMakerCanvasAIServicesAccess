@@ -1,0 +1,46 @@
+{
+    "PolicyVersion": {
+        "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "textract:AnalyzeDocument",
+                        "textract:AnalyzeExpense",
+                        "textract:AnalyzeID",
+                        "textract:StartDocumentAnalysis",
+                        "textract:StartExpenseAnalysis",
+                        "textract:GetDocumentAnalysis",
+                        "textract:GetExpenseAnalysis"
+                    ],
+                    "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "rekognition:DetectLabels",
+                        "rekognition:DetectText"
+                    ],
+                    "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "comprehend:BatchDetectDominantLanguage",
+                        "comprehend:BatchDetectEntities",
+                        "comprehend:BatchDetectSentiment",
+                        "comprehend:DetectPiiEntities",
+                        "comprehend:DetectEntities",
+                        "comprehend:DetectSentiment",
+                        "comprehend:DetectDominantLanguage"
+                    ],
+                    "Resource": "*"
+                }
+            ]
+        },
+        "VersionId": "v1",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-03-23T22:36:43Z"
+    }
+}

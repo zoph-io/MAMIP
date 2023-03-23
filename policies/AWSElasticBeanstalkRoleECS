@@ -15,11 +15,27 @@
                     "Resource": [
                         "*"
                     ]
+                },
+                {
+                    "Sid": "AllowECSTagResource",
+                    "Effect": "Allow",
+                    "Action": [
+                        "ecs:TagResource"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "ecs:CreateAction": [
+                                "CreateCluster",
+                                "RegisterTaskDefinition"
+                            ]
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2020-06-05T21:47:27Z"
+        "CreateDate": "2023-03-23T22:43:56Z"
     }
 }

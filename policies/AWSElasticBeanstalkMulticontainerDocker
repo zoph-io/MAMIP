@@ -19,11 +19,27 @@
                         "ecs:DescribeTasks"
                     ],
                     "Resource": "*"
+                },
+                {
+                    "Sid": "AllowECSTagResource",
+                    "Effect": "Allow",
+                    "Action": [
+                        "ecs:TagResource"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "ecs:CreateAction": [
+                                "RegisterContainerInstance",
+                                "StartTask"
+                            ]
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2016-06-06T23:45:37Z"
+        "CreateDate": "2023-03-23T22:04:20Z"
     }
 }
