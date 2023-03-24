@@ -1,0 +1,74 @@
+[
+    {
+        "findingDetails": "The action sagemaker:CreateAutoMLJobV2 does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 1
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 6
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 416,
+                        "line": 1,
+                        "offset": 416
+                    },
+                    "start": {
+                        "column": 387,
+                        "line": 1,
+                        "offset": 387
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The action sagemaker:DescribeAutoMLJobV2 does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 1
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 14
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 672,
+                        "line": 1,
+                        "offset": 672
+                    },
+                    "start": {
+                        "column": 641,
+                        "line": 1,
+                        "offset": 641
+                    }
+                }
+            }
+        ]
+    }
+]
