@@ -207,11 +207,26 @@
                             "ec2:LaunchTemplate": "arn:aws:ec2:*:*:launch-template/*"
                         }
                     }
+                },
+                {
+                    "Sid": "AllowECSTagResource",
+                    "Effect": "Allow",
+                    "Action": [
+                        "ecs:TagResource"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "ecs:CreateAction": [
+                                "RegisterTaskDefinition"
+                            ]
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v7",
+        "VersionId": "v8",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-01-27T20:23:38Z"
+        "CreateDate": "2023-03-24T00:18:43Z"
     }
 }
