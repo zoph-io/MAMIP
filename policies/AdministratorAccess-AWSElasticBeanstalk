@@ -331,11 +331,26 @@
                         "arn:aws:sqs:*:*:awseb-e-*",
                         "arn:aws:sqs:*:*:eb-*"
                     ]
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "ecs:TagResource"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "ecs:CreateAction": [
+                                "CreateCluster",
+                                "RegisterTaskDefinition"
+                            ]
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-03-09T22:36:27Z"
+        "CreateDate": "2023-03-23T23:45:23Z"
     }
 }
