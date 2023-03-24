@@ -21,6 +21,7 @@
                         "sagemaker:CreateModel",
                         "sagemaker:CreateProcessingJob",
                         "sagemaker:CreateAutoMLJob",
+                        "sagemaker:CreateAutoMLJobV2",
                         "sagemaker:DeleteEndpoint",
                         "sagemaker:DescribeCompilationJob",
                         "sagemaker:DescribeEndpoint",
@@ -28,6 +29,7 @@
                         "sagemaker:DescribeModel",
                         "sagemaker:DescribeProcessingJob",
                         "sagemaker:DescribeAutoMLJob",
+                        "sagemaker:DescribeAutoMLJobV2",
                         "sagemaker:ListCandidatesForAutoMLJob",
                         "sagemaker:AddTags",
                         "sagemaker:DeleteApp"
@@ -110,6 +112,15 @@
                         "s3:ListAllMyBuckets"
                     ],
                     "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "glue:SearchTables",
+                    "Resource": [
+                        "arn:aws:glue:*:*:table/*/*",
+                        "arn:aws:glue:*:*:database/*",
+                        "arn:aws:glue:*:*:catalog"
+                    ]
                 },
                 {
                     "Effect": "Allow",
@@ -207,8 +218,8 @@
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-12-06T23:10:32Z"
+        "CreateDate": "2023-03-24T15:28:26Z"
     }
 }
