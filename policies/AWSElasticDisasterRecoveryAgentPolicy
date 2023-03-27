@@ -19,11 +19,18 @@
                         "drs:IssueAgentCertificateForDrs"
                     ],
                     "Resource": "arn:aws:drs:*:*:source-server/${aws:SourceIdentity}"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "drs:GetAgentInstallationAssetsForDrs"
+                    ],
+                    "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-11-17T10:32:32Z"
+        "CreateDate": "2023-03-27T13:47:48Z"
     }
 }
