@@ -108,7 +108,8 @@
                         "kms:Encrypt",
                         "kms:GenerateDataKey",
                         "kms:ReEncryptTo",
-                        "kms:ReEncryptFrom"
+                        "kms:ReEncryptFrom",
+                        "kms:GenerateDataKeyWithoutPlaintext"
                     ],
                     "Resource": "*",
                     "Condition": {
@@ -370,8 +371,8 @@
                 }
             ]
         },
-        "VersionId": "v15",
+        "VersionId": "v16",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-11-10T22:45:54Z"
+        "CreateDate": "2023-03-28T23:32:58Z"
     }
 }
