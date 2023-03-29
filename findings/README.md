@@ -1,18 +1,14 @@
-## AWS Access Analyzer - Findings - 2023-03-28
+## AWS Access Analyzer - Findings - 2023-03-29
 
 - Policies analyzed: `1061`
-- Errors: `32`
+- Errors: `25`
   - [`MediaConnectGatewayInstanceRolePolicy`](./MediaConnectGatewayInstanceRolePolicy.json)
   - [`AWSBackupServiceLinkedRolePolicyForBackup`](./AWSBackupServiceLinkedRolePolicyForBackup.json)
-  - [`AWSApplicationMigrationReadOnlyAccess`](./AWSApplicationMigrationReadOnlyAccess.json)
   - [`AWSCleanRoomsFullAccessNoQuerying`](./AWSCleanRoomsFullAccessNoQuerying.json)
   - [`AmazonDataZoneProjectRolePermissionsBoundary`](./AmazonDataZoneProjectRolePermissionsBoundary.json)
   - [`AmazonSageMakerCanvasFullAccess`](./AmazonSageMakerCanvasFullAccess.json)
-  - [`AmazonRedshiftQueryEditorV2ReadWriteSharing`](./AmazonRedshiftQueryEditorV2ReadWriteSharing.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
   - [`AmazonDataZonePreviewConsoleFullAccess`](./AmazonDataZonePreviewConsoleFullAccess.json)
-  - [`AmazonRedshiftQueryEditorV2ReadSharing`](./AmazonRedshiftQueryEditorV2ReadSharing.json)
-  - [`AmazonRedshiftQueryEditorV2NoSharing`](./AmazonRedshiftQueryEditorV2NoSharing.json)
   - [`AmazonDataZonePortalFullAccessPolicy`](./AmazonDataZonePortalFullAccessPolicy.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AmazonChimeVoiceConnectorServiceLinkedRolePolicy`](./AmazonChimeVoiceConnectorServiceLinkedRolePolicy.json)
