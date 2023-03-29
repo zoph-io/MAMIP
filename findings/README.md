@@ -1,7 +1,7 @@
 ## AWS Access Analyzer - Findings - 2023-03-29
 
-- Policies analyzed: `1061`
-- Errors: `25`
+- Policies analyzed: `1062`
+- Errors: `28`
   - [`MediaConnectGatewayInstanceRolePolicy`](./MediaConnectGatewayInstanceRolePolicy.json)
   - [`AWSBackupServiceLinkedRolePolicyForBackup`](./AWSBackupServiceLinkedRolePolicyForBackup.json)
   - [`AWSCleanRoomsFullAccessNoQuerying`](./AWSCleanRoomsFullAccessNoQuerying.json)
@@ -12,6 +12,7 @@
   - [`AmazonDataZonePortalFullAccessPolicy`](./AmazonDataZonePortalFullAccessPolicy.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AmazonChimeVoiceConnectorServiceLinkedRolePolicy`](./AmazonChimeVoiceConnectorServiceLinkedRolePolicy.json)
+  - [`AWSGroundStationAgentInstancePolicy`](./AWSGroundStationAgentInstancePolicy.json)
 - Sec_Warnings: `11`
   - [`AdministratorAccess`](./AdministratorAccess.json)
   - [`IAMFullAccess`](./IAMFullAccess.json)
