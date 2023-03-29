@@ -1,0 +1,21 @@
+{
+    "PolicyVersion": {
+        "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "groundstation:RegisterAgent",
+                        "groundstation:UpdateAgentStatus",
+                        "groundstation:GetAgentConfiguration"
+                    ],
+                    "Resource": "*"
+                }
+            ]
+        },
+        "VersionId": "v1",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-03-29T15:23:12Z"
+    }
+}
