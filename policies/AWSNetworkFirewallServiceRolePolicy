@@ -17,6 +17,11 @@
                 },
                 {
                     "Effect": "Allow",
+                    "Action": "acm:DescribeCertificate",
+                    "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
                     "Action": "resource-groups:ListGroupResources",
                     "Resource": "*"
                 },
@@ -57,8 +62,8 @@
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-02-14T17:09:19Z"
+        "CreateDate": "2023-03-30T17:19:09Z"
     }
 }
