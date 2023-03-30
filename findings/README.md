@@ -1,10 +1,9 @@
-## AWS Access Analyzer - Findings - 2023-03-29
+## AWS Access Analyzer - Findings - 2023-03-30
 
-- Policies analyzed: `1062`
-- Errors: `28`
+- Policies analyzed: `1065`
+- Errors: `25`
   - [`MediaConnectGatewayInstanceRolePolicy`](./MediaConnectGatewayInstanceRolePolicy.json)
   - [`AWSBackupServiceLinkedRolePolicyForBackup`](./AWSBackupServiceLinkedRolePolicyForBackup.json)
-  - [`AWSCleanRoomsFullAccessNoQuerying`](./AWSCleanRoomsFullAccessNoQuerying.json)
   - [`AmazonDataZoneProjectRolePermissionsBoundary`](./AmazonDataZoneProjectRolePermissionsBoundary.json)
   - [`AmazonSageMakerCanvasFullAccess`](./AmazonSageMakerCanvasFullAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
