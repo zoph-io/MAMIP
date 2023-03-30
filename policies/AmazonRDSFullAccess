@@ -59,11 +59,29 @@
                             ]
                         }
                     }
+                },
+                {
+                    "Action": [
+                        "devops-guru:SearchInsights",
+                        "devops-guru:ListAnomaliesForInsight"
+                    ],
+                    "Effect": "Allow",
+                    "Resource": "*",
+                    "Condition": {
+                        "ForAllValues:StringEquals": {
+                            "devops-guru:ServiceNames": [
+                                "RDS"
+                            ]
+                        },
+                        "Null": {
+                            "devops-guru:ServiceNames": "false"
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v11",
+        "VersionId": "v12",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-03-15T13:44:54Z"
+        "CreateDate": "2023-03-30T12:05:22Z"
     }
 }
