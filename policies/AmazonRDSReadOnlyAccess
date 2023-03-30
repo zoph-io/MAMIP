@@ -28,11 +28,29 @@
                         "devops-guru:GetResourceCollection"
                     ],
                     "Resource": "*"
+                },
+                {
+                    "Action": [
+                        "devops-guru:SearchInsights",
+                        "devops-guru:ListAnomaliesForInsight"
+                    ],
+                    "Effect": "Allow",
+                    "Resource": "*",
+                    "Condition": {
+                        "ForAllValues:StringEquals": {
+                            "devops-guru:ServiceNames": [
+                                "RDS"
+                            ]
+                        },
+                        "Null": {
+                            "devops-guru:ServiceNames": "false"
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v5",
+        "VersionId": "v6",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-03-15T14:02:16Z"
+        "CreateDate": "2023-03-30T14:42:55Z"
     }
 }
