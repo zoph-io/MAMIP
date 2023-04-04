@@ -1,14 +1,13 @@
-## AWS Access Analyzer - Findings - 2023-04-03
+## AWS Access Analyzer - Findings - 2023-04-04
 
-- Policies analyzed: `1068`
-- Errors: `26`
+- Policies analyzed: `1067`
+- Errors: `25`
   - [`MediaConnectGatewayInstanceRolePolicy`](./MediaConnectGatewayInstanceRolePolicy.json)
   - [`AWSBackupServiceLinkedRolePolicyForBackup`](./AWSBackupServiceLinkedRolePolicyForBackup.json)
   - [`AmazonDataZoneProjectRolePermissionsBoundary`](./AmazonDataZoneProjectRolePermissionsBoundary.json)
   - [`AmazonSageMakerCanvasFullAccess`](./AmazonSageMakerCanvasFullAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
   - [`AmazonDataZonePreviewConsoleFullAccess`](./AmazonDataZonePreviewConsoleFullAccess.json)
-  - [`AWSProtonServiceSyncServiceRolePolicy`](./AWSProtonServiceSyncServiceRolePolicy.json)
   - [`AmazonDataZonePortalFullAccessPolicy`](./AmazonDataZonePortalFullAccessPolicy.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AmazonChimeVoiceConnectorServiceLinkedRolePolicy`](./AmazonChimeVoiceConnectorServiceLinkedRolePolicy.json)
@@ -74,7 +73,7 @@
 - Fails: `2`
   - [`AWSSupportServiceRolePolicy`](./fails.txt)
   - [`ReadOnlyAccess`](./fails.txt)
-- Deprecated: `48`
+- Deprecated: `49`
   - [`AWSCloudTrailFullAccess`](../policies/AWSCloudTrailFullAccess)
   - [`AmazonWorkLinkServiceRolePolicy`](../policies/AmazonWorkLinkServiceRolePolicy)
   - [`AmazonEC2RolePolicyForApplicationWizard`](../policies/AmazonEC2RolePolicyForApplicationWizard)
@@ -103,6 +102,7 @@
   - [`ServiceCatalogEndUserAccess`](../policies/ServiceCatalogEndUserAccess)
   - [`AWSRoboMakerFullAccess`](../policies/AWSRoboMakerFullAccess)
   - [`ServerMigrationServiceRole`](../policies/ServerMigrationServiceRole)
+  - [`AWSProtonServiceSyncServiceRolePolicy`](../policies/AWSProtonServiceSyncServiceRolePolicy)
   - [`AWSB9InternalServicePolicy`](../policies/AWSB9InternalServicePolicy)
   - [`TagPoliciesServiceRolePolicy`](../policies/TagPoliciesServiceRolePolicy)
   - [`AmazonConnectFullAccess`](../policies/AmazonConnectFullAccess)
