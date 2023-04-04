@@ -59,6 +59,9 @@
                         "kms:DescribeKey",
                         "kms:EnableKeyRotation",
                         "kms:DisableKeyRotation",
+                        "kms:GenerateDataKey",
+                        "kms:Encrypt",
+                        "kms:Decrypt",
                         "ec2:AuthorizeSecurityGroupEgress",
                         "ec2:AuthorizeSecurityGroupIngress"
                     ],
@@ -341,8 +344,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-03-21T02:54:30Z"
+        "CreateDate": "2023-04-04T02:48:38Z"
     }
 }
