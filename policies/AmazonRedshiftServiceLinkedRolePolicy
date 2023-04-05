@@ -129,6 +129,48 @@
                 },
                 {
                     "Effect": "Allow",
+                    "Action": [
+                        "ec2:CreateSecurityGroup"
+                    ],
+                    "Resource": [
+                        "arn:aws:ec2:*:*:security-group/*"
+                    ],
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:RequestTag/Redshift": "true"
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "ec2:AuthorizeSecurityGroupEgress",
+                        "ec2:AuthorizeSecurityGroupIngress",
+                        "ec2:RevokeSecurityGroupEgress",
+                        "ec2:RevokeSecurityGroupIngress",
+                        "ec2:ModifySecurityGroupRules",
+                        "ec2:DeleteSecurityGroup"
+                    ],
+                    "Resource": [
+                        "arn:aws:ec2:*:*:security-group/*"
+                    ],
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/Redshift": "true"
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "ec2:CreateSecurityGroup"
+                    ],
+                    "Resource": [
+                        "arn:aws:ec2:*:*:vpc/*"
+                    ]
+                },
+                {
+                    "Effect": "Allow",
                     "Action": "ec2:CreateTags",
                     "Resource": [
                         "arn:aws:ec2:*:*:subnet/*",
@@ -181,8 +223,8 @@
                 }
             ]
         },
-        "VersionId": "v8",
+        "VersionId": "v9",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-09-07T20:27:51Z"
+        "CreateDate": "2023-04-05T20:32:17Z"
     }
 }
