@@ -26,7 +26,7 @@
                     "Action": [
                         "secretsmanager:GetSecretValue"
                     ],
-                    "Resource": "*",
+                    "Resource": "arn:aws:secretsmanager:*:*:secret:*",
                     "Condition": {
                         "StringLike": {
                             "secretsmanager:ResourceTag/RedshiftDataFullAccess": "*"
@@ -43,10 +43,16 @@
                     ]
                 },
                 {
+                    "Sid": "GetCredentialsWithFederatedIAMCredentials",
+                    "Effect": "Allow",
+                    "Action": "redshift:GetClusterCredentialsWithIAM",
+                    "Resource": "arn:aws:redshift:*:*:dbname:*/*"
+                },
+                {
                     "Sid": "GetCredentialsForServerless",
                     "Effect": "Allow",
                     "Action": "redshift-serverless:GetCredentials",
-                    "Resource": "*",
+                    "Resource": "arn:aws:redshift-serverless:*:*:workgroup/*",
                     "Condition": {
                         "StringLike": {
                             "aws:ResourceTag/RedshiftDataFullAccess": "*"
@@ -74,8 +80,8 @@
                 }
             ]
         },
-        "VersionId": "v4",
+        "VersionId": "v5",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-07-12T03:34:16Z"
+        "CreateDate": "2023-04-07T18:18:32Z"
     }
 }
