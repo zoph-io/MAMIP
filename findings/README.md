@@ -1,4 +1,4 @@
-## AWS Access Analyzer - Findings - 2023-04-07
+## AWS Access Analyzer - Findings - 2023-04-10
 
 - Policies analyzed: `1068`
 - Errors: `16`
@@ -68,11 +68,12 @@
 - Fails: `2`
   - [`ReadOnlyAccess`](./fails.txt)
   - [`AWSSupportServiceRolePolicy`](./fails.txt)
-- Deprecated: `49`
+- Deprecated: `50`
   - [`AWS_Config_Role`](../policies/AWS_Config_Role)
   - [`AWSECRPullThroughCacheServiceRolePolicy`](../policies/AWSECRPullThroughCacheServiceRolePolicy)
   - [`ServiceCatalogEndUserAccess`](../policies/ServiceCatalogEndUserAccess)
   - [`AmazonWorkLinkServiceRolePolicy`](../policies/AmazonWorkLinkServiceRolePolicy)
+  - [`AmazonSumerianFullAccess`](../policies/AmazonSumerianFullAccess)
   - [`AmazonApplicationWizardFullaccess`](../policies/AmazonApplicationWizardFullaccess)
   - [`AmazonLaunchWizardFullaccess`](../policies/AmazonLaunchWizardFullaccess)
   - [`AWSCloudTrailFullAccess`](../policies/AWSCloudTrailFullAccess)
