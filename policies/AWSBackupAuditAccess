@@ -28,14 +28,14 @@
                     "Effect": "Allow",
                     "Action": [
                         "config:DescribeConfigurationRecorders",
-                        "config:DescribeConfigurationRecorderStatus"
+                        "config:DescribeConfigurationRecorderStatus",
+                        "config:DescribeComplianceByConfigRule"
                     ],
                     "Resource": "*"
                 },
                 {
                     "Effect": "Allow",
                     "Action": [
-                        "config:DescribeComplianceByConfigRule",
                         "config:GetComplianceDetailsByConfigRule"
                     ],
                     "Resource": "arn:aws:config:*:*:config-rule/*"
@@ -50,8 +50,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-08-24T01:02:23Z"
+        "CreateDate": "2023-04-10T21:23:31Z"
     }
 }
