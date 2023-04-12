@@ -16,8 +16,7 @@
   - [`IAMFullAccess`](./IAMFullAccess.json)
   - [`AWSServiceRoleForAmazonEKSNodegroup`](./AWSServiceRoleForAmazonEKSNodegroup.json)
   - [`AdministratorAccess-Amplify`](./AdministratorAccess-Amplify.json)
-- Suggestions: `49`
-  - [`AWSConfigServiceRolePolicy`](./AWSConfigServiceRolePolicy.json)
+- Suggestions: `47`
   - [`AWSElasticBeanstalkRoleCore`](./AWSElasticBeanstalkRoleCore.json)
   - [`AmazonSageMakerServiceCatalogProductsLambdaServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsLambdaServiceRolePolicy.json)
   - [`AmazonRedshiftAllCommandsFullAccess`](./AmazonRedshiftAllCommandsFullAccess.json)
@@ -39,7 +38,6 @@
   - [`AmazonLaunchWizard_Fullaccess`](./AmazonLaunchWizard_Fullaccess.json)
   - [`NeptuneConsoleFullAccess`](./NeptuneConsoleFullAccess.json)
   - [`AWSElasticBeanstalkService`](./AWSElasticBeanstalkService.json)
-  - [`AWS_ConfigRole`](./AWS_ConfigRole.json)
   - [`DataScientist`](./DataScientist.json)
   - [`SecurityAudit`](./SecurityAudit.json)
   - [`AWSBatchFullAccess`](./AWSBatchFullAccess.json)
@@ -50,8 +48,7 @@
   - [`AWSElasticBeanstalkWebTier`](./AWSElasticBeanstalkWebTier.json)
   - [`AWSMarketplaceFullAccess`](./AWSMarketplaceFullAccess.json)
   - [`SupportUser`](./SupportUser.json)
-- Warnings: `14`
-  - [`AWSConfigServiceRolePolicy`](./AWSConfigServiceRolePolicy.json)
+- Warnings: `12`
   - [`AmazonSageMakerServiceCatalogProductsLambdaServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsLambdaServiceRolePolicy.json)
   - [`FMSServiceRolePolicy`](./FMSServiceRolePolicy.json)
   - [`AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy.json)
@@ -60,12 +57,13 @@
   - [`AlexaForBusinessFullAccess`](./AlexaForBusinessFullAccess.json)
   - [`AmazonLaunchWizard_Fullaccess`](./AmazonLaunchWizard_Fullaccess.json)
   - [`PowerUserAccess`](./PowerUserAccess.json)
-  - [`AWS_ConfigRole`](./AWS_ConfigRole.json)
   - [`SecurityAudit`](./SecurityAudit.json)
   - [`IAMFullAccess`](./IAMFullAccess.json)
   - [`AdministratorAccess-Amplify`](./AdministratorAccess-Amplify.json)
-- Fails: `2`
+- Fails: `4`
   - [`ReadOnlyAccess`](./fails.txt)
+  - [`AWSConfigServiceRolePolicy`](./fails.txt)
+  - [`AWS_ConfigRole`](./fails.txt)
   - [`AWSSupportServiceRolePolicy`](./fails.txt)
 - Deprecated: `50`
   - [`AWS_Config_Role`](../policies/AWS_Config_Role)
