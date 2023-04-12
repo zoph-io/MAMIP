@@ -177,11 +177,20 @@
                             "iam:AWSServiceName": "cloudtrail.amazonaws.com"
                         }
                     }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "account:EnableRegion",
+                        "account:ListRegions",
+                        "account:GetRegionOptStatus"
+                    ],
+                    "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v9",
+        "VersionId": "v10",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-10-31T19:12:41Z"
+        "CreateDate": "2023-04-12T19:15:51Z"
     }
 }
