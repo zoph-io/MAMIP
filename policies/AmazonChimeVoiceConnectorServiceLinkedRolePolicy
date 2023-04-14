@@ -64,7 +64,8 @@
                 {
                     "Effect": "Allow",
                     "Action": [
-                        "chime:CreateMediaInsightsPipeline"
+                        "chime:CreateMediaInsightsPipeline",
+                        "chime:GetMediaInsightsPipelineConfiguration"
                     ],
                     "Resource": [
                         "*"
@@ -72,8 +73,8 @@
                 }
             ]
         },
-        "VersionId": "v4",
+        "VersionId": "v5",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-03-23T19:39:40Z"
+        "CreateDate": "2023-04-14T21:49:14Z"
     }
 }
