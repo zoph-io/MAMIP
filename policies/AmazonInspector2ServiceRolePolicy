@@ -178,11 +178,28 @@
                             ]
                         }
                     }
+                },
+                {
+                    "Sid": "Ec2DeepInspection",
+                    "Effect": "Allow",
+                    "Action": [
+                        "ssm:PutParameter",
+                        "ssm:GetParameters",
+                        "ssm:DeleteParameter"
+                    ],
+                    "Resource": [
+                        "arn:*:ssm:*:*:parameter/inspector-aws/service/inspector-linux-application-paths"
+                    ],
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v7",
+        "VersionId": "v8",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-02-24T17:57:17Z"
+        "CreateDate": "2023-04-14T14:12:30Z"
     }
 }
