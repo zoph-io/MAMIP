@@ -205,11 +205,21 @@
                             "aws:CalledVia": "mgn.amazonaws.com"
                         }
                     }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "ssm:ListCommands",
+                    "Resource": "*",
+                    "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "aws:CalledVia": "ssm.amazonaws.com"
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v6",
+        "VersionId": "v7",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-03-20T10:43:04Z"
+        "CreateDate": "2023-04-20T17:28:13Z"
     }
 }
