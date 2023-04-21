@@ -100,7 +100,6 @@
                     "Effect": "Allow",
                     "Action": [
                         "config:DeleteConfigRule",
-                        "config:DescribeComplianceByConfigRule",
                         "config:GetComplianceDetailsByConfigRule",
                         "config:PutConfigRule",
                         "config:StartConfigRulesEvaluation"
@@ -110,6 +109,7 @@
                 {
                     "Effect": "Allow",
                     "Action": [
+                        "config:DescribeComplianceByConfigRule",
                         "config:DescribeConfigurationRecorders",
                         "config:DescribeConfigurationRecorderStatus",
                         "config:PutConfigurationRecorder",
@@ -611,8 +611,8 @@
                 }
             ]
         },
-        "VersionId": "v27",
+        "VersionId": "v28",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-02-03T23:53:37Z"
+        "CreateDate": "2023-04-21T18:33:58Z"
     }
 }
