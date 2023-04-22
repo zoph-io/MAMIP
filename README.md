@@ -18,7 +18,7 @@
 
 ## :white_check_mark: Policy Validation
 
-I'm using [AWS Access Analyzer Policy Validation](https://aws.amazon.com/blogs/aws/iam-access-analyzer-update-policy-validation/). You can check findings in the [findings folder](./findings/).
+[AWS Access Analyzer Policy Validation](https://aws.amazon.com/blogs/aws/iam-access-analyzer-update-policy-validation/) is used on each AWS Managed Policies. You can check findings in the [findings folder](./findings/).
 
 ## :older_man: Deprecated Policies
 
@@ -61,6 +61,6 @@ This command does the following:
 
 ![Schema ECS Fargate](assets/schema.png)
 
-### Credits
+### 🎖️ Credits
 
-Thanks to [@0xdabbad00](https://twitter.com/0xdabbad00) for the original idea, this repo automates the retrieval of new AWS Managed IAM Policies making it easier to monitor and get alerted when changes occur.
+Thanks to [Scott Piper](https://twitter.com/0xdabbad00) for the original idea, this product automates the retrieval of new AWS Managed IAM Policies making it easier to monitor and get alerted when changes occur + additional features.

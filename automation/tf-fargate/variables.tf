@@ -9,13 +9,13 @@ variable "env" {
 }
 
 variable "tags" {
-  type    = map(string)
+  type = map(string)
   default = {
-    aws_region      = "eu-west-1"
-    Project         = "mamip"
-    Terraform       = "true"
-    Service-Owner   = "Victor GRENU"
-    }
+    aws_region    = "eu-west-1"
+    Project       = "mamip"
+    Terraform     = "true"
+    Service-Owner = "Victor GRENU"
+  }
 }
 
 variable "project" {
