@@ -11,9 +11,6 @@ variable "env" {
 variable "tags" {
   type = map(string)
   default = {
-    aws_region    = "eu-west-1"
-    Project       = "mamip"
-    Terraform     = "true"
     Service-Owner = "Victor GRENU"
   }
 }

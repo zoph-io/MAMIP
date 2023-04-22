@@ -6,7 +6,6 @@ provider "aws" {
       aws_region    = "eu-west-1"
       Project       = "mamip"
       Terraform     = "true"
-      Service-Owner = "Victor GRENU"
     }
   }
 }
