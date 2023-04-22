@@ -1,18 +1,17 @@
 resource "aws_ecs_cluster" "ecs_cluster" {
-  name               = "${var.project}_ecs_cluster_${var.env}"
+  name = "${var.project}_ecs_cluster_${var.env}"
+}
+
+resource "aws_ecs_cluster_capacity_providers" "cluster_capacity" {
+  cluster_name = aws_ecs_cluster.ecs_cluster.name
+
   capacity_providers = ["FARGATE_SPOT"]
 
-  setting {
-    name  = "containerInsights"
-    value = "disabled"
-  }
-
   default_capacity_provider_strategy {
+    base              = 1
+    weight            = 100
     capacity_provider = "FARGATE_SPOT"
-    weight            = "100"
   }
-
-  tags = var.tags
 }
 
 data "template_file" "mamip_task" {

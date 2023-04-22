@@ -32,6 +32,10 @@ variable "qtweeter_sqs_name" {
   default = "qtweet-mamip-sqs-queue"
 }
 
+variable "qmasto_sqs_name" {
+  default = "qmasto-development-sqs-queue"
+}
+
 variable "log_group_retention" {
   default = "90"
 }
