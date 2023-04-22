@@ -24,42 +24,13 @@
 
 Some AWS Managed Policies are now [deprecated](./DEPRECATED.json) since they first appeared in this repository. Policy validation only takes place on actual AWS-managed policies.
 
-## :white_heart: How it works behind the scene
-
-AWS Managed Policies are acquired as follows:
-
-```bash
-aws iam list-policies --scope AWS > list-policies.json
-cat list-policies.json \
-  | jq -cr '.Policies[] | select(.Arn | contains("iam::aws"))|.Arn +" "+ .DefaultVersionId+" "+.PolicyName' \
-  | xargs -n3 sh -c 'aws iam get-policy-version --policy-arn $1 --version-id $2 > "policies/$3"' sh
-```
-
-This command does the following:
-
-- Gets the list of all IAM Policies in the AWS account
-- Finds the ones with an ARN containing `iam::aws`, so that only the AWS managed policies are grabbed.
-- Gets the `ARN`, current version id, and policy name (needed so we don't have a slash as the `ARN` does for writing a file)
-- Calls `aws iam get-policy-version` with those values, and writes the output to a file using the policy name.
-
-### :gear: Automation Details
-
-- Infrastructure is deployed using Terraform:
-  - ECS + Fargate
-- Clone this repository
-- Run the magic (previously mentioned command)
-- If changes are detected:
-  - Commit changes
-  - Push + Create Release
-  - Send SQS message to [qTweet](https://github.com/z0ph/qtweet)
-
 #### :clock1: Schedule
 
 - ECS + Fargate (Spot): [current setting](https://github.com/z0ph/MAMIP/blob/master/automation/tf-fargate/variables.tf#L66-L69)
 
 ### :triangular_ruler: Architecture Design
 
-![Schema ECS Fargate](assets/schema.png)
+![Schema ECS Fargate](assets/schema.drawio.svg)
 
 ### 🎖️ Credits
 
