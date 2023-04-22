@@ -276,6 +276,24 @@
                 {
                     "Effect": "Allow",
                     "Action": [
+                        "s3:PutBucketPolicy"
+                    ],
+                    "Resource": [
+                        "arn:aws:s3::*:logs-for-aws-portal-cache*"
+                    ]
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "s3:PutBucketOwnershipControls"
+                    ],
+                    "Resource": [
+                        "arn:aws:s3::*:logs-for-stack*"
+                    ]
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
                         "s3:ListAllMyBuckets"
                     ],
                     "Resource": "*"
@@ -377,8 +395,8 @@
                 }
             ]
         },
-        "VersionId": "v5",
+        "VersionId": "v6",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-03-23T20:12:28Z"
+        "CreateDate": "2023-04-18T18:24:02Z"
     }
 }

@@ -18,7 +18,9 @@
                 {
                     "Effect": "Allow",
                     "Action": [
-                        "s3:ListAllMyBuckets"
+                        "s3:ListAllMyBuckets",
+                        "servicequotas:GetServiceQuota",
+                        "cloudwatch:GetMetricData"
                     ],
                     "Resource": "*"
                 },
@@ -169,8 +171,8 @@
                 }
             ]
         },
-        "VersionId": "v5",
+        "VersionId": "v6",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-03-31T19:03:33Z"
+        "CreateDate": "2023-04-19T16:25:29Z"
     }
 }

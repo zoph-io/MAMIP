@@ -1,0 +1,37 @@
+{
+    "PolicyVersion": {
+        "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Sid": "CodeCatalystResourceAccess",
+                    "Effect": "Allow",
+                    "Action": [
+                        "codecatalyst:*",
+                        "iam:ListRoles"
+                    ],
+                    "Resource": "*"
+                },
+                {
+                    "Sid": "CodeCatalystAssociateIAMRole",
+                    "Effect": "Allow",
+                    "Action": [
+                        "iam:PassRole"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:PassedToService": [
+                                "codecatalyst.amazonaws.com",
+                                "codecatalyst-runner.amazonaws.com"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "VersionId": "v1",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-04-20T16:50:16Z"
+    }
+}
