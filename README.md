@@ -1,8 +1,6 @@
-# :loudspeaker: [MAMIP] Monitor AWS Managed IAM Policies 
+# :loudspeaker: [MAMIP] Monitor AWS Managed IAM Policies
 
 [![[Prod] MAMIP - GitHub Actions](https://github.com/z0ph/MAMIP/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/z0ph/MAMIP/actions/workflows/main.yml)
-
-Thanks to [@0xdabbad00](https://twitter.com/0xdabbad00) for the original idea, this repo automates the retrieval of new AWS Managed IAM Policies making it easier to monitor and get alerted when changes occur.
 
 ## :hand: Usage
 
@@ -62,3 +60,7 @@ This command does the following:
 ### :triangular_ruler: Architecture Design
 
 ![Schema ECS Fargate](assets/schema.png)
+
+### Credits
+
+Thanks to [@0xdabbad00](https://twitter.com/0xdabbad00) for the original idea, this repo automates the retrieval of new AWS Managed IAM Policies making it easier to monitor and get alerted when changes occur.
