@@ -1,10 +1,9 @@
-## AWS Access Analyzer - Findings - 2023-04-20
+## AWS Access Analyzer - Findings - 2023-04-24
 
 - Policies analyzed: `1077`
-- Errors: `15`
+- Errors: `14`
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
   - [`MediaConnectGatewayInstanceRolePolicy`](./MediaConnectGatewayInstanceRolePolicy.json)
-  - [`AWSBackupServiceLinkedRolePolicyForBackup`](./AWSBackupServiceLinkedRolePolicyForBackup.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
 - Sec_Warnings: `11`
   - [`AmazonElasticMapReduceRole`](./AmazonElasticMapReduceRole.json)
@@ -16,11 +15,10 @@
   - [`IAMFullAccess`](./IAMFullAccess.json)
   - [`AWSServiceRoleForAmazonEKSNodegroup`](./AWSServiceRoleForAmazonEKSNodegroup.json)
   - [`AdministratorAccess-Amplify`](./AdministratorAccess-Amplify.json)
-- Suggestions: `47`
+- Suggestions: `44`
   - [`AWSElasticBeanstalkRoleCore`](./AWSElasticBeanstalkRoleCore.json)
   - [`AmazonSageMakerServiceCatalogProductsLambdaServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsLambdaServiceRolePolicy.json)
   - [`AmazonRedshiftAllCommandsFullAccess`](./AmazonRedshiftAllCommandsFullAccess.json)
-  - [`AWSBackupServiceRolePolicyForRestores`](./AWSBackupServiceRolePolicyForRestores.json)
   - [`AWSBugBustServiceRolePolicy`](./AWSBugBustServiceRolePolicy.json)
   - [`AWSDeepRacerFullAccess`](./AWSDeepRacerFullAccess.json)
   - [`AWSGlueConsoleFullAccess`](./AWSGlueConsoleFullAccess.json)
@@ -33,7 +31,6 @@
   - [`AWSBackupOperatorAccess`](./AWSBackupOperatorAccess.json)
   - [`AWSBackupFullAccess`](./AWSBackupFullAccess.json)
   - [`AWSMigrationHubOrchestratorConsoleFullAccess`](./AWSMigrationHubOrchestratorConsoleFullAccess.json)
-  - [`AWSBackupServiceRolePolicyForBackup`](./AWSBackupServiceRolePolicyForBackup.json)
   - [`SystemAdministrator`](./SystemAdministrator.json)
   - [`AmazonLaunchWizard_Fullaccess`](./AmazonLaunchWizard_Fullaccess.json)
   - [`NeptuneConsoleFullAccess`](./NeptuneConsoleFullAccess.json)
@@ -44,7 +41,6 @@
   - [`AWSMigrationHubOrchestratorServiceRolePolicy`](./AWSMigrationHubOrchestratorServiceRolePolicy.json)
   - [`AmazonCodeGuruReviewerServiceRolePolicy`](./AmazonCodeGuruReviewerServiceRolePolicy.json)
   - [`AmazonAppStreamServiceAccess`](./AmazonAppStreamServiceAccess.json)
-  - [`AWSBackupServiceLinkedRolePolicyForBackup`](./AWSBackupServiceLinkedRolePolicyForBackup.json)
   - [`AWSElasticBeanstalkWebTier`](./AWSElasticBeanstalkWebTier.json)
   - [`AWSMarketplaceFullAccess`](./AWSMarketplaceFullAccess.json)
   - [`SupportUser`](./SupportUser.json)
