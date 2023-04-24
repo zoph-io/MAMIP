@@ -50,7 +50,8 @@
                     "Action": [
                         "storagegateway:DeleteVolume",
                         "storagegateway:DescribeCachediSCSIVolumes",
-                        "storagegateway:DescribeStorediSCSIVolumes"
+                        "storagegateway:DescribeStorediSCSIVolumes",
+                        "storagegateway:AddTagsToResource"
                     ],
                     "Resource": "arn:aws:storagegateway:*:*:gateway/*/volume/*"
                 },
@@ -92,7 +93,8 @@
                         "elasticfilesystem:Restore",
                         "elasticfilesystem:CreateFilesystem",
                         "elasticfilesystem:DescribeFilesystems",
-                        "elasticfilesystem:DeleteFilesystem"
+                        "elasticfilesystem:DeleteFilesystem",
+                        "elasticfilesystem:TagResource"
                     ],
                     "Resource": "arn:aws:elasticfilesystem:*:*:file-system/*"
                 },
@@ -195,6 +197,24 @@
                 {
                     "Effect": "Allow",
                     "Action": [
+                        "ec2:CreateTags"
+                    ],
+                    "Resource": [
+                        "arn:aws:ec2:*:*:instance/*",
+                        "arn:aws:ec2:*:*:volume/*"
+                    ],
+                    "Condition": {
+                        "ForAnyValue:StringLike": {
+                            "ec2:CreateAction": [
+                                "RunInstances",
+                                "CreateVolume"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
                         "fsx:CreateFileSystemFromBackup"
                     ],
                     "Resource": [
@@ -255,11 +275,13 @@
                 {
                     "Effect": "Allow",
                     "Action": [
-                        "fsx:CreateVolumeFromBackup"
+                        "fsx:CreateVolumeFromBackup",
+                        "fsx:TagResource"
                     ],
                     "Resource": [
                         "arn:aws:fsx:*:*:storage-virtual-machine/*",
-                        "arn:aws:fsx:*:*:backup/*"
+                        "arn:aws:fsx:*:*:backup/*",
+                        "arn:aws:fsx:*:*:volume/*"
                     ]
                 },
                 {
@@ -300,9 +322,10 @@
                     "Effect": "Allow",
                     "Action": [
                         "cloudformation:CreateChangeSet",
-                        "cloudformation:DescribeChangeSet"
+                        "cloudformation:DescribeChangeSet",
+                        "cloudformation:TagResource"
                     ],
-                    "Resource": "arn:aws:cloudformation:*:*:stack/*/*"
+                    "Resource": "arn:aws:cloudformation:*:*:*/*/*"
                 },
                 {
                     "Effect": "Allow",
@@ -356,7 +379,6 @@
                         "timestream:DescribeDatabase"
                     ],
                     "Resource": [
-                        "arn:aws:timestream:*:*:database/*/table/*",
                         "arn:aws:timestream:*:*:database/*"
                     ]
                 },
@@ -371,8 +393,8 @@
                 }
             ]
         },
-        "VersionId": "v16",
+        "VersionId": "v17",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-03-28T23:32:58Z"
+        "CreateDate": "2023-04-24T21:24:51Z"
     }
 }

@@ -4,20 +4,20 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Effect": "Allow",
                     "Action": [
                         "dynamodb:DescribeTable",
                         "dynamodb:CreateBackup"
                     ],
-                    "Resource": "arn:aws:dynamodb:*:*:table/*",
-                    "Effect": "Allow"
+                    "Resource": "arn:aws:dynamodb:*:*:table/*"
                 },
                 {
+                    "Effect": "Allow",
                     "Action": [
                         "dynamodb:DescribeBackup",
                         "dynamodb:DeleteBackup"
                     ],
-                    "Resource": "arn:aws:dynamodb:*:*:table/*/backup/*",
-                    "Effect": "Allow"
+                    "Resource": "arn:aws:dynamodb:*:*:table/*/backup/*"
                 },
                 {
                     "Effect": "Allow",
@@ -153,12 +153,12 @@
                     "Resource": "*"
                 },
                 {
+                    "Effect": "Allow",
                     "Action": [
                         "elasticfilesystem:Backup",
                         "elasticfilesystem:DescribeTags"
                     ],
-                    "Resource": "arn:aws:elasticfilesystem:*:*:file-system/*",
-                    "Effect": "Allow"
+                    "Resource": "arn:aws:elasticfilesystem:*:*:file-system/*"
                 },
                 {
                     "Effect": "Allow",
@@ -174,11 +174,11 @@
                     ]
                 },
                 {
+                    "Effect": "Allow",
                     "Action": [
                         "kms:Decrypt",
                         "kms:GenerateDataKey"
                     ],
-                    "Effect": "Allow",
                     "Resource": "*",
                     "Condition": {
                         "StringLike": {
@@ -189,13 +189,13 @@
                     }
                 },
                 {
-                    "Action": "kms:DescribeKey",
                     "Effect": "Allow",
+                    "Action": "kms:DescribeKey",
                     "Resource": "*"
                 },
                 {
-                    "Action": "kms:CreateGrant",
                     "Effect": "Allow",
+                    "Action": "kms:CreateGrant",
                     "Resource": "*",
                     "Condition": {
                         "Bool": {
@@ -204,10 +204,10 @@
                     }
                 },
                 {
+                    "Effect": "Allow",
                     "Action": [
                         "kms:GenerateDataKeyWithoutPlaintext"
                     ],
-                    "Effect": "Allow",
                     "Resource": "arn:aws:kms:*:*:key/*",
                     "Condition": {
                         "StringLike": {
@@ -218,11 +218,11 @@
                     }
                 },
                 {
+                    "Effect": "Allow",
                     "Action": [
                         "tag:GetResources"
                     ],
-                    "Resource": "*",
-                    "Effect": "Allow"
+                    "Resource": "*"
                 },
                 {
                     "Effect": "Allow",
@@ -241,8 +241,8 @@
                     ]
                 },
                 {
-                    "Action": "fsx:DescribeBackups",
                     "Effect": "Allow",
+                    "Action": "fsx:DescribeBackups",
                     "Resource": "arn:aws:fsx:*:*:backup/*"
                 },
                 {
@@ -255,8 +255,8 @@
                     ]
                 },
                 {
-                    "Action": "fsx:DescribeFileSystems",
                     "Effect": "Allow",
+                    "Action": "fsx:DescribeFileSystems",
                     "Resource": "arn:aws:fsx:*:*:file-system/*"
                 },
                 {
@@ -273,8 +273,8 @@
                     ]
                 },
                 {
-                    "Action": "fsx:DeleteBackup",
                     "Effect": "Allow",
+                    "Action": "fsx:DeleteBackup",
                     "Resource": "arn:aws:fsx:*:*:backup/*"
                 },
                 {
@@ -308,6 +308,7 @@
                 {
                     "Effect": "Allow",
                     "Action": [
+                        "cloudformation:ListStacks",
                         "cloudformation:GetTemplate",
                         "cloudformation:DescribeStacks",
                         "cloudformation:ListStackResources"
@@ -365,7 +366,6 @@
                         "timestream:DescribeDatabase"
                     ],
                     "Resource": [
-                        "arn:aws:timestream:*:*:database/*/table/*",
                         "arn:aws:timestream:*:*:database/*"
                     ]
                 },
@@ -396,8 +396,8 @@
                 }
             ]
         },
-        "VersionId": "v14",
+        "VersionId": "v15",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-11-10T22:38:14Z"
+        "CreateDate": "2023-04-24T21:27:09Z"
     }
 }
