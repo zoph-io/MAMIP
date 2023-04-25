@@ -1,6 +1,6 @@
-## AWS Access Analyzer - Findings - 2023-04-24
+## AWS Access Analyzer - Findings - 2023-04-25
 
-- Policies analyzed: `1077`
+- Policies analyzed: `1078`
 - Errors: `14`
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
   - [`MediaConnectGatewayInstanceRolePolicy`](./MediaConnectGatewayInstanceRolePolicy.json)
