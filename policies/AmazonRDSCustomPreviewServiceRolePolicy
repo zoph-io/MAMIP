@@ -100,6 +100,21 @@
                     }
                 },
                 {
+                    "Sid": "ecc1scoping3",
+                    "Effect": "Allow",
+                    "Action": [
+                        "ec2:AssignPrivateIpAddresses"
+                    ],
+                    "Resource": "arn:aws:ec2:*:*:network-interface/*",
+                    "Condition": {
+                        "StringLike": {
+                            "aws:ResourceTag/AWSRDSCustom": [
+                                "custom-oracle-rac"
+                            ]
+                        }
+                    }
+                },
+                {
                     "Sid": "eccRunInstances1",
                     "Effect": "Allow",
                     "Action": "ec2:RunInstances",
@@ -206,6 +221,41 @@
                     }
                 },
                 {
+                    "Sid": "eccNetworkInterface1",
+                    "Effect": "Allow",
+                    "Action": "ec2:CreateNetworkInterface",
+                    "Resource": "arn:aws:ec2:*:*:network-interface/*",
+                    "Condition": {
+                        "StringLike": {
+                            "aws:RequestTag/AWSRDSCustom": [
+                                "custom-oracle-rac"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "Sid": "eccNetworkInterface2",
+                    "Effect": "Allow",
+                    "Action": "ec2:CreateNetworkInterface",
+                    "Resource": [
+                        "arn:aws:ec2:*:*:subnet/*",
+                        "arn:aws:ec2:*:*:security-group/*"
+                    ]
+                },
+                {
+                    "Sid": "eccNetworkInterface3",
+                    "Effect": "Allow",
+                    "Action": "ec2:DeleteNetworkInterface",
+                    "Resource": "arn:aws:ec2:*:*:network-interface/*",
+                    "Condition": {
+                        "StringLike": {
+                            "aws:ResourceTag/AWSRDSCustom": [
+                                "custom-oracle-rac"
+                            ]
+                        }
+                    }
+                },
+                {
                     "Sid": "eccCreateTag1",
                     "Effect": "Allow",
                     "Action": [
@@ -239,6 +289,7 @@
                             "ec2:CreateAction": [
                                 "CreateKeyPair",
                                 "RunInstances",
+                                "CreateNetworkInterface",
                                 "CreateVolume",
                                 "CreateSnapshots",
                                 "CopySnapshot",
@@ -585,8 +636,8 @@
                 }
             ]
         },
-        "VersionId": "v3",
-        "IsDefaultVersion": false,
-        "CreateDate": "2023-02-14T23:58:11Z"
+        "VersionId": "v4",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-04-26T02:01:02Z"
     }
 }
