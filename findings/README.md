@@ -1,9 +1,8 @@
-## AWS Access Analyzer - Findings - 2023-04-25
+## AWS Access Analyzer - Findings - 2023-04-26
 
 - Policies analyzed: `1078`
-- Errors: `14`
+- Errors: `11`
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
-  - [`MediaConnectGatewayInstanceRolePolicy`](./MediaConnectGatewayInstanceRolePolicy.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
 - Sec_Warnings: `11`
   - [`AmazonElasticMapReduceRole`](./AmazonElasticMapReduceRole.json)
