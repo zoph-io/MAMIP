@@ -1,6 +1,6 @@
 ## AWS Access Analyzer - Findings - 2023-04-27
 
-- Policies analyzed: `1081`
+- Policies analyzed: `1084`
 - Errors: `31`
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AmazonOpenSearchIngestionFullAccess`](./AmazonOpenSearchIngestionFullAccess.json)
