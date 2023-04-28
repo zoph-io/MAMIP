@@ -12,10 +12,34 @@
                         "ec2:AttachNetworkInterface",
                         "ec2:DeleteNetworkInterface",
                         "ec2:DetachNetworkInterface",
+                        "ec2:DescribeVpcEndpoints",
                         "acm-pca:GetCertificateAuthorityCertificate",
                         "secretsmanager:ListSecrets"
                     ],
                     "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "ec2:ModifyVpcEndpoint"
+                    ],
+                    "Resource": "arn:*:ec2:*:*:subnet/*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "ec2:DeleteVpcEndpoints",
+                        "ec2:ModifyVpcEndpoint"
+                    ],
+                    "Resource": "arn:*:ec2:*:*:vpc-endpoint/*",
+                    "Condition": {
+                        "StringEquals": {
+                            "ec2:ResourceTag/AWSMSKManaged": "true"
+                        },
+                        "StringLike": {
+                            "ec2:ResourceTag/ClusterArn": "*"
+                        }
+                    }
                 },
                 {
                     "Effect": "Allow",
@@ -34,8 +58,8 @@
                 }
             ]
         },
-        "VersionId": "v3",
+        "VersionId": "v4",
         "IsDefaultVersion": true,
-        "CreateDate": "2020-08-26T20:40:53Z"
+        "CreateDate": "2023-04-28T00:39:35Z"
     }
 }
