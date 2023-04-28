@@ -195,11 +195,42 @@
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
                     }
+                },
+                {
+                    "Sid": "AllowManagementOfServiceLinkedChannel",
+                    "Effect": "Allow",
+                    "Action": [
+                        "cloudtrail:CreateServiceLinkedChannel",
+                        "cloudtrail:DeleteServiceLinkedChannel"
+                    ],
+                    "Resource": [
+                        "arn:*:cloudtrail:*:*:channel/aws-service-channel/inspector2/*"
+                    ],
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
+                },
+                {
+                    "Sid": "AllowListServiceLinkedChannels",
+                    "Effect": "Allow",
+                    "Action": [
+                        "cloudtrail:ListServiceLinkedChannels"
+                    ],
+                    "Resource": [
+                        "*"
+                    ],
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v8",
+        "VersionId": "v9",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-04-14T14:12:30Z"
+        "CreateDate": "2023-04-28T18:13:17Z"
     }
 }
