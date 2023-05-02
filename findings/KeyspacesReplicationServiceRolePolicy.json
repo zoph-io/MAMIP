@@ -1,0 +1,74 @@
+[
+    {
+        "findingDetails": "The action cassandra:SelectMultiRegionResource does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 1
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 128,
+                        "line": 1,
+                        "offset": 128
+                    },
+                    "start": {
+                        "column": 91,
+                        "line": 1,
+                        "offset": 91
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The action cassandra:ModifyMultiRegionResource does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 3
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 187,
+                        "line": 1,
+                        "offset": 187
+                    },
+                    "start": {
+                        "column": 150,
+                        "line": 1,
+                        "offset": 150
+                    }
+                }
+            }
+        ]
+    }
+]

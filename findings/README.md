@@ -1,8 +1,9 @@
-## AWS Access Analyzer - Findings - 2023-05-01
+## AWS Access Analyzer - Findings - 2023-05-02
 
-- Policies analyzed: `1085`
-- Errors: `31`
+- Policies analyzed: `1086`
+- Errors: `33`
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
+  - [`KeyspacesReplicationServiceRolePolicy`](./KeyspacesReplicationServiceRolePolicy.json)
   - [`AmazonOpenSearchIngestionFullAccess`](./AmazonOpenSearchIngestionFullAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
   - [`AmazonOpenSearchIngestionReadOnlyAccess`](./AmazonOpenSearchIngestionReadOnlyAccess.json)
