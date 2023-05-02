@@ -26,14 +26,18 @@
                         "inspector2:GetDelegatedAdminAccount",
                         "inspector2:GetFindingsReportStatus",
                         "inspector2:ListDelegatedAdminAccounts",
-                        "inspector2:ListTagsForResource"
+                        "inspector2:ListTagsForResource",
+                        "inspector2:BatchGetCodeSnippet",
+                        "inspector2:BatchGetMemberEc2DeepInspectionStatus",
+                        "inspector2:GetEc2DeepInspectionConfiguration",
+                        "codeguru-security:BatchGetFindings"
                     ],
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-01-21T14:45:14Z"
+        "CreateDate": "2023-05-02T18:51:40Z"
     }
 }
