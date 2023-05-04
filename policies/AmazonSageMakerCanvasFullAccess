@@ -8,9 +8,24 @@
                     "Action": [
                         "sagemaker:DescribeDomain",
                         "sagemaker:DescribeUserProfile",
-                        "sagemaker:ListTags"
+                        "sagemaker:ListTags",
+                        "sagemaker:ListModelPackages",
+                        "sagemaker:ListModelPackageGroups"
                     ],
                     "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "sagemaker:CreateModelPackageGroup",
+                        "sagemaker:CreateModelPackage",
+                        "sagemaker:DescribeModelPackageGroup",
+                        "sagemaker:DescribeModelPackage"
+                    ],
+                    "Resource": [
+                        "arn:aws:sagemaker:*:*:model-package/*",
+                        "arn:aws:sagemaker:*:*:model-package-group/*"
+                    ]
                 },
                 {
                     "Effect": "Allow",
@@ -218,8 +233,8 @@
                 }
             ]
         },
-        "VersionId": "v3",
-        "IsDefaultVersion": false,
-        "CreateDate": "2023-03-24T15:28:26Z"
+        "VersionId": "v4",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-05-04T17:03:12Z"
     }
 }
