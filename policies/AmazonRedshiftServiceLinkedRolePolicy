@@ -77,59 +77,6 @@
                 {
                     "Effect": "Allow",
                     "Action": [
-                        "ec2:AuthorizeSecurityGroupEgress",
-                        "ec2:AuthorizeSecurityGroupIngress",
-                        "ec2:UpdateSecurityGroupRuleDescriptionsEgress",
-                        "ec2:ReplaceRouteTableAssociation",
-                        "ec2:CreateRouteTable",
-                        "ec2:AttachInternetGateway",
-                        "ec2:UpdateSecurityGroupRuleDescriptionsIngress",
-                        "ec2:AssociateRouteTable",
-                        "ec2:RevokeSecurityGroupIngress",
-                        "ec2:CreateRoute",
-                        "ec2:CreateSecurityGroup",
-                        "ec2:RevokeSecurityGroupEgress",
-                        "ec2:ModifyVpcAttribute",
-                        "ec2:CreateSubnet"
-                    ],
-                    "Resource": [
-                        "arn:aws:ec2:*:*:subnet/*",
-                        "arn:aws:ec2:*:*:route-table/*",
-                        "arn:aws:ec2:*:*:security-group/*",
-                        "arn:aws:ec2:*:*:vpc/*",
-                        "arn:aws:ec2:*:*:internet-gateway/*"
-                    ],
-                    "Condition": {
-                        "StringEquals": {
-                            "aws:ResourceTag/Purpose": "RedshiftMigrateToVpc"
-                        }
-                    }
-                },
-                {
-                    "Effect": "Allow",
-                    "Action": [
-                        "ec2:CreateSecurityGroup",
-                        "ec2:CreateInternetGateway",
-                        "ec2:CreateVpc",
-                        "ec2:CreateRouteTable",
-                        "ec2:CreateSubnet"
-                    ],
-                    "Resource": [
-                        "arn:aws:ec2:*:*:subnet/*",
-                        "arn:aws:ec2:*:*:route-table/*",
-                        "arn:aws:ec2:*:*:security-group/*",
-                        "arn:aws:ec2:*:*:vpc/*",
-                        "arn:aws:ec2:*:*:internet-gateway/*"
-                    ],
-                    "Condition": {
-                        "StringEquals": {
-                            "aws:RequestTag/Purpose": "RedshiftMigrateToVpc"
-                        }
-                    }
-                },
-                {
-                    "Effect": "Allow",
-                    "Action": [
                         "ec2:CreateSecurityGroup"
                     ],
                     "Resource": [
@@ -223,8 +170,8 @@
                 }
             ]
         },
-        "VersionId": "v9",
+        "VersionId": "v10",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-04-05T20:32:17Z"
+        "CreateDate": "2023-05-08T18:57:44Z"
     }
 }
