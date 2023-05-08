@@ -1,12 +1,10 @@
 ## AWS Access Analyzer - Findings - 2023-05-08
 
 - Policies analyzed: `1086`
-- Errors: `33`
+- Errors: `13`
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`KeyspacesReplicationServiceRolePolicy`](./KeyspacesReplicationServiceRolePolicy.json)
-  - [`AmazonOpenSearchIngestionFullAccess`](./AmazonOpenSearchIngestionFullAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
-  - [`AmazonOpenSearchIngestionReadOnlyAccess`](./AmazonOpenSearchIngestionReadOnlyAccess.json)
 - Sec_Warnings: `11`
   - [`AWSElasticBeanstalkService`](./AWSElasticBeanstalkService.json)
   - [`AmazonElasticMapReduceFullAccess`](./AmazonElasticMapReduceFullAccess.json)
