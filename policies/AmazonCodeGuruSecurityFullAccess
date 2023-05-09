@@ -4,19 +4,17 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "AmazonCodeGuruSecurityFullAccess",
                     "Effect": "Allow",
                     "Action": [
-                        "supportplans:GetSupportPlan",
-                        "supportplans:GetSupportPlanUpdateStatus",
-                        "supportplans:StartSupportPlanUpdate",
-                        "supportplans:CreateSupportPlanSchedule"
+                        "codeguru-security:*"
                     ],
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v1",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-05-09T21:07:01Z"
+        "CreateDate": "2023-05-09T21:03:38Z"
     }
 }
