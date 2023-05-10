@@ -25,6 +25,22 @@
                     ]
                 },
                 {
+                    "Sid": "AllowECSTagResource",
+                    "Effect": "Allow",
+                    "Action": [
+                        "ecs:TagResource"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "ecs:CreateAction": [
+                                "CreateCluster",
+                                "RegisterTaskDefinition"
+                            ]
+                        }
+                    }
+                },
+                {
                     "Sid": "AllowS3OperationsOnElasticBeanstalkBuckets",
                     "Effect": "Allow",
                     "Action": [
@@ -47,12 +63,28 @@
                     }
                 },
                 {
+                    "Sid": "AllowELBAddTags",
+                    "Effect": "Allow",
+                    "Action": [
+                        "elasticloadbalancing:AddTags"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "elasticloadbalancing:CreateAction": [
+                                "CreateLoadBalancer"
+                            ]
+                        }
+                    }
+                },
+                {
                     "Sid": "AllowOperations",
                     "Effect": "Allow",
                     "Action": [
                         "autoscaling:AttachInstances",
                         "autoscaling:CreateAutoScalingGroup",
                         "autoscaling:CreateLaunchConfiguration",
+                        "autoscaling:CreateOrUpdateTags",
                         "autoscaling:DeleteLaunchConfiguration",
                         "autoscaling:DeleteAutoScalingGroup",
                         "autoscaling:DeleteScheduledAction",
@@ -150,8 +182,8 @@
                 }
             ]
         },
-        "VersionId": "v16",
+        "VersionId": "v17",
         "IsDefaultVersion": true,
-        "CreateDate": "2019-06-14T23:18:46Z"
+        "CreateDate": "2023-05-10T19:29:34Z"
     }
 }
