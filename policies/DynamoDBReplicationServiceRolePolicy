@@ -22,7 +22,8 @@
                         "application-autoscaling:RegisterScalableTarget",
                         "application-autoscaling:DescribeScalableTargets",
                         "application-autoscaling:PutScalingPolicy",
-                        "application-autoscaling:DescribeScalingPolicies"
+                        "application-autoscaling:DescribeScalingPolicies",
+                        "account:ListRegions"
                     ],
                     "Resource": "*"
                 },
@@ -42,8 +43,8 @@
                 }
             ]
         },
-        "VersionId": "v6",
+        "VersionId": "v7",
         "IsDefaultVersion": true,
-        "CreateDate": "2020-09-09T18:43:04Z"
+        "CreateDate": "2023-05-10T17:04:21Z"
     }
 }
