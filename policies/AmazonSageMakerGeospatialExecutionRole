@@ -21,11 +21,16 @@
                     "Effect": "Allow",
                     "Action": "sagemaker-geospatial:GetEarthObservationJob",
                     "Resource": "arn:aws:sagemaker-geospatial:*:*:earth-observation-job/*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "sagemaker-geospatial:GetRasterDataCollection",
+                    "Resource": "arn:aws:sagemaker-geospatial:*:*:raster-data-collection/*"
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-11-30T10:08:36Z"
+        "CreateDate": "2023-05-10T20:28:02Z"
     }
 }
