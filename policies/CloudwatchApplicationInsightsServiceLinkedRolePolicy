@@ -57,7 +57,8 @@
                     "Effect": "Allow",
                     "Action": [
                         "cloudFormation:DescribeStacks",
-                        "cloudFormation:ListStackResources"
+                        "cloudFormation:ListStackResources",
+                        "cloudFormation:ListStacks"
                     ],
                     "Resource": [
                         "*"
@@ -417,8 +418,8 @@
                 }
             ]
         },
-        "VersionId": "v23",
+        "VersionId": "v24",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-01-23T21:38:30Z"
+        "CreateDate": "2023-05-11T16:34:40Z"
     }
 }
