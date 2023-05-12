@@ -1,6 +1,6 @@
-## AWS Access Analyzer - Findings - 2023-05-11
+## AWS Access Analyzer - Findings - 2023-05-12
 
-- Policies analyzed: `1088`
+- Policies analyzed: `1089`
 - Errors: `13`
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AWSSupportPlansFullAccess`](./AWSSupportPlansFullAccess.json)
