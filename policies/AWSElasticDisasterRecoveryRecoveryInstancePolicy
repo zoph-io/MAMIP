@@ -76,11 +76,29 @@
                         "drs:GetAgentReplicationInfoForDrs"
                     ],
                     "Resource": "arn:aws:drs:*:*:source-server/*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "sts:AssumeRole",
+                        "sts:TagSession"
+                    ],
+                    "Resource": [
+                        "arn:aws:iam::*:role/service-role/DRSCrossAccountAgentAuthorizedRole_*"
+                    ],
+                    "Condition": {
+                        "StringLike": {
+                            "aws:RequestTag/SourceInstanceARN": "${ec2:SourceInstanceARN}"
+                        },
+                        "ForAnyValue:StringEquals": {
+                            "sts:TransitiveTagKeys": "SourceInstanceARN"
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-10-30T13:17:11Z"
+        "CreateDate": "2023-05-14T07:32:48Z"
     }
 }
