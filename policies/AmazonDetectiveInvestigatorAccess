@@ -41,11 +41,18 @@
                         "guardduty:ListDetectors"
                     ],
                     "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "securityHub:GetFindings"
+                    ],
+                    "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-01-17T15:24:26Z"
+        "CreateDate": "2023-05-17T19:41:09Z"
     }
 }
