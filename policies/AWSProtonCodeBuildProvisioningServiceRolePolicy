@@ -10,6 +10,7 @@
                         "cloudformation:CreateChangeSet",
                         "cloudformation:DeleteChangeSet",
                         "cloudformation:DeleteStack",
+                        "cloudformation:UpdateStack",
                         "cloudformation:DescribeStacks",
                         "cloudformation:DescribeStackEvents",
                         "cloudformation:ListStackResources"
@@ -23,6 +24,7 @@
                     "Action": [
                         "codebuild:CreateProject",
                         "codebuild:DeleteProject",
+                        "codebuild:UpdateProject",
                         "codebuild:StartBuild",
                         "codebuild:StopBuild",
                         "codebuild:RetryBuild",
@@ -40,11 +42,18 @@
                             "iam:PassedToService": "codebuild.amazonaws.com"
                         }
                     }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "servicequotas:GetServiceQuota"
+                    ],
+                    "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v1",
-        "IsDefaultVersion": false,
-        "CreateDate": "2022-11-09T21:32:06Z"
+        "VersionId": "v2",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-05-17T16:11:40Z"
     }
 }
