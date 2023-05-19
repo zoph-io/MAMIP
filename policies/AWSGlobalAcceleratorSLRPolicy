@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "EC2Action1",
                     "Effect": "Allow",
                     "Action": [
                         "ec2:CreateNetworkInterface",
@@ -13,11 +14,13 @@
                         "ec2:DescribeSubnets",
                         "ec2:DescribeRegions",
                         "ec2:ModifyNetworkInterfaceAttribute",
-                        "ec2:DeleteNetworkInterface"
+                        "ec2:DeleteNetworkInterface",
+                        "ec2:DescribeAddresses"
                     ],
                     "Resource": "*"
                 },
                 {
+                    "Sid": "EC2Action2",
                     "Effect": "Allow",
                     "Action": [
                         "ec2:DeleteSecurityGroup",
@@ -32,6 +35,7 @@
                     }
                 },
                 {
+                    "Sid": "EC2Action3",
                     "Effect": "Allow",
                     "Action": [
                         "ec2:CreateSecurityGroup",
@@ -40,11 +44,16 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "ElbAction1",
                     "Effect": "Allow",
-                    "Action": "elasticloadbalancing:DescribeLoadBalancers",
+                    "Action": [
+                        "elasticloadbalancing:DescribeLoadBalancers",
+                        "elasticloadbalancing:DescribeListeners"
+                    ],
                     "Resource": "*"
                 },
                 {
+                    "Sid": "EC2Action4",
                     "Effect": "Allow",
                     "Action": "ec2:CreateTags",
                     "Resource": [
@@ -54,8 +63,8 @@
                 }
             ]
         },
-        "VersionId": "v6",
+        "VersionId": "v7",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-11-02T18:33:56Z"
+        "CreateDate": "2023-05-19T20:41:25Z"
     }
 }
