@@ -1,8 +1,9 @@
-## AWS Access Analyzer - Findings - 2023-05-23
+## AWS Access Analyzer - Findings - 2023-05-24
 
 - Policies analyzed: `1091`
-- Errors: `11`
+- Errors: `12`
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
+  - [`TranslateReadOnly`](./TranslateReadOnly.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
 - Sec_Warnings: `11`
   - [`AWSServiceRoleForAmazonEKSNodegroup`](./AWSServiceRoleForAmazonEKSNodegroup.json)
