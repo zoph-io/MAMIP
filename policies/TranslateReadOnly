@@ -4,8 +4,10 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Effect": "Allow",
                     "Action": [
                         "translate:TranslateText",
+                        "translate:TranslateDocument",
                         "translate:GetTerminology",
                         "translate:ListTerminologies",
                         "translate:ListTextTranslationJobs",
@@ -16,13 +18,12 @@
                         "cloudwatch:GetMetricStatistics",
                         "cloudwatch:ListMetrics"
                     ],
-                    "Effect": "Allow",
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v6",
+        "VersionId": "v7",
         "IsDefaultVersion": true,
-        "CreateDate": "2020-11-23T17:31:06Z"
+        "CreateDate": "2023-05-24T17:19:30Z"
     }
 }
