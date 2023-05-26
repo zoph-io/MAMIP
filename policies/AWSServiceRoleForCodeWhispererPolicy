@@ -16,7 +16,10 @@
                     "Effect": "Allow",
                     "Action": [
                         "sso:ListProfileAssociations",
-                        "sso:ListProfiles"
+                        "sso:ListProfiles",
+                        "sso:ListDirectoryAssociations",
+                        "sso:DescribeRegisteredRegions",
+                        "sso:GetProfile"
                     ],
                     "Resource": [
                         "*"
@@ -58,8 +61,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-03-24T19:39:12Z"
+        "CreateDate": "2023-05-26T18:27:32Z"
     }
 }
