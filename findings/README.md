@@ -1,4 +1,4 @@
-## AWS Access Analyzer - Findings - 2023-05-26
+## AWS Access Analyzer - Findings - 2023-05-29
 
 - Policies analyzed: `1091`
 - Errors: `12`
@@ -44,7 +44,7 @@
   - [`AWSDeepLensLambdaFunctionAccessPolicy`](./AWSDeepLensLambdaFunctionAccessPolicy.json)
   - [`AWSMigrationHubOrchestratorServiceRolePolicy`](./AWSMigrationHubOrchestratorServiceRolePolicy.json)
   - [`AmazonElasticMapReduceFullAccess`](./AmazonElasticMapReduceFullAccess.json)
-- Warnings: `12`
+- Warnings: `13`
   - [`AWSOrganizationsServiceTrustPolicy`](./AWSOrganizationsServiceTrustPolicy.json)
   - [`IAMFullAccess`](./IAMFullAccess.json)
   - [`AmazonLaunchWizard_Fullaccess`](./AmazonLaunchWizard_Fullaccess.json)
@@ -54,6 +54,7 @@
   - [`AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy.json)
   - [`AdministratorAccess`](./AdministratorAccess.json)
   - [`AdministratorAccess-Amplify`](./AdministratorAccess-Amplify.json)
+  - [`AmazonRDSCustomServiceRolePolicy`](./AmazonRDSCustomServiceRolePolicy.json)
   - [`PowerUserAccess`](./PowerUserAccess.json)
   - [`FMSServiceRolePolicy`](./FMSServiceRolePolicy.json)
 - Fails: `4`
