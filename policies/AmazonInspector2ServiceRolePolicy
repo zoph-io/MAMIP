@@ -146,6 +146,8 @@
                     "Effect": "Allow",
                     "Action": [
                         "codeguru-security:CreateScan",
+                        "codeguru-security:GetAccountConfiguration",
+                        "codeguru-security:GetFindings",
                         "codeguru-security:GetScan",
                         "codeguru-security:ListFindings",
                         "codeguru-security:BatchGetFindings",
@@ -166,6 +168,7 @@
                         "iam:ListAttachedRolePolicies",
                         "iam:ListPolicies",
                         "iam:ListPolicyVersions",
+                        "iam:ListRolePolicies",
                         "lambda:ListVersionsByFunction"
                     ],
                     "Resource": [
@@ -229,8 +232,8 @@
                 }
             ]
         },
-        "VersionId": "v9",
+        "VersionId": "v10",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-04-28T18:13:17Z"
+        "CreateDate": "2023-05-31T18:30:12Z"
     }
 }
