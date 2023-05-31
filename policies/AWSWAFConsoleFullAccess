@@ -34,7 +34,11 @@
                         "apprunner:AssociateWebAcl",
                         "apprunner:DisassociateWebAcl",
                         "apprunner:DescribeWebAclForService",
-                        "apprunner:ListServices"
+                        "apprunner:ListServices",
+                        "ec2:AssociateVerifiedAccessInstanceWebAcl",
+                        "ec2:DisassociateVerifiedAccessInstanceWebAcl",
+                        "ec2:DescribeVerifiedAccessInstanceWebAclAssociations",
+                        "ec2:GetVerifiedAccessInstanceWebAcl"
                     ],
                     "Resource": "*"
                 },
@@ -75,8 +79,8 @@
                 }
             ]
         },
-        "VersionId": "v6",
+        "VersionId": "v7",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-03-30T20:56:05Z"
+        "CreateDate": "2023-05-31T19:11:14Z"
     }
 }
