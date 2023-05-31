@@ -1,0 +1,38 @@
+[
+    {
+        "findingDetails": "The action codeguru-security:GetAccountConfiguration does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 6
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 1
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 3778,
+                        "line": 1,
+                        "offset": 3778
+                    },
+                    "start": {
+                        "column": 3735,
+                        "line": 1,
+                        "offset": 3735
+                    }
+                }
+            }
+        ]
+    }
+]
