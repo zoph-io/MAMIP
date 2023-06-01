@@ -32,11 +32,27 @@
                     "Resource": [
                         "arn:aws:ecs:*:*:container-instance/*/*"
                     ]
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "ssm:SendCommand",
+                    "Resource": [
+                        "arn:aws:ssm:*:*:managed-instance/*",
+                        "arn:aws:ssm:*:*:document/*"
+                    ]
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "ssm:ListCommands",
+                        "ssm:CancelCommand"
+                    ],
+                    "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-10-26T20:37:56Z"
+        "CreateDate": "2023-06-01T10:48:27Z"
     }
 }

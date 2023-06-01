@@ -12,11 +12,21 @@
                     "Effect": "Allow",
                     "Action": "ec2:TerminateInstances",
                     "Resource": "arn:aws:ec2:*:*:instance/*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "ec2:DescribeSubnets",
+                    "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "eks:DescribeCluster",
+                    "Resource": "arn:aws:eks:*:*:cluster/*"
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-10-26T20:34:43Z"
+        "CreateDate": "2023-06-01T10:59:09Z"
     }
 }
