@@ -1,6 +1,6 @@
 ## AWS Access Analyzer - Findings - 2023-06-01
 
-- Policies analyzed: `1092`
+- Policies analyzed: `1093`
 - Errors: `13`
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`TranslateReadOnly`](./TranslateReadOnly.json)
