@@ -87,11 +87,45 @@
                         "aws-marketplace:ListTagsForResource"
                     ],
                     "Resource": "arn:aws:aws-marketplace:*:*:AWSMarketplace/*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "aws-marketplace-management:GetSellerVerificationDetails",
+                        "aws-marketplace-management:PutSellerVerificationDetails",
+                        "aws-marketplace-management:GetBankAccountVerificationDetails",
+                        "aws-marketplace-management:PutBankAccountVerificationDetails",
+                        "aws-marketplace-management:GetSecondaryUserVerificationDetails",
+                        "aws-marketplace-management:PutSecondaryUserVerificationDetails",
+                        "aws-marketplace-management:GetAdditionalSellerNotificationRecipients",
+                        "aws-marketplace-management:PutAdditionalSellerNotificationRecipients",
+                        "payments:GetPaymentInstrument",
+                        "payments:CreatePaymentInstrument",
+                        "tax:GetTaxInterview",
+                        "tax:PutTaxInterview"
+                    ],
+                    "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "support:CreateCase"
+                    ],
+                    "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "aws-marketplace:GetResourcePolicy",
+                        "aws-marketplace:PutResourcePolicy",
+                        "aws-marketplace:DeleteResourcePolicy"
+                    ],
+                    "Resource": "arn:aws:aws-marketplace:*:*:AWSMarketplace/*"
                 }
             ]
         },
-        "VersionId": "v8",
+        "VersionId": "v9",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-12-22T23:33:23Z"
+        "CreateDate": "2023-06-01T17:46:22Z"
     }
 }
