@@ -31,11 +31,27 @@
                     "Resource": [
                         "arn:aws:ssm:*:*:automation-execution/*"
                     ]
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "ssm:SendCommand",
+                    "Resource": [
+                        "arn:aws:ec2:*:*:instance/*",
+                        "arn:aws:ssm:*:*:document/*"
+                    ]
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "ssm:ListCommands",
+                        "ssm:CancelCommand"
+                    ],
+                    "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-10-26T15:33:44Z"
+        "CreateDate": "2023-06-02T22:55:18Z"
     }
 }
