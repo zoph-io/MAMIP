@@ -1,6 +1,6 @@
 ## AWS Access Analyzer - Findings - 2023-06-05
 
-- Policies analyzed: `1094`
+- Policies analyzed: `1095`
 - Errors: `20`
   - [`AWSMarketplaceSellerFullAccess`](./AWSMarketplaceSellerFullAccess.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
