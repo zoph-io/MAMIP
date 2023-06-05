@@ -1,11 +1,10 @@
 ## AWS Access Analyzer - Findings - 2023-06-05
 
 - Policies analyzed: `1094`
-- Errors: `21`
+- Errors: `20`
   - [`AWSMarketplaceSellerFullAccess`](./AWSMarketplaceSellerFullAccess.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
-  - [`TranslateReadOnly`](./TranslateReadOnly.json)
   - [`AmazonInspector2ServiceRolePolicy`](./AmazonInspector2ServiceRolePolicy.json)
 - Sec_Warnings: `11`
   - [`AWSProtonCodeBuildProvisioningServiceRolePolicy`](./AWSProtonCodeBuildProvisioningServiceRolePolicy.json)
