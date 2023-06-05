@@ -27,16 +27,18 @@
                         "cognito-idp:GetWebACLForResource",
                         "apprunner:DescribeWebAclForService",
                         "apprunner:ListServices",
+                        "apprunner:ListAssociatedServicesForWebAcl",
                         "ec2:DescribeVerifiedAccessInstanceWebAclAssociations",
-                        "ec2:GetVerifiedAccessInstanceWebAcl"
+                        "ec2:GetVerifiedAccessInstanceWebAcl",
+                        "ec2:DescribeVerifiedAccessInstances"
                     ],
                     "Effect": "Allow",
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v6",
+        "VersionId": "v7",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-05-31T19:12:04Z"
+        "CreateDate": "2023-06-05T20:56:51Z"
     }
 }
