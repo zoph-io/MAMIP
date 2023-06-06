@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Effect": "Allow",
                     "Action": [
                         "logs:Describe*",
                         "logs:Get*",
@@ -11,15 +12,16 @@
                         "logs:StartQuery",
                         "logs:StopQuery",
                         "logs:TestMetricFilter",
-                        "logs:FilterLogEvents"
+                        "logs:FilterLogEvents",
+                        "logs:StartLiveTail",
+                        "logs:StopLiveTail"
                     ],
-                    "Effect": "Allow",
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v4",
+        "VersionId": "v5",
         "IsDefaultVersion": true,
-        "CreateDate": "2019-01-14T19:32:45Z"
+        "CreateDate": "2023-06-06T17:16:08Z"
     }
 }
