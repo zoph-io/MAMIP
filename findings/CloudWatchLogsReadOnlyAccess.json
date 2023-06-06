@@ -1,0 +1,74 @@
+[
+    {
+        "findingDetails": "The action logs:StartLiveTail does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 7
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 222,
+                        "line": 1,
+                        "offset": 222
+                    },
+                    "start": {
+                        "column": 202,
+                        "line": 1,
+                        "offset": 202
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The action logs:StopLiveTail does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 8
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 243,
+                        "line": 1,
+                        "offset": 243
+                    },
+                    "start": {
+                        "column": 224,
+                        "line": 1,
+                        "offset": 224
+                    }
+                }
+            }
+        ]
+    }
+]
