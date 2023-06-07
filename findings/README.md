@@ -1,4 +1,4 @@
-## AWS Access Analyzer - Findings - 2023-06-06
+## AWS Access Analyzer - Findings - 2023-06-07
 
 - Policies analyzed: `1096`
 - Errors: `23`
@@ -17,7 +17,7 @@
   - [`AdministratorAccess-Amplify`](./AdministratorAccess-Amplify.json)
   - [`AdministratorAccess`](./AdministratorAccess.json)
   - [`AWSElasticBeanstalkService`](./AWSElasticBeanstalkService.json)
-- Suggestions: `44`
+- Suggestions: `40`
   - [`AWSBackupOperatorAccess`](./AWSBackupOperatorAccess.json)
   - [`AmazonElasticMapReduceFullAccess`](./AmazonElasticMapReduceFullAccess.json)
   - [`AWSMarketplaceFullAccess`](./AWSMarketplaceFullAccess.json)
@@ -39,7 +39,6 @@
   - [`AWSMigrationHubOrchestratorConsoleFullAccess`](./AWSMigrationHubOrchestratorConsoleFullAccess.json)
   - [`NeptuneConsoleFullAccess`](./NeptuneConsoleFullAccess.json)
   - [`AmazonLaunchWizard_Fullaccess`](./AmazonLaunchWizard_Fullaccess.json)
-  - [`SecurityAudit`](./SecurityAudit.json)
   - [`AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy.json)
   - [`SystemAdministrator`](./SystemAdministrator.json)
   - [`AWSBackupFullAccess`](./AWSBackupFullAccess.json)
