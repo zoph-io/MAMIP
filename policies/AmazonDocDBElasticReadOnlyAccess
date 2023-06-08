@@ -1,0 +1,31 @@
+{
+    "PolicyVersion": {
+        "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "docdb-elastic:ListClusters",
+                        "docdb-elastic:GetCluster",
+                        "docdb-elastic:ListClusterSnapshots",
+                        "docdb-elastic:GetClusterSnapshot",
+                        "docdb-elastic:ListTagsForResource"
+                    ],
+                    "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "cloudwatch:GetMetricStatistics",
+                        "cloudwatch:ListMetrics"
+                    ],
+                    "Resource": "*"
+                }
+            ]
+        },
+        "VersionId": "v1",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-06-08T14:37:37Z"
+    }
+}
