@@ -52,7 +52,13 @@
                         "ec2:DescribeSubnets",
                         "ec2:DescribeVolumes",
                         "ec2:GetEbsDefaultKmsKeyId",
-                        "ec2:GetEbsEncryptionByDefault"
+                        "ec2:GetEbsEncryptionByDefault",
+                        "ec2:DescribeVpcAttribute",
+                        "ec2:DescribeInternetGateways",
+                        "ec2:DescribeVpcs",
+                        "ec2:DescribeNetworkAcls",
+                        "ec2:DescribeRouteTables",
+                        "ec2:DescribeDhcpOptions"
                     ],
                     "Resource": "*"
                 },
@@ -326,8 +332,8 @@
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-07-10T12:44:41Z"
+        "CreateDate": "2023-06-11T08:33:31Z"
     }
 }
