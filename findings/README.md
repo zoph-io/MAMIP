@@ -1,6 +1,6 @@
 ## AWS Access Analyzer - Findings - 2023-06-11
 
-- Policies analyzed: `1098`
+- Policies analyzed: `1099`
 - Errors: `23`
   - [`CloudWatchReadOnlyAccess`](./CloudWatchReadOnlyAccess.json)
   - [`AWSMarketplaceSellerFullAccess`](./AWSMarketplaceSellerFullAccess.json)
