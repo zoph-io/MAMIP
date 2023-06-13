@@ -1,10 +1,10 @@
-## AWS Access Analyzer - Findings - 2023-06-11
+## AWS Access Analyzer - Findings - 2023-06-13
 
 - Policies analyzed: `1099`
-- Errors: `23`
+- Errors: `16`
   - [`CloudWatchReadOnlyAccess`](./CloudWatchReadOnlyAccess.json)
-  - [`AWSMarketplaceSellerFullAccess`](./AWSMarketplaceSellerFullAccess.json)
   - [`CloudWatchLogsReadOnlyAccess`](./CloudWatchLogsReadOnlyAccess.json)
+  - [`AWSElasticDisasterRecoveryAgentInstallationPolicy`](./AWSElasticDisasterRecoveryAgentInstallationPolicy.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
 - Sec_Warnings: `11`
