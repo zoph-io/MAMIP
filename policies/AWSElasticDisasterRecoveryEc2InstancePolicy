@@ -8,7 +8,8 @@
                     "Action": [
                         "drs:GetAgentInstallationAssetsForDrs",
                         "drs:SendClientLogsForDrs",
-                        "drs:CreateSourceServerForDrs"
+                        "drs:CreateSourceServerForDrs",
+                        "drs:CreateSourceNetwork"
                     ],
                     "Resource": "*"
                 },
@@ -21,6 +22,18 @@
                     "Condition": {
                         "StringEquals": {
                             "drs:CreateAction": "CreateSourceServerForDrs"
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "drs:TagResource"
+                    ],
+                    "Resource": "arn:aws:drs:*:*:source-network/*",
+                    "Condition": {
+                        "StringEquals": {
+                            "drs:CreateAction": "CreateSourceNetwork"
                         }
                     }
                 },
@@ -60,8 +73,8 @@
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-05-14T07:27:48Z"
+        "CreateDate": "2023-06-13T16:30:14Z"
     }
 }
