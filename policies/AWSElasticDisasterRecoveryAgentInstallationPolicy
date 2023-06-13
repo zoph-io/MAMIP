@@ -10,7 +10,8 @@
                         "drs:SendClientLogsForDrs",
                         "drs:CreateSourceServerForDrs",
                         "drs:CreateRecoveryInstanceForDrs",
-                        "drs:DescribeRecoveryInstances"
+                        "drs:DescribeRecoveryInstances",
+                        "drs:CreateSourceNetwork"
                     ],
                     "Resource": "*"
                 },
@@ -36,13 +37,23 @@
                 },
                 {
                     "Effect": "Allow",
+                    "Action": "drs:TagResource",
+                    "Resource": "arn:aws:drs:*:*:source-network/*",
+                    "Condition": {
+                        "StringEquals": {
+                            "drs:CreateAction": "CreateSourceNetwork"
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
                     "Action": "drs:IssueAgentCertificateForDrs",
                     "Resource": "arn:aws:drs:*:*:source-server/*"
                 }
             ]
         },
-        "VersionId": "v3",
+        "VersionId": "v4",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-12-28T07:10:44Z"
+        "CreateDate": "2023-06-13T09:43:59Z"
     }
 }
