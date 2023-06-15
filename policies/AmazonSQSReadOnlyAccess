@@ -4,19 +4,20 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Effect": "Allow",
                     "Action": [
                         "sqs:GetQueueAttributes",
                         "sqs:GetQueueUrl",
                         "sqs:ListDeadLetterSourceQueues",
-                        "sqs:ListQueues"
+                        "sqs:ListQueues",
+                        "sqs:ListMessageMoveTasks"
                     ],
-                    "Effect": "Allow",
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2018-08-20T23:35:49Z"
+        "CreateDate": "2023-06-15T15:37:35Z"
     }
 }
