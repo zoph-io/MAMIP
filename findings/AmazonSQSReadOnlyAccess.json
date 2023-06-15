@@ -1,0 +1,38 @@
+[
+    {
+        "findingDetails": "The action sqs:ListMessageMoveTasks does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 4
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 194,
+                        "line": 1,
+                        "offset": 194
+                    },
+                    "start": {
+                        "column": 168,
+                        "line": 1,
+                        "offset": 168
+                    }
+                }
+            }
+        ]
+    }
+]
