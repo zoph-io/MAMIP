@@ -50,6 +50,23 @@
                 {
                     "Effect": "Allow",
                     "Action": [
+                        "organizations:DescribeAccount"
+                    ],
+                    "Resource": "arn:aws:organizations::*:account/*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "organizations:DescribeOrganization",
+                        "organizations:ListAWSServiceAccessForOrganization",
+                        "organizations:ListDelegatedAdministrators",
+                        "organizations:ListAccounts"
+                    ],
+                    "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
                         "ec2:RegisterImage",
                         "ec2:DeregisterImage"
                     ],
@@ -287,8 +304,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-04-07T06:43:20Z"
+        "CreateDate": "2023-06-20T09:12:04Z"
     }
 }
