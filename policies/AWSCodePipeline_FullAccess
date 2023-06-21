@@ -144,15 +144,16 @@
                     "Sid": "CodeStarNotificationsChatbotAccess",
                     "Effect": "Allow",
                     "Action": [
-                        "chatbot:DescribeSlackChannelConfigurations"
+                        "chatbot:DescribeSlackChannelConfigurations",
+                        "chatbot:ListMicrosoftTeamsChannelConfigurations"
                     ],
                     "Resource": "*"
                 }
             ],
             "Version": "2012-10-17"
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2020-08-03T22:38:28Z"
+        "CreateDate": "2023-06-21T22:46:59Z"
     }
 }
