@@ -1,11 +1,10 @@
-## AWS Access Analyzer - Findings - 2023-06-20
+## AWS Access Analyzer - Findings - 2023-06-21
 
 - Policies analyzed: `1103`
-- Errors: `14`
+- Errors: `13`
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AWSElasticDisasterRecoveryEc2InstancePolicy`](./AWSElasticDisasterRecoveryEc2InstancePolicy.json)
-  - [`AmazonSQSReadOnlyAccess`](./AmazonSQSReadOnlyAccess.json)
   - [`AWSElasticDisasterRecoveryAgentInstallationPolicy`](./AWSElasticDisasterRecoveryAgentInstallationPolicy.json)
 - Sec_Warnings: `11`
   - [`AWSElasticBeanstalkService`](./AWSElasticBeanstalkService.json)
