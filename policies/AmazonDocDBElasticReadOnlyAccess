@@ -17,6 +17,7 @@
                 {
                     "Effect": "Allow",
                     "Action": [
+                        "cloudwatch:GetMetricData",
                         "cloudwatch:GetMetricStatistics",
                         "cloudwatch:ListMetrics"
                     ],
@@ -24,8 +25,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-06-08T14:37:37Z"
+        "CreateDate": "2023-06-21T16:57:09Z"
     }
 }
