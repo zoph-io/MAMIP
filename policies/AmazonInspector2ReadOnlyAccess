@@ -31,14 +31,17 @@
                         "inspector2:BatchGetMemberEc2DeepInspectionStatus",
                         "inspector2:GetEc2DeepInspectionConfiguration",
                         "inspector2:SearchVulnerabilities",
-                        "codeguru-security:BatchGetFindings"
+                        "inspector2:GetEncryptionKey",
+                        "inspector2:GetSbomExport",
+                        "codeguru-security:BatchGetFindings",
+                        "codeguru-security:GetAccountConfiguration"
                     ],
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v3",
+        "VersionId": "v4",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-06-05T21:54:19Z"
+        "CreateDate": "2023-06-23T20:12:39Z"
     }
 }
