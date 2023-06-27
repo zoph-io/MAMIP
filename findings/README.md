@@ -1,9 +1,11 @@
 ## AWS Access Analyzer - Findings - 2023-06-27
 
-- Policies analyzed: `1105`
-- Errors: `11`
+- Policies analyzed: `1107`
+- Errors: `21`
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
+  - [`AWSAppFabricFullAccess`](./AWSAppFabricFullAccess.json)
+  - [`AWSAppFabricReadOnlyAccess`](./AWSAppFabricReadOnlyAccess.json)
 - Sec_Warnings: `11`
   - [`AWSProtonCodeBuildProvisioningServiceRolePolicy`](./AWSProtonCodeBuildProvisioningServiceRolePolicy.json)
   - [`AmazonDynamoDBFullAccesswithDataPipeline`](./AmazonDynamoDBFullAccesswithDataPipeline.json)
