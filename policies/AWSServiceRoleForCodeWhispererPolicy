@@ -19,7 +19,8 @@
                         "sso:ListProfiles",
                         "sso:ListDirectoryAssociations",
                         "sso:DescribeRegisteredRegions",
-                        "sso:GetProfile"
+                        "sso:GetProfile",
+                        "sso:GetManagedApplicationInstance"
                     ],
                     "Resource": [
                         "*"
@@ -39,7 +40,8 @@
                     "Action": [
                         "codeguru-security:CreateScan",
                         "codeguru-security:GetScan",
-                        "codeguru-security:ListFindings"
+                        "codeguru-security:ListFindings",
+                        "codeguru-security:GetFindings"
                     ],
                     "Resource": [
                         "arn:aws:codeguru-security:*:*:scans/CodeWhisperer-*"
@@ -61,8 +63,8 @@
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-05-26T18:27:32Z"
+        "CreateDate": "2023-06-28T16:57:20Z"
     }
 }
