@@ -115,6 +115,21 @@
                     }
                 },
                 {
+                    "Sid": "VPCEndpointResourceTagCondition",
+                    "Effect": "Allow",
+                    "Action": [
+                        "ec2:CreateVpcEndpoint"
+                    ],
+                    "Resource": [
+                        "arn:aws:ec2:*:*:security-group*/*"
+                    ],
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/red-hat-managed": "true"
+                        }
+                    }
+                },
+                {
                     "Sid": "VPCEndpointNoCondition",
                     "Effect": "Allow",
                     "Action": [
@@ -173,8 +188,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
-        "IsDefaultVersion": false,
-        "CreateDate": "2023-04-24T23:02:49Z"
+        "VersionId": "v2",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-06-30T21:12:32Z"
     }
 }
