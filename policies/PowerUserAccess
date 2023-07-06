@@ -19,14 +19,15 @@
                         "iam:DeleteServiceLinkedRole",
                         "iam:ListRoles",
                         "organizations:DescribeOrganization",
-                        "account:ListRegions"
+                        "account:ListRegions",
+                        "account:GetAccountInformation"
                     ],
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v4",
+        "VersionId": "v5",
         "IsDefaultVersion": true,
-        "CreateDate": "2019-03-20T22:19:03Z"
+        "CreateDate": "2023-07-06T22:04:00Z"
     }
 }
