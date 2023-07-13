@@ -1,11 +1,9 @@
-## AWS Access Analyzer - Findings - 2023-07-10
+## AWS Access Analyzer - Findings - 2023-07-13
 
 - Policies analyzed: `1107`
-- Errors: `21`
+- Errors: `11`
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
-  - [`AWSAppFabricReadOnlyAccess`](./AWSAppFabricReadOnlyAccess.json)
-  - [`AWSAppFabricFullAccess`](./AWSAppFabricFullAccess.json)
 - Sec_Warnings: `11`
   - [`AdministratorAccess-Amplify`](./AdministratorAccess-Amplify.json)
   - [`AWSProtonCodeBuildProvisioningServiceRolePolicy`](./AWSProtonCodeBuildProvisioningServiceRolePolicy.json)
