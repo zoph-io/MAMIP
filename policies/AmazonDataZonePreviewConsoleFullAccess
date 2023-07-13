@@ -48,6 +48,14 @@
                 },
                 {
                     "Effect": "Allow",
+                    "Action": "iam:GetPolicy",
+                    "Resource": [
+                        "arn:aws:iam::*:policy/service-role/AmazonDataZoneBootstrapServicePolicy-AmazonDataZoneBootstrapRole",
+                        "arn:aws:iam::*:policy/service-role/AmazonDataZoneServicePolicy-AmazonDataZoneServiceRole"
+                    ]
+                },
+                {
+                    "Effect": "Allow",
                     "Action": "iam:PassRole",
                     "Resource": [
                         "arn:aws:iam::*:role/AmazonDataZoneServiceRole*",
@@ -65,8 +73,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
-        "IsDefaultVersion": false,
-        "CreateDate": "2023-03-28T15:16:04Z"
+        "VersionId": "v2",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-07-13T18:01:12Z"
     }
 }

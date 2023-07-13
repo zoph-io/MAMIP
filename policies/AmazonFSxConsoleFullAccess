@@ -15,10 +15,60 @@
                         "ec2:DescribeSubnets",
                         "ec2:DescribeVpcs",
                         "firehose:ListDeliveryStreams",
-                        "fsx:*",
                         "kms:ListAliases",
                         "logs:DescribeLogGroups",
                         "s3:ListBucket"
+                    ],
+                    "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "fsx:AssociateFileGateway",
+                        "fsx:AssociateFileSystemAliases",
+                        "fsx:CancelDataRepositoryTask",
+                        "fsx:CopyBackup",
+                        "fsx:CreateBackup",
+                        "fsx:CreateDataRepositoryAssociation",
+                        "fsx:CreateDataRepositoryTask",
+                        "fsx:CreateFileCache",
+                        "fsx:CreateFileSystem",
+                        "fsx:CreateFileSystemFromBackup",
+                        "fsx:CreateSnapshot",
+                        "fsx:CreateStorageVirtualMachine",
+                        "fsx:CreateVolume",
+                        "fsx:CreateVolumeFromBackup",
+                        "fsx:DeleteBackup",
+                        "fsx:DeleteDataRepositoryAssociation",
+                        "fsx:DeleteFileCache",
+                        "fsx:DeleteFileSystem",
+                        "fsx:DeleteSnapshot",
+                        "fsx:DeleteStorageVirtualMachine",
+                        "fsx:DeleteVolume",
+                        "fsx:DescribeAssociatedFileGateways",
+                        "fsx:DescribeBackups",
+                        "fsx:DescribeDataRepositoryAssociations",
+                        "fsx:DescribeDataRepositoryTasks",
+                        "fsx:DescribeFileCaches",
+                        "fsx:DescribeFileSystemAliases",
+                        "fsx:DescribeFileSystems",
+                        "fsx:DescribeSnapshots",
+                        "fsx:DescribeStorageVirtualMachines",
+                        "fsx:DescribeVolumes",
+                        "fsx:DisassociateFileGateway",
+                        "fsx:DisassociateFileSystemAliases",
+                        "fsx:ListTagsForResource",
+                        "fsx:ManageBackupPrincipalAssociations",
+                        "fsx:ReleaseFileSystemNfsV3Locks",
+                        "fsx:RestoreVolumeFromSnapshot",
+                        "fsx:TagResource",
+                        "fsx:UntagResource",
+                        "fsx:UpdateDataRepositoryAssociation",
+                        "fsx:UpdateFileCache",
+                        "fsx:UpdateFileSystem",
+                        "fsx:UpdateSnapshot",
+                        "fsx:UpdateStorageVirtualMachine",
+                        "fsx:UpdateVolume"
                     ],
                     "Resource": "*"
                 },
@@ -67,8 +117,8 @@
                 }
             ]
         },
-        "VersionId": "v6",
+        "VersionId": "v7",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-09-22T14:08:01Z"
+        "CreateDate": "2023-07-13T18:44:50Z"
     }
 }
