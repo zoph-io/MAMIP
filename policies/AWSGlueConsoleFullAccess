@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "BaseAppPermissions",
                     "Effect": "Allow",
                     "Action": [
                         "glue:*",
@@ -39,7 +40,10 @@
                         "kms:ListAliases",
                         "kms:DescribeKey",
                         "cloudwatch:GetMetricData",
-                        "cloudwatch:ListDashboards"
+                        "cloudwatch:ListDashboards",
+                        "databrew:ListRecipes",
+                        "databrew:ListRecipeVersions",
+                        "databrew:DescribeRecipe"
                     ],
                     "Resource": [
                         "*"
@@ -172,8 +176,8 @@
                 }
             ]
         },
-        "VersionId": "v13",
+        "VersionId": "v14",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-03-30T15:58:41Z"
+        "CreateDate": "2023-07-14T14:37:54Z"
     }
 }
