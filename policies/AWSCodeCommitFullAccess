@@ -178,7 +178,8 @@
                     "Sid": "CodeStarNotificationsChatbotAccess",
                     "Effect": "Allow",
                     "Action": [
-                        "chatbot:DescribeSlackChannelConfigurations"
+                        "chatbot:DescribeSlackChannelConfigurations",
+                        "chatbot:ListMicrosoftTeamsChannelConfigurations"
                     ],
                     "Resource": "*"
                 },
@@ -193,8 +194,8 @@
                 }
             ]
         },
-        "VersionId": "v9",
+        "VersionId": "v10",
         "IsDefaultVersion": true,
-        "CreateDate": "2020-07-30T23:17:35Z"
+        "CreateDate": "2023-07-17T21:50:11Z"
     }
 }
