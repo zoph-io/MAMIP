@@ -13,7 +13,11 @@
                         "ec2:DescribeSubnets",
                         "ec2:DescribeVpcs",
                         "elasticloadbalancing:DescribeLoadBalancers",
-                        "elasticloadbalancing:DescribeLoadBalancerAttributes"
+                        "elasticloadbalancing:DescribeLoadBalancerAttributes",
+                        "elasticloadbalancing:DescribeListeners",
+                        "elasticloadbalancing:DescribeTargetGroups",
+                        "elasticloadbalancing:DescribeTargetHealth",
+                        "elasticloadbalancing:DescribeLoadBalancerPolicies"
                     ],
                     "Resource": [
                         "*"
@@ -50,6 +54,62 @@
                     "Resource": [
                         "*"
                     ]
+                },
+                {
+                    "Sid": "CreateTargetGroup",
+                    "Effect": "Allow",
+                    "Action": [
+                        "elasticloadbalancing:CreateTargetGroup"
+                    ],
+                    "Resource": [
+                        "*"
+                    ],
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:RequestTag/red-hat-managed": "true"
+                        }
+                    }
+                },
+                {
+                    "Sid": "LoadBalanacerManagementResourceTag",
+                    "Effect": "Allow",
+                    "Action": [
+                        "elasticloadbalancing:DeleteListener",
+                        "elasticloadbalancing:RegisterTargets",
+                        "elasticloadbalancing:ModifyTargetGroup",
+                        "elasticloadbalancing:DeleteTargetGroup",
+                        "elasticloadbalancing:ApplySecurityGroupsToLoadBalancer",
+                        "elasticloadbalancing:CreateLoadBalancerListeners",
+                        "elasticloadbalancing:DeleteLoadBalancerListeners",
+                        "elasticloadbalancing:AttachLoadBalancerToSubnets",
+                        "elasticloadbalancing:DetachLoadBalancerFromSubnets",
+                        "elasticloadbalancing:ModifyListener",
+                        "elasticloadbalancing:SetLoadBalancerPoliciesOfListener"
+                    ],
+                    "Resource": [
+                        "*"
+                    ],
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/red-hat-managed": "true"
+                        }
+                    }
+                },
+                {
+                    "Sid": "CreateListeners",
+                    "Effect": "Allow",
+                    "Action": [
+                        "elasticloadbalancing:CreateListener"
+                    ],
+                    "Resource": [
+                        "*"
+                    ],
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:RequestTag/red-hat-managed": "true",
+                            "aws:ResourceTag/red-hat-managed": "true"
+                        }
+                    }
                 },
                 {
                     "Sid": "CreateSecurityGroup",
@@ -96,6 +156,7 @@
                     "Effect": "Allow",
                     "Action": [
                         "ec2:AuthorizeSecurityGroupIngress",
+                        "ec2:RevokeSecurityGroupIngress",
                         "ec2:DeleteSecurityGroup"
                     ],
                     "Resource": [
@@ -124,8 +185,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-04-27T20:09:29Z"
+        "CreateDate": "2023-07-18T21:45:19Z"
     }
 }
