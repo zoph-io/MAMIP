@@ -62,11 +62,20 @@
                         "aws-marketplace:ListTagsForResource"
                     ],
                     "Resource": "arn:aws:aws-marketplace:*:*:AWSMarketplace/*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "aws-marketplace:GetResourcePolicy",
+                        "aws-marketplace:PutResourcePolicy",
+                        "aws-marketplace:DeleteResourcePolicy"
+                    ],
+                    "Resource": "arn:aws:aws-marketplace:*:*:AWSMarketplace/*"
                 }
             ]
         },
-        "VersionId": "v6",
+        "VersionId": "v7",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-11-19T00:15:09Z"
+        "CreateDate": "2023-07-18T22:19:58Z"
     }
 }
