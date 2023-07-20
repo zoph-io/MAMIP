@@ -105,7 +105,10 @@
                         "elasticloadbalancing:AddTags",
                         "elasticloadbalancing:CreateListener"
                     ],
-                    "Resource": "arn:*:elasticloadbalancing:*:*:loadbalancer/net/refactor-spaces-nlb-*",
+                    "Resource": [
+                        "arn:*:elasticloadbalancing:*:*:loadbalancer/net/refactor-spaces-nlb-*",
+                        "arn:*:elasticloadbalancing:*:*:listener/net/refactor-spaces-nlb-*"
+                    ],
                     "Condition": {
                         "Null": {
                             "aws:RequestTag/refactor-spaces:route-id": "false"
@@ -206,8 +209,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-04-03T20:09:48Z"
+        "CreateDate": "2023-07-20T15:39:19Z"
     }
 }
