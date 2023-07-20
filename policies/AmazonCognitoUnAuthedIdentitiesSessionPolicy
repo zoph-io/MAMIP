@@ -1,0 +1,28 @@
+{
+    "PolicyVersion": {
+        "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "rum:PutRumEvents",
+                        "sagemaker:InvokeEndpoint",
+                        "polly:*",
+                        "comprehend:*",
+                        "translate:*",
+                        "transcribe:*",
+                        "rekognition:*",
+                        "mobiletargeting:*",
+                        "firehose:*",
+                        "personalize:*"
+                    ],
+                    "Resource": "*"
+                }
+            ]
+        },
+        "VersionId": "v1",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-07-19T23:04:05Z"
+    }
+}
