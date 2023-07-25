@@ -230,11 +230,25 @@
                             "iam:PassedToService": "forecast.amazonaws.com"
                         }
                     }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "application-autoscaling:PutScalingPolicy",
+                        "application-autoscaling:RegisterScalableTarget"
+                    ],
+                    "Resource": "arn:aws:application-autoscaling:*:*:scalable-target/*",
+                    "Condition": {
+                        "StringEquals": {
+                            "application-autoscaling:service-namespace": "sagemaker",
+                            "application-autoscaling:scalable-dimension": "sagemaker:variant:DesiredInstanceCount"
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v4",
+        "VersionId": "v5",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-05-04T17:03:12Z"
+        "CreateDate": "2023-07-24T23:16:37Z"
     }
 }
