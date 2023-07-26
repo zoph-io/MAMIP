@@ -1,9 +1,11 @@
-## AWS Access Analyzer - Findings - 2023-07-25
+## AWS Access Analyzer - Findings - 2023-07-26
 
-- Policies analyzed: `1111`
-- Errors: `11`
+- Policies analyzed: `1113`
+- Errors: `21`
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
+  - [`AWSHealthImagingFullAccess`](./AWSHealthImagingFullAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
+  - [`AWSHealthImagingReadOnlyAccess`](./AWSHealthImagingReadOnlyAccess.json)
 - Sec_Warnings: `11`
   - [`AdministratorAccess-Amplify`](./AdministratorAccess-Amplify.json)
   - [`AWSProtonCodeBuildProvisioningServiceRolePolicy`](./AWSProtonCodeBuildProvisioningServiceRolePolicy.json)
