@@ -53,8 +53,20 @@
                 },
                 {
                     "Effect": "Allow",
-                    "Action": "servicecatalog:GetApplication",
+                    "Action": [
+                        "servicecatalog:GetApplication"
+                    ],
                     "Resource": "arn:*:servicecatalog:*:*:*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "servicecatalog:DeleteApplication",
+                    "Resource": "arn:*:servicecatalog:*:*:*",
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/SSMForSAPCreated": "True"
+                        }
+                    }
                 },
                 {
                     "Effect": "Allow",
@@ -91,11 +103,87 @@
                             ]
                         }
                     }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "servicecatalog:CreateAttributeGroup",
+                    "Resource": "arn:*:servicecatalog:*:*:/attribute-groups/*",
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:RequestTag/SSMForSAPCreated": "True"
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "servicecatalog:GetAttributeGroup",
+                    "Resource": "arn:*:servicecatalog:*:*:/attribute-groups/*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "servicecatalog:DeleteAttributeGroup",
+                    "Resource": "arn:*:servicecatalog:*:*:/attribute-groups/*",
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/SSMForSAPCreated": "True"
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "servicecatalog:AssociateAttributeGroup",
+                        "servicecatalog:DisassociateAttributeGroup"
+                    ],
+                    "Resource": "arn:*:servicecatalog:*:*:*",
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/SSMForSAPCreated": "True"
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "servicecatalog:ListAssociatedAttributeGroups",
+                    "Resource": "arn:*:servicecatalog:*:*:*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "resource-groups:CreateGroup",
+                        "resource-groups:Tag"
+                    ],
+                    "Resource": "arn:*:resource-groups:*:*:group/SystemsManagerForSAP-*",
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/SSMForSAPCreated": "True"
+                        },
+                        "ForAllValues:StringEquals": {
+                            "aws:TagKeys": [
+                                "SSMForSAPCreated"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "resource-groups:GetGroup",
+                    "Resource": "arn:*:resource-groups:*:*:group/SystemsManagerForSAP-*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "resource-groups:DeleteGroup",
+                    "Resource": "arn:*:resource-groups:*:*:group/SystemsManagerForSAP-*",
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/SSMForSAPCreated": "True"
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-01-06T02:41:02Z"
+        "CreateDate": "2023-07-31T22:33:25Z"
     }
 }
