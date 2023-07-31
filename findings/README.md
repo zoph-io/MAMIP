@@ -1,8 +1,9 @@
 ## AWS Access Analyzer - Findings - 2023-07-31
 
 - Policies analyzed: `1113`
-- Errors: `21`
+- Errors: `29`
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
+  - [`AWSCleanRoomsFullAccessNoQuerying`](./AWSCleanRoomsFullAccessNoQuerying.json)
   - [`AWSHealthImagingFullAccess`](./AWSHealthImagingFullAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
   - [`AWSHealthImagingReadOnlyAccess`](./AWSHealthImagingReadOnlyAccess.json)
