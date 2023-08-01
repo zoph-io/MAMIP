@@ -288,7 +288,7 @@
         ]
     },
     {
-        "findingDetails": "The service medical-imaging:SearchImageSets specified in the action does not exist.",
+        "findingDetails": "The service medical-imaging:ListTagsForResource specified in the action does not exist.",
         "findingType": "ERROR",
         "issueCode": "INVALID_SERVICE_IN_ACTION",
         "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
@@ -310,14 +310,50 @@
                 ],
                 "span": {
                     "end": {
-                        "column": 389,
+                        "column": 393,
                         "line": 1,
-                        "offset": 389
+                        "offset": 393
                     },
                     "start": {
                         "column": 356,
                         "line": 1,
                         "offset": 356
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The service medical-imaging:SearchImageSets specified in the action does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_SERVICE_IN_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 9
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 428,
+                        "line": 1,
+                        "offset": 428
+                    },
+                    "start": {
+                        "column": 395,
+                        "line": 1,
+                        "offset": 395
                     }
                 }
             }
