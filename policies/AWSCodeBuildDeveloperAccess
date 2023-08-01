@@ -3,6 +3,7 @@
         "Document": {
             "Statement": [
                 {
+                    "Sid": "AWSServicesAccess",
                     "Action": [
                         "codebuild:StartBuild",
                         "codebuild:StopBuild",
@@ -31,6 +32,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "SSMParameterWriteAccess",
                     "Effect": "Allow",
                     "Action": [
                         "ssm:PutParameter"
@@ -38,6 +40,7 @@
                     "Resource": "arn:aws:ssm:*:*:parameter/CodeBuild/*"
                 },
                 {
+                    "Sid": "SSMStartSessionAccess",
                     "Effect": "Allow",
                     "Action": [
                         "ssm:StartSession"
@@ -94,15 +97,16 @@
                     "Sid": "CodeStarNotificationsChatbotAccess",
                     "Effect": "Allow",
                     "Action": [
-                        "chatbot:DescribeSlackChannelConfigurations"
+                        "chatbot:DescribeSlackChannelConfigurations",
+                        "chatbot:ListMicrosoftTeamsChannelConfigurations"
                     ],
                     "Resource": "*"
                 }
             ],
             "Version": "2012-10-17"
         },
-        "VersionId": "v13",
+        "VersionId": "v14",
         "IsDefaultVersion": true,
-        "CreateDate": "2020-09-14T16:03:44Z"
+        "CreateDate": "2023-07-31T23:06:10Z"
     }
 }

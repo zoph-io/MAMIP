@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "AWSServicesAccess",
                     "Action": [
                         "codebuild:*",
                         "codecommit:GetBranch",
@@ -35,6 +36,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "CWLDeleteLogGroupAccess",
                     "Action": [
                         "logs:DeleteLogGroup"
                     ],
@@ -42,6 +44,7 @@
                     "Resource": "arn:aws:logs:*:*:log-group:/aws/codebuild/*:log-stream:*"
                 },
                 {
+                    "Sid": "SSMParameterWriteAccess",
                     "Effect": "Allow",
                     "Action": [
                         "ssm:PutParameter"
@@ -49,6 +52,7 @@
                     "Resource": "arn:aws:ssm:*:*:parameter/CodeBuild/*"
                 },
                 {
+                    "Sid": "SSMStartSessionAccess",
                     "Effect": "Allow",
                     "Action": [
                         "ssm:StartSession"
@@ -127,14 +131,15 @@
                     "Sid": "CodeStarNotificationsChatbotAccess",
                     "Effect": "Allow",
                     "Action": [
-                        "chatbot:DescribeSlackChannelConfigurations"
+                        "chatbot:DescribeSlackChannelConfigurations",
+                        "chatbot:ListMicrosoftTeamsChannelConfigurations"
                     ],
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v12",
+        "VersionId": "v13",
         "IsDefaultVersion": true,
-        "CreateDate": "2020-09-14T16:03:39Z"
+        "CreateDate": "2023-07-31T23:06:23Z"
     }
 }
