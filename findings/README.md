@@ -1,6 +1,6 @@
 ## AWS Access Analyzer - Findings - 2023-08-01
 
-- Policies analyzed: `1113`
+- Policies analyzed: `1114`
 - Errors: `29`
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AWSCleanRoomsFullAccessNoQuerying`](./AWSCleanRoomsFullAccessNoQuerying.json)
