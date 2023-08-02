@@ -10,7 +10,9 @@
                         "iam:GetUser",
                         "iam:ListUsers",
                         "ec2:DescribeVpcs",
-                        "ec2:DescribeSubnets"
+                        "ec2:DescribeSubnets",
+                        "ec2:DescribeInstanceTypeOfferings",
+                        "ec2:DescribeRouteTables"
                     ],
                     "Resource": "*"
                 },
@@ -50,8 +52,8 @@
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2020-07-29T06:28:54Z"
+        "CreateDate": "2023-08-02T08:54:40Z"
     }
 }
