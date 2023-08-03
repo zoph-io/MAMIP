@@ -10,7 +10,10 @@
                 },
                 {
                     "Effect": "Allow",
-                    "Action": "codeguru-security:BatchGetFindings",
+                    "Action": [
+                        "codeguru-security:BatchGetFindings",
+                        "codeguru-security:GetAccountConfiguration"
+                    ],
                     "Resource": "*"
                 },
                 {
@@ -38,8 +41,8 @@
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-04-19T21:33:48Z"
+        "CreateDate": "2023-08-03T19:28:59Z"
     }
 }
