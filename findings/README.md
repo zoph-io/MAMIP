@@ -1,4 +1,4 @@
-## AWS Access Analyzer - Findings - 2023-08-07
+## AWS Access Analyzer - Findings - 2023-08-08
 
 - Policies analyzed: `1117`
 - Errors: `19`
@@ -15,7 +15,7 @@
   - [`AWSElasticBeanstalkService`](./AWSElasticBeanstalkService.json)
   - [`AdministratorAccess-Amplify`](./AdministratorAccess-Amplify.json)
   - [`AdministratorAccess`](./AdministratorAccess.json)
-- Suggestions: `40`
+- Suggestions: `38`
   - [`AmazonLaunchWizard_Fullaccess`](./AmazonLaunchWizard_Fullaccess.json)
   - [`SystemAdministrator`](./SystemAdministrator.json)
   - [`NeptuneConsoleFullAccess`](./NeptuneConsoleFullAccess.json)
@@ -28,7 +28,6 @@
   - [`AWSElasticBeanstalkWorkerTier`](./AWSElasticBeanstalkWorkerTier.json)
   - [`AmazonSageMakerServiceCatalogProductsLambdaServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsLambdaServiceRolePolicy.json)
   - [`AmazonElasticMapReduceFullAccess`](./AmazonElasticMapReduceFullAccess.json)
-  - [`AWSBackupOperatorAccess`](./AWSBackupOperatorAccess.json)
   - [`AWSElasticBeanstalkService`](./AWSElasticBeanstalkService.json)
   - [`AmazonRedshiftAllCommandsFullAccess`](./AmazonRedshiftAllCommandsFullAccess.json)
   - [`AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy.json)
@@ -41,7 +40,6 @@
   - [`AWSElasticBeanstalkWebTier`](./AWSElasticBeanstalkWebTier.json)
   - [`AWSElasticBeanstalkCustomPlatformforEC2Role`](./AWSElasticBeanstalkCustomPlatformforEC2Role.json)
   - [`DataScientist`](./DataScientist.json)
-  - [`AWSBackupFullAccess`](./AWSBackupFullAccess.json)
   - [`AmazonCodeGuruReviewerServiceRolePolicy`](./AmazonCodeGuruReviewerServiceRolePolicy.json)
 - Warnings: `13`
   - [`AmazonLaunchWizard_Fullaccess`](./AmazonLaunchWizard_Fullaccess.json)
