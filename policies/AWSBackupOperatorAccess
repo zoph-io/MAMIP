@@ -18,6 +18,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Effect": "Allow",
                     "Action": [
                         "rds:DescribeDBSnapshots",
                         "rds:ListTagsForResource",
@@ -32,25 +33,25 @@
                         "rds:DescribeDBClusterParameterGroups",
                         "rds:DescribeDBInstanceAutomatedBackups"
                     ],
-                    "Effect": "Allow",
                     "Resource": "*"
                 },
                 {
+                    "Effect": "Allow",
                     "Action": [
                         "dynamodb:ListBackups",
                         "dynamodb:ListTables"
                     ],
-                    "Effect": "Allow",
                     "Resource": "*"
                 },
                 {
+                    "Effect": "Allow",
                     "Action": [
                         "elasticfilesystem:DescribeFilesystems"
                     ],
-                    "Resource": "arn:aws:elasticfilesystem:*:*:file-system/*",
-                    "Effect": "Allow"
+                    "Resource": "arn:aws:elasticfilesystem:*:*:file-system/*"
                 },
                 {
+                    "Effect": "Allow",
                     "Action": [
                         "ec2:DescribeSnapshots",
                         "ec2:DescribeVolumes",
@@ -66,16 +67,15 @@
                         "ec2:DescribeVpcEndpoints",
                         "ec2:DescribeAddresses"
                     ],
-                    "Effect": "Allow",
                     "Resource": "*"
                 },
                 {
+                    "Effect": "Allow",
                     "Action": [
                         "tag:GetTagKeys",
                         "tag:GetTagValues",
                         "tag:GetResources"
                     ],
-                    "Effect": "Allow",
                     "Resource": "*"
                 },
                 {
@@ -103,11 +103,11 @@
                     "Resource": "arn:aws:storagegateway:*:*:gateway/*"
                 },
                 {
+                    "Effect": "Allow",
                     "Action": [
                         "iam:ListRoles",
                         "iam:GetRole"
                     ],
-                    "Effect": "Allow",
                     "Resource": "*"
                 },
                 {
@@ -145,13 +145,13 @@
                     ]
                 },
                 {
-                    "Action": "fsx:DescribeBackups",
                     "Effect": "Allow",
+                    "Action": "fsx:DescribeBackups",
                     "Resource": "arn:aws:fsx:*:*:backup/*"
                 },
                 {
-                    "Action": "fsx:DescribeFileSystems",
                     "Effect": "Allow",
+                    "Action": "fsx:DescribeFileSystems",
                     "Resource": "arn:aws:fsx:*:*:file-system/*"
                 },
                 {
@@ -165,8 +165,8 @@
                     "Resource": "arn:aws:fsx:*:*:storage-virtual-machine/*/*"
                 },
                 {
-                    "Action": "ds:DescribeDirectories",
                     "Effect": "Allow",
+                    "Action": "ds:DescribeDirectories",
                     "Resource": "*"
                 },
                 {
@@ -214,7 +214,6 @@
                         "timestream:ListTables"
                     ],
                     "Resource": [
-                        "arn:aws:timestream:*:*:database/*/table/*",
                         "arn:aws:timestream:*:*:database/*"
                     ]
                 },
@@ -281,11 +280,18 @@
                         "ssm-sap:ListTagsForResource"
                     ],
                     "Resource": "arn:aws:ssm-sap:*:*:*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "ram:GetResourceShareAssociations"
+                    ],
+                    "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v13",
+        "VersionId": "v14",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-12-15T20:13:00Z"
+        "CreateDate": "2023-08-08T18:19:48Z"
     }
 }

@@ -14,6 +14,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Effect": "Allow",
                     "Action": [
                         "rds:DescribeDBSnapshots",
                         "rds:ListTagsForResource",
@@ -28,15 +29,14 @@
                         "rds:DescribeDBClusterParameterGroups",
                         "rds:DescribeDBInstanceAutomatedBackups"
                     ],
-                    "Effect": "Allow",
                     "Resource": "*"
                 },
                 {
+                    "Effect": "Allow",
                     "Action": [
                         "rds:DeleteDBSnapshot",
                         "rds:DeleteDBClusterSnapshot"
                     ],
-                    "Effect": "Allow",
                     "Resource": "*",
                     "Condition": {
                         "ForAnyValue:StringEquals": {
@@ -47,18 +47,18 @@
                     }
                 },
                 {
+                    "Effect": "Allow",
                     "Action": [
                         "dynamodb:ListBackups",
                         "dynamodb:ListTables"
                     ],
-                    "Effect": "Allow",
                     "Resource": "*"
                 },
                 {
+                    "Effect": "Allow",
                     "Action": [
                         "dynamodb:DeleteBackup"
                     ],
-                    "Effect": "Allow",
                     "Resource": "*",
                     "Condition": {
                         "ForAnyValue:StringEquals": {
@@ -69,13 +69,14 @@
                     }
                 },
                 {
+                    "Effect": "Allow",
                     "Action": [
                         "elasticfilesystem:DescribeFilesystems"
                     ],
-                    "Resource": "arn:aws:elasticfilesystem:*:*:file-system/*",
-                    "Effect": "Allow"
+                    "Resource": "arn:aws:elasticfilesystem:*:*:file-system/*"
                 },
                 {
+                    "Effect": "Allow",
                     "Action": [
                         "ec2:DescribeSnapshots",
                         "ec2:DescribeVolumes",
@@ -90,15 +91,14 @@
                         "ec2:DescribeInstanceTypes",
                         "ec2:DescribeVpcEndpoints"
                     ],
-                    "Effect": "Allow",
                     "Resource": "*"
                 },
                 {
+                    "Effect": "Allow",
                     "Action": [
                         "ec2:DeleteSnapshot",
                         "ec2:DeregisterImage"
                     ],
-                    "Effect": "Allow",
                     "Resource": "*",
                     "Condition": {
                         "ForAnyValue:StringEquals": {
@@ -109,12 +109,12 @@
                     }
                 },
                 {
+                    "Effect": "Allow",
                     "Action": [
                         "tag:GetTagKeys",
                         "tag:GetTagValues",
                         "tag:GetResources"
                     ],
-                    "Effect": "Allow",
                     "Resource": "*"
                 },
                 {
@@ -142,11 +142,11 @@
                     "Resource": "arn:aws:storagegateway:*:*:gateway/*"
                 },
                 {
+                    "Effect": "Allow",
                     "Action": [
                         "iam:ListRoles",
                         "iam:GetRole"
                     ],
-                    "Effect": "Allow",
                     "Resource": "*"
                 },
                 {
@@ -168,20 +168,20 @@
                     "Resource": "*"
                 },
                 {
+                    "Effect": "Allow",
                     "Action": [
                         "kms:ListKeys",
                         "kms:DescribeKey",
                         "kms:GenerateDataKey",
                         "kms:ListAliases"
                     ],
-                    "Effect": "Allow",
                     "Resource": "*"
                 },
                 {
+                    "Effect": "Allow",
                     "Action": [
                         "kms:CreateGrant"
                     ],
-                    "Effect": "Allow",
                     "Resource": "*",
                     "Condition": {
                         "ForAnyValue:StringEquals": {
@@ -212,13 +212,13 @@
                     ]
                 },
                 {
-                    "Action": "fsx:DescribeFileSystems",
                     "Effect": "Allow",
+                    "Action": "fsx:DescribeFileSystems",
                     "Resource": "*"
                 },
                 {
-                    "Action": "fsx:DescribeBackups",
                     "Effect": "Allow",
+                    "Action": "fsx:DescribeBackups",
                     "Resource": "*"
                 },
                 {
@@ -232,8 +232,8 @@
                     "Resource": "arn:aws:fsx:*:*:storage-virtual-machine/*/*"
                 },
                 {
-                    "Action": "fsx:DeleteBackup",
                     "Effect": "Allow",
+                    "Action": "fsx:DeleteBackup",
                     "Resource": "arn:aws:fsx:*:*:backup/*",
                     "Condition": {
                         "ForAnyValue:StringEquals": {
@@ -244,8 +244,8 @@
                     }
                 },
                 {
-                    "Action": "ds:DescribeDirectories",
                     "Effect": "Allow",
+                    "Action": "ds:DescribeDirectories",
                     "Resource": "*"
                 },
                 {
@@ -318,7 +318,6 @@
                         "timestream:ListDatabases"
                     ],
                     "Resource": [
-                        "arn:aws:timestream:*:*:database/*/table/*",
                         "arn:aws:timestream:*:*:database/*"
                     ]
                 },
@@ -392,11 +391,18 @@
                         "ssm-sap:ListTagsForResource"
                     ],
                     "Resource": "arn:aws:ssm-sap:*:*:*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "ram:GetResourceShareAssociations"
+                    ],
+                    "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v14",
+        "VersionId": "v15",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-12-15T20:15:51Z"
+        "CreateDate": "2023-08-08T18:20:54Z"
     }
 }
