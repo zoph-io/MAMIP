@@ -167,11 +167,38 @@
                             ]
                         }
                     }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "secretsmanager:DescribeSecret",
+                        "secretsmanager:DeleteSecret",
+                        "secretsmanager:PutSecretValue",
+                        "secretsmanager:UpdateSecret",
+                        "secretsmanager:UpdateSecretVersionStage",
+                        "secretsmanager:RotateSecret"
+                    ],
+                    "Resource": [
+                        "arn:aws:secretsmanager:*:*:secret:redshift!*"
+                    ],
+                    "Condition": {
+                        "StringEquals": {
+                            "secretsmanager:ResourceTag/aws:secretsmanager:owningService": "redshift",
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "secretsmanager:GetRandomPassword"
+                    ],
+                    "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v10",
+        "VersionId": "v11",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-05-08T18:57:44Z"
+        "CreateDate": "2023-08-14T10:46:23Z"
     }
 }
