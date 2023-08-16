@@ -1,8 +1,9 @@
 ## AWS Access Analyzer - Findings - 2023-08-16
 
 - Policies analyzed: `1119`
-- Errors: `18`
+- Errors: `21`
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
+  - [`AmazonRDSPerformanceInsightsReadOnly`](./AmazonRDSPerformanceInsightsReadOnly.json)
   - [`AmazonRDSPerformanceInsightsFullAccess`](./AmazonRDSPerformanceInsightsFullAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
 - Sec_Warnings: `11`
