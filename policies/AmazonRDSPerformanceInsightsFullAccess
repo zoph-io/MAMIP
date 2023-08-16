@@ -1,0 +1,60 @@
+{
+    "PolicyVersion": {
+        "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "pi:DescribeDimensionKeys",
+                        "pi:GetDimensionKeyDetails",
+                        "pi:GetResourceMetadata",
+                        "pi:GetResourceMetrics",
+                        "pi:ListAvailableResourceDimensions",
+                        "pi:ListAvailableResourceMetrics"
+                    ],
+                    "Resource": "arn:aws:pi:*:*:metrics/rds/*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "pi:CreatePerformanceAnalysisReport",
+                        "pi:GetPerformanceAnalysisReport",
+                        "pi:ListPerformanceAnalysisReports",
+                        "pi:DeletePerformanceAnalysisReport"
+                    ],
+                    "Resource": "arn:aws:pi:*:*:perf-reports/rds/*/*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "pi:TagResource",
+                        "pi:UntagResource",
+                        "pi:ListTagsForResource"
+                    ],
+                    "Resource": "arn:aws:pi:*:*:*/rds/*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "rds:DescribeDBInstances",
+                        "rds:DescribeDBClusters"
+                    ],
+                    "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "cloudwatch:GetMetricStatistics",
+                        "cloudwatch:ListMetrics",
+                        "cloudwatch:GetMetricData"
+                    ],
+                    "Resource": "*"
+                }
+            ]
+        },
+        "VersionId": "v1",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-08-15T23:41:34Z"
+    }
+}
