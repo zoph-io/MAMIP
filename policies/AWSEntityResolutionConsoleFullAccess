@@ -1,0 +1,98 @@
+{
+    "PolicyVersion": {
+        "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Sid": "EntityResolutionAccess",
+                    "Effect": "Allow",
+                    "Action": [
+                        "entityresolution:*"
+                    ],
+                    "Resource": "*"
+                },
+                {
+                    "Sid": "GlueSourcesConsoleDisplay",
+                    "Effect": "Allow",
+                    "Action": [
+                        "glue:GetSchema",
+                        "glue:SearchTables",
+                        "glue:GetSchemaByDefinition",
+                        "glue:GetSchemaVersion",
+                        "glue:GetSchemaVersionsDiff",
+                        "glue:GetDatabase",
+                        "glue:GetDatabases",
+                        "glue:GetTable",
+                        "glue:GetTables",
+                        "glue:GetTableVersion",
+                        "glue:GetTableVersions"
+                    ],
+                    "Resource": "*"
+                },
+                {
+                    "Sid": "S3BucketsConsoleDisplay",
+                    "Effect": "Allow",
+                    "Action": [
+                        "s3:ListAllMyBuckets"
+                    ],
+                    "Resource": "*"
+                },
+                {
+                    "Sid": "S3SourcesConsoleDisplay",
+                    "Effect": "Allow",
+                    "Action": [
+                        "s3:ListBucket",
+                        "s3:GetBucketLocation",
+                        "s3:ListBucketVersions",
+                        "s3:GetBucketVersioning"
+                    ],
+                    "Resource": "*"
+                },
+                {
+                    "Sid": "TaggingConsoleDisplay",
+                    "Effect": "Allow",
+                    "Action": [
+                        "tag:GetTagKeys",
+                        "tag:GetTagValues"
+                    ],
+                    "Resource": "*"
+                },
+                {
+                    "Sid": "KMSConsoleDisplay",
+                    "Effect": "Allow",
+                    "Action": [
+                        "kms:DescribeKey",
+                        "kms:ListAliases"
+                    ],
+                    "Resource": "*"
+                },
+                {
+                    "Sid": "ListRolesToPickRoleForPassing",
+                    "Effect": "Allow",
+                    "Action": [
+                        "iam:ListRoles"
+                    ],
+                    "Resource": "*"
+                },
+                {
+                    "Sid": "PassRoleToEntityResolutionService",
+                    "Effect": "Allow",
+                    "Action": [
+                        "iam:PassRole"
+                    ],
+                    "Resource": "arn:aws:iam::*:role/*entityresolution*",
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:PassedToService": [
+                                "entityresolution.amazonaws.com"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "VersionId": "v1",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-08-17T17:54:14Z"
+    }
+}
