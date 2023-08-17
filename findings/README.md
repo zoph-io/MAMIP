@@ -1,6 +1,6 @@
-## AWS Access Analyzer - Findings - 2023-08-16
+## AWS Access Analyzer - Findings - 2023-08-17
 
-- Policies analyzed: `1119`
+- Policies analyzed: `1120`
 - Errors: `21`
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AmazonRDSPerformanceInsightsReadOnly`](./AmazonRDSPerformanceInsightsReadOnly.json)
