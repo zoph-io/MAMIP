@@ -1,6 +1,6 @@
-## AWS Access Analyzer - Findings - 2023-08-21
+## AWS Access Analyzer - Findings - 2023-08-22
 
-- Policies analyzed: `1122`
+- Policies analyzed: `1123`
 - Errors: `21`
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
   - [`AmazonRDSPerformanceInsightsReadOnly`](./AmazonRDSPerformanceInsightsReadOnly.json)
