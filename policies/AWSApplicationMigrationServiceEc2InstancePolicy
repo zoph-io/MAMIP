@@ -1,0 +1,47 @@
+{
+    "PolicyVersion": {
+        "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "mgn:SendClientLogsForMgn",
+                        "mgn:RegisterAgentForMgn",
+                        "mgn:GetAgentInstallationAssetsForMgn"
+                    ],
+                    "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "mgn:SendAgentMetricsForMgn",
+                        "mgn:SendAgentLogsForMgn",
+                        "mgn:UpdateAgentSourcePropertiesForMgn",
+                        "mgn:UpdateAgentReplicationInfoForMgn",
+                        "mgn:UpdateAgentConversionInfoForMgn",
+                        "mgn:GetAgentCommandForMgn",
+                        "mgn:GetAgentConfirmedResumeInfoForMgn",
+                        "mgn:GetAgentRuntimeConfigurationForMgn",
+                        "mgn:UpdateAgentBacklogForMgn",
+                        "mgn:GetAgentReplicationInfoForMgn"
+                    ],
+                    "Resource": "arn:aws:mgn:*:*:source-server/*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "mgn:TagResource",
+                    "Resource": "arn:aws:mgn:*:*:source-server/*",
+                    "Condition": {
+                        "StringEquals": {
+                            "mgn:CreateAction": "RegisterAgentForMgn"
+                        }
+                    }
+                }
+            ]
+        },
+        "VersionId": "v1",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-08-22T13:19:02Z"
+    }
+}
