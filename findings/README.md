@@ -1,8 +1,9 @@
-## AWS Access Analyzer - Findings - 2023-08-25
+## AWS Access Analyzer - Findings - 2023-08-28
 
 - Policies analyzed: `1123`
-- Errors: `11`
+- Errors: `12`
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
+  - [`ComputeOptimizerReadOnlyAccess`](./ComputeOptimizerReadOnlyAccess.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
 - Sec_Warnings: `11`
   - [`AdministratorAccess`](./AdministratorAccess.json)
