@@ -1,6 +1,6 @@
-## AWS Access Analyzer - Findings - 2023-08-29
+## AWS Access Analyzer - Findings - 2023-09-01
 
-- Policies analyzed: `1123`
+- Policies analyzed: `1124`
 - Errors: `12`
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
   - [`ComputeOptimizerReadOnlyAccess`](./ComputeOptimizerReadOnlyAccess.json)
@@ -15,7 +15,7 @@
   - [`AWSElasticBeanstalkService`](./AWSElasticBeanstalkService.json)
   - [`AWSProtonCodeBuildProvisioningServiceRolePolicy`](./AWSProtonCodeBuildProvisioningServiceRolePolicy.json)
   - [`AdministratorAccess-Amplify`](./AdministratorAccess-Amplify.json)
-- Suggestions: `38`
+- Suggestions: `40`
   - [`SupportUser`](./SupportUser.json)
   - [`AmazonCodeGuruReviewerServiceRolePolicy`](./AmazonCodeGuruReviewerServiceRolePolicy.json)
   - [`AWSBatchFullAccess`](./AWSBatchFullAccess.json)
@@ -28,6 +28,7 @@
   - [`AmazonAppStreamServiceAccess`](./AmazonAppStreamServiceAccess.json)
   - [`AWSMigrationHubOrchestratorConsoleFullAccess`](./AWSMigrationHubOrchestratorConsoleFullAccess.json)
   - [`AWSLakeFormationDataAdmin`](./AWSLakeFormationDataAdmin.json)
+  - [`AmazonLaunchWizardFullAccessV2`](./AmazonLaunchWizardFullAccessV2.json)
   - [`SystemAdministrator`](./SystemAdministrator.json)
   - [`AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy.json)
   - [`AmazonSageMakerServiceCatalogProductsLambdaServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsLambdaServiceRolePolicy.json)
@@ -41,10 +42,11 @@
   - [`AWSGlueConsoleFullAccess`](./AWSGlueConsoleFullAccess.json)
   - [`NeptuneConsoleFullAccess`](./NeptuneConsoleFullAccess.json)
   - [`AWSElasticBeanstalkWorkerTier`](./AWSElasticBeanstalkWorkerTier.json)
-- Warnings: `13`
+- Warnings: `14`
   - [`AdministratorAccess`](./AdministratorAccess.json)
   - [`FMSServiceRolePolicy`](./FMSServiceRolePolicy.json)
   - [`IAMFullAccess`](./IAMFullAccess.json)
+  - [`AmazonLaunchWizardFullAccessV2`](./AmazonLaunchWizardFullAccessV2.json)
   - [`PowerUserAccess`](./PowerUserAccess.json)
   - [`SecurityAudit`](./SecurityAudit.json)
   - [`AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy.json)
