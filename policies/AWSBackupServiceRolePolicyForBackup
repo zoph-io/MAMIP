@@ -31,7 +31,8 @@
                         "rds:CreateDBClusterSnapshot",
                         "rds:DescribeDBClusters",
                         "rds:DescribeDBClusterSnapshots",
-                        "rds:CopyDBClusterSnapshot"
+                        "rds:CopyDBClusterSnapshot",
+                        "rds:DescribeDBClusterAutomatedBackups"
                     ],
                     "Resource": "*"
                 },
@@ -43,6 +44,22 @@
                     "Resource": [
                         "arn:aws:rds:*:*:db:*"
                     ]
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "rds:ModifyDBCluster"
+                    ],
+                    "Resource": [
+                        "arn:aws:rds:*:*:cluster:*"
+                    ]
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "rds:DeleteDBClusterAutomatedBackup"
+                    ],
+                    "Resource": "arn:aws:rds:*:*:cluster-auto-backup:*"
                 },
                 {
                     "Effect": "Allow",
@@ -396,8 +413,8 @@
                 }
             ]
         },
-        "VersionId": "v15",
+        "VersionId": "v16",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-04-24T21:27:09Z"
+        "CreateDate": "2023-09-06T20:38:44Z"
     }
 }

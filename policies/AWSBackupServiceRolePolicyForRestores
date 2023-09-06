@@ -83,7 +83,9 @@
                         "rds:DescribeDBClusters",
                         "rds:RestoreDBClusterFromSnapshot",
                         "rds:DeleteDBCluster",
-                        "rds:RestoreDBInstanceToPointInTime"
+                        "rds:RestoreDBInstanceToPointInTime",
+                        "rds:DescribeDBClusterSnapshots",
+                        "rds:RestoreDBClusterToPointInTime"
                     ],
                     "Resource": "*"
                 },
@@ -393,8 +395,8 @@
                 }
             ]
         },
-        "VersionId": "v17",
+        "VersionId": "v18",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-04-24T21:24:51Z"
+        "CreateDate": "2023-09-06T20:41:44Z"
     }
 }
