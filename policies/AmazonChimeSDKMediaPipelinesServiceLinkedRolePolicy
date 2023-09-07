@@ -6,6 +6,28 @@
                 {
                     "Effect": "Allow",
                     "Action": [
+                        "kinesisvideo:GetDataEndpoint",
+                        "kinesisvideo:PutMedia",
+                        "kinesisvideo:UpdateDataRetention",
+                        "kinesisvideo:DescribeStream",
+                        "kinesisvideo:CreateStream"
+                    ],
+                    "Resource": [
+                        "arn:aws:kinesisvideo:*:*:stream/ChimeMediaPipelines-*"
+                    ]
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "kinesisvideo:ListStreams"
+                    ],
+                    "Resource": [
+                        "*"
+                    ]
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
                         "chime:GetMeeting",
                         "chime:CreateAttendee",
                         "chime:DeleteAttendee"
@@ -14,8 +36,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
-        "IsDefaultVersion": false,
-        "CreateDate": "2022-04-04T22:02:05Z"
+        "VersionId": "v2",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-09-07T20:08:32Z"
     }
 }
