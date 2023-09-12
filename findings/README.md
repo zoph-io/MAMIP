@@ -1,6 +1,6 @@
-## AWS Access Analyzer - Findings - 2023-09-11
+## AWS Access Analyzer - Findings - 2023-09-12
 
-- Policies analyzed: `1125`
+- Policies analyzed: `1124`
 - Errors: `11`
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
@@ -14,7 +14,7 @@
   - [`AWSElasticBeanstalkService`](./AWSElasticBeanstalkService.json)
   - [`AWSProtonCodeBuildProvisioningServiceRolePolicy`](./AWSProtonCodeBuildProvisioningServiceRolePolicy.json)
   - [`AdministratorAccess-Amplify`](./AdministratorAccess-Amplify.json)
-- Suggestions: `40`
+- Suggestions: `41`
   - [`SupportUser`](./SupportUser.json)
   - [`AmazonCodeGuruReviewerServiceRolePolicy`](./AmazonCodeGuruReviewerServiceRolePolicy.json)
   - [`AWSBatchFullAccess`](./AWSBatchFullAccess.json)
@@ -30,6 +30,7 @@
   - [`AmazonLaunchWizardFullAccessV2`](./AmazonLaunchWizardFullAccessV2.json)
   - [`SystemAdministrator`](./SystemAdministrator.json)
   - [`AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy.json)
+  - [`AmazonDataZoneEnvironmentRolePermissionsBoundary`](./AmazonDataZoneEnvironmentRolePermissionsBoundary.json)
   - [`AmazonSageMakerServiceCatalogProductsLambdaServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsLambdaServiceRolePolicy.json)
   - [`AWSElasticBeanstalkService`](./AWSElasticBeanstalkService.json)
   - [`AmazonRedshiftAllCommandsFullAccess`](./AmazonRedshiftAllCommandsFullAccess.json)
@@ -41,7 +42,7 @@
   - [`AWSGlueConsoleFullAccess`](./AWSGlueConsoleFullAccess.json)
   - [`NeptuneConsoleFullAccess`](./NeptuneConsoleFullAccess.json)
   - [`AWSElasticBeanstalkWorkerTier`](./AWSElasticBeanstalkWorkerTier.json)
-- Warnings: `14`
+- Warnings: `15`
   - [`AdministratorAccess`](./AdministratorAccess.json)
   - [`FMSServiceRolePolicy`](./FMSServiceRolePolicy.json)
   - [`IAMFullAccess`](./IAMFullAccess.json)
@@ -49,6 +50,7 @@
   - [`PowerUserAccess`](./PowerUserAccess.json)
   - [`SecurityAudit`](./SecurityAudit.json)
   - [`AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy.json)
+  - [`AmazonDataZoneEnvironmentRolePermissionsBoundary`](./AmazonDataZoneEnvironmentRolePermissionsBoundary.json)
   - [`AmazonSageMakerServiceCatalogProductsLambdaServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsLambdaServiceRolePolicy.json)
   - [`AlexaForBusinessFullAccess`](./AlexaForBusinessFullAccess.json)
   - [`AmazonRDSCustomServiceRolePolicy`](./AmazonRDSCustomServiceRolePolicy.json)
@@ -60,7 +62,7 @@
   - [`AWSSupportServiceRolePolicy`](./fails.txt)
   - [`AWS_ConfigRole`](./fails.txt)
   - [`AWSConfigServiceRolePolicy`](./fails.txt)
-- Deprecated: `50`
+- Deprecated: `52`
   - [`AWSLambdaFullAccess`](../policies/AWSLambdaFullAccess)
   - [`AmazonMachineLearningRoleforRedshiftDataSourceV2`](../policies/AmazonMachineLearningRoleforRedshiftDataSourceV2)
   - [`AmazonMechanicalTurkCrowdReadOnlyAccess`](../policies/AmazonMechanicalTurkCrowdReadOnlyAccess)
@@ -82,6 +84,7 @@
   - [`AWSProtonServiceSyncServiceRolePolicy`](../policies/AWSProtonServiceSyncServiceRolePolicy)
   - [`AmazonEC2RolePolicyForApplicationWizard`](../policies/AmazonEC2RolePolicyForApplicationWizard)
   - [`AWSLambdaReplicatorInternal`](../policies/AWSLambdaReplicatorInternal)
+  - [`AWSMobileHub_FullAccess`](../policies/AWSMobileHub_FullAccess)
   - [`AWS_Config_Role`](../policies/AWS_Config_Role)
   - [`AWSB9InternalServicePolicy`](../policies/AWSB9InternalServicePolicy)
   - [`AmazonWorkLinkFullAccess`](../policies/AmazonWorkLinkFullAccess)
@@ -104,6 +107,7 @@
   - [`AWSRoboMakerFullAccess`](../policies/AWSRoboMakerFullAccess)
   - [`CheesepuffsServiceRolePolicy`](../policies/CheesepuffsServiceRolePolicy)
   - [`TagGovernancePolicy`](../policies/TagGovernancePolicy)
+  - [`AWSMobileHub_ReadOnly`](../policies/AWSMobileHub_ReadOnly)
   - [`TagPoliciesServiceRolePolicy`](../policies/TagPoliciesServiceRolePolicy)
   - [`AWSSchemasServiceRolePolicy`](../policies/AWSSchemasServiceRolePolicy)
   - [`AWSServiceRoleForCodeGuruProfiler`](../policies/AWSServiceRoleForCodeGuruProfiler)
