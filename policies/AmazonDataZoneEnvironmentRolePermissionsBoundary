@@ -1,0 +1,504 @@
+{
+    "PolicyVersion": {
+        "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "ec2:CreateTags",
+                        "ec2:DeleteTags"
+                    ],
+                    "Resource": [
+                        "arn:aws:ec2:*:*:network-interface/*"
+                    ],
+                    "Condition": {
+                        "ForAllValues:StringEquals": {
+                            "aws:TagKeys": [
+                                "aws-glue-service-resource"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "glue:*DataQuality*",
+                        "glue:BatchCreatePartition",
+                        "glue:BatchDeleteConnection",
+                        "glue:BatchDeletePartition",
+                        "glue:BatchDeleteTable",
+                        "glue:BatchDeleteTableVersion",
+                        "glue:BatchGetJobs",
+                        "glue:BatchGetWorkflows",
+                        "glue:BatchStopJobRun",
+                        "glue:BatchUpdatePartition",
+                        "glue:CreateBlueprint",
+                        "glue:CreateConnection",
+                        "glue:CreateCrawler",
+                        "glue:CreateDatabase",
+                        "glue:CreateJob",
+                        "glue:CreatePartition",
+                        "glue:CreatePartitionIndex",
+                        "glue:CreateTable",
+                        "glue:CreateWorkflow",
+                        "glue:DeleteBlueprint",
+                        "glue:DeleteColumnStatisticsForPartition",
+                        "glue:DeleteColumnStatisticsForTable",
+                        "glue:DeleteConnection",
+                        "glue:DeleteCrawler",
+                        "glue:DeleteJob",
+                        "glue:DeletePartition",
+                        "glue:DeletePartitionIndex",
+                        "glue:DeleteTable",
+                        "glue:DeleteTableVersion",
+                        "glue:DeleteWorkflow",
+                        "glue:GetColumnStatisticsForPartition",
+                        "glue:GetColumnStatisticsForTable",
+                        "glue:GetConnection",
+                        "glue:GetDatabase",
+                        "glue:GetDatabases",
+                        "glue:GetTable",
+                        "glue:GetTables",
+                        "glue:GetPartition",
+                        "glue:GetPartitions",
+                        "glue:ListSchemas",
+                        "glue:ListJobs",
+                        "glue:NotifyEvent",
+                        "glue:PutWorkflowRunProperties",
+                        "glue:ResetJobBookmark",
+                        "glue:ResumeWorkflowRun",
+                        "glue:SearchTables",
+                        "glue:StartBlueprintRun",
+                        "glue:StartCrawler",
+                        "glue:StartCrawlerSchedule",
+                        "glue:StartJobRun",
+                        "glue:StartWorkflowRun",
+                        "glue:StopCrawler",
+                        "glue:StopCrawlerSchedule",
+                        "glue:StopWorkflowRun",
+                        "glue:UpdateBlueprint",
+                        "glue:UpdateColumnStatisticsForPartition",
+                        "glue:UpdateColumnStatisticsForTable",
+                        "glue:UpdateConnection",
+                        "glue:UpdateCrawler",
+                        "glue:UpdateCrawlerSchedule",
+                        "glue:UpdateDatabase",
+                        "glue:UpdateJob",
+                        "glue:UpdatePartition",
+                        "glue:UpdateTable",
+                        "glue:UpdateWorkflow"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "Null": {
+                            "aws:ResourceTag/AmazonDataZoneEnvironment": "false"
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "iam:PassRole"
+                    ],
+                    "Resource": [
+                        "arn:aws:iam::*:role/datazone*"
+                    ],
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:PassedToService": "glue.amazonaws.com"
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "kms:DescribeKey",
+                        "kms:Decrypt",
+                        "kms:ListKeys"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "StringNotEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "kms:DescribeKey",
+                        "kms:Decrypt",
+                        "kms:ListKeys",
+                        "kms:Encrypt",
+                        "kms:GenerateDataKey",
+                        "kms:Verify",
+                        "kms:Sign"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "Null": {
+                            "aws:ResourceTag/AmazonDataZoneEnvironment": "false"
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "datazone:*",
+                        "sqlworkbench:*"
+                    ],
+                    "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "athena:BatchGetQueryExecution",
+                        "athena:BatchGetNamedQuery",
+                        "athena:BatchGetPreparedStatement",
+                        "athena:CreateNamedQuery",
+                        "athena:CreateNotebook",
+                        "athena:CreatePreparedStatement",
+                        "athena:CreatePresignedNotebookUrl",
+                        "athena:DeleteNamedQuery",
+                        "athena:DeleteNotebook",
+                        "athena:DeletePreparedStatement",
+                        "athena:ExportNotebook",
+                        "athena:GetDatabase",
+                        "athena:GetDataCatalog",
+                        "athena:GetTableMetadata",
+                        "athena:GetQueryExecution",
+                        "athena:GetQueryResults",
+                        "athena:GetWorkGroup",
+                        "athena:ImportNotebook",
+                        "athena:ListDatabases",
+                        "athena:ListDataCatalogs",
+                        "athena:ListTableMetadata",
+                        "athena:ListWorkGroups",
+                        "athena:StartCalculationExecution",
+                        "athena:StartQueryExecution",
+                        "athena:StartSession",
+                        "athena:StopCalculationExecution",
+                        "athena:StopQueryExecution",
+                        "athena:TerminateSession",
+                        "athena:UpdateNamedQuery",
+                        "athena:UpdateNotebook",
+                        "athena:UpdateNotebookMetadata",
+                        "athena:UpdatePreparedStatement",
+                        "ec2:CreateNetworkInterface",
+                        "ec2:DeleteNetworkInterface",
+                        "ec2:Describe*",
+                        "glue:BatchCreatePartition",
+                        "glue:BatchDeletePartition",
+                        "glue:BatchDeleteTable",
+                        "glue:BatchDeleteTableVersion",
+                        "glue:BatchGetJobs",
+                        "glue:BatchGetWorkflows",
+                        "glue:BatchUpdatePartition",
+                        "glue:CreateBlueprint",
+                        "glue:CreateConnection",
+                        "glue:CreateCrawler",
+                        "glue:CreateDatabase",
+                        "glue:CreateJob",
+                        "glue:CreatePartition",
+                        "glue:CreatePartitionIndex",
+                        "glue:CreateTable",
+                        "glue:CreateWorkflow",
+                        "glue:DeleteColumnStatisticsForPartition",
+                        "glue:DeleteColumnStatisticsForTable",
+                        "glue:DeletePartition",
+                        "glue:DeletePartitionIndex",
+                        "glue:DeleteTable",
+                        "glue:DeleteTableVersion",
+                        "glue:GetColumnStatisticsForPartition",
+                        "glue:GetColumnStatisticsForTable",
+                        "glue:GetConnection",
+                        "glue:GetDatabase",
+                        "glue:GetDatabases",
+                        "glue:GetTable",
+                        "glue:GetTables",
+                        "glue:GetPartition",
+                        "glue:GetPartitions",
+                        "glue:ListSchemas",
+                        "glue:ListJobs",
+                        "glue:NotifyEvent",
+                        "glue:SearchTables",
+                        "glue:UpdateColumnStatisticsForPartition",
+                        "glue:UpdateColumnStatisticsForTable",
+                        "glue:UpdateDatabase",
+                        "glue:UpdatePartition",
+                        "glue:UpdateTable",
+                        "iam:GetRole",
+                        "iam:GetRolePolicy",
+                        "iam:ListGroups",
+                        "iam:ListRolePolicies",
+                        "iam:ListRoles",
+                        "iam:ListUsers",
+                        "logs:DescribeLogGroups",
+                        "logs:DescribeLogStreams",
+                        "logs:DescribeMetricFilters",
+                        "logs:DescribeQueries",
+                        "logs:DescribeQueryDefinitions",
+                        "logs:DescribeMetricFilters",
+                        "logs:StartQuery",
+                        "logs:StopQuery",
+                        "logs:GetLogEvents",
+                        "logs:GetLogGroupFields",
+                        "logs:GetQueryResults",
+                        "logs:GetLogRecord",
+                        "logs:PutLogEvents",
+                        "logs:CreateLogStream",
+                        "logs:FilterLogEvents",
+                        "lakeformation:GetDataAccess",
+                        "lakeformation:GetDataLakeSettings",
+                        "lakeformation:GetResourceLFTags",
+                        "lakeformation:ListPermissions",
+                        "redshift-data:ListTables",
+                        "redshift-data:DescribeTable",
+                        "redshift-data:ListSchemas",
+                        "redshift-data:ListDatabases",
+                        "redshift-data:ExecuteStatement",
+                        "redshift-data:GetStatementResult",
+                        "redshift-data:DescribeStatement",
+                        "redshift:CreateClusterUser",
+                        "redshift:DescribeClusters",
+                        "redshift:DescribeDataShares",
+                        "redshift:GetClusterCredentials",
+                        "redshift:JoinGroup",
+                        "redshift-serverless:ListNamespaces",
+                        "redshift-serverless:ListWorkgroups",
+                        "redshift-serverless:GetNamespace",
+                        "redshift-serverless:GetWorkgroup",
+                        "redshift-serverless:GetCredentials",
+                        "secretsmanager:ListSecrets"
+                    ],
+                    "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "secretsmanager:CreateSecret",
+                        "secretsmanager:TagResource"
+                    ],
+                    "Resource": "arn:aws:secretsmanager:*:*:secret:AmazonDataZone-*",
+                    "Condition": {
+                        "StringLike": {
+                            "aws:ResourceTag/AmazonDataZoneDomain": "*",
+                            "aws:ResourceTag/AmazonDataZoneProject": "*"
+                        },
+                        "Null": {
+                            "aws:TagKeys": "false"
+                        },
+                        "ForAllValues:StringEquals": {
+                            "aws:TagKeys": [
+                                "AmazonDataZoneDomain",
+                                "AmazonDataZoneProject"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "s3:AbortMultipartUpload",
+                        "s3:PutObject",
+                        "s3:GetObject"
+                    ],
+                    "Resource": [
+                        "arn:aws:s3:::*/datazone/*"
+                    ]
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "s3:GetBucketLocation"
+                    ],
+                    "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "s3:ListBucket"
+                    ],
+                    "Resource": [
+                        "*"
+                    ],
+                    "Condition": {
+                        "StringEquals": {
+                            "s3:prefix": "datazone/"
+                        }
+                    }
+                },
+                {
+                    "Effect": "Deny",
+                    "NotAction": [
+                        "datazone:*",
+                        "sqlworkbench:*",
+                        "athena:BatchGetQueryExecution",
+                        "athena:BatchGetNamedQuery",
+                        "athena:BatchGetPreparedStatement",
+                        "athena:CreateNamedQuery",
+                        "athena:CreateNotebook",
+                        "athena:CreatePreparedStatement",
+                        "athena:CreatePresignedNotebookUrl",
+                        "athena:DeleteNamedQuery",
+                        "athena:DeleteNotebook",
+                        "athena:DeletePreparedStatement",
+                        "athena:ExportNotebook",
+                        "athena:GetDatabase",
+                        "athena:GetDataCatalog",
+                        "athena:GetTableMetadata",
+                        "athena:GetQueryExecution",
+                        "athena:GetQueryResults",
+                        "athena:GetWorkGroup",
+                        "athena:ImportNotebook",
+                        "athena:ListDatabases",
+                        "athena:ListDataCatalogs",
+                        "athena:ListTableMetadata",
+                        "athena:ListWorkGroups",
+                        "athena:StartCalculationExecution",
+                        "athena:StartQueryExecution",
+                        "athena:StartSession",
+                        "athena:StopCalculationExecution",
+                        "athena:StopQueryExecution",
+                        "athena:TerminateSession",
+                        "athena:UpdateNamedQuery",
+                        "athena:UpdateNotebook",
+                        "athena:UpdateNotebookMetadata",
+                        "athena:UpdatePreparedStatement",
+                        "ec2:CreateNetworkInterface",
+                        "ec2:CreateTags",
+                        "ec2:DeleteNetworkInterface",
+                        "ec2:DeleteTags",
+                        "ec2:Describe*",
+                        "glue:*DataQuality*",
+                        "glue:BatchCreatePartition",
+                        "glue:BatchDeleteConnection",
+                        "glue:BatchDeletePartition",
+                        "glue:BatchDeleteTable",
+                        "glue:BatchDeleteTableVersion",
+                        "glue:BatchGetJobs",
+                        "glue:BatchGetWorkflows",
+                        "glue:BatchStopJobRun",
+                        "glue:BatchUpdatePartition",
+                        "glue:CreateBlueprint",
+                        "glue:CreateConnection",
+                        "glue:CreateCrawler",
+                        "glue:CreateDatabase",
+                        "glue:CreateJob",
+                        "glue:CreatePartition",
+                        "glue:CreatePartitionIndex",
+                        "glue:CreateTable",
+                        "glue:CreateWorkflow",
+                        "glue:DeleteBlueprint",
+                        "glue:DeleteColumnStatisticsForPartition",
+                        "glue:DeleteColumnStatisticsForTable",
+                        "glue:DeleteConnection",
+                        "glue:DeleteCrawler",
+                        "glue:DeleteJob",
+                        "glue:DeletePartition",
+                        "glue:DeletePartitionIndex",
+                        "glue:DeleteTable",
+                        "glue:DeleteTableVersion",
+                        "glue:DeleteWorkflow",
+                        "glue:GetColumnStatisticsForPartition",
+                        "glue:GetColumnStatisticsForTable",
+                        "glue:GetConnection",
+                        "glue:GetDatabase",
+                        "glue:GetDatabases",
+                        "glue:GetTable",
+                        "glue:GetTables",
+                        "glue:GetPartition",
+                        "glue:GetPartitions",
+                        "glue:ListSchemas",
+                        "glue:ListJobs",
+                        "glue:NotifyEvent",
+                        "glue:PutWorkflowRunProperties",
+                        "glue:ResetJobBookmark",
+                        "glue:ResumeWorkflowRun",
+                        "glue:SearchTables",
+                        "glue:StartBlueprintRun",
+                        "glue:StartCrawler",
+                        "glue:StartCrawlerSchedule",
+                        "glue:StartJobRun",
+                        "glue:StartWorkflowRun",
+                        "glue:StopCrawler",
+                        "glue:StopCrawlerSchedule",
+                        "glue:StopWorkflowRun",
+                        "glue:UpdateBlueprint",
+                        "glue:UpdateColumnStatisticsForPartition",
+                        "glue:UpdateColumnStatisticsForTable",
+                        "glue:UpdateConnection",
+                        "glue:UpdateCrawler",
+                        "glue:UpdateCrawlerSchedule",
+                        "glue:UpdateDatabase",
+                        "glue:UpdateJob",
+                        "glue:UpdatePartition",
+                        "glue:UpdateTable",
+                        "glue:UpdateWorkflow",
+                        "iam:GetRole",
+                        "iam:GetRolePolicy",
+                        "iam:List*",
+                        "iam:PassRole",
+                        "kms:DescribeKey",
+                        "kms:Decrypt",
+                        "kms:Encrypt",
+                        "kms:GenerateDataKey",
+                        "kms:ListKeys",
+                        "kms:Verify",
+                        "kms:Sign",
+                        "logs:DescribeLogGroups",
+                        "logs:DescribeLogStreams",
+                        "logs:DescribeMetricFilters",
+                        "logs:DescribeQueries",
+                        "logs:DescribeQueryDefinitions",
+                        "logs:StartQuery",
+                        "logs:StopQuery",
+                        "logs:GetLogEvents",
+                        "logs:GetLogGroupFields",
+                        "logs:GetQueryResults",
+                        "logs:GetLogRecord",
+                        "logs:PutLogEvents",
+                        "logs:CreateLogStream",
+                        "logs:FilterLogEvents",
+                        "lakeformation:GetDataAccess",
+                        "lakeformation:GetDataLakeSettings",
+                        "lakeformation:GetResourceLFTags",
+                        "lakeformation:ListPermissions",
+                        "redshift-data:ListTables",
+                        "redshift-data:DescribeTable",
+                        "redshift-data:ListSchemas",
+                        "redshift-data:ListDatabases",
+                        "redshift-data:ExecuteStatement",
+                        "redshift-data:GetStatementResult",
+                        "redshift-data:DescribeStatement",
+                        "redshift:CreateClusterUser",
+                        "redshift:DescribeClusters",
+                        "redshift:DescribeDataShares",
+                        "redshift:GetClusterCredentials",
+                        "redshift:JoinGroup",
+                        "redshift-serverless:ListNamespaces",
+                        "redshift-serverless:ListWorkgroups",
+                        "redshift-serverless:GetNamespace",
+                        "redshift-serverless:GetWorkgroup",
+                        "redshift-serverless:GetCredentials",
+                        "s3:AbortMultipartUpload",
+                        "s3:PutObject",
+                        "s3:GetObject",
+                        "s3:GetBucketLocation",
+                        "s3:ListBucket",
+                        "secretsmanager:CreateSecret",
+                        "secretsmanager:ListSecrets",
+                        "secretsmanager:TagResource"
+                    ],
+                    "Resource": [
+                        "*"
+                    ]
+                }
+            ]
+        },
+        "VersionId": "v1",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-09-11T23:38:22Z"
+    }
+}
