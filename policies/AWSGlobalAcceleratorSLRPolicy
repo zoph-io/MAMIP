@@ -48,7 +48,8 @@
                     "Effect": "Allow",
                     "Action": [
                         "elasticloadbalancing:DescribeLoadBalancers",
-                        "elasticloadbalancing:DescribeListeners"
+                        "elasticloadbalancing:DescribeListeners",
+                        "elasticloadbalancing:DescribeTargetGroups"
                     ],
                     "Resource": "*"
                 },
@@ -63,8 +64,8 @@
                 }
             ]
         },
-        "VersionId": "v7",
+        "VersionId": "v8",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-05-19T20:41:25Z"
+        "CreateDate": "2023-09-12T16:45:28Z"
     }
 }
