@@ -17,7 +17,8 @@
                         "drs:GetReplicationConfiguration",
                         "drs:ListExtensibleSourceServers",
                         "drs:ListStagingAccounts",
-                        "drs:ListTagsForResource"
+                        "drs:ListTagsForResource",
+                        "drs:ListLaunchActions"
                     ],
                     "Resource": "*"
                 },
@@ -35,11 +36,45 @@
                     "Effect": "Allow",
                     "Action": "iam:ListRoles",
                     "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "ssm:ListCommandInvocations",
+                    "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "ssm:GetParameter",
+                    "Resource": "arn:aws:ssm:*:*:parameter/ManagedByAWSElasticDisasterRecovery-*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "ssm:DescribeDocument",
+                        "ssm:GetDocument"
+                    ],
+                    "Resource": [
+                        "arn:aws:ssm:*:*:document/AWS-CreateImage",
+                        "arn:aws:ssm:*:*:document/AWSMigration-LinuxTimeSyncSetting",
+                        "arn:aws:ssm:*:*:document/AWSEC2-ApplicationInsightsCloudwatchAgentInstallAndConfigure"
+                    ]
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "ssm:GetAutomationExecution"
+                    ],
+                    "Resource": "arn:aws:ssm:*:*:automation-execution/*",
+                    "Condition": {
+                        "Null": {
+                            "aws:ResourceTag/AWSElasticDisasterRecoveryManaged": "false"
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-05-29T08:27:37Z"
+        "CreateDate": "2023-09-13T07:42:45Z"
     }
 }
