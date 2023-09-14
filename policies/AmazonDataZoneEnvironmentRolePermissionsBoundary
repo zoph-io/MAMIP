@@ -270,7 +270,8 @@
                         "redshift-serverless:GetNamespace",
                         "redshift-serverless:GetWorkgroup",
                         "redshift-serverless:GetCredentials",
-                        "secretsmanager:ListSecrets"
+                        "secretsmanager:ListSecrets",
+                        "tag:GetResources"
                     ],
                     "Resource": "*"
                 },
@@ -324,8 +325,11 @@
                         "*"
                     ],
                     "Condition": {
-                        "StringEquals": {
-                            "s3:prefix": "datazone/"
+                        "StringLike": {
+                            "s3:prefix": [
+                                "*/datazone/*",
+                                "datazone/*"
+                            ]
                         }
                     }
                 },
@@ -489,7 +493,8 @@
                         "s3:ListBucket",
                         "secretsmanager:CreateSecret",
                         "secretsmanager:ListSecrets",
-                        "secretsmanager:TagResource"
+                        "secretsmanager:TagResource",
+                        "tag:GetResources"
                     ],
                     "Resource": [
                         "*"
@@ -497,8 +502,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-09-11T23:38:22Z"
+        "CreateDate": "2023-09-14T19:33:50Z"
     }
 }
