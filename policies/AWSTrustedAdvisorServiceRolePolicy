@@ -86,14 +86,19 @@
                         "sqs:ListQueues",
                         "cloudwatch:GetMetricStatistics",
                         "ce:GetReservationPurchaseRecommendation",
-                        "ce:GetSavingsPlansPurchaseRecommendation"
+                        "ce:GetSavingsPlansPurchaseRecommendation",
+                        "route53resolver:ListResolverEndpoints",
+                        "route53resolver:ListResolverEndpointIpAddresses",
+                        "ec2:DescribeSubnets",
+                        "kafka:ListClustersV2",
+                        "kafka:ListNodes"
                     ],
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v9",
-        "IsDefaultVersion": false,
-        "CreateDate": "2021-08-10T22:41:30Z"
+        "VersionId": "v10",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-09-14T18:02:41Z"
     }
 }
