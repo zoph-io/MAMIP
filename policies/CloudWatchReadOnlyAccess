@@ -6,6 +6,7 @@
                 {
                     "Effect": "Allow",
                     "Action": [
+                        "application-autoscaling:DescribeScalingPolicies",
                         "autoscaling:Describe*",
                         "cloudwatch:Describe*",
                         "cloudwatch:Get*",
@@ -34,8 +35,8 @@
                 }
             ]
         },
-        "VersionId": "v6",
+        "VersionId": "v7",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-06-06T17:33:13Z"
+        "CreateDate": "2023-09-14T11:15:56Z"
     }
 }
