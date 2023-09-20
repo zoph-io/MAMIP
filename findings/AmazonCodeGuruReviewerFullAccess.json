@@ -1,0 +1,41 @@
+[
+    {
+        "findingDetails": "Using ForAllValues qualifier with the single-valued condition key codestar-connections:ProviderAction can be overly permissive. We recommend that you remove ForAllValues:.",
+        "findingType": "SECURITY_WARNING",
+        "issueCode": "FORALLVALUES_WITH_SINGLE_VALUED_KEY",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-security-warning-forallvalues-with-single-valued-key",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 6
+                    },
+                    {
+                        "value": "Condition"
+                    },
+                    {
+                        "value": "ForAllValues:StringEquals"
+                    },
+                    {
+                        "key": "codestar-connections:ProviderAction"
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 1656,
+                        "line": 1,
+                        "offset": 1656
+                    },
+                    "start": {
+                        "column": 1619,
+                        "line": 1,
+                        "offset": 1619
+                    }
+                }
+            }
+        ]
+    }
+]
