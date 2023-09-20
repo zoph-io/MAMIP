@@ -590,6 +590,49 @@
                     }
                 },
                 {
+                    "Sid": "eb3",
+                    "Effect": "Allow",
+                    "Action": [
+                        "events:PutRule"
+                    ],
+                    "Resource": "arn:aws:events:*:*:rule/do-not-delete-rds-custom-*",
+                    "Condition": {
+                        "StringLike": {
+                            "events:ManagedBy": [
+                                "custom.rds-preview.amazonaws.com"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "Sid": "eb4",
+                    "Effect": "Allow",
+                    "Action": [
+                        "events:PutTargets",
+                        "events:EnableRule",
+                        "events:DeleteRule",
+                        "events:RemoveTargets",
+                        "events:DisableRule"
+                    ],
+                    "Resource": "arn:aws:events:*:*:rule/do-not-delete-rds-custom-*",
+                    "Condition": {
+                        "StringLike": {
+                            "events:ManagedBy": [
+                                "custom.rds-preview.amazonaws.com"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "Sid": "eb5",
+                    "Effect": "Allow",
+                    "Action": [
+                        "events:DescribeRule",
+                        "events:ListTargetsByRule"
+                    ],
+                    "Resource": "arn:aws:events:*:*:rule/do-not-delete-rds-custom-*"
+                },
+                {
                     "Sid": "secretmanager1",
                     "Effect": "Allow",
                     "Action": [
@@ -637,8 +680,8 @@
                 }
             ]
         },
-        "VersionId": "v5",
+        "VersionId": "v6",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-06-23T00:24:50Z"
+        "CreateDate": "2023-09-20T17:48:39Z"
     }
 }
