@@ -20,11 +20,32 @@
                         "config:BatchGetResourceConfig",
                         "config:SelectResourceConfig",
                         "iam:GenerateCredentialReport",
-                        "iam:GetCredentialReport",
                         "organizations:ListAccounts",
+                        "config:PutEvaluations",
+                        "iam:GetCredentialReport",
                         "organizations:DescribeAccount",
                         "organizations:DescribeOrganization",
-                        "config:PutEvaluations"
+                        "organizations:ListChildren",
+                        "organizations:ListAWSServiceAccessForOrganization",
+                        "organizations:DescribeOrganizationalUnit",
+                        "securityhub:BatchDisableStandards",
+                        "securityhub:BatchEnableStandards",
+                        "securityhub:BatchUpdateStandardsControlAssociations",
+                        "securityhub:CreateMembers",
+                        "securityhub:DeleteMembers",
+                        "securityhub:DescribeHub",
+                        "securityhub:DescribeOrganizationConfiguration",
+                        "securityhub:DescribeStandards",
+                        "securityhub:DescribeStandardsControls",
+                        "securityhub:DisassociateMembers",
+                        "securityhub:DisableSecurityHub",
+                        "securityhub:EnableSecurityHub",
+                        "securityhub:GetEnabledStandards",
+                        "securityhub:ListStandardsControlAssociations",
+                        "securityhub:ListSecurityControlDefinitions",
+                        "securityhub:UpdateOrganizationConfiguration",
+                        "securityhub:UpdateSecurityHubConfiguration",
+                        "securityhub:UpdateStandardsControl"
                     ],
                     "Resource": "*"
                 },
@@ -36,11 +57,25 @@
                         "config:GetComplianceDetailsByConfigRule"
                     ],
                     "Resource": "arn:aws:config:*:*:config-rule/aws-service-rule/*securityhub*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "organizations:ListDelegatedAdministrators"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "organizations:ServicePrincipal": [
+                                "securityhub.amazonaws.com"
+                            ]
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v10",
+        "VersionId": "v11",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-03-17T23:50:43Z"
+        "CreateDate": "2023-09-20T20:43:57Z"
     }
 }

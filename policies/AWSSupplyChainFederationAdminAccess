@@ -122,6 +122,21 @@
                 },
                 {
                     "Effect": "Allow",
+                    "Action": [
+                        "s3:GetObject",
+                        "s3:PutObject"
+                    ],
+                    "Resource": [
+                        "arn:aws:s3:::aws-supply-chain-data-*"
+                    ],
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
                     "Action": "secretsmanager:CreateSecret",
                     "Resource": "arn:aws:secretsmanager:*:*:secret:*",
                     "Condition": {
@@ -196,8 +211,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
-        "IsDefaultVersion": false,
-        "CreateDate": "2023-03-01T18:54:25Z"
+        "VersionId": "v2",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-09-20T20:11:53Z"
     }
 }
