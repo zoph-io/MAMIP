@@ -607,6 +607,49 @@
                     }
                 },
                 {
+                    "Sid": "eb3",
+                    "Effect": "Allow",
+                    "Action": [
+                        "events:PutRule"
+                    ],
+                    "Resource": "arn:aws:events:*:*:rule/do-not-delete-rds-custom-*",
+                    "Condition": {
+                        "StringLike": {
+                            "events:ManagedBy": [
+                                "custom.rds.amazonaws.com"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "Sid": "eb4",
+                    "Effect": "Allow",
+                    "Action": [
+                        "events:PutTargets",
+                        "events:EnableRule",
+                        "events:DeleteRule",
+                        "events:RemoveTargets",
+                        "events:DisableRule"
+                    ],
+                    "Resource": "arn:aws:events:*:*:rule/do-not-delete-rds-custom-*",
+                    "Condition": {
+                        "StringLike": {
+                            "events:ManagedBy": [
+                                "custom.rds.amazonaws.com"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "Sid": "eb5",
+                    "Effect": "Allow",
+                    "Action": [
+                        "events:DescribeRule",
+                        "events:ListTargetsByRule"
+                    ],
+                    "Resource": "arn:aws:events:*:*:rule/do-not-delete-rds-custom-*"
+                },
+                {
                     "Sid": "secretmanager1",
                     "Effect": "Allow",
                     "Action": [
@@ -689,8 +732,8 @@
                 }
             ]
         },
-        "VersionId": "v6",
+        "VersionId": "v7",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-06-22T23:12:48Z"
+        "CreateDate": "2023-09-20T19:16:42Z"
     }
 }
