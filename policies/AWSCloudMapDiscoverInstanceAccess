@@ -6,7 +6,8 @@
                 {
                     "Effect": "Allow",
                     "Action": [
-                        "servicediscovery:DiscoverInstances"
+                        "servicediscovery:DiscoverInstances",
+                        "servicediscovery:DiscoverInstancesRevision"
                     ],
                     "Resource": [
                         "*"
@@ -14,8 +15,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2018-11-29T00:02:42Z"
+        "CreateDate": "2023-09-20T21:48:09Z"
     }
 }
