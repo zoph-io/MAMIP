@@ -1,4 +1,4 @@
-## AWS Access Analyzer - Findings - 2023-09-19
+## AWS Access Analyzer - Findings - 2023-09-20
 
 - Policies analyzed: `1126`
 - Errors: `11`
@@ -44,7 +44,8 @@
   - [`AWSDeepRacerFullAccess`](./AWSDeepRacerFullAccess.json)
   - [`AWSMarketplaceFullAccess`](./AWSMarketplaceFullAccess.json)
   - [`AWSGlueConsoleFullAccess`](./AWSGlueConsoleFullAccess.json)
-- Warnings: `15`
+- Warnings: `16`
+  - [`AmazonRDSCustomPreviewServiceRolePolicy`](./AmazonRDSCustomPreviewServiceRolePolicy.json)
   - [`IAMFullAccess`](./IAMFullAccess.json)
   - [`PowerUserAccess`](./PowerUserAccess.json)
   - [`AmazonDataZoneEnvironmentRolePermissionsBoundary`](./AmazonDataZoneEnvironmentRolePermissionsBoundary.json)
