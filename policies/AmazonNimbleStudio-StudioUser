@@ -29,7 +29,9 @@
                     "Effect": "Allow",
                     "Action": [
                         "sso-directory:DescribeUsers",
-                        "sso-directory:SearchUsers"
+                        "sso-directory:SearchUsers",
+                        "identitystore:DescribeUser",
+                        "identitystore:ListUsers"
                     ],
                     "Resource": [
                         "*"
@@ -82,8 +84,8 @@
             ],
             "Version": "2012-10-17"
         },
-        "VersionId": "v4",
+        "VersionId": "v5",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-12-20T19:31:23Z"
+        "CreateDate": "2023-09-22T17:45:14Z"
     }
 }
