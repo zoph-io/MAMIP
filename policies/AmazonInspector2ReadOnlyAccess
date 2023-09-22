@@ -11,28 +11,11 @@
                         "organizations:DescribeOrganizationalUnit",
                         "organizations:DescribeAccount",
                         "organizations:DescribeOrganization",
-                        "inspector2:ListAccountPermissions",
-                        "inspector2:ListMembers",
-                        "inspector2:ListFilters",
-                        "inspector2:DescribeOrganizationConfiguration",
-                        "inspector2:GetMember",
-                        "inspector2:BatchGetFreeTrialInfo",
-                        "inspector2:ListUsageTotals",
-                        "inspector2:ListCoverageStatistics",
-                        "inspector2:BatchGetAccountStatus",
-                        "inspector2:ListFindings",
-                        "inspector2:ListFindingAggregations",
-                        "inspector2:ListCoverage",
-                        "inspector2:GetDelegatedAdminAccount",
-                        "inspector2:GetFindingsReportStatus",
-                        "inspector2:ListDelegatedAdminAccounts",
-                        "inspector2:ListTagsForResource",
-                        "inspector2:BatchGetCodeSnippet",
-                        "inspector2:BatchGetMemberEc2DeepInspectionStatus",
-                        "inspector2:GetEc2DeepInspectionConfiguration",
-                        "inspector2:SearchVulnerabilities",
-                        "inspector2:GetEncryptionKey",
-                        "inspector2:GetSbomExport",
+                        "inspector2:BatchGet*",
+                        "inspector2:List*",
+                        "inspector2:Describe*",
+                        "inspector2:Get*",
+                        "inspector2:Search*",
                         "codeguru-security:BatchGetFindings",
                         "codeguru-security:GetAccountConfiguration"
                     ],
@@ -40,8 +23,8 @@
                 }
             ]
         },
-        "VersionId": "v4",
+        "VersionId": "v5",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-06-23T20:12:39Z"
+        "CreateDate": "2023-09-22T20:56:53Z"
     }
 }

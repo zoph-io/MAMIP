@@ -1,0 +1,126 @@
+{
+    "PolicyVersion": {
+        "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "glue:CreateTable",
+                        "glue:DeleteTable",
+                        "glue:GetDatabases",
+                        "glue:GetTables"
+                    ],
+                    "Resource": [
+                        "arn:aws:glue:*:*:catalog",
+                        "arn:aws:glue:*:*:database/*",
+                        "arn:aws:glue:*:*:table/*"
+                    ],
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "lakeformation:BatchGrantPermissions",
+                        "lakeformation:BatchRevokePermissions",
+                        "lakeformation:GrantPermissions",
+                        "lakeformation:RevokePermissions",
+                        "lakeformation:ListPermissions",
+                        "lakeformation:GetResourceLFTags",
+                        "glue:GetDatabase",
+                        "glue:GetTable",
+                        "organizations:DescribeOrganization",
+                        "ram:GetResourceShareInvitations",
+                        "ram:ListResources"
+                    ],
+                    "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "glue:DeleteResourcePolicy",
+                        "glue:PutResourcePolicy"
+                    ],
+                    "Resource": "arn:aws:glue:*:*:catalog",
+                    "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "aws:CalledVia": [
+                                "lakeformation.amazonaws.com"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "ram:CreateResourceShare"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEqualsIfExists": {
+                            "ram:RequestedResourceType": [
+                                "glue:Table",
+                                "glue:Database",
+                                "glue:Catalog"
+                            ]
+                        },
+                        "ForAnyValue:StringEquals": {
+                            "aws:CalledVia": [
+                                "lakeformation.amazonaws.com"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "ram:AcceptResourceShareInvitation"
+                    ],
+                    "Resource": "arn:aws:ram:*:*:resource-share-invitation/*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "ram:AssociateResourceShare",
+                        "ram:DeleteResourceShare",
+                        "ram:DisassociateResourceShare",
+                        "ram:GetResourceShares",
+                        "ram:UpdateResourceShare"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "StringLike": {
+                            "ram:ResourceShareName": [
+                                "LakeFormation*"
+                            ]
+                        },
+                        "ForAnyValue:StringEquals": {
+                            "aws:CalledVia": [
+                                "lakeformation.amazonaws.com"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "kms:Decrypt"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/datazone:projectId": "proj-all"
+                        }
+                    }
+                }
+            ]
+        },
+        "VersionId": "v1",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-09-22T20:21:53Z"
+    }
+}
