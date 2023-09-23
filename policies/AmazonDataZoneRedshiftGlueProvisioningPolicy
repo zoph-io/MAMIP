@@ -95,6 +95,7 @@
                     "Effect": "Allow",
                     "Action": [
                         "lakeformation:GetDataLakeSettings",
+                        "lakeformation:PutDataLakeSettings",
                         "lakeformation:RevokePermissions",
                         "lakeformation:ListPermissions",
                         "glue:CreateDatabase",
@@ -295,8 +296,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-09-22T20:19:54Z"
+        "CreateDate": "2023-09-23T00:50:47Z"
     }
 }
