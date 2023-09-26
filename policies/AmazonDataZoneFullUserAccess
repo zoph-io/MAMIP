@@ -13,6 +13,7 @@
                         "datazone:SearchGroupProfiles",
                         "datazone:GetUserProfile",
                         "datazone:GetGroupProfile",
+                        "datazone:ListGroupsForUser",
                         "datazone:DeleteFormType",
                         "datazone:CreateAssetType",
                         "datazone:GetAssetType",
@@ -47,6 +48,7 @@
                         "datazone:GetDataSourceRun",
                         "datazone:ListDataSourceRuns",
                         "datazone:ListDataSourceRunActivities",
+                        "datazone:ListEnvironmentBlueprintConfigurations",
                         "datazone:CreateEnvironmentBlueprint",
                         "datazone:GetEnvironmentBlueprint",
                         "datazone:DeleteEnvironmentBlueprint",
@@ -94,7 +96,8 @@
                         "datazone:DeleteSubscriptionGrant",
                         "datazone:GetSubscriptionGrant",
                         "datazone:ListSubscriptionGrants",
-                        "datazone:UpdateSubscriptionGrantStatus"
+                        "datazone:UpdateSubscriptionGrantStatus",
+                        "datazone:ListNotifications"
                     ],
                     "Resource": "*"
                 },
@@ -105,8 +108,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
-        "IsDefaultVersion": false,
-        "CreateDate": "2023-09-22T21:06:41Z"
+        "VersionId": "v2",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-09-26T04:10:01Z"
     }
 }
