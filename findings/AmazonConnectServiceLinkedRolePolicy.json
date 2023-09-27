@@ -1,0 +1,97 @@
+[
+    {
+        "findingDetails": "Using the effect Allow with the condition key aws:ResourceTag/AmazonConnectEnabled and actions for services with the following prefixes does not affect the policy: wisdom. The actions for the listed service are not allowed by this statement. We recommend that you move these actions to a different statement without this condition key.",
+        "findingType": "SUGGESTION",
+        "issueCode": "ALLOW_WITH_UNSUPPORTED_TAG_CONDITION_KEY_FOR_SERVICE",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-allow-with-unsupported-tag-condition-key-for-service",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 10
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 12
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 1828,
+                        "line": 1,
+                        "offset": 1828
+                    },
+                    "start": {
+                        "column": 1806,
+                        "line": 1,
+                        "offset": 1806
+                    }
+                }
+            },
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 10
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 13
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 1850,
+                        "line": 1,
+                        "offset": 1850
+                    },
+                    "start": {
+                        "column": 1830,
+                        "line": 1,
+                        "offset": 1830
+                    }
+                }
+            },
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 10
+                    },
+                    {
+                        "value": "Condition"
+                    },
+                    {
+                        "value": "StringEquals"
+                    },
+                    {
+                        "key": "aws:ResourceTag/AmazonConnectEnabled"
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 1963,
+                        "line": 1,
+                        "offset": 1963
+                    },
+                    "start": {
+                        "column": 1925,
+                        "line": 1,
+                        "offset": 1925
+                    }
+                }
+            }
+        ]
+    }
+]
