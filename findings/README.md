@@ -1,8 +1,9 @@
-## AWS Access Analyzer - Findings - 2023-09-26
+## AWS Access Analyzer - Findings - 2023-09-27
 
 - Policies analyzed: `1131`
-- Errors: `61`
-  - [`AmazonDataZoneFullUserAccess`](./AmazonDataZoneFullUserAccess.json)
+- Errors: `13`
+  - [`AmazonDataZonePreviewConsoleFullAccess`](./AmazonDataZonePreviewConsoleFullAccess.json)
+  - [`AmazonDataZonePortalFullAccessPolicy`](./AmazonDataZonePortalFullAccessPolicy.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
 - Sec_Warnings: `12`
