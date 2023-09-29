@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "CreateGlueConnection",
                     "Effect": "Allow",
                     "Action": [
                         "ec2:CreateTags",
@@ -21,6 +22,7 @@
                     }
                 },
                 {
+                    "Sid": "GlueOperations",
                     "Effect": "Allow",
                     "Action": [
                         "glue:*DataQuality*",
@@ -97,6 +99,7 @@
                     }
                 },
                 {
+                    "Sid": "PassRole",
                     "Effect": "Allow",
                     "Action": [
                         "iam:PassRole"
@@ -111,6 +114,7 @@
                     }
                 },
                 {
+                    "Sid": "SameAccountKmsOperations",
                     "Effect": "Allow",
                     "Action": [
                         "kms:DescribeKey",
@@ -125,6 +129,7 @@
                     }
                 },
                 {
+                    "Sid": "KmsOperationsWithResourceTag",
                     "Effect": "Allow",
                     "Action": [
                         "kms:DescribeKey",
@@ -143,6 +148,7 @@
                     }
                 },
                 {
+                    "Sid": "AnalyticsOperations",
                     "Effect": "Allow",
                     "Action": [
                         "datazone:*",
@@ -151,11 +157,12 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "QueryOperations",
                     "Effect": "Allow",
                     "Action": [
-                        "athena:BatchGetQueryExecution",
                         "athena:BatchGetNamedQuery",
                         "athena:BatchGetPreparedStatement",
+                        "athena:BatchGetQueryExecution",
                         "athena:CreateNamedQuery",
                         "athena:CreateNotebook",
                         "athena:CreatePreparedStatement",
@@ -166,14 +173,22 @@
                         "athena:ExportNotebook",
                         "athena:GetDatabase",
                         "athena:GetDataCatalog",
-                        "athena:GetTableMetadata",
+                        "athena:GetNamedQuery",
+                        "athena:GetPreparedStatement",
                         "athena:GetQueryExecution",
                         "athena:GetQueryResults",
+                        "athena:GetQueryRuntimeStatistics",
+                        "athena:GetTableMetadata",
                         "athena:GetWorkGroup",
                         "athena:ImportNotebook",
                         "athena:ListDatabases",
                         "athena:ListDataCatalogs",
+                        "athena:ListEngineVersions",
+                        "athena:ListNamedQueries",
+                        "athena:ListPreparedStatements",
+                        "athena:ListQueryExecutions",
                         "athena:ListTableMetadata",
+                        "athena:ListTagsForResource",
                         "athena:ListWorkGroups",
                         "athena:StartCalculationExecution",
                         "athena:StartQueryExecution",
@@ -193,6 +208,7 @@
                         "glue:BatchDeleteTable",
                         "glue:BatchDeleteTableVersion",
                         "glue:BatchGetJobs",
+                        "glue:BatchGetPartition",
                         "glue:BatchGetWorkflows",
                         "glue:BatchUpdatePartition",
                         "glue:CreateBlueprint",
@@ -264,6 +280,7 @@
                         "redshift:DescribeClusters",
                         "redshift:DescribeDataShares",
                         "redshift:GetClusterCredentials",
+                        "redshift:GetClusterCredentialsWithIAM",
                         "redshift:JoinGroup",
                         "redshift-serverless:ListNamespaces",
                         "redshift-serverless:ListWorkgroups",
@@ -276,6 +293,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "SecretsManagerOperationsWithTagKeys",
                     "Effect": "Allow",
                     "Action": [
                         "secretsmanager:CreateSecret",
@@ -299,17 +317,24 @@
                     }
                 },
                 {
+                    "Sid": "DataZoneS3Buckets",
                     "Effect": "Allow",
                     "Action": [
                         "s3:AbortMultipartUpload",
+                        "s3:DeleteObject",
+                        "s3:DeleteObjectVersion",
+                        "s3:GetObject",
                         "s3:PutObject",
-                        "s3:GetObject"
+                        "s3:PutObjectRetention",
+                        "s3:ReplicateObject",
+                        "s3:RestoreObject"
                     ],
                     "Resource": [
                         "arn:aws:s3:::*/datazone/*"
                     ]
                 },
                 {
+                    "Sid": "DataZoneS3BucketLocation",
                     "Effect": "Allow",
                     "Action": [
                         "s3:GetBucketLocation"
@@ -317,6 +342,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "ListDataZoneS3Bucket",
                     "Effect": "Allow",
                     "Action": [
                         "s3:ListBucket"
@@ -334,13 +360,14 @@
                     }
                 },
                 {
+                    "Sid": "NotDeniedOperations",
                     "Effect": "Deny",
                     "NotAction": [
                         "datazone:*",
                         "sqlworkbench:*",
-                        "athena:BatchGetQueryExecution",
                         "athena:BatchGetNamedQuery",
                         "athena:BatchGetPreparedStatement",
+                        "athena:BatchGetQueryExecution",
                         "athena:CreateNamedQuery",
                         "athena:CreateNotebook",
                         "athena:CreatePreparedStatement",
@@ -351,14 +378,22 @@
                         "athena:ExportNotebook",
                         "athena:GetDatabase",
                         "athena:GetDataCatalog",
-                        "athena:GetTableMetadata",
+                        "athena:GetNamedQuery",
+                        "athena:GetPreparedStatement",
                         "athena:GetQueryExecution",
                         "athena:GetQueryResults",
+                        "athena:GetQueryRuntimeStatistics",
+                        "athena:GetTableMetadata",
                         "athena:GetWorkGroup",
                         "athena:ImportNotebook",
                         "athena:ListDatabases",
                         "athena:ListDataCatalogs",
+                        "athena:ListEngineVersions",
+                        "athena:ListNamedQueries",
+                        "athena:ListPreparedStatements",
+                        "athena:ListQueryExecutions",
                         "athena:ListTableMetadata",
+                        "athena:ListTagsForResource",
                         "athena:ListWorkGroups",
                         "athena:StartCalculationExecution",
                         "athena:StartQueryExecution",
@@ -382,6 +417,7 @@
                         "glue:BatchDeleteTable",
                         "glue:BatchDeleteTableVersion",
                         "glue:BatchGetJobs",
+                        "glue:BatchGetPartition",
                         "glue:BatchGetWorkflows",
                         "glue:BatchStopJobRun",
                         "glue:BatchUpdatePartition",
@@ -480,6 +516,7 @@
                         "redshift:DescribeClusters",
                         "redshift:DescribeDataShares",
                         "redshift:GetClusterCredentials",
+                        "redshift:GetClusterCredentialsWithIAM",
                         "redshift:JoinGroup",
                         "redshift-serverless:ListNamespaces",
                         "redshift-serverless:ListWorkgroups",
@@ -487,10 +524,15 @@
                         "redshift-serverless:GetWorkgroup",
                         "redshift-serverless:GetCredentials",
                         "s3:AbortMultipartUpload",
-                        "s3:PutObject",
+                        "s3:DeleteObject",
+                        "s3:DeleteObjectVersion",
                         "s3:GetObject",
                         "s3:GetBucketLocation",
                         "s3:ListBucket",
+                        "s3:PutObject",
+                        "s3:PutObjectRetention",
+                        "s3:ReplicateObject",
+                        "s3:RestoreObject",
                         "secretsmanager:CreateSecret",
                         "secretsmanager:ListSecrets",
                         "secretsmanager:TagResource",
@@ -502,8 +544,8 @@
                 }
             ]
         },
-        "VersionId": "v2",
-        "IsDefaultVersion": false,
-        "CreateDate": "2023-09-14T19:33:50Z"
+        "VersionId": "v3",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-09-29T05:12:51Z"
     }
 }
