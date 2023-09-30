@@ -36,11 +36,19 @@
                         "comprehend:DetectDominantLanguage"
                     ],
                     "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "bedrock:InvokeModel",
+                        "bedrock:ListFoundationModels"
+                    ],
+                    "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-03-23T22:36:43Z"
+        "CreateDate": "2023-09-30T00:15:02Z"
     }
 }

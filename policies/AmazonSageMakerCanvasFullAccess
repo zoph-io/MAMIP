@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "SageMakerUserDetailsAndPackageOperations",
                     "Effect": "Allow",
                     "Action": [
                         "sagemaker:DescribeDomain",
@@ -15,6 +16,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "SageMakerPackageGroupOperations",
                     "Effect": "Allow",
                     "Action": [
                         "sagemaker:CreateModelPackageGroup",
@@ -28,6 +30,7 @@
                     ]
                 },
                 {
+                    "Sid": "SageMakerTrainingOperations",
                     "Effect": "Allow",
                     "Action": [
                         "sagemaker:CreateCompilationJob",
@@ -56,6 +59,20 @@
                     ]
                 },
                 {
+                    "Sid": "SageMakerHostingOperations",
+                    "Effect": "Allow",
+                    "Action": [
+                        "sagemaker:DeleteEndpointConfig",
+                        "sagemaker:DeleteModel",
+                        "sagemaker:InvokeEndpoint"
+                    ],
+                    "Resource": [
+                        "arn:aws:sagemaker:*:*:*Canvas*",
+                        "arn:aws:sagemaker:*:*:*canvas*"
+                    ]
+                },
+                {
+                    "Sid": "EC2VPCOperation",
                     "Effect": "Allow",
                     "Action": [
                         "ec2:CreateVpcEndpoint",
@@ -68,6 +85,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "ECROperations",
                     "Effect": "Allow",
                     "Action": [
                         "ecr:BatchGetImage",
@@ -77,6 +95,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "IAMGetOperations",
                     "Effect": "Allow",
                     "Action": [
                         "iam:GetRole"
@@ -84,6 +103,7 @@
                     "Resource": "arn:aws:iam::*:role/*"
                 },
                 {
+                    "Sid": "IAMPassOperation",
                     "Effect": "Allow",
                     "Action": [
                         "iam:PassRole"
@@ -96,6 +116,7 @@
                     }
                 },
                 {
+                    "Sid": "LoggingOperation",
                     "Effect": "Allow",
                     "Action": [
                         "logs:CreateLogGroup",
@@ -105,6 +126,7 @@
                     "Resource": "arn:aws:logs:*:*:log-group:/aws/sagemaker/*"
                 },
                 {
+                    "Sid": "S3Operations",
                     "Effect": "Allow",
                     "Action": [
                         "s3:GetObject",
@@ -121,6 +143,24 @@
                     ]
                 },
                 {
+                    "Sid": "ReadSageMakerJumpstartArtifacts",
+                    "Effect": "Allow",
+                    "Action": "s3:GetObject",
+                    "Resource": [
+                        "arn:aws:s3:::jumpstart-cache-prod-us-west-2/*",
+                        "arn:aws:s3:::jumpstart-cache-prod-us-east-1/*",
+                        "arn:aws:s3:::jumpstart-cache-prod-us-east-2/*",
+                        "arn:aws:s3:::jumpstart-cache-prod-eu-west-1/*",
+                        "arn:aws:s3:::jumpstart-cache-prod-eu-central-1/*",
+                        "arn:aws:s3:::jumpstart-cache-prod-ap-south-1/*",
+                        "arn:aws:s3:::jumpstart-cache-prod-ap-northeast-2/*",
+                        "arn:aws:s3:::jumpstart-cache-prod-ap-northeast-1/*",
+                        "arn:aws:s3:::jumpstart-cache-prod-ap-southeast-1/*",
+                        "arn:aws:s3:::jumpstart-cache-prod-ap-southeast-2/*"
+                    ]
+                },
+                {
+                    "Sid": "S3ListOperations",
                     "Effect": "Allow",
                     "Action": [
                         "s3:ListBucket",
@@ -129,6 +169,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "GlueOperations",
                     "Effect": "Allow",
                     "Action": "glue:SearchTables",
                     "Resource": [
@@ -138,6 +179,7 @@
                     ]
                 },
                 {
+                    "Sid": "SecretsManagerARNBasedOperation",
                     "Effect": "Allow",
                     "Action": [
                         "secretsmanager:DescribeSecret",
@@ -150,6 +192,7 @@
                     ]
                 },
                 {
+                    "Sid": "SecretManagerTagBasedOperation",
                     "Effect": "Allow",
                     "Action": [
                         "secretsmanager:DescribeSecret",
@@ -163,6 +206,7 @@
                     }
                 },
                 {
+                    "Sid": "RedshiftOperations",
                     "Effect": "Allow",
                     "Action": [
                         "redshift-data:ExecuteStatement",
@@ -176,6 +220,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "RedshiftGetCredentialsOperation",
                     "Effect": "Allow",
                     "Action": [
                         "redshift:GetClusterCredentials"
@@ -186,6 +231,7 @@
                     ]
                 },
                 {
+                    "Sid": "ForecastOperations",
                     "Effect": "Allow",
                     "Action": [
                         "forecast:CreateExplainabilityExport",
@@ -220,11 +266,13 @@
                     ]
                 },
                 {
+                    "Sid": "RDSOperation",
                     "Effect": "Allow",
                     "Action": "rds:DescribeDBInstances",
                     "Resource": "*"
                 },
                 {
+                    "Sid": "IAMPassOperationForForecast",
                     "Effect": "Allow",
                     "Action": [
                         "iam:PassRole"
@@ -237,6 +285,7 @@
                     }
                 },
                 {
+                    "Sid": "AutoscalingOperations",
                     "Effect": "Allow",
                     "Action": [
                         "application-autoscaling:PutScalingPolicy",
@@ -252,8 +301,8 @@
                 }
             ]
         },
-        "VersionId": "v6",
+        "VersionId": "v7",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-08-29T19:06:22Z"
+        "CreateDate": "2023-09-30T00:15:42Z"
     }
 }
