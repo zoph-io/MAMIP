@@ -1,44 +1,5 @@
 [
     {
-        "findingDetails": "Using ForAllValues qualifier with the single-valued condition key codestar-connections:ProviderAction can be overly permissive. We recommend that you remove ForAllValues:.",
-        "findingType": "SECURITY_WARNING",
-        "issueCode": "FORALLVALUES_WITH_SINGLE_VALUED_KEY",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-security-warning-forallvalues-with-single-valued-key",
-        "locations": [
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 1
-                    },
-                    {
-                        "value": "Condition"
-                    },
-                    {
-                        "value": "ForAllValues:StringEquals"
-                    },
-                    {
-                        "key": "codestar-connections:ProviderAction"
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 751,
-                        "line": 1,
-                        "offset": 751
-                    },
-                    "start": {
-                        "column": 714,
-                        "line": 1,
-                        "offset": 714
-                    }
-                }
-            }
-        ]
-    },
-    {
         "findingDetails": "The 2 resource ARN(s) are redundant because they reference the same resource. Review the use of wildcards (*), or remove the resource arn:aws:s3:::codeguru-reviewer-*/* to remove the redundancy.",
         "findingType": "SUGGESTION",
         "issueCode": "REDUNDANT_RESOURCE",
