@@ -1,16 +1,18 @@
 ## AWS Access Analyzer - Findings - 2023-10-03
 
 - Policies analyzed: `1133`
-- Errors: `15`
+- Errors: `17`
   - [`AmazonZocaloFullAccess`](./AmazonZocaloFullAccess.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AmazonDataZonePortalFullAccessPolicy`](./AmazonDataZonePortalFullAccessPolicy.json)
-  - [`AmazonAppStreamReadOnlyAccess`](./AmazonAppStreamReadOnlyAccess.json)
+  - [`AWSSSOServiceRolePolicy`](./AWSSSOServiceRolePolicy.json)
+  - [`AmazonZocaloReadOnlyAccess`](./AmazonZocaloReadOnlyAccess.json)
   - [`AmazonDataZonePreviewConsoleFullAccess`](./AmazonDataZonePreviewConsoleFullAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
-- Sec_Warnings: `12`
+- Sec_Warnings: `13`
   - [`AmazonElasticMapReduceRole`](./AmazonElasticMapReduceRole.json)
   - [`AdministratorAccess`](./AdministratorAccess.json)
+  - [`AmazonCodeGuruReviewerServiceRolePolicy`](./AmazonCodeGuruReviewerServiceRolePolicy.json)
   - [`AdministratorAccess-Amplify`](./AdministratorAccess-Amplify.json)
   - [`AWSProtonCodeBuildProvisioningServiceRolePolicy`](./AWSProtonCodeBuildProvisioningServiceRolePolicy.json)
   - [`AmazonCodeGuruReviewerFullAccess`](./AmazonCodeGuruReviewerFullAccess.json)
