@@ -4,11 +4,13 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "AmazonDataZoneUserOperations",
                     "Effect": "Allow",
                     "Action": [
                         "datazone:GetDomain",
                         "datazone:CreateFormType",
                         "datazone:GetFormType",
+                        "datazone:GetIamPortalLoginUrl",
                         "datazone:SearchUserProfiles",
                         "datazone:SearchGroupProfiles",
                         "datazone:GetUserProfile",
@@ -102,14 +104,15 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "RAMResourceShareOperations",
                     "Effect": "Allow",
                     "Action": "ram:GetResourceShareAssociations",
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v2",
-        "IsDefaultVersion": false,
-        "CreateDate": "2023-09-26T04:10:01Z"
+        "VersionId": "v3",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-10-03T21:05:39Z"
     }
 }
