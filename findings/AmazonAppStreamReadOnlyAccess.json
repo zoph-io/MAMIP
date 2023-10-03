@@ -1,9 +1,9 @@
 [
     {
-        "findingDetails": "The service zocalo:Describe* specified in the action does not exist.",
+        "findingDetails": "The action appstream:Get* does not exist.",
         "findingType": "ERROR",
-        "issueCode": "INVALID_SERVICE_IN_ACTION",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
         "locations": [
             {
                 "path": [
@@ -22,14 +22,14 @@
                 ],
                 "span": {
                     "end": {
-                        "column": 89,
+                        "column": 68,
                         "line": 1,
-                        "offset": 89
+                        "offset": 68
                     },
                     "start": {
-                        "column": 71,
+                        "column": 52,
                         "line": 1,
-                        "offset": 71
+                        "offset": 52
                     }
                 }
             }
