@@ -1,10 +1,8 @@
-## AWS Access Analyzer - Findings - 2023-10-04
+## AWS Access Analyzer - Findings - 2023-10-05
 
-- Policies analyzed: `1133`
-- Errors: `13`
+- Policies analyzed: `1131`
+- Errors: `11`
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
-  - [`AmazonDataZonePortalFullAccessPolicy`](./AmazonDataZonePortalFullAccessPolicy.json)
-  - [`AmazonDataZonePreviewConsoleFullAccess`](./AmazonDataZonePreviewConsoleFullAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
 - Sec_Warnings: `11`
   - [`AmazonElasticMapReduceRole`](./AmazonElasticMapReduceRole.json)
@@ -66,7 +64,7 @@
   - [`ReadOnlyAccess`](./fails.txt)
   - [`AWSConfigServiceRolePolicy`](./fails.txt)
   - [`AWSSupportServiceRolePolicy`](./fails.txt)
-- Deprecated: `52`
+- Deprecated: `54`
   - [`AWSBackupOperatorPolicy`](../policies/AWSBackupOperatorPolicy)
   - [`AWSMobileHub_FullAccess`](../policies/AWSMobileHub_FullAccess)
   - [`AWSServiceRoleForCodeGuruProfiler`](../policies/AWSServiceRoleForCodeGuruProfiler)
@@ -81,6 +79,7 @@
   - [`AWSLambdaReplicatorInternal`](../policies/AWSLambdaReplicatorInternal)
   - [`AmazonWorkLinkFullAccess`](../policies/AmazonWorkLinkFullAccess)
   - [`AWSServiceRoleForThorInternalDevPolicy`](../policies/AWSServiceRoleForThorInternalDevPolicy)
+  - [`AmazonDataZonePortalFullAccessPolicy`](../policies/AmazonDataZonePortalFullAccessPolicy)
   - [`AWSElasticBeanstalkFullAccess`](../policies/AWSElasticBeanstalkFullAccess)
   - [`AWS_Config_Role`](../policies/AWS_Config_Role)
   - [`AmazonEC2RolePolicyForApplicationWizard`](../policies/AmazonEC2RolePolicyForApplicationWizard)
@@ -114,6 +113,7 @@
   - [`AmazonMachineLearningRoleforRedshiftDataSource`](../policies/AmazonMachineLearningRoleforRedshiftDataSource)
   - [`AWSECRPullThroughCacheServiceRolePolicy`](../policies/AWSECRPullThroughCacheServiceRolePolicy)
   - [`AWSOpsWorksRegisterCLI`](../policies/AWSOpsWorksRegisterCLI)
+  - [`AmazonDataZonePreviewConsoleFullAccess`](../policies/AmazonDataZonePreviewConsoleFullAccess)
   - [`AmazonSumerianFullAccess`](../policies/AmazonSumerianFullAccess)
   - [`AmazonWorkLinkReadOnly`](../policies/AmazonWorkLinkReadOnly)
   - [`AWSLambdaReadOnlyAccess`](../policies/AWSLambdaReadOnlyAccess)
