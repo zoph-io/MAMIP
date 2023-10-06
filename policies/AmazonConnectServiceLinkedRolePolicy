@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "AllowConnectActions",
                     "Effect": "Allow",
                     "Action": [
                         "connect:*"
@@ -13,6 +14,7 @@
                     ]
                 },
                 {
+                    "Sid": "AllowDeleteSLR",
                     "Effect": "Allow",
                     "Action": [
                         "iam:DeleteRole"
@@ -20,6 +22,7 @@
                     "Resource": "arn:aws:iam::*:role/aws-service-role/connect.amazonaws.com/AWSServiceRoleForAmazonConnect_*"
                 },
                 {
+                    "Sid": "AllowS3ObjectForConnectBucket",
                     "Effect": "Allow",
                     "Action": [
                         "s3:GetObject",
@@ -33,6 +36,7 @@
                     ]
                 },
                 {
+                    "Sid": "AllowGetBucketMetadataForConnectBucket",
                     "Effect": "Allow",
                     "Action": [
                         "s3:GetBucketLocation",
@@ -43,6 +47,7 @@
                     ]
                 },
                 {
+                    "Sid": "AllowConnectLogGroupAccess",
                     "Effect": "Allow",
                     "Action": [
                         "logs:CreateLogStream",
@@ -54,6 +59,7 @@
                     ]
                 },
                 {
+                    "Sid": "AllowListLexBotAccess",
                     "Effect": "Allow",
                     "Action": [
                         "lex:ListBots",
@@ -62,17 +68,20 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "AllowCustomerProfilesForConnectDomain",
                     "Effect": "Allow",
                     "Action": [
                         "profile:SearchProfiles",
                         "profile:CreateProfile",
                         "profile:UpdateProfile",
                         "profile:AddProfileKey",
-                        "profile:ListProfileObjectTypes"
+                        "profile:ListProfileObjectTypes",
+                        "profile:ListCalculatedAttributeDefinitions"
                     ],
                     "Resource": "arn:aws:profile:*:*:domains/amazon-connect-*"
                 },
                 {
+                    "Sid": "AllowReadPermissionForCustomerProfileObjects",
                     "Effect": "Allow",
                     "Action": [
                         "profile:ListProfileObjects",
@@ -83,6 +92,7 @@
                     ]
                 },
                 {
+                    "Sid": "AllowListIntegrationForCustomerProfile",
                     "Effect": "Allow",
                     "Action": [
                         "profile:ListAccountIntegrations"
@@ -90,6 +100,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "AllowReadForCustomerProfileObjectTemplates",
                     "Effect": "Allow",
                     "Action": [
                         "profile:ListProfileObjectTypeTemplates",
@@ -98,6 +109,7 @@
                     "Resource": "arn:aws:profile:*:*:/templates*"
                 },
                 {
+                    "Sid": "AllowWisdomForConnectEnabledTaggedResources",
                     "Effect": "Allow",
                     "Action": [
                         "wisdom:CreateContent",
@@ -124,6 +136,7 @@
                     }
                 },
                 {
+                    "Sid": "AllowListOperationForWisdom",
                     "Effect": "Allow",
                     "Action": [
                         "wisdom:ListAssistants",
@@ -132,6 +145,17 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "AllowReadCalculatedAttributesForProfile",
+                    "Effect": "Allow",
+                    "Action": [
+                        "profile:GetCalculatedAttributeForProfile"
+                    ],
+                    "Resource": [
+                        "arn:aws:profile:*:*:domains/amazon-connect-*/calculated-attributes/*"
+                    ]
+                },
+                {
+                    "Sid": "AllowPutMetricsForConnectNamespace",
                     "Effect": "Allow",
                     "Action": "cloudwatch:PutMetricData",
                     "Resource": "*",
@@ -143,8 +167,8 @@
                 }
             ]
         },
-        "VersionId": "v9",
+        "VersionId": "v10",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-09-27T21:05:04Z"
+        "CreateDate": "2023-10-06T17:23:46Z"
     }
 }
