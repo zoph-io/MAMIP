@@ -1,0 +1,35 @@
+{
+    "PolicyVersion": {
+        "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Sid": "SageMakerEndpointPerms",
+                    "Effect": "Allow",
+                    "Action": [
+                        "sagemaker:CreateEndpoint",
+                        "sagemaker:CreateEndpointConfig",
+                        "sagemaker:DeleteEndpoint",
+                        "sagemaker:DescribeEndpoint",
+                        "sagemaker:DescribeEndpointConfig",
+                        "sagemaker:InvokeEndpoint",
+                        "sagemaker:UpdateEndpoint"
+                    ],
+                    "Resource": [
+                        "arn:aws:sagemaker:*:*:Canvas*",
+                        "arn:aws:sagemaker:*:*:canvas*"
+                    ]
+                },
+                {
+                    "Sid": "ReadCWInvocationMetrics",
+                    "Effect": "Allow",
+                    "Action": "cloudwatch:GetMetricData",
+                    "Resource": "*"
+                }
+            ]
+        },
+        "VersionId": "v1",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-10-06T18:11:53Z"
+    }
+}
