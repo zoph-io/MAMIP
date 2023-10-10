@@ -7,7 +7,8 @@
                     "Sid": "CloudMapServiceDiscovery",
                     "Effect": "Allow",
                     "Action": [
-                        "servicediscovery:DiscoverInstances"
+                        "servicediscovery:DiscoverInstances",
+                        "servicediscovery:DiscoverInstancesRevision"
                     ],
                     "Resource": "*"
                 },
@@ -21,8 +22,8 @@
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2019-09-10T22:44:43Z"
+        "CreateDate": "2023-10-10T16:46:37Z"
     }
 }

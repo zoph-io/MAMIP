@@ -168,14 +168,15 @@
                     "Sid": "CloudMapResourceDiscovery",
                     "Effect": "Allow",
                     "Action": [
-                        "servicediscovery:DiscoverInstances"
+                        "servicediscovery:DiscoverInstances",
+                        "servicediscovery:DiscoverInstancesRevision"
                     ],
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v9",
+        "VersionId": "v10",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-10-14T18:10:03Z"
+        "CreateDate": "2023-10-10T16:57:39Z"
     }
 }
