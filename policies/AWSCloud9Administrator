@@ -30,7 +30,10 @@
                 },
                 {
                     "Effect": "Allow",
-                    "Action": "ssm:StartSession",
+                    "Action": [
+                        "ssm:StartSession",
+                        "ssm:GetConnectionStatus"
+                    ],
                     "Resource": "arn:aws:ec2:*:*:instance/*",
                     "Condition": {
                         "StringLike": {
@@ -52,8 +55,8 @@
                 }
             ]
         },
-        "VersionId": "v3",
+        "VersionId": "v4",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-08-02T08:54:40Z"
+        "CreateDate": "2023-10-11T12:59:29Z"
     }
 }
