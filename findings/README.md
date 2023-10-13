@@ -1,4 +1,4 @@
-## AWS Access Analyzer - Findings - 2023-10-12
+## AWS Access Analyzer - Findings - 2023-10-13
 
 - Policies analyzed: `1133`
 - Errors: `11`
@@ -14,7 +14,7 @@
   - [`AmazonElasticMapReduceFullAccess`](./AmazonElasticMapReduceFullAccess.json)
   - [`IAMFullAccess`](./IAMFullAccess.json)
   - [`AWSServiceRoleForAmazonEKSNodegroup`](./AWSServiceRoleForAmazonEKSNodegroup.json)
-- Suggestions: `42`
+- Suggestions: `41`
   - [`AmazonDataZoneEnvironmentRolePermissionsBoundary`](./AmazonDataZoneEnvironmentRolePermissionsBoundary.json)
   - [`AWSGlueConsoleFullAccess`](./AWSGlueConsoleFullAccess.json)
   - [`AWSElasticBeanstalkCustomPlatformforEC2Role`](./AWSElasticBeanstalkCustomPlatformforEC2Role.json)
@@ -30,7 +30,6 @@
   - [`AmazonCodeGuruReviewerServiceRolePolicy`](./AmazonCodeGuruReviewerServiceRolePolicy.json)
   - [`AWSDeepLensLambdaFunctionAccessPolicy`](./AWSDeepLensLambdaFunctionAccessPolicy.json)
   - [`AWSElasticBeanstalkWebTier`](./AWSElasticBeanstalkWebTier.json)
-  - [`AmazonConnectServiceLinkedRolePolicy`](./AmazonConnectServiceLinkedRolePolicy.json)
   - [`AmazonLaunchWizardFullAccessV2`](./AmazonLaunchWizardFullAccessV2.json)
   - [`AWSElasticBeanstalkService`](./AWSElasticBeanstalkService.json)
   - [`AWSLakeFormationDataAdmin`](./AWSLakeFormationDataAdmin.json)
