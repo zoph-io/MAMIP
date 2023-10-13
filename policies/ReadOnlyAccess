@@ -1186,6 +1186,9 @@
                         "lookoutequipment:DescribeLabel",
                         "lookoutequipment:DescribeLabelGroup",
                         "lookoutequipment:DescribeModel",
+                        "lookoutequipment:DescribeModelVersion",
+                        "lookoutequipment:DescribeResourcePolicy",
+                        "lookoutequipment:DescribeRetrainingScheduler",
                         "lookoutequipment:ListDataIngestionJobs",
                         "lookoutequipment:ListDatasets",
                         "lookoutequipment:ListInferenceEvents",
@@ -1194,6 +1197,8 @@
                         "lookoutequipment:ListLabelGroups",
                         "lookoutequipment:ListLabels",
                         "lookoutequipment:ListModels",
+                        "lookoutequipment:ListModelVersions",
+                        "lookoutequipment:ListRetrainingSchedulers",
                         "lookoutequipment:ListSensorStatistics",
                         "lookoutequipment:ListTagsForResource",
                         "lookoutmetrics:Describe*",
@@ -1694,6 +1699,8 @@
                         "servicecatalog:List*",
                         "servicecatalog:Scan*",
                         "servicecatalog:Search*",
+                        "servicediscovery:DiscoverInstances",
+                        "servicediscovery:DiscoverInstancesRevision",
                         "servicediscovery:Get*",
                         "servicediscovery:List*",
                         "servicequotas:GetAssociationForServiceQuotaTemplate",
@@ -1916,8 +1923,8 @@
                 }
             ]
         },
-        "VersionId": "v106",
+        "VersionId": "v107",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-09-19T14:57:43Z"
+        "CreateDate": "2023-10-13T14:16:04Z"
     }
 }
