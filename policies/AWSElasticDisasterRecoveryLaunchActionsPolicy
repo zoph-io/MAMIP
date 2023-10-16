@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "LaunchActionsPolicy1",
                     "Effect": "Allow",
                     "Action": [
                         "ssm:DescribeInstanceInformation"
@@ -20,6 +21,7 @@
                     }
                 },
                 {
+                    "Sid": "LaunchActionsPolicy2",
                     "Effect": "Allow",
                     "Action": [
                         "ssm:SendCommand",
@@ -41,6 +43,7 @@
                     }
                 },
                 {
+                    "Sid": "LaunchActionsPolicy3",
                     "Effect": "Allow",
                     "Action": [
                         "ssm:SendCommand",
@@ -133,6 +136,7 @@
                     }
                 },
                 {
+                    "Sid": "LaunchActionsPolicy4",
                     "Effect": "Allow",
                     "Action": [
                         "ssm:SendCommand"
@@ -152,6 +156,27 @@
                     }
                 },
                 {
+                    "Sid": "LaunchActionsPolicy5",
+                    "Effect": "Allow",
+                    "Action": [
+                        "ssm:SendCommand"
+                    ],
+                    "Resource": [
+                        "arn:aws:ec2:*:*:instance/*"
+                    ],
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/AWSDRS": "AllowLaunchingIntoThisInstance"
+                        },
+                        "ForAnyValue:StringEquals": {
+                            "aws:CalledVia": [
+                                "drs.amazonaws.com"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "Sid": "LaunchActionsPolicy6",
                     "Effect": "Allow",
                     "Action": [
                         "ssm:ListDocuments",
@@ -160,6 +185,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "LaunchActionsPolicy7",
                     "Effect": "Allow",
                     "Action": [
                         "ssm:ListDocumentVersions",
@@ -169,6 +195,7 @@
                     "Resource": "arn:aws:ssm:*:*:document/*"
                 },
                 {
+                    "Sid": "LaunchActionsPolicy8",
                     "Effect": "Allow",
                     "Action": [
                         "ssm:GetAutomationExecution"
@@ -181,6 +208,7 @@
                     }
                 },
                 {
+                    "Sid": "LaunchActionsPolicy9",
                     "Effect": "Allow",
                     "Action": [
                         "ssm:GetParameters"
@@ -193,6 +221,7 @@
                     }
                 },
                 {
+                    "Sid": "LaunchActionsPolicy10",
                     "Effect": "Allow",
                     "Action": [
                         "ssm:GetParameter",
@@ -206,6 +235,7 @@
                     }
                 },
                 {
+                    "Sid": "LaunchActionsPolicy11",
                     "Effect": "Allow",
                     "Action": "iam:PassRole",
                     "Resource": [
@@ -222,8 +252,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-09-13T07:38:26Z"
+        "CreateDate": "2023-10-16T12:28:44Z"
     }
 }
