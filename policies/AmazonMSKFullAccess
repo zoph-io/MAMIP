@@ -85,6 +85,16 @@
                 },
                 {
                     "Effect": "Allow",
+                    "Action": "iam:PassRole",
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:PassedToService": "kafka.amazonaws.com"
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
                     "Action": "iam:CreateServiceLinkedRole",
                     "Resource": "arn:aws:iam::*:role/aws-service-role/kafka.amazonaws.com/AWSServiceRoleForKafka*",
                     "Condition": {
@@ -105,8 +115,8 @@
                 }
             ]
         },
-        "VersionId": "v6",
+        "VersionId": "v7",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-01-06T21:18:01Z"
+        "CreateDate": "2023-10-18T11:33:13Z"
     }
 }
