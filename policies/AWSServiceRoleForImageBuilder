@@ -83,7 +83,8 @@
                         "ec2:ModifyImageAttribute",
                         "ec2:DescribeImportImageTasks",
                         "ec2:DescribeExportImageTasks",
-                        "ec2:DescribeSnapshots"
+                        "ec2:DescribeSnapshots",
+                        "ec2:DescribeHosts"
                     ],
                     "Resource": "*"
                 },
@@ -172,7 +173,8 @@
                         "ssm:ListInventoryEntries",
                         "ssm:SendAutomationSignal",
                         "ssm:DescribeInstanceAssociationsStatus",
-                        "ssm:DescribeAssociationExecutions"
+                        "ssm:DescribeAssociationExecutions",
+                        "ssm:GetCommandInvocation"
                     ],
                     "Resource": "*"
                 },
@@ -413,8 +415,8 @@
                 }
             ]
         },
-        "VersionId": "v18",
+        "VersionId": "v19",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-03-13T20:33:11Z"
+        "CreateDate": "2023-10-19T21:30:10Z"
     }
 }
