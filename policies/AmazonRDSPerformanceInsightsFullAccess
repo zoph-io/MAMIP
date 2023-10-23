@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "AmazonRDSPerformanceInsightsReadAccess",
                     "Effect": "Allow",
                     "Action": [
                         "pi:DescribeDimensionKeys",
@@ -16,6 +17,7 @@
                     "Resource": "arn:aws:pi:*:*:metrics/rds/*"
                 },
                 {
+                    "Sid": "AmazonRDSPerformanceInsightsAnalisysReportFullAccess",
                     "Effect": "Allow",
                     "Action": [
                         "pi:CreatePerformanceAnalysisReport",
@@ -26,6 +28,7 @@
                     "Resource": "arn:aws:pi:*:*:perf-reports/rds/*/*"
                 },
                 {
+                    "Sid": "AmazonRDSPerformanceInsightsTaggingFullAccess",
                     "Effect": "Allow",
                     "Action": [
                         "pi:TagResource",
@@ -35,6 +38,7 @@
                     "Resource": "arn:aws:pi:*:*:*/rds/*"
                 },
                 {
+                    "Sid": "AmazonRDSDescribeInstanceAccess",
                     "Effect": "Allow",
                     "Action": [
                         "rds:DescribeDBInstances",
@@ -43,6 +47,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "AmazonCloudWatchReadAccess",
                     "Effect": "Allow",
                     "Action": [
                         "cloudwatch:GetMetricStatistics",
@@ -53,8 +58,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
-        "IsDefaultVersion": false,
-        "CreateDate": "2023-08-15T23:41:34Z"
+        "VersionId": "v2",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-10-23T21:14:27Z"
     }
 }
