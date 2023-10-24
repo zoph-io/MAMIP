@@ -126,7 +126,16 @@
                         "wisdom:UpdateContent",
                         "wisdom:UntagResource",
                         "wisdom:TagResource",
-                        "wisdom:CreateSession"
+                        "wisdom:CreateSession",
+                        "wisdom:CreateQuickResponse",
+                        "wisdom:GetQuickResponse",
+                        "wisdom:SearchQuickResponses",
+                        "wisdom:StartImportJob",
+                        "wisdom:GetImportJob",
+                        "wisdom:ListImportJobs",
+                        "wisdom:ListQuickResponses",
+                        "wisdom:UpdateQuickResponse",
+                        "wisdom:DeleteQuickResponse"
                     ],
                     "Resource": "*",
                     "Condition": {
@@ -167,8 +176,8 @@
                 }
             ]
         },
-        "VersionId": "v10",
+        "VersionId": "v11",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-10-06T17:23:46Z"
+        "CreateDate": "2023-10-23T23:22:56Z"
     }
 }
