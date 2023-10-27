@@ -194,11 +194,21 @@
                         "secretsmanager:GetRandomPassword"
                     ],
                     "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "ec2:AssignIpv6Addresses",
+                        "ec2:UnassignIpv6Addresses"
+                    ],
+                    "Resource": [
+                        "arn:aws:ec2:*:*:network-interface/*"
+                    ]
                 }
             ]
         },
-        "VersionId": "v11",
+        "VersionId": "v12",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-08-14T10:46:23Z"
+        "CreateDate": "2023-10-27T16:20:17Z"
     }
 }
