@@ -76,7 +76,10 @@
                         "profile:UpdateProfile",
                         "profile:AddProfileKey",
                         "profile:ListProfileObjectTypes",
-                        "profile:ListCalculatedAttributeDefinitions"
+                        "profile:ListCalculatedAttributeDefinitions",
+                        "profile:ListCalculatedAttributesForProfile",
+                        "profile:GetDomain",
+                        "profile:ListIntegrations"
                     ],
                     "Resource": "arn:aws:profile:*:*:domains/amazon-connect-*"
                 },
@@ -154,10 +157,14 @@
                     "Resource": "*"
                 },
                 {
-                    "Sid": "AllowReadCalculatedAttributesForProfile",
+                    "Sid": "AllowCustomerProfilesCalculatedAttributesForConnectDomain",
                     "Effect": "Allow",
                     "Action": [
-                        "profile:GetCalculatedAttributeForProfile"
+                        "profile:GetCalculatedAttributeForProfile",
+                        "profile:CreateCalculatedAttributeDefinition",
+                        "profile:DeleteCalculatedAttributeDefinition",
+                        "profile:GetCalculatedAttributeDefinition",
+                        "profile:UpdateCalculatedAttributeDefinition"
                     ],
                     "Resource": [
                         "arn:aws:profile:*:*:domains/amazon-connect-*/calculated-attributes/*"
@@ -176,8 +183,8 @@
                 }
             ]
         },
-        "VersionId": "v11",
+        "VersionId": "v12",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-10-23T23:22:56Z"
+        "CreateDate": "2023-10-26T23:32:06Z"
     }
 }
