@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "AWSResilienceHubFullResourceStatement",
                     "Effect": "Allow",
                     "Action": [
                         "application-autoscaling:DescribeScalableTargets",
@@ -113,11 +114,15 @@
                         "sqs:GetQueueAttributes",
                         "sqs:GetQueueUrl",
                         "ssm:DescribeAutomationExecutions",
+                        "states:DescribeStateMachine",
+                        "states:ListStateMachineVersions",
+                        "states:ListStateMachineAliases",
                         "tag:GetResources"
                     ],
                     "Resource": "*"
                 },
                 {
+                    "Sid": "AWSResilienceHubApiGatewayStatement",
                     "Effect": "Allow",
                     "Action": [
                         "apigateway:GET"
@@ -129,6 +134,7 @@
                     ]
                 },
                 {
+                    "Sid": "AWSResilienceHubS3Statement",
                     "Effect": "Allow",
                     "Action": [
                         "s3:CreateBucket",
@@ -138,6 +144,7 @@
                     "Resource": "arn:aws:s3:::aws-resilience-hub-artifacts-*"
                 },
                 {
+                    "Sid": "AWSResilienceHubCloudWatchStatement",
                     "Effect": "Allow",
                     "Action": [
                         "cloudwatch:PutMetricData"
@@ -150,6 +157,7 @@
                     }
                 },
                 {
+                    "Sid": "AWSResilienceHubSSMStatement",
                     "Effect": "Allow",
                     "Action": [
                         "ssm:GetParametersByPath"
@@ -158,8 +166,8 @@
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-10-05T11:16:28Z"
+        "CreateDate": "2023-10-29T16:17:40Z"
     }
 }
