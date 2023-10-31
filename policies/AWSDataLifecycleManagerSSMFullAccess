@@ -1,0 +1,61 @@
+{
+    "PolicyVersion": {
+        "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Sid": "AllowSSMReadOnlyAccess",
+                    "Effect": "Allow",
+                    "Action": [
+                        "ssm:GetCommandInvocation",
+                        "ssm:ListCommands",
+                        "ssm:DescribeInstanceInformation"
+                    ],
+                    "Resource": "*"
+                },
+                {
+                    "Sid": "AllowTaggedSSMDocumentsOnly",
+                    "Effect": "Allow",
+                    "Action": [
+                        "ssm:SendCommand",
+                        "ssm:DescribeDocument",
+                        "ssm:GetDocument"
+                    ],
+                    "Resource": [
+                        "arn:aws:ssm:*:*:document/*"
+                    ],
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/DLMScriptsAccess": "true"
+                        }
+                    }
+                },
+                {
+                    "Sid": "AllowSpecificAWSOwnedSSMDocuments",
+                    "Effect": "Allow",
+                    "Action": [
+                        "ssm:SendCommand",
+                        "ssm:DescribeDocument",
+                        "ssm:GetDocument"
+                    ],
+                    "Resource": [
+                        "arn:aws:ssm:*:*:document/AWSEC2-CreateVssSnapshot"
+                    ]
+                },
+                {
+                    "Sid": "AllowAllEC2Instances",
+                    "Effect": "Allow",
+                    "Action": [
+                        "ssm:SendCommand"
+                    ],
+                    "Resource": [
+                        "arn:aws:ec2:*:*:instance/*"
+                    ]
+                }
+            ]
+        },
+        "VersionId": "v1",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-10-31T20:29:44Z"
+    }
+}
