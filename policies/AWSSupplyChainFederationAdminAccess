@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "AWSSupplyChain",
                     "Effect": "Allow",
                     "Action": [
                         "scn:*"
@@ -13,6 +14,7 @@
                     ]
                 },
                 {
+                    "Sid": "ChimeAppInstance",
                     "Effect": "Allow",
                     "Action": [
                         "chime:BatchCreateChannelMembership",
@@ -45,6 +47,7 @@
                     }
                 },
                 {
+                    "Sid": "ChimeChannel",
                     "Effect": "Allow",
                     "Action": [
                         "chime:DescribeChannel"
@@ -54,6 +57,7 @@
                     ]
                 },
                 {
+                    "Sid": "ChimeMessaging",
                     "Effect": "Allow",
                     "Action": [
                         "chime:GetMessagingSessionEndpoint"
@@ -61,6 +65,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "IAMIdentityCenter",
                     "Effect": "Allow",
                     "Action": [
                         "sso:GetManagedApplicationInstance",
@@ -68,11 +73,13 @@
                         "sso:AssociateProfile",
                         "sso:DisassociateProfile",
                         "sso:ListProfiles",
-                        "sso:GetProfile"
+                        "sso:GetProfile",
+                        "sso:ListProfileAssociations"
                     ],
                     "Resource": "*"
                 },
                 {
+                    "Sid": "AppflowConnectorProfile",
                     "Effect": "Allow",
                     "Action": [
                         "appflow:CreateConnectorProfile",
@@ -85,6 +92,7 @@
                     ]
                 },
                 {
+                    "Sid": "AppflowFlow",
                     "Effect": "Allow",
                     "Action": [
                         "appflow:CreateFlow",
@@ -103,6 +111,7 @@
                     ]
                 },
                 {
+                    "Sid": "S3ListAllBuckets",
                     "Effect": "Allow",
                     "Action": [
                         "s3:ListAllMyBuckets"
@@ -110,6 +119,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "S3ListSupplyChainBucket",
                     "Effect": "Allow",
                     "Action": [
                         "s3:GetBucketLocation",
@@ -121,6 +131,7 @@
                     ]
                 },
                 {
+                    "Sid": "S3ReadWriteObject",
                     "Effect": "Allow",
                     "Action": [
                         "s3:GetObject",
@@ -136,6 +147,7 @@
                     }
                 },
                 {
+                    "Sid": "SecretsManagerCreateSecret",
                     "Effect": "Allow",
                     "Action": "secretsmanager:CreateSecret",
                     "Resource": "arn:aws:secretsmanager:*:*:secret:*",
@@ -151,6 +163,7 @@
                     }
                 },
                 {
+                    "Sid": "SecretsManagerPutResourcePolicy",
                     "Effect": "Allow",
                     "Action": [
                         "secretsmanager:PutResourcePolicy"
@@ -168,6 +181,7 @@
                     }
                 },
                 {
+                    "Sid": "KMSListKeys",
                     "Effect": "Allow",
                     "Action": [
                         "kms:ListKeys",
@@ -176,6 +190,7 @@
                     "Resource": "arn:aws:kms:*:*:key/*"
                 },
                 {
+                    "Sid": "KMSListGrants",
                     "Effect": "Allow",
                     "Action": [
                         "kms:DescribeKey",
@@ -192,6 +207,7 @@
                     }
                 },
                 {
+                    "Sid": "KMSCreateGrant",
                     "Effect": "Allow",
                     "Action": [
                         "kms:CreateGrant"
@@ -211,8 +227,8 @@
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-09-20T20:11:53Z"
+        "CreateDate": "2023-11-01T18:50:13Z"
     }
 }
