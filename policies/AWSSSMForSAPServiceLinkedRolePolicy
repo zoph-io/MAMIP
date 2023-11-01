@@ -4,14 +4,23 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "DescribeInstanceActions",
                     "Effect": "Allow",
                     "Action": [
                         "ec2:DescribeInstances",
-                        "ssm:GetCommandInvocation"
+                        "ssm:GetCommandInvocation",
+                        "ssm:DescribeInstanceInformation"
                     ],
                     "Resource": "*"
                 },
                 {
+                    "Sid": "DescribeInstanceStatus",
+                    "Effect": "Allow",
+                    "Action": "ec2:DescribeInstanceStatus",
+                    "Resource": "*"
+                },
+                {
+                    "Sid": "TargetRuleActions",
                     "Effect": "Allow",
                     "Action": [
                         "events:DeleteRule",
@@ -26,6 +35,7 @@
                     ]
                 },
                 {
+                    "Sid": "DocumentActions",
                     "Effect": "Allow",
                     "Action": [
                         "ssm:DescribeDocument",
@@ -38,27 +48,47 @@
                     ]
                 },
                 {
+                    "Sid": "CustomerSendCommand",
                     "Effect": "Allow",
                     "Action": "ssm:SendCommand",
-                    "Resource": [
-                        "arn:*:ec2:*:*:instance/*"
-                    ],
+                    "Resource": "arn:*:ec2:*:*:instance/*",
                     "Condition": {
                         "StringEqualsIgnoreCase": {
-                            "ssm:resourceTag/SSMForSAPManaged": [
-                                "True"
-                            ]
+                            "ssm:resourceTag/SSMForSAPManaged": "True"
                         }
                     }
                 },
                 {
+                    "Sid": "InstanceTagActions",
                     "Effect": "Allow",
                     "Action": [
-                        "servicecatalog:GetApplication"
+                        "ec2:CreateTags",
+                        "ec2:DeleteTags"
                     ],
+                    "Resource": "arn:*:ec2:*:*:instance/*",
+                    "Condition": {
+                        "Null": {
+                            "aws:RequestTag/awsApplication": "false"
+                        },
+                        "StringEqualsIgnoreCase": {
+                            "ec2:ResourceTag/SSMForSAPManaged": "True"
+                        }
+                    }
+                },
+                {
+                    "Sid": "DescribeTag",
+                    "Effect": "Allow",
+                    "Action": "ec2:DescribeTags",
+                    "Resource": "*"
+                },
+                {
+                    "Sid": "GetApplication",
+                    "Effect": "Allow",
+                    "Action": "servicecatalog:GetApplication",
                     "Resource": "arn:*:servicecatalog:*:*:*"
                 },
                 {
+                    "Sid": "DeleteApplication",
                     "Effect": "Allow",
                     "Action": "servicecatalog:DeleteApplication",
                     "Resource": "arn:*:servicecatalog:*:*:*",
@@ -69,6 +99,7 @@
                     }
                 },
                 {
+                    "Sid": "CreateApplication",
                     "Effect": "Allow",
                     "Action": [
                         "servicecatalog:TagResource",
@@ -82,6 +113,7 @@
                     }
                 },
                 {
+                    "Sid": "CreateServiceLinkedRole",
                     "Effect": "Allow",
                     "Action": "iam:CreateServiceLinkedRole",
                     "Resource": "arn:*:iam::*:role/aws-service-role/servicecatalog-appregistry.amazonaws.com/AWSServiceRoleForAWSServiceCatalogAppRegistry",
@@ -92,6 +124,7 @@
                     }
                 },
                 {
+                    "Sid": "PutMetricData",
                     "Effect": "Allow",
                     "Action": "cloudwatch:PutMetricData",
                     "Resource": "*",
@@ -105,6 +138,7 @@
                     }
                 },
                 {
+                    "Sid": "CreateAttributeGroup",
                     "Effect": "Allow",
                     "Action": "servicecatalog:CreateAttributeGroup",
                     "Resource": "arn:*:servicecatalog:*:*:/attribute-groups/*",
@@ -115,11 +149,13 @@
                     }
                 },
                 {
+                    "Sid": "GetAttributeGroup",
                     "Effect": "Allow",
                     "Action": "servicecatalog:GetAttributeGroup",
                     "Resource": "arn:*:servicecatalog:*:*:/attribute-groups/*"
                 },
                 {
+                    "Sid": "DeleteAttributeGroup",
                     "Effect": "Allow",
                     "Action": "servicecatalog:DeleteAttributeGroup",
                     "Resource": "arn:*:servicecatalog:*:*:/attribute-groups/*",
@@ -130,6 +166,7 @@
                     }
                 },
                 {
+                    "Sid": "AttributeGroupActions",
                     "Effect": "Allow",
                     "Action": [
                         "servicecatalog:AssociateAttributeGroup",
@@ -143,11 +180,13 @@
                     }
                 },
                 {
+                    "Sid": "ListAssociatedAttributeGroups",
                     "Effect": "Allow",
                     "Action": "servicecatalog:ListAssociatedAttributeGroups",
                     "Resource": "arn:*:servicecatalog:*:*:*"
                 },
                 {
+                    "Sid": "CreateGroup",
                     "Effect": "Allow",
                     "Action": [
                         "resource-groups:CreateGroup",
@@ -166,11 +205,13 @@
                     }
                 },
                 {
+                    "Sid": "GetGroup",
                     "Effect": "Allow",
                     "Action": "resource-groups:GetGroup",
                     "Resource": "arn:*:resource-groups:*:*:group/SystemsManagerForSAP-*"
                 },
                 {
+                    "Sid": "DeleteGroup",
                     "Effect": "Allow",
                     "Action": "resource-groups:DeleteGroup",
                     "Resource": "arn:*:resource-groups:*:*:group/SystemsManagerForSAP-*",
@@ -182,8 +223,8 @@
                 }
             ]
         },
-        "VersionId": "v3",
+        "VersionId": "v4",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-07-31T22:33:25Z"
+        "CreateDate": "2023-10-31T23:39:16Z"
     }
 }
