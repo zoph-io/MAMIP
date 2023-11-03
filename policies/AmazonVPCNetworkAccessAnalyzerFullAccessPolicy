@@ -64,8 +64,8 @@
                         "ec2:DeleteTags"
                     ],
                     "Resource": [
-                        "arn:*:ec2:*:*:network-insights-access-scope/nis-*",
-                        "arn:*:ec2:*:*:network-insights-access-scope-analysis/nisa-*"
+                        "arn:*:ec2:*:*:network-insights-access-scope/*",
+                        "arn:*:ec2:*:*:network-insights-access-scope-analysis/*"
                     ]
                 },
                 {
@@ -131,8 +131,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-06-15T22:56:58Z"
+        "CreateDate": "2023-11-03T19:31:09Z"
     }
 }
