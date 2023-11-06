@@ -25,7 +25,8 @@
                         "amplify:ListApps",
                         "cloudformation:ListStacks",
                         "ssm:DescribeParameters",
-                        "appsync:GetIntrospectionSchema"
+                        "appsync:GetIntrospectionSchema",
+                        "amplify:GetBackendEnvironment"
                     ],
                     "Resource": [
                         "*"
@@ -103,8 +104,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
-        "IsDefaultVersion": false,
-        "CreateDate": "2023-10-06T21:32:59Z"
+        "VersionId": "v2",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-11-06T20:08:59Z"
     }
 }
