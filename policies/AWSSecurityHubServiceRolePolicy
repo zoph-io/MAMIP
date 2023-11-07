@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "SecurityHubServiceRolePermissions",
                     "Effect": "Allow",
                     "Action": [
                         "cloudtrail:DescribeTrails",
@@ -22,6 +23,7 @@
                         "iam:GenerateCredentialReport",
                         "organizations:ListAccounts",
                         "config:PutEvaluations",
+                        "tag:GetResources",
                         "iam:GetCredentialReport",
                         "organizations:DescribeAccount",
                         "organizations:DescribeOrganization",
@@ -51,6 +53,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "SecurityHubServiceRoleConfigPermissions",
                     "Effect": "Allow",
                     "Action": [
                         "config:PutConfigRule",
@@ -60,6 +63,7 @@
                     "Resource": "arn:aws:config:*:*:config-rule/aws-service-rule/*securityhub*"
                 },
                 {
+                    "Sid": "SecurityHubServiceRoleOrganizationsPermissions",
                     "Effect": "Allow",
                     "Action": [
                         "organizations:ListDelegatedAdministrators"
@@ -75,8 +79,8 @@
                 }
             ]
         },
-        "VersionId": "v12",
+        "VersionId": "v13",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-09-27T15:38:37Z"
+        "CreateDate": "2023-11-07T00:53:28Z"
     }
 }
