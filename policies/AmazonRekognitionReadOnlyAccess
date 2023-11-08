@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "AmazonRekognitionReadOnlyAccess",
                     "Effect": "Allow",
                     "Action": [
                         "rekognition:CompareFaces",
@@ -38,14 +39,16 @@
                         "rekognition:ListProjectPolicies",
                         "rekognition:ListUsers",
                         "rekognition:SearchUsers",
-                        "rekognition:SearchUsersByImage"
+                        "rekognition:SearchUsersByImage",
+                        "rekognition:GetMediaAnalysisJob",
+                        "rekognition:ListMediaAnalysisJobs"
                     ],
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v9",
+        "VersionId": "v10",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-07-24T19:04:30Z"
+        "CreateDate": "2023-11-08T18:30:22Z"
     }
 }
