@@ -1,6 +1,6 @@
 ## AWS Access Analyzer - Findings - 2023-11-10
 
-- Policies analyzed: `1138`
+- Policies analyzed: `1139`
 - Errors: `12`
   - [`AWSIPAMServiceRolePolicy`](./AWSIPAMServiceRolePolicy.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
