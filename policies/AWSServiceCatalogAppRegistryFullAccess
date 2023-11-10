@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "AppRegistryUpdateStack",
                     "Effect": "Allow",
                     "Action": [
                         "cloudformation:UpdateStack"
@@ -16,6 +17,7 @@
                     }
                 },
                 {
+                    "Sid": "AppRegistryResourceGroupsIntegration",
                     "Effect": "Allow",
                     "Action": [
                         "resource-groups:CreateGroup",
@@ -24,7 +26,9 @@
                         "resource-groups:GetTags",
                         "resource-groups:Tag",
                         "resource-groups:Untag",
-                        "resource-groups:GetGroupConfiguration"
+                        "resource-groups:GetGroupConfiguration",
+                        "resource-groups:AssociateResource",
+                        "resource-groups:DisassociateResource"
                     ],
                     "Resource": "arn:aws:resource-groups:*:*:group/AWS_*",
                     "Condition": {
@@ -34,6 +38,7 @@
                     }
                 },
                 {
+                    "Sid": "AppRegistryServiceLinkedRole",
                     "Effect": "Allow",
                     "Action": "iam:CreateServiceLinkedRole",
                     "Resource": "arn:aws:iam::*:role/aws-service-role/servicecatalog-appregistry.amazonaws.com/AWSServiceRoleForAWSServiceCatalogAppRegistry*",
@@ -44,6 +49,7 @@
                     }
                 },
                 {
+                    "Sid": "AppRegistryOperations",
                     "Effect": "Allow",
                     "Action": [
                         "cloudformation:DescribeStacks",
@@ -72,6 +78,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "AppRegistryResourceTagging",
                     "Effect": "Allow",
                     "Action": [
                         "servicecatalog:ListTagsForResource",
@@ -82,8 +89,8 @@
                 }
             ]
         },
-        "VersionId": "v4",
-        "IsDefaultVersion": false,
-        "CreateDate": "2022-11-17T18:13:10Z"
+        "VersionId": "v5",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-11-10T17:06:21Z"
     }
 }
