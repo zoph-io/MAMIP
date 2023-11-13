@@ -4,17 +4,20 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "AllowEc2Actions",
                     "Effect": "Allow",
                     "Action": [
                         "ec2:RebootInstances",
                         "ec2:SendSpotInstanceInterruptions",
                         "ec2:StartInstances",
                         "ec2:StopInstances",
-                        "ec2:TerminateInstances"
+                        "ec2:TerminateInstances",
+                        "ec2:DescribeInstances"
                     ],
                     "Resource": "arn:aws:ec2:*:*:instance/*"
                 },
                 {
+                    "Sid": "AllowEc2InstancesWithEncryptedEbsVolumes",
                     "Effect": "Allow",
                     "Action": [
                         "kms:CreateGrant"
@@ -32,6 +35,7 @@
                     }
                 },
                 {
+                    "Sid": "AllowSSMSendOnEc2",
                     "Effect": "Allow",
                     "Action": [
                         "ssm:SendCommand"
@@ -42,6 +46,7 @@
                     ]
                 },
                 {
+                    "Sid": "AllowSSMStopOnEc2",
                     "Effect": "Allow",
                     "Action": [
                         "ssm:CancelCommand",
@@ -51,8 +56,8 @@
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-06-02T23:01:50Z"
+        "CreateDate": "2023-11-13T16:39:49Z"
     }
 }
