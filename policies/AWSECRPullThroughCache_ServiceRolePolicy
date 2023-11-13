@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "ECR",
                     "Effect": "Allow",
                     "Action": [
                         "ecr:GetAuthorizationToken",
@@ -14,11 +15,24 @@
                         "ecr:PutImage"
                     ],
                     "Resource": "*"
+                },
+                {
+                    "Sid": "SecretsManager",
+                    "Effect": "Allow",
+                    "Action": [
+                        "secretsmanager:GetSecretValue"
+                    ],
+                    "Resource": "arn:aws:secretsmanager:*:*:secret:ecr-pullthroughcache/*",
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-11-26T21:51:09Z"
+        "CreateDate": "2023-11-13T15:23:16Z"
     }
 }
