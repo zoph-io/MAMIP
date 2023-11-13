@@ -1,0 +1,41 @@
+[
+    {
+        "findingDetails": "The condition key iottwinmaker:linkedServices does not exist in the service iottwinmaker. Use a valid condition key.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_SERVICE_CONDITION_KEY",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-condition-key",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 3
+                    },
+                    {
+                        "value": "Condition"
+                    },
+                    {
+                        "value": "ForAnyValue:StringEquals"
+                    },
+                    {
+                        "key": "iottwinmaker:linkedServices"
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 954,
+                        "line": 1,
+                        "offset": 954
+                    },
+                    "start": {
+                        "column": 925,
+                        "line": 1,
+                        "offset": 925
+                    }
+                }
+            }
+        ]
+    }
+]
