@@ -1,6 +1,6 @@
-## AWS Access Analyzer - Findings - 2023-11-13
+## AWS Access Analyzer - Findings - 2023-11-14
 
-- Policies analyzed: `1142`
+- Policies analyzed: `1143`
 - Errors: `14`
   - [`AWSServiceRoleForIoTSiteWise`](./AWSServiceRoleForIoTSiteWise.json)
   - [`AWSIPAMServiceRolePolicy`](./AWSIPAMServiceRolePolicy.json)
