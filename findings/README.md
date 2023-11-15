@@ -1,11 +1,12 @@
 ## AWS Access Analyzer - Findings - 2023-11-15
 
 - Policies analyzed: `1144`
-- Errors: `14`
+- Errors: `15`
   - [`AWSServiceRoleForIoTSiteWise`](./AWSServiceRoleForIoTSiteWise.json)
   - [`AWSIPAMServiceRolePolicy`](./AWSIPAMServiceRolePolicy.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
   - [`AWSIoTTwinMakerServiceRolePolicy`](./AWSIoTTwinMakerServiceRolePolicy.json)
+  - [`AmazonConnectServiceLinkedRolePolicy`](./AmazonConnectServiceLinkedRolePolicy.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
 - Sec_Warnings: `12`
   - [`IAMFullAccess`](./IAMFullAccess.json)
