@@ -1,0 +1,25 @@
+{
+    "PolicyVersion": {
+        "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Sid": "AccessGitRepos",
+                    "Effect": "Allow",
+                    "Action": [
+                        "codestar-connections:UseConnection"
+                    ],
+                    "Resource": "arn:aws:codestar-connections:*:*:connection/*",
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
+                }
+            ]
+        },
+        "VersionId": "v1",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-11-16T17:05:42Z"
+    }
+}
