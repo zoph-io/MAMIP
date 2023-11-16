@@ -39,7 +39,8 @@
                         "ssm:GetDocument"
                     ],
                     "Resource": [
-                        "arn:aws:ssm:*:*:document/AWSEC2-CreateVssSnapshot"
+                        "arn:aws:ssm:*:*:document/AWSEC2-CreateVssSnapshot",
+                        "arn:aws:ssm:*:*:document/AWSSystemsManagerSAP-CreateDLMSnapshotForSAPHANA"
                     ]
                 },
                 {
@@ -54,8 +55,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-10-31T20:29:44Z"
+        "CreateDate": "2023-11-16T22:31:54Z"
     }
 }
