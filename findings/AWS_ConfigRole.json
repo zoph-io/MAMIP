@@ -1,9 +1,9 @@
 [
     {
-        "findingDetails": "The 2 action(s) are redundant because they provide similar permissions. Update the policy to remove the redundant action such as: ecs:DescribeClusters.",
-        "findingType": "SUGGESTION",
-        "issueCode": "REDUNDANT_ACTION",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-action",
+        "findingDetails": "Using the iam:PassRole action with wildcards (*) in the resource can be overly permissive because it allows iam:PassRole permissions on multiple resources. We recommend that you specify resource ARNs or add the iam:PassedToService condition key to your statement.",
+        "findingType": "SECURITY_WARNING",
+        "issueCode": "PASS_ROLE_WITH_STAR_IN_RESOURCE",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-security-warning-pass-role-with-star-in-resource",
         "locations": [
             {
                 "path": [
@@ -17,19 +17,19 @@
                         "value": "Action"
                     },
                     {
-                        "index": 9
+                        "index": 48
                     }
                 ],
                 "span": {
                     "end": {
-                        "column": 326,
+                        "column": 1400,
                         "line": 1,
-                        "offset": 326
+                        "offset": 1400
                     },
                     "start": {
-                        "column": 304,
+                        "column": 1386,
                         "line": 1,
-                        "offset": 304
+                        "offset": 1386
                     }
                 }
             },
@@ -42,22 +42,19 @@
                         "index": 0
                     },
                     {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 10
+                        "value": "Resource"
                     }
                 ],
                 "span": {
                     "end": {
-                        "column": 343,
+                        "column": 75,
                         "line": 1,
-                        "offset": 343
+                        "offset": 75
                     },
                     "start": {
-                        "column": 328,
+                        "column": 72,
                         "line": 1,
-                        "offset": 328
+                        "offset": 72
                     }
                 }
             }
