@@ -4,11 +4,13 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "AmazonGuardDutyFullAccessSid1",
                     "Effect": "Allow",
                     "Action": "guardduty:*",
                     "Resource": "*"
                 },
                 {
+                    "Sid": "CreateServiceLinkedRoleSid1",
                     "Effect": "Allow",
                     "Action": "iam:CreateServiceLinkedRole",
                     "Resource": "*",
@@ -22,6 +24,7 @@
                     }
                 },
                 {
+                    "Sid": "ActionsForOrganizationsSid1",
                     "Effect": "Allow",
                     "Action": [
                         "organizations:EnableAWSServiceAccess",
@@ -30,19 +33,21 @@
                         "organizations:ListAWSServiceAccessForOrganization",
                         "organizations:DescribeOrganizationalUnit",
                         "organizations:DescribeAccount",
-                        "organizations:DescribeOrganization"
+                        "organizations:DescribeOrganization",
+                        "organizations:ListAccounts"
                     ],
                     "Resource": "*"
                 },
                 {
+                    "Sid": "IamGetRoleSid1",
                     "Effect": "Allow",
                     "Action": "iam:GetRole",
                     "Resource": "arn:aws:iam::*:role/*AWSServiceRoleForAmazonGuardDutyMalwareProtection"
                 }
             ]
         },
-        "VersionId": "v4",
+        "VersionId": "v5",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-07-26T18:28:01Z"
+        "CreateDate": "2023-11-16T23:04:21Z"
     }
 }
