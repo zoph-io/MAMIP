@@ -40,7 +40,8 @@
                         "appsync:StartSchemaCreation",
                         "appsync:UpdateResolver",
                         "appsync:ListFunctions",
-                        "appsync:UpdateFunction"
+                        "appsync:UpdateFunction",
+                        "appsync:UpdateApiKey"
                     ],
                     "Resource": [
                         "*"
@@ -73,7 +74,12 @@
                         "arn:aws:iam::*:role/cdk-*-file-publishing-role-*-*",
                         "arn:aws:iam::*:role/cdk-*-image-publishing-role-*-*",
                         "arn:aws:iam::*:role/cdk-*-lookup-role-*-*"
-                    ]
+                    ],
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
                 },
                 {
                     "Sid": "AmplifySSM",
@@ -85,7 +91,12 @@
                     ],
                     "Resource": [
                         "arn:aws:ssm:*:*:parameter/amplify/*"
-                    ]
+                    ],
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
                 },
                 {
                     "Sid": "AmplifyModifySSMParam",
@@ -104,8 +115,8 @@
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-11-06T20:08:59Z"
+        "CreateDate": "2023-11-17T23:27:43Z"
     }
 }
