@@ -1,0 +1,124 @@
+[
+    {
+        "findingDetails": "Using wildcards (*) in the action and the resource can allow creation of unintended service-linked roles because it allows iam:CreateServiceLinkedRole permissions on all resources. We recommend that you specify resource ARNs instead.",
+        "findingType": "WARNING",
+        "issueCode": "CREATE_SLR_WITH_STAR_IN_ACTION_AND_RESOURCE",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-general-warning-create-slr-with-star-in-action-and-resource",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 0
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 78,
+                        "line": 1,
+                        "offset": 78
+                    },
+                    "start": {
+                        "column": 71,
+                        "line": 1,
+                        "offset": 71
+                    }
+                }
+            },
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Resource"
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 436,
+                        "line": 1,
+                        "offset": 436
+                    },
+                    "start": {
+                        "column": 433,
+                        "line": 1,
+                        "offset": 433
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "Using wildcards (*) in the action and the resource can be overly permissive because it allows iam:PassRole permissions on all resources. We recommend that you specify resource ARNs or add the iam:PassedToService condition key to your statement.",
+        "findingType": "SECURITY_WARNING",
+        "issueCode": "PASS_ROLE_WITH_STAR_IN_ACTION_AND_RESOURCE",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-security-warning-pass-role-with-star-in-action-and-resource",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 0
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 78,
+                        "line": 1,
+                        "offset": 78
+                    },
+                    "start": {
+                        "column": 71,
+                        "line": 1,
+                        "offset": 71
+                    }
+                }
+            },
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Resource"
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 436,
+                        "line": 1,
+                        "offset": 436
+                    },
+                    "start": {
+                        "column": 433,
+                        "line": 1,
+                        "offset": 433
+                    }
+                }
+            }
+        ]
+    }
+]
