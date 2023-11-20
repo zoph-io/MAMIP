@@ -1,6 +1,6 @@
-## AWS Access Analyzer - Findings - 2023-11-18
+## AWS Access Analyzer - Findings - 2023-11-20
 
-- Policies analyzed: `1147`
+- Policies analyzed: `1148`
 - Errors: `14`
   - [`AWSIoTTwinMakerServiceRolePolicy`](./AWSIoTTwinMakerServiceRolePolicy.json)
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
