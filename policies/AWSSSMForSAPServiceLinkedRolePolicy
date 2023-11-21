@@ -223,11 +223,47 @@
                             "aws:ResourceTag/SSMForSAPCreated": "True"
                         }
                     }
+                },
+                {
+                    "Sid": "CreateAppTagResourceGroup",
+                    "Effect": "Allow",
+                    "Action": [
+                        "resource-groups:CreateGroup"
+                    ],
+                    "Resource": "arn:*:resource-groups:*:*:group/AWS_AppRegistry_AppTag_*",
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:RequestTag/EnableAWSServiceCatalogAppRegistry": "true"
+                        }
+                    }
+                },
+                {
+                    "Sid": "TagAppTagResourceGroup",
+                    "Effect": "Allow",
+                    "Action": [
+                        "resource-groups:Tag"
+                    ],
+                    "Resource": "arn:*:resource-groups:*:*:group/AWS_AppRegistry_AppTag_*",
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/EnableAWSServiceCatalogAppRegistry": "true"
+                        }
+                    }
+                },
+                {
+                    "Sid": "GetAppTagResourceGroupConfig",
+                    "Effect": "Allow",
+                    "Action": [
+                        "resource-groups:GetGroupConfiguration"
+                    ],
+                    "Resource": [
+                        "arn:*:resource-groups:*:*:group/AWS_AppRegistry_AppTag_*"
+                    ]
                 }
             ]
         },
-        "VersionId": "v5",
+        "VersionId": "v6",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-11-17T21:22:26Z"
+        "CreateDate": "2023-11-21T03:35:14Z"
     }
 }
