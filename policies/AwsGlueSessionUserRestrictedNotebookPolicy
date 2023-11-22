@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "NotebokAllowActions0",
                     "Effect": "Allow",
                     "Action": [
                         "glue:CreateSession"
@@ -23,6 +24,18 @@
                     }
                 },
                 {
+                    "Sid": "NotebookAllowActions1",
+                    "Effect": "Allow",
+                    "Action": [
+                        "glue:StartCompletion",
+                        "glue:GetCompletion"
+                    ],
+                    "Resource": [
+                        "arn:aws:glue:*:*:completion/*"
+                    ]
+                },
+                {
+                    "Sid": "NotebookAllowActions2",
                     "Effect": "Allow",
                     "Action": [
                         "glue:RunStatement",
@@ -43,6 +56,7 @@
                     }
                 },
                 {
+                    "Sid": "NotebookAllowActions3",
                     "Effect": "Allow",
                     "Action": [
                         "glue:ListSessions"
@@ -52,6 +66,7 @@
                     ]
                 },
                 {
+                    "Sid": "NotebookDenyActions",
                     "Effect": "Deny",
                     "Action": [
                         "glue:TagResource",
@@ -71,6 +86,7 @@
                     }
                 },
                 {
+                    "Sid": "NotebookPassRole",
                     "Effect": "Allow",
                     "Action": [
                         "iam:PassRole"
@@ -88,8 +104,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-04-18T15:24:56Z"
+        "CreateDate": "2023-11-22T01:32:43Z"
     }
 }
