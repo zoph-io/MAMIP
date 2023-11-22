@@ -1,11 +1,9 @@
-## AWS Access Analyzer - Findings - 2023-11-21
+## AWS Access Analyzer - Findings - 2023-11-22
 
 - Policies analyzed: `1148`
-- Errors: `14`
-  - [`AWSIoTTwinMakerServiceRolePolicy`](./AWSIoTTwinMakerServiceRolePolicy.json)
+- Errors: `12`
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AWSIPAMServiceRolePolicy`](./AWSIPAMServiceRolePolicy.json)
-  - [`AWSServiceRoleForIoTSiteWise`](./AWSServiceRoleForIoTSiteWise.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
 - Sec_Warnings: `12`
   - [`AmazonElasticMapReduceRole`](./AmazonElasticMapReduceRole.json)
