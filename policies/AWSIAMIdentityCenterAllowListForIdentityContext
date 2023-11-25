@@ -64,14 +64,16 @@
                         "glue:DeleteColumnStatisticsForTable",
                         "glue:UpdateColumnStatisticsForPartition",
                         "glue:UpdateColumnStatisticsForTable",
-                        "lakeformation:GetDataAccess"
+                        "lakeformation:GetDataAccess",
+                        "s3:GetAccessGrantsInstanceForPrefix",
+                        "s3:GetDataAccess"
                     ],
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-11-08T15:21:33Z"
+        "CreateDate": "2023-11-25T19:27:00Z"
     }
 }
