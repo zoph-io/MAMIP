@@ -4,16 +4,18 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
-                    "Action": [
-                        "logs:*"
-                    ],
+                    "Sid": "CloudWatchLogsFullAccess",
                     "Effect": "Allow",
+                    "Action": [
+                        "logs:*",
+                        "cloudwatch:GenerateQuery"
+                    ],
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2015-02-06T18:40:02Z"
+        "CreateDate": "2023-11-26T18:12:09Z"
     }
 }
