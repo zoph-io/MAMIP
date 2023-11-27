@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "DRSAgentPolicy1",
                     "Effect": "Allow",
                     "Action": [
                         "drs:SendAgentMetricsForDrs",
@@ -21,6 +22,7 @@
                     "Resource": "arn:aws:drs:*:*:source-server/${aws:SourceIdentity}"
                 },
                 {
+                    "Sid": "DRSAgentPolicy2",
                     "Effect": "Allow",
                     "Action": [
                         "drs:GetAgentInstallationAssetsForDrs"
@@ -29,8 +31,8 @@
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-03-27T13:47:48Z"
+        "CreateDate": "2023-11-27T13:44:15Z"
     }
 }
