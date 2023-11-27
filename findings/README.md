@@ -1,4 +1,4 @@
-## AWS Access Analyzer - Findings - 2023-11-26
+## AWS Access Analyzer - Findings - 2023-11-27
 
 - Policies analyzed: `1151`
 - Errors: `11`
