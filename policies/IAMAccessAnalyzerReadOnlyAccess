@@ -4,8 +4,11 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "IAMAccessAnalyzerReadOnlyAccess",
                     "Effect": "Allow",
                     "Action": [
+                        "access-analyzer:CheckAccessNotGranted",
+                        "access-analyzer:CheckNoNewAccess",
                         "access-analyzer:Get*",
                         "access-analyzer:List*",
                         "access-analyzer:ValidatePolicy"
@@ -14,8 +17,8 @@
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-03-16T20:37:30Z"
+        "CreateDate": "2023-11-27T02:24:16Z"
     }
 }
