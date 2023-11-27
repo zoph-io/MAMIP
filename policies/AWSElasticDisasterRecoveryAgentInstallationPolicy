@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "DRSAgentInstallationPolicy1",
                     "Effect": "Allow",
                     "Action": [
                         "drs:GetAgentInstallationAssetsForDrs",
@@ -17,6 +18,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "DRSAgentInstallationPolicy2",
                     "Effect": "Allow",
                     "Action": "drs:TagResource",
                     "Resource": "arn:aws:drs:*:*:source-server/*",
@@ -27,6 +29,7 @@
                     }
                 },
                 {
+                    "Sid": "DRSAgentInstallationPolicy3",
                     "Effect": "Allow",
                     "Action": "drs:TagResource",
                     "Resource": "arn:aws:drs:*:*:source-server/*",
@@ -37,6 +40,7 @@
                     }
                 },
                 {
+                    "Sid": "DRSAgentInstallationPolicy4",
                     "Effect": "Allow",
                     "Action": "drs:TagResource",
                     "Resource": "arn:aws:drs:*:*:source-network/*",
@@ -47,14 +51,15 @@
                     }
                 },
                 {
+                    "Sid": "DRSAgentInstallationPolicy5",
                     "Effect": "Allow",
                     "Action": "drs:IssueAgentCertificateForDrs",
                     "Resource": "arn:aws:drs:*:*:source-server/*"
                 }
             ]
         },
-        "VersionId": "v5",
-        "IsDefaultVersion": false,
-        "CreateDate": "2023-10-25T08:11:51Z"
+        "VersionId": "v6",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-11-27T12:38:51Z"
     }
 }
