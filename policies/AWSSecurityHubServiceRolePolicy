@@ -33,6 +33,7 @@
                         "securityhub:BatchDisableStandards",
                         "securityhub:BatchEnableStandards",
                         "securityhub:BatchUpdateStandardsControlAssociations",
+                        "securityhub:BatchGetSecurityControls",
                         "securityhub:BatchGetStandardsControlAssociations",
                         "securityhub:CreateMembers",
                         "securityhub:DeleteMembers",
@@ -40,6 +41,7 @@
                         "securityhub:DescribeOrganizationConfiguration",
                         "securityhub:DescribeStandards",
                         "securityhub:DescribeStandardsControls",
+                        "securityhub:DisassociateFromAdministratorAccount",
                         "securityhub:DisassociateMembers",
                         "securityhub:DisableSecurityHub",
                         "securityhub:EnableSecurityHub",
@@ -47,6 +49,7 @@
                         "securityhub:ListStandardsControlAssociations",
                         "securityhub:ListSecurityControlDefinitions",
                         "securityhub:UpdateOrganizationConfiguration",
+                        "securityhub:UpdateSecurityControl",
                         "securityhub:UpdateSecurityHubConfiguration",
                         "securityhub:UpdateStandardsControl"
                     ],
@@ -79,8 +82,8 @@
                 }
             ]
         },
-        "VersionId": "v13",
+        "VersionId": "v14",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-11-07T00:53:28Z"
+        "CreateDate": "2023-11-27T03:46:47Z"
     }
 }
