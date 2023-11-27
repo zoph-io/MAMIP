@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "ListResourcesAssociatedWithFSxFileSystem",
                     "Effect": "Allow",
                     "Action": [
                         "cloudwatch:DescribeAlarms",
@@ -22,6 +23,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "FullAccessToFSx",
                     "Effect": "Allow",
                     "Action": [
                         "fsx:AssociateFileGateway",
@@ -52,6 +54,7 @@
                         "fsx:DescribeFileCaches",
                         "fsx:DescribeFileSystemAliases",
                         "fsx:DescribeFileSystems",
+                        "fsx:DescribeSharedVpcConfiguration",
                         "fsx:DescribeSnapshots",
                         "fsx:DescribeStorageVirtualMachines",
                         "fsx:DescribeVolumes",
@@ -66,6 +69,7 @@
                         "fsx:UpdateDataRepositoryAssociation",
                         "fsx:UpdateFileCache",
                         "fsx:UpdateFileSystem",
+                        "fsx:UpdateSharedVpcConfiguration",
                         "fsx:UpdateSnapshot",
                         "fsx:UpdateStorageVirtualMachine",
                         "fsx:UpdateVolume"
@@ -73,6 +77,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "CreateFSxSLR",
                     "Effect": "Allow",
                     "Action": "iam:CreateServiceLinkedRole",
                     "Resource": "*",
@@ -85,6 +90,7 @@
                     }
                 },
                 {
+                    "Sid": "CreateSLRForLustreS3Integration",
                     "Effect": "Allow",
                     "Action": "iam:CreateServiceLinkedRole",
                     "Resource": "*",
@@ -97,6 +103,7 @@
                     }
                 },
                 {
+                    "Sid": "CreateTags",
                     "Effect": "Allow",
                     "Action": [
                         "ec2:CreateTags"
@@ -117,8 +124,8 @@
                 }
             ]
         },
-        "VersionId": "v7",
+        "VersionId": "v8",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-07-13T18:44:50Z"
+        "CreateDate": "2023-11-27T04:16:50Z"
     }
 }
