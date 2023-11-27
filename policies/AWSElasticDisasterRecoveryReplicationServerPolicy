@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "DRSReplicationServerPolicy1",
                     "Effect": "Allow",
                     "Action": [
                         "drs:SendClientMetricsForDrs",
@@ -12,6 +13,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "DRSReplicationServerPolicy2",
                     "Effect": "Allow",
                     "Action": [
                         "drs:GetChannelCommandsForDrs",
@@ -20,6 +22,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "DRSReplicationServerPolicy3",
                     "Effect": "Allow",
                     "Action": [
                         "drs:GetAgentSnapshotCreditsForDrs",
@@ -38,6 +41,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "DRSReplicationServerPolicy4",
                     "Effect": "Allow",
                     "Action": [
                         "ec2:DescribeInstances",
@@ -46,6 +50,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "DRSReplicationServerPolicy5",
                     "Effect": "Allow",
                     "Action": [
                         "ec2:CreateSnapshot"
@@ -58,6 +63,7 @@
                     }
                 },
                 {
+                    "Sid": "DRSReplicationServerPolicy6",
                     "Effect": "Allow",
                     "Action": [
                         "ec2:CreateSnapshot"
@@ -70,6 +76,7 @@
                     }
                 },
                 {
+                    "Sid": "DRSReplicationServerPolicy7",
                     "Effect": "Allow",
                     "Action": "ec2:CreateTags",
                     "Resource": "*",
@@ -81,8 +88,8 @@
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-07-10T12:34:15Z"
+        "CreateDate": "2023-11-27T13:28:14Z"
     }
 }

@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "DRSReadOnlyAccess1",
                     "Effect": "Allow",
                     "Action": [
                         "drs:DescribeJobLogItems",
@@ -23,6 +24,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "DRSReadOnlyAccess2",
                     "Effect": "Allow",
                     "Action": [
                         "ec2:DescribeInstances",
@@ -33,21 +35,25 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "DRSReadOnlyAccess4",
                     "Effect": "Allow",
                     "Action": "iam:ListRoles",
                     "Resource": "*"
                 },
                 {
+                    "Sid": "DRSReadOnlyAccess5",
                     "Effect": "Allow",
                     "Action": "ssm:ListCommandInvocations",
                     "Resource": "*"
                 },
                 {
+                    "Sid": "DRSReadOnlyAccess6",
                     "Effect": "Allow",
                     "Action": "ssm:GetParameter",
                     "Resource": "arn:aws:ssm:*:*:parameter/ManagedByAWSElasticDisasterRecovery-*"
                 },
                 {
+                    "Sid": "DRSReadOnlyAccess7",
                     "Effect": "Allow",
                     "Action": [
                         "ssm:DescribeDocument",
@@ -55,11 +61,17 @@
                     ],
                     "Resource": [
                         "arn:aws:ssm:*:*:document/AWS-CreateImage",
+                        "arn:aws:ssm:*:*:document/AWSMigration-ValidateNetworkConnectivity",
+                        "arn:aws:ssm:*:*:document/AWSMigration-VerifyMountedVolumes",
+                        "arn:aws:ssm:*:*:document/AWSMigration-ValidateHttpResponse",
+                        "arn:aws:ssm:*:*:document/AWSMigration-ValidateDiskSpace",
+                        "arn:aws:ssm:*:*:document/AWSMigration-VerifyProcessIsRunning",
                         "arn:aws:ssm:*:*:document/AWSMigration-LinuxTimeSyncSetting",
                         "arn:aws:ssm:*:*:document/AWSEC2-ApplicationInsightsCloudwatchAgentInstallAndConfigure"
                     ]
                 },
                 {
+                    "Sid": "DRSReadOnlyAccess8",
                     "Effect": "Allow",
                     "Action": [
                         "ssm:GetAutomationExecution"
@@ -73,8 +85,8 @@
                 }
             ]
         },
-        "VersionId": "v3",
-        "IsDefaultVersion": false,
-        "CreateDate": "2023-09-13T07:42:45Z"
+        "VersionId": "v4",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-11-27T13:03:00Z"
     }
 }

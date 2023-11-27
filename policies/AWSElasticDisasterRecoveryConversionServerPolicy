@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "DRSConversionServerPolicy1",
                     "Effect": "Allow",
                     "Action": [
                         "drs:SendClientMetricsForDrs",
@@ -12,6 +13,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "DRSConversionServerPolicy2",
                     "Effect": "Allow",
                     "Action": [
                         "drs:GetChannelCommandsForDrs",
@@ -21,8 +23,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-11-17T13:42:23Z"
+        "CreateDate": "2023-11-27T13:13:38Z"
     }
 }

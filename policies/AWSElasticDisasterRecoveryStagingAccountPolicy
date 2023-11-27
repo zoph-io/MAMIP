@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "DRSStagingAccountPolicy1",
                     "Effect": "Allow",
                     "Action": [
                         "drs:DescribeSourceServers",
@@ -16,6 +17,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "DRSStagingAccountPolicy2",
                     "Effect": "Allow",
                     "Action": [
                         "ec2:ModifySnapshotAttribute"
@@ -32,8 +34,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
-        "IsDefaultVersion": false,
-        "CreateDate": "2022-05-26T09:49:18Z"
+        "VersionId": "v2",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-11-27T13:07:49Z"
     }
 }

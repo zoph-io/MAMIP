@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "DRSRecoveryInstancePolicy1",
                     "Effect": "Allow",
                     "Action": [
                         "drs:SendAgentMetricsForDrs",
@@ -27,6 +28,7 @@
                     }
                 },
                 {
+                    "Sid": "DRSRecoveryInstancePolicy2",
                     "Effect": "Allow",
                     "Action": [
                         "drs:DescribeRecoveryInstances"
@@ -34,6 +36,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "DRSRecoveryInstancePolicy3",
                     "Effect": "Allow",
                     "Action": [
                         "ec2:DescribeInstanceTypes"
@@ -41,6 +44,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "DRSRecoveryInstancePolicy4",
                     "Effect": "Allow",
                     "Action": [
                         "drs:GetAgentInstallationAssetsForDrs",
@@ -50,6 +54,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "DRSRecoveryInstancePolicy5",
                     "Effect": "Allow",
                     "Action": [
                         "drs:TagResource"
@@ -62,6 +67,7 @@
                     }
                 },
                 {
+                    "Sid": "DRSRecoveryInstancePolicy6",
                     "Effect": "Allow",
                     "Action": [
                         "drs:SendAgentMetricsForDrs",
@@ -78,6 +84,7 @@
                     "Resource": "arn:aws:drs:*:*:source-server/*"
                 },
                 {
+                    "Sid": "DRSRecoveryInstancePolicy7",
                     "Effect": "Allow",
                     "Action": [
                         "sts:AssumeRole",
@@ -97,8 +104,8 @@
                 }
             ]
         },
-        "VersionId": "v3",
-        "IsDefaultVersion": false,
-        "CreateDate": "2023-05-14T07:32:48Z"
+        "VersionId": "v4",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-11-27T13:11:08Z"
     }
 }
