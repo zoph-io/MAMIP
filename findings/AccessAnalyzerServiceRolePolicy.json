@@ -1,0 +1,74 @@
+[
+    {
+        "findingDetails": "The service s3express:GetBucketPolicy specified in the action does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_SERVICE_IN_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 65
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 2046,
+                        "line": 1,
+                        "offset": 2046
+                    },
+                    "start": {
+                        "column": 2019,
+                        "line": 1,
+                        "offset": 2019
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The service s3express:ListAllMyDirectoryBuckets specified in the action does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_SERVICE_IN_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 66
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 2085,
+                        "line": 1,
+                        "offset": 2085
+                    },
+                    "start": {
+                        "column": 2048,
+                        "line": 1,
+                        "offset": 2048
+                    }
+                }
+            }
+        ]
+    }
+]
