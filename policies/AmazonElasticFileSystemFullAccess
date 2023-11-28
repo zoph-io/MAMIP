@@ -44,6 +44,7 @@
                         "elasticfilesystem:PutLifecycleConfiguration",
                         "elasticfilesystem:PutFileSystemPolicy",
                         "elasticfilesystem:UpdateFileSystem",
+                        "elasticfilesystem:UpdateFileSystemProtection",
                         "elasticfilesystem:TagResource",
                         "elasticfilesystem:UntagResource",
                         "elasticfilesystem:ListTagsForResource",
@@ -52,11 +53,13 @@
                         "kms:DescribeKey",
                         "kms:ListAliases"
                     ],
+                    "Sid": "ElasticFileSystemFullAccess",
                     "Effect": "Allow",
                     "Resource": "*"
                 },
                 {
                     "Action": "iam:CreateServiceLinkedRole",
+                    "Sid": "CreateServiceLinkedRoleForEFS",
                     "Effect": "Allow",
                     "Resource": "*",
                     "Condition": {
@@ -69,8 +72,8 @@
                 }
             ]
         },
-        "VersionId": "v8",
+        "VersionId": "v9",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-01-10T19:03:16Z"
+        "CreateDate": "2023-11-28T16:53:28Z"
     }
 }
