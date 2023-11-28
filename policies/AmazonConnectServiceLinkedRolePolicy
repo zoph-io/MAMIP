@@ -181,11 +181,25 @@
                             "cloudwatch:namespace": "AWS/Connect"
                         }
                     }
+                },
+                {
+                    "Sid": "AllowSMSVoiceOperationsForConnect",
+                    "Effect": "Allow",
+                    "Action": [
+                        "sms-voice:SendTextMessage",
+                        "sms-voice:DescribePhoneNumbers"
+                    ],
+                    "Resource": "arn:aws:sms-voice:*:*:phone-number/*",
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v13",
-        "IsDefaultVersion": false,
-        "CreateDate": "2023-11-15T22:04:36Z"
+        "VersionId": "v14",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-11-28T16:05:08Z"
     }
 }
