@@ -1,0 +1,21 @@
+{
+    "PolicyVersion": {
+        "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Sid": "ReadOnlyAccessStatementID",
+                    "Effect": "Allow",
+                    "Action": [
+                        "one:Get*",
+                        "one:List*"
+                    ],
+                    "Resource": "*"
+                }
+            ]
+        },
+        "VersionId": "v1",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-11-28T04:59:23Z"
+    }
+}
