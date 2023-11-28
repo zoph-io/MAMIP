@@ -98,7 +98,11 @@
                         "datazone:UpdateGlossaryTerm",
                         "datazone:UpdateProject",
                         "datazone:UpdateSubscriptionGrantStatus",
-                        "datazone:UpdateSubscriptionRequest"
+                        "datazone:UpdateSubscriptionRequest",
+                        "datazone:StartMetadataGenerationRun",
+                        "datazone:GetMetadataGenerationRun",
+                        "datazone:StopMetadataGenerationRun",
+                        "datazone:ListMetadataGenerationRuns"
                     ],
                     "Resource": "*"
                 },
@@ -110,8 +114,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-09-27T21:55:08Z"
+        "CreateDate": "2023-11-28T12:48:21Z"
     }
 }
