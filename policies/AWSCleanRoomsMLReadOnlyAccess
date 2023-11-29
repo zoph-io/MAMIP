@@ -1,0 +1,42 @@
+{
+    "PolicyVersion": {
+        "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Sid": "CleanRoomsConsoleNavigation",
+                    "Effect": "Allow",
+                    "Action": [
+                        "cleanrooms:GetCollaboration",
+                        "cleanrooms:GetConfiguredAudienceModelAssociation",
+                        "cleanrooms:GetMembership",
+                        "cleanrooms:ListAnalysisTemplates",
+                        "cleanrooms:ListCollaborationAnalysisTemplates",
+                        "cleanrooms:ListCollaborationConfiguredAudienceModelAssociations",
+                        "cleanrooms:ListCollaborations",
+                        "cleanrooms:ListConfiguredTableAssociations",
+                        "cleanrooms:ListConfiguredTables",
+                        "cleanrooms:ListMembers",
+                        "cleanrooms:ListMemberships",
+                        "cleanrooms:ListProtectedQueries",
+                        "cleanrooms:ListSchemas",
+                        "cleanrooms:ListTagsForResource"
+                    ],
+                    "Resource": "*"
+                },
+                {
+                    "Sid": "CleanRoomsMLRead",
+                    "Effect": "Allow",
+                    "Action": [
+                        "cleanrooms-ml:Get*",
+                        "cleanrooms-ml:List*"
+                    ],
+                    "Resource": "*"
+                }
+            ]
+        },
+        "VersionId": "v1",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-11-29T20:55:31Z"
+    }
+}
