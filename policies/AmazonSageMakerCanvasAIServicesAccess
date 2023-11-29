@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "Textract",
                     "Effect": "Allow",
                     "Action": [
                         "textract:AnalyzeDocument",
@@ -17,6 +18,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "Rekognition",
                     "Effect": "Allow",
                     "Action": [
                         "rekognition:DetectLabels",
@@ -25,6 +27,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "Comprehend",
                     "Effect": "Allow",
                     "Action": [
                         "comprehend:BatchDetectDominantLanguage",
@@ -38,17 +41,94 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "Bedrock",
                     "Effect": "Allow",
                     "Action": [
                         "bedrock:InvokeModel",
-                        "bedrock:ListFoundationModels"
+                        "bedrock:ListFoundationModels",
+                        "bedrock:InvokeModelWithResponseStream"
                     ],
                     "Resource": "*"
+                },
+                {
+                    "Sid": "CreateBedrockResourcesPermission",
+                    "Effect": "Allow",
+                    "Action": [
+                        "bedrock:CreateModelCustomizationJob",
+                        "bedrock:CreateProvisionedModelThroughput",
+                        "bedrock:TagResource"
+                    ],
+                    "Resource": [
+                        "arn:aws:bedrock:*:*:model-customization-job/*",
+                        "arn:aws:bedrock:*:*:custom-model/*",
+                        "arn:aws:bedrock:*:*:provisioned-model/*"
+                    ],
+                    "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "aws:TagKeys": [
+                                "SageMaker",
+                                "Canvas"
+                            ]
+                        },
+                        "StringEquals": {
+                            "aws:RequestTag/SageMaker": "true",
+                            "aws:RequestTag/Canvas": "true",
+                            "aws:ResourceTag/SageMaker": "true",
+                            "aws:ResourceTag/Canvas": "true"
+                        }
+                    }
+                },
+                {
+                    "Sid": "GetStopAndDeleteBedrockResourcesPermission",
+                    "Effect": "Allow",
+                    "Action": [
+                        "bedrock:GetModelCustomizationJob",
+                        "bedrock:GetCustomModel",
+                        "bedrock:GetProvisionedModelThroughput",
+                        "bedrock:StopModelCustomizationJob",
+                        "bedrock:DeleteProvisionedModelThroughput"
+                    ],
+                    "Resource": [
+                        "arn:aws:bedrock:*:*:model-customization-job/*",
+                        "arn:aws:bedrock:*:*:custom-model/*",
+                        "arn:aws:bedrock:*:*:provisioned-model/*"
+                    ],
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/SageMaker": "true",
+                            "aws:ResourceTag/Canvas": "true"
+                        }
+                    }
+                },
+                {
+                    "Sid": "FoundationModelPermission",
+                    "Effect": "Allow",
+                    "Action": [
+                        "bedrock:CreateModelCustomizationJob"
+                    ],
+                    "Resource": [
+                        "arn:aws:bedrock:*::foundation-model/*"
+                    ]
+                },
+                {
+                    "Sid": "BedrockFineTuningPassRole",
+                    "Effect": "Allow",
+                    "Action": [
+                        "iam:PassRole"
+                    ],
+                    "Resource": [
+                        "arn:aws:iam::*:role/*"
+                    ],
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:PassedToService": "bedrock.amazonaws.com"
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-09-30T00:15:02Z"
+        "CreateDate": "2023-11-29T14:47:09Z"
     }
 }
