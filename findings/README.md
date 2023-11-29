@@ -1,9 +1,10 @@
 ## AWS Access Analyzer - Findings - 2023-11-29
 
-- Policies analyzed: `1160`
-- Errors: `13`
+- Policies analyzed: `1161`
+- Errors: `16`
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AWSCleanRoomsMLReadOnlyAccess`](./AWSCleanRoomsMLReadOnlyAccess.json)
+  - [`AWSCleanRoomsMLFullAccess`](./AWSCleanRoomsMLFullAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
 - Sec_Warnings: `12`
   - [`AmazonElasticMapReduceRole`](./AmazonElasticMapReduceRole.json)
