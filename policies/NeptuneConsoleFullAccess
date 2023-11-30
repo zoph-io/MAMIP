@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "AllowNeptuneCreate",
                     "Effect": "Allow",
                     "Action": [
                         "rds:CreateDBCluster",
@@ -22,6 +23,7 @@
                     }
                 },
                 {
+                    "Sid": "AllowManagementPermissionsForRDS",
                     "Action": [
                         "rds:AddRoleToDBCluster",
                         "rds:AddSourceIdentifierToSubscription",
@@ -91,6 +93,7 @@
                     ]
                 },
                 {
+                    "Sid": "AllowOtherDepedentPermissions",
                     "Action": [
                         "cloudwatch:GetMetricStatistics",
                         "cloudwatch:ListMetrics",
@@ -158,6 +161,7 @@
                     ]
                 },
                 {
+                    "Sid": "AllowPassRoleForNeptune",
                     "Action": "iam:PassRole",
                     "Effect": "Allow",
                     "Resource": "*",
@@ -168,6 +172,7 @@
                     }
                 },
                 {
+                    "Sid": "AllowCreateSLRForNeptune",
                     "Action": "iam:CreateServiceLinkedRole",
                     "Effect": "Allow",
                     "Resource": "arn:aws:iam::*:role/aws-service-role/rds.amazonaws.com/AWSServiceRoleForRDS",
@@ -176,11 +181,61 @@
                             "iam:AWSServiceName": "rds.amazonaws.com"
                         }
                     }
+                },
+                {
+                    "Sid": "AllowManagementPermissionsForNeptuneAnalytics",
+                    "Effect": "Allow",
+                    "Action": [
+                        "neptune-graph:CreateGraph",
+                        "neptune-graph:DeleteGraph",
+                        "neptune-graph:GetGraph",
+                        "neptune-graph:ListGraphs",
+                        "neptune-graph:UpdateGraph",
+                        "neptune-graph:ResetGraph",
+                        "neptune-graph:CreateGraphSnapshot",
+                        "neptune-graph:DeleteGraphSnapshot",
+                        "neptune-graph:GetGraphSnapshot",
+                        "neptune-graph:ListGraphSnapshots",
+                        "neptune-graph:RestoreGraphFromSnapshot",
+                        "neptune-graph:CreatePrivateGraphEndpoint",
+                        "neptune-graph:GetPrivateGraphEndpoint",
+                        "neptune-graph:ListPrivateGraphEndpoints",
+                        "neptune-graph:DeletePrivateGraphEndpoint",
+                        "neptune-graph:CreateGraphUsingImportTask",
+                        "neptune-graph:GetImportTask",
+                        "neptune-graph:ListImportTasks",
+                        "neptune-graph:CancelImportTask"
+                    ],
+                    "Resource": [
+                        "arn:aws:neptune-graph:*:*:*"
+                    ]
+                },
+                {
+                    "Sid": "AllowPassRoleForNeptuneAnalytics",
+                    "Effect": "Allow",
+                    "Action": "iam:PassRole",
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:passedToService": "neptune-graph.amazonaws.com"
+                        }
+                    }
+                },
+                {
+                    "Sid": "AllowCreateSLRForNeptuneAnalytics",
+                    "Effect": "Allow",
+                    "Action": "iam:CreateServiceLinkedRole",
+                    "Resource": "arn:aws:iam::*:role/aws-service-role/neptune-graph.amazonaws.com/AWSServiceRoleForNeptuneGraph",
+                    "Condition": {
+                        "StringLike": {
+                            "iam:AWSServiceName": "neptune-graph.amazonaws.com"
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v4",
-        "IsDefaultVersion": false,
-        "CreateDate": "2020-09-02T17:25:07Z"
+        "VersionId": "v5",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-11-30T07:32:44Z"
     }
 }
