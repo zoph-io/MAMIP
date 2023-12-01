@@ -4,19 +4,23 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "AWSFinSpaceServiceRolePolicy",
                     "Effect": "Allow",
                     "Action": "cloudwatch:PutMetricData",
                     "Condition": {
                         "StringEquals": {
-                            "cloudwatch:namespace": "AWS/FinSpace"
+                            "cloudwatch:namespace": [
+                                "AWS/FinSpace",
+                                "AWS/Usage"
+                            ]
                         }
                     },
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v1",
-        "IsDefaultVersion": false,
-        "CreateDate": "2023-05-12T16:42:03Z"
+        "VersionId": "v2",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-12-01T21:05:00Z"
     }
 }
