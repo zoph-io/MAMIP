@@ -1,6 +1,6 @@
-## AWS Access Analyzer - Findings - 2023-12-01
+## AWS Access Analyzer - Findings - 2023-12-04
 
-- Policies analyzed: `1162`
+- Policies analyzed: `1160`
 - Errors: `11`
   - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
@@ -66,7 +66,7 @@
   - [`AWSConfigServiceRolePolicy`](./fails.txt)
   - [`ReadOnlyAccess`](./fails.txt)
   - [`AWSSupportServiceRolePolicy`](./fails.txt)
-- Deprecated: `54`
+- Deprecated: `56`
   - [`AmazonDataZonePreviewConsoleFullAccess`](../policies/AmazonDataZonePreviewConsoleFullAccess)
   - [`AWSLambdaReadOnlyAccess`](../policies/AWSLambdaReadOnlyAccess)
   - [`AmazonEC2ContainerServiceFullAccess`](../policies/AmazonEC2ContainerServiceFullAccess)
@@ -79,6 +79,7 @@
   - [`AmazonWorkLinkReadOnly`](../policies/AmazonWorkLinkReadOnly)
   - [`AmazonEC2RolePolicyForApplicationWizard`](../policies/AmazonEC2RolePolicyForApplicationWizard)
   - [`AWSBackupAdminPolicy`](../policies/AWSBackupAdminPolicy)
+  - [`AmazonDataZoneProjectDeploymentPermissionsBoundary`](../policies/AmazonDataZoneProjectDeploymentPermissionsBoundary)
   - [`AWSCloudTrailReadOnlyAccess`](../policies/AWSCloudTrailReadOnlyAccess)
   - [`AWSCloudTrailFullAccess`](../policies/AWSCloudTrailFullAccess)
   - [`AWSBudgetsActionsRolePolicyForResourceAdministrationWithSSM`](../policies/AWSBudgetsActionsRolePolicyForResourceAdministrationWithSSM)
@@ -98,6 +99,7 @@
   - [`AmazonEverestServicePolicy`](../policies/AmazonEverestServicePolicy)
   - [`AWSRoboMakerFullAccess`](../policies/AWSRoboMakerFullAccess)
   - [`TagGovernancePolicy`](../policies/TagGovernancePolicy)
+  - [`AmazonDataZoneProjectRolePermissionsBoundary`](../policies/AmazonDataZoneProjectRolePermissionsBoundary)
   - [`CheesepuffsServiceRolePolicy`](../policies/CheesepuffsServiceRolePolicy)
   - [`AmazonApplicationWizardFullaccess`](../policies/AmazonApplicationWizardFullaccess)
   - [`AmazonEC2SpotFleetRole`](../policies/AmazonEC2SpotFleetRole)
