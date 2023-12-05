@@ -4,11 +4,14 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "CloudWatchReadOnlyAccessPermissions",
                     "Effect": "Allow",
                     "Action": [
                         "application-autoscaling:DescribeScalingPolicies",
                         "autoscaling:Describe*",
+                        "cloudwatch:BatchGet*",
                         "cloudwatch:Describe*",
+                        "cloudwatch:GenerateQuery",
                         "cloudwatch:Get*",
                         "cloudwatch:List*",
                         "logs:Get*",
@@ -22,11 +25,20 @@
                         "logs:StopLiveTail",
                         "oam:ListSinks",
                         "sns:Get*",
-                        "sns:List*"
+                        "sns:List*",
+                        "rum:BatchGet*",
+                        "rum:Get*",
+                        "rum:List*",
+                        "synthetics:Describe*",
+                        "synthetics:Get*",
+                        "synthetics:List*",
+                        "xray:BatchGet*",
+                        "xray:Get*"
                     ],
                     "Resource": "*"
                 },
                 {
+                    "Sid": "OAMReadPermissions",
                     "Effect": "Allow",
                     "Action": [
                         "oam:ListAttachedLinks"
@@ -35,8 +47,8 @@
                 }
             ]
         },
-        "VersionId": "v7",
+        "VersionId": "v8",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-09-14T11:15:56Z"
+        "CreateDate": "2023-12-05T19:24:15Z"
     }
 }
