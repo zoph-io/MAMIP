@@ -1,0 +1,30 @@
+{
+    "PolicyVersion": {
+        "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Sid": "AmazonBedrockReadOnly",
+                    "Effect": "Allow",
+                    "Action": [
+                        "bedrock:GetFoundationModel",
+                        "bedrock:ListFoundationModels",
+                        "bedrock:GetModelInvocationLoggingConfiguration",
+                        "bedrock:GetProvisionedModelThroughput",
+                        "bedrock:ListProvisionedModelThroughputs",
+                        "bedrock:GetModelCustomizationJob",
+                        "bedrock:ListModelCustomizationJobs",
+                        "bedrock:ListCustomModels",
+                        "bedrock:GetCustomModel",
+                        "bedrock:ListTagsForResource",
+                        "bedrock:GetFoundationModelAvailability"
+                    ],
+                    "Resource": "*"
+                }
+            ]
+        },
+        "VersionId": "v1",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-12-06T15:48:19Z"
+    }
+}
