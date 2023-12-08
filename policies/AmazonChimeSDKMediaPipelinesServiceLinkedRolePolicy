@@ -4,6 +4,18 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "AllowPutMetricsForChimeSDKNamespace",
+                    "Effect": "Allow",
+                    "Action": "cloudwatch:PutMetricData",
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "cloudwatch:namespace": "AWS/ChimeSDK"
+                        }
+                    }
+                },
+                {
+                    "Sid": "AllowKinesisVideoStreamsAccess",
                     "Effect": "Allow",
                     "Action": [
                         "kinesisvideo:GetDataEndpoint",
@@ -17,6 +29,7 @@
                     ]
                 },
                 {
+                    "Sid": "AllowKinesisVideoStreamsListAccess",
                     "Effect": "Allow",
                     "Action": [
                         "kinesisvideo:ListStreams"
@@ -26,6 +39,7 @@
                     ]
                 },
                 {
+                    "Sid": "AllowChimeMeetingAccess",
                     "Effect": "Allow",
                     "Action": [
                         "chime:GetMeeting",
@@ -36,8 +50,8 @@
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-09-07T20:08:32Z"
+        "CreateDate": "2023-12-08T19:14:31Z"
     }
 }
