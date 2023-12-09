@@ -1,8 +1,7 @@
-## AWS Access Analyzer - Findings - 2023-12-08
+## AWS Access Analyzer - Findings - 2023-12-09
 
 - Policies analyzed: `1164`
-- Errors: `11`
-  - [`AWSQuicksightAthenaAccess`](./AWSQuicksightAthenaAccess.json)
+- Errors: `1`
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
 - Sec_Warnings: `11`
   - [`AWSElasticBeanstalkService`](./AWSElasticBeanstalkService.json)
