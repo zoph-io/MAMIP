@@ -64,7 +64,9 @@
                     "Action": [
                         "sagemaker:DeleteEndpointConfig",
                         "sagemaker:DeleteModel",
-                        "sagemaker:InvokeEndpoint"
+                        "sagemaker:InvokeEndpoint",
+                        "sagemaker:UpdateEndpointWeightsAndCapacities",
+                        "sagemaker:InvokeEndpointAsync"
                     ],
                     "Resource": [
                         "arn:aws:sagemaker:*:*:*Canvas*",
@@ -298,11 +300,47 @@
                             "application-autoscaling:scalable-dimension": "sagemaker:variant:DesiredInstanceCount"
                         }
                     }
+                },
+                {
+                    "Sid": "AsyncEndpointOperations",
+                    "Effect": "Allow",
+                    "Action": [
+                        "cloudwatch:DescribeAlarms",
+                        "sagemaker:DescribeEndpointConfig"
+                    ],
+                    "Resource": "*"
+                },
+                {
+                    "Sid": "SageMakerCloudWatchUpdate",
+                    "Effect": "Allow",
+                    "Action": [
+                        "cloudwatch:PutMetricAlarm",
+                        "cloudwatch:DeleteAlarms"
+                    ],
+                    "Resource": [
+                        "arn:aws:cloudwatch:*:*:alarm:TargetTracking*"
+                    ],
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:CalledViaLast": "application-autoscaling.amazonaws.com"
+                        }
+                    }
+                },
+                {
+                    "Sid": "AutoscalingSageMakerEndpointOperation",
+                    "Action": "iam:CreateServiceLinkedRole",
+                    "Effect": "Allow",
+                    "Resource": "arn:aws:iam::*:role/aws-service-role/sagemaker.application-autoscaling.amazonaws.com/AWSServiceRoleForApplicationAutoScaling_SageMakerEndpoint",
+                    "Condition": {
+                        "StringLike": {
+                            "iam:AWSServiceName": "sagemaker.application-autoscaling.amazonaws.com"
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v7",
+        "VersionId": "v8",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-09-30T00:15:42Z"
+        "CreateDate": "2023-12-09T00:58:33Z"
     }
 }
