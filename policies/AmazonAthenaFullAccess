@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "BaseAthenaPermissions",
                     "Effect": "Allow",
                     "Action": [
                         "athena:*"
@@ -13,6 +14,7 @@
                     ]
                 },
                 {
+                    "Sid": "BaseGluePermissions",
                     "Effect": "Allow",
                     "Action": [
                         "glue:CreateDatabase",
@@ -33,13 +35,17 @@
                         "glue:UpdatePartition",
                         "glue:GetPartition",
                         "glue:GetPartitions",
-                        "glue:BatchGetPartition"
+                        "glue:BatchGetPartition",
+                        "glue:StartColumnStatisticsTaskRun",
+                        "glue:GetColumnStatisticsTaskRun",
+                        "glue:GetColumnStatisticsTaskRuns"
                     ],
                     "Resource": [
                         "*"
                     ]
                 },
                 {
+                    "Sid": "BaseQueryResultsPermissions",
                     "Effect": "Allow",
                     "Action": [
                         "s3:GetBucketLocation",
@@ -57,6 +63,7 @@
                     ]
                 },
                 {
+                    "Sid": "BaseAthenaExamplesPermissions",
                     "Effect": "Allow",
                     "Action": [
                         "s3:GetObject",
@@ -67,6 +74,7 @@
                     ]
                 },
                 {
+                    "Sid": "BaseS3BucketPermissions",
                     "Effect": "Allow",
                     "Action": [
                         "s3:ListBucket",
@@ -78,6 +86,7 @@
                     ]
                 },
                 {
+                    "Sid": "BaseSNSPermissions",
                     "Effect": "Allow",
                     "Action": [
                         "sns:ListTopics",
@@ -88,6 +97,7 @@
                     ]
                 },
                 {
+                    "Sid": "BaseCloudWatchPermissions",
                     "Effect": "Allow",
                     "Action": [
                         "cloudwatch:PutMetricAlarm",
@@ -100,6 +110,7 @@
                     ]
                 },
                 {
+                    "Sid": "BaseLakeFormationPermissions",
                     "Effect": "Allow",
                     "Action": [
                         "lakeformation:GetDataAccess"
@@ -109,6 +120,7 @@
                     ]
                 },
                 {
+                    "Sid": "BasePricingPermissions",
                     "Effect": "Allow",
                     "Action": [
                         "pricing:GetProducts"
@@ -119,8 +131,8 @@
                 }
             ]
         },
-        "VersionId": "v9",
+        "VersionId": "v10",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-01-24T16:59:23Z"
+        "CreateDate": "2023-12-15T19:52:35Z"
     }
 }
