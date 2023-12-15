@@ -52,7 +52,8 @@
                         "ec2:DescribeSecurityGroups",
                         "ec2:DescribeSubnets",
                         "ec2:DescribeVpcs",
-                        "ec2:DescribeInternetGateways"
+                        "ec2:DescribeInternetGateways",
+                        "ec2:DescribeSnapshotTierStatus"
                     ],
                     "Resource": "*"
                 },
@@ -181,8 +182,7 @@
                     "Action": [
                         "ec2:DeleteSnapshot",
                         "ec2:DeleteTags",
-                        "ec2:RestoreSnapshotTier",
-                        "ec2:DescribeSnapshotTierStatus"
+                        "ec2:RestoreSnapshotTier"
                     ],
                     "Resource": "arn:aws:ec2:*::snapshot/*",
                     "Condition": {
@@ -425,8 +425,8 @@
                 }
             ]
         },
-        "VersionId": "v19",
-        "IsDefaultVersion": false,
-        "CreateDate": "2023-11-27T19:38:10Z"
+        "VersionId": "v20",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-12-15T22:05:32Z"
     }
 }

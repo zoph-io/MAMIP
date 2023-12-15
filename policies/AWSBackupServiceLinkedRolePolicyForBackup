@@ -82,6 +82,7 @@
                     "Effect": "Allow",
                     "Action": [
                         "ec2:DescribeSnapshots",
+                        "ec2:DescribeSnapshotTierStatus",
                         "ec2:DescribeImages",
                         "rds:DescribeDBSnapshots",
                         "rds:DescribeDBClusterSnapshots"
@@ -106,8 +107,7 @@
                     "Action": [
                         "ec2:DeregisterImage",
                         "ec2:DeleteSnapshot",
-                        "ec2:ModifySnapshotTier",
-                        "ec2:DescribeSnapshotTierStatus"
+                        "ec2:ModifySnapshotTier"
                     ],
                     "Resource": "*",
                     "Condition": {
@@ -331,8 +331,8 @@
                 }
             ]
         },
-        "VersionId": "v14",
-        "IsDefaultVersion": false,
-        "CreateDate": "2023-11-27T19:39:04Z"
+        "VersionId": "v15",
+        "IsDefaultVersion": true,
+        "CreateDate": "2023-12-15T22:06:53Z"
     }
 }
