@@ -64,7 +64,9 @@
                         "ec2:DescribeVpcs",
                         "ec2:DescribeNetworkAcls",
                         "ec2:DescribeRouteTables",
-                        "ec2:DescribeDhcpOptions"
+                        "ec2:DescribeDhcpOptions",
+                        "ec2:DescribeManagedPrefixLists",
+                        "ec2:GetManagedPrefixListEntries"
                     ],
                     "Resource": "*"
                 },
@@ -360,8 +362,8 @@
                 }
             ]
         },
-        "VersionId": "v4",
+        "VersionId": "v5",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-11-27T13:35:20Z"
+        "CreateDate": "2023-12-17T14:31:04Z"
     }
 }

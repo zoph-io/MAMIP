@@ -16,14 +16,16 @@
                         "ec2:DescribeRouteTables",
                         "ec2:DescribeAvailabilityZones",
                         "ec2:DescribeDhcpOptions",
-                        "ec2:DescribeInstances"
+                        "ec2:DescribeInstances",
+                        "ec2:DescribeManagedPrefixLists",
+                        "ec2:GetManagedPrefixListEntries"
                     ],
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-11-27T13:25:49Z"
+        "CreateDate": "2023-12-17T14:23:22Z"
     }
 }
