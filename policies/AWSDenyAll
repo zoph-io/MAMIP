@@ -4,16 +4,17 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "DenyAll",
+                    "Effect": "Deny",
                     "Action": [
                         "*"
                     ],
-                    "Effect": "Deny",
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2019-05-01T22:36:14Z"
+        "CreateDate": "2023-12-18T16:42:05Z"
     }
 }
