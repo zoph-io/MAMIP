@@ -151,11 +151,28 @@
                             ]
                         }
                     }
+                },
+                {
+                    "Sid": "ManageCrossAccountDataReplication",
+                    "Effect": "Allow",
+                    "Action": [
+                        "fsx:PutResourcePolicy",
+                        "fsx:GetResourcePolicy",
+                        "fsx:DeleteResourcePolicy"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "aws:CalledVia": [
+                                "ram.amazonaws.com"
+                            ]
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v8",
+        "VersionId": "v9",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-11-27T05:55:28Z"
+        "CreateDate": "2023-12-19T22:51:41Z"
     }
 }
