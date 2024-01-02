@@ -66,7 +66,8 @@
                         "ec2:DescribeRouteTables",
                         "ec2:DescribeDhcpOptions",
                         "ec2:DescribeManagedPrefixLists",
-                        "ec2:GetManagedPrefixListEntries"
+                        "ec2:GetManagedPrefixListEntries",
+                        "ec2:GetManagedPrefixListAssociations"
                     ],
                     "Resource": "*"
                 },
@@ -362,8 +363,8 @@
                 }
             ]
         },
-        "VersionId": "v5",
+        "VersionId": "v6",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-12-17T14:31:04Z"
+        "CreateDate": "2024-01-02T13:31:35Z"
     }
 }
