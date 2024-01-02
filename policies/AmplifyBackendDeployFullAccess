@@ -48,6 +48,22 @@
                     ]
                 },
                 {
+                    "Sid": "AmplifyHotSwappableSchemaResource",
+                    "Effect": "Allow",
+                    "Action": [
+                        "lambda:InvokeFunction",
+                        "lambda:UpdateFunctionCode"
+                    ],
+                    "Resource": [
+                        "arn:aws:lambda:*:*:function:amplify-*"
+                    ],
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
+                },
+                {
                     "Sid": "AmplifySchema",
                     "Effect": "Allow",
                     "Action": [
@@ -115,8 +131,8 @@
                 }
             ]
         },
-        "VersionId": "v3",
-        "IsDefaultVersion": false,
-        "CreateDate": "2023-11-17T23:27:43Z"
+        "VersionId": "v4",
+        "IsDefaultVersion": true,
+        "CreateDate": "2024-01-02T21:13:46Z"
     }
 }
