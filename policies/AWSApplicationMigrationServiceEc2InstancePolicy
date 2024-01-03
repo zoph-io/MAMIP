@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "MgnAgentInstallation",
                     "Effect": "Allow",
                     "Action": [
                         "mgn:SendClientLogsForMgn",
@@ -13,6 +14,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "MgnAgentReplication",
                     "Effect": "Allow",
                     "Action": [
                         "mgn:SendAgentMetricsForMgn",
@@ -29,6 +31,7 @@
                     "Resource": "arn:aws:mgn:*:*:source-server/*"
                 },
                 {
+                    "Sid": "MgnSourceServerTagResource",
                     "Effect": "Allow",
                     "Action": "mgn:TagResource",
                     "Resource": "arn:aws:mgn:*:*:source-server/*",
@@ -40,8 +43,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-08-22T13:19:02Z"
+        "CreateDate": "2024-01-03T14:19:47Z"
     }
 }
