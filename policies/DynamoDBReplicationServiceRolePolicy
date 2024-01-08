@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "DynamoDBActionsNeededForSteadyStateReplication",
                     "Effect": "Allow",
                     "Action": [
                         "dynamodb:GetItem",
@@ -19,6 +20,7 @@
                         "dynamodb:DescribeTimeToLive",
                         "dynamodb:UpdateTimeToLive",
                         "dynamodb:DescribeLimits",
+                        "dynamodb:GetResourcePolicy",
                         "application-autoscaling:RegisterScalableTarget",
                         "application-autoscaling:DescribeScalableTargets",
                         "application-autoscaling:PutScalingPolicy",
@@ -28,6 +30,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "DynamoDBReplicationServiceRolePolicy",
                     "Effect": "Allow",
                     "Action": [
                         "iam:CreateServiceLinkedRole"
@@ -43,8 +46,8 @@
                 }
             ]
         },
-        "VersionId": "v7",
+        "VersionId": "v8",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-05-10T17:04:21Z"
+        "CreateDate": "2024-01-08T20:10:36Z"
     }
 }
