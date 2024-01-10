@@ -139,6 +139,7 @@
                     "Effect": "Allow",
                     "Action": [
                         "ec2:DescribeSecurityGroups",
+                        "ec2:GetSecurityGroupsForVpc",
                         "ec2:DescribeSubnets",
                         "ec2:DescribeVpcs",
                         "ec2:DescribeRouteTables"
@@ -171,8 +172,8 @@
                 }
             ]
         },
-        "VersionId": "v9",
+        "VersionId": "v10",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-12-19T22:51:41Z"
+        "CreateDate": "2024-01-10T20:16:00Z"
     }
 }

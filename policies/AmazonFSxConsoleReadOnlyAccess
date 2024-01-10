@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "FSxReadOnlyPermissions",
                     "Effect": "Allow",
                     "Action": [
                         "cloudwatch:DescribeAlarms",
@@ -11,6 +12,7 @@
                         "ds:DescribeDirectories",
                         "ec2:DescribeNetworkInterfaceAttribute",
                         "ec2:DescribeSecurityGroups",
+                        "ec2:GetSecurityGroupsForVpc",
                         "ec2:DescribeSubnets",
                         "ec2:DescribeVpcs",
                         "firehose:ListDeliveryStreams",
@@ -23,8 +25,8 @@
                 }
             ]
         },
-        "VersionId": "v4",
+        "VersionId": "v5",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-09-22T14:07:26Z"
+        "CreateDate": "2024-01-10T20:19:18Z"
     }
 }
