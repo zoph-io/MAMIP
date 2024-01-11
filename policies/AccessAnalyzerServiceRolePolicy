@@ -7,6 +7,9 @@
                     "Sid": "AccessAnalyzerServiceRolePolicy",
                     "Effect": "Allow",
                     "Action": [
+                        "dynamodb:GetResourcePolicy",
+                        "dynamodb:ListTables",
+                        "dynamodb:ListStreams",
                         "ec2:DescribeAddresses",
                         "ec2:DescribeByoipCidrs",
                         "ec2:DescribeSnapshotAttribute",
@@ -86,8 +89,8 @@
                 }
             ]
         },
-        "VersionId": "v10",
+        "VersionId": "v11",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-11-28T19:00:40Z"
+        "CreateDate": "2024-01-11T20:13:34Z"
     }
 }
