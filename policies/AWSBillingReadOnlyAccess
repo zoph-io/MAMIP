@@ -18,12 +18,22 @@
                         "billing:GetIAMAccessPreference",
                         "billing:GetSellerOfRecord",
                         "billing:ListBillingViews",
+                        "budgets:ViewBudget",
+                        "budgets:DescribeBudgetActionsForBudget",
+                        "budgets:DescribeBudgetAction",
+                        "budgets:DescribeBudgetActionsForAccount",
+                        "budgets:DescribeBudgetActionHistories",
+                        "ce:DescribeCostCategoryDefinition",
+                        "ce:GetCostAndUsage",
+                        "ce:ListCostCategoryDefinitions",
+                        "ce:ListTagsForResource",
                         "ce:ListCostAllocationTags",
                         "consolidatedbilling:ListLinkedAccounts",
                         "consolidatedbilling:GetAccountBillingRole",
                         "cur:GetClassicReport",
                         "cur:GetClassicReportPreferences",
                         "cur:GetUsageReport",
+                        "cur:DescribeReportDefinitions",
                         "freetier:GetFreeTierAlertPreference",
                         "freetier:GetFreeTierUsage",
                         "invoicing:GetInvoiceEmailDeliveryPreferences",
@@ -37,6 +47,7 @@
                         "purchase-orders:ListPurchaseOrderInvoices",
                         "purchase-orders:ListPurchaseOrders",
                         "purchase-orders:ListTagsForResource",
+                        "sustainability:GetCarbonFootprintSummary",
                         "tax:GetTaxRegistrationDocument",
                         "tax:GetTaxInheritance",
                         "tax:ListTaxRegistrations"
@@ -45,8 +56,8 @@
                 }
             ]
         },
-        "VersionId": "v4",
+        "VersionId": "v5",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-07-26T18:05:19Z"
+        "CreateDate": "2024-01-17T18:15:35Z"
     }
 }
