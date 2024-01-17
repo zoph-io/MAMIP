@@ -4,9 +4,11 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "CrossAccountPolicy1",
                     "Effect": "Allow",
                     "Action": [
                         "ec2:DescribeVolumes",
+                        "ec2:DescribeVolumeAttribute",
                         "ec2:DescribeInstances",
                         "drs:DescribeSourceServers",
                         "drs:DescribeReplicationConfigurationTemplates",
@@ -15,6 +17,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "CrossAccountPolicy2",
                     "Effect": "Allow",
                     "Action": [
                         "drs:TagResource"
@@ -28,8 +31,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-05-14T07:16:47Z"
+        "CreateDate": "2024-01-17T13:19:58Z"
     }
 }
