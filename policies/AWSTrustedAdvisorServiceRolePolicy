@@ -18,6 +18,9 @@
                         "cloudfront:ListDistributions",
                         "cloudtrail:DescribeTrails",
                         "cloudtrail:GetTrailStatus",
+                        "cloudtrail:GetTrail",
+                        "cloudtrail:ListTrails",
+                        "cloudtrail:GetEventSelectors",
                         "cloudwatch:GetMetricStatistics",
                         "dynamodb:DescribeLimits",
                         "dynamodb:DescribeTable",
@@ -55,6 +58,9 @@
                         "kinesis:DescribeLimits",
                         "kafka:ListClustersV2",
                         "kafka:ListNodes",
+                        "outposts:ListAssets",
+                        "outposts:GetOutpost",
+                        "outposts:ListOutposts",
                         "rds:DescribeAccountAttributes",
                         "rds:DescribeDBClusters",
                         "rds:DescribeDBEngineVersions",
@@ -102,8 +108,8 @@
                 }
             ]
         },
-        "VersionId": "v11",
+        "VersionId": "v12",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-11-10T00:18:42Z"
+        "CreateDate": "2024-01-18T16:25:15Z"
     }
 }
