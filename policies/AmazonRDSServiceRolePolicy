@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "CrossRegionCommunication",
                     "Effect": "Allow",
                     "Action": [
                         "rds:CrossRegionCommunication"
@@ -11,6 +12,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "Ec2",
                     "Effect": "Allow",
                     "Action": [
                         "ec2:AllocateAddress",
@@ -50,6 +52,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "Sns",
                     "Effect": "Allow",
                     "Action": [
                         "sns:Publish"
@@ -57,6 +60,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "CloudWatchLogs",
                     "Effect": "Allow",
                     "Action": [
                         "logs:CreateLogGroup"
@@ -68,6 +72,7 @@
                     ]
                 },
                 {
+                    "Sid": "CloudWatchStreams",
                     "Effect": "Allow",
                     "Action": [
                         "logs:CreateLogStream",
@@ -81,6 +86,7 @@
                     ]
                 },
                 {
+                    "Sid": "Kinesis",
                     "Effect": "Allow",
                     "Action": [
                         "kinesis:CreateStream",
@@ -97,6 +103,7 @@
                     ]
                 },
                 {
+                    "Sid": "CloudWatch",
                     "Effect": "Allow",
                     "Action": [
                         "cloudwatch:PutMetricData"
@@ -114,6 +121,7 @@
                     }
                 },
                 {
+                    "Sid": "SecretsManagerPassword",
                     "Effect": "Allow",
                     "Action": [
                         "secretsmanager:GetRandomPassword"
@@ -121,6 +129,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "SecretsManagerSecret",
                     "Effect": "Allow",
                     "Action": [
                         "secretsmanager:DeleteSecret",
@@ -141,6 +150,7 @@
                     }
                 },
                 {
+                    "Sid": "SecretsManagerTags",
                     "Effect": "Allow",
                     "Action": "secretsmanager:TagResource",
                     "Resource": "arn:aws:secretsmanager:*:*:secret:rds!*",
@@ -158,8 +168,8 @@
                 }
             ]
         },
-        "VersionId": "v12",
+        "VersionId": "v13",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-12-13T16:24:27Z"
+        "CreateDate": "2024-01-19T15:10:09Z"
     }
 }
