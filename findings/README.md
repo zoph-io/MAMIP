@@ -1,6 +1,6 @@
-## AWS Access Analyzer - Findings - 2024-01-22
+## AWS Access Analyzer - Findings - 2024-01-23
 
-- Policies analyzed: `1173`
+- Policies analyzed: `1174`
 - Errors: `1`
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
 - Sec_Warnings: `11`
@@ -13,7 +13,7 @@
   - [`AWSProtonCodeBuildProvisioningServiceRolePolicy`](./AWSProtonCodeBuildProvisioningServiceRolePolicy.json)
   - [`AdministratorAccess`](./AdministratorAccess.json)
   - [`AmazonElasticMapReduceFullAccess`](./AmazonElasticMapReduceFullAccess.json)
-- Suggestions: `40`
+- Suggestions: `41`
   - [`AmazonLaunchWizard_Fullaccess`](./AmazonLaunchWizard_Fullaccess.json)
   - [`AWSElasticBeanstalkWebTier`](./AWSElasticBeanstalkWebTier.json)
   - [`AWSElasticBeanstalkRoleCore`](./AWSElasticBeanstalkRoleCore.json)
@@ -34,6 +34,7 @@
   - [`AWSMigrationHubOrchestratorConsoleFullAccess`](./AWSMigrationHubOrchestratorConsoleFullAccess.json)
   - [`AWSMigrationHubOrchestratorServiceRolePolicy`](./AWSMigrationHubOrchestratorServiceRolePolicy.json)
   - [`AmazonRedshiftAllCommandsFullAccess`](./AmazonRedshiftAllCommandsFullAccess.json)
+  - [`AmazonSecurityLakeMetastoreManager`](./AmazonSecurityLakeMetastoreManager.json)
   - [`SystemAdministrator`](./SystemAdministrator.json)
   - [`AmazonElasticMapReduceFullAccess`](./AmazonElasticMapReduceFullAccess.json)
   - [`DataScientist`](./DataScientist.json)
