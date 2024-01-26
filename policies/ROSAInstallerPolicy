@@ -22,8 +22,11 @@
                         "ec2:DescribeInstanceTypeOfferings",
                         "elasticloadbalancing:DescribeAccountLimits",
                         "elasticloadbalancing:DescribeLoadBalancers",
+                        "iam:GetOpenIDConnectProvider",
                         "iam:GetRole",
+                        "route53:GetHostedZone",
                         "route53:ListHostedZones",
+                        "route53:ListHostedZonesByName",
                         "route53:ListResourceRecordSets",
                         "route53:GetAccountLimit",
                         "servicequotas:GetServiceQuota"
@@ -306,8 +309,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
-        "IsDefaultVersion": false,
-        "CreateDate": "2023-06-06T21:00:31Z"
+        "VersionId": "v2",
+        "IsDefaultVersion": true,
+        "CreateDate": "2024-01-26T21:04:47Z"
     }
 }
