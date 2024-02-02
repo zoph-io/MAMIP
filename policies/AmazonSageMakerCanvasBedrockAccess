@@ -1,0 +1,34 @@
+{
+    "PolicyVersion": {
+        "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Sid": "S3CanvasAccess",
+                    "Effect": "Allow",
+                    "Action": [
+                        "s3:GetObject",
+                        "s3:PutObject"
+                    ],
+                    "Resource": [
+                        "arn:aws:s3:::sagemaker-*/Canvas",
+                        "arn:aws:s3:::sagemaker-*/Canvas/*"
+                    ]
+                },
+                {
+                    "Sid": "S3BucketAccess",
+                    "Effect": "Allow",
+                    "Action": [
+                        "s3:ListBucket"
+                    ],
+                    "Resource": [
+                        "arn:aws:s3:::sagemaker-*"
+                    ]
+                }
+            ]
+        },
+        "VersionId": "v1",
+        "IsDefaultVersion": true,
+        "CreateDate": "2024-02-02T18:37:25Z"
+    }
+}
