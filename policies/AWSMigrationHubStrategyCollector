@@ -16,7 +16,12 @@
                         "s3:PutBucketVersioning",
                         "s3:PutLifecycleConfiguration"
                     ],
-                    "Resource": "arn:aws:s3:::migrationhub-strategy-*"
+                    "Resource": "arn:aws:s3:::migrationhub-strategy-*",
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
                 },
                 {
                     "Sid": "MHSRAllowS3ListBucket",
@@ -24,7 +29,21 @@
                     "Action": [
                         "s3:ListAllMyBuckets"
                     ],
-                    "Resource": "arn:aws:s3:::*"
+                    "Resource": "arn:aws:s3:::*",
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
+                },
+                {
+                    "Sid": "MHSRAllowMetricsAndLogs",
+                    "Effect": "Allow",
+                    "Action": [
+                        "application-transformation:PutMetricData",
+                        "application-transformation:PutLogData"
+                    ],
+                    "Resource": "*"
                 },
                 {
                     "Sid": "MHSRAllowExecuteAPI",
@@ -58,12 +77,17 @@
                     "Action": [
                         "secretsmanager:GetSecretValue"
                     ],
-                    "Resource": "arn:aws:secretsmanager:*:*:secret:migrationhub-strategy-*"
+                    "Resource": "arn:aws:secretsmanager:*:*:secret:migrationhub-strategy-*",
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v4",
+        "VersionId": "v5",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-10-12T16:44:29Z"
+        "CreateDate": "2024-02-05T18:57:29Z"
     }
 }
