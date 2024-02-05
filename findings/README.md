@@ -1,4 +1,4 @@
-## AWS Access Analyzer - Findings - 2024-02-02
+## AWS Access Analyzer - Findings - 2024-02-05
 
 - Policies analyzed: `1176`
 - Errors: `1`
