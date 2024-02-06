@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "AWSOrganizationsReadOnly",
                     "Effect": "Allow",
                     "Action": [
                         "organizations:Describe*",
@@ -12,6 +13,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "AWSOrganizationsReadOnlyAccount",
                     "Effect": "Allow",
                     "Action": [
                         "account:GetAlternateContact",
@@ -22,8 +24,8 @@
                 }
             ]
         },
-        "VersionId": "v4",
+        "VersionId": "v5",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-12-22T18:08:03Z"
+        "CreateDate": "2024-02-06T17:36:59Z"
     }
 }
