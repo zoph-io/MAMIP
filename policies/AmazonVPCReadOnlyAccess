@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "AmazonVPCReadOnlyAccess",
                     "Effect": "Allow",
                     "Action": [
                         "ec2:DescribeAccountAttributes",
@@ -43,14 +44,15 @@
                         "ec2:DescribeVpcPeeringConnections",
                         "ec2:DescribeVpcs",
                         "ec2:DescribeVpnConnections",
-                        "ec2:DescribeVpnGateways"
+                        "ec2:DescribeVpnGateways",
+                        "ec2:GetSecurityGroupsForVpc"
                     ],
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v8",
+        "VersionId": "v9",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-08-02T15:47:38Z"
+        "CreateDate": "2024-02-08T17:08:19Z"
     }
 }
