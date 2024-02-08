@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "MarketplaceManagement",
                     "Effect": "Allow",
                     "Action": [
                         "aws-marketplace-management:uploadFiles",
@@ -30,6 +31,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "AgreementAccess",
                     "Action": [
                         "aws-marketplace:SearchAgreements",
                         "aws-marketplace:DescribeAgreement",
@@ -49,6 +51,7 @@
                     }
                 },
                 {
+                    "Sid": "IAMGetRole",
                     "Effect": "Allow",
                     "Action": [
                         "iam:GetRole"
@@ -56,6 +59,7 @@
                     "Resource": "arn:aws:iam::*:role/*"
                 },
                 {
+                    "Sid": "AssetScanning",
                     "Effect": "Allow",
                     "Action": [
                         "iam:PassRole"
@@ -68,6 +72,7 @@
                     }
                 },
                 {
+                    "Sid": "VendorInsights",
                     "Effect": "Allow",
                     "Action": [
                         "vendor-insights:GetDataSource",
@@ -80,6 +85,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "TagManagement",
                     "Effect": "Allow",
                     "Action": [
                         "aws-marketplace:TagResource",
@@ -89,6 +95,7 @@
                     "Resource": "arn:aws:aws-marketplace:*:*:AWSMarketplace/*"
                 },
                 {
+                    "Sid": "SellerSettings",
                     "Effect": "Allow",
                     "Action": [
                         "aws-marketplace-management:GetSellerVerificationDetails",
@@ -102,11 +109,13 @@
                         "payments:GetPaymentInstrument",
                         "payments:CreatePaymentInstrument",
                         "tax:GetTaxInterview",
-                        "tax:PutTaxInterview"
+                        "tax:PutTaxInterview",
+                        "tax:GetTaxInfoReportingDocument"
                     ],
                     "Resource": "*"
                 },
                 {
+                    "Sid": "Support",
                     "Effect": "Allow",
                     "Action": [
                         "support:CreateCase"
@@ -114,6 +123,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "ResourcePolicyManagement",
                     "Effect": "Allow",
                     "Action": [
                         "aws-marketplace:GetResourcePolicy",
@@ -124,8 +134,8 @@
                 }
             ]
         },
-        "VersionId": "v9",
+        "VersionId": "v10",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-06-01T17:46:22Z"
+        "CreateDate": "2024-02-08T19:19:05Z"
     }
 }
