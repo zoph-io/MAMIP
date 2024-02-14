@@ -7,11 +7,15 @@
                     "Sid": "BackupActions",
                     "Effect": "Allow",
                     "Action": [
+                        "backup:DescribeRecoveryPoint",
                         "backup:DescribeRestoreJob",
+                        "backup:DescribeProtectedResource",
                         "backup:GetRecoveryPointRestoreMetadata",
                         "backup:ListBackupVaults",
+                        "backup:ListProtectedResources",
                         "backup:ListProtectedResourcesByBackupVault",
                         "backup:ListRecoveryPointsByBackupVault",
+                        "backup:ListRecoveryPointsByResource",
                         "backup:ListTags",
                         "backup:StartRestoreJob"
                     ],
@@ -33,6 +37,7 @@
                     "Effect": "Allow",
                     "Action": [
                         "ec2:DescribeInstances",
+                        "ec2:DescribeSnapshotTierStatus",
                         "ec2:DescribeTags",
                         "ec2:DescribeVolumes",
                         "elasticfilesystem:DescribeFileSystems",
@@ -43,7 +48,9 @@
                         "rds:DescribeDBInstances",
                         "rds:DescribeDBClusters",
                         "rds:DescribeDBInstanceAutomatedBackups",
-                        "rds:ListTagsForResource"
+                        "rds:DescribeDBClusterAutomatedBackups",
+                        "rds:ListTagsForResource",
+                        "redshift:DescribeClusters"
                     ],
                     "Resource": "*"
                 },
@@ -82,6 +89,12 @@
                     }
                 },
                 {
+                    "Sid": "RedshiftDeleteActions",
+                    "Effect": "Allow",
+                    "Action": "redshift:DeleteCluster",
+                    "Resource": "arn:aws:redshift:*:*:cluster:awsbackup-restore-test-*"
+                },
+                {
                     "Sid": "S3DeleteActions",
                     "Effect": "Allow",
                     "Action": [
@@ -95,11 +108,17 @@
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
                     }
+                },
+                {
+                    "Sid": "TimestreamDeleteActions",
+                    "Effect": "Allow",
+                    "Action": "timestream:DeleteTable",
+                    "Resource": "arn:aws:timestream:*:*:database/*/table/awsbackup-restore-test-*"
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-11-10T23:37:45Z"
+        "CreateDate": "2024-02-14T22:42:37Z"
     }
 }
