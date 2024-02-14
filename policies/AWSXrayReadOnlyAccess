@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "AWSXrayReadOnlyAccess",
                     "Effect": "Allow",
                     "Action": [
                         "xray:GetSamplingRules",
@@ -31,8 +32,8 @@
                 }
             ]
         },
-        "VersionId": "v7",
+        "VersionId": "v8",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-11-15T23:13:57Z"
+        "CreateDate": "2024-02-14T00:35:02Z"
     }
 }
