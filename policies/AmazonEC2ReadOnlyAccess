@@ -4,16 +4,22 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "EC2",
                     "Effect": "Allow",
-                    "Action": "ec2:Describe*",
+                    "Action": [
+                        "ec2:Describe*",
+                        "ec2:Get*"
+                    ],
                     "Resource": "*"
                 },
                 {
+                    "Sid": "ELB",
                     "Effect": "Allow",
                     "Action": "elasticloadbalancing:Describe*",
                     "Resource": "*"
                 },
                 {
+                    "Sid": "Cloudwatch",
                     "Effect": "Allow",
                     "Action": [
                         "cloudwatch:ListMetrics",
@@ -23,14 +29,15 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "Autoscaling",
                     "Effect": "Allow",
                     "Action": "autoscaling:Describe*",
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2015-02-06T18:40:17Z"
+        "CreateDate": "2024-02-14T15:17:04Z"
     }
 }
