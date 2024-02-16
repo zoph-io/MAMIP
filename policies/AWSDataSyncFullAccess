@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "DataSyncFullAccessPermissions",
                     "Effect": "Allow",
                     "Action": [
                         "datasync:*",
@@ -29,12 +30,14 @@
                         "s3:GetBucketLocation",
                         "s3:ListAllMyBuckets",
                         "s3:ListBucket",
+                        "s3:ListBucketVersions",
                         "s3-outposts:ListAccessPoints",
                         "s3-outposts:ListRegionalBuckets"
                     ],
                     "Resource": "*"
                 },
                 {
+                    "Sid": "DataSyncPassRolePermissions",
                     "Effect": "Allow",
                     "Action": [
                         "iam:PassRole"
@@ -50,8 +53,8 @@
                 }
             ]
         },
-        "VersionId": "v4",
+        "VersionId": "v5",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-05-02T16:37:43Z"
+        "CreateDate": "2024-02-16T17:19:28Z"
     }
 }
