@@ -9,20 +9,28 @@
                     "Action": [
                         "ivs:BatchGetChannel",
                         "ivs:GetChannel",
+                        "ivs:GetComposition",
+                        "ivs:GetEncoderConfiguration",
                         "ivs:GetParticipant",
                         "ivs:GetPlaybackKeyPair",
+                        "ivs:GetPlaybackRestrictionPolicy",
                         "ivs:GetRecordingConfiguration",
                         "ivs:GetStage",
                         "ivs:GetStageSession",
+                        "ivs:GetStorageConfiguration",
                         "ivs:GetStream",
                         "ivs:GetStreamSession",
                         "ivs:ListChannels",
+                        "ivs:ListCompositions",
+                        "ivs:ListEncoderConfigurations",
                         "ivs:ListParticipants",
                         "ivs:ListParticipantEvents",
                         "ivs:ListPlaybackKeyPairs",
+                        "ivs:ListPlaybackRestrictionPolicies",
                         "ivs:ListRecordingConfigurations",
                         "ivs:ListStages",
                         "ivs:ListStageSessions",
+                        "ivs:ListStorageConfigurations",
                         "ivs:ListStreamKeys",
                         "ivs:ListStreams",
                         "ivs:ListStreamSessions",
@@ -32,8 +40,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
-        "IsDefaultVersion": false,
-        "CreateDate": "2023-12-05T18:00:37Z"
+        "VersionId": "v2",
+        "IsDefaultVersion": true,
+        "CreateDate": "2024-02-16T18:03:24Z"
     }
 }
