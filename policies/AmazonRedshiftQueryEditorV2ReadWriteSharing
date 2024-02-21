@@ -6,7 +6,11 @@
                 {
                     "Sid": "RedshiftPermissions",
                     "Effect": "Allow",
-                    "Action": "redshift:DescribeClusters",
+                    "Action": [
+                        "redshift:DescribeClusters",
+                        "redshift-serverless:ListNamespaces",
+                        "redshift-serverless:ListWorkgroups"
+                    ],
                     "Resource": "*"
                 },
                 {
@@ -209,8 +213,8 @@
                 }
             ]
         },
-        "VersionId": "v8",
+        "VersionId": "v9",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-08-16T18:23:05Z"
+        "CreateDate": "2024-02-21T17:30:28Z"
     }
 }
