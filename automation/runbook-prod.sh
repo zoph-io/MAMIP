@@ -1,44 +1,54 @@
 #!/bin/bash
 
-DATE=$(date +%Y-%m-%d-%H-%M)
-WORDTOREMOVE="policies/"
+# Set variables
+date=$(date +%Y-%m-%d-%H-%M)
+wordToRemove="policies/"
+region="eu-west-1"
+repoUrl="git@github.com:z0ph/MAMIP.git"
+repoPath="/app/MAMIP"
+s3KeyPath="s3://mamip-artifacts/mamip"
+sshKeyPath="/tmp/mamip.key"
+sshConfigPath="/root/.ssh/known_hosts"
+gitUserName="MAMIP Bot"
+gitUserEmail="mamip_bot@github.com"
+snsTopicArn="arn:aws:sns:eu-west-1:567589703415:mamip-sns-topic"
 
-# job preparation (SSH + Git)
+# Job preparation (SSH + Git)
 echo "Job preparation"
-aws s3 cp s3://mamip-artifacts/mamip /tmp/mamip.key --region eu-west-1
-chmod 600 /tmp/mamip.key
+aws s3 cp $s3KeyPath $sshKeyPath --region $region
+chmod 600 $sshKeyPath
 eval "$(ssh-agent -s)"
-ssh-add /tmp/mamip.key
-git config --global user.name "MAMIP Bot"
-git config --global user.email mamip_bot@github.com
+ssh-add $sshKeyPath
+git config --global user.name "$gitUserName"
+git config --global user.email "$gitUserEmail"
 mkdir -p /root/.ssh/
-ssh-keyscan github.com >>/root/.ssh/known_hosts
+ssh-keyscan github.com >>$sshConfigPath
 
-# run the magic
+# Clone and process the repo
 echo "Git Clone"
-cd /app/
-git clone git@github.com:z0ph/MAMIP.git -q
-if [ -d /app/MAMIP ]; then
-    cd /app/MAMIP
+mkdir -p /app && cd /app/
+git clone $repoUrl -q
+if [ -d $repoPath ]; then
+    cd $repoPath
     echo "Run the magic"
-    aws iam list-policies >/app/MAMIP/list-policies.json
-    cat /app/MAMIP/list-policies.json | jq -cr '.Policies[] | select(.Arn | contains("iam::aws"))|.Arn +" "+ .DefaultVersionId+" "+.PolicyName' | xargs -n3 sh -c 'aws iam get-policy-version --policy-arn $1 --version-id $2 > "policies/$3"' sh
-    # push the changes if any
+    aws iam list-policies --output json >list-policies.json
+    jq -cr '.Policies[] | select(.Arn | contains("iam::aws")) | .Arn + " " + .DefaultVersionId + " " + .PolicyName' list-policies.json | xargs -n3 sh -c 'mkdir -p policies && aws iam get-policy-version --policy-arn $1 --version-id $2 > "policies/$3"' sh
+
+    # Push the changes if any
     if [[ -n $(git status -s) ]]; then
         echo "Tagging"
-
-        # Prepare the Tweet/Toot
-        diff="$(git diff --name-only) $(git ls-files --others --exclude-standard)"
-        diff=${diff//$WORDTOREMOVE/}
-        diff="${diff:0:200}..."
         git add ./policies
         git commit -am "Update detected"
-        git tag $DATE
-        # Craft commit ID for tweet direct URL
+        git tag $date
         commit_id=$(git log --format="%h" -n 1)
-        # Send message to qTweeter and qMasto for publishing the tweet/toot
-        aws sqs send-message --queue-url https://sqs.eu-west-1.amazonaws.com/567589703415/qtweet-mamip-sqs-queue.fifo --message-body "$diff https://github.com/z0ph/MAMIP/commit/$commit_id" --message-group-id 1
-        aws sqs send-message --queue-url https://sqs.eu-west-1.amazonaws.com/567589703415/qmasto-development-sqs-queue.fifo --message-body "$diff https://github.com/z0ph/MAMIP/commit/$commit_id" --message-group-id 1
+
+        # Create JSON message with diff and commit URL
+        diff=$(git diff --name-only $(git ls-files --others --exclude-standard) | sed "s|$wordToRemove||" | xargs -n1 | awk '{print substr($0, 0, 200)}' | xargs -I {} echo "{}..." | jq -R -s .)
+        message="{\"ChangedAWSManagedPolicies\": $diff, \"CommitUrl\": \"https://github.com/zoph-io/MAMIP/commit/$commit_id\", \"Timestamp\": \"$date\", \"CommitId\": \"$commit_id\"}"
+
+        # Send the message to the SNS topic
+        aws sns publish --topic-arn $snsTopicArn --message "$message" --region $region
+
         echo "Push the changes to master"
         git push origin master --tags
     else
