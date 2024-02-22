@@ -37,14 +37,22 @@ if [ -d $repoPath ]; then
     # Push the changes if any
     if [[ -n $(git status -s) ]]; then
         echo "Tagging"
+        git diff --name-only $(git ls-files --others --exclude-standard) | sed "s|$wordToRemove||" | xargs -n1 | awk '{print substr($0, 0, 200)}' | xargs -I {} echo "{}..." >diff.txt
         git add ./policies
         git commit -am "Update detected"
         git tag $date
         commit_id=$(git log --format="%h" -n 1)
 
         # Create JSON message with diff and commit URL
-        diff=$(git diff --name-only $(git ls-files --others --exclude-standard) | sed "s|$wordToRemove||" | xargs -n1 | awk '{print substr($0, 0, 200)}' | xargs -I {} echo "{}..." | jq -R -s .)
-        message="{\"ChangedAWSManagedPolicies\": $diff, \"CommitUrl\": \"https://github.com/zoph-io/MAMIP/commit/$commit_id\", \"Timestamp\": \"$date\", \"CommitId\": \"$commit_id\"}"
+        diff=$(cat diff.txt)
+        message="{\"UpdatedPolicies\": \"$diff\", \"CommitUrl\": \"https://github.com/zoph-io/MAMIP/commit/$commit_id\", \"Date\": \"$date\", \"CommitId\": \"$commit_id\"}"
+
+        # Craft message for SQS
+        messageBody=$diff "https://github.com/z0ph/MAMIP/commit/$commit_id"
+
+        # Send messages to SQS queues
+        aws sqs send-message --queue-url "https://sqs.eu-west-1.amazonaws.com/567589703415/qtweet-mamip-sqs-queue.fifo" --message-body "$messageBody" --message-group-id 1
+        aws sqs send-message --queue-url "https://sqs.eu-west-1.amazonaws.com/567589703415/qmasto-development-sqs-queue.fifo" --message-body "$messageBody" --message-group-id 1
 
         # Send the message to the SNS topic
         aws sns publish --topic-arn $snsTopicArn --message "$message" --region $region
