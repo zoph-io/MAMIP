@@ -61,6 +61,12 @@ apply:
 		-var="description=$(DESCRIPTION)" \
 		-compact-warnings ./automation/tf-fargate/
 
+longest:
+	@find ./policies -type f | awk -F/ '{print length($$NF), $$NF}' | sort -nr | head -10
+
+shortest:
+	@find ./policies  -type f | awk -F/ '{print length($$NF), $$NF}' | sort -n | head -10
+
 destroy:
 	@read -p "Are you sure that you want to destroy: '$(PROJECT)-$(ENV)-$(AWS_REGION)'? [yes/N]: " sure && [ $${sure:-N} = 'yes' ]
 	@terraform destroy ./automation/tf-fargate/
