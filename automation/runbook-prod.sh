@@ -48,9 +48,9 @@ if [ -d $repoPath ]; then
         message="{\"UpdatedPolicies\": \"$diff\", \"CommitUrl\": \"https://github.com/zoph-io/MAMIP/commit/$commit_id\", \"Date\": \"$date\", \"CommitId\": \"$commit_id\"}"
 
         # Craft message for SQS
-        messageBody=$diff "https://github.com/z0ph/MAMIP/commit/$commit_id"
+        messageBody="$diff https://github.com/z0ph/MAMIP/commit/$commit_id"
 
-        # Send messages to SQS queues
+        # Send messages to SQS queues (Twitter/X + Mastodon)
         aws sqs send-message --queue-url "https://sqs.eu-west-1.amazonaws.com/567589703415/qtweet-mamip-sqs-queue.fifo" --message-body "$messageBody" --message-group-id 1
         aws sqs send-message --queue-url "https://sqs.eu-west-1.amazonaws.com/567589703415/qmasto-development-sqs-queue.fifo" --message-body "$messageBody" --message-group-id 1
 
