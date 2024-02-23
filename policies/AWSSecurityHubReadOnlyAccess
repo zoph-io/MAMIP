@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "AWSSecurityHubReadOnlyAccess",
                     "Effect": "Allow",
                     "Action": [
                         "securityhub:Get*",
@@ -15,8 +16,8 @@
                 }
             ]
         },
-        "VersionId": "v3",
+        "VersionId": "v4",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-04-04T17:46:51Z"
+        "CreateDate": "2024-02-22T23:45:59Z"
     }
 }
