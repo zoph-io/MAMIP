@@ -31,6 +31,7 @@
                         "events:ListConnections",
                         "events:ListApiDestinations",
                         "iam:GetRole",
+                        "iam:ListAttachedRolePolicies",
                         "kms:DescribeKey"
                     ],
                     "Resource": "*",
@@ -67,11 +68,35 @@
                 {
                     "Sid": "AllowLambdaCreateFunction",
                     "Effect": "Allow",
-                    "Action": "lambda:CreateFunction",
-                    "Resource": "arn:aws:lambda:*:*:function:SecurityLake_Glue_Partition_Updater_Lambda*",
+                    "Action": [
+                        "lambda:CreateFunction"
+                    ],
+                    "Resource": [
+                        "arn:aws:lambda:*:*:function:SecurityLake_Glue_Partition_Updater_Lambda*",
+                        "arn:aws:lambda:*:*:function:AmazonSecurityLake*"
+                    ],
                     "Condition": {
                         "ForAnyValue:StringEquals": {
                             "aws:CalledVia": "securitylake.amazonaws.com"
+                        }
+                    }
+                },
+                {
+                    "Sid": "AllowLambdaAddPermission",
+                    "Effect": "Allow",
+                    "Action": [
+                        "lambda:AddPermission"
+                    ],
+                    "Resource": [
+                        "arn:aws:lambda:*:*:function:SecurityLake_Glue_Partition_Updater_Lambda*",
+                        "arn:aws:lambda:*:*:function:AmazonSecurityLake*"
+                    ],
+                    "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "aws:CalledVia": "securitylake.amazonaws.com"
+                        },
+                        "StringEquals": {
+                            "lambda:Principal": "securitylake.amazonaws.com"
                         }
                     }
                 },
@@ -160,7 +185,8 @@
                         "ForAllValues:StringEquals": {
                             "kms:GrantOperations": [
                                 "GenerateDataKey",
-                                "RetireGrant"
+                                "RetireGrant",
+                                "Decrypt"
                             ]
                         }
                     }
@@ -224,7 +250,10 @@
                     "Sid": "AllowPassRoleForUpdatingGluePartitionsSecLakeArn",
                     "Effect": "Allow",
                     "Action": "iam:PassRole",
-                    "Resource": "arn:aws:iam::*:role/service-role/AmazonSecurityLakeMetaStoreManager",
+                    "Resource": [
+                        "arn:aws:iam::*:role/service-role/AmazonSecurityLakeMetaStoreManager",
+                        "arn:aws:iam::*:role/service-role/AmazonSecurityLakeMetaStoreManagerV2"
+                    ],
                     "Condition": {
                         "StringEquals": {
                             "iam:PassedToService": "lambda.amazonaws.com"
@@ -238,13 +267,19 @@
                     "Sid": "AllowPassRoleForUpdatingGluePartitionsLambdaArn",
                     "Effect": "Allow",
                     "Action": "iam:PassRole",
-                    "Resource": "arn:aws:iam::*:role/service-role/AmazonSecurityLakeMetaStoreManager",
+                    "Resource": [
+                        "arn:aws:iam::*:role/service-role/AmazonSecurityLakeMetaStoreManager",
+                        "arn:aws:iam::*:role/service-role/AmazonSecurityLakeMetaStoreManagerV2"
+                    ],
                     "Condition": {
                         "StringEquals": {
                             "iam:PassedToService": "lambda.amazonaws.com"
                         },
                         "StringLike": {
-                            "iam:AssociatedResourceARN": "arn:aws:lambda:*:*:function:SecurityLake_Glue_Partition_Updater_Lambda*"
+                            "iam:AssociatedResourceARN": [
+                                "arn:aws:lambda:*:*:function:SecurityLake_Glue_Partition_Updater_Lambda*",
+                                "arn:aws:lambda:*:*:function:AmazonSecurityLake*"
+                            ]
                         },
                         "ForAnyValue:StringEquals": {
                             "aws:CalledVia": "securitylake.amazonaws.com"
@@ -416,6 +451,15 @@
                     "Resource": "arn:aws:s3:::aws-security-data-lake-*"
                 },
                 {
+                    "Sid": "S3ReadAccessToSecurityLakeMetastoreObject",
+                    "Effect": "Allow",
+                    "Action": [
+                        "s3:GetObject",
+                        "s3:GetObjectVersion"
+                    ],
+                    "Resource": "arn:aws:s3:::security-lake-meta-store-manager-*"
+                },
+                {
                     "Sid": "S3ResourcelessReadOnly",
                     "Effect": "Allow",
                     "Action": [
@@ -427,8 +471,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
-        "IsDefaultVersion": false,
-        "CreateDate": "2023-05-30T22:04:10Z"
+        "VersionId": "v2",
+        "IsDefaultVersion": true,
+        "CreateDate": "2024-02-23T16:01:57Z"
     }
 }
