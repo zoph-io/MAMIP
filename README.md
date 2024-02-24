@@ -4,17 +4,18 @@
 
 ## :hand: Usage
 
-### :three: Three options to get notifications
+### :four: Four options to get notified
 
-1. Follow the [Twitter Account](https://twitter.com/mamip_aws) or on [Mastodon](https://infosec.exchange/@mamip_aws@botsin.space).
+1. Follow the [Twitter/𝕏 Account](https://twitter.com/mamip_aws) or on [Mastodon](https://infosec.exchange/@mamip_aws@botsin.space).
 
 [![Mamip Twitter Screenshot](assets/mamip_twitter.png)](https://twitter.com/mamip_aws)
 
-2. Activate `Releases Only` Notification feature of Github
+2.  Activate `Releases Only` Notification feature of Github
+3.  Subscribe to the SNS Topic
 
-![setup](assets/watching.gif)
+        $ aws sns subscribe --topic-arn arn:aws:sns:eu-west-1:567589703415:mamip-sns-topic --protocol email --notification-endpoint your-email@example.com
 
-3. Subscribe to the Github [RSS Feed](https://github.com/z0ph/MAMIP/commits/master.atom) (`master` branch)
+4.  Subscribe to the Github [RSS Feed](https://github.com/z0ph/MAMIP/commits/master.atom) (`master` branch)
 
 ## :white_check_mark: Policy Validation
 
