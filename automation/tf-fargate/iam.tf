@@ -42,7 +42,7 @@ data "aws_iam_policy_document" "ecs_service_policy" {
   }
   statement {
     effect = "Allow"
-    resources = "arn:aws:sns:${var.aws_region}:${data.aws_caller_identity.current.account_id}:mamip-sns-topic"
+    resources = ["arn:aws:sns:${var.aws_region}:${data.aws_caller_identity.current.account_id}:mamip-sns-topic"]
     actions = [
       "sns:Publish"
     ]
