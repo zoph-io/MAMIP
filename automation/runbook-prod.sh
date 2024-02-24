@@ -36,15 +36,15 @@ if [ -d $repoPath ]; then
 
     # Push the changes if any
     if [[ -n $(git status -s) ]]; then
-        echo "Tagging"
-        git diff --name-only $(git ls-files --others --exclude-standard) | sed "s|$wordToRemove||" | xargs -n1 | awk '{print substr($0, 0, 200)}' | xargs -I {} echo "{}..." >diff.txt
+        diff="$(git diff --name-only) $(git ls-files --others --exclude-standard)"
+        diff=${diff//$WORDTOREMOVE/}
+        diff="${diff:0:200}..."
         git add ./policies
         git commit -am "Update detected"
         git tag $date
         commit_id=$(git log --format="%h" -n 1)
 
         # Create JSON message with diff and commit URL
-        diff=$(cat diff.txt)
         message="{\"UpdatedPolicies\": \"$diff\", \"CommitUrl\": \"https://github.com/zoph-io/MAMIP/commit/$commit_id\", \"Date\": \"$date\", \"CommitId\": \"$commit_id\"}"
 
         # Craft message for SQS
