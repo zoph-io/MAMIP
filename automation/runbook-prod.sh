@@ -37,18 +37,18 @@ if [ -d $repoPath ]; then
     # Push the changes if any
     if [[ -n $(git status -s) ]]; then
         diff="$(git diff --name-only) $(git ls-files --others --exclude-standard)"
-        diff=${diff//$WORDTOREMOVE/}
-        diff="${diff:0:200}..."
+        rawDiff=${diff//$wordToRemove/}
+        tweetDiff="${rawDiff:0:200}..."
         git add ./policies
         git commit -am "Update detected"
         git tag $date
         commit_id=$(git log --format="%h" -n 1)
 
         # Create JSON message with diff and commit URL
-        message="{\"UpdatedPolicies\": \"$diff\", \"CommitUrl\": \"https://github.com/zoph-io/MAMIP/commit/$commit_id\", \"Date\": \"$date\", \"CommitId\": \"$commit_id\"}"
+        message="{\"UpdatedPolicies\": \"$rawDiff\", \"CommitUrl\": \"https://github.com/zoph-io/MAMIP/commit/$commit_id\", \"Date\": \"$date\", \"CommitId\": \"$commit_id\"}"
 
         # Craft message for SQS
-        messageBody="$diff https://github.com/z0ph/MAMIP/commit/$commit_id"
+        messageBody="$tweetDiff https://github.com/z0ph/MAMIP/commit/$commit_id"
 
         # Send messages to SQS queues (Twitter/X + Mastodon)
         aws sqs send-message --queue-url "https://sqs.eu-west-1.amazonaws.com/567589703415/qtweet-mamip-sqs-queue.fifo" --message-body "$messageBody" --message-group-id 1
