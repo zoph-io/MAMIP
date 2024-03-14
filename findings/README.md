@@ -1,6 +1,6 @@
 ## AWS Access Analyzer - Findings - 2024-03-14
 
-- Policies analyzed: `1179`
+- Policies analyzed: `1180`
 - Errors: `1`
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
 - Sec_Warnings: `11`
