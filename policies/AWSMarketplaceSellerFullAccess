@@ -32,12 +32,12 @@
                 },
                 {
                     "Sid": "AgreementAccess",
+                    "Effect": "Allow",
                     "Action": [
                         "aws-marketplace:SearchAgreements",
                         "aws-marketplace:DescribeAgreement",
                         "aws-marketplace:GetAgreementTerms"
                     ],
-                    "Effect": "Allow",
                     "Resource": "*",
                     "Condition": {
                         "StringEquals": {
@@ -131,11 +131,22 @@
                         "aws-marketplace:DeleteResourcePolicy"
                     ],
                     "Resource": "arn:aws:aws-marketplace:*:*:AWSMarketplace/*"
+                },
+                {
+                    "Sid": "CreateServiceLinkedRole",
+                    "Effect": "Allow",
+                    "Action": "iam:CreateServiceLinkedRole",
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:AWSServiceName": "resale-authorization.marketplace.amazonaws.com"
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v10",
-        "IsDefaultVersion": false,
-        "CreateDate": "2024-02-08T19:19:05Z"
+        "VersionId": "v11",
+        "IsDefaultVersion": true,
+        "CreateDate": "2024-03-15T16:09:02Z"
     }
 }
