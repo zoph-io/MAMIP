@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "GeneralReadOnlyAccess",
                     "Action": [
                         "application-autoscaling:DescribeScalableTargets",
                         "application-autoscaling:DescribeScalingActivities",
@@ -23,6 +24,7 @@
                         "dynamodb:Describe*",
                         "dynamodb:List*",
                         "dynamodb:GetItem",
+                        "dynamodb:GetResourcePolicy",
                         "dynamodb:Query",
                         "dynamodb:Scan",
                         "dynamodb:PartiQLSelect",
@@ -57,14 +59,15 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "CCIAccess",
                     "Action": "cloudwatch:GetInsightRuleReport",
                     "Effect": "Allow",
                     "Resource": "arn:aws:cloudwatch:*:*:insight-rule/DynamoDBContributorInsights*"
                 }
             ]
         },
-        "VersionId": "v13",
+        "VersionId": "v14",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-01-27T01:01:47Z"
+        "CreateDate": "2024-03-20T15:45:01Z"
     }
 }
