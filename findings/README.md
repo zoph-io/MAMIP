@@ -1,4 +1,4 @@
-## AWS Access Analyzer - Findings - 2024-03-21
+## AWS Access Analyzer - Findings - 2024-03-22
 
 - Policies analyzed: `1181`
 - Errors: `1`
@@ -13,7 +13,7 @@
   - [`AWSElasticBeanstalkService`](./AWSElasticBeanstalkService.json)
   - [`AdministratorAccess-Amplify`](./AdministratorAccess-Amplify.json)
   - [`AdministratorAccess`](./AdministratorAccess.json)
-- Suggestions: `40`
+- Suggestions: `39`
   - [`AWSMigrationHubOrchestratorServiceRolePolicy`](./AWSMigrationHubOrchestratorServiceRolePolicy.json)
   - [`DataScientist`](./DataScientist.json)
   - [`AWSElasticBeanstalkWebTier`](./AWSElasticBeanstalkWebTier.json)
@@ -22,7 +22,6 @@
   - [`AWSElasticBeanstalkCustomPlatformforEC2Role`](./AWSElasticBeanstalkCustomPlatformforEC2Role.json)
   - [`AmazonSecurityLakeMetastoreManager`](./AmazonSecurityLakeMetastoreManager.json)
   - [`AmazonRedshiftAllCommandsFullAccess`](./AmazonRedshiftAllCommandsFullAccess.json)
-  - [`AWSLakeFormationDataAdmin`](./AWSLakeFormationDataAdmin.json)
   - [`SupportUser`](./SupportUser.json)
   - [`AmazonSageMakerServiceCatalogProductsLambdaServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsLambdaServiceRolePolicy.json)
   - [`AmazonElasticMapReduceFullAccess`](./AmazonElasticMapReduceFullAccess.json)
