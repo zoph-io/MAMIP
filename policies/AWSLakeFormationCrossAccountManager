@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "AllowCreateResourceShare",
                     "Effect": "Allow",
                     "Action": [
                         "ram:CreateResourceShare"
@@ -20,6 +21,7 @@
                     }
                 },
                 {
+                    "Sid": "AllowManageResourceShare",
                     "Effect": "Allow",
                     "Action": [
                         "ram:UpdateResourceShare",
@@ -38,6 +40,7 @@
                     }
                 },
                 {
+                    "Sid": "AllowManageResourceSharePermissions",
                     "Effect": "Allow",
                     "Action": [
                         "ram:AssociateResourceSharePermission"
@@ -52,6 +55,7 @@
                     }
                 },
                 {
+                    "Sid": "AllowXAcctManagerPermissions",
                     "Effect": "Allow",
                     "Action": [
                         "glue:PutResourcePolicy",
@@ -64,6 +68,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "AllowOrganizationsPermissions",
                     "Effect": "Allow",
                     "Action": [
                         "organizations:ListRoots",
@@ -74,8 +79,8 @@
                 }
             ]
         },
-        "VersionId": "v5",
+        "VersionId": "v6",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-11-01T00:50:49Z"
+        "CreateDate": "2024-03-22T18:51:56Z"
     }
 }
