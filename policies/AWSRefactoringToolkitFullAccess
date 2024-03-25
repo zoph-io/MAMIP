@@ -23,7 +23,9 @@
                         "cloudformation:DescribeChangeSet",
                         "cloudformation:DescribeStackEvents",
                         "cloudformation:ExecuteChangeSet",
-                        "cloudformation:UpdateStack"
+                        "cloudformation:UpdateStack",
+                        "cloudformation:TagResource",
+                        "cloudformation:UntagResource"
                     ],
                     "Resource": [
                         "arn:*:cloudformation:*:*:stack/a2c-app-*",
@@ -582,8 +584,8 @@
                 }
             ]
         },
-        "VersionId": "v4",
+        "VersionId": "v5",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-11-18T00:37:27Z"
+        "CreateDate": "2024-03-25T18:43:14Z"
     }
 }
