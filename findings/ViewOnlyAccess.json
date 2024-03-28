@@ -1,0 +1,66 @@
+[
+    {
+        "findingDetails": "The 2 action(s) are redundant because they provide similar permissions. Update the policy to remove the redundant action such as: ses:ListDedicatedIpPools.",
+        "findingType": "SUGGESTION",
+        "issueCode": "REDUNDANT_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 271
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 7882,
+                        "line": 1,
+                        "offset": 7882
+                    },
+                    "start": {
+                        "column": 7871,
+                        "line": 1,
+                        "offset": 7871
+                    }
+                }
+            },
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 272
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 7910,
+                        "line": 1,
+                        "offset": 7910
+                    },
+                    "start": {
+                        "column": 7884,
+                        "line": 1,
+                        "offset": 7884
+                    }
+                }
+            }
+        ]
+    }
+]
