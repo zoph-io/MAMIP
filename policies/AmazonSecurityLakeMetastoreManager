@@ -74,11 +74,27 @@
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
                     }
+                },
+                {
+                    "Sid": "AllowMetaDataCleanup",
+                    "Effect": "Allow",
+                    "Action": [
+                        "s3:DeleteObject"
+                    ],
+                    "Resource": [
+                        "arn:aws:s3:::aws-security-data-lake*/metadata/*.avro",
+                        "arn:aws:s3:::aws-security-data-lake*/metadata/*.metadata.json"
+                    ],
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v1",
-        "IsDefaultVersion": false,
-        "CreateDate": "2024-01-23T15:26:57Z"
+        "VersionId": "v2",
+        "IsDefaultVersion": true,
+        "CreateDate": "2024-04-01T20:04:24Z"
     }
 }
