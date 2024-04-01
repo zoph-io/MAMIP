@@ -14,7 +14,9 @@
                         "s3:PutEncryptionConfiguration",
                         "s3:PutBucketPublicAccessBlock",
                         "s3:PutBucketVersioning",
-                        "s3:PutLifecycleConfiguration"
+                        "s3:PutLifecycleConfiguration",
+                        "s3:ListBucket",
+                        "s3:GetBucketLocation"
                     ],
                     "Resource": "arn:aws:s3:::migrationhub-strategy-*",
                     "Condition": {
@@ -41,7 +43,11 @@
                     "Effect": "Allow",
                     "Action": [
                         "application-transformation:PutMetricData",
-                        "application-transformation:PutLogData"
+                        "application-transformation:PutLogData",
+                        "application-transformation:StartPortingCompatibilityAssessment",
+                        "application-transformation:GetPortingCompatibilityAssessment",
+                        "application-transformation:StartPortingRecommendationAssessment",
+                        "application-transformation:GetPortingRecommendationAssessment"
                     ],
                     "Resource": "*"
                 },
@@ -67,7 +73,9 @@
                         "migrationhub-strategy:SendMessage",
                         "migrationhub-strategy:ListAntiPatterns",
                         "migrationhub-strategy:ListJarArtifacts",
-                        "migrationhub-strategy:UpdateCollectorConfiguration"
+                        "migrationhub-strategy:UpdateCollectorConfiguration",
+                        "migrationhub-strategy:PutLogData",
+                        "migrationhub-strategy:PutMetricData"
                     ],
                     "Resource": "arn:aws:migrationhub-strategy:*:*:*"
                 },
@@ -86,8 +94,8 @@
                 }
             ]
         },
-        "VersionId": "v5",
+        "VersionId": "v6",
         "IsDefaultVersion": true,
-        "CreateDate": "2024-02-05T18:57:29Z"
+        "CreateDate": "2024-04-01T16:21:02Z"
     }
 }
