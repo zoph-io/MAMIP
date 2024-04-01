@@ -7,6 +7,9 @@
                     "Sid": "DomainExecutionRoleStatement",
                     "Effect": "Allow",
                     "Action": [
+                        "datazone:ListTimeSeriesDataPoints",
+                        "datazone:GetTimeSeriesDataPoint",
+                        "datazone:DeleteTimeSeriesDataPoints",
                         "datazone:AcceptPredictions",
                         "datazone:AcceptSubscriptionRequest",
                         "datazone:CancelSubscription",
@@ -115,8 +118,8 @@
                 }
             ]
         },
-        "VersionId": "v4",
+        "VersionId": "v5",
         "IsDefaultVersion": true,
-        "CreateDate": "2024-03-12T23:48:00Z"
+        "CreateDate": "2024-04-01T19:25:31Z"
     }
 }
