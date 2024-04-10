@@ -1,6 +1,6 @@
-## AWS Access Analyzer - Findings - 2024-04-08
+## AWS Access Analyzer - Findings - 2024-04-10
 
-- Policies analyzed: `1190`
+- Policies analyzed: `1187`
 - Errors: `1`
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
 - Sec_Warnings: `11`
@@ -62,7 +62,7 @@
   - [`ReadOnlyAccess`](./fails.txt)
   - [`AWSSupportServiceRolePolicy`](./fails.txt)
   - [`AWSConfigServiceRolePolicy`](./fails.txt)
-- Deprecated: `57`
+- Deprecated: `60`
   - [`AmazonWorkLinkFullAccess`](../policies/AmazonWorkLinkFullAccess)
   - [`ServerMigrationServiceRole`](../policies/ServerMigrationServiceRole)
   - [`AWSLambdaReadOnlyAccess`](../policies/AWSLambdaReadOnlyAccess)
@@ -77,7 +77,9 @@
   - [`AmazonWorkLinkReadOnly`](../policies/AmazonWorkLinkReadOnly)
   - [`AWSElasticBeanstalkFullAccess`](../policies/AWSElasticBeanstalkFullAccess)
   - [`AWSSchemasServiceRolePolicy`](../policies/AWSSchemasServiceRolePolicy)
+  - [`AWSIotRoboRunnerFullAccess`](../policies/AWSIotRoboRunnerFullAccess)
   - [`AWSCodeArtifactReadOnlyAccess.json`](../policies/AWSCodeArtifactReadOnlyAccess.json)
+  - [`AWSIotRoboRunnerReadOnly`](../policies/AWSIotRoboRunnerReadOnly)
   - [`AWSOpsWorksFullAccess`](../policies/AWSOpsWorksFullAccess)
   - [`AmazonMechanicalTurkCrowdFullAccess`](../policies/AmazonMechanicalTurkCrowdFullAccess)
   - [`AWS_Config_Role`](../policies/AWS_Config_Role)
@@ -96,6 +98,7 @@
   - [`AWSBackupOperatorPolicy`](../policies/AWSBackupOperatorPolicy)
   - [`AmazonDataZoneProjectDeploymentPermissionsBoundary`](../policies/AmazonDataZoneProjectDeploymentPermissionsBoundary)
   - [`AmazonWorkLinkServiceRolePolicy`](../policies/AmazonWorkLinkServiceRolePolicy)
+  - [`AWSIotRoboRunnerServiceRolePolicy`](../policies/AWSIotRoboRunnerServiceRolePolicy)
   - [`AWSCodePipelineFullAccess`](../policies/AWSCodePipelineFullAccess)
   - [`AWSCloudTrailFullAccess`](../policies/AWSCloudTrailFullAccess)
   - [`AWSLambdaFullAccess`](../policies/AWSLambdaFullAccess)
