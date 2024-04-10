@@ -157,7 +157,7 @@
                     "Action": [
                         "iam:GetInstanceProfile"
                     ],
-                    "Resource": "arn:aws:ec2:*:*:instance/*",
+                    "Resource": "arn:aws:iam::*:instance-profile/*",
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceTag/red-hat-managed": "true"
@@ -204,8 +204,8 @@
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2024-01-22T22:46:40Z"
+        "CreateDate": "2024-04-10T20:51:37Z"
     }
 }
