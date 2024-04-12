@@ -339,7 +339,9 @@
                         "cloudformation:CreateChangeSet",
                         "cloudformation:DescribeChangeSet",
                         "cloudformation:ExecuteChangeSet",
-                        "cloudformation:UpdateTerminationProtection"
+                        "cloudformation:UpdateTerminationProtection",
+                        "cloudformation:TagResource",
+                        "cloudformation:UntagResource"
                     ],
                     "Resource": [
                         "arn:aws:cloudformation:*:*:stack/stack*/*",
@@ -423,8 +425,8 @@
                 }
             ]
         },
-        "VersionId": "v7",
-        "IsDefaultVersion": false,
-        "CreateDate": "2024-02-23T22:25:47Z"
+        "VersionId": "v8",
+        "IsDefaultVersion": true,
+        "CreateDate": "2024-04-12T20:07:12Z"
     }
 }
