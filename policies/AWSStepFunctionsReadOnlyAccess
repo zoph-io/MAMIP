@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "ReadOnlyAccess",
                     "Effect": "Allow",
                     "Action": [
                         "states:ListStateMachines",
@@ -13,14 +14,20 @@
                         "states:ListExecutions",
                         "states:DescribeExecution",
                         "states:GetExecutionHistory",
-                        "states:DescribeActivity"
+                        "states:DescribeActivity",
+                        "states:ListTagsForResource",
+                        "states:DescribeMapRun",
+                        "states:ListMapRuns",
+                        "states:DescribeStateMachineAlias",
+                        "states:ListStateMachineAliases",
+                        "states:ListStateMachineVersions"
                     ],
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2017-11-10T22:03:49Z"
+        "CreateDate": "2024-04-16T22:09:29Z"
     }
 }
