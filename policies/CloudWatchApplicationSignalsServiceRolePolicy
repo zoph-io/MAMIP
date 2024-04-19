@@ -26,7 +26,8 @@
                         "logs:GetQueryResults"
                     ],
                     "Resource": [
-                        "arn:aws:logs:*:*:log-group:/aws/appsignals/*:*"
+                        "arn:aws:logs:*:*:log-group:/aws/appsignals/*:*",
+                        "arn:aws:logs:*:*:log-group:/aws/application-signals/data:*"
                     ],
                     "Condition": {
                         "StringEquals": {
@@ -76,8 +77,8 @@
                 }
             ]
         },
-        "VersionId": "v3",
+        "VersionId": "v4",
         "IsDefaultVersion": true,
-        "CreateDate": "2024-04-08T16:03:52Z"
+        "CreateDate": "2024-04-18T22:52:11Z"
     }
 }
