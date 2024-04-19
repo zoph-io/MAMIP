@@ -100,11 +100,27 @@
                         "wafv2:ListWebACLs"
                     ],
                     "Resource": "*"
+                },
+                {
+                    "Sid": "LogDelivery",
+                    "Effect": "Allow",
+                    "Action": [
+                        "logs:CreateLogDelivery",
+                        "logs:DeleteLogDelivery"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "aws:CalledVia": [
+                                "wafv2.amazonaws.com"
+                            ]
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2024-02-29T19:14:11Z"
+        "CreateDate": "2024-04-19T16:00:05Z"
     }
 }

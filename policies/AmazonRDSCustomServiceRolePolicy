@@ -463,7 +463,10 @@
                     "Sid": "iam2",
                     "Effect": "Allow",
                     "Action": "iam:PassRole",
-                    "Resource": "arn:aws:iam::*:role/AWSRDSCustom*",
+                    "Resource": [
+                        "arn:aws:iam::*:role/AWSRDSCustom*",
+                        "arn:aws:iam::*:role/service-role/AWSRDSCustom*"
+                    ],
                     "Condition": {
                         "StringLike": {
                             "iam:PassedToService": "ec2.amazonaws.com"
@@ -751,8 +754,8 @@
                 }
             ]
         },
-        "VersionId": "v8",
+        "VersionId": "v9",
         "IsDefaultVersion": true,
-        "CreateDate": "2024-04-08T19:39:46Z"
+        "CreateDate": "2024-04-19T15:15:23Z"
     }
 }
