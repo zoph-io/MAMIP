@@ -26,14 +26,15 @@
                     "Action": [
                         "guardduty:GetDetector",
                         "guardduty:ListDetectors",
-                        "inspector2:BatchGetAccountStatus"
+                        "inspector2:BatchGetAccountStatus",
+                        "pricing:GetProducts"
                     ],
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-11-16T21:10:53Z"
+        "CreateDate": "2024-04-23T18:35:45Z"
     }
 }
