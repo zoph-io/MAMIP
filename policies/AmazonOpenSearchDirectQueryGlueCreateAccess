@@ -1,0 +1,23 @@
+{
+    "PolicyVersion": {
+        "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Sid": "AmazonOpenSearchDirectQueryGlueCreateAccess",
+                    "Effect": "Allow",
+                    "Action": [
+                        "glue:CreateDatabase",
+                        "glue:CreatePartition",
+                        "glue:CreateTable",
+                        "glue:BatchCreatePartition"
+                    ],
+                    "Resource": "*"
+                }
+            ]
+        },
+        "VersionId": "v1",
+        "IsDefaultVersion": true,
+        "CreateDate": "2024-05-06T12:24:38+00:00"
+    }
+}

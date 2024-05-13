@@ -3,6 +3,7 @@
         "Document": {
             "Statement": [
                 {
+                    "Sid": "AWSServicesAccess",
                     "Action": [
                         "codebuild:BatchGet*",
                         "codebuild:GetResourcePolicy",
@@ -28,7 +29,10 @@
                         "codestar-connections:ListConnections",
                         "codestar-connections:GetConnection"
                     ],
-                    "Resource": "arn:aws:codestar-connections:*:*:connection/*"
+                    "Resource": [
+                        "arn:aws:codestar-connections:*:*:connection/*",
+                        "arn:aws:codeconnections:*:*:connection/*"
+                    ]
                 },
                 {
                     "Sid": "CodeStarNotificationsPowerUserAccess",
@@ -56,8 +60,8 @@
             ],
             "Version": "2012-10-17"
         },
-        "VersionId": "v11",
+        "VersionId": "v12",
         "IsDefaultVersion": true,
-        "CreateDate": "2020-09-14T16:04:04Z"
+        "CreateDate": "2024-05-02T01:23:27+00:00"
     }
 }

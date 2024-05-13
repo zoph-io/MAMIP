@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "AllowSessionActions",
                     "Effect": "Allow",
                     "Action": [
                         "glue:CreateSession"
@@ -23,6 +24,18 @@
                     }
                 },
                 {
+                    "Sid": "AllowCompletionActions",
+                    "Effect": "Allow",
+                    "Action": [
+                        "glue:StartCompletion",
+                        "glue:GetCompletion"
+                    ],
+                    "Resource": [
+                        "arn:aws:glue:*:*:completion/*"
+                    ]
+                },
+                {
+                    "Sid": "AllowGlueActions",
                     "Effect": "Allow",
                     "Action": [
                         "glue:RunStatement",
@@ -43,6 +56,7 @@
                     }
                 },
                 {
+                    "Sid": "AllowListSessions",
                     "Effect": "Allow",
                     "Action": [
                         "glue:ListSessions"
@@ -52,6 +66,7 @@
                     ]
                 },
                 {
+                    "Sid": "DenyTagActions",
                     "Effect": "Deny",
                     "Action": [
                         "glue:TagResource",
@@ -71,6 +86,7 @@
                     }
                 },
                 {
+                    "Sid": "AllowPassRoleActions",
                     "Effect": "Allow",
                     "Action": [
                         "iam:PassRole"
@@ -88,8 +104,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-04-14T21:31:01Z"
+        "CreateDate": "2024-04-29T22:45:28+00:00"
     }
 }

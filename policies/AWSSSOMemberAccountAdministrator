@@ -27,7 +27,9 @@
                         "identitystore:*",
                         "identitystore-auth:*",
                         "ds:CreateAlias",
-                        "access-analyzer:ValidatePolicy"
+                        "access-analyzer:ValidatePolicy",
+                        "signin:CreateTrustedIdentityPropagationApplicationForConsole",
+                        "signin:ListTrustedIdentityPropagationApplicationsForConsole"
                     ],
                     "Resource": "*"
                 },
@@ -47,8 +49,8 @@
                 }
             ]
         },
-        "VersionId": "v7",
+        "VersionId": "v8",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-10-20T20:32:45Z"
+        "CreateDate": "2024-04-26T00:31:10+00:00"
     }
 }

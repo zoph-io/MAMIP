@@ -126,7 +126,9 @@
                         "cloudformation:ListStackResources",
                         "cloudformation:UpdateStack",
                         "cloudformation:ContinueUpdateRollback",
-                        "cloudformation:CancelUpdateStack"
+                        "cloudformation:CancelUpdateStack",
+                        "cloudformation:TagResource",
+                        "cloudformation:UntagResource"
                     ],
                     "Resource": "arn:aws:cloudformation:*:*:stack/awseb-e-*"
                 },
@@ -205,8 +207,8 @@
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2020-09-09T20:31:14Z"
+        "CreateDate": "2024-04-30T00:01:53+00:00"
     }
 }

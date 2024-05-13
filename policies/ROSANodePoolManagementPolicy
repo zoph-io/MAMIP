@@ -7,6 +7,7 @@
                     "Sid": "ReadPermissions",
                     "Effect": "Allow",
                     "Action": [
+                        "ec2:DescribeDhcpOptions",
                         "ec2:DescribeImages",
                         "ec2:DescribeInstances",
                         "ec2:DescribeInternetGateways",
@@ -240,8 +241,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-06-08T20:48:08Z"
+        "CreateDate": "2024-05-02T14:01:47+00:00"
     }
 }

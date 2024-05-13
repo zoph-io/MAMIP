@@ -38,7 +38,7 @@
                     "Sid": "TagManagement",
                     "Effect": "Allow",
                     "Action": "ec2:CreateTags",
-                    "Resource": "arn:*:ec2:*:*:network-interface/*",
+                    "Resource": "arn:aws:ec2:*:*:network-interface/*",
                     "Condition": {
                         "StringEquals": {
                             "ec2:CreateAction": "CreateNetworkInterface"
@@ -66,13 +66,27 @@
                     "Sid": "EKSAccess",
                     "Effect": "Allow",
                     "Action": "eks:DescribeCluster",
-                    "Resource": "arn:*:eks:*:*:cluster/*"
+                    "Resource": "arn:aws:eks:*:*:cluster/*"
+                },
+                {
+                    "Sid": "DeleteEKSAccessEntry",
+                    "Effect": "Allow",
+                    "Action": "eks:DeleteAccessEntry",
+                    "Resource": "arn:aws:eks:*:*:access-entry/*/role/*",
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:PrincipalAccount": "${aws:ResourceAccount}"
+                        },
+                        "ArnLike": {
+                            "eks:principalArn": "arn:aws:iam::*:role/aws-service-role/scraper.aps.amazonaws.com/AWSServiceRoleForAmazonPrometheusScraper*"
+                        }
+                    }
                 },
                 {
                     "Sid": "APSWriting",
                     "Effect": "Allow",
                     "Action": "aps:RemoteWrite",
-                    "Resource": "arn:*:aps:*:*:workspace/*",
+                    "Resource": "arn:aws:aps:*:*:workspace/*",
                     "Condition": {
                         "StringEquals": {
                             "aws:PrincipalAccount": "${aws:ResourceAccount}"
@@ -81,8 +95,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-11-26T14:19:52Z"
+        "CreateDate": "2024-04-26T20:25:54+00:00"
     }
 }

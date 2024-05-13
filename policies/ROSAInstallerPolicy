@@ -308,6 +308,23 @@
                     }
                 },
                 {
+                    "Sid": "CreateTagsK8sSubnet",
+                    "Effect": "Allow",
+                    "Action": [
+                        "ec2:CreateTags"
+                    ],
+                    "Resource": [
+                        "arn:aws:ec2:*:*:subnet/*"
+                    ],
+                    "Condition": {
+                        "ForAllValues:StringLike": {
+                            "aws:TagKeys": [
+                                "kubernetes.io/cluster/*"
+                            ]
+                        }
+                    }
+                },
+                {
                     "Sid": "ListPoliciesAttachedToRoles",
                     "Effect": "Allow",
                     "Action": [
@@ -323,8 +340,8 @@
                 }
             ]
         },
-        "VersionId": "v3",
+        "VersionId": "v4",
         "IsDefaultVersion": true,
-        "CreateDate": "2024-04-10T20:52:53Z"
+        "CreateDate": "2024-04-24T19:49:55+00:00"
     }
 }

@@ -21,9 +21,13 @@
                     "Sid": "AccessArtifactRepositories",
                     "Effect": "Allow",
                     "Action": [
-                        "codestar-connections:UseConnection"
+                        "codestar-connections:UseConnection",
+                        "codeconnections:UseConnection"
                     ],
-                    "Resource": "arn:aws:codestar-connections:*:*:connection/*"
+                    "Resource": [
+                        "arn:aws:codestar-connections:*:*:connection/*",
+                        "arn:aws:codeconnections:*:*:connection/*"
+                    ]
                 },
                 {
                     "Sid": "ValidateTemplate",
@@ -35,8 +39,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-11-15T21:20:15Z"
+        "CreateDate": "2024-05-03T17:12:41+00:00"
     }
 }
