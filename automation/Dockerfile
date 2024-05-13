@@ -2,7 +2,7 @@ FROM public.ecr.aws/amazonlinux/amazonlinux:latest
 
 # Install dependencies
 RUN yum update -y && \
-    yum install -y git jq
+    yum install -y git jq aws-cli
 
 ENV AWS_REGION=eu-west-1
 
