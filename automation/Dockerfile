@@ -1,9 +1,8 @@
-FROM woahbase/alpine-awscli:x86_64
+FROM public.ecr.aws/amazonlinux/amazonlinux:latest
 
-# Prepare the container
-RUN apk update && apk add \
-    git \
-    jq
+# Install dependencies
+RUN yum update -y && \
+    yum install -y git jq
 
 ENV AWS_REGION=eu-west-1
 
