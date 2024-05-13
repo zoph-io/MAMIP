@@ -5,7 +5,7 @@ date=$(date +%Y-%m-%d-%H-%M)
 wordToRemove="policies/"
 region="eu-west-1"
 repoUrl="git@github.com:z0ph/MAMIP.git"
-repoPath="/app/MAMIP"
+repoPath="/tmp/MAMIP"
 s3KeyPath="s3://mamip-artifacts/mamip"
 sshKeyPath="/tmp/mamip.key"
 sshConfigPath="/tmp/.ssh/known_hosts"
@@ -26,7 +26,7 @@ ssh-keyscan github.com >>$sshConfigPath
 
 # Clone and process the repo
 echo "Git Clone"
-mkdir -p /app && cd /app/
+cd /tmp
 git clone $repoUrl -q
 if [ -d $repoPath ]; then
     cd $repoPath
