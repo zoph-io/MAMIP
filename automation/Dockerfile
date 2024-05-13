@@ -7,6 +7,9 @@ RUN apk update && apk add \
 
 ENV AWS_REGION=eu-west-1
 
+RUN groupadd -r mamipg && useradd --no-log-init -r -g mamipg mamip" 
+USER mamip
+
 WORKDIR /app
 
 COPY script-fargate.sh /app/script.sh
