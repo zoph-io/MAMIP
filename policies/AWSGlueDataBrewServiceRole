@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "GlueDataPermissions",
                     "Effect": "Allow",
                     "Action": [
                         "glue:GetDatabases",
@@ -17,15 +18,18 @@
                     ]
                 },
                 {
+                    "Sid": "GluePIIPermissions",
                     "Effect": "Allow",
                     "Action": [
-                        "glue:BatchGetCustomEntityTypes"
+                        "glue:BatchGetCustomEntityTypes",
+                        "glue:GetCustomEntityType"
                     ],
                     "Resource": [
                         "*"
                     ]
                 },
                 {
+                    "Sid": "S3PublicDatasetAccess",
                     "Effect": "Allow",
                     "Action": [
                         "s3:ListBucket",
@@ -36,6 +40,7 @@
                     ]
                 },
                 {
+                    "Sid": "EC2NetworkingPermissions",
                     "Effect": "Allow",
                     "Action": [
                         "ec2:DescribeVpcEndpoints",
@@ -51,6 +56,7 @@
                     ]
                 },
                 {
+                    "Sid": "EC2DeleteGlueNetworkInterfacePermissions",
                     "Effect": "Allow",
                     "Action": "ec2:DeleteNetworkInterface",
                     "Condition": {
@@ -63,6 +69,7 @@
                     ]
                 },
                 {
+                    "Sid": "EC2GlueTaggingPermissions",
                     "Effect": "Allow",
                     "Action": [
                         "ec2:CreateTags",
@@ -81,6 +88,7 @@
                     ]
                 },
                 {
+                    "Sid": "GlueDatabrewLogGroupPermissions",
                     "Effect": "Allow",
                     "Action": [
                         "logs:CreateLogGroup",
@@ -92,6 +100,7 @@
                     ]
                 },
                 {
+                    "Sid": "LakeFormationPermissions",
                     "Effect": "Allow",
                     "Action": [
                         "lakeformation:GetDataAccess"
@@ -99,6 +108,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "SecretsManagerPermissions",
                     "Effect": "Allow",
                     "Action": [
                         "secretsmanager:GetSecretValue"
@@ -107,8 +117,8 @@
                 }
             ]
         },
-        "VersionId": "v3",
+        "VersionId": "v4",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-05-09T23:06:36Z"
+        "CreateDate": "2024-03-20T23:28:52Z"
     }
 }

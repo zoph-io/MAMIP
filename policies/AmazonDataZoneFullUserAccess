@@ -7,6 +7,10 @@
                     "Sid": "AmazonDataZoneUserOperations",
                     "Effect": "Allow",
                     "Action": [
+                        "datazone:PostTimeSeriesDataPoints",
+                        "datazone:ListTimeSeriesDataPoints",
+                        "datazone:GetTimeSeriesDataPoint",
+                        "datazone:DeleteTimeSeriesDataPoints",
                         "datazone:GetDomain",
                         "datazone:CreateFormType",
                         "datazone:GetFormType",
@@ -102,7 +106,7 @@
                         "datazone:ListNotifications",
                         "datazone:StartMetadataGenerationRun",
                         "datazone:GetMetadataGenerationRun",
-                        "datazone:StopMetadataGenerationRun",
+                        "datazone:CancelMetadataGenerationRun",
                         "datazone:ListMetadataGenerationRuns"
                     ],
                     "Resource": "*"
@@ -115,8 +119,8 @@
                 }
             ]
         },
-        "VersionId": "v4",
+        "VersionId": "v6",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-11-28T12:52:10Z"
+        "CreateDate": "2024-04-01T19:27:32Z"
     }
 }

@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "AmazonEKSCNIPolicy",
                     "Effect": "Allow",
                     "Action": [
                         "ec2:AssignPrivateIpAddresses",
@@ -14,6 +15,7 @@
                         "ec2:DescribeTags",
                         "ec2:DescribeNetworkInterfaces",
                         "ec2:DescribeInstanceTypes",
+                        "ec2:DescribeSubnets",
                         "ec2:DetachNetworkInterface",
                         "ec2:ModifyNetworkInterfaceAttribute",
                         "ec2:UnassignPrivateIpAddresses"
@@ -21,6 +23,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "AmazonEKSCNIPolicyENITag",
                     "Effect": "Allow",
                     "Action": [
                         "ec2:CreateTags"
@@ -31,8 +34,8 @@
                 }
             ]
         },
-        "VersionId": "v4",
+        "VersionId": "v5",
         "IsDefaultVersion": true,
-        "CreateDate": "2020-04-20T20:52:01Z"
+        "CreateDate": "2024-03-04T20:20:55Z"
     }
 }

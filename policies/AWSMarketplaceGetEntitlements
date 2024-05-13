@@ -4,16 +4,17 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "AWSMarketplaceGetEntitlements",
+                    "Effect": "Allow",
                     "Action": [
                         "aws-marketplace:GetEntitlements"
                     ],
-                    "Effect": "Allow",
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2017-03-27T19:37:24Z"
+        "CreateDate": "2024-04-05T01:27:20Z"
     }
 }

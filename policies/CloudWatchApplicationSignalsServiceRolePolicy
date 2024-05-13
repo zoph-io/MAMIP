@@ -26,8 +26,8 @@
                         "logs:GetQueryResults"
                     ],
                     "Resource": [
-                        "arn:aws:logs:*:*:log-group:/aws/appsignals/eks:*",
-                        "arn:aws:logs:*:*:log-group:/aws/appsignals/generic:*"
+                        "arn:aws:logs:*:*:log-group:/aws/appsignals/*:*",
+                        "arn:aws:logs:*:*:log-group:/aws/application-signals/data:*"
                     ],
                     "Condition": {
                         "StringEquals": {
@@ -36,10 +36,9 @@
                     }
                 },
                 {
-                    "Sid": "CWMetricsPermission",
+                    "Sid": "CWListMetricsPermission",
                     "Effect": "Allow",
                     "Action": [
-                        "cloudwatch:GetMetricData",
                         "cloudwatch:ListMetrics"
                     ],
                     "Resource": [
@@ -50,6 +49,16 @@
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
                     }
+                },
+                {
+                    "Sid": "CWGetMetricDataPermission",
+                    "Effect": "Allow",
+                    "Action": [
+                        "cloudwatch:GetMetricData"
+                    ],
+                    "Resource": [
+                        "*"
+                    ]
                 },
                 {
                     "Sid": "TagsPermission",
@@ -68,8 +77,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v4",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-11-09T18:09:57Z"
+        "CreateDate": "2024-04-18T22:52:11Z"
     }
 }

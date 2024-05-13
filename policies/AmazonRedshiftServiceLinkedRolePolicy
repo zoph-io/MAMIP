@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "Ec2VpcPermissions",
                     "Effect": "Allow",
                     "Action": [
                         "ec2:DescribeVpcs",
@@ -23,6 +24,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "PublicAccessCreateEip",
                     "Effect": "Allow",
                     "Action": [
                         "ec2:AllocateAddress"
@@ -37,6 +39,7 @@
                     }
                 },
                 {
+                    "Sid": "PublicAccessReleaseEip",
                     "Effect": "Allow",
                     "Action": [
                         "ec2:ReleaseAddress"
@@ -75,6 +78,7 @@
                     ]
                 },
                 {
+                    "Sid": "CreateSecurityGroupWithTags",
                     "Effect": "Allow",
                     "Action": [
                         "ec2:CreateSecurityGroup"
@@ -89,6 +93,7 @@
                     }
                 },
                 {
+                    "Sid": "SecurityGroupPermissions",
                     "Effect": "Allow",
                     "Action": [
                         "ec2:AuthorizeSecurityGroupEgress",
@@ -108,6 +113,7 @@
                     }
                 },
                 {
+                    "Sid": "CreateSecurityGroup",
                     "Effect": "Allow",
                     "Action": [
                         "ec2:CreateSecurityGroup"
@@ -117,6 +123,7 @@
                     ]
                 },
                 {
+                    "Sid": "CreateTagsOnResources",
                     "Effect": "Allow",
                     "Action": "ec2:CreateTags",
                     "Resource": [
@@ -141,6 +148,7 @@
                     }
                 },
                 {
+                    "Sid": "VPCPermissions",
                     "Effect": "Allow",
                     "Action": [
                         "ec2:DescribeVpcAttribute",
@@ -154,6 +162,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "CloudWatch",
                     "Effect": "Allow",
                     "Action": [
                         "cloudwatch:PutMetricData"
@@ -169,6 +178,7 @@
                     }
                 },
                 {
+                    "Sid": "SecretManager",
                     "Effect": "Allow",
                     "Action": [
                         "secretsmanager:DescribeSecret",
@@ -189,6 +199,7 @@
                     }
                 },
                 {
+                    "Sid": "SecretsManagerRandomPassword",
                     "Effect": "Allow",
                     "Action": [
                         "secretsmanager:GetRandomPassword"
@@ -196,6 +207,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "IPV6Permissions",
                     "Effect": "Allow",
                     "Action": [
                         "ec2:AssignIpv6Addresses",
@@ -204,11 +216,22 @@
                     "Resource": [
                         "arn:aws:ec2:*:*:network-interface/*"
                     ]
+                },
+                {
+                    "Sid": "ServiceQuotasToCheckCustomerLimits",
+                    "Effect": "Allow",
+                    "Action": [
+                        "servicequotas:GetServiceQuota"
+                    ],
+                    "Resource": [
+                        "arn:aws:servicequotas:*:*:ec2/L-0263D0A3",
+                        "arn:aws:servicequotas:*:*:vpc/L-29B6F2EB"
+                    ]
                 }
             ]
         },
-        "VersionId": "v12",
+        "VersionId": "v13",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-10-27T16:20:17Z"
+        "CreateDate": "2024-03-15T20:00:47Z"
     }
 }

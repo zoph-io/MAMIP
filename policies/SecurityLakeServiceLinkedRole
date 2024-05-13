@@ -63,11 +63,64 @@
                             "organizations:ServicePrincipal": "securitylake.amazonaws.com"
                         }
                     }
+                },
+                {
+                    "Sid": "AllowWafLoggingConfiguration",
+                    "Effect": "Allow",
+                    "Action": [
+                        "wafv2:PutLoggingConfiguration",
+                        "wafv2:GetLoggingConfiguration",
+                        "wafv2:ListLoggingConfigurations",
+                        "wafv2:DeleteLoggingConfiguration"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "wafv2:LogScope": "SecurityLake"
+                        }
+                    }
+                },
+                {
+                    "Sid": "AllowPutLoggingConfiguration",
+                    "Effect": "Allow",
+                    "Action": [
+                        "wafv2:PutLoggingConfiguration"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "ArnLike": {
+                            "wafv2:LogDestinationResource": "arn:aws:s3:::aws-waf-logs-security-lake-*"
+                        }
+                    }
+                },
+                {
+                    "Sid": "ListWebACLs",
+                    "Effect": "Allow",
+                    "Action": [
+                        "wafv2:ListWebACLs"
+                    ],
+                    "Resource": "*"
+                },
+                {
+                    "Sid": "LogDelivery",
+                    "Effect": "Allow",
+                    "Action": [
+                        "logs:CreateLogDelivery",
+                        "logs:DeleteLogDelivery"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "aws:CalledVia": [
+                                "wafv2.amazonaws.com"
+                            ]
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-11-29T14:03:33Z"
+        "CreateDate": "2024-04-19T16:00:05Z"
     }
 }

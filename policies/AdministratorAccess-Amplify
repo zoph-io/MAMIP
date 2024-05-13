@@ -22,7 +22,9 @@
                         "cloudformation:ListStackResources",
                         "cloudformation:DeleteStackSet",
                         "cloudformation:DescribeStackSet",
-                        "cloudformation:UpdateStackSet"
+                        "cloudformation:UpdateStackSet",
+                        "cloudformation:TagResource",
+                        "cloudformation:UntagResource"
                     ],
                     "Resource": [
                         "arn:aws:cloudformation:*:*:stack/amplify-*"
@@ -449,8 +451,8 @@
                 }
             ]
         },
-        "VersionId": "v11",
+        "VersionId": "v12",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-05-31T17:08:15Z"
+        "CreateDate": "2024-04-04T20:35:31Z"
     }
 }

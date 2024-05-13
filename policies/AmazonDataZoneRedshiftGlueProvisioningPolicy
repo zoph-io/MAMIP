@@ -24,6 +24,7 @@
                     }
                 },
                 {
+                    "Sid": "IamPassRolePermissions",
                     "Effect": "Allow",
                     "Action": [
                         "iam:PassRole"
@@ -293,11 +294,44 @@
                             ]
                         }
                     }
+                },
+                {
+                    "Sid": "RedshiftDataPermissions",
+                    "Effect": "Allow",
+                    "Action": [
+                        "redshift-data:ListSchemas",
+                        "redshift-data:ExecuteStatement"
+                    ],
+                    "Resource": [
+                        "arn:aws:redshift-serverless:*:*:workgroup/*",
+                        "arn:aws:redshift:*:*:cluster:*"
+                    ]
+                },
+                {
+                    "Sid": "DescribeStatementPermissions",
+                    "Effect": "Allow",
+                    "Action": [
+                        "redshift-data:DescribeStatement"
+                    ],
+                    "Resource": "*"
+                },
+                {
+                    "Sid": "GetSecretValuePermissions",
+                    "Effect": "Allow",
+                    "Action": [
+                        "secretsmanager:GetSecretValue"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "StringLike": {
+                            "secretsmanager:ResourceTag/AmazonDataZoneDomain": "dzd*"
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-09-23T00:50:47Z"
+        "CreateDate": "2024-03-12T16:44:23Z"
     }
 }

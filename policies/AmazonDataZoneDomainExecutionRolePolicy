@@ -7,6 +7,9 @@
                     "Sid": "DomainExecutionRoleStatement",
                     "Effect": "Allow",
                     "Action": [
+                        "datazone:ListTimeSeriesDataPoints",
+                        "datazone:GetTimeSeriesDataPoint",
+                        "datazone:DeleteTimeSeriesDataPoints",
                         "datazone:AcceptPredictions",
                         "datazone:AcceptSubscriptionRequest",
                         "datazone:CancelSubscription",
@@ -102,7 +105,7 @@
                         "datazone:UpdateSubscriptionRequest",
                         "datazone:StartMetadataGenerationRun",
                         "datazone:GetMetadataGenerationRun",
-                        "datazone:StopMetadataGenerationRun",
+                        "datazone:CancelMetadataGenerationRun",
                         "datazone:ListMetadataGenerationRuns"
                     ],
                     "Resource": "*"
@@ -115,8 +118,8 @@
                 }
             ]
         },
-        "VersionId": "v3",
+        "VersionId": "v5",
         "IsDefaultVersion": true,
-        "CreateDate": "2024-02-01T23:12:59Z"
+        "CreateDate": "2024-04-01T19:25:31Z"
     }
 }

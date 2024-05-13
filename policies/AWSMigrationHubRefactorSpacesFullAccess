@@ -12,6 +12,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "EC2Describe",
                     "Effect": "Allow",
                     "Action": [
                         "ec2:DescribeNetworkInterfaces",
@@ -29,6 +30,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "RequestTagTransitGatewayCreate",
                     "Effect": "Allow",
                     "Action": [
                         "ec2:CreateTransitGateway",
@@ -43,6 +45,7 @@
                     }
                 },
                 {
+                    "Sid": "ResourceTagTransitGatewayCreate",
                     "Effect": "Allow",
                     "Action": [
                         "ec2:CreateTransitGateway",
@@ -57,6 +60,7 @@
                     }
                 },
                 {
+                    "Sid": "VpcEndpointServiceConfigurationCreate",
                     "Effect": "Allow",
                     "Action": [
                         "ec2:CreateVpcEndpointServiceConfiguration"
@@ -64,6 +68,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "EC2NetworkingModify",
                     "Effect": "Allow",
                     "Action": [
                         "ec2:DeleteTransitGateway",
@@ -83,6 +88,7 @@
                     }
                 },
                 {
+                    "Sid": "VpcEndpointServiceConfigurationDelete",
                     "Effect": "Allow",
                     "Action": "ec2:DeleteVpcEndpointServiceConfigurations",
                     "Resource": "*",
@@ -93,6 +99,7 @@
                     }
                 },
                 {
+                    "Sid": "ELBLoadBalancerCreate",
                     "Effect": "Allow",
                     "Action": [
                         "elasticloadbalancing:AddTags",
@@ -106,6 +113,7 @@
                     }
                 },
                 {
+                    "Sid": "ELBDescribe",
                     "Effect": "Allow",
                     "Action": [
                         "elasticloadbalancing:DescribeLoadBalancers",
@@ -117,6 +125,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "ELBModify",
                     "Effect": "Allow",
                     "Action": [
                         "elasticloadbalancing:RegisterTargets",
@@ -135,11 +144,13 @@
                     }
                 },
                 {
+                    "Sid": "ELBLoadBalancerDelete",
                     "Effect": "Allow",
                     "Action": "elasticloadbalancing:DeleteLoadBalancer",
                     "Resource": "arn:*:elasticloadbalancing:*:*:loadbalancer/net/refactor-spaces-nlb-*"
                 },
                 {
+                    "Sid": "ELBListenerCreate",
                     "Effect": "Allow",
                     "Action": [
                         "elasticloadbalancing:AddTags",
@@ -156,11 +167,13 @@
                     }
                 },
                 {
+                    "Sid": "ELBListenerDelete",
                     "Effect": "Allow",
                     "Action": "elasticloadbalancing:DeleteListener",
                     "Resource": "arn:*:elasticloadbalancing:*:*:listener/net/refactor-spaces-nlb-*"
                 },
                 {
+                    "Sid": "ELBTargetGroupModify",
                     "Effect": "Allow",
                     "Action": [
                         "elasticloadbalancing:DeleteTargetGroup",
@@ -169,6 +182,7 @@
                     "Resource": "arn:*:elasticloadbalancing:*:*:targetgroup/refactor-spaces-tg-*"
                 },
                 {
+                    "Sid": "ELBTargetGroupCreate",
                     "Effect": "Allow",
                     "Action": [
                         "elasticloadbalancing:AddTags",
@@ -182,6 +196,7 @@
                     }
                 },
                 {
+                    "Sid": "APIGatewayModify",
                     "Effect": "Allow",
                     "Action": [
                         "apigateway:GET",
@@ -206,6 +221,7 @@
                     }
                 },
                 {
+                    "Sid": "APIGatewayVpcLinksGet",
                     "Effect": "Allow",
                     "Action": "apigateway:GET",
                     "Resource": [
@@ -214,6 +230,7 @@
                     ]
                 },
                 {
+                    "Sid": "OrganizationDescribe",
                     "Effect": "Allow",
                     "Action": [
                         "organizations:DescribeOrganization"
@@ -221,6 +238,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "CloudformationStackCreate",
                     "Effect": "Allow",
                     "Action": [
                         "cloudformation:CreateStack"
@@ -228,6 +246,15 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "CloudformationStackTag",
+                    "Effect": "Allow",
+                    "Action": [
+                        "cloudformation:TagResource"
+                    ],
+                    "Resource": "arn:aws:cloudformation:*:*:stack/*"
+                },
+                {
+                    "Sid": "CreateRefactorSpacesSLR",
                     "Effect": "Allow",
                     "Action": "iam:CreateServiceLinkedRole",
                     "Resource": "*",
@@ -238,6 +265,7 @@
                     }
                 },
                 {
+                    "Sid": "CreateELBSLR",
                     "Effect": "Allow",
                     "Action": "iam:CreateServiceLinkedRole",
                     "Resource": "*",
@@ -249,8 +277,8 @@
                 }
             ]
         },
-        "VersionId": "v5",
+        "VersionId": "v6",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-07-19T19:07:24Z"
+        "CreateDate": "2024-04-11T17:45:46Z"
     }
 }
