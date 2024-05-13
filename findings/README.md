@@ -1,7 +1,8 @@
-## AWS Access Analyzer - Findings - 2024-04-23
+## AWS Access Analyzer - Findings - 2024-05-13
 
-- Policies analyzed: `1188`
-- Errors: `1`
+- Policies analyzed: `1197`
+- Errors: `2`
+  - [`AWSDataExchangeFullAccess`](./AWSDataExchangeFullAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
 - Sec_Warnings: `11`
   - [`AdministratorAccess`](./AdministratorAccess.json)
@@ -40,8 +41,9 @@
   - [`ViewOnlyAccess`](./ViewOnlyAccess.json)
   - [`AWSDeepLensLambdaFunctionAccessPolicy`](./AWSDeepLensLambdaFunctionAccessPolicy.json)
   - [`AWSDeepRacerFullAccess`](./AWSDeepRacerFullAccess.json)
-- Warnings: `17`
+- Warnings: `18`
   - [`AdministratorAccess`](./AdministratorAccess.json)
+  - [`AmazonDataZoneSageMakerEnvironmentRolePermissionsBoundary`](./AmazonDataZoneSageMakerEnvironmentRolePermissionsBoundary.json)
   - [`AdministratorAccess-Amplify`](./AdministratorAccess-Amplify.json)
   - [`AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy.json)
   - [`FMSServiceRolePolicy`](./FMSServiceRolePolicy.json)
