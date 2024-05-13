@@ -12,7 +12,7 @@ USER mamip
 
 WORKDIR /app
 
-COPY script-fargate.sh /app/script.sh
+COPY --chown=mamip:mamipg script-fargate.sh /app/script.sh
 RUN chmod +x /app/script.sh
 
 CMD ["bash", "script.sh"]
