@@ -21,6 +21,7 @@ eval "$(ssh-agent -s)"
 ssh-add $sshKeyPath
 git config --global user.name "$gitUserName"
 git config --global user.email "$gitUserEmail"
+mkdir -p /tmp/.ssh/
 ssh-keyscan github.com >>$sshConfigPath
 
 # Clone and process the repo
