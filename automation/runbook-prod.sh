@@ -8,7 +8,7 @@ repoUrl="git@github.com:z0ph/MAMIP.git"
 repoPath="/app/MAMIP"
 s3KeyPath="s3://mamip-artifacts/mamip"
 sshKeyPath="/tmp/mamip.key"
-sshConfigPath="/root/.ssh/known_hosts"
+sshConfigPath="/tmp/.ssh/known_hosts"
 gitUserName="MAMIP Bot"
 gitUserEmail="mamip_bot@github.com"
 snsTopicArn="arn:aws:sns:eu-west-1:567589703415:mamip-sns-topic"
@@ -21,7 +21,6 @@ eval "$(ssh-agent -s)"
 ssh-add $sshKeyPath
 git config --global user.name "$gitUserName"
 git config --global user.email "$gitUserEmail"
-sudo mkdir -p /root/.ssh/
 ssh-keyscan github.com >>$sshConfigPath
 
 # Clone and process the repo
