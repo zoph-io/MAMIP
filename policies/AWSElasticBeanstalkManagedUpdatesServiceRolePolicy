@@ -103,7 +103,9 @@
                         "cloudformation:CancelUpdateStack",
                         "cloudformation:DeleteStack",
                         "cloudformation:GetTemplate",
-                        "cloudformation:UpdateStack"
+                        "cloudformation:UpdateStack",
+                        "cloudformation:TagResource",
+                        "cloudformation:UntagResource"
                     ],
                     "Resource": [
                         "arn:aws:cloudformation:*:*:stack/awseb-e-*",
@@ -225,8 +227,8 @@
                 }
             ]
         },
-        "VersionId": "v8",
+        "VersionId": "v9",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-03-24T00:18:43Z"
+        "CreateDate": "2024-04-29T23:11:34+00:00"
     }
 }

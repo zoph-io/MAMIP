@@ -54,7 +54,10 @@
                         "codestar-connections:ListConnections",
                         "codestar-connections:GetConnection"
                     ],
-                    "Resource": "arn:aws:codestar-connections:*:*:connection/*"
+                    "Resource": [
+                        "arn:aws:codestar-connections:*:*:connection/*",
+                        "arn:aws:codeconnections:*:*:connection/*"
+                    ]
                 },
                 {
                     "Sid": "CodeStarNotificationsReadWriteAccess",
@@ -105,8 +108,8 @@
             ],
             "Version": "2012-10-17"
         },
-        "VersionId": "v14",
+        "VersionId": "v15",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-07-31T23:06:10Z"
+        "CreateDate": "2024-05-02T01:36:55+00:00"
     }
 }

@@ -32,14 +32,18 @@
                     "Sid": "AccessGitRepos",
                     "Effect": "Allow",
                     "Action": [
-                        "codestar-connections:UseConnection"
+                        "codestar-connections:UseConnection",
+                        "codeconnections:UseConnection"
                     ],
-                    "Resource": "arn:aws:codestar-connections:*:*:connection/*"
+                    "Resource": [
+                        "arn:aws:codestar-connections:*:*:connection/*",
+                        "arn:aws:codeconnections:*:*:connection/*"
+                    ]
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-11-23T21:14:36Z"
+        "CreateDate": "2024-05-05T01:49:07+00:00"
     }
 }

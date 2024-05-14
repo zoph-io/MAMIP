@@ -7,9 +7,13 @@
                     "Sid": "AccessGitRepos",
                     "Effect": "Allow",
                     "Action": [
-                        "codestar-connections:UseConnection"
+                        "codestar-connections:UseConnection",
+                        "codeconnections:UseConnection"
                     ],
-                    "Resource": "arn:aws:codestar-connections:*:*:connection/*",
+                    "Resource": [
+                        "arn:aws:codestar-connections:*:*:connection/*",
+                        "arn:aws:codeconnections:*:*:connection/*"
+                    ],
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
@@ -18,8 +22,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-11-16T17:05:42Z"
+        "CreateDate": "2024-04-26T18:12:31+00:00"
     }
 }

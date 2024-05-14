@@ -24,6 +24,7 @@
                         "s3:ListAllMyBuckets",
                         "redshift:DescribeClusters",
                         "redshift-serverless:ListWorkgroups",
+                        "ec2:DescribeSecurityGroups",
                         "ec2:DescribeSubnets",
                         "ec2:DescribeVpcs",
                         "secretsmanager:ListSecrets"
@@ -103,6 +104,14 @@
                     }
                 },
                 {
+                    "Sid": "IAMGetPolicyStatement",
+                    "Effect": "Allow",
+                    "Action": "iam:GetPolicy",
+                    "Resource": [
+                        "arn:aws:iam::*:policy/service-role/AmazonDataZoneRedshiftAccessPolicy*"
+                    ]
+                },
+                {
                     "Sid": "DataZoneTagOnCreate",
                     "Effect": "Allow",
                     "Action": [
@@ -139,8 +148,8 @@
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2024-03-12T16:34:41Z"
+        "CreateDate": "2024-04-23T21:36:18+00:00"
     }
 }

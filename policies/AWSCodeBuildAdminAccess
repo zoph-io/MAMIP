@@ -78,7 +78,10 @@
                         "codestar-connections:StartOAuthHandshake",
                         "codestar-connections:UseConnection"
                     ],
-                    "Resource": "arn:aws:codestar-connections:*:*:connection/*"
+                    "Resource": [
+                        "arn:aws:codestar-connections:*:*:connection/*",
+                        "arn:aws:codeconnections:*:*:connection/*"
+                    ]
                 },
                 {
                     "Sid": "CodeStarNotificationsReadWriteAccess",
@@ -138,8 +141,8 @@
                 }
             ]
         },
-        "VersionId": "v13",
+        "VersionId": "v14",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-07-31T23:06:23Z"
+        "CreateDate": "2024-05-02T01:45:44+00:00"
     }
 }
