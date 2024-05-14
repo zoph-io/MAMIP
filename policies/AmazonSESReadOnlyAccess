@@ -4,17 +4,19 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "SESReadOnlyAccess",
                     "Effect": "Allow",
                     "Action": [
                         "ses:Get*",
-                        "ses:List*"
+                        "ses:List*",
+                        "ses:BatchGetMetricData"
                     ],
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2015-02-06T18:41:03+00:00"
+        "CreateDate": "2024-05-14T12:03:02+00:00"
     }
 }
