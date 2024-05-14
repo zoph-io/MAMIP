@@ -60,8 +60,8 @@ clone_repo() {
 process_repo() {
     log "Processing the repository"
     cd "$REPO_PATH"
-    aws iam list-policies --output json >list-policies.json
-    jq -cr '.Policies[] | select(.Arn | contains("iam::aws")) | .Arn + " " + .DefaultVersionId + " " + .PolicyName' list-policies.json | xargs -n3 sh -c 'mkdir -p policies && aws iam get-policy-version --policy-arn $1 --version-id $2 > "policies/$3"' sh
+    aws iam list-policies --output json | jq -cr '.Policies[] | select(.Arn | contains("iam::aws")) | .Arn + " " + .DefaultVersionId + " " + .PolicyName' |
+        xargs -P 4 -n3 sh -c 'mkdir -p policies && aws iam get-policy-version --policy-arn $1 --version-id $2 > "policies/$3"' sh
 }
 
 # Push changes to the repository
