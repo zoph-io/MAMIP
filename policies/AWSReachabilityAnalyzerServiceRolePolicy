@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "ReachabilityAnalyzerPermissions",
                     "Effect": "Allow",
                     "Action": [
                         "cloudformation:DescribeStacks",
@@ -47,6 +48,7 @@
                         "elasticloadbalancing:DescribeLoadBalancers",
                         "elasticloadbalancing:DescribeRules",
                         "elasticloadbalancing:DescribeTags",
+                        "elasticloadbalancing:DescribeTargetGroupAttributes",
                         "elasticloadbalancing:DescribeTargetGroups",
                         "elasticloadbalancing:DescribeTargetHealth",
                         "globalaccelerator:ListAccelerators",
@@ -80,6 +82,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "ApigatewayPermissions",
                     "Effect": "Allow",
                     "Action": [
                         "apigateway:GET"
@@ -93,8 +96,8 @@
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-06-23T21:04:06+00:00"
+        "CreateDate": "2024-05-15T20:49:51+00:00"
     }
 }
