@@ -154,11 +154,21 @@
                         "tag:GetResources"
                     ],
                     "Resource": "*"
+                },
+                {
+                    "Sid": "ControlCatalogAccess",
+                    "Effect": "Allow",
+                    "Action": [
+                        "controlcatalog:ListCommonControls",
+                        "controlcatalog:ListDomains",
+                        "controlcatalog:ListObjectives"
+                    ],
+                    "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-04-30T00:02:56+00:00"
+        "CreateDate": "2024-05-15T23:46:15+00:00"
     }
 }
