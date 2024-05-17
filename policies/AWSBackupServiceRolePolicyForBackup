@@ -460,11 +460,24 @@
                         "ssm-sap:ListTagsForResource"
                     ],
                     "Resource": "arn:aws:ssm-sap:*:*:*"
+                },
+                {
+                    "Sid": "RecoveryPointTaggingPermissions",
+                    "Effect": "Allow",
+                    "Action": [
+                        "backup:TagResource"
+                    ],
+                    "Resource": "arn:aws:backup:*:*:recovery-point:*",
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:PrincipalAccount": "${aws:ResourceAccount}"
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v18",
+        "VersionId": "v19",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-12-15T22:04:27+00:00"
+        "CreateDate": "2024-05-17T17:12:58+00:00"
     }
 }

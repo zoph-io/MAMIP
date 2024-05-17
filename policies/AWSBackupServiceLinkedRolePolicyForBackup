@@ -328,11 +328,24 @@
                     "Resource": [
                         "arn:aws:cloudformation:*:*:stack/*"
                     ]
+                },
+                {
+                    "Sid": "RecoveryPointTaggingPermissions",
+                    "Effect": "Allow",
+                    "Action": [
+                        "backup:TagResource"
+                    ],
+                    "Resource": "arn:aws:backup:*:*:recovery-point:*",
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:PrincipalAccount": "${aws:ResourceAccount}"
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v15",
+        "VersionId": "v16",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-12-15T22:06:53+00:00"
+        "CreateDate": "2024-05-17T17:12:59+00:00"
     }
 }
