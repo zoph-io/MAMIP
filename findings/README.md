@@ -1,8 +1,9 @@
-## AWS Access Analyzer - Findings - 2024-05-16
+## AWS Access Analyzer - Findings - 2024-05-17
 
 - Policies analyzed: `1198`
-- Errors: `2`
+- Errors: `3`
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
+  - [`AmazonConnectServiceLinkedRolePolicy`](./AmazonConnectServiceLinkedRolePolicy.json)
   - [`AWSDataExchangeFullAccess`](./AWSDataExchangeFullAccess.json)
 - Sec_Warnings: `11`
   - [`AdministratorAccess-Amplify`](./AdministratorAccess-Amplify.json)
