@@ -36,6 +36,11 @@
                         "athena:ListTableMetadata",
                         "athena:ListWorkGroups",
                         "elasticmapreduce:GetClusterSessionCredentials",
+                        "elasticmapreduce:AddJobFlowSteps",
+                        "elasticmapreduce:DescribeCluster",
+                        "elasticmapreduce:CancelSteps",
+                        "elasticmapreduce:DescribeStep",
+                        "elasticmapreduce:ListSteps",
                         "glue:GetDatabase",
                         "glue:GetDatabases",
                         "glue:GetTable",
@@ -107,8 +112,8 @@
                 }
             ]
         },
-        "VersionId": "v7",
-        "IsDefaultVersion": false,
-        "CreateDate": "2024-04-30T09:31:36+00:00"
+        "VersionId": "v8",
+        "IsDefaultVersion": true,
+        "CreateDate": "2024-05-16T22:01:55+00:00"
     }
 }
