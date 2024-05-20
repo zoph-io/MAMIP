@@ -7,7 +7,8 @@
                     "Sid": "LaunchActionsPolicy1",
                     "Effect": "Allow",
                     "Action": [
-                        "ssm:DescribeInstanceInformation"
+                        "ssm:DescribeInstanceInformation",
+                        "ssm:DescribeParameters"
                     ],
                     "Resource": [
                         "*"
@@ -252,8 +253,8 @@
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-10-16T12:28:44+00:00"
+        "CreateDate": "2024-05-19T07:29:42+00:00"
     }
 }

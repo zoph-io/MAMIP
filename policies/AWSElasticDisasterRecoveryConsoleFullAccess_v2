@@ -422,7 +422,8 @@
                     "Sid": "ConsoleFullAccess30",
                     "Effect": "Allow",
                     "Action": [
-                        "ssm:DescribeInstanceInformation"
+                        "ssm:DescribeInstanceInformation",
+                        "ssm:DescribeParameters"
                     ],
                     "Resource": [
                         "*"
@@ -542,8 +543,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-11-27T13:35:19+00:00"
+        "CreateDate": "2024-05-19T07:38:32+00:00"
     }
 }

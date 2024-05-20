@@ -8,6 +8,9 @@
                     "Effect": "Allow",
                     "Action": [
                         "application-autoscaling:DescribeScalingPolicies",
+                        "application-signals:BatchGet*",
+                        "application-signals:Get*",
+                        "application-signals:List*",
                         "autoscaling:Describe*",
                         "cloudwatch:BatchGet*",
                         "cloudwatch:Describe*",
@@ -44,11 +47,17 @@
                         "oam:ListAttachedLinks"
                     ],
                     "Resource": "arn:aws:oam:*:*:sink/*"
+                },
+                {
+                    "Sid": "CloudWatchReadOnlyGetRolePermissions",
+                    "Effect": "Allow",
+                    "Action": "iam:GetRole",
+                    "Resource": "arn:aws:iam::*:role/aws-service-role/application-signals.cloudwatch.amazonaws.com/AWSServiceRoleForCloudWatchApplicationSignals"
                 }
             ]
         },
-        "VersionId": "v8",
+        "VersionId": "v9",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-12-05T19:24:15+00:00"
+        "CreateDate": "2024-05-17T22:17:51+00:00"
     }
 }

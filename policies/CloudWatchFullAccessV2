@@ -8,6 +8,7 @@
                     "Effect": "Allow",
                     "Action": [
                         "application-autoscaling:DescribeScalingPolicies",
+                        "application-signals:*",
                         "autoscaling:DescribeAutoScalingGroups",
                         "autoscaling:DescribePolicies",
                         "cloudwatch:*",
@@ -59,8 +60,8 @@
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-12-05T19:36:00+00:00"
+        "CreateDate": "2024-05-17T22:20:49+00:00"
     }
 }
