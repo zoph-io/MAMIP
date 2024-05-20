@@ -1,0 +1,110 @@
+[
+    {
+        "findingDetails": "The service application-signals:BatchGet* specified in the action does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_SERVICE_IN_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 1
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 199,
+                        "line": 1,
+                        "offset": 199
+                    },
+                    "start": {
+                        "column": 168,
+                        "line": 1,
+                        "offset": 168
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The service application-signals:Get* specified in the action does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_SERVICE_IN_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 2
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 227,
+                        "line": 1,
+                        "offset": 227
+                    },
+                    "start": {
+                        "column": 201,
+                        "line": 1,
+                        "offset": 201
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The service application-signals:List* specified in the action does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_SERVICE_IN_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 3
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 256,
+                        "line": 1,
+                        "offset": 256
+                    },
+                    "start": {
+                        "column": 229,
+                        "line": 1,
+                        "offset": 229
+                    }
+                }
+            }
+        ]
+    }
+]
