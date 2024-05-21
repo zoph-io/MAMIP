@@ -1,6 +1,6 @@
-## AWS Access Analyzer - Findings - 2024-05-20
+## AWS Access Analyzer - Findings - 2024-05-21
 
-- Policies analyzed: `1198`
+- Policies analyzed: `1199`
 - Errors: `7`
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
   - [`CloudWatchFullAccessV2`](./CloudWatchFullAccessV2.json)
