@@ -79,8 +79,13 @@
                         "payments:GetPaymentInstrument",
                         "payments:GetPaymentStatus",
                         "payments:ListPaymentPreferences",
+                        "payments:ListTagsForResource",
+                        "payments:ListPaymentInstruments",
                         "payments:MakePayment",
+                        "payments:TagResource",
                         "payments:UpdatePaymentPreferences",
+                        "payments:UpdatePaymentInstrument",
+                        "payments:UntagResource",
                         "pricing:DescribeServices",
                         "purchase-orders:AddPurchaseOrder",
                         "purchase-orders:DeletePurchaseOrder",
@@ -114,8 +119,8 @@
                 }
             ]
         },
-        "VersionId": "v10",
+        "VersionId": "v11",
         "IsDefaultVersion": true,
-        "CreateDate": "2024-05-21T21:12:57+00:00"
+        "CreateDate": "2024-05-23T23:26:02+00:00"
     }
 }
