@@ -1,0 +1,74 @@
+[
+    {
+        "findingDetails": "The action payments:ListTagsForResource does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 38
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 1339,
+                        "line": 1,
+                        "offset": 1339
+                    },
+                    "start": {
+                        "column": 1309,
+                        "line": 1,
+                        "offset": 1309
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The action payments:ListPaymentInstruments does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 39
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 1374,
+                        "line": 1,
+                        "offset": 1374
+                    },
+                    "start": {
+                        "column": 1341,
+                        "line": 1,
+                        "offset": 1341
+                    }
+                }
+            }
+        ]
+    }
+]
