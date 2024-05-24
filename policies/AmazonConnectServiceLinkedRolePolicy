@@ -196,11 +196,35 @@
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
                     }
+                },
+                {
+                    "Sid": "AllowCognitoForConnectEnabledTaggedResources",
+                    "Effect": "Allow",
+                    "Action": [
+                        "cognito-idp:DescribeUserPool",
+                        "cognito-idp:ListUserPoolClients"
+                    ],
+                    "Resource": "arn:aws:cognito-idp:*:*:userpool/*",
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/AmazonConnectEnabled": "True"
+                        }
+                    }
+                },
+                {
+                    "Sid": "AllowWritePermissionForCustomerProfileObjects",
+                    "Effect": "Allow",
+                    "Action": [
+                        "profile:PutProfileObject"
+                    ],
+                    "Resource": [
+                        "arn:aws:profile:*:*:domains/amazon-connect-*/object-types/*"
+                    ]
                 }
             ]
         },
-        "VersionId": "v15",
+        "VersionId": "v16",
         "IsDefaultVersion": true,
-        "CreateDate": "2024-05-16T23:07:54+00:00"
+        "CreateDate": "2024-05-24T01:42:32+00:00"
     }
 }
