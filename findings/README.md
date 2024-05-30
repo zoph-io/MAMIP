@@ -1,13 +1,8 @@
-## AWS Access Analyzer - Findings - 2024-05-24
+## AWS Access Analyzer - Findings - 2024-05-30
 
 - Policies analyzed: `1199`
-- Errors: `14`
+- Errors: `2`
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
-  - [`AWSBillingReadOnlyAccess`](./AWSBillingReadOnlyAccess.json)
-  - [`CloudWatchFullAccessV2`](./CloudWatchFullAccessV2.json)
-  - [`Billing`](./Billing.json)
-  - [`AmazonConnectServiceLinkedRolePolicy`](./AmazonConnectServiceLinkedRolePolicy.json)
-  - [`CloudWatchReadOnlyAccess`](./CloudWatchReadOnlyAccess.json)
   - [`AWSDataExchangeFullAccess`](./AWSDataExchangeFullAccess.json)
 - Sec_Warnings: `11`
   - [`AdministratorAccess-Amplify`](./AdministratorAccess-Amplify.json)
