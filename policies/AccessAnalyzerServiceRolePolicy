@@ -32,6 +32,15 @@
                         "iam:ListAccessKeys",
                         "iam:GetLoginProfile",
                         "iam:GetAccessKeyLastUsed",
+                        "iam:ListRolePolicies",
+                        "iam:GetRolePolicy",
+                        "iam:ListAttachedRolePolicies",
+                        "iam:ListUserPolicies",
+                        "iam:GetUserPolicy",
+                        "iam:ListAttachedUserPolicies",
+                        "iam:GetPolicy",
+                        "iam:GetPolicyVersion",
+                        "iam:ListGroupsForUser",
                         "kms:DescribeKey",
                         "kms:GetKeyPolicy",
                         "kms:ListGrants",
@@ -90,8 +99,8 @@
                 }
             ]
         },
-        "VersionId": "v12",
+        "VersionId": "v13",
         "IsDefaultVersion": true,
-        "CreateDate": "2024-01-22T22:34:53+00:00"
+        "CreateDate": "2024-05-30T18:34:54+00:00"
     }
 }
