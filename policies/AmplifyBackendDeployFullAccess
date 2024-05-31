@@ -114,7 +114,8 @@
                         "ssm:GetParameter"
                     ],
                     "Resource": [
-                        "arn:aws:ssm:*:*:parameter/amplify/*"
+                        "arn:aws:ssm:*:*:parameter/amplify/*",
+                        "arn:aws:ssm:*:*:parameter/cdk-bootstrap/*"
                     ],
                     "Condition": {
                         "StringEquals": {
@@ -162,8 +163,8 @@
                 }
             ]
         },
-        "VersionId": "v6",
+        "VersionId": "v7",
         "IsDefaultVersion": true,
-        "CreateDate": "2024-04-17T16:00:59+00:00"
+        "CreateDate": "2024-05-31T15:53:42+00:00"
     }
 }
