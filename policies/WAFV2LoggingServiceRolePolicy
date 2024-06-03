@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "FirehoseAPIStatement",
                     "Effect": "Allow",
                     "Action": [
                         "firehose:PutRecord",
@@ -14,14 +15,15 @@
                     ]
                 },
                 {
+                    "Sid": "DescribeOrganizationAPIStatement",
                     "Effect": "Allow",
                     "Action": "organizations:DescribeOrganization",
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2020-07-23T17:04:25+00:00"
+        "CreateDate": "2024-06-03T17:29:04+00:00"
     }
 }
