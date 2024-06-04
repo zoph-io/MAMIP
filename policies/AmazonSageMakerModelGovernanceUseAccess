@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "AllowSMMonitoringModelCards",
                     "Effect": "Allow",
                     "Action": [
                         "sagemaker:ListMonitoringAlerts",
@@ -27,6 +28,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "AllowSMTrainingModelsSearchTags",
                     "Effect": "Allow",
                     "Action": [
                         "sagemaker:ListTrainingJobs",
@@ -41,6 +43,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "AllowKMSActions",
                     "Effect": "Allow",
                     "Action": [
                         "kms:ListAliases"
@@ -48,6 +51,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "AllowS3Actions",
                     "Effect": "Allow",
                     "Action": [
                         "s3:GetObject",
@@ -62,6 +66,7 @@
                     ]
                 },
                 {
+                    "Sid": "AllowS3ListActions",
                     "Effect": "Allow",
                     "Action": [
                         "s3:ListBucket",
@@ -71,8 +76,8 @@
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-07-17T22:31:07+00:00"
+        "CreateDate": "2024-06-04T21:48:12+00:00"
     }
 }
