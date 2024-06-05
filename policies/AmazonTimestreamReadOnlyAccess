@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "AmazonTimestreamReadOnlyAccess",
                     "Effect": "Allow",
                     "Action": [
                         "timestream:CancelQuery",
@@ -19,14 +20,15 @@
                         "timestream:DescribeScheduledQuery",
                         "timestream:ListScheduledQueries",
                         "timestream:DescribeBatchLoadTask",
-                        "timestream:ListBatchLoadTasks"
+                        "timestream:ListBatchLoadTasks",
+                        "timestream:DescribeAccountSettings"
                     ],
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v3",
+        "VersionId": "v4",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-02-28T18:22:57+00:00"
+        "CreateDate": "2024-06-05T19:11:27+00:00"
     }
 }
