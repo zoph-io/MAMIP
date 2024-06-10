@@ -61,6 +61,13 @@
                         "codebuild:ListBuilds*",
                         "codebuild:ListProjects",
                         "codecommit:List*",
+                        "codedeploy:BatchGetApplicationRevisions",
+                        "codedeploy:BatchGetApplications",
+                        "codedeploy:BatchGetDeploymentGroups",
+                        "codedeploy:BatchGetDeploymentInstances",
+                        "codedeploy:BatchGetDeploymentTargets",
+                        "codedeploy:BatchGetDeployments",
+                        "codedeploy:BatchGetOnPremisesInstances",
                         "codedeploy:Get*",
                         "codedeploy:List*",
                         "codepipeline:ListPipelines",
@@ -361,8 +368,8 @@
                 }
             ]
         },
-        "VersionId": "v18",
+        "VersionId": "v19",
         "IsDefaultVersion": true,
-        "CreateDate": "2024-03-28T21:28:38+00:00"
+        "CreateDate": "2024-06-10T20:57:11+00:00"
     }
 }
