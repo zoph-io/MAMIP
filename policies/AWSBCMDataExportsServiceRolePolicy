@@ -1,0 +1,21 @@
+{
+    "PolicyVersion": {
+        "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Sid": "CostOptimizationRecommendationAccess",
+                    "Effect": "Allow",
+                    "Action": [
+                        "cost-optimization-hub:ListEnrollmentStatuses",
+                        "cost-optimization-hub:ListRecommendations"
+                    ],
+                    "Resource": "*"
+                }
+            ]
+        },
+        "VersionId": "v1",
+        "IsDefaultVersion": true,
+        "CreateDate": "2024-06-10T17:40:19+00:00"
+    }
+}
