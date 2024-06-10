@@ -1,5 +1,28 @@
 [
     {
+        "findingDetails": "The 10480 characters in the identity policy, excluding whitespace, exceed the 10240 character maximum for inline and managed policies. We recommend that you use multiple granular policies.",
+        "findingType": "WARNING",
+        "issueCode": "POLICY_SIZE_EXCEEDS_IDENTITY_POLICY_QUOTA",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-general-warning-policy-size-exceeds-identity-policy-quota",
+        "locations": [
+            {
+                "path": [],
+                "span": {
+                    "end": {
+                        "column": 10842,
+                        "line": 1,
+                        "offset": 10842
+                    },
+                    "start": {
+                        "column": 0,
+                        "line": 1,
+                        "offset": 0
+                    }
+                }
+            }
+        ]
+    },
+    {
         "findingDetails": "The 2 action(s) are redundant because they provide similar permissions. Update the policy to remove the redundant action such as: ses:ListDedicatedIpPools.",
         "findingType": "SUGGESTION",
         "issueCode": "REDUNDANT_ACTION",
@@ -17,19 +40,19 @@
                         "value": "Action"
                     },
                     {
-                        "index": 271
+                        "index": 278
                     }
                 ],
                 "span": {
                     "end": {
-                        "column": 7882,
+                        "column": 8157,
                         "line": 1,
-                        "offset": 7882
+                        "offset": 8157
                     },
                     "start": {
-                        "column": 7871,
+                        "column": 8146,
                         "line": 1,
-                        "offset": 7871
+                        "offset": 8146
                     }
                 }
             },
@@ -45,19 +68,19 @@
                         "value": "Action"
                     },
                     {
-                        "index": 272
+                        "index": 279
                     }
                 ],
                 "span": {
                     "end": {
-                        "column": 7910,
+                        "column": 8185,
                         "line": 1,
-                        "offset": 7910
+                        "offset": 8185
                     },
                     "start": {
-                        "column": 7884,
+                        "column": 8159,
                         "line": 1,
-                        "offset": 7884
+                        "offset": 8159
                     }
                 }
             }
