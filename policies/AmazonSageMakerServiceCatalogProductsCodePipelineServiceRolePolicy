@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "AmazonSageMakerCodePipelineCFnPermission",
                     "Effect": "Allow",
                     "Action": [
                         "cloudformation:CreateChangeSet",
@@ -19,6 +20,23 @@
                     "Resource": "arn:aws:cloudformation:*:*:stack/sagemaker-*"
                 },
                 {
+                    "Sid": "AmazonSageMakerCodePipelineCFnTagPermission",
+                    "Effect": "Allow",
+                    "Action": [
+                        "cloudformation:TagResource",
+                        "cloudformation:UntagResource"
+                    ],
+                    "Resource": "arn:aws:cloudformation:*:*:stack/sagemaker-*",
+                    "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "aws:TagKeys": [
+                                "sagemaker:project-name"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "Sid": "AmazonSageMakerCodePipelineS3Permission",
                     "Effect": "Allow",
                     "Action": [
                         "s3:AbortMultipartUpload",
@@ -32,6 +50,7 @@
                     ]
                 },
                 {
+                    "Sid": "AmazonSageMakerCodePipelinePassRolePermission",
                     "Effect": "Allow",
                     "Action": [
                         "iam:PassRole"
@@ -41,6 +60,7 @@
                     ]
                 },
                 {
+                    "Sid": "AmazonSageMakerCodePipelineCodeBuildPermission",
                     "Effect": "Allow",
                     "Action": [
                         "codebuild:BatchGetBuilds",
@@ -52,6 +72,7 @@
                     ]
                 },
                 {
+                    "Sid": "AmazonSageMakerCodePipelineCodeCommitPermission",
                     "Effect": "Allow",
                     "Action": [
                         "codecommit:CancelUploadArchive",
@@ -61,11 +82,41 @@
                         "codecommit:UploadArchive"
                     ],
                     "Resource": "arn:aws:codecommit:*:*:sagemaker-*"
+                },
+                {
+                    "Sid": "AmazonSageMakerCodePipelineCodeStarConnectionPermission",
+                    "Effect": "Allow",
+                    "Action": [
+                        "codestar-connections:UseConnection"
+                    ],
+                    "Resource": [
+                        "arn:aws:codestar-connections:*:*:connection/*"
+                    ],
+                    "Condition": {
+                        "StringEqualsIgnoreCase": {
+                            "aws:ResourceTag/sagemaker": "true"
+                        }
+                    }
+                },
+                {
+                    "Sid": "AmazonSageMakerCodePipelineCodeConnectionPermission",
+                    "Effect": "Allow",
+                    "Action": [
+                        "codeconnections:UseConnection"
+                    ],
+                    "Resource": [
+                        "arn:aws:codeconnections:*:*:connection/*"
+                    ],
+                    "Condition": {
+                        "StringEqualsIgnoreCase": {
+                            "aws:ResourceTag/sagemaker": "true"
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-02-22T09:53:17+00:00"
+        "CreateDate": "2024-06-11T18:37:51+00:00"
     }
 }
