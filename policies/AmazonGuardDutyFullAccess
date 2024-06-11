@@ -43,11 +43,24 @@
                     "Effect": "Allow",
                     "Action": "iam:GetRole",
                     "Resource": "arn:aws:iam::*:role/*AWSServiceRoleForAmazonGuardDutyMalwareProtection"
+                },
+                {
+                    "Sid": "AllowPassRoleToMalwareProtectionPlan",
+                    "Effect": "Allow",
+                    "Action": [
+                        "iam:PassRole"
+                    ],
+                    "Resource": "arn:aws:iam::*:role/*",
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:PassedToService": "malware-protection-plan.guardduty.amazonaws.com"
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v5",
+        "VersionId": "v6",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-11-16T23:04:21+00:00"
+        "CreateDate": "2024-06-10T22:50:31+00:00"
     }
 }
