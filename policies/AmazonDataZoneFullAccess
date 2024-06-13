@@ -85,7 +85,8 @@
                     "Action": [
                         "ram:GetResourceShares",
                         "ram:GetResourceShareInvitations",
-                        "ram:GetResourceShareAssociations"
+                        "ram:GetResourceShareAssociations",
+                        "ram:ListResourceSharePermissions"
                     ],
                     "Resource": "*"
                 },
@@ -112,6 +113,26 @@
                     ]
                 },
                 {
+                    "Sid": "DataZoneTagOnCreateDomainProjectTags",
+                    "Effect": "Allow",
+                    "Action": [
+                        "secretsmanager:TagResource"
+                    ],
+                    "Resource": "arn:aws:secretsmanager:*:*:secret:AmazonDataZone-*",
+                    "Condition": {
+                        "ForAllValues:StringEquals": {
+                            "aws:TagKeys": [
+                                "AmazonDataZoneDomain",
+                                "AmazonDataZoneProject"
+                            ]
+                        },
+                        "StringLike": {
+                            "aws:RequestTag/AmazonDataZoneDomain": "dzd_*",
+                            "aws:ResourceTag/AmazonDataZoneDomain": "dzd_*"
+                        }
+                    }
+                },
+                {
                     "Sid": "DataZoneTagOnCreate",
                     "Effect": "Allow",
                     "Action": [
@@ -127,9 +148,6 @@
                         "StringLike": {
                             "aws:RequestTag/AmazonDataZoneDomain": "dzd_*",
                             "aws:ResourceTag/AmazonDataZoneDomain": "dzd_*"
-                        },
-                        "Null": {
-                            "aws:TagKeys": "false"
                         }
                     }
                 },
@@ -148,8 +166,8 @@
                 }
             ]
         },
-        "VersionId": "v3",
+        "VersionId": "v4",
         "IsDefaultVersion": true,
-        "CreateDate": "2024-04-23T21:36:18+00:00"
+        "CreateDate": "2024-06-13T19:02:55+00:00"
     }
 }
