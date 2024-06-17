@@ -4,18 +4,20 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "AWSBudgetsReadOnlyAccess",
                     "Effect": "Allow",
                     "Action": [
                         "aws-portal:ViewBilling",
                         "budgets:ViewBudget",
-                        "budgets:Describe*"
+                        "budgets:Describe*",
+                        "budgets:ListTagsForResource"
                     ],
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2020-10-15T17:18:28+00:00"
+        "CreateDate": "2024-06-17T17:41:25+00:00"
     }
 }
