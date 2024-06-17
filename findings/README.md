@@ -1,9 +1,10 @@
 ## AWS Access Analyzer - Findings - 2024-06-17
 
-- Policies analyzed: `1203`
-- Errors: `2`
+- Policies analyzed: `1204`
+- Errors: `4`
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
   - [`AWSDataExchangeFullAccess`](./AWSDataExchangeFullAccess.json)
+  - [`AWSApplicationAutoscalingWorkSpacesPoolPolicy`](./AWSApplicationAutoscalingWorkSpacesPoolPolicy.json)
 - Sec_Warnings: `11`
   - [`AdministratorAccess-Amplify`](./AdministratorAccess-Amplify.json)
   - [`AWSServiceRoleForAmazonEKSNodegroup`](./AWSServiceRoleForAmazonEKSNodegroup.json)
