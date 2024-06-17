@@ -393,6 +393,7 @@
                         "elasticfilesystem:DescribeLifecycleConfiguration",
                         "elasticfilesystem:DescribeMountTargets",
                         "elasticfilesystem:DescribeMountTargetSecurityGroups",
+                        "elasticfilesystem:DescribeTags",
                         "elasticloadbalancing:DescribeListenerCertificates",
                         "elasticloadbalancing:DescribeListeners",
                         "elasticloadbalancing:DescribeLoadBalancerAttributes",
@@ -1031,6 +1032,7 @@
                         "redshift:DescribeEventSubscriptions",
                         "redshift:DescribeLoggingStatus",
                         "redshift:DescribeScheduledActions",
+                        "redshift:DescribeTags",
                         "refactor-spaces:GetEnvironment",
                         "refactor-spaces:GetService",
                         "refactor-spaces:ListApplications",
@@ -1262,6 +1264,7 @@
                         "ssm:GetDocument",
                         "ssm:ListDocuments",
                         "ssm:ListTagsForResource",
+                        "ssm-sap:ListTagsForResource",
                         "sso:DescribeInstanceAccessControlAttributeConfiguration",
                         "sso:DescribePermissionSet",
                         "sso:GetInlinePolicyForPermissionSet",
@@ -1377,8 +1380,8 @@
                 }
             ]
         },
-        "VersionId": "v50",
+        "VersionId": "v51",
         "IsDefaultVersion": true,
-        "CreateDate": "2024-02-22T17:20:56+00:00"
+        "CreateDate": "2024-06-17T18:56:45+00:00"
     }
 }
