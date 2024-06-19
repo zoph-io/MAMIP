@@ -1,0 +1,35 @@
+[
+    {
+        "findingDetails": "The action connect:AdminGetEmergencyAccessToken does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 1
+                    },
+                    {
+                        "value": "Action"
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 305,
+                        "line": 1,
+                        "offset": 305
+                    },
+                    "start": {
+                        "column": 267,
+                        "line": 1,
+                        "offset": 267
+                    }
+                }
+            }
+        ]
+    }
+]
