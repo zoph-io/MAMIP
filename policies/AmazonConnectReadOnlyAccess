@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "AllowConnectReadOnly",
                     "Effect": "Allow",
                     "Action": [
                         "connect:Get*",
@@ -14,14 +15,15 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "DenyConnectEmergencyAccess",
                     "Effect": "Deny",
-                    "Action": "connect:GetFederationTokens",
+                    "Action": "connect:AdminGetEmergencyAccessToken",
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v3",
+        "VersionId": "v4",
         "IsDefaultVersion": true,
-        "CreateDate": "2019-11-06T22:10:18+00:00"
+        "CreateDate": "2024-06-19T15:15:33+00:00"
     }
 }
