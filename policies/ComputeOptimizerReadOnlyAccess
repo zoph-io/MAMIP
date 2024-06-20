@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "computeOptimizerReadOnlyAccess",
                     "Effect": "Allow",
                     "Action": [
                         "compute-optimizer:DescribeRecommendationExportJobs",
@@ -19,6 +20,8 @@
                         "compute-optimizer:GetEffectiveRecommendationPreferences",
                         "compute-optimizer:GetECSServiceRecommendations",
                         "compute-optimizer:GetECSServiceRecommendationProjectedMetrics",
+                        "compute-optimizer:GetRDSDatabaseRecommendations",
+                        "compute-optimizer:GetRDSDatabaseRecommendationProjectedMetrics",
                         "compute-optimizer:GetLicenseRecommendations",
                         "ec2:DescribeInstances",
                         "ec2:DescribeVolumes",
@@ -31,14 +34,16 @@
                         "cloudwatch:GetMetricData",
                         "organizations:ListAccounts",
                         "organizations:DescribeOrganization",
-                        "organizations:DescribeAccount"
+                        "organizations:DescribeAccount",
+                        "rds:DescribeDBInstances",
+                        "rds:DescribeDBClusters"
                     ],
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v7",
+        "VersionId": "v8",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-08-28T19:22:58+00:00"
+        "CreateDate": "2024-06-20T16:15:31+00:00"
     }
 }
