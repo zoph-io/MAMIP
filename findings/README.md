@@ -1,6 +1,6 @@
-## AWS Access Analyzer - Findings - 2024-06-19
+## AWS Access Analyzer - Findings - 2024-06-20
 
-- Policies analyzed: `1204`
+- Policies analyzed: `1205`
 - Errors: `5`
   - [`AWSDataExchangeFullAccess`](./AWSDataExchangeFullAccess.json)
   - [`AmazonConnectReadOnlyAccess`](./AmazonConnectReadOnlyAccess.json)
