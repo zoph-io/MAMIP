@@ -1,8 +1,7 @@
-## AWS Access Analyzer - Findings - 2024-06-21
+## AWS Access Analyzer - Findings - 2024-06-24
 
 - Policies analyzed: `1205`
-- Errors: `5`
-  - [`AWSDataExchangeFullAccess`](./AWSDataExchangeFullAccess.json)
+- Errors: `4`
   - [`AmazonConnectReadOnlyAccess`](./AmazonConnectReadOnlyAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
   - [`AWSApplicationAutoscalingWorkSpacesPoolPolicy`](./AWSApplicationAutoscalingWorkSpacesPoolPolicy.json)
