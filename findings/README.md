@@ -1,6 +1,6 @@
-## AWS Access Analyzer - Findings - 2024-06-24
+## AWS Access Analyzer - Findings - 2024-06-25
 
-- Policies analyzed: `1206`
+- Policies analyzed: `1207`
 - Errors: `4`
   - [`AmazonConnectReadOnlyAccess`](./AmazonConnectReadOnlyAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
