@@ -1,8 +1,7 @@
-## AWS Access Analyzer - Findings - 2024-06-25
+## AWS Access Analyzer - Findings - 2024-06-26
 
-- Policies analyzed: `1207`
-- Errors: `4`
-  - [`AmazonConnectReadOnlyAccess`](./AmazonConnectReadOnlyAccess.json)
+- Policies analyzed: `1218`
+- Errors: `3`
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
   - [`AWSApplicationAutoscalingWorkSpacesPoolPolicy`](./AWSApplicationAutoscalingWorkSpacesPoolPolicy.json)
 - Sec_Warnings: `11`
