@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "AllowDefaultNetworkAdminActions",
                     "Effect": "Allow",
                     "Action": [
                         "autoscaling:Describe*",
@@ -78,6 +79,7 @@
                         "ec2:DescribeFlowLogs",
                         "ec2:DescribeInstances",
                         "ec2:DescribeInternetGateways",
+                        "ec2:DescribeIpv6Pools",
                         "ec2:DescribeKeyPairs",
                         "ec2:DescribeMovingAddresses",
                         "ec2:DescribeNatGateways",
@@ -87,6 +89,7 @@
                         "ec2:DescribeNetworkInterfaces",
                         "ec2:DescribePlacementGroups",
                         "ec2:DescribePrefixLists",
+                        "ec2:DescribePublicIpv4Pools",
                         "ec2:DescribeRouteTables",
                         "ec2:DescribeSecurityGroupReferences",
                         "ec2:DescribeSecurityGroupRules",
@@ -107,8 +110,6 @@
                         "ec2:DescribeVpcs",
                         "ec2:DescribeVpnConnections",
                         "ec2:DescribeVpnGateways",
-                        "ec2:DescribePublicIpv4Pools",
-                        "ec2:DescribeIpv6Pools",
                         "ec2:DetachInternetGateway",
                         "ec2:DetachNetworkInterface",
                         "ec2:DetachVpnGateway",
@@ -120,6 +121,9 @@
                         "ec2:DisassociateVpcCidrBlock",
                         "ec2:EnableVgwRoutePropagation",
                         "ec2:EnableVpcClassicLinkDnsSupport",
+                        "ec2:GetVpnConnectionDeviceSampleConfiguration",
+                        "ec2:GetVpnConnectionDeviceTypes",
+                        "ec2:GetVpnTunnelReplacementStatus",
                         "ec2:ModifyNetworkInterfaceAttribute",
                         "ec2:ModifySecurityGroupRules",
                         "ec2:ModifySubnetAttribute",
@@ -130,6 +134,10 @@
                         "ec2:ModifyVpcEndpointServicePermissions",
                         "ec2:ModifyVpcPeeringConnectionOptions",
                         "ec2:ModifyVpcTenancy",
+                        "ec2:ModifyVpnConnection",
+                        "ec2:ModifyVpnConnectionOptions",
+                        "ec2:ModifyVpnTunnelCertificate",
+                        "ec2:ModifyVpnTunnelOptions",
                         "ec2:MoveAddressToVpc",
                         "ec2:RejectVpcEndpointConnections",
                         "ec2:ReleaseAddress",
@@ -137,6 +145,7 @@
                         "ec2:ReplaceNetworkAclEntry",
                         "ec2:ReplaceRoute",
                         "ec2:ReplaceRouteTableAssociation",
+                        "ec2:ReplaceVpnTunnel",
                         "ec2:ResetNetworkInterfaceAttribute",
                         "ec2:RestoreAddressToClassic",
                         "ec2:UnassignIpv6Addresses",
@@ -160,6 +169,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "AllowVPCPermissions",
                     "Effect": "Allow",
                     "Action": [
                         "ec2:AcceptVpcPeeringConnection",
@@ -190,6 +200,7 @@
                     ]
                 },
                 {
+                    "Sid": "AllowLocalGatewayPermissions",
                     "Effect": "Allow",
                     "Action": [
                         "ec2:CreateLocalGatewayRoute",
@@ -207,6 +218,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "DiscoverBuckets",
                     "Effect": "Allow",
                     "Action": [
                         "s3:GetBucketLocation",
@@ -218,6 +230,7 @@
                     ]
                 },
                 {
+                    "Sid": "DiscoverFlowLogRoles",
                     "Effect": "Allow",
                     "Action": [
                         "iam:GetRole",
@@ -227,6 +240,7 @@
                     "Resource": "arn:aws:iam::*:role/flow-logs-*"
                 },
                 {
+                    "Sid": "NetworkmanagerPermissions",
                     "Effect": "Allow",
                     "Action": [
                         "networkmanager:*"
@@ -234,6 +248,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "TransitGatewayPermissions",
                     "Effect": "Allow",
                     "Action": [
                         "ec2:AcceptTransitGatewayVpcAttachment",
@@ -266,6 +281,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "AllowTransitGatewaySLRCreation",
                     "Effect": "Allow",
                     "Action": [
                         "iam:CreateServiceLinkedRole"
@@ -281,8 +297,8 @@
                 }
             ]
         },
-        "VersionId": "v11",
+        "VersionId": "v12",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-09-16T20:22:54+00:00"
+        "CreateDate": "2024-06-26T16:53:02+00:00"
     }
 }
