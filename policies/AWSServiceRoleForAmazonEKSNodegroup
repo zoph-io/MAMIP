@@ -63,7 +63,8 @@
                         "autoscaling:CompleteLifecycleAction",
                         "autoscaling:PutLifecycleHook",
                         "autoscaling:PutNotificationConfiguration",
-                        "autoscaling:EnableMetricsCollection"
+                        "autoscaling:EnableMetricsCollection",
+                        "autoscaling:PutScheduledUpdateGroupAction"
                     ],
                     "Resource": "arn:aws:autoscaling:*:*:*:autoScalingGroupName/eks-*"
                 },
@@ -136,7 +137,8 @@
                         "ec2:DescribeSecurityGroups",
                         "ec2:GetConsoleOutput",
                         "ec2:DescribeRouteTables",
-                        "ec2:DescribeSubnets"
+                        "ec2:DescribeSubnets",
+                        "ec2:DescribeCapacityReservations"
                     ],
                     "Resource": "*"
                 },
@@ -172,8 +174,8 @@
                 }
             ]
         },
-        "VersionId": "v7",
+        "VersionId": "v8",
         "IsDefaultVersion": true,
-        "CreateDate": "2024-01-04T20:37:13+00:00"
+        "CreateDate": "2024-06-27T21:03:09+00:00"
     }
 }
