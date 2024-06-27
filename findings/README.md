@@ -1,9 +1,8 @@
 ## AWS Access Analyzer - Findings - 2024-06-27
 
-- Policies analyzed: `1218`
-- Errors: `3`
+- Policies analyzed: `1219`
+- Errors: `1`
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
-  - [`AWSApplicationAutoscalingWorkSpacesPoolPolicy`](./AWSApplicationAutoscalingWorkSpacesPoolPolicy.json)
 - Sec_Warnings: `11`
   - [`AdministratorAccess`](./AdministratorAccess.json)
   - [`AWSProtonCodeBuildProvisioningServiceRolePolicy`](./AWSProtonCodeBuildProvisioningServiceRolePolicy.json)
