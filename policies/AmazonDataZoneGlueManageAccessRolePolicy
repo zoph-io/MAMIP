@@ -61,14 +61,19 @@
                     "Action": [
                         "lakeformation:BatchGrantPermissions",
                         "lakeformation:BatchRevokePermissions",
+                        "lakeformation:CreateDataCellsFilter",
                         "lakeformation:CreateLakeFormationOptIn",
+                        "lakeformation:DeleteDataCellsFilter",
                         "lakeformation:DeleteLakeFormationOptIn",
                         "lakeformation:GrantPermissions",
+                        "lakeformation:GetDataCellsFilter",
                         "lakeformation:GetResourceLFTags",
+                        "lakeformation:ListDataCellsFilter",
                         "lakeformation:ListLakeFormationOptIns",
                         "lakeformation:ListPermissions",
                         "lakeformation:RegisterResource",
                         "lakeformation:RevokePermissions",
+                        "lakeformation:UpdateDataCellsFilter",
                         "glue:GetDatabase",
                         "glue:GetTable",
                         "organizations:DescribeOrganization",
@@ -212,8 +217,8 @@
                 }
             ]
         },
-        "VersionId": "v5",
+        "VersionId": "v6",
         "IsDefaultVersion": true,
-        "CreateDate": "2024-06-03T23:29:25+00:00"
+        "CreateDate": "2024-06-28T16:41:41+00:00"
     }
 }
