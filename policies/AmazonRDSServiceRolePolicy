@@ -52,14 +52,6 @@
                     "Resource": "*"
                 },
                 {
-                    "Sid": "Sns",
-                    "Effect": "Allow",
-                    "Action": [
-                        "sns:Publish"
-                    ],
-                    "Resource": "*"
-                },
-                {
                     "Sid": "CloudWatchLogs",
                     "Effect": "Allow",
                     "Action": [
@@ -168,8 +160,8 @@
                 }
             ]
         },
-        "VersionId": "v13",
+        "VersionId": "v14",
         "IsDefaultVersion": true,
-        "CreateDate": "2024-01-19T15:10:09+00:00"
+        "CreateDate": "2024-07-01T22:42:05+00:00"
     }
 }
