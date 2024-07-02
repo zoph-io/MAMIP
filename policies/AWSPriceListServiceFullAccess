@@ -4,16 +4,17 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "AWSPriceListServiceFullAccess",
+                    "Effect": "Allow",
                     "Action": [
                         "pricing:*"
                     ],
-                    "Effect": "Allow",
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2017-11-22T00:36:27+00:00"
+        "CreateDate": "2024-07-02T13:34:19+00:00"
     }
 }
