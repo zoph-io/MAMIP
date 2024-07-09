@@ -31,11 +31,48 @@
                     "Resource": [
                         "*"
                     ]
+                },
+                {
+                    "Sid": "SecretsManagerPermissions",
+                    "Effect": "Allow",
+                    "Action": [
+                        "secretsmanager:GetSecretValue"
+                    ],
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/LicenseManagerLinuxSubscriptions": "enabled",
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    },
+                    "Resource": [
+                        "arn:aws:secretsmanager:*:*:secret:*"
+                    ]
+                },
+                {
+                    "Sid": "KMSPermissions",
+                    "Effect": "Allow",
+                    "Action": [
+                        "kms:Decrypt"
+                    ],
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/LicenseManagerLinuxSubscriptions": "enabled",
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        },
+                        "StringLike": {
+                            "kms:ViaService": [
+                                "secretsmanager.*.amazonaws.com"
+                            ]
+                        }
+                    },
+                    "Resource": [
+                        "arn:aws:kms:*:*:key/*"
+                    ]
                 }
             ]
         },
-        "VersionId": "v1",
-        "IsDefaultVersion": false,
-        "CreateDate": "2022-12-20T18:54:54+00:00"
+        "VersionId": "v2",
+        "IsDefaultVersion": true,
+        "CreateDate": "2024-07-08T22:04:56+00:00"
     }
 }
