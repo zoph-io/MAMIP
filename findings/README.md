@@ -1,4 +1,4 @@
-## AWS Access Analyzer - Findings - 2024-07-09
+## AWS Access Analyzer - Findings - 2024-07-10
 
 - Policies analyzed: `1220`
 - Errors: `1`
@@ -40,12 +40,13 @@
   - [`SupportUser`](./SupportUser.json)
   - [`ViewOnlyAccess`](./ViewOnlyAccess.json)
   - [`AWSMarketplaceFullAccess`](./AWSMarketplaceFullAccess.json)
-- Warnings: `19`
+- Warnings: `20`
   - [`AmazonRDSCustomPreviewServiceRolePolicy`](./AmazonRDSCustomPreviewServiceRolePolicy.json)
   - [`PowerUserAccess`](./PowerUserAccess.json)
   - [`AWSResourceExplorerServiceRolePolicy`](./AWSResourceExplorerServiceRolePolicy.json)
   - [`AWSOrganizationsServiceTrustPolicy`](./AWSOrganizationsServiceTrustPolicy.json)
   - [`AdministratorAccess`](./AdministratorAccess.json)
+  - [`AmazonSageMakerCanvasFullAccess`](./AmazonSageMakerCanvasFullAccess.json)
   - [`AmazonLaunchWizardFullAccessV2`](./AmazonLaunchWizardFullAccessV2.json)
   - [`AdministratorAccess-Amplify`](./AdministratorAccess-Amplify.json)
   - [`AmazonSageMakerServiceCatalogProductsLambdaServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsLambdaServiceRolePolicy.json)
