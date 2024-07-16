@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "AllowSSMAgentPermissions",
                     "Effect": "Allow",
                     "Action": [
                         "ssm:DescribeAssociation",
@@ -23,6 +24,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "AllowSSMChannelMessaging",
                     "Effect": "Allow",
                     "Action": [
                         "ssmmessages:CreateControlChannel",
@@ -33,6 +35,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "AllowSSMLegacyMessaging",
                     "Effect": "Allow",
                     "Action": [
                         "ec2messages:AcknowledgeMessage",
@@ -46,8 +49,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-08-30T20:54:27+00:00"
+        "CreateDate": "2024-07-16T18:14:07+00:00"
     }
 }
