@@ -4,6 +4,14 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "rdscrc",
+                    "Effect": "Allow",
+                    "Action": [
+                        "rds:CrossRegionCommunication"
+                    ],
+                    "Resource": "*"
+                },
+                {
                     "Sid": "ecc1",
                     "Effect": "Allow",
                     "Action": [
@@ -314,7 +322,8 @@
                                 "CreateSnapshot",
                                 "CreateSnapshots",
                                 "CopySnapshot",
-                                "AllocateAddress"
+                                "AllocateAddress",
+                                "CopyImage"
                             ]
                         }
                     }
@@ -443,6 +452,17 @@
                             ]
                         }
                     }
+                },
+                {
+                    "Sid": "eccAmi1",
+                    "Effect": "Allow",
+                    "Action": [
+                        "ec2:CopyImage"
+                    ],
+                    "Resource": [
+                        "arn:aws:ec2:*::image/*",
+                        "arn:aws:ec2:*::snapshot/*"
+                    ]
                 },
                 {
                     "Sid": "iam1",
@@ -754,8 +774,8 @@
                 }
             ]
         },
-        "VersionId": "v9",
+        "VersionId": "v10",
         "IsDefaultVersion": true,
-        "CreateDate": "2024-04-19T15:15:23+00:00"
+        "CreateDate": "2024-07-18T17:33:36+00:00"
     }
 }

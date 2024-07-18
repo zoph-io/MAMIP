@@ -72,6 +72,26 @@
                     }
                 },
                 {
+                    "Sid": "AmplifySandboxLambdaLogsStreamingListTags",
+                    "Effect": "Allow",
+                    "Action": [
+                        "lambda:ListTags"
+                    ],
+                    "Resource": [
+                        "arn:aws:lambda:*:*:function:amplify-*"
+                    ]
+                },
+                {
+                    "Sid": "AmplifySandboxLambdaLogsStreamingFilterLogEvents",
+                    "Effect": "Allow",
+                    "Action": [
+                        "logs:FilterLogEvents"
+                    ],
+                    "Resource": [
+                        "arn:aws:logs:*:*:log-group:/aws/lambda/amplify-*:*"
+                    ]
+                },
+                {
                     "Sid": "AmplifySchema",
                     "Effect": "Allow",
                     "Action": [
@@ -163,8 +183,8 @@
                 }
             ]
         },
-        "VersionId": "v7",
+        "VersionId": "v8",
         "IsDefaultVersion": true,
-        "CreateDate": "2024-05-31T15:53:42+00:00"
+        "CreateDate": "2024-07-18T17:05:12+00:00"
     }
 }
