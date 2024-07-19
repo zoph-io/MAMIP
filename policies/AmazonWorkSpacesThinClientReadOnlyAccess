@@ -1,0 +1,27 @@
+{
+    "PolicyVersion": {
+        "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Sid": "AllowThinClientReadAccess",
+                    "Effect": "Allow",
+                    "Action": [
+                        "thinclient:GetEnvironment",
+                        "thinclient:ListEnvironments",
+                        "thinclient:GetDevice",
+                        "thinclient:ListDevices",
+                        "thinclient:ListDeviceSessions",
+                        "thinclient:GetSoftwareSet",
+                        "thinclient:ListSoftwareSets",
+                        "thinclient:ListTagsForResource"
+                    ],
+                    "Resource": "arn:aws:thinclient:*:*:*"
+                }
+            ]
+        },
+        "VersionId": "v1",
+        "IsDefaultVersion": true,
+        "CreateDate": "2024-07-19T08:50:52+00:00"
+    }
+}
