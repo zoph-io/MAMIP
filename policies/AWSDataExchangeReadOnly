@@ -4,14 +4,25 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "DataExchangeReadOnlyActions",
                     "Effect": "Allow",
                     "Action": [
-                        "dataexchange:Get*",
-                        "dataexchange:List*"
+                        "dataexchange:GetAsset",
+                        "dataexchange:GetDataSet",
+                        "dataexchange:GetEventAction",
+                        "dataexchange:GetJob",
+                        "dataexchange:GetRevision",
+                        "dataexchange:ListDataSetRevisions",
+                        "dataexchange:ListDataSets",
+                        "dataexchange:ListEventActions",
+                        "dataexchange:ListJobs",
+                        "dataexchange:ListRevisionAssets",
+                        "dataexchange:ListTagsForResource"
                     ],
                     "Resource": "*"
                 },
                 {
+                    "Sid": "AWSMarketplaceReadOnlyActions",
                     "Effect": "Allow",
                     "Action": [
                         "aws-marketplace:ViewSubscriptions",
@@ -24,14 +35,16 @@
                         "aws-marketplace:DescribeChangeSet",
                         "aws-marketplace:ListChangeSets",
                         "aws-marketplace:SearchAgreements",
-                        "aws-marketplace:GetAgreementTerms"
+                        "aws-marketplace:GetAgreementTerms",
+                        "aws-marketplace:ListPrivateListings",
+                        "aws-marketplace:ListTagsForResource"
                     ],
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2021-05-10T21:15:26+00:00"
+        "CreateDate": "2024-07-22T13:36:03+00:00"
     }
 }
