@@ -559,7 +559,9 @@
                         "network-firewall:DescribeResourcePolicy",
                         "network-firewall:DeleteResourcePolicy",
                         "network-firewall:DescribeLoggingConfiguration",
-                        "network-firewall:UpdateLoggingConfiguration"
+                        "network-firewall:UpdateLoggingConfiguration",
+                        "network-firewall:DescribeTLSInspectionConfiguration",
+                        "network-firewall:ListTLSInspectionConfigurations"
                     ],
                     "Resource": "*"
                 },
@@ -700,8 +702,8 @@
                 }
             ]
         },
-        "VersionId": "v29",
+        "VersionId": "v30",
         "IsDefaultVersion": true,
-        "CreateDate": "2024-04-22T19:12:13+00:00"
+        "CreateDate": "2024-07-22T20:08:34+00:00"
     }
 }
