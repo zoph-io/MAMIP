@@ -2,17 +2,21 @@
     "PolicyVersion": {
         "Document": {
             "Version": "2012-10-17",
-            "Statement": {
-                "Effect": "Allow",
-                "Action": [
-                    "medialive:List*",
-                    "medialive:Describe*"
-                ],
-                "Resource": "*"
-            }
+            "Statement": [
+                {
+                    "Sid": "AWSElementalMediaLiveReadOnly",
+                    "Effect": "Allow",
+                    "Action": [
+                        "medialive:Get*",
+                        "medialive:List*",
+                        "medialive:Describe*"
+                    ],
+                    "Resource": "*"
+                }
+            ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2020-07-08T16:38:07+00:00"
+        "CreateDate": "2024-07-22T17:08:46+00:00"
     }
 }
