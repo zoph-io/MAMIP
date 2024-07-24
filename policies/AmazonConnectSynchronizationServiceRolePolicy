@@ -65,8 +65,18 @@
                         "connect:ListPhoneNumbersV2",
                         "connect:UpdatePhoneNumber",
                         "connect:DescribePhoneNumber",
-                        "connect:Associate*",
-                        "connect:Disassociate*"
+                        "connect:AssociatePhoneNumberContactFlow",
+                        "connect:DisassociatePhoneNumberContactFlow",
+                        "connect:AssociateRoutingProfileQueues",
+                        "connect:DisassociateQueueQuickConnects",
+                        "connect:AssociateQueueQuickConnects",
+                        "connect:DisassociateUserProficiencies",
+                        "connect:AssociateUserProficiencies",
+                        "connect:DisassociateRoutingProfileQueues",
+                        "connect:CreateAuthenticationProfile",
+                        "connect:UpdateAuthenticationProfile",
+                        "connect:DescribeAuthenticationProfile",
+                        "connect:ListAuthenticationProfiles"
                     ],
                     "Resource": "*"
                 },
@@ -83,8 +93,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-10-27T22:38:25+00:00"
+        "CreateDate": "2024-07-24T17:45:43+00:00"
     }
 }
