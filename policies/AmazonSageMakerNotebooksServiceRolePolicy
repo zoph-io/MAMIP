@@ -4,6 +4,14 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "AllowSageMakerDeleteApp",
+                    "Effect": "Allow",
+                    "Action": [
+                        "sagemaker:DeleteApp"
+                    ],
+                    "Resource": "arn:aws:sagemaker:*:*:app/*"
+                },
+                {
                     "Sid": "AllowEFSAccessPointCreation",
                     "Effect": "Allow",
                     "Action": "elasticfilesystem:CreateAccessPoint",
@@ -167,8 +175,8 @@
                 }
             ]
         },
-        "VersionId": "v8",
-        "IsDefaultVersion": false,
-        "CreateDate": "2024-05-22T19:18:48+00:00"
+        "VersionId": "v9",
+        "IsDefaultVersion": true,
+        "CreateDate": "2024-07-24T18:05:40+00:00"
     }
 }
