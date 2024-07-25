@@ -4,23 +4,26 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "Statement1",
                     "Effect": "Allow",
                     "Action": [
                         "ec2:CreateNetworkInterface",
+                        "ec2:DeleteNetworkInterface",
                         "ec2:DescribeAvailabilityZones",
+                        "ec2:DescribeDhcpOptions",
                         "ec2:DescribeInternetGateways",
+                        "ec2:DescribeNetworkInterfaces",
                         "ec2:DescribeSecurityGroups",
                         "ec2:DescribeSubnets",
                         "ec2:DescribeVpcs",
-                        "ec2:DeleteNetworkInterface",
                         "ec2:ModifyNetworkInterfaceAttribute"
                     ],
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v3",
+        "VersionId": "v4",
         "IsDefaultVersion": true,
-        "CreateDate": "2016-05-23T16:29:57+00:00"
+        "CreateDate": "2024-07-25T15:19:01+00:00"
     }
 }
