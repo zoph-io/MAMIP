@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "CloudWatch",
                     "Effect": "Allow",
                     "Action": [
                         "cloudwatch:DescribeAlarmHistory",
@@ -21,6 +22,7 @@
                     ]
                 },
                 {
+                    "Sid": "CloudWatchLogs",
                     "Effect": "Allow",
                     "Action": [
                         "logs:FilterLogEvents",
@@ -33,6 +35,7 @@
                     ]
                 },
                 {
+                    "Sid": "EventBridge",
                     "Effect": "Allow",
                     "Action": [
                         "events:DescribeRule"
@@ -42,18 +45,21 @@
                     ]
                 },
                 {
+                    "Sid": "CloudFormation",
                     "Effect": "Allow",
                     "Action": [
                         "cloudFormation:CreateStack",
                         "cloudFormation:UpdateStack",
                         "cloudFormation:DeleteStack",
-                        "cloudFormation:DescribeStackResources"
+                        "cloudFormation:DescribeStackResources",
+                        "cloudFormation:UpdateTerminationProtection"
                     ],
                     "Resource": [
                         "arn:aws:cloudformation:*:*:stack/ApplicationInsights-*"
                     ]
                 },
                 {
+                    "Sid": "CloudFormationStacks",
                     "Effect": "Allow",
                     "Action": [
                         "cloudFormation:DescribeStacks",
@@ -65,6 +71,7 @@
                     ]
                 },
                 {
+                    "Sid": "Tag",
                     "Effect": "Allow",
                     "Action": [
                         "tag:GetResources"
@@ -74,6 +81,7 @@
                     ]
                 },
                 {
+                    "Sid": "ResourceGroups",
                     "Effect": "Allow",
                     "Action": [
                         "resource-groups:ListGroupResources",
@@ -85,6 +93,7 @@
                     ]
                 },
                 {
+                    "Sid": "ApplicationInsightsResourceGroup",
                     "Effect": "Allow",
                     "Action": [
                         "resource-groups:CreateGroup",
@@ -95,6 +104,7 @@
                     ]
                 },
                 {
+                    "Sid": "ElasticLoadBalancing",
                     "Effect": "Allow",
                     "Action": [
                         "elasticloadbalancing:DescribeLoadBalancers",
@@ -106,6 +116,7 @@
                     ]
                 },
                 {
+                    "Sid": "AutoScaling",
                     "Effect": "Allow",
                     "Action": [
                         "autoscaling:DescribeAutoScalingGroups"
@@ -115,6 +126,7 @@
                     ]
                 },
                 {
+                    "Sid": "SSMParameter",
                     "Effect": "Allow",
                     "Action": [
                         "ssm:PutParameter",
@@ -126,6 +138,7 @@
                     "Resource": "arn:aws:ssm:*:*:parameter/AmazonCloudWatch-ApplicationInsights-*"
                 },
                 {
+                    "Sid": "SSMAssociation",
                     "Effect": "Allow",
                     "Action": [
                         "ssm:CreateAssociation",
@@ -143,6 +156,7 @@
                     ]
                 },
                 {
+                    "Sid": "SSMOpsItem",
                     "Effect": "Allow",
                     "Action": [
                         "ssm:GetOpsItem",
@@ -156,6 +170,7 @@
                     ]
                 },
                 {
+                    "Sid": "SSMTags",
                     "Effect": "Allow",
                     "Action": [
                         "ssm:AddTagsToResource"
@@ -163,6 +178,7 @@
                     "Resource": "arn:aws:ssm:*:*:opsitem/*"
                 },
                 {
+                    "Sid": "SSMGetCommandInvocation",
                     "Effect": "Allow",
                     "Action": [
                         "ssm:ListCommandInvocations",
@@ -173,6 +189,7 @@
                     ]
                 },
                 {
+                    "Sid": "SSMSendCommand",
                     "Effect": "Allow",
                     "Action": "ssm:SendCommand",
                     "Resource": [
@@ -184,6 +201,7 @@
                     ]
                 },
                 {
+                    "Sid": "EC2",
                     "Effect": "Allow",
                     "Action": [
                         "ec2:DescribeInstances",
@@ -198,6 +216,7 @@
                     ]
                 },
                 {
+                    "Sid": "RDS",
                     "Effect": "Allow",
                     "Action": [
                         "rds:DescribeDBInstances",
@@ -208,6 +227,7 @@
                     ]
                 },
                 {
+                    "Sid": "Lambda",
                     "Effect": "Allow",
                     "Action": [
                         "lambda:ListFunctions",
@@ -219,6 +239,7 @@
                     ]
                 },
                 {
+                    "Sid": "EventBridgeManagedRule",
                     "Effect": "Allow",
                     "Action": [
                         "events:PutRule",
@@ -231,6 +252,7 @@
                     ]
                 },
                 {
+                    "Sid": "XRay",
                     "Effect": "Allow",
                     "Action": [
                         "xray:GetServiceGraph",
@@ -243,6 +265,7 @@
                     ]
                 },
                 {
+                    "Sid": "DynamoDB",
                     "Effect": "Allow",
                     "Action": [
                         "dynamodb:ListTables",
@@ -255,6 +278,7 @@
                     ]
                 },
                 {
+                    "Sid": "ApplicationAutoscaling",
                     "Effect": "Allow",
                     "Action": [
                         "application-autoscaling:DescribeScalableTargets"
@@ -264,6 +288,7 @@
                     ]
                 },
                 {
+                    "Sid": "S3",
                     "Effect": "Allow",
                     "Action": [
                         "s3:ListAllMyBuckets",
@@ -275,6 +300,7 @@
                     ]
                 },
                 {
+                    "Sid": "States",
                     "Effect": "Allow",
                     "Action": [
                         "states:ListStateMachines",
@@ -287,6 +313,7 @@
                     ]
                 },
                 {
+                    "Sid": "APIGateway",
                     "Effect": "Allow",
                     "Action": [
                         "apigateway:GET"
@@ -296,6 +323,7 @@
                     ]
                 },
                 {
+                    "Sid": "ECS",
                     "Effect": "Allow",
                     "Action": [
                         "ecs:DescribeClusters",
@@ -314,6 +342,7 @@
                     ]
                 },
                 {
+                    "Sid": "ECSCluster",
                     "Effect": "Allow",
                     "Action": [
                         "ecs:UpdateClusterSettings"
@@ -323,6 +352,7 @@
                     ]
                 },
                 {
+                    "Sid": "EKS",
                     "Effect": "Allow",
                     "Action": [
                         "eks:DescribeCluster",
@@ -339,6 +369,7 @@
                     ]
                 },
                 {
+                    "Sid": "SNS",
                     "Effect": "Allow",
                     "Action": [
                         "sns:GetSubscriptionAttributes",
@@ -352,6 +383,7 @@
                     ]
                 },
                 {
+                    "Sid": "SQS",
                     "Effect": "Allow",
                     "Action": [
                         "sqs:ListQueues"
@@ -359,6 +391,7 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "CloudWatchLogsDeleteSubscriptionFilter",
                     "Effect": "Allow",
                     "Action": [
                         "logs:DeleteSubscriptionFilter"
@@ -368,6 +401,7 @@
                     ]
                 },
                 {
+                    "Sid": "CloudWatchLogsCreateSubscriptionFilter",
                     "Effect": "Allow",
                     "Action": [
                         "logs:PutSubscriptionFilter"
@@ -378,6 +412,7 @@
                     ]
                 },
                 {
+                    "Sid": "EFS",
                     "Effect": "Allow",
                     "Action": [
                         "elasticfilesystem:DescribeFileSystems"
@@ -387,6 +422,7 @@
                     ]
                 },
                 {
+                    "Sid": "Route53",
                     "Effect": "Allow",
                     "Action": [
                         "route53:GetHostedZone",
@@ -400,6 +436,7 @@
                     ]
                 },
                 {
+                    "Sid": "Route53Resolver",
                     "Effect": "Allow",
                     "Action": [
                         "route53resolver:ListFirewallRuleGroupAssociations",
@@ -418,8 +455,8 @@
                 }
             ]
         },
-        "VersionId": "v24",
+        "VersionId": "v25",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-05-11T16:34:40+00:00"
+        "CreateDate": "2024-07-25T16:24:03+00:00"
     }
 }
