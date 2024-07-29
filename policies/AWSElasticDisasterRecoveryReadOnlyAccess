@@ -30,7 +30,8 @@
                         "ec2:DescribeInstances",
                         "ec2:DescribeLaunchTemplateVersions",
                         "ec2:DescribeSecurityGroups",
-                        "ec2:DescribeSubnets"
+                        "ec2:DescribeSubnets",
+                        "ec2:GetInstanceTypesFromInstanceRequirements"
                     ],
                     "Resource": "*"
                 },
@@ -85,8 +86,8 @@
                 }
             ]
         },
-        "VersionId": "v4",
+        "VersionId": "v5",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-11-27T13:03:00+00:00"
+        "CreateDate": "2024-07-29T19:39:26+00:00"
     }
 }
