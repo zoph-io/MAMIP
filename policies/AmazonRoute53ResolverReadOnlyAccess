@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "AmazonRoute53ResolverReadOnlyAccess",
                     "Effect": "Allow",
                     "Action": [
                         "route53resolver:Get*",
@@ -19,8 +20,8 @@
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2019-09-27T16:37:48+00:00"
+        "CreateDate": "2024-08-05T18:54:11+00:00"
     }
 }
