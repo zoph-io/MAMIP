@@ -24,6 +24,20 @@
                     }
                 },
                 {
+                    "Sid": "AllowGlueTaggingAction",
+                    "Effect": "Allow",
+                    "Action": [
+                        "glue:TagResource"
+                    ],
+                    "Resource": "arn:aws:glue:*:*:session/*",
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/owner": "${aws:userid}",
+                            "aws:RequestTag/owner": "${aws:userid}"
+                        }
+                    }
+                },
+                {
                     "Sid": "AllowCompletionActions",
                     "Effect": "Allow",
                     "Action": [
@@ -69,7 +83,6 @@
                     "Sid": "DenyTagActions",
                     "Effect": "Deny",
                     "Action": [
-                        "glue:TagResource",
                         "glue:UntagResource",
                         "tag:TagResources",
                         "tag:UntagResources"
@@ -104,8 +117,8 @@
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2024-04-29T22:45:28+00:00"
+        "CreateDate": "2024-08-05T23:06:45+00:00"
     }
 }
