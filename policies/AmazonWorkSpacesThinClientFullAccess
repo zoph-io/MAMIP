@@ -4,17 +4,10 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
-                    "Sid": "AllowThinClientReadAccess",
+                    "Sid": "AllowThinClientFullAccess",
                     "Effect": "Allow",
                     "Action": [
-                        "thinclient:GetDevice",
-                        "thinclient:GetEnvironment",
-                        "thinclient:GetSoftwareSet",
-                        "thinclient:ListDevices",
-                        "thinclient:ListDeviceSessions",
-                        "thinclient:ListEnvironments",
-                        "thinclient:ListSoftwareSets",
-                        "thinclient:ListTagsForResource"
+                        "thinclient:*"
                     ],
                     "Resource": "*"
                 },
@@ -46,8 +39,8 @@
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v1",
         "IsDefaultVersion": true,
-        "CreateDate": "2024-08-09T07:11:12+00:00"
+        "CreateDate": "2024-08-09T07:25:24+00:00"
     }
 }
