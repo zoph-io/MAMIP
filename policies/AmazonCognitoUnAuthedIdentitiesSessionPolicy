@@ -4,6 +4,7 @@
             "Version": "2012-10-17",
             "Statement": [
                 {
+                    "Sid": "CognitoUnAuthedIdentitiesSessionPolicy",
                     "Effect": "Allow",
                     "Action": [
                         "rum:PutRumEvents",
@@ -15,14 +16,21 @@
                         "rekognition:*",
                         "mobiletargeting:*",
                         "firehose:*",
-                        "personalize:*"
+                        "personalize:*",
+                        "geo:GetMap*",
+                        "geo:SearchPlaceIndex*",
+                        "geo:GetPlace",
+                        "geo:CalculateRoute*",
+                        "geo:*Geofence",
+                        "geo:*Geofences",
+                        "geo:*DevicePosition*"
                     ],
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v1",
-        "IsDefaultVersion": false,
-        "CreateDate": "2023-07-19T23:04:05+00:00"
+        "VersionId": "v2",
+        "IsDefaultVersion": true,
+        "CreateDate": "2024-08-09T20:02:58+00:00"
     }
 }
