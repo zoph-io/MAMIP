@@ -64,7 +64,9 @@
                     ],
                     "Resource": [
                         "arn:aws:cloudformation:*:*:stackset/AWS-QuickSetup-*",
-                        "arn:aws:cloudformation:*:*:stack/StackSet-AWS-QuickSetup-*"
+                        "arn:aws:cloudformation:*:*:stackset/SSMQuickSetup*",
+                        "arn:aws:cloudformation:*:*:stack/StackSet-AWS-QuickSetup-*",
+                        "arn:aws:cloudformation:*:*:stack/StackSet-SSMQuickSetup*"
                     ]
                 },
                 {
@@ -76,8 +78,11 @@
                     ],
                     "Resource": [
                         "arn:aws:cloudformation:*:*:stackset/AWS-QuickSetup-*",
+                        "arn:aws:cloudformation:*:*:stackset/SSMQuickSetup*",
                         "arn:aws:cloudformation:*:*:stack/StackSet-AWS-QuickSetup-*",
+                        "arn:aws:cloudformation:*:*:stack/StackSet-SSMQuickSetup*",
                         "arn:aws:cloudformation:*:*:stackset-target/AWS-QuickSetup-*",
+                        "arn:aws:cloudformation:*:*:stackset-target/SSMQuickSetup*",
                         "arn:aws:cloudformation:*:*:type/resource/*"
                     ],
                     "Condition": {
@@ -88,8 +93,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2024-06-25T15:20:04+00:00"
+        "CreateDate": "2024-08-12T14:32:20+00:00"
     }
 }
