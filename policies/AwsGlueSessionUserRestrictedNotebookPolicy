@@ -24,6 +24,20 @@
                     }
                 },
                 {
+                    "Sid": "AllowGlueTaggingAction",
+                    "Effect": "Allow",
+                    "Action": [
+                        "glue:TagResource"
+                    ],
+                    "Resource": "arn:aws:glue:*:*:session/*",
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/owner": "${aws:PrincipalTag/owner}",
+                            "aws:RequestTag/owner": "${aws:PrincipalTag/owner}"
+                        }
+                    }
+                },
+                {
                     "Sid": "NotebookAllowActions1",
                     "Effect": "Allow",
                     "Action": [
@@ -69,7 +83,6 @@
                     "Sid": "NotebookDenyActions",
                     "Effect": "Deny",
                     "Action": [
-                        "glue:TagResource",
                         "glue:UntagResource",
                         "tag:TagResources",
                         "tag:UntagResources"
@@ -92,7 +105,8 @@
                         "iam:PassRole"
                     ],
                     "Resource": [
-                        "arn:aws:iam::*:role/service-role/AwsGlueSessionServiceRoleUserRestrictedForNotebook*"
+                        "arn:aws:iam::*:role/service-role/AwsGlueSessionServiceRoleUserRestrictedForNotebook*",
+                        "arn:aws:iam::*:role/AwsGlueSessionUserRestrictedNotebookServiceRole*"
                     ],
                     "Condition": {
                         "StringLike": {
@@ -104,8 +118,8 @@
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-11-22T01:32:43+00:00"
+        "CreateDate": "2024-08-15T20:51:03+00:00"
     }
 }
