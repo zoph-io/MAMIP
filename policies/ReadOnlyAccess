@@ -270,6 +270,7 @@
                         "braket:SearchJobs",
                         "braket:SearchQuantumTasks",
                         "budgets:Describe*",
+                        "budgets:ListTagsForResource",
                         "budgets:View*",
                         "cassandra:Select",
                         "ce:DescribeCostCategoryDefinition",
@@ -1890,10 +1891,23 @@
                         "s3-outposts:GetBucket",
                         "s3-outposts:GetBucketPolicy",
                         "s3-outposts:GetBucketTagging",
+                        "s3-outposts:GetBucketVersioning",
                         "s3-outposts:GetLifecycleConfiguration",
+                        "s3-outposts:GetObject",
+                        "s3-outposts:GetObjectTagging",
+                        "s3-outposts:GetObjectVersion",
+                        "s3-outposts:GetObjectVersionForReplication",
+                        "s3-outposts:GetObjectVersionTagging",
+                        "s3-outposts:GetReplicationConfiguration",
                         "s3-outposts:ListAccessPoints",
+                        "s3-outposts:ListBucket",
+                        "s3-outposts:ListBucketMultipartUploads",
+                        "s3-outposts:ListBucketVersions",
                         "s3-outposts:ListEndpoints",
+                        "s3-outposts:ListMultipartUploadParts",
+                        "s3-outposts:ListOutpostsWithS3",
                         "s3-outposts:ListRegionalBuckets",
+                        "s3-outposts:ListSharedEndpoints",
                         "s3:DescribeJob",
                         "s3:Get*",
                         "s3:List*",
@@ -2210,8 +2224,8 @@
                 }
             ]
         },
-        "VersionId": "v116",
+        "VersionId": "v117",
         "IsDefaultVersion": true,
-        "CreateDate": "2024-07-29T20:29:25+00:00"
+        "CreateDate": "2024-08-15T14:30:23+00:00"
     }
 }
