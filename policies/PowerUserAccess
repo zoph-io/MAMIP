@@ -15,19 +15,20 @@
                 {
                     "Effect": "Allow",
                     "Action": [
+                        "account:GetAccountInformation",
+                        "account:GetPrimaryEmail",
+                        "account:ListRegions",
                         "iam:CreateServiceLinkedRole",
                         "iam:DeleteServiceLinkedRole",
                         "iam:ListRoles",
-                        "organizations:DescribeOrganization",
-                        "account:ListRegions",
-                        "account:GetAccountInformation"
+                        "organizations:DescribeOrganization"
                     ],
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v5",
+        "VersionId": "v6",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-07-06T22:04:00+00:00"
+        "CreateDate": "2024-08-19T16:12:55+00:00"
     }
 }
