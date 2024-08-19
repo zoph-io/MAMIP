@@ -7,7 +7,8 @@
                     "Sid": "CloudTrailEventsAccess",
                     "Effect": "Allow",
                     "Action": [
-                        "cloudtrail:CreateServiceLinkedChannel"
+                        "cloudtrail:CreateServiceLinkedChannel",
+                        "cloudtrail:GetServiceLinkedChannel"
                     ],
                     "Resource": [
                         "arn:aws:cloudtrail:*:*:channel/aws-service-channel/resource-explorer-2/*"
@@ -394,8 +395,8 @@
                 }
             ]
         },
-        "VersionId": "v7",
+        "VersionId": "v8",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-12-20T13:58:52+00:00"
+        "CreateDate": "2024-08-19T15:51:19+00:00"
     }
 }
