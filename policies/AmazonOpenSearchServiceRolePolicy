@@ -128,7 +128,10 @@
                     "Resource": "*",
                     "Condition": {
                         "StringEquals": {
-                            "cloudwatch:namespace": "AWS/ES"
+                            "cloudwatch:namespace": [
+                                "AWS/ES",
+                                "AWS/OpenSearch"
+                            ]
                         }
                     }
                 },
@@ -194,8 +197,8 @@
                 }
             ]
         },
-        "VersionId": "v7",
+        "VersionId": "v8",
         "IsDefaultVersion": true,
-        "CreateDate": "2023-10-23T07:07:31+00:00"
+        "CreateDate": "2024-08-20T22:57:07+00:00"
     }
 }
