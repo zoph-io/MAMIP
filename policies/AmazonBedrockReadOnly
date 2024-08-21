@@ -17,14 +17,20 @@
                         "bedrock:ListCustomModels",
                         "bedrock:GetCustomModel",
                         "bedrock:ListTagsForResource",
-                        "bedrock:GetFoundationModelAvailability"
+                        "bedrock:GetFoundationModelAvailability",
+                        "bedrock:GetGuardrail",
+                        "bedrock:ListGuardrails",
+                        "bedrock:GetEvaluationJob",
+                        "bedrock:ListEvaluationJobs",
+                        "bedrock:GetModelInvocationJob",
+                        "bedrock:ListModelInvocationJobs"
                     ],
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v1",
-        "IsDefaultVersion": false,
-        "CreateDate": "2023-12-06T15:48:19+00:00"
+        "VersionId": "v2",
+        "IsDefaultVersion": true,
+        "CreateDate": "2024-08-21T16:04:18+00:00"
     }
 }
