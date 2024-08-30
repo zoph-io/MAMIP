@@ -1,9 +1,8 @@
-## AWS Access Analyzer - Findings - 2024-08-28
+## AWS Access Analyzer - Findings - 2024-08-30
 
 - Policies analyzed: `1227`
-- Errors: `3`
+- Errors: `1`
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
-  - [`AmazonBedrockReadOnly`](./AmazonBedrockReadOnly.json)
 - Sec_Warnings: `11`
   - [`AdministratorAccess-Amplify`](./AdministratorAccess-Amplify.json)
   - [`AWSProtonCodeBuildProvisioningServiceRolePolicy`](./AWSProtonCodeBuildProvisioningServiceRolePolicy.json)
