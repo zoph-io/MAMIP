@@ -331,11 +331,30 @@
                             ]
                         }
                     }
+                },
+                {
+                    "Sid": "ManageAppTagsOnEbsVolumes",
+                    "Effect": "Allow",
+                    "Action": [
+                        "ec2:CreateTags",
+                        "ec2:DeleteTags"
+                    ],
+                    "Resource": "arn:aws:ec2:*:*:volume/*",
+                    "Condition": {
+                        "ArnLike": {
+                            "aws:RequestTag/awsApplication": "arn:aws:resource-groups:*:*:group/*/*"
+                        },
+                        "ForAllValues:StringEquals": {
+                            "aws:TagKeys": [
+                                "awsApplication"
+                            ]
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v8",
+        "VersionId": "v9",
         "IsDefaultVersion": true,
-        "CreateDate": "2024-08-05T22:40:26+00:00"
+        "CreateDate": "2024-08-29T22:17:07+00:00"
     }
 }
