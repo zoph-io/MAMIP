@@ -7,14 +7,15 @@
                     "Effect": "Allow",
                     "Action": [
                         "supportplans:GetSupportPlan",
-                        "supportplans:GetSupportPlanUpdateStatus"
+                        "supportplans:GetSupportPlanUpdateStatus",
+                        "supportplans:ListSupportPlanModifiers"
                     ],
                     "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-09-27T18:08:29+00:00"
+        "CreateDate": "2024-09-09T21:21:02+00:00"
     }
 }
