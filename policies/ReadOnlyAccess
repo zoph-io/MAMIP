@@ -221,6 +221,7 @@
                         "bedrock:GetAgentVersion",
                         "bedrock:GetCustomModel",
                         "bedrock:GetDataSource",
+                        "bedrock:GetEvaluationJob",
                         "bedrock:GetFoundationModel",
                         "bedrock:GetFoundationModelAvailability",
                         "bedrock:GetGuardrail",
@@ -237,6 +238,7 @@
                         "bedrock:ListAgentVersions",
                         "bedrock:ListCustomModels",
                         "bedrock:ListDataSources",
+                        "bedrock:ListEvaluationJobs",
                         "bedrock:ListFoundationModelAgreementOffers",
                         "bedrock:ListFoundationModels",
                         "bedrock:ListGuardrails",
@@ -1738,6 +1740,25 @@
                         "purchase-orders:ListPurchaseOrderInvoices",
                         "purchase-orders:ListPurchaseOrders",
                         "purchase-orders:ViewPurchaseOrders",
+                        "qbusiness:GetApplication",
+                        "qbusiness:GetChatControlsConfiguration",
+                        "qbusiness:GetDataSource",
+                        "qbusiness:GetGroup",
+                        "qbusiness:GetIndex",
+                        "qbusiness:GetPlugin",
+                        "qbusiness:GetRetriever",
+                        "qbusiness:GetUser",
+                        "qbusiness:GetWebExperience",
+                        "qbusiness:ListApplications",
+                        "qbusiness:ListDataSources",
+                        "qbusiness:ListDataSourceSyncJobs",
+                        "qbusiness:ListGroups",
+                        "qbusiness:ListIndices",
+                        "qbusiness:ListPlugins",
+                        "qbusiness:ListRetrievers",
+                        "qbusiness:ListSubscriptions",
+                        "qbusiness:ListTagsForResource",
+                        "qbusiness:ListWebExperiences",
                         "qldb:DescribeJournalKinesisStream",
                         "qldb:DescribeJournalS3Export",
                         "qldb:DescribeLedger",
@@ -2257,8 +2278,8 @@
                 }
             ]
         },
-        "VersionId": "v118",
+        "VersionId": "v119",
         "IsDefaultVersion": true,
-        "CreateDate": "2024-08-27T17:31:21+00:00"
+        "CreateDate": "2024-09-16T18:53:21+00:00"
     }
 }
