@@ -1,6 +1,7 @@
 name: "[Prod] MAMIP - Infrastructure GitHub Actions"
 
 on:
+  workflow_dispatch:
   push:
     tags-ignore:
       - "*.*"
