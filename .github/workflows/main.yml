@@ -35,8 +35,8 @@ jobs:
           role-duration-seconds: 1200
           role-session-name: GH-Actions-${{ env.project }}-${{ env.env }}
 
-      - name: Who Am I?
-        run: aws sts get-caller-identity
+      # - name: Who Am I?
+      #   run: aws sts get-caller-identity
 
       - name: "Terraform Init"
         uses: hashicorp/terraform-github-actions@master
@@ -47,23 +47,23 @@ jobs:
           tf_actions_comment: false
           args: '-backend-config="bucket=${{ secrets.TF_STATE_S3_BUCKET }}" -backend-config="key=mamip/terraform-${{ env.env }}.tfstate"'
 
-      - name: "Terraform Validate"
-        uses: hashicorp/terraform-github-actions@master
-        with:
-          tf_actions_version: ${{ env.tf_version }}
-          tf_actions_subcommand: "validate"
-          tf_actions_working_dir: ${{ env.tf_working_dir }}
-          tf_actions_comment: false
+      # - name: "Terraform Validate"
+      #   uses: hashicorp/terraform-github-actions@master
+      #   with:
+      #     tf_actions_version: ${{ env.tf_version }}
+      #     tf_actions_subcommand: "validate"
+      #     tf_actions_working_dir: ${{ env.tf_working_dir }}
+      #     tf_actions_comment: false
 
-      - name: "Terraform Plan"
-        id: plan
-        uses: hashicorp/terraform-github-actions@master
-        with:
-          tf_actions_version: ${{ env.tf_version }}
-          tf_actions_subcommand: "plan"
-          tf_actions_working_dir: ${{ env.tf_working_dir }}
-          tf_actions_comment: false
-          args: '-var="env=${{ env.env }}" -var="artifacts_bucket=${{ env.artifacts_bucket }}"'
+      # - name: "Terraform Plan"
+      #   id: plan
+      #   uses: hashicorp/terraform-github-actions@master
+      #   with:
+      #     tf_actions_version: ${{ env.tf_version }}
+      #     tf_actions_subcommand: "plan"
+      #     tf_actions_working_dir: ${{ env.tf_working_dir }}
+      #     tf_actions_comment: false
+      #     args: '-var="env=${{ env.env }}" -var="artifacts_bucket=${{ env.artifacts_bucket }}"'
 
       - name: "Terraform Apply"
         if: steps.plan.outputs.tf_actions_plan_has_changes == 'true'
@@ -78,19 +78,19 @@ jobs:
       - name: Update runbook artifact
         run: aws s3 cp ./automation/runbook-${{ env.env }}.sh 's3://${{ env.project }}-artifacts/${{ env.env }}/runbook.sh'
 
-      - name: Login to Amazon ECR
-        id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v1
+      # - name: Login to Amazon ECR
+      #   id: login-ecr
+      #   uses: aws-actions/amazon-ecr-login@v1
 
-      - name: Build, tag, and push image to Amazon ECR
-        env:
-          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: mamip-ecr-${{ env.env }}
-          IMAGE_TAG: ${{ github.sha }}
-        run: |
-          docker buildx build --platform=linux/arm64 -t mamip-image ./automation/
-          docker tag mamip-image $ECR_REGISTRY/$ECR_REPOSITORY
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY
+      # - name: Build, tag, and push image to Amazon ECR
+      #   env:
+      #     ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+      #     ECR_REPOSITORY: mamip-ecr-${{ env.env }}
+      #     IMAGE_TAG: ${{ github.sha }}
+      #   run: |
+      #     docker buildx build --platform=linux/arm64 -t mamip-image ./automation/
+      #     docker tag mamip-image $ECR_REGISTRY/$ECR_REPOSITORY
+      #     docker push $ECR_REGISTRY/$ECR_REPOSITORY
 
       - name: Logout of Amazon ECR
         if: always()
