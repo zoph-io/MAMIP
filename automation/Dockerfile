@@ -1,4 +1,4 @@
-FROM --platform=linux/arm64 public.ecr.aws/amazonlinux/amazonlinux:2023
+FROM public.ecr.aws/amazonlinux/amazonlinux:2.0.20240903.0-arm64v8
 
 # Install dependencies
 RUN yum update -y && \
