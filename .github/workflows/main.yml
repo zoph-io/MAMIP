@@ -87,7 +87,7 @@ jobs:
           ECR_REPOSITORY: mamip-ecr-${{ env.env }}
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          docker build -t mamip-image ./automation/
+          docker buildx build --platform=linux/arm64 -t mamip-image ./automation/
           docker tag mamip-image $ECR_REGISTRY/$ECR_REPOSITORY
           docker push $ECR_REGISTRY/$ECR_REPOSITORY
 
