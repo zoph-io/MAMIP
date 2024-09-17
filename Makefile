@@ -28,10 +28,10 @@ ECR ?= 567589703415.dkr.ecr.eu-west-1.amazonaws.com/mamip-ecr-dev
 
 # Automation is done by Github Actions
 login:
-	@aws ecr get-login-password | docker login --username AWS --password-stdin $(ECR)
+	@aws ecr get-login-password --region $(AWS_REGION) | docker login --username AWS --password-stdin $(ECR)
 
 build-docker: login
-	@docker build -t mamip-image ./automation/
+	@docker buildx build --platform=linux/arm64 -t mamip-image ./automation/
 	@docker tag mamip-image $(ECR)
 	@docker push $(ECR)
 
