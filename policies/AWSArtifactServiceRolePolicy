@@ -1,22 +1,22 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-08-21T20:27:31Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "organizations:ListAccounts",
-                        "organizations:DescribeOrganization",
-                        "organizations:DescribeAccount",
+                        "organizations:ListAccounts", 
+                        "organizations:DescribeOrganization", 
+                        "organizations:DescribeAccount", 
                         "organizations:ListAWSServiceAccessForOrganization"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-08-21T20:27:31+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

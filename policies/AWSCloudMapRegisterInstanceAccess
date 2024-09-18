@@ -1,34 +1,34 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-09-20T21:47:06Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "route53:GetHostedZone",
-                        "route53:ListHostedZonesByName",
-                        "route53:ChangeResourceRecordSets",
-                        "route53:CreateHealthCheck",
-                        "route53:GetHealthCheck",
-                        "route53:DeleteHealthCheck",
-                        "route53:UpdateHealthCheck",
-                        "servicediscovery:Get*",
-                        "servicediscovery:List*",
-                        "servicediscovery:RegisterInstance",
-                        "servicediscovery:DeregisterInstance",
-                        "servicediscovery:DiscoverInstances",
-                        "servicediscovery:DiscoverInstancesRevision",
+                        "route53:GetHostedZone", 
+                        "route53:ListHostedZonesByName", 
+                        "route53:ChangeResourceRecordSets", 
+                        "route53:CreateHealthCheck", 
+                        "route53:GetHealthCheck", 
+                        "route53:DeleteHealthCheck", 
+                        "route53:UpdateHealthCheck", 
+                        "servicediscovery:Get*", 
+                        "servicediscovery:List*", 
+                        "servicediscovery:RegisterInstance", 
+                        "servicediscovery:DeregisterInstance", 
+                        "servicediscovery:DiscoverInstances", 
+                        "servicediscovery:DiscoverInstancesRevision", 
                         "ec2:DescribeInstances"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
+                    ], 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-09-20T21:47:06+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

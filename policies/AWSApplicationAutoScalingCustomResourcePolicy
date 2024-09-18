@@ -1,24 +1,24 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2018-06-04T23:22:44Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "execute-api:Invoke",
-                        "cloudwatch:PutMetricAlarm",
-                        "cloudwatch:DescribeAlarms",
+                        "execute-api:Invoke", 
+                        "cloudwatch:PutMetricAlarm", 
+                        "cloudwatch:DescribeAlarms", 
                         "cloudwatch:DeleteAlarms"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
+                    ], 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2018-06-04T23:22:44+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

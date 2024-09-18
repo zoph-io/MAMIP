@@ -1,56 +1,56 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-10-15T17:19:12Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "budgets:*"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "aws-portal:ViewBilling"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "iam:PassRole"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:PassedToService": "budgets.amazonaws.com"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "aws-portal:ModifyBilling",
-                        "ec2:DescribeInstances",
-                        "iam:ListGroups",
-                        "iam:ListPolicies",
-                        "iam:ListRoles",
-                        "iam:ListUsers",
-                        "organizations:ListAccounts",
-                        "organizations:ListOrganizationalUnitsForParent",
-                        "organizations:ListPolicies",
-                        "organizations:ListRoots",
-                        "rds:DescribeDBInstances",
+                        "aws-portal:ModifyBilling", 
+                        "ec2:DescribeInstances", 
+                        "iam:ListGroups", 
+                        "iam:ListPolicies", 
+                        "iam:ListRoles", 
+                        "iam:ListUsers", 
+                        "organizations:ListAccounts", 
+                        "organizations:ListOrganizationalUnitsForParent", 
+                        "organizations:ListPolicies", 
+                        "organizations:ListRoots", 
+                        "rds:DescribeDBInstances", 
                         "sns:ListTopics"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-10-15T17:19:12+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

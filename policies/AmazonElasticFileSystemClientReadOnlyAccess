@@ -1,20 +1,20 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-01-13T16:24:36Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "elasticfilesystem:ClientMount",
+                        "elasticfilesystem:ClientMount", 
                         "elasticfilesystem:DescribeMountTargets"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-01-13T16:24:36+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

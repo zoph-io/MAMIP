@@ -1,36 +1,36 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2019-06-13T22:48:22Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:ListBucket",
-                        "s3:Get*",
-                        "s3:PutObject",
-                        "s3:PutObjectAcl",
+                        "s3:ListBucket", 
+                        "s3:Get*", 
+                        "s3:PutObject", 
+                        "s3:PutObjectAcl", 
                         "s3:*MultipartUpload*"
-                    ],
-                    "Sid": "1",
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "1"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "sns:Publish"
-                    ],
-                    "Sid": "2",
+                    ], 
                     "Resource": [
                         "*"
-                    ]
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "2"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2019-06-13T22:48:22+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

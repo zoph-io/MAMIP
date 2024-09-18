@@ -1,23 +1,25 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-01-12T21:02:40Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeNetworkInterfaces",
-                        "ec2:DescribeVpcs",
-                        "ec2:DescribeDhcpOptions",
-                        "ec2:DescribeSubnets",
+                        "ec2:DescribeNetworkInterfaces", 
+                        "ec2:DescribeVpcs", 
+                        "ec2:DescribeDhcpOptions", 
+                        "ec2:DescribeSubnets", 
                         "ec2:DescribeSecurityGroups"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "ec2:CreateNetworkInterface",
-                    "Resource": "*",
+                    "Action": "ec2:CreateNetworkInterface", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAllValues:StringEquals": {
                             "aws:TagKeys": [
@@ -25,24 +27,24 @@
                             ]
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "ec2:CreateTags",
-                    "Resource": "arn:aws:ec2:*:*:network-interface/*",
+                    "Action": "ec2:CreateTags", 
+                    "Resource": "arn:aws:ec2:*:*:network-interface/*", 
+                    "Effect": "Allow", 
                     "Condition": {
-                        "StringEquals": {
-                            "ec2:CreateAction": "CreateNetworkInterface"
-                        },
                         "StringLike": {
                             "aws:RequestTag/AWSAppRunnerManaged": "*"
+                        }, 
+                        "StringEquals": {
+                            "ec2:CreateAction": "CreateNetworkInterface"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "ec2:DeleteNetworkInterface",
-                    "Resource": "*",
+                    "Action": "ec2:DeleteNetworkInterface", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "ec2:ResourceTag/AWSAppRunnerManaged": "false"
@@ -50,9 +52,7 @@
                     }
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-01-12T21:02:40+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

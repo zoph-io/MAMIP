@@ -1,52 +1,52 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2021-12-01T16:29:20Z", 
+        "VersionId": "v11", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "sagemaker:Describe*",
-                        "sagemaker:List*",
-                        "sagemaker:BatchGetMetrics",
-                        "sagemaker:GetDeviceRegistration",
-                        "sagemaker:GetDeviceFleetReport",
-                        "sagemaker:GetSearchSuggestions",
-                        "sagemaker:BatchGetRecord",
-                        "sagemaker:GetRecord",
-                        "sagemaker:Search",
-                        "sagemaker:QueryLineage",
-                        "sagemaker:GetLineageGroupPolicy",
-                        "sagemaker:BatchDescribeModelPackage",
+                        "sagemaker:Describe*", 
+                        "sagemaker:List*", 
+                        "sagemaker:BatchGetMetrics", 
+                        "sagemaker:GetDeviceRegistration", 
+                        "sagemaker:GetDeviceFleetReport", 
+                        "sagemaker:GetSearchSuggestions", 
+                        "sagemaker:BatchGetRecord", 
+                        "sagemaker:GetRecord", 
+                        "sagemaker:Search", 
+                        "sagemaker:QueryLineage", 
+                        "sagemaker:GetLineageGroupPolicy", 
+                        "sagemaker:BatchDescribeModelPackage", 
                         "sagemaker:GetModelPackageGroupPolicy"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "application-autoscaling:DescribeScalableTargets",
-                        "application-autoscaling:DescribeScalingActivities",
-                        "application-autoscaling:DescribeScalingPolicies",
-                        "application-autoscaling:DescribeScheduledActions",
-                        "aws-marketplace:ViewSubscriptions",
-                        "cloudwatch:DescribeAlarms",
-                        "cognito-idp:DescribeUserPool",
-                        "cognito-idp:DescribeUserPoolClient",
-                        "cognito-idp:ListGroups",
-                        "cognito-idp:ListIdentityProviders",
-                        "cognito-idp:ListUserPoolClients",
-                        "cognito-idp:ListUserPools",
-                        "cognito-idp:ListUsers",
-                        "cognito-idp:ListUsersInGroup",
+                        "application-autoscaling:DescribeScalableTargets", 
+                        "application-autoscaling:DescribeScalingActivities", 
+                        "application-autoscaling:DescribeScalingPolicies", 
+                        "application-autoscaling:DescribeScheduledActions", 
+                        "aws-marketplace:ViewSubscriptions", 
+                        "cloudwatch:DescribeAlarms", 
+                        "cognito-idp:DescribeUserPool", 
+                        "cognito-idp:DescribeUserPoolClient", 
+                        "cognito-idp:ListGroups", 
+                        "cognito-idp:ListIdentityProviders", 
+                        "cognito-idp:ListUserPoolClients", 
+                        "cognito-idp:ListUserPools", 
+                        "cognito-idp:ListUsers", 
+                        "cognito-idp:ListUsersInGroup", 
                         "ecr:Describe*"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v11",
-        "IsDefaultVersion": true,
-        "CreateDate": "2021-12-01T16:29:20+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

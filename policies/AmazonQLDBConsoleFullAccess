@@ -1,68 +1,70 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-11-04T17:01:10Z", 
+        "VersionId": "v5", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "qldb:CreateLedger",
-                        "qldb:UpdateLedger",
-                        "qldb:UpdateLedgerPermissionsMode",
-                        "qldb:DeleteLedger",
-                        "qldb:ListLedgers",
-                        "qldb:DescribeLedger",
-                        "qldb:ExportJournalToS3",
-                        "qldb:ListJournalS3Exports",
-                        "qldb:ListJournalS3ExportsForLedger",
-                        "qldb:DescribeJournalS3Export",
-                        "qldb:CancelJournalKinesisStream",
-                        "qldb:DescribeJournalKinesisStream",
-                        "qldb:ListJournalKinesisStreamsForLedger",
-                        "qldb:StreamJournalToKinesis",
-                        "qldb:GetBlock",
-                        "qldb:GetDigest",
-                        "qldb:GetRevision",
-                        "qldb:TagResource",
-                        "qldb:UntagResource",
-                        "qldb:ListTagsForResource",
-                        "qldb:SendCommand",
-                        "qldb:ExecuteStatement",
-                        "qldb:ShowCatalog",
-                        "qldb:InsertSampleData",
-                        "qldb:PartiQLCreateTable",
-                        "qldb:PartiQLCreateIndex",
-                        "qldb:PartiQLDropTable",
-                        "qldb:PartiQLDropIndex",
-                        "qldb:PartiQLUndropTable",
-                        "qldb:PartiQLDelete",
-                        "qldb:PartiQLInsert",
-                        "qldb:PartiQLUpdate",
-                        "qldb:PartiQLSelect",
-                        "qldb:PartiQLHistoryFunction",
+                        "qldb:CreateLedger", 
+                        "qldb:UpdateLedger", 
+                        "qldb:UpdateLedgerPermissionsMode", 
+                        "qldb:DeleteLedger", 
+                        "qldb:ListLedgers", 
+                        "qldb:DescribeLedger", 
+                        "qldb:ExportJournalToS3", 
+                        "qldb:ListJournalS3Exports", 
+                        "qldb:ListJournalS3ExportsForLedger", 
+                        "qldb:DescribeJournalS3Export", 
+                        "qldb:CancelJournalKinesisStream", 
+                        "qldb:DescribeJournalKinesisStream", 
+                        "qldb:ListJournalKinesisStreamsForLedger", 
+                        "qldb:StreamJournalToKinesis", 
+                        "qldb:GetBlock", 
+                        "qldb:GetDigest", 
+                        "qldb:GetRevision", 
+                        "qldb:TagResource", 
+                        "qldb:UntagResource", 
+                        "qldb:ListTagsForResource", 
+                        "qldb:SendCommand", 
+                        "qldb:ExecuteStatement", 
+                        "qldb:ShowCatalog", 
+                        "qldb:InsertSampleData", 
+                        "qldb:PartiQLCreateTable", 
+                        "qldb:PartiQLCreateIndex", 
+                        "qldb:PartiQLDropTable", 
+                        "qldb:PartiQLDropIndex", 
+                        "qldb:PartiQLUndropTable", 
+                        "qldb:PartiQLDelete", 
+                        "qldb:PartiQLInsert", 
+                        "qldb:PartiQLUpdate", 
+                        "qldb:PartiQLSelect", 
+                        "qldb:PartiQLHistoryFunction", 
                         "qldb:PartiQLRedact"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "dbqms:*"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "kinesis:ListStreams",
+                        "kinesis:ListStreams", 
                         "kinesis:DescribeStream"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "iam:PassRole",
-                    "Resource": "*",
+                    "Action": "iam:PassRole", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:PassedToService": "qldb.amazonaws.com"
@@ -70,9 +72,7 @@
                     }
                 }
             ]
-        },
-        "VersionId": "v5",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-11-04T17:01:10+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,27 +1,27 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-09-29T00:37:08Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Resource": "*",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DeletePlacementGroup",
+                        "ec2:DeletePlacementGroup", 
                         "ec2:DescribePlacementGroups"
-                    ]
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Resource": "arn:aws:ec2:*:*:placement-group/EMR_*",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreatePlacementGroup"
-                    ]
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:placement-group/EMR_*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-09-29T00:37:08+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

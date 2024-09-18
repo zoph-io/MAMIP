@@ -1,44 +1,44 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-02-06T17:49:01Z", 
+        "VersionId": "v6", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AWSOrganizationsFullAccess",
-                    "Effect": "Allow",
-                    "Action": "organizations:*",
-                    "Resource": "*"
-                },
+                    "Action": "organizations:*", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AWSOrganizationsFullAccess"
+                }, 
                 {
-                    "Sid": "AWSOrganizationsFullAccessAccount",
-                    "Effect": "Allow",
                     "Action": [
-                        "account:PutAlternateContact",
-                        "account:DeleteAlternateContact",
-                        "account:GetAlternateContact",
-                        "account:GetContactInformation",
-                        "account:PutContactInformation",
-                        "account:ListRegions",
-                        "account:EnableRegion",
+                        "account:PutAlternateContact", 
+                        "account:DeleteAlternateContact", 
+                        "account:GetAlternateContact", 
+                        "account:GetContactInformation", 
+                        "account:PutContactInformation", 
+                        "account:ListRegions", 
+                        "account:EnableRegion", 
                         "account:DisableRegion"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AWSOrganizationsFullAccessAccount"
+                }, 
                 {
-                    "Sid": "AWSOrganizationsFullAccessCreateSLR",
-                    "Effect": "Allow",
-                    "Action": "iam:CreateServiceLinkedRole",
-                    "Resource": "*",
+                    "Action": "iam:CreateServiceLinkedRole", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:AWSServiceName": "organizations.amazonaws.com"
                         }
-                    }
+                    }, 
+                    "Sid": "AWSOrganizationsFullAccessCreateSLR"
                 }
             ]
-        },
-        "VersionId": "v6",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-02-06T17:49:01+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

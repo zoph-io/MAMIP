@@ -1,67 +1,67 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-05-02T01:23:27Z", 
+        "VersionId": "v12", 
         "Document": {
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AWSServicesAccess",
                     "Action": [
-                        "codebuild:BatchGet*",
-                        "codebuild:GetResourcePolicy",
-                        "codebuild:List*",
-                        "codebuild:DescribeTestCases",
-                        "codebuild:DescribeCodeCoverages",
-                        "codecommit:GetBranch",
-                        "codecommit:GetCommit",
-                        "codecommit:GetRepository",
-                        "cloudwatch:GetMetricStatistics",
-                        "events:DescribeRule",
-                        "events:ListTargetsByRule",
-                        "events:ListRuleNamesByTarget",
+                        "codebuild:BatchGet*", 
+                        "codebuild:GetResourcePolicy", 
+                        "codebuild:List*", 
+                        "codebuild:DescribeTestCases", 
+                        "codebuild:DescribeCodeCoverages", 
+                        "codecommit:GetBranch", 
+                        "codecommit:GetCommit", 
+                        "codecommit:GetRepository", 
+                        "cloudwatch:GetMetricStatistics", 
+                        "events:DescribeRule", 
+                        "events:ListTargetsByRule", 
+                        "events:ListRuleNamesByTarget", 
                         "logs:GetLogEvents"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AWSServicesAccess"
+                }, 
                 {
-                    "Sid": "CodeStarConnectionsUserAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "codestar-connections:ListConnections",
+                        "codestar-connections:ListConnections", 
                         "codestar-connections:GetConnection"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:codestar-connections:*:*:connection/*",
+                        "arn:aws:codestar-connections:*:*:connection/*", 
                         "arn:aws:codeconnections:*:*:connection/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "CodeStarConnectionsUserAccess"
+                }, 
                 {
-                    "Sid": "CodeStarNotificationsPowerUserAccess",
-                    "Effect": "Allow",
                     "Action": [
                         "codestar-notifications:DescribeNotificationRule"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "codestar-notifications:NotificationsForResource": "arn:aws:codebuild:*"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "CodeStarNotificationsPowerUserAccess"
+                }, 
                 {
-                    "Sid": "CodeStarNotificationsListAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "codestar-notifications:ListNotificationRules",
-                        "codestar-notifications:ListEventTypes",
+                        "codestar-notifications:ListNotificationRules", 
+                        "codestar-notifications:ListEventTypes", 
                         "codestar-notifications:ListTargets"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "CodeStarNotificationsListAccess"
                 }
-            ],
-            "Version": "2012-10-17"
-        },
-        "VersionId": "v12",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-05-02T01:23:27+00:00"
+            ]
+        }, 
+        "IsDefaultVersion": true
     }
 }

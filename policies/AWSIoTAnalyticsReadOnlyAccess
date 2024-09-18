@@ -1,22 +1,22 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2018-06-18T21:37:49Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "iotanalytics:Describe*",
-                        "iotanalytics:List*",
-                        "iotanalytics:Get*",
+                        "iotanalytics:Describe*", 
+                        "iotanalytics:List*", 
+                        "iotanalytics:Get*", 
                         "iotanalytics:SampleChannelData"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2018-06-18T21:37:49+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

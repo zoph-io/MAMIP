@@ -1,69 +1,69 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2021-09-02T21:14:55Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "rds:ListTagsForResource",
-                        "rds:DescribeDBInstances",
-                        "rds:DescribeDBClusters",
-                        "rds:DescribeDBClusterParameters",
+                        "rds:ListTagsForResource", 
+                        "rds:DescribeDBInstances", 
+                        "rds:DescribeDBClusters", 
+                        "rds:DescribeDBClusterParameters", 
                         "cloudwatch:DescribeAlarms"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "rds:AddTagsToResource",
+                    "Action": "rds:AddTagsToResource", 
                     "Resource": [
                         "arn:aws:rds:*:*:db:autoscaled-reader*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "rds:DatabaseEngine": "neptune"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "rds:CreateDBInstance",
+                    "Action": "rds:CreateDBInstance", 
                     "Resource": [
-                        "arn:aws:rds:*:*:db:autoscaled-reader*",
+                        "arn:aws:rds:*:*:db:autoscaled-reader*", 
                         "arn:aws:rds:*:*:cluster:*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "rds:DatabaseEngine": "neptune"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "rds:DeleteDBInstance"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:rds:*:*:db:autoscaled-reader*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudwatch:PutMetricAlarm",
+                        "cloudwatch:PutMetricAlarm", 
                         "cloudwatch:DeleteAlarms"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:cloudwatch:*:*:alarm:TargetTracking*"
-                    ]
+                    ], 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2021-09-02T21:14:55+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

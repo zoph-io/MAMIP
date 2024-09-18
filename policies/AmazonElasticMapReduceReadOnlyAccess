@@ -1,27 +1,27 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-07-29T23:14:09Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": [
-                        "elasticmapreduce:Describe*",
-                        "elasticmapreduce:List*",
-                        "elasticmapreduce:GetBlockPublicAccessConfiguration",
-                        "elasticmapreduce:ViewEventsFromAllClustersInConsole",
-                        "s3:GetObject",
-                        "s3:ListAllMyBuckets",
-                        "s3:ListBucket",
-                        "sdb:Select",
+                        "elasticmapreduce:Describe*", 
+                        "elasticmapreduce:List*", 
+                        "elasticmapreduce:GetBlockPublicAccessConfiguration", 
+                        "elasticmapreduce:ViewEventsFromAllClustersInConsole", 
+                        "s3:GetObject", 
+                        "s3:ListAllMyBuckets", 
+                        "s3:ListBucket", 
+                        "sdb:Select", 
                         "cloudwatch:GetMetricStatistics"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-07-29T23:14:09+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

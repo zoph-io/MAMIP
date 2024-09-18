@@ -1,36 +1,36 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-08-09T20:02:58Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "CognitoUnAuthedIdentitiesSessionPolicy",
-                    "Effect": "Allow",
                     "Action": [
-                        "rum:PutRumEvents",
-                        "sagemaker:InvokeEndpoint",
-                        "polly:*",
-                        "comprehend:*",
-                        "translate:*",
-                        "transcribe:*",
-                        "rekognition:*",
-                        "mobiletargeting:*",
-                        "firehose:*",
-                        "personalize:*",
-                        "geo:GetMap*",
-                        "geo:SearchPlaceIndex*",
-                        "geo:GetPlace",
-                        "geo:CalculateRoute*",
-                        "geo:*Geofence",
-                        "geo:*Geofences",
+                        "rum:PutRumEvents", 
+                        "sagemaker:InvokeEndpoint", 
+                        "polly:*", 
+                        "comprehend:*", 
+                        "translate:*", 
+                        "transcribe:*", 
+                        "rekognition:*", 
+                        "mobiletargeting:*", 
+                        "firehose:*", 
+                        "personalize:*", 
+                        "geo:GetMap*", 
+                        "geo:SearchPlaceIndex*", 
+                        "geo:GetPlace", 
+                        "geo:CalculateRoute*", 
+                        "geo:*Geofence", 
+                        "geo:*Geofences", 
                         "geo:*DevicePosition*"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "CognitoUnAuthedIdentitiesSessionPolicy"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-08-09T20:02:58+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

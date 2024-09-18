@@ -1,22 +1,22 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-05-18T18:48:22Z", 
+        "VersionId": "v4", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "directconnect:Describe*",
-                        "directconnect:List*",
-                        "ec2:DescribeVpnGateways",
+                        "directconnect:Describe*", 
+                        "directconnect:List*", 
+                        "ec2:DescribeVpnGateways", 
                         "ec2:DescribeTransitGateways"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v4",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-05-18T18:48:22+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,17 +1,17 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2015-02-06T18:39:51Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
-                    "Action": "cloudhsm:*",
-                    "Resource": "*"
+                    "Action": "cloudhsm:*", 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2015-02-06T18:39:51+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

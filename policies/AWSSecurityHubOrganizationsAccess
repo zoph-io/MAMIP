@@ -1,53 +1,53 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-11-16T21:13:44Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "OrganizationPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "organizations:ListAccounts",
-                        "organizations:DescribeOrganization",
-                        "organizations:ListRoots",
-                        "organizations:ListDelegatedAdministrators",
-                        "organizations:ListAWSServiceAccessForOrganization",
-                        "organizations:ListOrganizationalUnitsForParent",
-                        "organizations:ListAccountsForParent",
-                        "organizations:DescribeAccount",
+                        "organizations:ListAccounts", 
+                        "organizations:DescribeOrganization", 
+                        "organizations:ListRoots", 
+                        "organizations:ListDelegatedAdministrators", 
+                        "organizations:ListAWSServiceAccessForOrganization", 
+                        "organizations:ListOrganizationalUnitsForParent", 
+                        "organizations:ListAccountsForParent", 
+                        "organizations:DescribeAccount", 
                         "organizations:DescribeOrganizationalUnit"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "OrganizationPermissions"
+                }, 
                 {
-                    "Sid": "OrganizationPermissionsEnable",
-                    "Effect": "Allow",
-                    "Action": "organizations:EnableAWSServiceAccess",
-                    "Resource": "*",
+                    "Action": "organizations:EnableAWSServiceAccess", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "organizations:ServicePrincipal": "securityhub.amazonaws.com"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "OrganizationPermissionsEnable"
+                }, 
                 {
-                    "Sid": "OrganizationPermissionsDelegatedAdmin",
-                    "Effect": "Allow",
                     "Action": [
-                        "organizations:RegisterDelegatedAdministrator",
+                        "organizations:RegisterDelegatedAdministrator", 
                         "organizations:DeregisterDelegatedAdministrator"
-                    ],
-                    "Resource": "arn:aws:organizations::*:account/o-*/*",
+                    ], 
+                    "Resource": "arn:aws:organizations::*:account/o-*/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "organizations:ServicePrincipal": "securityhub.amazonaws.com"
                         }
-                    }
+                    }, 
+                    "Sid": "OrganizationPermissionsDelegatedAdmin"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-11-16T21:13:44+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

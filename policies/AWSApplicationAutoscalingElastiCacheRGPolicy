@@ -1,37 +1,37 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2021-08-17T23:41:42Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "elasticache:DescribeReplicationGroups",
-                        "elasticache:ModifyReplicationGroupShardConfiguration",
-                        "elasticache:IncreaseReplicaCount",
-                        "elasticache:DecreaseReplicaCount",
-                        "elasticache:DescribeCacheClusters",
-                        "elasticache:DescribeCacheParameters",
+                        "elasticache:DescribeReplicationGroups", 
+                        "elasticache:ModifyReplicationGroupShardConfiguration", 
+                        "elasticache:IncreaseReplicaCount", 
+                        "elasticache:DecreaseReplicaCount", 
+                        "elasticache:DescribeCacheClusters", 
+                        "elasticache:DescribeCacheParameters", 
                         "cloudwatch:DescribeAlarms"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudwatch:PutMetricAlarm",
+                        "cloudwatch:PutMetricAlarm", 
                         "cloudwatch:DeleteAlarms"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:cloudwatch:*:*:alarm:TargetTracking*"
-                    ]
+                    ], 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2021-08-17T23:41:42+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

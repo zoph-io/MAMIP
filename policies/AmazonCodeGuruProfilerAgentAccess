@@ -1,21 +1,21 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-05-05T18:11:03Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "codeguru-profiler:ConfigureAgent",
-                        "codeguru-profiler:CreateProfilingGroup",
+                        "codeguru-profiler:ConfigureAgent", 
+                        "codeguru-profiler:CreateProfilingGroup", 
                         "codeguru-profiler:PostAgentProfile"
-                    ],
-                    "Resource": "arn:aws:codeguru-profiler:*:*:profilingGroup/*"
+                    ], 
+                    "Resource": "arn:aws:codeguru-profiler:*:*:profilingGroup/*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-05-05T18:11:03+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

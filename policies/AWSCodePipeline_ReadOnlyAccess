@@ -1,52 +1,52 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-08-03T22:25:17Z", 
+        "VersionId": "v1", 
         "Document": {
+            "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": [
-                        "codepipeline:GetPipeline",
-                        "codepipeline:GetPipelineState",
-                        "codepipeline:GetPipelineExecution",
-                        "codepipeline:ListPipelineExecutions",
-                        "codepipeline:ListActionExecutions",
-                        "codepipeline:ListActionTypes",
-                        "codepipeline:ListPipelines",
-                        "codepipeline:ListTagsForResource",
-                        "s3:ListAllMyBuckets",
-                        "codestar-notifications:ListNotificationRules",
-                        "codestar-notifications:ListEventTypes",
+                        "codepipeline:GetPipeline", 
+                        "codepipeline:GetPipelineState", 
+                        "codepipeline:GetPipelineExecution", 
+                        "codepipeline:ListPipelineExecutions", 
+                        "codepipeline:ListActionExecutions", 
+                        "codepipeline:ListActionTypes", 
+                        "codepipeline:ListPipelines", 
+                        "codepipeline:ListTagsForResource", 
+                        "s3:ListAllMyBuckets", 
+                        "codestar-notifications:ListNotificationRules", 
+                        "codestar-notifications:ListEventTypes", 
                         "codestar-notifications:ListTargets"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
                     "Action": [
-                        "s3:GetObject",
-                        "s3:ListBucket",
+                        "s3:GetObject", 
+                        "s3:ListBucket", 
                         "s3:GetBucketPolicy"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "arn:aws:s3::*:codepipeline-*"
-                },
+                    ], 
+                    "Resource": "arn:aws:s3::*:codepipeline-*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Sid": "CodeStarNotificationsReadOnlyAccess",
-                    "Effect": "Allow",
                     "Action": [
                         "codestar-notifications:DescribeNotificationRule"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "codestar-notifications:NotificationsForResource": "arn:aws:codepipeline:*"
                         }
-                    }
+                    }, 
+                    "Sid": "CodeStarNotificationsReadOnlyAccess"
                 }
-            ],
-            "Version": "2012-10-17"
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-08-03T22:25:17+00:00"
+            ]
+        }, 
+        "IsDefaultVersion": true
     }
 }

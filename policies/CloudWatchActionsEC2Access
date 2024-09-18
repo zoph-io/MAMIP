@@ -1,23 +1,23 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2015-07-07T00:00:33Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudwatch:Describe*",
-                        "ec2:Describe*",
-                        "ec2:RebootInstances",
-                        "ec2:StopInstances",
+                        "cloudwatch:Describe*", 
+                        "ec2:Describe*", 
+                        "ec2:RebootInstances", 
+                        "ec2:StopInstances", 
                         "ec2:TerminateInstances"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2015-07-07T00:00:33+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

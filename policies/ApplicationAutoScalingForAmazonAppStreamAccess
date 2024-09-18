@@ -1,31 +1,31 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2017-02-06T21:39:56Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "appstream:UpdateFleet",
+                        "appstream:UpdateFleet", 
                         "appstream:DescribeFleets"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "cloudwatch:DescribeAlarms"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
+                    ], 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2017-02-06T21:39:56+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

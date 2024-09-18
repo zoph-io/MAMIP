@@ -1,32 +1,32 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-05-13T16:00:42Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
-                    "Action": "ssm:DescribeEffectivePatchesForPatchBaseline",
-                    "Resource": "arn:aws:ssm:*:*:patchbaseline/*"
-                },
+                    "Action": "ssm:DescribeEffectivePatchesForPatchBaseline", 
+                    "Resource": "arn:aws:ssm:*:*:patchbaseline/*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "ssm:GetPatchBaseline",
-                    "Resource": "arn:aws:ssm:*:*:patchbaseline/*"
-                },
+                    "Action": "ssm:GetPatchBaseline", 
+                    "Resource": "arn:aws:ssm:*:*:patchbaseline/*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "tag:GetResources",
-                    "Resource": "*"
-                },
+                    "Action": "tag:GetResources", 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "ssm:DescribePatchBaselines",
-                    "Resource": "*"
+                    "Action": "ssm:DescribePatchBaselines", 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-05-13T16:00:42+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

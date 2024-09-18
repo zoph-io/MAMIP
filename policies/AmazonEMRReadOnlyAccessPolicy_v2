@@ -1,46 +1,46 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-08-02T19:15:33Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "ElasticMapReduceActions",
-                    "Effect": "Allow",
                     "Action": [
-                        "elasticmapreduce:DescribeCluster",
-                        "elasticmapreduce:DescribeEditor",
-                        "elasticmapreduce:DescribeJobFlows",
-                        "elasticmapreduce:DescribeSecurityConfiguration",
-                        "elasticmapreduce:DescribeStep",
-                        "elasticmapreduce:DescribeReleaseLabel",
-                        "elasticmapreduce:GetBlockPublicAccessConfiguration",
-                        "elasticmapreduce:GetManagedScalingPolicy",
-                        "elasticmapreduce:GetAutoTerminationPolicy",
-                        "elasticmapreduce:ListBootstrapActions",
-                        "elasticmapreduce:ListClusters",
-                        "elasticmapreduce:ListEditors",
-                        "elasticmapreduce:ListInstanceFleets",
-                        "elasticmapreduce:ListInstanceGroups",
-                        "elasticmapreduce:ListInstances",
-                        "elasticmapreduce:ListSecurityConfigurations",
-                        "elasticmapreduce:ListSteps",
-                        "elasticmapreduce:ListSupportedInstanceTypes",
+                        "elasticmapreduce:DescribeCluster", 
+                        "elasticmapreduce:DescribeEditor", 
+                        "elasticmapreduce:DescribeJobFlows", 
+                        "elasticmapreduce:DescribeSecurityConfiguration", 
+                        "elasticmapreduce:DescribeStep", 
+                        "elasticmapreduce:DescribeReleaseLabel", 
+                        "elasticmapreduce:GetBlockPublicAccessConfiguration", 
+                        "elasticmapreduce:GetManagedScalingPolicy", 
+                        "elasticmapreduce:GetAutoTerminationPolicy", 
+                        "elasticmapreduce:ListBootstrapActions", 
+                        "elasticmapreduce:ListClusters", 
+                        "elasticmapreduce:ListEditors", 
+                        "elasticmapreduce:ListInstanceFleets", 
+                        "elasticmapreduce:ListInstanceGroups", 
+                        "elasticmapreduce:ListInstances", 
+                        "elasticmapreduce:ListSecurityConfigurations", 
+                        "elasticmapreduce:ListSteps", 
+                        "elasticmapreduce:ListSupportedInstanceTypes", 
                         "elasticmapreduce:ViewEventsFromAllClustersInConsole"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ElasticMapReduceActions"
+                }, 
                 {
-                    "Sid": "ViewMetricsInEMRConsole",
-                    "Effect": "Allow",
                     "Action": [
                         "cloudwatch:GetMetricStatistics"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ViewMetricsInEMRConsole"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-08-02T19:15:33+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

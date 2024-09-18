@@ -1,49 +1,49 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2021-09-07T23:25:55Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "es:ESHttpGet"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:es:*:*:domain/*/",
-                        "arn:aws:es:*:*:domain/*/_cluster/settings",
+                        "arn:aws:es:*:*:domain/*/", 
+                        "arn:aws:es:*:*:domain/*/_cluster/settings", 
                         "arn:aws:es:*:*:domain/*/_cat/indices"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "es:ListDomainNames",
-                    "Resource": "*"
-                },
+                    "Action": "es:ListDomainNames", 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "es:DescribeElasticsearchDomain",
+                        "es:DescribeElasticsearchDomain", 
                         "es:DescribeDomain"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:es:*:*:domain/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "es:ESHttpPost",
+                        "es:ESHttpPost", 
                         "es:ESHttpGet"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:es:*:*:domain/*/_opendistro/_sql",
+                        "arn:aws:es:*:*:domain/*/_opendistro/_sql", 
                         "arn:aws:es:*:*:domain/*/_plugin/_sql"
-                    ]
+                    ], 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2021-09-07T23:25:55+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

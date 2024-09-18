@@ -1,24 +1,24 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2021-02-11T20:52:05Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "secretsmanager:CreateSecret",
-                        "secretsmanager:UpdateSecret",
-                        "secretsmanager:DescribeSecret",
-                        "secretsmanager:DeleteSecret",
-                        "secretsmanager:GetSecretValue",
+                        "secretsmanager:CreateSecret", 
+                        "secretsmanager:UpdateSecret", 
+                        "secretsmanager:DescribeSecret", 
+                        "secretsmanager:DeleteSecret", 
+                        "secretsmanager:GetSecretValue", 
                         "secretsmanager:PutSecretValue"
-                    ],
-                    "Resource": "arn:aws:secretsmanager:*:*:secret:events!connection/*"
+                    ], 
+                    "Resource": "arn:aws:secretsmanager:*:*:secret:events!connection/*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2021-02-11T20:52:05+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

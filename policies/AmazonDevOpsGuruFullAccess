@@ -1,97 +1,97 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-08-25T18:23:41Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "DevOpsGuruFullAccess",
-                    "Effect": "Allow",
                     "Action": [
                         "devops-guru:*"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DevOpsGuruFullAccess"
+                }, 
                 {
-                    "Sid": "CloudFormationListStacksAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudformation:DescribeStacks",
+                        "cloudformation:DescribeStacks", 
                         "cloudformation:ListStacks"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "CloudFormationListStacksAccess"
+                }, 
                 {
-                    "Sid": "CloudWatchGetMetricDataAccess",
-                    "Effect": "Allow",
                     "Action": [
                         "cloudwatch:GetMetricData"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "CloudWatchGetMetricDataAccess"
+                }, 
                 {
-                    "Sid": "SnsListTopicsAccess",
-                    "Effect": "Allow",
                     "Action": [
                         "sns:ListTopics"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "SnsListTopicsAccess"
+                }, 
                 {
-                    "Sid": "SnsTopicOperations",
-                    "Effect": "Allow",
                     "Action": [
-                        "sns:CreateTopic",
-                        "sns:GetTopicAttributes",
-                        "sns:SetTopicAttributes",
+                        "sns:CreateTopic", 
+                        "sns:GetTopicAttributes", 
+                        "sns:SetTopicAttributes", 
                         "sns:Publish"
-                    ],
-                    "Resource": "arn:aws:sns:*:*:DevOps-Guru-*"
-                },
+                    ], 
+                    "Resource": "arn:aws:sns:*:*:DevOps-Guru-*", 
+                    "Effect": "Allow", 
+                    "Sid": "SnsTopicOperations"
+                }, 
                 {
-                    "Sid": "DevOpsGuruSlrCreation",
-                    "Effect": "Allow",
-                    "Action": "iam:CreateServiceLinkedRole",
-                    "Resource": "arn:aws:iam::*:role/aws-service-role/devops-guru.amazonaws.com/AWSServiceRoleForDevOpsGuru",
+                    "Action": "iam:CreateServiceLinkedRole", 
+                    "Resource": "arn:aws:iam::*:role/aws-service-role/devops-guru.amazonaws.com/AWSServiceRoleForDevOpsGuru", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "iam:AWSServiceName": "devops-guru.amazonaws.com"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "DevOpsGuruSlrCreation"
+                }, 
                 {
-                    "Sid": "DevOpsGuruSlrDeletion",
-                    "Effect": "Allow",
                     "Action": [
-                        "iam:DeleteServiceLinkedRole",
+                        "iam:DeleteServiceLinkedRole", 
                         "iam:GetServiceLinkedRoleDeletionStatus"
-                    ],
-                    "Resource": "arn:aws:iam::*:role/aws-service-role/devops-guru.amazonaws.com/AWSServiceRoleForDevOpsGuru"
-                },
+                    ], 
+                    "Resource": "arn:aws:iam::*:role/aws-service-role/devops-guru.amazonaws.com/AWSServiceRoleForDevOpsGuru", 
+                    "Effect": "Allow", 
+                    "Sid": "DevOpsGuruSlrDeletion"
+                }, 
                 {
-                    "Sid": "RDSDescribeDBInstancesAccess",
-                    "Effect": "Allow",
                     "Action": [
                         "rds:DescribeDBInstances"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "RDSDescribeDBInstancesAccess"
+                }, 
                 {
-                    "Sid": "CloudWatchLogsFilterLogEventsAccess",
-                    "Effect": "Allow",
                     "Action": [
                         "logs:FilterLogEvents"
-                    ],
-                    "Resource": "arn:aws:logs:*:*:log-group:*",
+                    ], 
+                    "Resource": "arn:aws:logs:*:*:log-group:*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceTag/DevOps-Guru-Analysis": "true"
                         }
-                    }
+                    }, 
+                    "Sid": "CloudWatchLogsFilterLogEventsAccess"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-08-25T18:23:41+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,93 +1,95 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-10-15T17:28:13Z", 
+        "VersionId": "v10", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudformation:CreateChangeSet",
+                        "cloudformation:CreateChangeSet", 
                         "cloudformation:CreateStack"
-                    ],
-                    "Resource": "arn:aws:cloudformation:*:*:stack/sms-app-*/*",
+                    ], 
+                    "Resource": "arn:aws:cloudformation:*:*:stack/sms-app-*/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "cloudformation:ResourceTypes": "false"
-                        },
+                        }, 
                         "ForAllValues:StringEquals": {
                             "cloudformation:ResourceTypes": [
-                                "AWS::EC2::Instance",
-                                "AWS::ApplicationInsights::Application",
+                                "AWS::EC2::Instance", 
+                                "AWS::ApplicationInsights::Application", 
                                 "AWS::ResourceGroups::Group"
                             ]
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudformation:DeleteStack",
-                        "cloudformation:ExecuteChangeSet",
-                        "cloudformation:DeleteChangeSet",
-                        "cloudformation:DescribeChangeSet",
-                        "cloudformation:DescribeStacks",
-                        "cloudformation:DescribeStackEvents",
-                        "cloudformation:DescribeStackResource",
-                        "cloudformation:DescribeStackResources",
+                        "cloudformation:DeleteStack", 
+                        "cloudformation:ExecuteChangeSet", 
+                        "cloudformation:DeleteChangeSet", 
+                        "cloudformation:DescribeChangeSet", 
+                        "cloudformation:DescribeStacks", 
+                        "cloudformation:DescribeStackEvents", 
+                        "cloudformation:DescribeStackResource", 
+                        "cloudformation:DescribeStackResources", 
                         "cloudformation:GetTemplate"
-                    ],
-                    "Resource": "arn:aws:cloudformation:*:*:stack/sms-app-*/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:cloudformation:*:*:stack/sms-app-*/*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudformation:ValidateTemplate",
+                        "cloudformation:ValidateTemplate", 
                         "s3:ListAllMyBuckets"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:CreateBucket",
-                        "s3:DeleteBucket",
-                        "s3:DeleteObject",
-                        "s3:GetBucketAcl",
-                        "s3:GetBucketLocation",
-                        "s3:GetObject",
-                        "s3:ListBucket",
-                        "s3:PutObject",
-                        "s3:PutObjectAcl",
+                        "s3:CreateBucket", 
+                        "s3:DeleteBucket", 
+                        "s3:DeleteObject", 
+                        "s3:GetBucketAcl", 
+                        "s3:GetBucketLocation", 
+                        "s3:GetObject", 
+                        "s3:ListBucket", 
+                        "s3:PutObject", 
+                        "s3:PutObjectAcl", 
                         "s3:PutLifecycleConfiguration"
-                    ],
-                    "Resource": "arn:aws:s3:::sms-app-*"
-                },
+                    ], 
+                    "Resource": "arn:aws:s3:::sms-app-*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "sms:CreateReplicationJob",
-                        "sms:DeleteReplicationJob",
-                        "sms:GetReplicationJobs",
-                        "sms:GetReplicationRuns",
-                        "sms:GetServers",
-                        "sms:ImportServerCatalog",
-                        "sms:StartOnDemandReplicationRun",
+                        "sms:CreateReplicationJob", 
+                        "sms:DeleteReplicationJob", 
+                        "sms:GetReplicationJobs", 
+                        "sms:GetReplicationRuns", 
+                        "sms:GetServers", 
+                        "sms:ImportServerCatalog", 
+                        "sms:StartOnDemandReplicationRun", 
                         "sms:UpdateReplicationJob"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "ssm:SendCommand",
+                    "Action": "ssm:SendCommand", 
                     "Resource": [
-                        "arn:aws:ssm:*::document/AWS-RunRemoteScript",
+                        "arn:aws:ssm:*::document/AWS-RunRemoteScript", 
                         "arn:aws:s3:::sms-app-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "ssm:SendCommand",
-                    "Resource": "arn:aws:ec2:*:*:instance/*",
+                    "Action": "ssm:SendCommand", 
+                    "Resource": "arn:aws:ec2:*:*:instance/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "ssm:resourceTag/UseForSMSApplicationValidation": [
@@ -95,29 +97,29 @@
                             ]
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ssm:CancelCommand",
+                        "ssm:CancelCommand", 
                         "ssm:GetCommandInvocation"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "ec2:CreateTags",
-                    "Resource": "arn:aws:ec2:*:*:snapshot/*",
+                    "Action": "ec2:CreateTags", 
+                    "Resource": "arn:aws:ec2:*:*:snapshot/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "ec2:CreateAction": "CopySnapshot"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "ec2:CopySnapshot",
-                    "Resource": "arn:aws:ec2:*:*:snapshot/*",
+                    "Action": "ec2:CopySnapshot", 
+                    "Resource": "arn:aws:ec2:*:*:snapshot/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:RequestTag/SMSJobId": [
@@ -125,14 +127,14 @@
                             ]
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:ModifySnapshotAttribute",
+                        "ec2:ModifySnapshotAttribute", 
                         "ec2:DeleteSnapshot"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:snapshot/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:snapshot/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "ec2:ResourceTag/SMSJobId": [
@@ -140,141 +142,141 @@
                             ]
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:CopyImage",
-                        "ec2:DescribeImages",
-                        "ec2:DescribeInstances",
-                        "ec2:DescribeSnapshots",
-                        "ec2:DescribeSnapshotAttribute",
-                        "ec2:DeregisterImage",
-                        "ec2:ImportImage",
-                        "ec2:DescribeImportImageTasks",
+                        "ec2:CopyImage", 
+                        "ec2:DescribeImages", 
+                        "ec2:DescribeInstances", 
+                        "ec2:DescribeSnapshots", 
+                        "ec2:DescribeSnapshotAttribute", 
+                        "ec2:DeregisterImage", 
+                        "ec2:ImportImage", 
+                        "ec2:DescribeImportImageTasks", 
                         "ec2:GetEbsEncryptionByDefault"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "iam:GetRole",
+                        "iam:GetRole", 
                         "iam:GetInstanceProfile"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DisassociateIamInstanceProfile",
-                        "ec2:AssociateIamInstanceProfile",
+                        "ec2:DisassociateIamInstanceProfile", 
+                        "ec2:AssociateIamInstanceProfile", 
                         "ec2:ReplaceIamInstanceProfileAssociation"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:instance/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:instance/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "ec2:ResourceTag/aws:cloudformation:stack-id": "arn:aws:cloudformation:*:*:stack/sms-app-*/*"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "iam:PassRole",
-                    "Resource": "*",
+                    "Action": "iam:PassRole", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:PassedToService": "ec2.amazonaws.com"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "iam:PassRole",
-                    "Resource": "*",
+                    "Action": "iam:PassRole", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEqualsIfExists": {
                             "iam:PassedToService": "cloudformation.amazonaws.com"
-                        },
+                        }, 
                         "StringLike": {
                             "iam:AssociatedResourceArn": "arn:aws:cloudformation:*:*:stack/sms-app-*/*"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:RunInstances"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:CreateTags",
+                        "ec2:CreateTags", 
                         "ec2:DeleteTags"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:instance/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:instance/*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:ModifyInstanceAttribute",
-                        "ec2:StopInstances",
-                        "ec2:StartInstances",
+                        "ec2:ModifyInstanceAttribute", 
+                        "ec2:StopInstances", 
+                        "ec2:StartInstances", 
                         "ec2:TerminateInstances"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "ec2:ResourceTag/aws:cloudformation:stack-id": "arn:aws:cloudformation:*:*:stack/sms-app-*/*"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "applicationinsights:Describe*",
-                        "applicationinsights:List*",
+                        "applicationinsights:Describe*", 
+                        "applicationinsights:List*", 
                         "cloudformation:ListStackResources"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "applicationinsights:CreateApplication",
-                        "applicationinsights:CreateComponent",
-                        "applicationinsights:UpdateApplication",
-                        "applicationinsights:DeleteApplication",
-                        "applicationinsights:UpdateComponentConfiguration",
+                        "applicationinsights:CreateApplication", 
+                        "applicationinsights:CreateComponent", 
+                        "applicationinsights:UpdateApplication", 
+                        "applicationinsights:DeleteApplication", 
+                        "applicationinsights:UpdateComponentConfiguration", 
                         "applicationinsights:DeleteComponent"
-                    ],
-                    "Resource": "arn:aws:applicationinsights:*:*:application/resource-group/sms-app-*"
-                },
+                    ], 
+                    "Resource": "arn:aws:applicationinsights:*:*:application/resource-group/sms-app-*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "resource-groups:CreateGroup",
-                        "resource-groups:GetGroup",
-                        "resource-groups:UpdateGroup",
+                        "resource-groups:CreateGroup", 
+                        "resource-groups:GetGroup", 
+                        "resource-groups:UpdateGroup", 
                         "resource-groups:DeleteGroup"
-                    ],
-                    "Resource": "arn:aws:resource-groups:*:*:group/sms-app-*",
+                    ], 
+                    "Resource": "arn:aws:resource-groups:*:*:group/sms-app-*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:ResourceTag/aws:cloudformation:stack-id": "arn:aws:cloudformation:*:*:stack/sms-app-*/*"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "iam:CreateServiceLinkedRole"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:iam::*:role/aws-service-role/application-insights.amazonaws.com/AWSServiceRoleForApplicationInsights"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:AWSServiceName": "application-insights.amazonaws.com"
@@ -282,9 +284,7 @@
                     }
                 }
             ]
-        },
-        "VersionId": "v10",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-10-15T17:28:13+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

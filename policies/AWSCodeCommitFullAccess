@@ -1,201 +1,201 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-07-17T21:50:11Z", 
+        "VersionId": "v10", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "codecommit:*"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Sid": "CloudWatchEventsCodeCommitRulesAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "events:DeleteRule",
-                        "events:DescribeRule",
-                        "events:DisableRule",
-                        "events:EnableRule",
-                        "events:PutRule",
-                        "events:PutTargets",
-                        "events:RemoveTargets",
+                        "events:DeleteRule", 
+                        "events:DescribeRule", 
+                        "events:DisableRule", 
+                        "events:EnableRule", 
+                        "events:PutRule", 
+                        "events:PutTargets", 
+                        "events:RemoveTargets", 
                         "events:ListTargetsByRule"
-                    ],
-                    "Resource": "arn:aws:events:*:*:rule/codecommit*"
-                },
+                    ], 
+                    "Resource": "arn:aws:events:*:*:rule/codecommit*", 
+                    "Effect": "Allow", 
+                    "Sid": "CloudWatchEventsCodeCommitRulesAccess"
+                }, 
                 {
-                    "Sid": "SNSTopicAndSubscriptionAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "sns:CreateTopic",
-                        "sns:DeleteTopic",
-                        "sns:Subscribe",
-                        "sns:Unsubscribe",
+                        "sns:CreateTopic", 
+                        "sns:DeleteTopic", 
+                        "sns:Subscribe", 
+                        "sns:Unsubscribe", 
                         "sns:SetTopicAttributes"
-                    ],
-                    "Resource": "arn:aws:sns:*:*:codecommit*"
-                },
+                    ], 
+                    "Resource": "arn:aws:sns:*:*:codecommit*", 
+                    "Effect": "Allow", 
+                    "Sid": "SNSTopicAndSubscriptionAccess"
+                }, 
                 {
-                    "Sid": "SNSTopicAndSubscriptionReadAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "sns:ListTopics",
-                        "sns:ListSubscriptionsByTopic",
+                        "sns:ListTopics", 
+                        "sns:ListSubscriptionsByTopic", 
                         "sns:GetTopicAttributes"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "SNSTopicAndSubscriptionReadAccess"
+                }, 
                 {
-                    "Sid": "LambdaReadOnlyListAccess",
-                    "Effect": "Allow",
                     "Action": [
                         "lambda:ListFunctions"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "LambdaReadOnlyListAccess"
+                }, 
                 {
-                    "Sid": "IAMReadOnlyListAccess",
-                    "Effect": "Allow",
                     "Action": [
                         "iam:ListUsers"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "IAMReadOnlyListAccess"
+                }, 
                 {
-                    "Sid": "IAMReadOnlyConsoleAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "iam:ListAccessKeys",
-                        "iam:ListSSHPublicKeys",
+                        "iam:ListAccessKeys", 
+                        "iam:ListSSHPublicKeys", 
                         "iam:ListServiceSpecificCredentials"
-                    ],
-                    "Resource": "arn:aws:iam::*:user/${aws:username}"
-                },
+                    ], 
+                    "Resource": "arn:aws:iam::*:user/${aws:username}", 
+                    "Effect": "Allow", 
+                    "Sid": "IAMReadOnlyConsoleAccess"
+                }, 
                 {
-                    "Sid": "IAMUserSSHKeys",
-                    "Effect": "Allow",
                     "Action": [
-                        "iam:DeleteSSHPublicKey",
-                        "iam:GetSSHPublicKey",
-                        "iam:ListSSHPublicKeys",
-                        "iam:UpdateSSHPublicKey",
+                        "iam:DeleteSSHPublicKey", 
+                        "iam:GetSSHPublicKey", 
+                        "iam:ListSSHPublicKeys", 
+                        "iam:UpdateSSHPublicKey", 
                         "iam:UploadSSHPublicKey"
-                    ],
-                    "Resource": "arn:aws:iam::*:user/${aws:username}"
-                },
+                    ], 
+                    "Resource": "arn:aws:iam::*:user/${aws:username}", 
+                    "Effect": "Allow", 
+                    "Sid": "IAMUserSSHKeys"
+                }, 
                 {
-                    "Sid": "IAMSelfManageServiceSpecificCredentials",
-                    "Effect": "Allow",
                     "Action": [
-                        "iam:CreateServiceSpecificCredential",
-                        "iam:UpdateServiceSpecificCredential",
-                        "iam:DeleteServiceSpecificCredential",
+                        "iam:CreateServiceSpecificCredential", 
+                        "iam:UpdateServiceSpecificCredential", 
+                        "iam:DeleteServiceSpecificCredential", 
                         "iam:ResetServiceSpecificCredential"
-                    ],
-                    "Resource": "arn:aws:iam::*:user/${aws:username}"
-                },
+                    ], 
+                    "Resource": "arn:aws:iam::*:user/${aws:username}", 
+                    "Effect": "Allow", 
+                    "Sid": "IAMSelfManageServiceSpecificCredentials"
+                }, 
                 {
-                    "Sid": "CodeStarNotificationsReadWriteAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "codestar-notifications:CreateNotificationRule",
-                        "codestar-notifications:DescribeNotificationRule",
-                        "codestar-notifications:UpdateNotificationRule",
-                        "codestar-notifications:DeleteNotificationRule",
-                        "codestar-notifications:Subscribe",
+                        "codestar-notifications:CreateNotificationRule", 
+                        "codestar-notifications:DescribeNotificationRule", 
+                        "codestar-notifications:UpdateNotificationRule", 
+                        "codestar-notifications:DeleteNotificationRule", 
+                        "codestar-notifications:Subscribe", 
                         "codestar-notifications:Unsubscribe"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "codestar-notifications:NotificationsForResource": "arn:aws:codecommit:*"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "CodeStarNotificationsReadWriteAccess"
+                }, 
                 {
-                    "Sid": "CodeStarNotificationsListAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "codestar-notifications:ListNotificationRules",
-                        "codestar-notifications:ListTargets",
-                        "codestar-notifications:ListTagsforResource",
+                        "codestar-notifications:ListNotificationRules", 
+                        "codestar-notifications:ListTargets", 
+                        "codestar-notifications:ListTagsforResource", 
                         "codestar-notifications:ListEventTypes"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "CodeStarNotificationsListAccess"
+                }, 
                 {
-                    "Sid": "CodeStarNotificationsSNSTopicCreateAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "sns:CreateTopic",
+                        "sns:CreateTopic", 
                         "sns:SetTopicAttributes"
-                    ],
-                    "Resource": "arn:aws:sns:*:*:codestar-notifications*"
-                },
+                    ], 
+                    "Resource": "arn:aws:sns:*:*:codestar-notifications*", 
+                    "Effect": "Allow", 
+                    "Sid": "CodeStarNotificationsSNSTopicCreateAccess"
+                }, 
                 {
-                    "Sid": "AmazonCodeGuruReviewerFullAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "codeguru-reviewer:AssociateRepository",
-                        "codeguru-reviewer:DescribeRepositoryAssociation",
-                        "codeguru-reviewer:ListRepositoryAssociations",
-                        "codeguru-reviewer:DisassociateRepository",
-                        "codeguru-reviewer:DescribeCodeReview",
+                        "codeguru-reviewer:AssociateRepository", 
+                        "codeguru-reviewer:DescribeRepositoryAssociation", 
+                        "codeguru-reviewer:ListRepositoryAssociations", 
+                        "codeguru-reviewer:DisassociateRepository", 
+                        "codeguru-reviewer:DescribeCodeReview", 
                         "codeguru-reviewer:ListCodeReviews"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonCodeGuruReviewerFullAccess"
+                }, 
                 {
-                    "Sid": "AmazonCodeGuruReviewerSLRCreation",
-                    "Action": "iam:CreateServiceLinkedRole",
-                    "Effect": "Allow",
-                    "Resource": "arn:aws:iam::*:role/aws-service-role/codeguru-reviewer.amazonaws.com/AWSServiceRoleForAmazonCodeGuruReviewer",
+                    "Action": "iam:CreateServiceLinkedRole", 
+                    "Resource": "arn:aws:iam::*:role/aws-service-role/codeguru-reviewer.amazonaws.com/AWSServiceRoleForAmazonCodeGuruReviewer", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "iam:AWSServiceName": "codeguru-reviewer.amazonaws.com"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "AmazonCodeGuruReviewerSLRCreation"
+                }, 
                 {
-                    "Sid": "CloudWatchEventsManagedRules",
-                    "Effect": "Allow",
                     "Action": [
-                        "events:PutRule",
-                        "events:PutTargets",
-                        "events:DeleteRule",
+                        "events:PutRule", 
+                        "events:PutTargets", 
+                        "events:DeleteRule", 
                         "events:RemoveTargets"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "events:ManagedBy": "codeguru-reviewer.amazonaws.com"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "CloudWatchEventsManagedRules"
+                }, 
                 {
-                    "Sid": "CodeStarNotificationsChatbotAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "chatbot:DescribeSlackChannelConfigurations",
+                        "chatbot:DescribeSlackChannelConfigurations", 
                         "chatbot:ListMicrosoftTeamsChannelConfigurations"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "CodeStarNotificationsChatbotAccess"
+                }, 
                 {
-                    "Sid": "CodeStarConnectionsReadOnlyAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "codestar-connections:ListConnections",
+                        "codestar-connections:ListConnections", 
                         "codestar-connections:GetConnection"
-                    ],
-                    "Resource": "arn:aws:codestar-connections:*:*:connection/*"
+                    ], 
+                    "Resource": "arn:aws:codestar-connections:*:*:connection/*", 
+                    "Effect": "Allow", 
+                    "Sid": "CodeStarConnectionsReadOnlyAccess"
                 }
             ]
-        },
-        "VersionId": "v10",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-07-17T21:50:11+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

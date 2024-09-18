@@ -1,62 +1,62 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-11-16T22:31:54Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AllowSSMReadOnlyAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "ssm:GetCommandInvocation",
-                        "ssm:ListCommands",
+                        "ssm:GetCommandInvocation", 
+                        "ssm:ListCommands", 
                         "ssm:DescribeInstanceInformation"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowSSMReadOnlyAccess"
+                }, 
                 {
-                    "Sid": "AllowTaggedSSMDocumentsOnly",
-                    "Effect": "Allow",
                     "Action": [
-                        "ssm:SendCommand",
-                        "ssm:DescribeDocument",
+                        "ssm:SendCommand", 
+                        "ssm:DescribeDocument", 
                         "ssm:GetDocument"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ssm:*:*:document/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceTag/DLMScriptsAccess": "true"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "AllowTaggedSSMDocumentsOnly"
+                }, 
                 {
-                    "Sid": "AllowSpecificAWSOwnedSSMDocuments",
-                    "Effect": "Allow",
                     "Action": [
-                        "ssm:SendCommand",
-                        "ssm:DescribeDocument",
+                        "ssm:SendCommand", 
+                        "ssm:DescribeDocument", 
                         "ssm:GetDocument"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:ssm:*:*:document/AWSEC2-CreateVssSnapshot",
+                        "arn:aws:ssm:*:*:document/AWSEC2-CreateVssSnapshot", 
                         "arn:aws:ssm:*:*:document/AWSSystemsManagerSAP-CreateDLMSnapshotForSAPHANA"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowSpecificAWSOwnedSSMDocuments"
+                }, 
                 {
-                    "Sid": "AllowAllEC2Instances",
-                    "Effect": "Allow",
                     "Action": [
                         "ssm:SendCommand"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ec2:*:*:instance/*"
-                    ]
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowAllEC2Instances"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-11-16T22:31:54+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

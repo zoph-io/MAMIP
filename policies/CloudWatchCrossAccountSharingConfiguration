@@ -1,40 +1,40 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-11-27T14:01:10Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudwatch:Link",
+                        "cloudwatch:Link", 
                         "oam:ListLinks"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "oam:DeleteLink",
-                        "oam:GetLink",
+                        "oam:DeleteLink", 
+                        "oam:GetLink", 
                         "oam:TagResource"
-                    ],
-                    "Resource": "arn:aws:oam:*:*:link/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:oam:*:*:link/*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "oam:CreateLink",
+                        "oam:CreateLink", 
                         "oam:UpdateLink"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:oam:*:*:link/*",
+                        "arn:aws:oam:*:*:link/*", 
                         "arn:aws:oam:*:*:sink/*"
-                    ]
+                    ], 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-11-27T14:01:10+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

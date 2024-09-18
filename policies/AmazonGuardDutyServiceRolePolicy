@@ -1,266 +1,266 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-08-12T20:01:11Z", 
+        "VersionId": "v10", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "GuardDutyGetDescribeListPolicy",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeInstances",
-                        "ec2:DescribeImages",
-                        "ec2:DescribeVpcEndpoints",
-                        "ec2:DescribeSubnets",
-                        "ec2:DescribeVpcPeeringConnections",
-                        "ec2:DescribeTransitGatewayAttachments",
-                        "organizations:ListAccounts",
-                        "organizations:DescribeAccount",
-                        "organizations:DescribeOrganization",
-                        "s3:GetBucketPublicAccessBlock",
-                        "s3:GetEncryptionConfiguration",
-                        "s3:GetBucketTagging",
-                        "s3:GetAccountPublicAccessBlock",
-                        "s3:ListAllMyBuckets",
-                        "s3:GetBucketAcl",
-                        "s3:GetBucketPolicy",
-                        "s3:GetBucketPolicyStatus",
-                        "lambda:GetFunctionConfiguration",
-                        "lambda:ListTags",
-                        "eks:ListClusters",
-                        "eks:DescribeCluster",
-                        "ec2:DescribeVpcEndpointServices",
-                        "ec2:DescribeVpcs",
-                        "ec2:DescribeSecurityGroups",
-                        "ecs:ListClusters",
+                        "ec2:DescribeInstances", 
+                        "ec2:DescribeImages", 
+                        "ec2:DescribeVpcEndpoints", 
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeVpcPeeringConnections", 
+                        "ec2:DescribeTransitGatewayAttachments", 
+                        "organizations:ListAccounts", 
+                        "organizations:DescribeAccount", 
+                        "organizations:DescribeOrganization", 
+                        "s3:GetBucketPublicAccessBlock", 
+                        "s3:GetEncryptionConfiguration", 
+                        "s3:GetBucketTagging", 
+                        "s3:GetAccountPublicAccessBlock", 
+                        "s3:ListAllMyBuckets", 
+                        "s3:GetBucketAcl", 
+                        "s3:GetBucketPolicy", 
+                        "s3:GetBucketPolicyStatus", 
+                        "lambda:GetFunctionConfiguration", 
+                        "lambda:ListTags", 
+                        "eks:ListClusters", 
+                        "eks:DescribeCluster", 
+                        "ec2:DescribeVpcEndpointServices", 
+                        "ec2:DescribeVpcs", 
+                        "ec2:DescribeSecurityGroups", 
+                        "ecs:ListClusters", 
                         "ecs:DescribeClusters"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "GuardDutyGetDescribeListPolicy"
+                }, 
                 {
-                    "Sid": "GuardDutyCreateSLRPolicy",
-                    "Effect": "Allow",
-                    "Action": "iam:CreateServiceLinkedRole",
-                    "Resource": "*",
+                    "Action": "iam:CreateServiceLinkedRole", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:AWSServiceName": "malware-protection.guardduty.amazonaws.com"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "GuardDutyCreateSLRPolicy"
+                }, 
                 {
-                    "Sid": "GuardDutyCreateVpcEndpointPolicy",
-                    "Effect": "Allow",
-                    "Action": "ec2:CreateVpcEndpoint",
-                    "Resource": "arn:aws:ec2:*:*:vpc-endpoint/*",
+                    "Action": "ec2:CreateVpcEndpoint", 
+                    "Resource": "arn:aws:ec2:*:*:vpc-endpoint/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAnyValue:StringEquals": {
                             "aws:TagKeys": "GuardDutyManaged"
-                        },
+                        }, 
                         "StringLike": {
                             "ec2:VpceServiceName": [
-                                "com.amazonaws.*.guardduty-data",
+                                "com.amazonaws.*.guardduty-data", 
                                 "com.amazonaws.*.guardduty-data-fips"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "GuardDutyCreateVpcEndpointPolicy"
+                }, 
                 {
-                    "Sid": "GuardDutyModifyDeleteVpcEndpointPolicy",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:ModifyVpcEndpoint",
+                        "ec2:ModifyVpcEndpoint", 
                         "ec2:DeleteVpcEndpoints"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:vpc-endpoint/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:vpc-endpoint/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "aws:ResourceTag/GuardDutyManaged": false
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "GuardDutyModifyDeleteVpcEndpointPolicy"
+                }, 
                 {
-                    "Sid": "GuardDutyCreateModifyVpcEndpointNetworkPolicy",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:CreateVpcEndpoint",
+                        "ec2:CreateVpcEndpoint", 
                         "ec2:ModifyVpcEndpoint"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:ec2:*:*:vpc/*",
-                        "arn:aws:ec2:*:*:security-group/*",
+                        "arn:aws:ec2:*:*:vpc/*", 
+                        "arn:aws:ec2:*:*:security-group/*", 
                         "arn:aws:ec2:*:*:subnet/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "GuardDutyCreateModifyVpcEndpointNetworkPolicy"
+                }, 
                 {
-                    "Sid": "GuardDutyCreateTagsDuringVpcEndpointCreationPolicy",
-                    "Effect": "Allow",
-                    "Action": "ec2:CreateTags",
-                    "Resource": "arn:aws:ec2:*:*:vpc-endpoint/*",
+                    "Action": "ec2:CreateTags", 
+                    "Resource": "arn:aws:ec2:*:*:vpc-endpoint/*", 
+                    "Effect": "Allow", 
                     "Condition": {
-                        "StringEquals": {
-                            "ec2:CreateAction": "CreateVpcEndpoint"
-                        },
                         "ForAnyValue:StringEquals": {
                             "aws:TagKeys": "GuardDutyManaged"
+                        }, 
+                        "StringEquals": {
+                            "ec2:CreateAction": "CreateVpcEndpoint"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "GuardDutyCreateTagsDuringVpcEndpointCreationPolicy"
+                }, 
                 {
-                    "Sid": "GuardDutySecurityGroupManagementPolicy",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:AuthorizeSecurityGroupIngress",
-                        "ec2:AuthorizeSecurityGroupEgress",
-                        "ec2:RevokeSecurityGroupIngress",
-                        "ec2:RevokeSecurityGroupEgress",
+                        "ec2:AuthorizeSecurityGroupIngress", 
+                        "ec2:AuthorizeSecurityGroupEgress", 
+                        "ec2:RevokeSecurityGroupIngress", 
+                        "ec2:RevokeSecurityGroupEgress", 
                         "ec2:DeleteSecurityGroup"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:security-group/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:security-group/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "aws:ResourceTag/GuardDutyManaged": false
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "GuardDutySecurityGroupManagementPolicy"
+                }, 
                 {
-                    "Sid": "GuardDutyCreateSecurityGroupPolicy",
-                    "Effect": "Allow",
-                    "Action": "ec2:CreateSecurityGroup",
-                    "Resource": "arn:aws:ec2:*:*:security-group/*",
+                    "Action": "ec2:CreateSecurityGroup", 
+                    "Resource": "arn:aws:ec2:*:*:security-group/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:RequestTag/GuardDutyManaged": "*"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "GuardDutyCreateSecurityGroupPolicy"
+                }, 
                 {
-                    "Sid": "GuardDutyCreateSecurityGroupForVpcPolicy",
-                    "Effect": "Allow",
-                    "Action": "ec2:CreateSecurityGroup",
-                    "Resource": "arn:aws:ec2:*:*:vpc/*"
-                },
+                    "Action": "ec2:CreateSecurityGroup", 
+                    "Resource": "arn:aws:ec2:*:*:vpc/*", 
+                    "Effect": "Allow", 
+                    "Sid": "GuardDutyCreateSecurityGroupForVpcPolicy"
+                }, 
                 {
-                    "Sid": "GuardDutyCreateTagsDuringSecurityGroupCreationPolicy",
-                    "Effect": "Allow",
-                    "Action": "ec2:CreateTags",
-                    "Resource": "arn:aws:ec2:*:*:security-group/*",
+                    "Action": "ec2:CreateTags", 
+                    "Resource": "arn:aws:ec2:*:*:security-group/*", 
+                    "Effect": "Allow", 
                     "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "aws:TagKeys": "GuardDutyManaged"
+                        }, 
                         "StringEquals": {
                             "ec2:CreateAction": "CreateSecurityGroup"
-                        },
-                        "ForAnyValue:StringEquals": {
-                            "aws:TagKeys": "GuardDutyManaged"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "GuardDutyCreateTagsDuringSecurityGroupCreationPolicy"
+                }, 
                 {
-                    "Sid": "GuardDutyCreateEksAddonPolicy",
-                    "Effect": "Allow",
-                    "Action": "eks:CreateAddon",
-                    "Resource": "arn:aws:eks:*:*:cluster/*",
+                    "Action": "eks:CreateAddon", 
+                    "Resource": "arn:aws:eks:*:*:cluster/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAnyValue:StringEquals": {
                             "aws:TagKeys": "GuardDutyManaged"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "GuardDutyCreateEksAddonPolicy"
+                }, 
                 {
-                    "Sid": "GuardDutyEksAddonManagementPolicy",
-                    "Effect": "Allow",
                     "Action": [
-                        "eks:DeleteAddon",
-                        "eks:UpdateAddon",
+                        "eks:DeleteAddon", 
+                        "eks:UpdateAddon", 
                         "eks:DescribeAddon"
-                    ],
-                    "Resource": "arn:aws:eks:*:*:addon/*/aws-guardduty-agent/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:eks:*:*:addon/*/aws-guardduty-agent/*", 
+                    "Effect": "Allow", 
+                    "Sid": "GuardDutyEksAddonManagementPolicy"
+                }, 
                 {
-                    "Sid": "GuardDutyEksClusterTagResourcePolicy",
-                    "Effect": "Allow",
-                    "Action": "eks:TagResource",
-                    "Resource": "arn:aws:eks:*:*:cluster/*",
+                    "Action": "eks:TagResource", 
+                    "Resource": "arn:aws:eks:*:*:cluster/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAnyValue:StringEquals": {
                             "aws:TagKeys": "GuardDutyManaged"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "GuardDutyEksClusterTagResourcePolicy"
+                }, 
                 {
-                    "Sid": "GuardDutyEcsPutAccountSettingsDefaultPolicy",
-                    "Effect": "Allow",
-                    "Action": "ecs:PutAccountSettingDefault",
-                    "Resource": "*",
+                    "Action": "ecs:PutAccountSettingDefault", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "ecs:account-setting": [
                                 "guardDutyActivate"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "GuardDutyEcsPutAccountSettingsDefaultPolicy"
+                }, 
                 {
-                    "Sid": "SsmCreateDescribeUpdateDeleteStartAssociationPermission",
-                    "Effect": "Allow",
                     "Action": [
-                        "ssm:DescribeAssociation",
-                        "ssm:DeleteAssociation",
-                        "ssm:UpdateAssociation",
-                        "ssm:CreateAssociation",
+                        "ssm:DescribeAssociation", 
+                        "ssm:DeleteAssociation", 
+                        "ssm:UpdateAssociation", 
+                        "ssm:CreateAssociation", 
                         "ssm:StartAssociationsOnce"
-                    ],
-                    "Resource": "arn:aws:ssm:*:*:association/*",
+                    ], 
+                    "Resource": "arn:aws:ssm:*:*:association/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceTag/GuardDutyManaged": "true"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "SsmCreateDescribeUpdateDeleteStartAssociationPermission"
+                }, 
                 {
-                    "Sid": "SsmAddTagsToResourcePermission",
-                    "Effect": "Allow",
                     "Action": [
                         "ssm:AddTagsToResource"
-                    ],
-                    "Resource": "arn:aws:ssm:*:*:association/*",
+                    ], 
+                    "Resource": "arn:aws:ssm:*:*:association/*", 
+                    "Effect": "Allow", 
                     "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/GuardDutyManaged": "true"
+                        }, 
                         "ForAllValues:StringEquals": {
                             "aws:TagKeys": [
                                 "GuardDutyManaged"
                             ]
-                        },
-                        "StringEquals": {
-                            "aws:ResourceTag/GuardDutyManaged": "true"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "SsmAddTagsToResourcePermission"
+                }, 
                 {
-                    "Sid": "SsmCreateUpdateAssociationInstanceDocumentPermission",
-                    "Effect": "Allow",
                     "Action": [
-                        "ssm:CreateAssociation",
+                        "ssm:CreateAssociation", 
                         "ssm:UpdateAssociation"
-                    ],
-                    "Resource": "arn:aws:ssm:*:*:document/AmazonGuardDuty-ConfigureRuntimeMonitoringSsmPlugin"
-                },
+                    ], 
+                    "Resource": "arn:aws:ssm:*:*:document/AmazonGuardDuty-ConfigureRuntimeMonitoringSsmPlugin", 
+                    "Effect": "Allow", 
+                    "Sid": "SsmCreateUpdateAssociationInstanceDocumentPermission"
+                }, 
                 {
-                    "Sid": "SsmSendCommandPermission",
-                    "Effect": "Allow",
-                    "Action": "ssm:SendCommand",
+                    "Action": "ssm:SendCommand", 
                     "Resource": [
-                        "arn:aws:ec2:*:*:instance/*",
+                        "arn:aws:ec2:*:*:instance/*", 
                         "arn:aws:ssm:*:*:document/AmazonGuardDuty-ConfigureRuntimeMonitoringSsmPlugin"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "SsmSendCommandPermission"
+                }, 
                 {
-                    "Sid": "SsmGetCommandStatus",
-                    "Effect": "Allow",
-                    "Action": "ssm:GetCommandInvocation",
-                    "Resource": "*"
+                    "Action": "ssm:GetCommandInvocation", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "SsmGetCommandStatus"
                 }
             ]
-        },
-        "VersionId": "v10",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-08-12T20:01:11+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

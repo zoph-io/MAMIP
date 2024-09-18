@@ -1,144 +1,144 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-03-27T16:32:53Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "DescribeInstanceInfo",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:DescribeInstanceAttribute"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ec2:*:*:instance/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "ec2:SourceInstanceARN": "*${ec2:InstanceId}"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "DescribeInstanceInfo"
+                }, 
                 {
-                    "Sid": "CreateSnapshotsWithTag",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateSnapshots"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ec2:*:*:snapshot/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:RequestTag/AwsVssConfig": "*"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "CreateSnapshotsWithTag"
+                }, 
                 {
-                    "Sid": "CreateSnapshotsAccessInstance",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateSnapshots"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ec2:*:*:instance/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "ec2:SourceInstanceARN": "*${ec2:InstanceId}"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "CreateSnapshotsAccessInstance"
+                }, 
                 {
-                    "Sid": "CreateSnapshotsAccessVolume",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateSnapshots"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ec2:*:*:volume/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "CreateSnapshotsAccessVolume"
+                }, 
                 {
-                    "Sid": "CreateImageWithTag",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateImage"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:ec2:*:*:snapshot/*",
+                        "arn:aws:ec2:*:*:snapshot/*", 
                         "arn:aws:ec2:*:*:image/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:RequestTag/AwsVssConfig": "*"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "CreateImageWithTag"
+                }, 
                 {
-                    "Sid": "CreateImageAccessInstance",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateImage"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ec2:*:*:instance/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "ec2:SourceInstanceARN": "*${ec2:InstanceId}"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "CreateImageAccessInstance"
+                }, 
                 {
-                    "Sid": "CreateTagsOnResourceCreation",
-                    "Effect": "Allow",
-                    "Action": "ec2:CreateTags",
+                    "Action": "ec2:CreateTags", 
                     "Resource": [
-                        "arn:aws:ec2:*:*:snapshot/*",
+                        "arn:aws:ec2:*:*:snapshot/*", 
                         "arn:aws:ec2:*:*:image/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "ec2:CreateAction": [
-                                "CreateImage",
+                                "CreateImage", 
                                 "CreateSnapshots"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "CreateTagsOnResourceCreation"
+                }, 
                 {
-                    "Sid": "CreateTagsAfterResourceCreation",
-                    "Effect": "Allow",
-                    "Action": "ec2:CreateTags",
+                    "Action": "ec2:CreateTags", 
                     "Resource": [
-                        "arn:aws:ec2:*:*:snapshot/*",
+                        "arn:aws:ec2:*:*:snapshot/*", 
                         "arn:aws:ec2:*:*:image/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "ec2:ResourceTag/AwsVssConfig": "*"
-                        },
+                        }, 
                         "ForAllValues:StringEquals": {
                             "aws:TagKeys": [
-                                "AppConsistent",
+                                "AppConsistent", 
                                 "Device"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "CreateTagsAfterResourceCreation"
+                }, 
                 {
-                    "Sid": "DescribeImagesAndSnapshots",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeImages",
+                        "ec2:DescribeImages", 
                         "ec2:DescribeSnapshots"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DescribeImagesAndSnapshots"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-03-27T16:32:53+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

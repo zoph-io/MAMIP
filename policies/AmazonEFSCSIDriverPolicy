@@ -1,69 +1,69 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-07-25T20:10:04Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AllowDescribe",
-                    "Effect": "Allow",
                     "Action": [
-                        "elasticfilesystem:DescribeAccessPoints",
-                        "elasticfilesystem:DescribeFileSystems",
-                        "elasticfilesystem:DescribeMountTargets",
+                        "elasticfilesystem:DescribeAccessPoints", 
+                        "elasticfilesystem:DescribeFileSystems", 
+                        "elasticfilesystem:DescribeMountTargets", 
                         "ec2:DescribeAvailabilityZones"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowDescribe"
+                }, 
                 {
-                    "Sid": "AllowCreateAccessPoint",
-                    "Effect": "Allow",
                     "Action": [
                         "elasticfilesystem:CreateAccessPoint"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "aws:RequestTag/efs.csi.aws.com/cluster": "false"
-                        },
+                        }, 
                         "ForAllValues:StringEquals": {
                             "aws:TagKeys": "efs.csi.aws.com/cluster"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "AllowCreateAccessPoint"
+                }, 
                 {
-                    "Sid": "AllowTagNewAccessPoints",
-                    "Effect": "Allow",
                     "Action": [
                         "elasticfilesystem:TagResource"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
-                        "StringEquals": {
-                            "elasticfilesystem:CreateAction": "CreateAccessPoint"
-                        },
                         "Null": {
                             "aws:RequestTag/efs.csi.aws.com/cluster": "false"
-                        },
+                        }, 
+                        "StringEquals": {
+                            "elasticfilesystem:CreateAction": "CreateAccessPoint"
+                        }, 
                         "ForAllValues:StringEquals": {
                             "aws:TagKeys": "efs.csi.aws.com/cluster"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "AllowTagNewAccessPoints"
+                }, 
                 {
-                    "Sid": "AllowDeleteAccessPoint",
-                    "Effect": "Allow",
-                    "Action": "elasticfilesystem:DeleteAccessPoint",
-                    "Resource": "*",
+                    "Action": "elasticfilesystem:DeleteAccessPoint", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "aws:ResourceTag/efs.csi.aws.com/cluster": "false"
                         }
-                    }
+                    }, 
+                    "Sid": "AllowDeleteAccessPoint"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-07-25T20:10:04+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

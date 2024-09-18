@@ -1,87 +1,89 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-03-04T17:04:00Z", 
+        "VersionId": "v4", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "aws-marketplace:*",
-                        "cloudformation:CreateStack",
-                        "cloudformation:DescribeStackResource",
-                        "cloudformation:DescribeStackResources",
-                        "cloudformation:DescribeStacks",
-                        "cloudformation:List*",
-                        "ec2:AuthorizeSecurityGroupEgress",
-                        "ec2:AuthorizeSecurityGroupIngress",
-                        "ec2:CreateSecurityGroup",
-                        "ec2:CreateTags",
-                        "ec2:DescribeAccountAttributes",
-                        "ec2:DescribeAddresses",
-                        "ec2:DeleteSecurityGroup",
-                        "ec2:DescribeAccountAttributes",
-                        "ec2:DescribeImages",
-                        "ec2:DescribeInstances",
-                        "ec2:DescribeKeyPairs",
-                        "ec2:DescribeSecurityGroups",
-                        "ec2:DescribeSubnets",
-                        "ec2:DescribeTags",
-                        "ec2:DescribeVpcs",
-                        "ec2:RunInstances",
-                        "ec2:StartInstances",
-                        "ec2:StopInstances",
+                        "aws-marketplace:*", 
+                        "cloudformation:CreateStack", 
+                        "cloudformation:DescribeStackResource", 
+                        "cloudformation:DescribeStackResources", 
+                        "cloudformation:DescribeStacks", 
+                        "cloudformation:List*", 
+                        "ec2:AuthorizeSecurityGroupEgress", 
+                        "ec2:AuthorizeSecurityGroupIngress", 
+                        "ec2:CreateSecurityGroup", 
+                        "ec2:CreateTags", 
+                        "ec2:DescribeAccountAttributes", 
+                        "ec2:DescribeAddresses", 
+                        "ec2:DeleteSecurityGroup", 
+                        "ec2:DescribeAccountAttributes", 
+                        "ec2:DescribeImages", 
+                        "ec2:DescribeInstances", 
+                        "ec2:DescribeKeyPairs", 
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeTags", 
+                        "ec2:DescribeVpcs", 
+                        "ec2:RunInstances", 
+                        "ec2:StartInstances", 
+                        "ec2:StopInstances", 
                         "ec2:TerminateInstances"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:CopyImage",
-                        "ec2:DeregisterImage",
-                        "ec2:DescribeSnapshots",
-                        "ec2:DeleteSnapshot",
-                        "ec2:CreateImage",
-                        "ec2:DescribeInstanceStatus",
-                        "ssm:GetAutomationExecution",
-                        "ssm:ListDocuments",
-                        "ssm:DescribeDocument",
-                        "sns:ListTopics",
-                        "sns:GetTopicAttributes",
-                        "sns:CreateTopic",
-                        "iam:GetRole",
-                        "iam:GetInstanceProfile",
-                        "iam:ListRoles",
+                        "ec2:CopyImage", 
+                        "ec2:DeregisterImage", 
+                        "ec2:DescribeSnapshots", 
+                        "ec2:DeleteSnapshot", 
+                        "ec2:CreateImage", 
+                        "ec2:DescribeInstanceStatus", 
+                        "ssm:GetAutomationExecution", 
+                        "ssm:ListDocuments", 
+                        "ssm:DescribeDocument", 
+                        "sns:ListTopics", 
+                        "sns:GetTopicAttributes", 
+                        "sns:CreateTopic", 
+                        "iam:GetRole", 
+                        "iam:GetInstanceProfile", 
+                        "iam:ListRoles", 
                         "iam:ListInstanceProfiles"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:ListBucket",
+                        "s3:ListBucket", 
                         "s3:GetObject"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:s3:::*image-build*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "sns:Publish",
+                        "sns:Publish", 
                         "sns:setTopicAttributes"
-                    ],
-                    "Resource": "arn:aws:sns:*:*:*image-build*"
-                },
+                    ], 
+                    "Resource": "arn:aws:sns:*:*:*image-build*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "iam:PassRole"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "iam:PassedToService": [
@@ -89,53 +91,51 @@
                             ]
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ssm:StartAutomationExecution"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:ssm:eu-central-1:906690553262:automation-definition/*",
-                        "arn:aws:ssm:us-east-1:058657716661:automation-definition/*",
-                        "arn:aws:ssm:ap-northeast-1:340648487307:automation-definition/*",
-                        "arn:aws:ssm:eu-west-1:564714592864:automation-definition/*",
-                        "arn:aws:ssm:us-west-2:243045473901:automation-definition/*",
-                        "arn:aws:ssm:ap-southeast-2:362149219987:automation-definition/*",
-                        "arn:aws:ssm:eu-west-2:587945719687:automation-definition/*",
+                        "arn:aws:ssm:eu-central-1:906690553262:automation-definition/*", 
+                        "arn:aws:ssm:us-east-1:058657716661:automation-definition/*", 
+                        "arn:aws:ssm:ap-northeast-1:340648487307:automation-definition/*", 
+                        "arn:aws:ssm:eu-west-1:564714592864:automation-definition/*", 
+                        "arn:aws:ssm:us-west-2:243045473901:automation-definition/*", 
+                        "arn:aws:ssm:ap-southeast-2:362149219987:automation-definition/*", 
+                        "arn:aws:ssm:eu-west-2:587945719687:automation-definition/*", 
                         "arn:aws:ssm:us-east-2:134937423163:automation-definition/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "iam:PassRole"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
+                            "iam:AssociatedResourceARN": [
+                                "arn:aws:ssm:eu-central-1:906690553262:automation-definition/*", 
+                                "arn:aws:ssm:us-east-1:058657716661:automation-definition/*", 
+                                "arn:aws:ssm:ap-northeast-1:340648487307:automation-definition/*", 
+                                "arn:aws:ssm:eu-west-1:564714592864:automation-definition/*", 
+                                "arn:aws:ssm:us-west-2:243045473901:automation-definition/*", 
+                                "arn:aws:ssm:ap-southeast-2:362149219987:automation-definition/*", 
+                                "arn:aws:ssm:eu-west-2:587945719687:automation-definition/*", 
+                                "arn:aws:ssm:us-east-2:134937423163:automation-definition/*"
+                            ], 
                             "iam:PassedToService": [
                                 "ssm.amazonaws.com"
-                            ],
-                            "iam:AssociatedResourceARN": [
-                                "arn:aws:ssm:eu-central-1:906690553262:automation-definition/*",
-                                "arn:aws:ssm:us-east-1:058657716661:automation-definition/*",
-                                "arn:aws:ssm:ap-northeast-1:340648487307:automation-definition/*",
-                                "arn:aws:ssm:eu-west-1:564714592864:automation-definition/*",
-                                "arn:aws:ssm:us-west-2:243045473901:automation-definition/*",
-                                "arn:aws:ssm:ap-southeast-2:362149219987:automation-definition/*",
-                                "arn:aws:ssm:eu-west-2:587945719687:automation-definition/*",
-                                "arn:aws:ssm:us-east-2:134937423163:automation-definition/*"
                             ]
                         }
                     }
                 }
             ]
-        },
-        "VersionId": "v4",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-03-04T17:04:00+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

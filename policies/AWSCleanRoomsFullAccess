@@ -1,196 +1,196 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-03-21T15:35:13Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "CleanRoomsAccess",
-                    "Effect": "Allow",
                     "Action": [
                         "cleanrooms:*"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "CleanRoomsAccess"
+                }, 
                 {
-                    "Sid": "PassServiceRole",
-                    "Effect": "Allow",
                     "Action": [
                         "iam:PassRole"
-                    ],
-                    "Resource": "arn:aws:iam::*:role/service-role/*cleanrooms*",
+                    ], 
+                    "Resource": "arn:aws:iam::*:role/service-role/*cleanrooms*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:PassedToService": "cleanrooms.amazonaws.com"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "PassServiceRole"
+                }, 
                 {
-                    "Sid": "ListRolesToPickServiceRole",
-                    "Effect": "Allow",
                     "Action": [
                         "iam:ListRoles"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ListRolesToPickServiceRole"
+                }, 
                 {
-                    "Sid": "GetRoleAndListRolePoliciesToInspectServiceRole",
-                    "Effect": "Allow",
                     "Action": [
-                        "iam:GetRole",
-                        "iam:ListRolePolicies",
+                        "iam:GetRole", 
+                        "iam:ListRolePolicies", 
                         "iam:ListAttachedRolePolicies"
-                    ],
-                    "Resource": "arn:aws:iam::*:role/service-role/*cleanrooms*"
-                },
+                    ], 
+                    "Resource": "arn:aws:iam::*:role/service-role/*cleanrooms*", 
+                    "Effect": "Allow", 
+                    "Sid": "GetRoleAndListRolePoliciesToInspectServiceRole"
+                }, 
                 {
-                    "Sid": "ListPoliciesToInspectServiceRolePolicy",
-                    "Effect": "Allow",
                     "Action": [
                         "iam:ListPolicies"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ListPoliciesToInspectServiceRolePolicy"
+                }, 
                 {
-                    "Sid": "GetPolicyToInspectServiceRolePolicy",
-                    "Effect": "Allow",
                     "Action": [
-                        "iam:GetPolicy",
+                        "iam:GetPolicy", 
                         "iam:GetPolicyVersion"
-                    ],
-                    "Resource": "arn:aws:iam::*:policy/*cleanrooms*"
-                },
+                    ], 
+                    "Resource": "arn:aws:iam::*:policy/*cleanrooms*", 
+                    "Effect": "Allow", 
+                    "Sid": "GetPolicyToInspectServiceRolePolicy"
+                }, 
                 {
-                    "Sid": "ConsoleDisplayTables",
-                    "Effect": "Allow",
                     "Action": [
-                        "glue:GetDatabase",
-                        "glue:GetDatabases",
-                        "glue:GetTable",
-                        "glue:GetTables",
-                        "glue:GetPartition",
-                        "glue:GetPartitions",
-                        "glue:GetSchema",
-                        "glue:GetSchemaVersion",
+                        "glue:GetDatabase", 
+                        "glue:GetDatabases", 
+                        "glue:GetTable", 
+                        "glue:GetTables", 
+                        "glue:GetPartition", 
+                        "glue:GetPartitions", 
+                        "glue:GetSchema", 
+                        "glue:GetSchemaVersion", 
                         "glue:BatchGetPartition"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ConsoleDisplayTables"
+                }, 
                 {
-                    "Sid": "ConsolePickQueryResultsBucketListAll",
-                    "Effect": "Allow",
                     "Action": [
                         "s3:ListAllMyBuckets"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ConsolePickQueryResultsBucketListAll"
+                }, 
                 {
-                    "Sid": "SetQueryResultsBucket",
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:GetBucketLocation",
+                        "s3:GetBucketLocation", 
                         "s3:ListBucketVersions"
-                    ],
-                    "Resource": "arn:aws:s3:::cleanrooms-queryresults*"
-                },
+                    ], 
+                    "Resource": "arn:aws:s3:::cleanrooms-queryresults*", 
+                    "Effect": "Allow", 
+                    "Sid": "SetQueryResultsBucket"
+                }, 
                 {
-                    "Sid": "WriteQueryResults",
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:ListBucket",
+                        "s3:ListBucket", 
                         "s3:PutObject"
-                    ],
-                    "Resource": "arn:aws:s3:::cleanrooms-queryresults*",
+                    ], 
+                    "Resource": "arn:aws:s3:::cleanrooms-queryresults*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAnyValue:StringEquals": {
                             "aws:CalledVia": "cleanrooms.amazonaws.com"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "WriteQueryResults"
+                }, 
                 {
-                    "Sid": "ConsoleDisplayQueryResults",
-                    "Effect": "Allow",
                     "Action": [
                         "s3:GetObject"
-                    ],
-                    "Resource": "arn:aws:s3:::cleanrooms-queryresults*"
-                },
+                    ], 
+                    "Resource": "arn:aws:s3:::cleanrooms-queryresults*", 
+                    "Effect": "Allow", 
+                    "Sid": "ConsoleDisplayQueryResults"
+                }, 
                 {
-                    "Sid": "EstablishLogDeliveries",
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:CreateLogDelivery",
-                        "logs:GetLogDelivery",
-                        "logs:UpdateLogDelivery",
-                        "logs:DeleteLogDelivery",
+                        "logs:CreateLogDelivery", 
+                        "logs:GetLogDelivery", 
+                        "logs:UpdateLogDelivery", 
+                        "logs:DeleteLogDelivery", 
                         "logs:ListLogDeliveries"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAnyValue:StringEquals": {
                             "aws:CalledVia": "cleanrooms.amazonaws.com"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "EstablishLogDeliveries"
+                }, 
                 {
-                    "Sid": "SetupLogGroupsDescribe",
-                    "Effect": "Allow",
                     "Action": [
                         "logs:DescribeLogGroups"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAnyValue:StringEquals": {
                             "aws:CalledVia": "cleanrooms.amazonaws.com"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "SetupLogGroupsDescribe"
+                }, 
                 {
-                    "Sid": "SetupLogGroupsCreate",
-                    "Effect": "Allow",
                     "Action": [
                         "logs:CreateLogGroup"
-                    ],
-                    "Resource": "arn:aws:logs:*:*:log-group:/aws/cleanrooms*",
+                    ], 
+                    "Resource": "arn:aws:logs:*:*:log-group:/aws/cleanrooms*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAnyValue:StringEquals": {
                             "aws:CalledVia": "cleanrooms.amazonaws.com"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "SetupLogGroupsCreate"
+                }, 
                 {
-                    "Sid": "SetupLogGroupsResourcePolicy",
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:DescribeResourcePolicies",
+                        "logs:DescribeResourcePolicies", 
                         "logs:PutResourcePolicy"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAnyValue:StringEquals": {
                             "aws:CalledVia": "cleanrooms.amazonaws.com"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "SetupLogGroupsResourcePolicy"
+                }, 
                 {
-                    "Sid": "ConsoleLogSummaryQueryLogs",
-                    "Effect": "Allow",
                     "Action": [
                         "logs:StartQuery"
-                    ],
-                    "Resource": "arn:aws:logs:*:*:log-group:/aws/cleanrooms*"
-                },
+                    ], 
+                    "Resource": "arn:aws:logs:*:*:log-group:/aws/cleanrooms*", 
+                    "Effect": "Allow", 
+                    "Sid": "ConsoleLogSummaryQueryLogs"
+                }, 
                 {
-                    "Sid": "ConsoleLogSummaryObtainLogs",
-                    "Effect": "Allow",
                     "Action": [
                         "logs:GetQueryResults"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ConsoleLogSummaryObtainLogs"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-03-21T15:35:13+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,26 +1,26 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2021-06-23T21:34:47Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "iot:Connect",
-                        "iot:Publish",
-                        "iot:Subscribe",
-                        "iot:Receive",
-                        "iot:GetThingShadow",
-                        "iot:UpdateThingShadow",
-                        "iot:DeleteThingShadow",
+                        "iot:Connect", 
+                        "iot:Publish", 
+                        "iot:Subscribe", 
+                        "iot:Receive", 
+                        "iot:GetThingShadow", 
+                        "iot:UpdateThingShadow", 
+                        "iot:DeleteThingShadow", 
                         "iot:ListNamedShadowsForThing"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2021-06-23T21:34:47+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

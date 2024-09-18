@@ -1,54 +1,54 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-01-12T16:10:48Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "CleanRoomsRead",
-                    "Effect": "Allow",
                     "Action": [
-                        "cleanrooms:BatchGet*",
-                        "cleanrooms:Get*",
+                        "cleanrooms:BatchGet*", 
+                        "cleanrooms:Get*", 
                         "cleanrooms:List*"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "CleanRoomsRead"
+                }, 
                 {
-                    "Sid": "ConsoleDisplayTables",
-                    "Effect": "Allow",
                     "Action": [
-                        "glue:GetDatabase",
-                        "glue:GetDatabases",
-                        "glue:GetTable",
-                        "glue:GetTables",
-                        "glue:GetPartition",
-                        "glue:GetPartitions",
-                        "glue:GetSchema",
-                        "glue:GetSchemaVersion",
+                        "glue:GetDatabase", 
+                        "glue:GetDatabases", 
+                        "glue:GetTable", 
+                        "glue:GetTables", 
+                        "glue:GetPartition", 
+                        "glue:GetPartitions", 
+                        "glue:GetSchema", 
+                        "glue:GetSchemaVersion", 
                         "glue:BatchGetPartition"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ConsoleDisplayTables"
+                }, 
                 {
-                    "Sid": "ConsoleLogSummaryQueryLogs",
-                    "Effect": "Allow",
                     "Action": [
                         "logs:StartQuery"
-                    ],
-                    "Resource": "arn:aws:logs:*:*:log-group:/aws/cleanrooms*"
-                },
+                    ], 
+                    "Resource": "arn:aws:logs:*:*:log-group:/aws/cleanrooms*", 
+                    "Effect": "Allow", 
+                    "Sid": "ConsoleLogSummaryQueryLogs"
+                }, 
                 {
-                    "Sid": "ConsoleLogSummaryObtainLogs",
-                    "Effect": "Allow",
                     "Action": [
                         "logs:GetQueryResults"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ConsoleLogSummaryObtainLogs"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-01-12T16:10:48+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

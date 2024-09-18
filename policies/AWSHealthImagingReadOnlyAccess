@@ -1,28 +1,28 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-08-01T15:18:49Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "medical-imaging:GetDICOMImportJob",
-                        "medical-imaging:GetDatastore",
-                        "medical-imaging:GetImageFrame",
-                        "medical-imaging:GetImageSet",
-                        "medical-imaging:GetImageSetMetadata",
-                        "medical-imaging:ListDICOMImportJobs",
-                        "medical-imaging:ListDatastores",
-                        "medical-imaging:ListImageSetVersions",
-                        "medical-imaging:ListTagsForResource",
+                        "medical-imaging:GetDICOMImportJob", 
+                        "medical-imaging:GetDatastore", 
+                        "medical-imaging:GetImageFrame", 
+                        "medical-imaging:GetImageSet", 
+                        "medical-imaging:GetImageSetMetadata", 
+                        "medical-imaging:ListDICOMImportJobs", 
+                        "medical-imaging:ListDatastores", 
+                        "medical-imaging:ListImageSetVersions", 
+                        "medical-imaging:ListTagsForResource", 
                         "medical-imaging:SearchImageSets"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-08-01T15:18:49+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

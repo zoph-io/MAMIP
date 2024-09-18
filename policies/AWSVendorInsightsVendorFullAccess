@@ -1,75 +1,75 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-10-19T01:41:01Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
-                    "Action": "aws-marketplace:DescribeEntity",
-                    "Resource": "arn:aws:aws-marketplace:*:*:*/SaaSProduct/*"
-                },
+                    "Action": "aws-marketplace:DescribeEntity", 
+                    "Resource": "arn:aws:aws-marketplace:*:*:*/SaaSProduct/*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "aws-marketplace:ListEntities",
-                    "Resource": "*"
-                },
+                    "Action": "aws-marketplace:ListEntities", 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "vendor-insights:CreateDataSource",
-                        "vendor-insights:UpdateDataSource",
-                        "vendor-insights:DeleteDataSource",
-                        "vendor-insights:GetDataSource",
-                        "vendor-insights:ListDataSources",
-                        "vendor-insights:CreateSecurityProfile",
-                        "vendor-insights:ListSecurityProfiles",
-                        "vendor-insights:GetSecurityProfile",
-                        "vendor-insights:AssociateDataSource",
-                        "vendor-insights:DisassociateDataSource",
-                        "vendor-insights:UpdateSecurityProfile",
-                        "vendor-insights:ActivateSecurityProfile",
-                        "vendor-insights:DeactivateSecurityProfile",
-                        "vendor-insights:UpdateSecurityProfileSnapshotCreationConfiguration",
-                        "vendor-insights:UpdateSecurityProfileSnapshotReleaseConfiguration",
-                        "vendor-insights:ListSecurityProfileSnapshots",
-                        "vendor-insights:GetSecurityProfileSnapshot",
-                        "vendor-insights:TagResource",
-                        "vendor-insights:UntagResource",
+                        "vendor-insights:CreateDataSource", 
+                        "vendor-insights:UpdateDataSource", 
+                        "vendor-insights:DeleteDataSource", 
+                        "vendor-insights:GetDataSource", 
+                        "vendor-insights:ListDataSources", 
+                        "vendor-insights:CreateSecurityProfile", 
+                        "vendor-insights:ListSecurityProfiles", 
+                        "vendor-insights:GetSecurityProfile", 
+                        "vendor-insights:AssociateDataSource", 
+                        "vendor-insights:DisassociateDataSource", 
+                        "vendor-insights:UpdateSecurityProfile", 
+                        "vendor-insights:ActivateSecurityProfile", 
+                        "vendor-insights:DeactivateSecurityProfile", 
+                        "vendor-insights:UpdateSecurityProfileSnapshotCreationConfiguration", 
+                        "vendor-insights:UpdateSecurityProfileSnapshotReleaseConfiguration", 
+                        "vendor-insights:ListSecurityProfileSnapshots", 
+                        "vendor-insights:GetSecurityProfileSnapshot", 
+                        "vendor-insights:TagResource", 
+                        "vendor-insights:UntagResource", 
                         "vendor-insights:ListTagsForResource"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "aws-marketplace:AcceptAgreementApprovalRequest",
-                        "aws-marketplace:RejectAgreementApprovalRequest",
-                        "aws-marketplace:GetAgreementApprovalRequest",
-                        "aws-marketplace:ListAgreementApprovalRequests",
-                        "aws-marketplace:CancelAgreement",
+                        "aws-marketplace:AcceptAgreementApprovalRequest", 
+                        "aws-marketplace:RejectAgreementApprovalRequest", 
+                        "aws-marketplace:GetAgreementApprovalRequest", 
+                        "aws-marketplace:ListAgreementApprovalRequests", 
+                        "aws-marketplace:CancelAgreement", 
                         "aws-marketplace:SearchAgreements"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAnyValue:StringEquals": {
                             "aws-marketplace:AgreementType": "VendorInsightsAgreement"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "artifact:GetReport",
-                        "artifact:GetReportMetadata",
-                        "artifact:GetTermForReport",
+                        "artifact:GetReport", 
+                        "artifact:GetReportMetadata", 
+                        "artifact:GetTermForReport", 
                         "artifact:ListReports"
-                    ],
-                    "Resource": "arn:aws:artifact:*::report/*"
+                    ], 
+                    "Resource": "arn:aws:artifact:*::report/*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-10-19T01:41:01+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

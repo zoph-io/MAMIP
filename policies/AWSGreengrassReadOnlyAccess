@@ -1,20 +1,20 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2018-10-30T16:01:43Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "greengrass:List*",
+                        "greengrass:List*", 
                         "greengrass:Get*"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2018-10-30T16:01:43+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

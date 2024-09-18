@@ -1,36 +1,36 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-03-25T04:25:36Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:CreateLogDelivery",
-                        "logs:CreateLogGroup",
-                        "logs:CreateLogStream",
-                        "logs:DeleteLogDelivery",
-                        "logs:DescribeLogGroups",
-                        "logs:DescribeLogStreams",
-                        "logs:DescribeResourcePolicies",
-                        "logs:DescribeDestinations",
-                        "logs:DescribeExportTasks",
-                        "logs:DescribeMetricFilters",
-                        "logs:DescribeQueries",
-                        "logs:DescribeQueryDefinitions",
-                        "logs:DescribeSubscriptionFilters",
-                        "logs:GetLogDelivery",
-                        "logs:GetLogEvents",
-                        "logs:PutLogEvents",
-                        "logs:PutResourcePolicy",
+                        "logs:CreateLogDelivery", 
+                        "logs:CreateLogGroup", 
+                        "logs:CreateLogStream", 
+                        "logs:DeleteLogDelivery", 
+                        "logs:DescribeLogGroups", 
+                        "logs:DescribeLogStreams", 
+                        "logs:DescribeResourcePolicies", 
+                        "logs:DescribeDestinations", 
+                        "logs:DescribeExportTasks", 
+                        "logs:DescribeMetricFilters", 
+                        "logs:DescribeQueries", 
+                        "logs:DescribeQueryDefinitions", 
+                        "logs:DescribeSubscriptionFilters", 
+                        "logs:GetLogDelivery", 
+                        "logs:GetLogEvents", 
+                        "logs:PutLogEvents", 
+                        "logs:PutResourcePolicy", 
                         "logs:UpdateLogDelivery"
-                    ],
-                    "Resource": "arn:aws:logs:*:*:log-group:/aws/apigateway/*"
+                    ], 
+                    "Resource": "arn:aws:logs:*:*:log-group:/aws/apigateway/*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-03-25T04:25:36+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

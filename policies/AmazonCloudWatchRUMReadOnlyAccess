@@ -1,23 +1,23 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-10-28T18:12:58Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "rum:GetAppMonitor",
-                        "rum:GetAppMonitorData",
-                        "rum:ListAppMonitors",
-                        "rum:ListRumMetricsDestinations",
+                        "rum:GetAppMonitor", 
+                        "rum:GetAppMonitorData", 
+                        "rum:ListAppMonitors", 
+                        "rum:ListRumMetricsDestinations", 
                         "rum:BatchGetRumMetricDefinitions"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-10-28T18:12:58+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

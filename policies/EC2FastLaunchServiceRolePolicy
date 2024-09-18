@@ -1,161 +1,163 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-01-10T13:08:21Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:RunInstances"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:ec2:*:*:subnet/*",
-                        "arn:aws:ec2:*:*:network-interface/*",
-                        "arn:aws:ec2:*::image/*",
-                        "arn:aws:ec2:*:*:key-pair/*",
-                        "arn:aws:ec2:*:*:security-group/*",
+                        "arn:aws:ec2:*:*:subnet/*", 
+                        "arn:aws:ec2:*:*:network-interface/*", 
+                        "arn:aws:ec2:*::image/*", 
+                        "arn:aws:ec2:*:*:key-pair/*", 
+                        "arn:aws:ec2:*:*:security-group/*", 
                         "arn:aws:ec2:*:*:launch-template/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:RunInstances"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:ec2:*:*:volume/*",
+                        "arn:aws:ec2:*:*:volume/*", 
                         "arn:aws:ec2:*:*:instance/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:RequestTag/CreatedBy": "EC2 Fast Launch"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "iam:PassRole",
-                    "Resource": "*",
+                    "Action": "iam:PassRole", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:PassedToService": [
-                                "ec2.amazonaws.com",
+                                "ec2.amazonaws.com", 
                                 "ec2.amazonaws.com.cn"
                             ]
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:StopInstances",
+                        "ec2:StopInstances", 
                         "ec2:TerminateInstances"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ec2:*:*:instance/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceTag/CreatedBy": "EC2 Fast Launch"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "ec2:CreateSnapshot",
+                    "Action": "ec2:CreateSnapshot", 
                     "Resource": [
                         "arn:aws:ec2:*:*:volume/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceTag/CreatedBy": "EC2 Fast Launch"
                         }
                     }
-                },
+                }, 
                 {
-                    "Sid": "AllowCreateTaggedSnapshot",
-                    "Effect": "Allow",
-                    "Action": "ec2:CreateSnapshot",
+                    "Action": "ec2:CreateSnapshot", 
                     "Resource": [
                         "arn:aws:ec2:*:*:snapshot/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
-                        "StringEquals": {
-                            "aws:RequestTag/CreatedBy": "EC2 Fast Launch"
-                        },
                         "StringLike": {
                             "aws:RequestTag/CreatedByLaunchTemplateVersion": "*"
-                        },
+                        }, 
                         "ForAnyValue:StringEquals": {
                             "aws:TagKeys": [
-                                "CreatedByLaunchTemplateName",
+                                "CreatedByLaunchTemplateName", 
                                 "CreatedByLaunchTemplateId"
                             ]
+                        }, 
+                        "StringEquals": {
+                            "aws:RequestTag/CreatedBy": "EC2 Fast Launch"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "AllowCreateTaggedSnapshot"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "ec2:CreateLaunchTemplate",
-                    "Resource": "arn:aws:ec2:*:*:launch-template/*",
+                    "Action": "ec2:CreateLaunchTemplate", 
+                    "Resource": "arn:aws:ec2:*:*:launch-template/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:RequestTag/CreatedBy": "EC2 Fast Launch"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "ec2:CreateTags",
+                    "Action": "ec2:CreateTags", 
                     "Resource": [
-                        "arn:aws:ec2:*:*:volume/*",
-                        "arn:aws:ec2:*:*:instance/*",
-                        "arn:aws:ec2:*:*:snapshot/*",
+                        "arn:aws:ec2:*:*:volume/*", 
+                        "arn:aws:ec2:*:*:instance/*", 
+                        "arn:aws:ec2:*:*:snapshot/*", 
                         "arn:aws:ec2:*:*:launch-template/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "ec2:CreateAction": [
-                                "CreateSnapshot",
-                                "RunInstances",
+                                "CreateSnapshot", 
+                                "RunInstances", 
                                 "CreateLaunchTemplate"
                             ]
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:DeleteSnapshot"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ec2:*:*:snapshot/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceTag/CreatedBy": "EC2 Fast Launch"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeImages",
-                        "ec2:DescribeSnapshots",
-                        "ec2:DescribeSubnets",
-                        "ec2:DescribeInstanceAttribute",
-                        "ec2:DescribeInstanceStatus",
-                        "ec2:DescribeInstances",
-                        "ec2:DescribeInstanceTypeOfferings",
-                        "ec2:DescribeLaunchTemplateVersions",
+                        "ec2:DescribeImages", 
+                        "ec2:DescribeSnapshots", 
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeInstanceAttribute", 
+                        "ec2:DescribeInstanceStatus", 
+                        "ec2:DescribeInstances", 
+                        "ec2:DescribeInstanceTypeOfferings", 
+                        "ec2:DescribeLaunchTemplateVersions", 
                         "ec2:DescribeLaunchTemplates"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "cloudwatch:PutMetricData",
-                    "Resource": "*",
+                    "Action": "cloudwatch:PutMetricData", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "cloudwatch:namespace": "AWS/EC2"
@@ -163,9 +165,7 @@
                     }
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-01-10T13:08:21+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

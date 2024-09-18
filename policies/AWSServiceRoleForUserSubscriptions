@@ -1,29 +1,29 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-04-25T16:14:06Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "SubscriptionManagementPolicy",
-                    "Effect": "Allow",
                     "Action": [
-                        "identitystore:DescribeGroup",
-                        "identitystore:DescribeUser",
-                        "identitystore:IsMemberInGroups",
-                        "identitystore:ListGroupMemberships",
-                        "organizations:DescribeOrganization",
-                        "sso:DescribeApplication",
-                        "sso:DescribeInstance",
+                        "identitystore:DescribeGroup", 
+                        "identitystore:DescribeUser", 
+                        "identitystore:IsMemberInGroups", 
+                        "identitystore:ListGroupMemberships", 
+                        "organizations:DescribeOrganization", 
+                        "sso:DescribeApplication", 
+                        "sso:DescribeInstance", 
                         "sso:ListInstances"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "SubscriptionManagementPolicy"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-04-25T16:14:06+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

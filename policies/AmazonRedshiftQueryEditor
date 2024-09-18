@@ -1,84 +1,84 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2021-02-16T19:33:45Z", 
+        "VersionId": "v4", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "redshift:GetClusterCredentials",
-                        "redshift:ListSchemas",
-                        "redshift:ListTables",
-                        "redshift:ListDatabases",
-                        "redshift:ExecuteQuery",
-                        "redshift:FetchResults",
-                        "redshift:CancelQuery",
-                        "redshift:DescribeClusters",
-                        "redshift:DescribeQuery",
-                        "redshift:DescribeTable",
-                        "redshift:ViewQueriesFromConsole",
-                        "redshift:DescribeSavedQueries",
-                        "redshift:CreateSavedQuery",
-                        "redshift:DeleteSavedQueries",
+                        "redshift:GetClusterCredentials", 
+                        "redshift:ListSchemas", 
+                        "redshift:ListTables", 
+                        "redshift:ListDatabases", 
+                        "redshift:ExecuteQuery", 
+                        "redshift:FetchResults", 
+                        "redshift:CancelQuery", 
+                        "redshift:DescribeClusters", 
+                        "redshift:DescribeQuery", 
+                        "redshift:DescribeTable", 
+                        "redshift:ViewQueriesFromConsole", 
+                        "redshift:DescribeSavedQueries", 
+                        "redshift:CreateSavedQuery", 
+                        "redshift:DeleteSavedQueries", 
                         "redshift:ModifySavedQuery"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Sid": "DataAPIPermissions",
                     "Action": [
-                        "redshift-data:ExecuteStatement",
-                        "redshift-data:ListDatabases",
-                        "redshift-data:ListSchemas",
-                        "redshift-data:ListTables",
+                        "redshift-data:ExecuteStatement", 
+                        "redshift-data:ListDatabases", 
+                        "redshift-data:ListSchemas", 
+                        "redshift-data:ListTables", 
                         "redshift-data:DescribeTable"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DataAPIPermissions"
+                }, 
                 {
-                    "Sid": "DataAPIIAMSessionPermissionsRestriction",
                     "Action": [
-                        "redshift-data:GetStatementResult",
-                        "redshift-data:CancelStatement",
-                        "redshift-data:DescribeStatement",
+                        "redshift-data:GetStatementResult", 
+                        "redshift-data:CancelStatement", 
+                        "redshift-data:DescribeStatement", 
                         "redshift-data:ListStatements"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "redshift-data:statement-owner-iam-userid": "${aws:userid}"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "DataAPIIAMSessionPermissionsRestriction"
+                }, 
                 {
-                    "Sid": "SecretsManagerListPermissions",
                     "Action": [
                         "secretsmanager:ListSecrets"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "SecretsManagerListPermissions"
+                }, 
                 {
-                    "Sid": "SecretsManagerCreateGetPermissions",
                     "Action": [
-                        "secretsmanager:CreateSecret",
-                        "secretsmanager:GetSecretValue",
+                        "secretsmanager:CreateSecret", 
+                        "secretsmanager:GetSecretValue", 
                         "secretsmanager:TagResource"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "arn:aws:secretsmanager:*:*:secret:*",
+                    ], 
+                    "Resource": "arn:aws:secretsmanager:*:*:secret:*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "secretsmanager:ResourceTag/RedshiftQueryOwner": "${aws:userid}"
                         }
-                    }
+                    }, 
+                    "Sid": "SecretsManagerCreateGetPermissions"
                 }
             ]
-        },
-        "VersionId": "v4",
-        "IsDefaultVersion": true,
-        "CreateDate": "2021-02-16T19:33:45+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

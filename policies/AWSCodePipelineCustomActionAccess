@@ -1,23 +1,23 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2015-07-09T17:02:54Z", 
+        "VersionId": "v1", 
         "Document": {
+            "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": [
-                        "codepipeline:AcknowledgeJob",
-                        "codepipeline:GetJobDetails",
-                        "codepipeline:PollForJobs",
-                        "codepipeline:PutJobFailureResult",
+                        "codepipeline:AcknowledgeJob", 
+                        "codepipeline:GetJobDetails", 
+                        "codepipeline:PollForJobs", 
+                        "codepipeline:PutJobFailureResult", 
                         "codepipeline:PutJobSuccessResult"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
-            ],
-            "Version": "2012-10-17"
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2015-07-09T17:02:54+00:00"
+            ]
+        }, 
+        "IsDefaultVersion": true
     }
 }

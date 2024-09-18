@@ -1,71 +1,71 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-09-12T16:45:28Z", 
+        "VersionId": "v8", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "EC2Action1",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:CreateNetworkInterface",
-                        "ec2:DescribeNetworkInterfaces",
-                        "ec2:DescribeInstances",
-                        "ec2:DescribeInternetGateways",
-                        "ec2:DescribeSubnets",
-                        "ec2:DescribeRegions",
-                        "ec2:ModifyNetworkInterfaceAttribute",
-                        "ec2:DeleteNetworkInterface",
+                        "ec2:CreateNetworkInterface", 
+                        "ec2:DescribeNetworkInterfaces", 
+                        "ec2:DescribeInstances", 
+                        "ec2:DescribeInternetGateways", 
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeRegions", 
+                        "ec2:ModifyNetworkInterfaceAttribute", 
+                        "ec2:DeleteNetworkInterface", 
                         "ec2:DescribeAddresses"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "EC2Action1"
+                }, 
                 {
-                    "Sid": "EC2Action2",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DeleteSecurityGroup",
-                        "ec2:AssignIpv6Addresses",
+                        "ec2:DeleteSecurityGroup", 
+                        "ec2:AssignIpv6Addresses", 
                         "ec2:UnassignIpv6Addresses"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "ec2:ResourceTag/AWSServiceName": "GlobalAccelerator"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "EC2Action2"
+                }, 
                 {
-                    "Sid": "EC2Action3",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:CreateSecurityGroup",
+                        "ec2:CreateSecurityGroup", 
                         "ec2:DescribeSecurityGroups"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "EC2Action3"
+                }, 
                 {
-                    "Sid": "ElbAction1",
-                    "Effect": "Allow",
                     "Action": [
-                        "elasticloadbalancing:DescribeLoadBalancers",
-                        "elasticloadbalancing:DescribeListeners",
+                        "elasticloadbalancing:DescribeLoadBalancers", 
+                        "elasticloadbalancing:DescribeListeners", 
                         "elasticloadbalancing:DescribeTargetGroups"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ElbAction1"
+                }, 
                 {
-                    "Sid": "EC2Action4",
-                    "Effect": "Allow",
-                    "Action": "ec2:CreateTags",
+                    "Action": "ec2:CreateTags", 
                     "Resource": [
-                        "arn:aws:ec2:*:*:security-group/*",
+                        "arn:aws:ec2:*:*:security-group/*", 
                         "arn:aws:ec2:*:*:network-interface/*"
-                    ]
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "EC2Action4"
                 }
             ]
-        },
-        "VersionId": "v8",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-09-12T16:45:28+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

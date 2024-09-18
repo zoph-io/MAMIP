@@ -1,173 +1,173 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-06-13T19:02:55Z", 
+        "VersionId": "v4", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AmazonDataZoneStatement",
-                    "Effect": "Allow",
                     "Action": [
                         "datazone:*"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonDataZoneStatement"
+                }, 
                 {
-                    "Sid": "ReadOnlyStatement",
-                    "Effect": "Allow",
                     "Action": [
-                        "kms:DescribeKey",
-                        "kms:ListAliases",
-                        "iam:ListRoles",
-                        "sso:DescribeRegisteredRegions",
-                        "s3:ListAllMyBuckets",
-                        "redshift:DescribeClusters",
-                        "redshift-serverless:ListWorkgroups",
-                        "ec2:DescribeSecurityGroups",
-                        "ec2:DescribeSubnets",
-                        "ec2:DescribeVpcs",
+                        "kms:DescribeKey", 
+                        "kms:ListAliases", 
+                        "iam:ListRoles", 
+                        "sso:DescribeRegisteredRegions", 
+                        "s3:ListAllMyBuckets", 
+                        "redshift:DescribeClusters", 
+                        "redshift-serverless:ListWorkgroups", 
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeVpcs", 
                         "secretsmanager:ListSecrets"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "ReadOnlyStatement"
+                }, 
                 {
-                    "Sid": "BucketReadOnlyStatement",
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:ListBucket",
+                        "s3:ListBucket", 
                         "s3:GetBucketLocation"
-                    ],
-                    "Resource": "arn:aws:s3:::*"
-                },
+                    ], 
+                    "Resource": "arn:aws:s3:::*", 
+                    "Effect": "Allow", 
+                    "Sid": "BucketReadOnlyStatement"
+                }, 
                 {
-                    "Sid": "CreateBucketStatement",
-                    "Effect": "Allow",
-                    "Action": "s3:CreateBucket",
-                    "Resource": "arn:aws:s3:::amazon-datazone*"
-                },
+                    "Action": "s3:CreateBucket", 
+                    "Resource": "arn:aws:s3:::amazon-datazone*", 
+                    "Effect": "Allow", 
+                    "Sid": "CreateBucketStatement"
+                }, 
                 {
-                    "Sid": "RamCreateResourceStatement",
-                    "Effect": "Allow",
                     "Action": [
                         "ram:CreateResourceShare"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEqualsIfExists": {
                             "ram:RequestedResourceType": "datazone:Domain"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "RamCreateResourceStatement"
+                }, 
                 {
-                    "Sid": "RamResourceStatement",
-                    "Effect": "Allow",
                     "Action": [
-                        "ram:DeleteResourceShare",
-                        "ram:AssociateResourceShare",
-                        "ram:DisassociateResourceShare",
+                        "ram:DeleteResourceShare", 
+                        "ram:AssociateResourceShare", 
+                        "ram:DisassociateResourceShare", 
                         "ram:RejectResourceShareInvitation"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "ram:ResourceShareName": [
                                 "DataZone*"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "RamResourceStatement"
+                }, 
                 {
-                    "Sid": "RamResourceReadOnlyStatement",
-                    "Effect": "Allow",
                     "Action": [
-                        "ram:GetResourceShares",
-                        "ram:GetResourceShareInvitations",
-                        "ram:GetResourceShareAssociations",
+                        "ram:GetResourceShares", 
+                        "ram:GetResourceShareInvitations", 
+                        "ram:GetResourceShareAssociations", 
                         "ram:ListResourceSharePermissions"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "RamResourceReadOnlyStatement"
+                }, 
                 {
-                    "Sid": "IAMPassRoleStatement",
-                    "Effect": "Allow",
-                    "Action": "iam:PassRole",
+                    "Action": "iam:PassRole", 
                     "Resource": [
-                        "arn:aws:iam::*:role/AmazonDataZone*",
+                        "arn:aws:iam::*:role/AmazonDataZone*", 
                         "arn:aws:iam::*:role/service-role/AmazonDataZone*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:passedToService": "datazone.amazonaws.com"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "IAMPassRoleStatement"
+                }, 
                 {
-                    "Sid": "IAMGetPolicyStatement",
-                    "Effect": "Allow",
-                    "Action": "iam:GetPolicy",
+                    "Action": "iam:GetPolicy", 
                     "Resource": [
                         "arn:aws:iam::*:policy/service-role/AmazonDataZoneRedshiftAccessPolicy*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "IAMGetPolicyStatement"
+                }, 
                 {
-                    "Sid": "DataZoneTagOnCreateDomainProjectTags",
-                    "Effect": "Allow",
                     "Action": [
                         "secretsmanager:TagResource"
-                    ],
-                    "Resource": "arn:aws:secretsmanager:*:*:secret:AmazonDataZone-*",
+                    ], 
+                    "Resource": "arn:aws:secretsmanager:*:*:secret:AmazonDataZone-*", 
+                    "Effect": "Allow", 
                     "Condition": {
+                        "StringLike": {
+                            "aws:ResourceTag/AmazonDataZoneDomain": "dzd_*", 
+                            "aws:RequestTag/AmazonDataZoneDomain": "dzd_*"
+                        }, 
                         "ForAllValues:StringEquals": {
                             "aws:TagKeys": [
-                                "AmazonDataZoneDomain",
+                                "AmazonDataZoneDomain", 
                                 "AmazonDataZoneProject"
                             ]
-                        },
-                        "StringLike": {
-                            "aws:RequestTag/AmazonDataZoneDomain": "dzd_*",
-                            "aws:ResourceTag/AmazonDataZoneDomain": "dzd_*"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "DataZoneTagOnCreateDomainProjectTags"
+                }, 
                 {
-                    "Sid": "DataZoneTagOnCreate",
-                    "Effect": "Allow",
                     "Action": [
                         "secretsmanager:TagResource"
-                    ],
-                    "Resource": "arn:aws:secretsmanager:*:*:secret:AmazonDataZone-*",
+                    ], 
+                    "Resource": "arn:aws:secretsmanager:*:*:secret:AmazonDataZone-*", 
+                    "Effect": "Allow", 
                     "Condition": {
+                        "StringLike": {
+                            "aws:ResourceTag/AmazonDataZoneDomain": "dzd_*", 
+                            "aws:RequestTag/AmazonDataZoneDomain": "dzd_*"
+                        }, 
                         "ForAllValues:StringEquals": {
                             "aws:TagKeys": [
                                 "AmazonDataZoneDomain"
                             ]
-                        },
-                        "StringLike": {
-                            "aws:RequestTag/AmazonDataZoneDomain": "dzd_*",
-                            "aws:ResourceTag/AmazonDataZoneDomain": "dzd_*"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "DataZoneTagOnCreate"
+                }, 
                 {
-                    "Sid": "CreateSecretStatement",
-                    "Effect": "Allow",
                     "Action": [
                         "secretsmanager:CreateSecret"
-                    ],
-                    "Resource": "arn:aws:secretsmanager:*:*:secret:AmazonDataZone-*",
+                    ], 
+                    "Resource": "arn:aws:secretsmanager:*:*:secret:AmazonDataZone-*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:RequestTag/AmazonDataZoneDomain": "dzd_*"
                         }
-                    }
+                    }, 
+                    "Sid": "CreateSecretStatement"
                 }
             ]
-        },
-        "VersionId": "v4",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-06-13T19:02:55+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,32 +1,32 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-01-04T16:55:27Z", 
+        "VersionId": "v6", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "cfReadOnly",
-                    "Effect": "Allow",
                     "Action": [
-                        "acm:ListCertificates",
-                        "cloudfront:Describe*",
-                        "cloudfront:Get*",
-                        "cloudfront:List*",
-                        "cloudfront-keyvaluestore:Describe*",
-                        "cloudfront-keyvaluestore:Get*",
-                        "cloudfront-keyvaluestore:List*",
-                        "iam:ListServerCertificates",
-                        "route53:List*",
-                        "waf:ListWebACLs",
-                        "waf:GetWebACL",
-                        "wafv2:ListWebACLs",
+                        "acm:ListCertificates", 
+                        "cloudfront:Describe*", 
+                        "cloudfront:Get*", 
+                        "cloudfront:List*", 
+                        "cloudfront-keyvaluestore:Describe*", 
+                        "cloudfront-keyvaluestore:Get*", 
+                        "cloudfront-keyvaluestore:List*", 
+                        "iam:ListServerCertificates", 
+                        "route53:List*", 
+                        "waf:ListWebACLs", 
+                        "waf:GetWebACL", 
+                        "wafv2:ListWebACLs", 
                         "wafv2:GetWebACL"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "cfReadOnly"
                 }
             ]
-        },
-        "VersionId": "v6",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-01-04T16:55:27+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

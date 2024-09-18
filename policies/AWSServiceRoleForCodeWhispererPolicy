@@ -1,78 +1,78 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-03-29T22:13:56Z", 
+        "VersionId": "v5", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "sid1",
-                    "Effect": "Allow",
                     "Action": [
                         "sso-directory:ListMembersInGroup"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "sid1"
+                }, 
                 {
-                    "Sid": "sid2",
-                    "Effect": "Allow",
                     "Action": [
-                        "sso:ListProfileAssociations",
-                        "sso:ListProfiles",
-                        "sso:ListDirectoryAssociations",
-                        "sso:DescribeRegisteredRegions",
-                        "sso:GetProfile",
-                        "sso:GetManagedApplicationInstance",
-                        "sso:ListApplicationAssignments",
-                        "sso:DescribeInstance",
+                        "sso:ListProfileAssociations", 
+                        "sso:ListProfiles", 
+                        "sso:ListDirectoryAssociations", 
+                        "sso:DescribeRegisteredRegions", 
+                        "sso:GetProfile", 
+                        "sso:GetManagedApplicationInstance", 
+                        "sso:ListApplicationAssignments", 
+                        "sso:DescribeInstance", 
                         "sso:DescribeApplication"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "sid2"
+                }, 
                 {
-                    "Sid": "sid3",
-                    "Effect": "Allow",
                     "Action": [
                         "codeguru-security:CreateUploadUrl"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "sid3"
+                }, 
                 {
-                    "Sid": "sid4",
-                    "Effect": "Allow",
                     "Action": [
-                        "codeguru-security:CreateScan",
-                        "codeguru-security:GetScan",
-                        "codeguru-security:ListFindings",
+                        "codeguru-security:CreateScan", 
+                        "codeguru-security:GetScan", 
+                        "codeguru-security:ListFindings", 
                         "codeguru-security:GetFindings"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:codeguru-security:*:*:scans/CodeWhisperer-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "sid4"
+                }, 
                 {
-                    "Sid": "sid5",
-                    "Effect": "Allow",
                     "Action": [
                         "cloudwatch:PutMetricData"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "cloudwatch:namespace": [
                                 "AWS/CodeWhisperer"
                             ]
                         }
-                    }
+                    }, 
+                    "Sid": "sid5"
                 }
             ]
-        },
-        "VersionId": "v5",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-03-29T22:13:56+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

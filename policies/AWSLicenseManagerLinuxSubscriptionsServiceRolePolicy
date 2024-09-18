@@ -1,78 +1,78 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-07-08T22:04:56Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "EC2Permissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeInstances",
+                        "ec2:DescribeInstances", 
                         "ec2:DescribeRegions"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "EC2Permissions"
+                }, 
                 {
-                    "Sid": "OrganizationPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "organizations:DescribeOrganization",
-                        "organizations:ListAccounts",
-                        "organizations:DescribeAccount",
-                        "organizations:ListChildren",
-                        "organizations:ListParents",
-                        "organizations:ListAccountsForParent",
-                        "organizations:ListRoots",
-                        "organizations:ListAWSServiceAccessForOrganization",
+                        "organizations:DescribeOrganization", 
+                        "organizations:ListAccounts", 
+                        "organizations:DescribeAccount", 
+                        "organizations:ListChildren", 
+                        "organizations:ListParents", 
+                        "organizations:ListAccountsForParent", 
+                        "organizations:ListRoots", 
+                        "organizations:ListAWSServiceAccessForOrganization", 
                         "organizations:ListDelegatedAdministrators"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "OrganizationPermissions"
+                }, 
                 {
-                    "Sid": "SecretsManagerPermissions",
-                    "Effect": "Allow",
                     "Action": [
                         "secretsmanager:GetSecretValue"
-                    ],
-                    "Condition": {
-                        "StringEquals": {
-                            "aws:ResourceTag/LicenseManagerLinuxSubscriptions": "enabled",
-                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
-                        }
-                    },
+                    ], 
                     "Resource": [
                         "arn:aws:secretsmanager:*:*:secret:*"
-                    ]
-                },
-                {
-                    "Sid": "KMSPermissions",
-                    "Effect": "Allow",
-                    "Action": [
-                        "kms:Decrypt"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
-                            "aws:ResourceTag/LicenseManagerLinuxSubscriptions": "enabled",
+                            "aws:ResourceTag/LicenseManagerLinuxSubscriptions": "enabled", 
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
-                        },
+                        }
+                    }, 
+                    "Sid": "SecretsManagerPermissions"
+                }, 
+                {
+                    "Action": [
+                        "kms:Decrypt"
+                    ], 
+                    "Resource": [
+                        "arn:aws:kms:*:*:key/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
                         "StringLike": {
                             "kms:ViaService": [
                                 "secretsmanager.*.amazonaws.com"
                             ]
+                        }, 
+                        "StringEquals": {
+                            "aws:ResourceTag/LicenseManagerLinuxSubscriptions": "enabled", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
-                    },
-                    "Resource": [
-                        "arn:aws:kms:*:*:key/*"
-                    ]
+                    }, 
+                    "Sid": "KMSPermissions"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-07-08T22:04:56+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

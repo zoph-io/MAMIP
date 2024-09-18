@@ -1,49 +1,49 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-11-13T16:23:29Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AllowFailover",
-                    "Effect": "Allow",
                     "Action": [
                         "rds:FailoverDBCluster"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:rds:*:*:cluster:*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowFailover"
+                }, 
                 {
-                    "Sid": "AllowReboot",
-                    "Effect": "Allow",
                     "Action": [
                         "rds:RebootDBInstance"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:rds:*:*:db:*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowReboot"
+                }, 
                 {
-                    "Sid": "DescribeResources",
-                    "Effect": "Allow",
                     "Action": [
-                        "rds:DescribeDBClusters",
+                        "rds:DescribeDBClusters", 
                         "rds:DescribeDBInstances"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DescribeResources"
+                }, 
                 {
-                    "Sid": "TargetResolutionByTags",
-                    "Effect": "Allow",
                     "Action": [
                         "tag:GetResources"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "TargetResolutionByTags"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-11-13T16:23:29+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

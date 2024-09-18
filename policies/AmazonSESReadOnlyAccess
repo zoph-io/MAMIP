@@ -1,22 +1,22 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-05-14T12:03:02Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "SESReadOnlyAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "ses:Get*",
-                        "ses:List*",
+                        "ses:Get*", 
+                        "ses:List*", 
                         "ses:BatchGetMetricData"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "SESReadOnlyAccess"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-05-14T12:03:02+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

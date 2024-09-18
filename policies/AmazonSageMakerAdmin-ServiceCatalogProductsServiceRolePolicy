@@ -1,497 +1,497 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-07-01T07:33:43Z", 
+        "VersionId": "v9", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AmazonSageMakerServiceCatalogAPIGatewayPermission",
-                    "Effect": "Allow",
                     "Action": [
-                        "apigateway:GET",
-                        "apigateway:POST",
-                        "apigateway:PUT",
-                        "apigateway:PATCH",
+                        "apigateway:GET", 
+                        "apigateway:POST", 
+                        "apigateway:PUT", 
+                        "apigateway:PATCH", 
                         "apigateway:DELETE"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:ResourceTag/sagemaker:launch-source": "*"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "AmazonSageMakerServiceCatalogAPIGatewayPermission"
+                }, 
                 {
-                    "Sid": "AmazonSageMakerServiceCatalogAPIGatewayPostPermission",
-                    "Effect": "Allow",
                     "Action": [
                         "apigateway:POST"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAnyValue:StringLike": {
                             "aws:TagKeys": [
                                 "sagemaker:launch-source"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "AmazonSageMakerServiceCatalogAPIGatewayPostPermission"
+                }, 
                 {
-                    "Sid": "AmazonSageMakerServiceCatalogAPIGatewayPatchPermission",
-                    "Effect": "Allow",
                     "Action": [
                         "apigateway:PATCH"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:apigateway:*::/account"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonSageMakerServiceCatalogAPIGatewayPatchPermission"
+                }, 
                 {
-                    "Sid": "AmazonSageMakerServiceCatalogCFnMutatePermission",
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudformation:CreateStack",
-                        "cloudformation:UpdateStack",
+                        "cloudformation:CreateStack", 
+                        "cloudformation:UpdateStack", 
                         "cloudformation:DeleteStack"
-                    ],
-                    "Resource": "arn:aws:cloudformation:*:*:stack/SC-*",
+                    ], 
+                    "Resource": "arn:aws:cloudformation:*:*:stack/SC-*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ArnLikeIfExists": {
                             "cloudformation:RoleArn": [
                                 "arn:aws:sts::*:assumed-role/AmazonSageMakerServiceCatalog*"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "AmazonSageMakerServiceCatalogCFnMutatePermission"
+                }, 
                 {
-                    "Sid": "AmazonSageMakerServiceCatalogCFnTagPermission",
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudformation:TagResource",
+                        "cloudformation:TagResource", 
                         "cloudformation:UntagResource"
-                    ],
-                    "Resource": "arn:aws:cloudformation:*:*:stack/SC-*",
+                    ], 
+                    "Resource": "arn:aws:cloudformation:*:*:stack/SC-*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "aws:ResourceTag/sagemaker:project-name": "false"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "AmazonSageMakerServiceCatalogCFnTagPermission"
+                }, 
                 {
-                    "Sid": "AmazonSageMakerServiceCatalogCFnReadPermission",
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudformation:DescribeStackEvents",
+                        "cloudformation:DescribeStackEvents", 
                         "cloudformation:DescribeStacks"
-                    ],
-                    "Resource": "arn:aws:cloudformation:*:*:stack/SC-*"
-                },
+                    ], 
+                    "Resource": "arn:aws:cloudformation:*:*:stack/SC-*", 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonSageMakerServiceCatalogCFnReadPermission"
+                }, 
                 {
-                    "Sid": "AmazonSageMakerServiceCatalogCFnTemplatePermission",
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudformation:GetTemplateSummary",
+                        "cloudformation:GetTemplateSummary", 
                         "cloudformation:ValidateTemplate"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonSageMakerServiceCatalogCFnTemplatePermission"
+                }, 
                 {
-                    "Sid": "AmazonSageMakerServiceCatalogCodeBuildPermission",
-                    "Effect": "Allow",
                     "Action": [
-                        "codebuild:CreateProject",
-                        "codebuild:DeleteProject",
+                        "codebuild:CreateProject", 
+                        "codebuild:DeleteProject", 
                         "codebuild:UpdateProject"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:codebuild:*:*:project/sagemaker-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonSageMakerServiceCatalogCodeBuildPermission"
+                }, 
                 {
-                    "Sid": "AmazonSageMakerServiceCatalogCodeCommitPermission",
-                    "Effect": "Allow",
                     "Action": [
-                        "codecommit:CreateCommit",
-                        "codecommit:CreateRepository",
-                        "codecommit:DeleteRepository",
-                        "codecommit:GetRepository",
+                        "codecommit:CreateCommit", 
+                        "codecommit:CreateRepository", 
+                        "codecommit:DeleteRepository", 
+                        "codecommit:GetRepository", 
                         "codecommit:TagResource"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:codecommit:*:*:sagemaker-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonSageMakerServiceCatalogCodeCommitPermission"
+                }, 
                 {
-                    "Sid": "AmazonSageMakerServiceCatalogCodeCommitListPermission",
-                    "Effect": "Allow",
                     "Action": [
                         "codecommit:ListRepositories"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonSageMakerServiceCatalogCodeCommitListPermission"
+                }, 
                 {
-                    "Sid": "AmazonSageMakerServiceCatalogCodePipelinePermission",
-                    "Effect": "Allow",
                     "Action": [
-                        "codepipeline:CreatePipeline",
-                        "codepipeline:DeletePipeline",
-                        "codepipeline:GetPipeline",
-                        "codepipeline:GetPipelineState",
-                        "codepipeline:StartPipelineExecution",
-                        "codepipeline:TagResource",
+                        "codepipeline:CreatePipeline", 
+                        "codepipeline:DeletePipeline", 
+                        "codepipeline:GetPipeline", 
+                        "codepipeline:GetPipelineState", 
+                        "codepipeline:StartPipelineExecution", 
+                        "codepipeline:TagResource", 
                         "codepipeline:UpdatePipeline"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:codepipeline:*:*:sagemaker-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonSageMakerServiceCatalogCodePipelinePermission"
+                }, 
                 {
-                    "Sid": "AmazonSageMakerServiceCatalogCIAMUserPermission",
-                    "Effect": "Allow",
                     "Action": [
-                        "cognito-idp:CreateUserPool",
+                        "cognito-idp:CreateUserPool", 
                         "cognito-idp:TagResource"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAnyValue:StringLike": {
                             "aws:TagKeys": [
                                 "sagemaker:launch-source"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "AmazonSageMakerServiceCatalogCIAMUserPermission"
+                }, 
                 {
-                    "Sid": "AmazonSageMakerServiceCatalogCIAMPermission",
-                    "Effect": "Allow",
                     "Action": [
-                        "cognito-idp:CreateGroup",
-                        "cognito-idp:CreateUserPoolDomain",
-                        "cognito-idp:CreateUserPoolClient",
-                        "cognito-idp:DeleteGroup",
-                        "cognito-idp:DeleteUserPool",
-                        "cognito-idp:DeleteUserPoolClient",
-                        "cognito-idp:DeleteUserPoolDomain",
-                        "cognito-idp:DescribeUserPool",
-                        "cognito-idp:DescribeUserPoolClient",
-                        "cognito-idp:UpdateUserPool",
+                        "cognito-idp:CreateGroup", 
+                        "cognito-idp:CreateUserPoolDomain", 
+                        "cognito-idp:CreateUserPoolClient", 
+                        "cognito-idp:DeleteGroup", 
+                        "cognito-idp:DeleteUserPool", 
+                        "cognito-idp:DeleteUserPoolClient", 
+                        "cognito-idp:DeleteUserPoolDomain", 
+                        "cognito-idp:DescribeUserPool", 
+                        "cognito-idp:DescribeUserPoolClient", 
+                        "cognito-idp:UpdateUserPool", 
                         "cognito-idp:UpdateUserPoolClient"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:ResourceTag/sagemaker:launch-source": "*"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "AmazonSageMakerServiceCatalogCIAMPermission"
+                }, 
                 {
-                    "Sid": "AmazonSageMakerServiceCatalogECRPermission",
-                    "Effect": "Allow",
                     "Action": [
-                        "ecr:CreateRepository",
-                        "ecr:DeleteRepository",
+                        "ecr:CreateRepository", 
+                        "ecr:DeleteRepository", 
                         "ecr:TagResource"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ecr:*:*:repository/sagemaker-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonSageMakerServiceCatalogECRPermission"
+                }, 
                 {
-                    "Sid": "AmazonSageMakerServiceCatalogEventBridgePermission",
-                    "Effect": "Allow",
                     "Action": [
-                        "events:DescribeRule",
-                        "events:DeleteRule",
-                        "events:DisableRule",
-                        "events:EnableRule",
-                        "events:PutRule",
-                        "events:PutTargets",
+                        "events:DescribeRule", 
+                        "events:DeleteRule", 
+                        "events:DisableRule", 
+                        "events:EnableRule", 
+                        "events:PutRule", 
+                        "events:PutTargets", 
                         "events:RemoveTargets"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:events:*:*:rule/sagemaker-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonSageMakerServiceCatalogEventBridgePermission"
+                }, 
                 {
-                    "Sid": "AmazonSageMakerServiceCatalogFirehosePermission",
-                    "Effect": "Allow",
                     "Action": [
-                        "firehose:CreateDeliveryStream",
-                        "firehose:DeleteDeliveryStream",
-                        "firehose:DescribeDeliveryStream",
-                        "firehose:StartDeliveryStreamEncryption",
-                        "firehose:StopDeliveryStreamEncryption",
+                        "firehose:CreateDeliveryStream", 
+                        "firehose:DeleteDeliveryStream", 
+                        "firehose:DescribeDeliveryStream", 
+                        "firehose:StartDeliveryStreamEncryption", 
+                        "firehose:StopDeliveryStreamEncryption", 
                         "firehose:UpdateDestination"
-                    ],
-                    "Resource": "arn:aws:firehose:*:*:deliverystream/sagemaker-*"
-                },
+                    ], 
+                    "Resource": "arn:aws:firehose:*:*:deliverystream/sagemaker-*", 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonSageMakerServiceCatalogFirehosePermission"
+                }, 
                 {
-                    "Sid": "AmazonSageMakerServiceCatalogGluePermission",
-                    "Effect": "Allow",
                     "Action": [
-                        "glue:CreateDatabase",
+                        "glue:CreateDatabase", 
                         "glue:DeleteDatabase"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:glue:*:*:catalog",
-                        "arn:aws:glue:*:*:database/sagemaker-*",
-                        "arn:aws:glue:*:*:table/sagemaker-*",
+                        "arn:aws:glue:*:*:catalog", 
+                        "arn:aws:glue:*:*:database/sagemaker-*", 
+                        "arn:aws:glue:*:*:table/sagemaker-*", 
                         "arn:aws:glue:*:*:userDefinedFunction/sagemaker-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonSageMakerServiceCatalogGluePermission"
+                }, 
                 {
-                    "Sid": "AmazonSageMakerServiceCatalogGlueClassiferPermission",
-                    "Effect": "Allow",
                     "Action": [
-                        "glue:CreateClassifier",
-                        "glue:DeleteClassifier",
-                        "glue:DeleteCrawler",
-                        "glue:DeleteJob",
-                        "glue:DeleteTrigger",
-                        "glue:DeleteWorkflow",
+                        "glue:CreateClassifier", 
+                        "glue:DeleteClassifier", 
+                        "glue:DeleteCrawler", 
+                        "glue:DeleteJob", 
+                        "glue:DeleteTrigger", 
+                        "glue:DeleteWorkflow", 
                         "glue:StopCrawler"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonSageMakerServiceCatalogGlueClassiferPermission"
+                }, 
                 {
-                    "Sid": "AmazonSageMakerServiceCatalogGlueWorkflowPermission",
-                    "Effect": "Allow",
                     "Action": [
                         "glue:CreateWorkflow"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:glue:*:*:workflow/sagemaker-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonSageMakerServiceCatalogGlueWorkflowPermission"
+                }, 
                 {
-                    "Sid": "AmazonSageMakerServiceCatalogGlueJobPermission",
-                    "Effect": "Allow",
                     "Action": [
                         "glue:CreateJob"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:glue:*:*:job/sagemaker-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonSageMakerServiceCatalogGlueJobPermission"
+                }, 
                 {
-                    "Sid": "AmazonSageMakerServiceCatalogGlueCrawlerPermission",
-                    "Effect": "Allow",
                     "Action": [
-                        "glue:CreateCrawler",
+                        "glue:CreateCrawler", 
                         "glue:GetCrawler"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:glue:*:*:crawler/sagemaker-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonSageMakerServiceCatalogGlueCrawlerPermission"
+                }, 
                 {
-                    "Sid": "AmazonSageMakerServiceCatalogGlueTriggerPermission",
-                    "Effect": "Allow",
                     "Action": [
-                        "glue:CreateTrigger",
+                        "glue:CreateTrigger", 
                         "glue:GetTrigger"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:glue:*:*:trigger/sagemaker-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonSageMakerServiceCatalogGlueTriggerPermission"
+                }, 
                 {
-                    "Sid": "AmazonSageMakerServiceCatalogPassRolePermission",
-                    "Effect": "Allow",
                     "Action": [
                         "iam:PassRole"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:iam::*:role/service-role/AmazonSageMakerServiceCatalog*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonSageMakerServiceCatalogPassRolePermission"
+                }, 
                 {
-                    "Sid": "AmazonSageMakerServiceCatalogLambdaPermission",
-                    "Effect": "Allow",
                     "Action": [
-                        "lambda:AddPermission",
-                        "lambda:CreateFunction",
-                        "lambda:DeleteFunction",
-                        "lambda:GetFunction",
-                        "lambda:GetFunctionConfiguration",
-                        "lambda:InvokeFunction",
+                        "lambda:AddPermission", 
+                        "lambda:CreateFunction", 
+                        "lambda:DeleteFunction", 
+                        "lambda:GetFunction", 
+                        "lambda:GetFunctionConfiguration", 
+                        "lambda:InvokeFunction", 
                         "lambda:RemovePermission"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:lambda:*:*:function:sagemaker-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonSageMakerServiceCatalogLambdaPermission"
+                }, 
                 {
-                    "Sid": "AmazonSageMakerServiceCatalogLambdaTagPermission",
-                    "Effect": "Allow",
-                    "Action": "lambda:TagResource",
+                    "Action": "lambda:TagResource", 
                     "Resource": [
                         "arn:aws:lambda:*:*:function:sagemaker-*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAllValues:StringLike": {
                             "aws:TagKeys": [
                                 "sagemaker:*"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "AmazonSageMakerServiceCatalogLambdaTagPermission"
+                }, 
                 {
-                    "Sid": "AmazonSageMakerServiceCatalogLogGroupPermission",
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:CreateLogGroup",
-                        "logs:CreateLogStream",
-                        "logs:DeleteLogGroup",
-                        "logs:DeleteLogStream",
-                        "logs:DescribeLogGroups",
-                        "logs:DescribeLogStreams",
+                        "logs:CreateLogGroup", 
+                        "logs:CreateLogStream", 
+                        "logs:DeleteLogGroup", 
+                        "logs:DeleteLogStream", 
+                        "logs:DescribeLogGroups", 
+                        "logs:DescribeLogStreams", 
                         "logs:PutRetentionPolicy"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:logs:*:*:log-group:/aws/apigateway/AccessLogs/*",
+                        "arn:aws:logs:*:*:log-group:/aws/apigateway/AccessLogs/*", 
                         "arn:aws:logs:*:*:log-group::log-stream:*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonSageMakerServiceCatalogLogGroupPermission"
+                }, 
                 {
-                    "Sid": "AmazonSageMakerServiceCatalogS3ReadPermission",
-                    "Effect": "Allow",
-                    "Action": "s3:GetObject",
-                    "Resource": "*",
+                    "Action": "s3:GetObject", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "s3:ExistingObjectTag/servicecatalog:provisioning": "true"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "AmazonSageMakerServiceCatalogS3ReadPermission"
+                }, 
                 {
-                    "Sid": "AmazonSageMakerServiceCatalogS3ReadSagemakerResourcePermission",
-                    "Effect": "Allow",
-                    "Action": "s3:GetObject",
+                    "Action": "s3:GetObject", 
                     "Resource": [
                         "arn:aws:s3:::sagemaker-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonSageMakerServiceCatalogS3ReadSagemakerResourcePermission"
+                }, 
                 {
-                    "Sid": "AmazonSageMakerServiceCatalogS3MutatePermission",
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:CreateBucket",
-                        "s3:DeleteBucket",
-                        "s3:DeleteBucketPolicy",
-                        "s3:GetBucketPolicy",
-                        "s3:PutBucketAcl",
-                        "s3:PutBucketNotification",
-                        "s3:PutBucketPolicy",
-                        "s3:PutBucketPublicAccessBlock",
-                        "s3:PutBucketLogging",
-                        "s3:PutEncryptionConfiguration",
-                        "s3:PutBucketCORS",
-                        "s3:PutBucketTagging",
+                        "s3:CreateBucket", 
+                        "s3:DeleteBucket", 
+                        "s3:DeleteBucketPolicy", 
+                        "s3:GetBucketPolicy", 
+                        "s3:PutBucketAcl", 
+                        "s3:PutBucketNotification", 
+                        "s3:PutBucketPolicy", 
+                        "s3:PutBucketPublicAccessBlock", 
+                        "s3:PutBucketLogging", 
+                        "s3:PutEncryptionConfiguration", 
+                        "s3:PutBucketCORS", 
+                        "s3:PutBucketTagging", 
                         "s3:PutObjectTagging"
-                    ],
-                    "Resource": "arn:aws:s3:::sagemaker-*"
-                },
+                    ], 
+                    "Resource": "arn:aws:s3:::sagemaker-*", 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonSageMakerServiceCatalogS3MutatePermission"
+                }, 
                 {
-                    "Sid": "AmazonSageMakerServiceCatalogSageMakerPermission",
-                    "Effect": "Allow",
                     "Action": [
-                        "sagemaker:CreateEndpoint",
-                        "sagemaker:CreateEndpointConfig",
-                        "sagemaker:CreateModel",
-                        "sagemaker:CreateWorkteam",
-                        "sagemaker:DeleteEndpoint",
-                        "sagemaker:DeleteEndpointConfig",
-                        "sagemaker:DeleteModel",
-                        "sagemaker:DeleteWorkteam",
-                        "sagemaker:DescribeModel",
-                        "sagemaker:DescribeEndpointConfig",
-                        "sagemaker:DescribeEndpoint",
-                        "sagemaker:DescribeWorkteam",
-                        "sagemaker:CreateCodeRepository",
-                        "sagemaker:DescribeCodeRepository",
-                        "sagemaker:UpdateCodeRepository",
+                        "sagemaker:CreateEndpoint", 
+                        "sagemaker:CreateEndpointConfig", 
+                        "sagemaker:CreateModel", 
+                        "sagemaker:CreateWorkteam", 
+                        "sagemaker:DeleteEndpoint", 
+                        "sagemaker:DeleteEndpointConfig", 
+                        "sagemaker:DeleteModel", 
+                        "sagemaker:DeleteWorkteam", 
+                        "sagemaker:DescribeModel", 
+                        "sagemaker:DescribeEndpointConfig", 
+                        "sagemaker:DescribeEndpoint", 
+                        "sagemaker:DescribeWorkteam", 
+                        "sagemaker:CreateCodeRepository", 
+                        "sagemaker:DescribeCodeRepository", 
+                        "sagemaker:UpdateCodeRepository", 
                         "sagemaker:DeleteCodeRepository"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:sagemaker:*:*:*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonSageMakerServiceCatalogSageMakerPermission"
+                }, 
                 {
-                    "Sid": "AmazonSageMakerServiceCatalogSageMakerTagPermission",
-                    "Effect": "Allow",
                     "Action": [
                         "sagemaker:AddTags"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:sagemaker:*:*:endpoint/*",
-                        "arn:aws:sagemaker:*:*:endpoint-config/*",
-                        "arn:aws:sagemaker:*:*:model/*",
-                        "arn:aws:sagemaker:*:*:pipeline/*",
-                        "arn:aws:sagemaker:*:*:project/*",
+                        "arn:aws:sagemaker:*:*:endpoint/*", 
+                        "arn:aws:sagemaker:*:*:endpoint-config/*", 
+                        "arn:aws:sagemaker:*:*:model/*", 
+                        "arn:aws:sagemaker:*:*:pipeline/*", 
+                        "arn:aws:sagemaker:*:*:project/*", 
                         "arn:aws:sagemaker:*:*:model-package/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAllValues:StringLike": {
                             "aws:TagKeys": [
                                 "sagemaker:*"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "AmazonSageMakerServiceCatalogSageMakerTagPermission"
+                }, 
                 {
-                    "Sid": "AmazonSageMakerServiceCatalogSageMakerImagePermission",
-                    "Effect": "Allow",
                     "Action": [
-                        "sagemaker:CreateImage",
-                        "sagemaker:DeleteImage",
-                        "sagemaker:DescribeImage",
-                        "sagemaker:UpdateImage",
+                        "sagemaker:CreateImage", 
+                        "sagemaker:DeleteImage", 
+                        "sagemaker:DescribeImage", 
+                        "sagemaker:UpdateImage", 
                         "sagemaker:ListTags"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:sagemaker:*:*:image/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonSageMakerServiceCatalogSageMakerImagePermission"
+                }, 
                 {
-                    "Sid": "AmazonSageMakerServiceCatalogStepFunctionPermission",
-                    "Effect": "Allow",
                     "Action": [
-                        "states:CreateStateMachine",
-                        "states:DeleteStateMachine",
+                        "states:CreateStateMachine", 
+                        "states:DeleteStateMachine", 
                         "states:UpdateStateMachine"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:states:*:*:stateMachine:sagemaker-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonSageMakerServiceCatalogStepFunctionPermission"
+                }, 
                 {
-                    "Sid": "AmazonSageMakerServiceCatalogCodeStarPermission",
-                    "Effect": "Allow",
-                    "Action": "codestar-connections:PassConnection",
-                    "Resource": "arn:aws:codestar-connections:*:*:connection/*",
+                    "Action": "codestar-connections:PassConnection", 
+                    "Resource": "arn:aws:codestar-connections:*:*:connection/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "codestar-connections:PassedToService": "codepipeline.amazonaws.com"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "AmazonSageMakerServiceCatalogCodeStarPermission"
+                }, 
                 {
-                    "Sid": "AmazonSageMakerServiceCatalogCodeConnectionPermission",
-                    "Effect": "Allow",
-                    "Action": "codeconnections:PassConnection",
-                    "Resource": "arn:aws:codeconnections:*:*:connection/*",
+                    "Action": "codeconnections:PassConnection", 
+                    "Resource": "arn:aws:codeconnections:*:*:connection/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "codeconnections:PassedToService": "codepipeline.amazonaws.com"
                         }
-                    }
+                    }, 
+                    "Sid": "AmazonSageMakerServiceCatalogCodeConnectionPermission"
                 }
             ]
-        },
-        "VersionId": "v9",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-07-01T07:33:43+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

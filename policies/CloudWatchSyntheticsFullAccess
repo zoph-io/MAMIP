@@ -1,190 +1,192 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-05-06T18:14:01Z", 
+        "VersionId": "v9", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "synthetics:*"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:CreateBucket",
+                        "s3:CreateBucket", 
                         "s3:PutEncryptionConfiguration"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:s3:::cw-syn-results-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "iam:ListRoles",
-                        "s3:ListAllMyBuckets",
-                        "xray:GetTraceSummaries",
-                        "xray:BatchGetTraces",
+                        "iam:ListRoles", 
+                        "s3:ListAllMyBuckets", 
+                        "xray:GetTraceSummaries", 
+                        "xray:BatchGetTraces", 
                         "apigateway:GET"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "s3:GetBucketLocation"
-                    ],
-                    "Resource": "arn:aws:s3:::*"
-                },
+                    ], 
+                    "Resource": "arn:aws:s3:::*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:GetObject",
+                        "s3:GetObject", 
                         "s3:ListBucket"
-                    ],
-                    "Resource": "arn:aws:s3:::cw-syn-*"
-                },
+                    ], 
+                    "Resource": "arn:aws:s3:::cw-syn-*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "s3:GetObjectVersion"
-                    ],
-                    "Resource": "arn:aws:s3:::aws-synthetics-library-*"
-                },
+                    ], 
+                    "Resource": "arn:aws:s3:::aws-synthetics-library-*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "iam:PassRole"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:iam::*:role/service-role/CloudWatchSyntheticsRole*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:PassedToService": [
-                                "lambda.amazonaws.com",
+                                "lambda.amazonaws.com", 
                                 "synthetics.amazonaws.com"
                             ]
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "iam:GetRole",
+                        "iam:GetRole", 
                         "iam:ListAttachedRolePolicies"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:iam::*:role/service-role/CloudWatchSyntheticsRole*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudwatch:GetMetricData",
+                        "cloudwatch:GetMetricData", 
                         "cloudwatch:GetMetricStatistics"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudwatch:PutMetricAlarm",
+                        "cloudwatch:PutMetricAlarm", 
                         "cloudwatch:DeleteAlarms"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:cloudwatch:*:*:alarm:Synthetics-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "cloudwatch:DescribeAlarms"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:cloudwatch:*:*:alarm:*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "lambda:CreateFunction",
-                        "lambda:AddPermission",
-                        "lambda:PublishVersion",
-                        "lambda:UpdateFunctionCode",
-                        "lambda:UpdateFunctionConfiguration",
-                        "lambda:GetFunctionConfiguration",
+                        "lambda:CreateFunction", 
+                        "lambda:AddPermission", 
+                        "lambda:PublishVersion", 
+                        "lambda:UpdateFunctionCode", 
+                        "lambda:UpdateFunctionConfiguration", 
+                        "lambda:GetFunctionConfiguration", 
                         "lambda:DeleteFunction"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:lambda:*:*:function:cwsyn-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "lambda:GetLayerVersion",
-                        "lambda:PublishLayerVersion",
+                        "lambda:GetLayerVersion", 
+                        "lambda:PublishLayerVersion", 
                         "lambda:DeleteLayerVersion"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:lambda:*:*:layer:cwsyn-*",
+                        "arn:aws:lambda:*:*:layer:cwsyn-*", 
                         "arn:aws:lambda:*:*:layer:Synthetics:*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeVpcs",
-                        "ec2:DescribeSubnets",
+                        "ec2:DescribeVpcs", 
+                        "ec2:DescribeSubnets", 
                         "ec2:DescribeSecurityGroups"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "sns:ListTopics"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "sns:CreateTopic",
-                        "sns:Subscribe",
+                        "sns:CreateTopic", 
+                        "sns:Subscribe", 
                         "sns:ListSubscriptionsByTopic"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:*:sns:*:*:Synthetics-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "kms:ListAliases"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "kms:DescribeKey"
-                    ],
-                    "Resource": "arn:aws:kms:*:*:key/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:kms:*:*:key/*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "kms:Decrypt"
-                    ],
-                    "Resource": "arn:aws:kms:*:*:key/*",
+                    ], 
+                    "Resource": "arn:aws:kms:*:*:key/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "kms:ViaService": [
@@ -194,9 +196,7 @@
                     }
                 }
             ]
-        },
-        "VersionId": "v9",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-05-06T18:14:01+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

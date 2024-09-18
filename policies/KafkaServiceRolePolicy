@@ -1,55 +1,57 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-04-28T00:39:35Z", 
+        "VersionId": "v4", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:CreateNetworkInterface",
-                        "ec2:DescribeNetworkInterfaces",
-                        "ec2:CreateNetworkInterfacePermission",
-                        "ec2:AttachNetworkInterface",
-                        "ec2:DeleteNetworkInterface",
-                        "ec2:DetachNetworkInterface",
-                        "ec2:DescribeVpcEndpoints",
-                        "acm-pca:GetCertificateAuthorityCertificate",
+                        "ec2:CreateNetworkInterface", 
+                        "ec2:DescribeNetworkInterfaces", 
+                        "ec2:CreateNetworkInterfacePermission", 
+                        "ec2:AttachNetworkInterface", 
+                        "ec2:DeleteNetworkInterface", 
+                        "ec2:DetachNetworkInterface", 
+                        "ec2:DescribeVpcEndpoints", 
+                        "acm-pca:GetCertificateAuthorityCertificate", 
                         "secretsmanager:ListSecrets"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:ModifyVpcEndpoint"
-                    ],
-                    "Resource": "arn:*:ec2:*:*:subnet/*"
-                },
+                    ], 
+                    "Resource": "arn:*:ec2:*:*:subnet/*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DeleteVpcEndpoints",
+                        "ec2:DeleteVpcEndpoints", 
                         "ec2:ModifyVpcEndpoint"
-                    ],
-                    "Resource": "arn:*:ec2:*:*:vpc-endpoint/*",
+                    ], 
+                    "Resource": "arn:*:ec2:*:*:vpc-endpoint/*", 
+                    "Effect": "Allow", 
                     "Condition": {
-                        "StringEquals": {
-                            "ec2:ResourceTag/AWSMSKManaged": "true"
-                        },
                         "StringLike": {
                             "ec2:ResourceTag/ClusterArn": "*"
+                        }, 
+                        "StringEquals": {
+                            "ec2:ResourceTag/AWSMSKManaged": "true"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "secretsmanager:GetResourcePolicy",
-                        "secretsmanager:PutResourcePolicy",
-                        "secretsmanager:DeleteResourcePolicy",
+                        "secretsmanager:GetResourcePolicy", 
+                        "secretsmanager:PutResourcePolicy", 
+                        "secretsmanager:DeleteResourcePolicy", 
                         "secretsmanager:DescribeSecret"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ArnLike": {
                             "secretsmanager:SecretId": "arn:*:secretsmanager:*:*:secret:AmazonMSK_*"
@@ -57,9 +59,7 @@
                     }
                 }
             ]
-        },
-        "VersionId": "v4",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-04-28T00:39:35+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

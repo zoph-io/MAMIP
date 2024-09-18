@@ -1,17 +1,19 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-03-20T10:57:51Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ssm:GetCommandInvocation",
+                        "ssm:GetCommandInvocation", 
                         "ssm:DescribeInstanceInformation"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAnyValue:StringEquals": {
                             "aws:CalledVia": [
@@ -19,18 +21,18 @@
                             ]
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ssm:SendCommand",
-                        "ssm:DescribeDocument",
+                        "ssm:SendCommand", 
+                        "ssm:DescribeDocument", 
                         "ssm:StartAutomationExecution"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:ssm:*:*:document/*",
+                        "arn:aws:ssm:*:*:document/*", 
                         "arn:aws:ssm:*:*:automation-definition/*:*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAnyValue:StringEquals": {
                             "aws:CalledVia": [
@@ -38,45 +40,43 @@
                             ]
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ssm:SendCommand"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ec2:*:*:instance/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAnyValue:StringEquals": {
                             "aws:CalledVia": [
                                 "mgn.amazonaws.com"
                             ]
-                        },
+                        }, 
                         "Null": {
                             "aws:ResourceTag/AWSApplicationMigrationServiceManaged": "false"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ssm:ListDocuments"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ssm:ListDocumentVersions",
+                        "ssm:ListDocumentVersions", 
                         "ssm:GetDocument"
-                    ],
-                    "Resource": "arn:aws:ssm:*:*:document/*"
+                    ], 
+                    "Resource": "arn:aws:ssm:*:*:document/*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-03-20T10:57:51+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

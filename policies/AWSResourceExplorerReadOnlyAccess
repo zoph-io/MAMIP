@@ -1,27 +1,27 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-11-14T16:43:41Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "ResourceExplorerReadOnlyAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "resource-explorer-2:Get*",
-                        "resource-explorer-2:List*",
-                        "resource-explorer-2:Search",
-                        "resource-explorer-2:BatchGetView",
-                        "ec2:DescribeRegions",
-                        "ram:ListResources",
-                        "ram:GetResourceShares",
+                        "resource-explorer-2:Get*", 
+                        "resource-explorer-2:List*", 
+                        "resource-explorer-2:Search", 
+                        "resource-explorer-2:BatchGetView", 
+                        "ec2:DescribeRegions", 
+                        "ram:ListResources", 
+                        "ram:GetResourceShares", 
                         "organizations:DescribeOrganization"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ResourceExplorerReadOnlyAccess"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-11-14T16:43:41+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

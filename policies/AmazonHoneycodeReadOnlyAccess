@@ -1,22 +1,22 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-12-01T17:27:53Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": [
-                        "honeycode:List*",
-                        "honeycode:Get*",
-                        "honeycode:Describe*",
+                        "honeycode:List*", 
+                        "honeycode:Get*", 
+                        "honeycode:Describe*", 
                         "honeycode:Query*"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
                     "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-12-01T17:27:53+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

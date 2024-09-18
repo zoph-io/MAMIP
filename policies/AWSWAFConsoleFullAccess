@@ -1,88 +1,88 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-06-05T20:56:03Z", 
+        "VersionId": "v8", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AllowUseOfAWSWAF",
-                    "Effect": "Allow",
                     "Action": [
-                        "apigateway:GET",
-                        "apigateway:SetWebACL",
-                        "cloudfront:ListDistributions",
-                        "cloudfront:ListDistributionsByWebACLId",
-                        "cloudfront:UpdateDistribution",
-                        "cloudwatch:GetMetricData",
-                        "cloudwatch:GetMetricStatistics",
-                        "cloudwatch:ListMetrics",
-                        "ec2:DescribeRegions",
-                        "elasticloadbalancing:DescribeLoadBalancers",
-                        "elasticloadbalancing:SetWebACL",
-                        "appsync:ListGraphqlApis",
-                        "appsync:SetWebACL",
-                        "waf-regional:*",
-                        "waf:*",
-                        "wafv2:*",
-                        "s3:ListAllMyBuckets",
-                        "logs:DescribeResourcePolicies",
-                        "logs:DescribeLogGroups",
-                        "cognito-idp:ListUserPools",
-                        "cognito-idp:AssociateWebACL",
-                        "cognito-idp:DisassociateWebACL",
-                        "cognito-idp:ListResourcesForWebACL",
-                        "cognito-idp:GetWebACLForResource",
-                        "apprunner:AssociateWebAcl",
-                        "apprunner:DisassociateWebAcl",
-                        "apprunner:DescribeWebAclForService",
-                        "apprunner:ListServices",
-                        "apprunner:ListAssociatedServicesForWebAcl",
-                        "ec2:AssociateVerifiedAccessInstanceWebAcl",
-                        "ec2:DisassociateVerifiedAccessInstanceWebAcl",
-                        "ec2:DescribeVerifiedAccessInstanceWebAclAssociations",
-                        "ec2:GetVerifiedAccessInstanceWebAcl",
+                        "apigateway:GET", 
+                        "apigateway:SetWebACL", 
+                        "cloudfront:ListDistributions", 
+                        "cloudfront:ListDistributionsByWebACLId", 
+                        "cloudfront:UpdateDistribution", 
+                        "cloudwatch:GetMetricData", 
+                        "cloudwatch:GetMetricStatistics", 
+                        "cloudwatch:ListMetrics", 
+                        "ec2:DescribeRegions", 
+                        "elasticloadbalancing:DescribeLoadBalancers", 
+                        "elasticloadbalancing:SetWebACL", 
+                        "appsync:ListGraphqlApis", 
+                        "appsync:SetWebACL", 
+                        "waf-regional:*", 
+                        "waf:*", 
+                        "wafv2:*", 
+                        "s3:ListAllMyBuckets", 
+                        "logs:DescribeResourcePolicies", 
+                        "logs:DescribeLogGroups", 
+                        "cognito-idp:ListUserPools", 
+                        "cognito-idp:AssociateWebACL", 
+                        "cognito-idp:DisassociateWebACL", 
+                        "cognito-idp:ListResourcesForWebACL", 
+                        "cognito-idp:GetWebACLForResource", 
+                        "apprunner:AssociateWebAcl", 
+                        "apprunner:DisassociateWebAcl", 
+                        "apprunner:DescribeWebAclForService", 
+                        "apprunner:ListServices", 
+                        "apprunner:ListAssociatedServicesForWebAcl", 
+                        "ec2:AssociateVerifiedAccessInstanceWebAcl", 
+                        "ec2:DisassociateVerifiedAccessInstanceWebAcl", 
+                        "ec2:DescribeVerifiedAccessInstanceWebAclAssociations", 
+                        "ec2:GetVerifiedAccessInstanceWebAcl", 
                         "ec2:DescribeVerifiedAccessInstances"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowUseOfAWSWAF"
+                }, 
                 {
-                    "Sid": "AllowLogDeliverySubscription",
                     "Action": [
-                        "logs:CreateLogDelivery",
+                        "logs:CreateLogDelivery", 
                         "logs:DeleteLogDelivery"
-                    ],
-                    "Resource": "*",
-                    "Effect": "Allow"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowLogDeliverySubscription"
+                }, 
                 {
-                    "Sid": "GrantLogDeliveryPermissionForS3Bucket",
                     "Action": [
-                        "s3:PutBucketPolicy",
+                        "s3:PutBucketPolicy", 
                         "s3:GetBucketPolicy"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:s3:::aws-waf-logs-*"
-                    ],
-                    "Effect": "Allow"
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "GrantLogDeliveryPermissionForS3Bucket"
+                }, 
                 {
-                    "Sid": "GrantLogDeliveryPermissionForCloudWatchLogGroup",
                     "Action": [
                         "logs:PutResourcePolicy"
-                    ],
-                    "Resource": "*",
-                    "Effect": "Allow",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAnyValue:StringEquals": {
                             "aws:CalledVia": [
                                 "wafv2.amazonaws.com"
                             ]
                         }
-                    }
+                    }, 
+                    "Sid": "GrantLogDeliveryPermissionForCloudWatchLogGroup"
                 }
             ]
-        },
-        "VersionId": "v8",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-06-05T20:56:03+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

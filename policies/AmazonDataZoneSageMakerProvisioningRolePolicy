@@ -1,204 +1,204 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-04-23T23:32:28Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "CreateSageMakerStudio",
-                    "Effect": "Allow",
                     "Action": [
                         "sagemaker:CreateDomain"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
-                        "StringEquals": {
-                            "aws:CalledViaFirst": [
-                                "cloudformation.amazonaws.com"
-                            ]
-                        },
                         "ForAnyValue:StringEquals": {
                             "aws:TagKeys": [
                                 "AmazonDataZoneEnvironment"
                             ]
-                        },
+                        }, 
                         "Null": {
-                            "aws:TagKeys": "false",
-                            "aws:ResourceTag/AmazonDataZoneEnvironment": "false",
+                            "aws:ResourceTag/AmazonDataZoneEnvironment": "false", 
+                            "aws:TagKeys": "false", 
                             "aws:RequestTag/AmazonDataZoneEnvironment": "false"
-                        }
-                    }
-                },
-                {
-                    "Sid": "DeleteSageMakerStudio",
-                    "Effect": "Allow",
-                    "Action": [
-                        "sagemaker:DeleteDomain"
-                    ],
-                    "Resource": [
-                        "*"
-                    ],
-                    "Condition": {
+                        }, 
                         "StringEquals": {
                             "aws:CalledViaFirst": [
                                 "cloudformation.amazonaws.com"
                             ]
-                        },
+                        }
+                    }, 
+                    "Sid": "CreateSageMakerStudio"
+                }, 
+                {
+                    "Action": [
+                        "sagemaker:DeleteDomain"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "Null": {
+                            "aws:ResourceTag/AmazonDataZoneEnvironment": "false", 
+                            "aws:TagKeys": "false"
+                        }, 
+                        "StringEquals": {
+                            "aws:CalledViaFirst": [
+                                "cloudformation.amazonaws.com"
+                            ]
+                        }, 
                         "ForAnyValue:StringLike": {
                             "aws:TagKeys": [
                                 "AmazonDataZoneEnvironment"
                             ]
-                        },
-                        "Null": {
-                            "aws:TagKeys": "false",
-                            "aws:ResourceTag/AmazonDataZoneEnvironment": "false"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "DeleteSageMakerStudio"
+                }, 
                 {
-                    "Sid": "AmazonDataZoneEnvironmentSageMakerDescribePermissions",
-                    "Effect": "Allow",
                     "Action": [
                         "sagemaker:DescribeDomain"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:CalledViaFirst": [
                                 "cloudformation.amazonaws.com"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "AmazonDataZoneEnvironmentSageMakerDescribePermissions"
+                }, 
                 {
-                    "Sid": "IamPassRolePermissions",
-                    "Effect": "Allow",
                     "Action": [
                         "iam:PassRole"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:iam::*:role/sm-provisioning/datazone_usr*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
-                            "iam:PassedToService": [
-                                "glue.amazonaws.com",
-                                "lakeformation.amazonaws.com",
-                                "sagemaker.amazonaws.com"
-                            ],
                             "aws:CalledViaFirst": [
                                 "cloudformation.amazonaws.com"
+                            ], 
+                            "iam:PassedToService": [
+                                "glue.amazonaws.com", 
+                                "lakeformation.amazonaws.com", 
+                                "sagemaker.amazonaws.com"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "IamPassRolePermissions"
+                }, 
                 {
-                    "Sid": "AmazonDataZonePermissionsToCreateEnvironmentRole",
-                    "Effect": "Allow",
                     "Action": [
-                        "iam:CreateRole",
-                        "iam:DetachRolePolicy",
-                        "iam:DeleteRolePolicy",
-                        "iam:AttachRolePolicy",
+                        "iam:CreateRole", 
+                        "iam:DetachRolePolicy", 
+                        "iam:DeleteRolePolicy", 
+                        "iam:AttachRolePolicy", 
                         "iam:PutRolePolicy"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:iam::*:role/sm-provisioning/datazone_usr*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:CalledViaFirst": [
                                 "cloudformation.amazonaws.com"
-                            ],
+                            ], 
                             "iam:PermissionsBoundary": "arn:aws:iam::aws:policy/AmazonDataZoneSageMakerEnvironmentRolePermissionsBoundary"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "AmazonDataZonePermissionsToCreateEnvironmentRole"
+                }, 
                 {
-                    "Sid": "AmazonDataZonePermissionsToManageEnvironmentRole",
-                    "Effect": "Allow",
                     "Action": [
-                        "iam:GetRole",
-                        "iam:GetRolePolicy",
+                        "iam:GetRole", 
+                        "iam:GetRolePolicy", 
                         "iam:DeleteRole"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:iam::*:role/sm-provisioning/datazone_usr*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:CalledViaFirst": [
                                 "cloudformation.amazonaws.com"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "AmazonDataZonePermissionsToManageEnvironmentRole"
+                }, 
                 {
-                    "Sid": "AmazonDataZonePermissionsToCreateSageMakerServiceRole",
-                    "Effect": "Allow",
                     "Action": [
                         "iam:CreateServiceLinkedRole"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:iam::*:role/aws-service-role/sagemaker.amazonaws.com/AWSServiceRoleForAmazonSageMakerNotebooks"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:CalledViaFirst": [
                                 "cloudformation.amazonaws.com"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "AmazonDataZonePermissionsToCreateSageMakerServiceRole"
+                }, 
                 {
-                    "Sid": "AmazonDataZoneEnvironmentParameterValidation",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeVpcs",
-                        "ec2:DescribeSubnets",
+                        "ec2:DescribeVpcs", 
+                        "ec2:DescribeSubnets", 
                         "sagemaker:ListDomains"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonDataZoneEnvironmentParameterValidation"
+                }, 
                 {
-                    "Sid": "AmazonDataZoneEnvironmentKMSKeyValidation",
-                    "Effect": "Allow",
                     "Action": [
                         "kms:DescribeKey"
-                    ],
-                    "Resource": "arn:aws:kms:*:*:key/*",
+                    ], 
+                    "Resource": "arn:aws:kms:*:*:key/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "aws:ResourceTag/AmazonDataZoneEnvironment": "false"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "AmazonDataZoneEnvironmentKMSKeyValidation"
+                }, 
                 {
-                    "Sid": "AmazonDataZoneEnvironmentGluePermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "glue:CreateConnection",
+                        "glue:CreateConnection", 
                         "glue:DeleteConnection"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:glue:*:*:connection/dz-sm-athena-glue-connection-*",
-                        "arn:aws:glue:*:*:connection/dz-sm-redshift-cluster-connection-*",
-                        "arn:aws:glue:*:*:connection/dz-sm-redshift-serverless-connection-*",
+                        "arn:aws:glue:*:*:connection/dz-sm-athena-glue-connection-*", 
+                        "arn:aws:glue:*:*:connection/dz-sm-redshift-cluster-connection-*", 
+                        "arn:aws:glue:*:*:connection/dz-sm-redshift-serverless-connection-*", 
                         "arn:aws:glue:*:*:catalog"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:CalledViaFirst": [
                                 "cloudformation.amazonaws.com"
                             ]
                         }
-                    }
+                    }, 
+                    "Sid": "AmazonDataZoneEnvironmentGluePermissions"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-04-23T23:32:28+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,57 +1,57 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-10-30T17:57:43Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "SageMakerTransformJobAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "sagemaker:DescribeTransformJob",
-                        "sagemaker:StopTransformJob",
+                        "sagemaker:DescribeTransformJob", 
+                        "sagemaker:StopTransformJob", 
                         "sagemaker:CreateTransformJob"
-                    ],
-                    "Resource": "arn:aws:sagemaker:*:*:transform-job/quicksight-auto-generated-*"
-                },
+                    ], 
+                    "Resource": "arn:aws:sagemaker:*:*:transform-job/quicksight-auto-generated-*", 
+                    "Effect": "Allow", 
+                    "Sid": "SageMakerTransformJobAccess"
+                }, 
                 {
-                    "Sid": "SageMakerModelReadAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "sagemaker:ListModels",
+                        "sagemaker:ListModels", 
                         "sagemaker:DescribeModel"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "SageMakerModelReadAccess"
+                }, 
                 {
-                    "Sid": "S3ObjectReadAccess",
-                    "Effect": "Allow",
-                    "Action": "s3:GetObject",
+                    "Action": "s3:GetObject", 
                     "Resource": [
-                        "arn:aws:s3:::quicksight-ml.*",
+                        "arn:aws:s3:::quicksight-ml.*", 
                         "arn:aws:s3:::sagemaker*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "S3ObjectReadAccess"
+                }, 
                 {
-                    "Sid": "S3ObjectUpdateAccess",
-                    "Effect": "Allow",
-                    "Action": "s3:PutObject",
-                    "Resource": "arn:aws:s3:::sagemaker*",
+                    "Action": "s3:PutObject", 
+                    "Resource": "arn:aws:s3:::sagemaker*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "S3ObjectUpdateAccess"
+                }, 
                 {
-                    "Sid": "S3BucketReadAccess",
-                    "Effect": "Allow",
-                    "Action": "s3:ListBucket",
-                    "Resource": "arn:aws:s3:::sagemaker*"
+                    "Action": "s3:ListBucket", 
+                    "Resource": "arn:aws:s3:::sagemaker*", 
+                    "Effect": "Allow", 
+                    "Sid": "S3BucketReadAccess"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-10-30T17:57:43+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

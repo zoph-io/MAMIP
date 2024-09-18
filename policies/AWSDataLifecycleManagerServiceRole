@@ -1,53 +1,53 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-09-19T17:34:08Z", 
+        "VersionId": "v7", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:CreateSnapshot",
-                        "ec2:CreateSnapshots",
-                        "ec2:DeleteSnapshot",
-                        "ec2:DescribeInstances",
-                        "ec2:DescribeVolumes",
-                        "ec2:DescribeSnapshots",
-                        "ec2:EnableFastSnapshotRestores",
-                        "ec2:DescribeFastSnapshotRestores",
-                        "ec2:DisableFastSnapshotRestores",
-                        "ec2:CopySnapshot",
-                        "ec2:ModifySnapshotAttribute",
-                        "ec2:DescribeSnapshotAttribute",
-                        "ec2:DescribeSnapshotTierStatus",
+                        "ec2:CreateSnapshot", 
+                        "ec2:CreateSnapshots", 
+                        "ec2:DeleteSnapshot", 
+                        "ec2:DescribeInstances", 
+                        "ec2:DescribeVolumes", 
+                        "ec2:DescribeSnapshots", 
+                        "ec2:EnableFastSnapshotRestores", 
+                        "ec2:DescribeFastSnapshotRestores", 
+                        "ec2:DisableFastSnapshotRestores", 
+                        "ec2:CopySnapshot", 
+                        "ec2:ModifySnapshotAttribute", 
+                        "ec2:DescribeSnapshotAttribute", 
+                        "ec2:DescribeSnapshotTierStatus", 
                         "ec2:ModifySnapshotTier"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateTags"
-                    ],
-                    "Resource": "arn:aws:ec2:*::snapshot/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:ec2:*::snapshot/*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "events:PutRule",
-                        "events:DeleteRule",
-                        "events:DescribeRule",
-                        "events:EnableRule",
-                        "events:DisableRule",
-                        "events:ListTargetsByRule",
-                        "events:PutTargets",
+                        "events:PutRule", 
+                        "events:DeleteRule", 
+                        "events:DescribeRule", 
+                        "events:EnableRule", 
+                        "events:DisableRule", 
+                        "events:ListTargetsByRule", 
+                        "events:PutTargets", 
                         "events:RemoveTargets"
-                    ],
-                    "Resource": "arn:aws:events:*:*:rule/AwsDataLifecycleRule.managed-cwe.*"
+                    ], 
+                    "Resource": "arn:aws:events:*:*:rule/AwsDataLifecycleRule.managed-cwe.*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v7",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-09-19T17:34:08+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

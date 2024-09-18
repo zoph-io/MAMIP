@@ -1,159 +1,159 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-11-20T15:18:32Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "InstanceIdentification",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeInstances",
-                        "ec2:DescribeVolumes",
+                        "ec2:DescribeInstances", 
+                        "ec2:DescribeVolumes", 
                         "ec2:DescribeSnapshots"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "InstanceIdentification"
+                }, 
                 {
-                    "Sid": "GetSnapshotData",
-                    "Effect": "Allow",
                     "Action": [
-                        "ebs:ListSnapshotBlocks",
+                        "ebs:ListSnapshotBlocks", 
                         "ebs:GetSnapshotBlock"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:snapshot/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:snapshot/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:ResourceTag/InspectorScan": "*"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "GetSnapshotData"
+                }, 
                 {
-                    "Sid": "CreateSnapshotsAnyInstanceOrVolume",
-                    "Effect": "Allow",
-                    "Action": "ec2:CreateSnapshots",
+                    "Action": "ec2:CreateSnapshots", 
                     "Resource": [
-                        "arn:aws:ec2:*:*:instance/*",
+                        "arn:aws:ec2:*:*:instance/*", 
                         "arn:aws:ec2:*:*:volume/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "CreateSnapshotsAnyInstanceOrVolume"
+                }, 
                 {
-                    "Sid": "DenyCreateSnapshotsOnExcludedInstances",
-                    "Effect": "Deny",
-                    "Action": "ec2:CreateSnapshots",
-                    "Resource": "arn:aws:ec2:*:*:instance/*",
+                    "Action": "ec2:CreateSnapshots", 
+                    "Resource": "arn:aws:ec2:*:*:instance/*", 
+                    "Effect": "Deny", 
                     "Condition": {
                         "StringEquals": {
                             "ec2:ResourceTag/InspectorEc2Exclusion": "true"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "DenyCreateSnapshotsOnExcludedInstances"
+                }, 
                 {
-                    "Sid": "CreateSnapshotsOnAnySnapshotOnlyWithTag",
-                    "Effect": "Allow",
-                    "Action": "ec2:CreateSnapshots",
-                    "Resource": "arn:aws:ec2:*:*:snapshot/*",
+                    "Action": "ec2:CreateSnapshots", 
+                    "Resource": "arn:aws:ec2:*:*:snapshot/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "aws:TagKeys": "false"
-                        },
+                        }, 
                         "ForAllValues:StringEquals": {
                             "aws:TagKeys": "InspectorScan"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "CreateSnapshotsOnAnySnapshotOnlyWithTag"
+                }, 
                 {
-                    "Sid": "CreateOnlyInspectorScanTagOnlyUsingCreateSnapshots",
-                    "Effect": "Allow",
-                    "Action": "ec2:CreateTags",
-                    "Resource": "arn:aws:ec2:*:*:snapshot/*",
+                    "Action": "ec2:CreateTags", 
+                    "Resource": "arn:aws:ec2:*:*:snapshot/*", 
+                    "Effect": "Allow", 
                     "Condition": {
+                        "Null": {
+                            "aws:TagKeys": "false"
+                        }, 
                         "StringLike": {
                             "ec2:CreateAction": "CreateSnapshots"
-                        },
-                        "Null": {
-                            "aws:TagKeys": "false"
-                        },
+                        }, 
                         "ForAllValues:StringEquals": {
                             "aws:TagKeys": "InspectorScan"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "CreateOnlyInspectorScanTagOnlyUsingCreateSnapshots"
+                }, 
                 {
-                    "Sid": "DeleteOnlySnapshotsTaggedForScanning",
-                    "Effect": "Allow",
-                    "Action": "ec2:DeleteSnapshot",
-                    "Resource": "arn:aws:ec2:*:*:snapshot/*",
+                    "Action": "ec2:DeleteSnapshot", 
+                    "Resource": "arn:aws:ec2:*:*:snapshot/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "ec2:ResourceTag/InspectorScan": "*"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "DeleteOnlySnapshotsTaggedForScanning"
+                }, 
                 {
-                    "Sid": "DenyKmsDecryptForExcludedKeys",
-                    "Effect": "Deny",
-                    "Action": "kms:Decrypt",
-                    "Resource": "arn:aws:kms:*:*:key/*",
+                    "Action": "kms:Decrypt", 
+                    "Resource": "arn:aws:kms:*:*:key/*", 
+                    "Effect": "Deny", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceTag/InspectorEc2Exclusion": "true"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "DenyKmsDecryptForExcludedKeys"
+                }, 
                 {
-                    "Sid": "DecryptSnapshotBlocksVolContext",
-                    "Effect": "Allow",
-                    "Action": "kms:Decrypt",
-                    "Resource": "arn:aws:kms:*:*:key/*",
+                    "Action": "kms:Decrypt", 
+                    "Resource": "arn:aws:kms:*:*:key/*", 
+                    "Effect": "Allow", 
                     "Condition": {
-                        "StringEquals": {
-                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
-                        },
                         "StringLike": {
-                            "kms:ViaService": "ec2.*.amazonaws.com",
+                            "kms:ViaService": "ec2.*.amazonaws.com", 
                             "kms:EncryptionContext:aws:ebs:id": "vol-*"
-                        }
-                    }
-                },
-                {
-                    "Sid": "DecryptSnapshotBlocksSnapContext",
-                    "Effect": "Allow",
-                    "Action": "kms:Decrypt",
-                    "Resource": "arn:aws:kms:*:*:key/*",
-                    "Condition": {
+                        }, 
                         "StringEquals": {
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
-                        },
+                        }
+                    }, 
+                    "Sid": "DecryptSnapshotBlocksVolContext"
+                }, 
+                {
+                    "Action": "kms:Decrypt", 
+                    "Resource": "arn:aws:kms:*:*:key/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
                         "StringLike": {
-                            "kms:ViaService": "ec2.*.amazonaws.com",
+                            "kms:ViaService": "ec2.*.amazonaws.com", 
                             "kms:EncryptionContext:aws:ebs:id": "snap-*"
-                        }
-                    }
-                },
-                {
-                    "Sid": "DescribeKeysForEbsOperations",
-                    "Effect": "Allow",
-                    "Action": "kms:DescribeKey",
-                    "Resource": "arn:aws:kms:*:*:key/*",
-                    "Condition": {
+                        }, 
                         "StringEquals": {
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
-                        },
+                        }
+                    }, 
+                    "Sid": "DecryptSnapshotBlocksSnapContext"
+                }, 
+                {
+                    "Action": "kms:DescribeKey", 
+                    "Resource": "arn:aws:kms:*:*:key/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
                         "StringLike": {
                             "kms:ViaService": "ec2.*.amazonaws.com"
+                        }, 
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "DescribeKeysForEbsOperations"
+                }, 
                 {
-                    "Sid": "ListKeyResourceTags",
-                    "Effect": "Allow",
-                    "Action": "kms:ListResourceTags",
-                    "Resource": "arn:aws:kms:*:*:key/*"
+                    "Action": "kms:ListResourceTags", 
+                    "Resource": "arn:aws:kms:*:*:key/*", 
+                    "Effect": "Allow", 
+                    "Sid": "ListKeyResourceTags"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-11-20T15:18:32+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

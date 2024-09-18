@@ -1,22 +1,22 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2021-04-07T06:48:58Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "mgn:SendClientMetricsForMgn",
-                        "mgn:SendClientLogsForMgn",
-                        "mgn:GetChannelCommandsForMgn",
+                        "mgn:SendClientMetricsForMgn", 
+                        "mgn:SendClientLogsForMgn", 
+                        "mgn:GetChannelCommandsForMgn", 
                         "mgn:SendChannelCommandResultForMgn"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2021-04-07T06:48:58+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

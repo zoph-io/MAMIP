@@ -1,27 +1,27 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2019-11-27T01:10:40Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "events:PutRule",
-                        "events:PutTargets",
-                        "events:EnableRule",
-                        "events:DisableRule",
-                        "events:DeleteRule",
-                        "events:RemoveTargets",
+                        "events:PutRule", 
+                        "events:PutTargets", 
+                        "events:EnableRule", 
+                        "events:DisableRule", 
+                        "events:DeleteRule", 
+                        "events:RemoveTargets", 
                         "events:ListTargetsByRule"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:events:*:*:rule/*Schemas-*"
-                    ]
+                    ], 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2019-11-27T01:10:40+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

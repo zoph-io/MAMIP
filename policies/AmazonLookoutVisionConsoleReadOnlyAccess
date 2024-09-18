@@ -1,56 +1,56 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2021-12-09T02:46:29Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "LookoutVisionReadOnlyAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "lookoutvision:DescribeDataset",
-                        "lookoutvision:DescribeModel",
-                        "lookoutvision:DescribeProject",
-                        "lookoutvision:DescribeTrialDetection",
-                        "lookoutvision:DescribeModelPackagingJob",
-                        "lookoutvision:ListDatasetEntries",
-                        "lookoutvision:ListModels",
-                        "lookoutvision:ListProjects",
-                        "lookoutvision:ListTagsForResource",
-                        "lookoutvision:ListTrialDetections",
+                        "lookoutvision:DescribeDataset", 
+                        "lookoutvision:DescribeModel", 
+                        "lookoutvision:DescribeProject", 
+                        "lookoutvision:DescribeTrialDetection", 
+                        "lookoutvision:DescribeModelPackagingJob", 
+                        "lookoutvision:ListDatasetEntries", 
+                        "lookoutvision:ListModels", 
+                        "lookoutvision:ListProjects", 
+                        "lookoutvision:ListTagsForResource", 
+                        "lookoutvision:ListTrialDetections", 
                         "lookoutvision:ListModelPackagingJobs"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "LookoutVisionReadOnlyAccess"
+                }, 
                 {
-                    "Sid": "LookoutVisionConsoleS3BucketSearchAccess",
-                    "Effect": "Allow",
                     "Action": [
                         "s3:ListAllMyBuckets"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "LookoutVisionConsoleS3BucketSearchAccess"
+                }, 
                 {
-                    "Sid": "LookoutVisionConsoleS3ObjectReadAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:GetObject",
+                        "s3:GetObject", 
                         "s3:GetObjectVersion"
-                    ],
-                    "Resource": "arn:aws:s3:::lookoutvision-*/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:s3:::lookoutvision-*/*", 
+                    "Effect": "Allow", 
+                    "Sid": "LookoutVisionConsoleS3ObjectReadAccess"
+                }, 
                 {
-                    "Sid": "LookoutVisionConsoleDashboardAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudwatch:GetMetricData",
+                        "cloudwatch:GetMetricData", 
                         "cloudwatch:GetMetricStatistics"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "LookoutVisionConsoleDashboardAccess"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2021-12-09T02:46:29+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

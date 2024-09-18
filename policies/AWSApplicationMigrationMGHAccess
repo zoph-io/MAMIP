@@ -1,25 +1,25 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2021-04-07T07:10:01Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "mgh:AssociateCreatedArtifact",
-                        "mgh:CreateProgressUpdateStream",
-                        "mgh:DisassociateCreatedArtifact",
-                        "mgh:GetHomeRegion",
-                        "mgh:ImportMigrationTask",
-                        "mgh:NotifyMigrationTaskState",
+                        "mgh:AssociateCreatedArtifact", 
+                        "mgh:CreateProgressUpdateStream", 
+                        "mgh:DisassociateCreatedArtifact", 
+                        "mgh:GetHomeRegion", 
+                        "mgh:ImportMigrationTask", 
+                        "mgh:NotifyMigrationTaskState", 
                         "mgh:PutResourceAttributes"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2021-04-07T07:10:01+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

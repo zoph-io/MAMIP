@@ -1,30 +1,30 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-12-01T17:30:06Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": [
-                        "honeycode:GetScreenData",
-                        "honeycode:InvokeScreenAutomation",
-                        "honeycode:BatchCreateTableRows",
-                        "honeycode:BatchDeleteTableRows",
-                        "honeycode:BatchUpdateTableRows",
-                        "honeycode:BatchUpsertTableRows",
-                        "honeycode:DescribeTableDataImportJob",
-                        "honeycode:ListTableColumns",
-                        "honeycode:ListTableRows",
-                        "honeycode:ListTables",
-                        "honeycode:QueryTableRows",
+                        "honeycode:GetScreenData", 
+                        "honeycode:InvokeScreenAutomation", 
+                        "honeycode:BatchCreateTableRows", 
+                        "honeycode:BatchDeleteTableRows", 
+                        "honeycode:BatchUpdateTableRows", 
+                        "honeycode:BatchUpsertTableRows", 
+                        "honeycode:DescribeTableDataImportJob", 
+                        "honeycode:ListTableColumns", 
+                        "honeycode:ListTableRows", 
+                        "honeycode:ListTables", 
+                        "honeycode:QueryTableRows", 
                         "honeycode:StartTableDataImportJob"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
                     "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-12-01T17:30:06+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

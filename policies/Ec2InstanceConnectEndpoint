@@ -1,78 +1,80 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-01-24T20:19:21Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeNetworkInterfaces",
+                        "ec2:DescribeNetworkInterfaces", 
                         "ec2:DescribeAvailabilityZones"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateNetworkInterface"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:subnet/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:subnet/*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateNetworkInterface"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:network-interface/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:network-interface/*", 
+                    "Effect": "Allow", 
                     "Condition": {
+                        "Null": {
+                            "aws:RequestTag/InstanceConnectEndpointId": "false"
+                        }, 
                         "ForAllValues:StringEquals": {
                             "aws:TagKeys": [
                                 "InstanceConnectEndpointId"
                             ]
-                        },
-                        "Null": {
-                            "aws:RequestTag/InstanceConnectEndpointId": "false"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:ModifyNetworkInterfaceAttribute"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:network-interface/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:network-interface/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "aws:ResourceTag/InstanceConnectEndpointId": "false"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateTags"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:network-interface/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:network-interface/*", 
+                    "Effect": "Allow", 
                     "Condition": {
+                        "Null": {
+                            "aws:RequestTag/InstanceConnectEndpointId": "false"
+                        }, 
                         "StringEquals": {
                             "ec2:CreateAction": "CreateNetworkInterface"
-                        },
+                        }, 
                         "ForAllValues:StringEquals": {
                             "aws:TagKeys": [
                                 "InstanceConnectEndpointId"
                             ]
-                        },
-                        "Null": {
-                            "aws:RequestTag/InstanceConnectEndpointId": "false"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:DeleteNetworkInterface"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:ResourceTag/InstanceConnectEndpointId": [
@@ -82,9 +84,7 @@
                     }
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-01-24T20:19:21+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

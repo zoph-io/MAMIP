@@ -1,48 +1,48 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-08-11T18:04:13Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Deny",
                     "Action": [
-                        "iam:AttachGroupPolicy",
-                        "iam:AttachRolePolicy",
-                        "iam:AttachUserPolicy",
-                        "iam:ChangePassword",
-                        "iam:CreateAccessKey",
-                        "iam:CreateInstanceProfile",
-                        "iam:CreateLoginProfile",
-                        "iam:CreateRole",
-                        "iam:CreateUser",
-                        "iam:DetachUserPolicy",
-                        "iam:PutUserPermissionsBoundary",
-                        "iam:PutUserPolicy",
-                        "iam:UpdateAccessKey",
-                        "iam:UpdateAccountPasswordPolicy",
-                        "iam:UpdateUser",
-                        "ec2:RequestSpotInstances",
-                        "ec2:RunInstances",
-                        "ec2:StartInstances",
-                        "organizations:CreateAccount",
-                        "organizations:CreateOrganization",
-                        "organizations:InviteAccountToOrganization",
-                        "lambda:CreateFunction",
-                        "lightsail:Create*",
-                        "lightsail:Start*",
-                        "lightsail:Delete*",
-                        "lightsail:Update*",
-                        "lightsail:GetInstanceAccessDetails",
+                        "iam:AttachGroupPolicy", 
+                        "iam:AttachRolePolicy", 
+                        "iam:AttachUserPolicy", 
+                        "iam:ChangePassword", 
+                        "iam:CreateAccessKey", 
+                        "iam:CreateInstanceProfile", 
+                        "iam:CreateLoginProfile", 
+                        "iam:CreateRole", 
+                        "iam:CreateUser", 
+                        "iam:DetachUserPolicy", 
+                        "iam:PutUserPermissionsBoundary", 
+                        "iam:PutUserPolicy", 
+                        "iam:UpdateAccessKey", 
+                        "iam:UpdateAccountPasswordPolicy", 
+                        "iam:UpdateUser", 
+                        "ec2:RequestSpotInstances", 
+                        "ec2:RunInstances", 
+                        "ec2:StartInstances", 
+                        "organizations:CreateAccount", 
+                        "organizations:CreateOrganization", 
+                        "organizations:InviteAccountToOrganization", 
+                        "lambda:CreateFunction", 
+                        "lightsail:Create*", 
+                        "lightsail:Start*", 
+                        "lightsail:Delete*", 
+                        "lightsail:Update*", 
+                        "lightsail:GetInstanceAccessDetails", 
                         "lightsail:DownloadDefaultKeyPair"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
+                    ], 
+                    "Effect": "Deny"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-08-11T18:04:13+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

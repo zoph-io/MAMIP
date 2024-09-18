@@ -1,57 +1,57 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-07-27T17:32:05Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudformation:DescribeStacks",
-                        "cloudformation:ListStacks",
-                        "cloudformation:ListStackResources",
-                        "cloudwatch:GetMetricData",
-                        "cloudwatch:ListMetrics",
-                        "ec2:DescribeSecurityGroups",
-                        "ec2:DescribeSubnets",
-                        "ec2:DescribeVpcs",
-                        "kms:ListAliases",
-                        "iam:GetPolicy",
-                        "iam:GetPolicyVersion",
-                        "iam:GetRole",
-                        "iam:GetRolePolicy",
-                        "iam:ListAttachedRolePolicies",
-                        "iam:ListRolePolicies",
-                        "iam:ListRoles",
-                        "logs:DescribeLogGroups",
-                        "lambda:Get*",
-                        "lambda:List*",
-                        "states:DescribeStateMachine",
-                        "states:ListStateMachines",
-                        "tag:GetResources",
-                        "xray:GetTraceSummaries",
+                        "cloudformation:DescribeStacks", 
+                        "cloudformation:ListStacks", 
+                        "cloudformation:ListStackResources", 
+                        "cloudwatch:GetMetricData", 
+                        "cloudwatch:ListMetrics", 
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeVpcs", 
+                        "kms:ListAliases", 
+                        "iam:GetPolicy", 
+                        "iam:GetPolicyVersion", 
+                        "iam:GetRole", 
+                        "iam:GetRolePolicy", 
+                        "iam:ListAttachedRolePolicies", 
+                        "iam:ListRolePolicies", 
+                        "iam:ListRoles", 
+                        "logs:DescribeLogGroups", 
+                        "lambda:Get*", 
+                        "lambda:List*", 
+                        "states:DescribeStateMachine", 
+                        "states:ListStateMachines", 
+                        "tag:GetResources", 
+                        "xray:GetTraceSummaries", 
                         "xray:BatchGetTraces"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:DescribeLogStreams",
-                        "logs:GetLogEvents",
-                        "logs:FilterLogEvents",
-                        "logs:StartQuery",
-                        "logs:StopQuery",
-                        "logs:DescribeQueries",
-                        "logs:GetLogGroupFields",
-                        "logs:GetLogRecord",
+                        "logs:DescribeLogStreams", 
+                        "logs:GetLogEvents", 
+                        "logs:FilterLogEvents", 
+                        "logs:StartQuery", 
+                        "logs:StopQuery", 
+                        "logs:DescribeQueries", 
+                        "logs:GetLogGroupFields", 
+                        "logs:GetLogRecord", 
                         "logs:GetQueryResults"
-                    ],
-                    "Resource": "arn:aws:logs:*:*:log-group:/aws/lambda/*"
+                    ], 
+                    "Resource": "arn:aws:logs:*:*:log-group:/aws/lambda/*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-07-27T17:32:05+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,65 +1,65 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2019-07-27T00:16:05Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ssm:GetAutomationExecution",
-                        "ssm:GetParameters",
-                        "ssm:ListCommands",
-                        "ssm:SendCommand",
+                        "ssm:GetAutomationExecution", 
+                        "ssm:GetParameters", 
+                        "ssm:ListCommands", 
+                        "ssm:SendCommand", 
                         "ssm:StartAutomationExecution"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "lambda:InvokeFunction"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:lambda:*:*:function:SSM*",
+                        "arn:aws:lambda:*:*:function:SSM*", 
                         "arn:aws:lambda:*:*:function:*:SSM*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "states:DescribeExecution",
+                        "states:DescribeExecution", 
                         "states:StartExecution"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:states:*:*:stateMachine:SSM*",
+                        "arn:aws:states:*:*:stateMachine:SSM*", 
                         "arn:aws:states:*:*:execution:SSM*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "resource-groups:ListGroups",
+                        "resource-groups:ListGroups", 
                         "resource-groups:ListGroupResources"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "tag:GetResources"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
+                    ], 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2019-07-27T00:16:05+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,44 +1,44 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-10-29T22:15:51Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "SsmMessagesAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "ssmmessages:OpenControlChannel",
-                        "ssmmessages:CreateControlChannel",
-                        "ssmmessages:OpenDataChannel",
+                        "ssmmessages:OpenControlChannel", 
+                        "ssmmessages:CreateControlChannel", 
+                        "ssmmessages:OpenDataChannel", 
                         "ssmmessages:CreateDataChannel"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "SsmMessagesAccess"
+                }, 
                 {
-                    "Sid": "S3GetObjectAccess",
-                    "Effect": "Allow",
                     "Action": [
                         "s3:GetObject"
-                    ],
-                    "Resource": "arn:aws:s3:::*/refactoringtoolkit*"
-                },
+                    ], 
+                    "Resource": "arn:aws:s3:::*/refactoringtoolkit*", 
+                    "Effect": "Allow", 
+                    "Sid": "S3GetObjectAccess"
+                }, 
                 {
-                    "Sid": "S3ListBucketAccess",
-                    "Effect": "Allow",
                     "Action": [
                         "s3:ListBucket"
-                    ],
-                    "Resource": "arn:aws:s3:::*",
+                    ], 
+                    "Resource": "arn:aws:s3:::*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "s3:prefix": "refactoringtoolkit*"
                         }
-                    }
+                    }, 
+                    "Sid": "S3ListBucketAccess"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-10-29T22:15:51+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,26 +1,26 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2019-12-09T20:41:37Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": [
-                        "ram:AcceptResourceShareInvitation",
-                        "ram:GetResourcePolicies",
-                        "ram:GetResourceShareInvitations",
-                        "ram:GetResourceShares",
-                        "ram:ListPendingInvitationResources",
-                        "ram:ListPrincipals",
-                        "ram:ListResources",
+                        "ram:AcceptResourceShareInvitation", 
+                        "ram:GetResourcePolicies", 
+                        "ram:GetResourceShareInvitations", 
+                        "ram:GetResourceShares", 
+                        "ram:ListPendingInvitationResources", 
+                        "ram:ListPrincipals", 
+                        "ram:ListResources", 
                         "ram:RejectResourceShareInvitation"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2019-12-09T20:41:37+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

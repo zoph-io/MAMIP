@@ -1,116 +1,116 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-10-03T20:32:36Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeSubnets",
-                        "ec2:DescribeSecurityGroups",
-                        "ec2:DescribeNetworkInterfaces",
-                        "ec2:DescribeVpcs",
-                        "ec2:DescribeCoipPools",
-                        "ec2:GetCoipPoolUsage",
-                        "ec2:DescribeAddresses",
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:DescribeNetworkInterfaces", 
+                        "ec2:DescribeVpcs", 
+                        "ec2:DescribeCoipPools", 
+                        "ec2:GetCoipPoolUsage", 
+                        "ec2:DescribeAddresses", 
                         "ec2:DescribeLocalGatewayRouteTableVpcAssociations"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Sid": "DescribeVpcResources"
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateNetworkInterface"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:ec2:*:*:subnet/*",
+                        "arn:aws:ec2:*:*:subnet/*", 
                         "arn:aws:ec2:*:*:security-group/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Sid": "CreateNetworkInterface"
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateNetworkInterface"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ec2:*:*:network-interface/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:RequestTag/CreatedBy": "S3 On Outposts"
                         }
-                    },
+                    }, 
                     "Sid": "CreateTagsForCreateNetworkInterface"
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:AllocateAddress"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ec2:*:*:ipv4pool-ec2/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Sid": "AllocateIpAddress"
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:AllocateAddress"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ec2:*:*:elastic-ip/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:RequestTag/CreatedBy": "S3 On Outposts"
                         }
-                    },
+                    }, 
                     "Sid": "CreateTagsForAllocateIpAddress"
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:ModifyNetworkInterfaceAttribute",
-                        "ec2:CreateNetworkInterfacePermission",
-                        "ec2:DeleteNetworkInterface",
-                        "ec2:DeleteNetworkInterfacePermission",
-                        "ec2:DisassociateAddress",
-                        "ec2:ReleaseAddress",
+                        "ec2:ModifyNetworkInterfaceAttribute", 
+                        "ec2:CreateNetworkInterfacePermission", 
+                        "ec2:DeleteNetworkInterface", 
+                        "ec2:DeleteNetworkInterfacePermission", 
+                        "ec2:DisassociateAddress", 
+                        "ec2:ReleaseAddress", 
                         "ec2:AssociateAddress"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceTag/CreatedBy": "S3 On Outposts"
                         }
-                    },
+                    }, 
                     "Sid": "ReleaseVpcResources"
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateTags"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
-                            "ec2:CreateAction": [
-                                "CreateNetworkInterface",
-                                "AllocateAddress"
-                            ],
                             "aws:RequestTag/CreatedBy": [
                                 "S3 On Outposts"
+                            ], 
+                            "ec2:CreateAction": [
+                                "CreateNetworkInterface", 
+                                "AllocateAddress"
                             ]
                         }
-                    },
+                    }, 
                     "Sid": "CreateTags"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-10-03T20:32:36+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

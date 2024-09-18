@@ -1,74 +1,76 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2021-08-18T23:48:16Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateTags"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:network-interface/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:network-interface/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "ec2:CreateAction": "CreateNetworkInterface"
-                        },
+                        }, 
                         "ForAllValues:StringEquals": {
                             "aws:TagKeys": [
                                 "AmazonMemoryDBManaged"
                             ]
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateNetworkInterface"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:ec2:*:*:network-interface/*",
-                        "arn:aws:ec2:*:*:subnet/*",
+                        "arn:aws:ec2:*:*:network-interface/*", 
+                        "arn:aws:ec2:*:*:subnet/*", 
                         "arn:aws:ec2:*:*:security-group/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DeleteNetworkInterface",
+                        "ec2:DeleteNetworkInterface", 
                         "ec2:ModifyNetworkInterfaceAttribute"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:network-interface/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:network-interface/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "ec2:ResourceTag/AmazonMemoryDBManaged": "true"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DeleteNetworkInterface",
+                        "ec2:DeleteNetworkInterface", 
                         "ec2:ModifyNetworkInterfaceAttribute"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:security-group/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:security-group/*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeSecurityGroups",
-                        "ec2:DescribeNetworkInterfaces",
-                        "ec2:DescribeAvailabilityZones",
-                        "ec2:DescribeSubnets",
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:DescribeNetworkInterfaces", 
+                        "ec2:DescribeAvailabilityZones", 
+                        "ec2:DescribeSubnets", 
                         "ec2:DescribeVpcs"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "cloudwatch:PutMetricData"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "cloudwatch:namespace": "AWS/MemoryDB"
@@ -76,9 +78,7 @@
                     }
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2021-08-18T23:48:16+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

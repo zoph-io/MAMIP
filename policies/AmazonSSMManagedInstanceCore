@@ -1,55 +1,55 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2019-05-23T16:54:21Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ssm:DescribeAssociation",
-                        "ssm:GetDeployablePatchSnapshotForInstance",
-                        "ssm:GetDocument",
-                        "ssm:DescribeDocument",
-                        "ssm:GetManifest",
-                        "ssm:GetParameter",
-                        "ssm:GetParameters",
-                        "ssm:ListAssociations",
-                        "ssm:ListInstanceAssociations",
-                        "ssm:PutInventory",
-                        "ssm:PutComplianceItems",
-                        "ssm:PutConfigurePackageResult",
-                        "ssm:UpdateAssociationStatus",
-                        "ssm:UpdateInstanceAssociationStatus",
+                        "ssm:DescribeAssociation", 
+                        "ssm:GetDeployablePatchSnapshotForInstance", 
+                        "ssm:GetDocument", 
+                        "ssm:DescribeDocument", 
+                        "ssm:GetManifest", 
+                        "ssm:GetParameter", 
+                        "ssm:GetParameters", 
+                        "ssm:ListAssociations", 
+                        "ssm:ListInstanceAssociations", 
+                        "ssm:PutInventory", 
+                        "ssm:PutComplianceItems", 
+                        "ssm:PutConfigurePackageResult", 
+                        "ssm:UpdateAssociationStatus", 
+                        "ssm:UpdateInstanceAssociationStatus", 
                         "ssm:UpdateInstanceInformation"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ssmmessages:CreateControlChannel",
-                        "ssmmessages:CreateDataChannel",
-                        "ssmmessages:OpenControlChannel",
+                        "ssmmessages:CreateControlChannel", 
+                        "ssmmessages:CreateDataChannel", 
+                        "ssmmessages:OpenControlChannel", 
                         "ssmmessages:OpenDataChannel"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2messages:AcknowledgeMessage",
-                        "ec2messages:DeleteMessage",
-                        "ec2messages:FailMessage",
-                        "ec2messages:GetEndpoint",
-                        "ec2messages:GetMessages",
+                        "ec2messages:AcknowledgeMessage", 
+                        "ec2messages:DeleteMessage", 
+                        "ec2messages:FailMessage", 
+                        "ec2messages:GetEndpoint", 
+                        "ec2messages:GetMessages", 
                         "ec2messages:SendReply"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2019-05-23T16:54:21+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,29 +1,29 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-09-25T20:55:10Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": [
                         "ec2:ModifySnapshotAttribute"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "arn:aws:ec2:us-east-1::snapshot/snap-*"
-                },
+                    ], 
+                    "Resource": "arn:aws:ec2:us-east-1::snapshot/snap-*", 
+                    "Effect": "Allow"
+                }, 
                 {
                     "Action": [
-                        "ec2:DescribeImageAttribute",
-                        "ec2:DescribeImages",
-                        "ec2:DescribeSnapshotAttribute",
+                        "ec2:DescribeImageAttribute", 
+                        "ec2:DescribeImages", 
+                        "ec2:DescribeSnapshotAttribute", 
                         "ec2:ModifyImageAttribute"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-09-25T20:55:10+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

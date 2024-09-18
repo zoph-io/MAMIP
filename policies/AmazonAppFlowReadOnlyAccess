@@ -1,27 +1,27 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-02-28T20:42:58Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "appflow:DescribeConnector",
-                        "appflow:DescribeConnectors",
-                        "appflow:DescribeConnectorProfiles",
-                        "appflow:DescribeFlows",
-                        "appflow:DescribeFlowExecution",
-                        "appflow:DescribeConnectorFields",
-                        "appflow:ListConnectors",
-                        "appflow:ListConnectorFields",
+                        "appflow:DescribeConnector", 
+                        "appflow:DescribeConnectors", 
+                        "appflow:DescribeConnectorProfiles", 
+                        "appflow:DescribeFlows", 
+                        "appflow:DescribeFlowExecution", 
+                        "appflow:DescribeConnectorFields", 
+                        "appflow:ListConnectors", 
+                        "appflow:ListConnectorFields", 
                         "appflow:ListTagsForResource"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-02-28T20:42:58+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

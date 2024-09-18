@@ -1,32 +1,32 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-11-20T00:20:06Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AWSGlueSchemaRegistryReadonlyAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "glue:GetRegistry",
-                        "glue:ListRegistries",
-                        "glue:GetSchema",
-                        "glue:ListSchemas",
-                        "glue:GetSchemaByDefinition",
-                        "glue:GetSchemaVersion",
-                        "glue:ListSchemaVersions",
-                        "glue:GetSchemaVersionsDiff",
-                        "glue:CheckSchemaVersionValidity",
-                        "glue:QuerySchemaVersionMetadata",
+                        "glue:GetRegistry", 
+                        "glue:ListRegistries", 
+                        "glue:GetSchema", 
+                        "glue:ListSchemas", 
+                        "glue:GetSchemaByDefinition", 
+                        "glue:GetSchemaVersion", 
+                        "glue:ListSchemaVersions", 
+                        "glue:GetSchemaVersionsDiff", 
+                        "glue:CheckSchemaVersionValidity", 
+                        "glue:QuerySchemaVersionMetadata", 
                         "glue:GetTags"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AWSGlueSchemaRegistryReadonlyAccess"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-11-20T00:20:06+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

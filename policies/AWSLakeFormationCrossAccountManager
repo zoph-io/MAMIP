@@ -1,86 +1,86 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-03-22T18:51:56Z", 
+        "VersionId": "v6", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AllowCreateResourceShare",
-                    "Effect": "Allow",
                     "Action": [
                         "ram:CreateResourceShare"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLikeIfExists": {
                             "ram:RequestedResourceType": [
-                                "glue:Table",
-                                "glue:Database",
+                                "glue:Table", 
+                                "glue:Database", 
                                 "glue:Catalog"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "AllowCreateResourceShare"
+                }, 
                 {
-                    "Sid": "AllowManageResourceShare",
-                    "Effect": "Allow",
                     "Action": [
-                        "ram:UpdateResourceShare",
-                        "ram:DeleteResourceShare",
-                        "ram:AssociateResourceShare",
-                        "ram:DisassociateResourceShare",
+                        "ram:UpdateResourceShare", 
+                        "ram:DeleteResourceShare", 
+                        "ram:AssociateResourceShare", 
+                        "ram:DisassociateResourceShare", 
                         "ram:GetResourceShares"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "ram:ResourceShareName": [
                                 "LakeFormation*"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "AllowManageResourceShare"
+                }, 
                 {
-                    "Sid": "AllowManageResourceSharePermissions",
-                    "Effect": "Allow",
                     "Action": [
                         "ram:AssociateResourceSharePermission"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "ram:PermissionArn": [
                                 "arn:aws:ram::aws:permission/AWSRAMLFEnabled*"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "AllowManageResourceSharePermissions"
+                }, 
                 {
-                    "Sid": "AllowXAcctManagerPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "glue:PutResourcePolicy",
-                        "glue:DeleteResourcePolicy",
-                        "organizations:DescribeOrganization",
-                        "organizations:DescribeAccount",
-                        "ram:Get*",
+                        "glue:PutResourcePolicy", 
+                        "glue:DeleteResourcePolicy", 
+                        "organizations:DescribeOrganization", 
+                        "organizations:DescribeAccount", 
+                        "ram:Get*", 
                         "ram:List*"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowXAcctManagerPermissions"
+                }, 
                 {
-                    "Sid": "AllowOrganizationsPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "organizations:ListRoots",
-                        "organizations:ListAccountsForParent",
+                        "organizations:ListRoots", 
+                        "organizations:ListAccountsForParent", 
                         "organizations:ListOrganizationalUnitsForParent"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowOrganizationsPermissions"
                 }
             ]
-        },
-        "VersionId": "v6",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-03-22T18:51:56+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

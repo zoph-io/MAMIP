@@ -1,50 +1,50 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-11-08T19:05:45Z", 
+        "VersionId": "v4", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "IPAMDiscoveryDescribeActions",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeAccountAttributes",
-                        "ec2:DescribeAddresses",
-                        "ec2:DescribeByoipCidrs",
-                        "ec2:DescribeIpv6Pools",
-                        "ec2:DescribeNetworkInterfaces",
-                        "ec2:DescribePublicIpv4Pools",
-                        "ec2:DescribeSecurityGroups",
-                        "ec2:DescribeSecurityGroupRules",
-                        "ec2:DescribeSubnets",
-                        "ec2:DescribeVpcs",
-                        "ec2:DescribeVpnConnections",
-                        "ec2:GetIpamDiscoveredAccounts",
-                        "ec2:GetIpamDiscoveredPublicAddresses",
-                        "ec2:GetIpamDiscoveredResourceCidrs",
-                        "globalaccelerator:ListAccelerators",
-                        "globalaccelerator:ListByoipCidrs",
-                        "organizations:DescribeAccount",
-                        "organizations:DescribeOrganization",
-                        "organizations:ListAccounts",
+                        "ec2:DescribeAccountAttributes", 
+                        "ec2:DescribeAddresses", 
+                        "ec2:DescribeByoipCidrs", 
+                        "ec2:DescribeIpv6Pools", 
+                        "ec2:DescribeNetworkInterfaces", 
+                        "ec2:DescribePublicIpv4Pools", 
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:DescribeSecurityGroupRules", 
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeVpcs", 
+                        "ec2:DescribeVpnConnections", 
+                        "ec2:GetIpamDiscoveredAccounts", 
+                        "ec2:GetIpamDiscoveredPublicAddresses", 
+                        "ec2:GetIpamDiscoveredResourceCidrs", 
+                        "globalaccelerator:ListAccelerators", 
+                        "globalaccelerator:ListByoipCidrs", 
+                        "organizations:DescribeAccount", 
+                        "organizations:DescribeOrganization", 
+                        "organizations:ListAccounts", 
                         "organizations:ListDelegatedAdministrators"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "IPAMDiscoveryDescribeActions"
+                }, 
                 {
-                    "Sid": "CloudWatchMetricsPublishActions",
-                    "Effect": "Allow",
-                    "Action": "cloudwatch:PutMetricData",
-                    "Resource": "*",
+                    "Action": "cloudwatch:PutMetricData", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "cloudwatch:namespace": "AWS/IPAM"
                         }
-                    }
+                    }, 
+                    "Sid": "CloudWatchMetricsPublishActions"
                 }
             ]
-        },
-        "VersionId": "v4",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-11-08T19:05:45+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

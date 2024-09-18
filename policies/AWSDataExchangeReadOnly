@@ -1,50 +1,50 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-07-22T13:36:03Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "DataExchangeReadOnlyActions",
-                    "Effect": "Allow",
                     "Action": [
-                        "dataexchange:GetAsset",
-                        "dataexchange:GetDataSet",
-                        "dataexchange:GetEventAction",
-                        "dataexchange:GetJob",
-                        "dataexchange:GetRevision",
-                        "dataexchange:ListDataSetRevisions",
-                        "dataexchange:ListDataSets",
-                        "dataexchange:ListEventActions",
-                        "dataexchange:ListJobs",
-                        "dataexchange:ListRevisionAssets",
+                        "dataexchange:GetAsset", 
+                        "dataexchange:GetDataSet", 
+                        "dataexchange:GetEventAction", 
+                        "dataexchange:GetJob", 
+                        "dataexchange:GetRevision", 
+                        "dataexchange:ListDataSetRevisions", 
+                        "dataexchange:ListDataSets", 
+                        "dataexchange:ListEventActions", 
+                        "dataexchange:ListJobs", 
+                        "dataexchange:ListRevisionAssets", 
                         "dataexchange:ListTagsForResource"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DataExchangeReadOnlyActions"
+                }, 
                 {
-                    "Sid": "AWSMarketplaceReadOnlyActions",
-                    "Effect": "Allow",
                     "Action": [
-                        "aws-marketplace:ViewSubscriptions",
-                        "aws-marketplace:GetAgreementRequest",
-                        "aws-marketplace:ListAgreementRequests",
-                        "aws-marketplace:GetAgreementApprovalRequest",
-                        "aws-marketplace:ListAgreementApprovalRequests",
-                        "aws-marketplace:DescribeEntity",
-                        "aws-marketplace:ListEntities",
-                        "aws-marketplace:DescribeChangeSet",
-                        "aws-marketplace:ListChangeSets",
-                        "aws-marketplace:SearchAgreements",
-                        "aws-marketplace:GetAgreementTerms",
-                        "aws-marketplace:ListPrivateListings",
+                        "aws-marketplace:ViewSubscriptions", 
+                        "aws-marketplace:GetAgreementRequest", 
+                        "aws-marketplace:ListAgreementRequests", 
+                        "aws-marketplace:GetAgreementApprovalRequest", 
+                        "aws-marketplace:ListAgreementApprovalRequests", 
+                        "aws-marketplace:DescribeEntity", 
+                        "aws-marketplace:ListEntities", 
+                        "aws-marketplace:DescribeChangeSet", 
+                        "aws-marketplace:ListChangeSets", 
+                        "aws-marketplace:SearchAgreements", 
+                        "aws-marketplace:GetAgreementTerms", 
+                        "aws-marketplace:ListPrivateListings", 
                         "aws-marketplace:ListTagsForResource"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AWSMarketplaceReadOnlyActions"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-07-22T13:36:03+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

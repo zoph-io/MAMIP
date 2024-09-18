@@ -1,71 +1,71 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-09-30T19:42:56Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "cloudwatch:PutMetricData"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "cloudwatch:namespace": "AWS/AppIntegrations"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "appflow:DescribeConnectorEntity",
+                        "appflow:DescribeConnectorEntity", 
                         "appflow:ListConnectorEntities"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "appflow:DescribeConnectorProfiles",
+                        "appflow:DescribeConnectorProfiles", 
                         "appflow:UseConnectorProfile"
-                    ],
-                    "Resource": "arn:aws:appflow:*:*:connector-profile/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:appflow:*:*:connector-profile/*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "appflow:DeleteFlow",
-                        "appflow:DescribeFlow",
-                        "appflow:DescribeFlowExecutionRecords",
-                        "appflow:StartFlow",
-                        "appflow:StopFlow",
+                        "appflow:DeleteFlow", 
+                        "appflow:DescribeFlow", 
+                        "appflow:DescribeFlowExecutionRecords", 
+                        "appflow:StartFlow", 
+                        "appflow:StopFlow", 
                         "appflow:UpdateFlow"
-                    ],
+                    ], 
+                    "Resource": "arn:aws:appflow:*:*:flow/FlowCreatedByAppIntegrations-*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceTag/AppIntegrationsManaged": "true"
                         }
-                    },
-                    "Resource": "arn:aws:appflow:*:*:flow/FlowCreatedByAppIntegrations-*"
-                },
+                    }
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "appflow:TagResource"
-                    ],
+                    ], 
+                    "Resource": "arn:aws:appflow:*:*:flow/FlowCreatedByAppIntegrations-*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAllValues:StringEquals": {
                             "aws:TagKeys": [
                                 "AppIntegrationsManaged"
                             ]
                         }
-                    },
-                    "Resource": "arn:aws:appflow:*:*:flow/FlowCreatedByAppIntegrations-*"
+                    }
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-09-30T19:42:56+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,78 +1,78 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-01-25T16:16:02Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "Clusters",
-                    "Effect": "Allow",
                     "Action": [
-                        "ecs:DescribeClusters",
+                        "ecs:DescribeClusters", 
                         "ecs:ListContainerInstances"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ecs:*:*:cluster/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "Clusters"
+                }, 
                 {
-                    "Sid": "Tasks",
-                    "Effect": "Allow",
                     "Action": [
-                        "ecs:DescribeTasks",
+                        "ecs:DescribeTasks", 
                         "ecs:StopTask"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ecs:*:*:task/*/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "Tasks"
+                }, 
                 {
-                    "Sid": "ContainerInstances",
-                    "Effect": "Allow",
                     "Action": [
                         "ecs:UpdateContainerInstancesState"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ecs:*:*:container-instance/*/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "ContainerInstances"
+                }, 
                 {
-                    "Sid": "ListTasks",
-                    "Effect": "Allow",
                     "Action": [
                         "ecs:ListTasks"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ListTasks"
+                }, 
                 {
-                    "Sid": "SSMSend",
-                    "Effect": "Allow",
-                    "Action": "ssm:SendCommand",
+                    "Action": "ssm:SendCommand", 
                     "Resource": [
-                        "arn:aws:ssm:*:*:managed-instance/*",
+                        "arn:aws:ssm:*:*:managed-instance/*", 
                         "arn:aws:ssm:*:*:document/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "SSMSend"
+                }, 
                 {
-                    "Sid": "SSMList",
-                    "Effect": "Allow",
                     "Action": [
-                        "ssm:ListCommands",
+                        "ssm:ListCommands", 
                         "ssm:CancelCommand"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "SSMList"
+                }, 
                 {
-                    "Sid": "TargetResolutionByTags",
-                    "Effect": "Allow",
                     "Action": [
                         "tag:GetResources"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "TargetResolutionByTags"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-01-25T16:16:02+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

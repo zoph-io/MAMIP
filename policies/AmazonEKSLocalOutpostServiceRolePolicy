@@ -1,247 +1,247 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-10-24T16:24:51Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeVpcs",
-                        "ec2:DescribeSubnets",
-                        "ec2:DescribeRouteTables",
-                        "ec2:DescribeAddresses",
-                        "ec2:DescribeImages",
-                        "ec2:DescribeInstances",
-                        "ec2:DescribeNetworkInterfaces",
-                        "ec2:DescribeNetworkInterfaceAttribute",
-                        "ec2:DescribeSecurityGroups",
-                        "ec2:DescribeVpcAttribute",
+                        "ec2:DescribeVpcs", 
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeRouteTables", 
+                        "ec2:DescribeAddresses", 
+                        "ec2:DescribeImages", 
+                        "ec2:DescribeInstances", 
+                        "ec2:DescribeNetworkInterfaces", 
+                        "ec2:DescribeNetworkInterfaceAttribute", 
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:DescribeVpcAttribute", 
                         "ec2:DescribePlacementGroups"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateNetworkInterface"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:network-interface/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:network-interface/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:RequestTag/eks-local:controlplane-name": "*"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateNetworkInterface"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:ec2:*:*:security-group/*",
+                        "arn:aws:ec2:*:*:security-group/*", 
                         "arn:aws:ec2:*:*:subnet/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:ModifyNetworkInterfaceAttribute"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:ec2:*:*:instance/*",
-                        "arn:aws:ec2:*:*:security-group/*",
+                        "arn:aws:ec2:*:*:instance/*", 
+                        "arn:aws:ec2:*:*:security-group/*", 
                         "arn:aws:ec2:*:*:network-interface/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:ResourceTag/eks-local:controlplane-name": "*"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateSecurityGroup"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:security-group/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:security-group/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:RequestTag/eks-local:controlplane-name": "*"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateSecurityGroup"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:vpc/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:vpc/*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "ec2:RunInstances",
-                    "Resource": "arn:aws:ec2:*:*:instance/*",
+                    "Action": "ec2:RunInstances", 
+                    "Resource": "arn:aws:ec2:*:*:instance/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:RequestTag/eks-local:controlplane-name": "*"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "ec2:RunInstances",
+                    "Action": "ec2:RunInstances", 
                     "Resource": [
-                        "arn:aws:ec2:*:*:volume/*",
-                        "arn:aws:ec2:*:*:image/*",
-                        "arn:aws:ec2:*:*:launch-template/*",
-                        "arn:aws:ec2:*:*:network-interface/*",
-                        "arn:aws:ec2:*:*:security-group/*",
-                        "arn:aws:ec2:*:*:subnet/*",
+                        "arn:aws:ec2:*:*:volume/*", 
+                        "arn:aws:ec2:*:*:image/*", 
+                        "arn:aws:ec2:*:*:launch-template/*", 
+                        "arn:aws:ec2:*:*:network-interface/*", 
+                        "arn:aws:ec2:*:*:security-group/*", 
+                        "arn:aws:ec2:*:*:subnet/*", 
                         "arn:aws:ec2:*:*:placement-group/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:AuthorizeSecurityGroupIngress",
-                        "ec2:RevokeSecurityGroupIngress",
-                        "ec2:DeleteNetworkInterface",
-                        "ec2:DeleteSecurityGroup",
-                        "ec2:TerminateInstances",
+                        "ec2:AuthorizeSecurityGroupIngress", 
+                        "ec2:RevokeSecurityGroupIngress", 
+                        "ec2:DeleteNetworkInterface", 
+                        "ec2:DeleteSecurityGroup", 
+                        "ec2:TerminateInstances", 
                         "ec2:GetConsoleOutput"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:ResourceTag/eks-local:controlplane-name": "*"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "ec2:CreateTags",
+                    "Action": "ec2:CreateTags", 
                     "Resource": [
-                        "arn:aws:ec2:*:*:security-group/*",
-                        "arn:aws:ec2:*:*:network-interface/*",
+                        "arn:aws:ec2:*:*:security-group/*", 
+                        "arn:aws:ec2:*:*:network-interface/*", 
                         "arn:aws:ec2:*:*:instance/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
-                        "ForAnyValue:StringLike": {
-                            "aws:TagKeys": [
-                                "kubernetes.io/cluster/*",
-                                "eks*"
-                            ]
-                        },
                         "StringEquals": {
                             "ec2:CreateAction": [
-                                "CreateNetworkInterface",
-                                "CreateSecurityGroup",
+                                "CreateNetworkInterface", 
+                                "CreateSecurityGroup", 
                                 "RunInstances"
                             ]
-                        }
-                    }
-                },
-                {
-                    "Effect": "Allow",
-                    "Action": [
-                        "secretsmanager:TagResource"
-                    ],
-                    "Resource": "arn:aws:secretsmanager:*:*:secret:eks-local.cluster.x-k8s.io/*",
-                    "Condition": {
+                        }, 
                         "ForAnyValue:StringLike": {
                             "aws:TagKeys": [
-                                "kubernetes.io/cluster/*",
+                                "kubernetes.io/cluster/*", 
                                 "eks*"
                             ]
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
+                    "Action": [
+                        "secretsmanager:TagResource"
+                    ], 
+                    "Resource": "arn:aws:secretsmanager:*:*:secret:eks-local.cluster.x-k8s.io/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ForAnyValue:StringLike": {
+                            "aws:TagKeys": [
+                                "kubernetes.io/cluster/*", 
+                                "eks*"
+                            ]
+                        }
+                    }
+                }, 
+                {
                     "Action": [
                         "secretsmanager:CreateSecret"
-                    ],
-                    "Resource": "arn:aws:secretsmanager:*:*:secret:eks-local.cluster.x-k8s.io/*",
+                    ], 
+                    "Resource": "arn:aws:secretsmanager:*:*:secret:eks-local.cluster.x-k8s.io/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:RequestTag/eks-local:controlplane-name": "*"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "secretsmanager:DeleteSecret",
-                    "Resource": "arn:aws:secretsmanager:*:*:secret:eks-local.cluster.x-k8s.io/*",
+                    "Action": "secretsmanager:DeleteSecret", 
+                    "Resource": "arn:aws:secretsmanager:*:*:secret:eks-local.cluster.x-k8s.io/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:ResourceTag/eks-local:controlplane-name": "*"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "secretsmanager:DescribeSecret",
-                    "Resource": "arn:aws:secretsmanager:*:*:secret:eks-local.cluster.x-k8s.io/*"
-                },
+                    "Action": "secretsmanager:DescribeSecret", 
+                    "Resource": "arn:aws:secretsmanager:*:*:secret:eks-local.cluster.x-k8s.io/*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "iam:PassRole"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:PassedToService": "ec2.amazonaws.com"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "iam:GetInstanceProfile",
-                        "iam:DeleteInstanceProfile",
+                        "iam:GetInstanceProfile", 
+                        "iam:DeleteInstanceProfile", 
                         "iam:RemoveRoleFromInstanceProfile"
-                    ],
-                    "Resource": "arn:aws:iam::*:instance-profile/eks-local-*"
-                },
+                    ], 
+                    "Resource": "arn:aws:iam::*:instance-profile/eks-local-*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ssm:StartSession"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:instance/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:instance/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "ssm:resourceTag/eks-local:controlplane-name": "*"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ssm:StartSession"
-                    ],
-                    "Resource": "arn:aws:ssm:*::document/AmazonEKS-ControlPlaneInstanceProxy"
-                },
+                    ], 
+                    "Resource": "arn:aws:ssm:*::document/AmazonEKS-ControlPlaneInstanceProxy", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ssm:ResumeSession",
+                        "ssm:ResumeSession", 
                         "ssm:TerminateSession"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "outposts:GetOutpost"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-10-24T16:24:51+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

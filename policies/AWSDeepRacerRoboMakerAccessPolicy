@@ -1,86 +1,86 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2019-02-28T21:59:58Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "robomaker:*"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudwatch:PutMetricData",
-                        "ec2:CreateNetworkInterfacePermission",
-                        "ec2:DeleteNetworkInterface",
-                        "ec2:DescribeNetworkInterfaces",
-                        "ec2:DescribeSubnets",
-                        "ec2:DescribeSecurityGroups",
+                        "cloudwatch:PutMetricData", 
+                        "ec2:CreateNetworkInterfacePermission", 
+                        "ec2:DeleteNetworkInterface", 
+                        "ec2:DescribeNetworkInterfaces", 
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeSecurityGroups", 
                         "ec2:DescribeVpcs"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:CreateLogGroup",
-                        "logs:CreateLogStream",
-                        "logs:DescribeLogStreams",
+                        "logs:CreateLogGroup", 
+                        "logs:CreateLogStream", 
+                        "logs:DescribeLogStreams", 
                         "logs:PutLogEvents"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:logs:*:*:log-group:/aws/robomaker/SimulationJobs",
+                        "arn:aws:logs:*:*:log-group:/aws/robomaker/SimulationJobs", 
                         "arn:aws:logs:*:*:log-group:/aws/robomaker/SimulationJobs:log-stream:*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:GetObject",
-                        "s3:GetBucketLocation",
-                        "s3:ListBucket",
-                        "s3:ListAllMyBuckets",
+                        "s3:GetObject", 
+                        "s3:GetBucketLocation", 
+                        "s3:ListBucket", 
+                        "s3:ListAllMyBuckets", 
                         "s3:PutObject"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:s3:::*DeepRacer*",
-                        "arn:aws:s3:::*Deepracer*",
-                        "arn:aws:s3:::*deepracer*",
+                        "arn:aws:s3:::*DeepRacer*", 
+                        "arn:aws:s3:::*Deepracer*", 
+                        "arn:aws:s3:::*deepracer*", 
                         "arn:aws:s3:::dr-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "s3:GetObject"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEqualsIgnoreCase": {
                             "s3:ExistingObjectTag/DeepRacer": "true"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "kinesisvideo:CreateStream",
-                        "kinesisvideo:DescribeStream",
-                        "kinesisvideo:GetDataEndpoint",
-                        "kinesisvideo:PutMedia",
+                        "kinesisvideo:CreateStream", 
+                        "kinesisvideo:DescribeStream", 
+                        "kinesisvideo:GetDataEndpoint", 
+                        "kinesisvideo:PutMedia", 
                         "kinesisvideo:TagStream"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:kinesisvideo:*:*:stream/dr-*"
-                    ]
+                    ], 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2019-02-28T21:59:58+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

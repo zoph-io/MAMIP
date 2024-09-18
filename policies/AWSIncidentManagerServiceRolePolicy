@@ -1,49 +1,49 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-12-05T02:11:58Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "UpdateIncidentRecordPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "ssm-incidents:ListIncidentRecords",
+                        "ssm-incidents:ListIncidentRecords", 
                         "ssm-incidents:CreateTimelineEvent"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "UpdateIncidentRecordPermissions"
+                }, 
                 {
-                    "Sid": "RelatedOpsItemPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "ssm:CreateOpsItem",
+                        "ssm:CreateOpsItem", 
                         "ssm:AssociateOpsItemRelatedItem"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "RelatedOpsItemPermissions"
+                }, 
                 {
-                    "Sid": "IncidentEngagementPermissions",
-                    "Effect": "Allow",
-                    "Action": "ssm-contacts:StartEngagement",
-                    "Resource": "*"
-                },
+                    "Action": "ssm-contacts:StartEngagement", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "IncidentEngagementPermissions"
+                }, 
                 {
-                    "Sid": "PutMetricDataPermission",
-                    "Effect": "Allow",
                     "Action": [
                         "cloudwatch:PutMetricData"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "cloudwatch:namespace": "AWS/IncidentManager"
                         }
-                    }
+                    }, 
+                    "Sid": "PutMetricDataPermission"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-12-05T02:11:58+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

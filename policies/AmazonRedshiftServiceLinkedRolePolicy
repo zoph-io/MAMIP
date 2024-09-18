@@ -1,237 +1,237 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-03-15T20:00:47Z", 
+        "VersionId": "v13", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "Ec2VpcPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeVpcs",
-                        "ec2:DescribeSubnets",
-                        "ec2:DescribeNetworkInterfaces",
-                        "ec2:DescribeAddresses",
-                        "ec2:AssociateAddress",
-                        "ec2:DisassociateAddress",
-                        "ec2:CreateNetworkInterface",
-                        "ec2:DeleteNetworkInterface",
-                        "ec2:ModifyNetworkInterfaceAttribute",
-                        "ec2:CreateVpcEndpoint",
-                        "ec2:DeleteVpcEndpoints",
-                        "ec2:DescribeVpcEndpoints",
+                        "ec2:DescribeVpcs", 
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeNetworkInterfaces", 
+                        "ec2:DescribeAddresses", 
+                        "ec2:AssociateAddress", 
+                        "ec2:DisassociateAddress", 
+                        "ec2:CreateNetworkInterface", 
+                        "ec2:DeleteNetworkInterface", 
+                        "ec2:ModifyNetworkInterfaceAttribute", 
+                        "ec2:CreateVpcEndpoint", 
+                        "ec2:DeleteVpcEndpoints", 
+                        "ec2:DescribeVpcEndpoints", 
                         "ec2:ModifyVpcEndpoint"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "Ec2VpcPermissions"
+                }, 
                 {
-                    "Sid": "PublicAccessCreateEip",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:AllocateAddress"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ec2:*:*:elastic-ip/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:RequestTag/Redshift": "true"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "PublicAccessCreateEip"
+                }, 
                 {
-                    "Sid": "PublicAccessReleaseEip",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:ReleaseAddress"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ec2:*:*:elastic-ip/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceTag/Redshift": "true"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "PublicAccessReleaseEip"
+                }, 
                 {
-                    "Sid": "EnableCreationAndManagementOfRedshiftCloudwatchLogGroups",
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:CreateLogGroup",
+                        "logs:CreateLogGroup", 
                         "logs:PutRetentionPolicy"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:logs:*:*:log-group:/aws/redshift/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "EnableCreationAndManagementOfRedshiftCloudwatchLogGroups"
+                }, 
                 {
-                    "Sid": "EnableCreationAndManagementOfRedshiftCloudwatchLogStreams",
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:CreateLogStream",
-                        "logs:PutLogEvents",
-                        "logs:DescribeLogStreams",
+                        "logs:CreateLogStream", 
+                        "logs:PutLogEvents", 
+                        "logs:DescribeLogStreams", 
                         "logs:GetLogEvents"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:logs:*:*:log-group:/aws/redshift/*:log-stream:*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "EnableCreationAndManagementOfRedshiftCloudwatchLogStreams"
+                }, 
                 {
-                    "Sid": "CreateSecurityGroupWithTags",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateSecurityGroup"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ec2:*:*:security-group/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:RequestTag/Redshift": "true"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "CreateSecurityGroupWithTags"
+                }, 
                 {
-                    "Sid": "SecurityGroupPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:AuthorizeSecurityGroupEgress",
-                        "ec2:AuthorizeSecurityGroupIngress",
-                        "ec2:RevokeSecurityGroupEgress",
-                        "ec2:RevokeSecurityGroupIngress",
-                        "ec2:ModifySecurityGroupRules",
+                        "ec2:AuthorizeSecurityGroupEgress", 
+                        "ec2:AuthorizeSecurityGroupIngress", 
+                        "ec2:RevokeSecurityGroupEgress", 
+                        "ec2:RevokeSecurityGroupIngress", 
+                        "ec2:ModifySecurityGroupRules", 
                         "ec2:DeleteSecurityGroup"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ec2:*:*:security-group/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceTag/Redshift": "true"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "SecurityGroupPermissions"
+                }, 
                 {
-                    "Sid": "CreateSecurityGroup",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateSecurityGroup"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ec2:*:*:vpc/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "CreateSecurityGroup"
+                }, 
                 {
-                    "Sid": "CreateTagsOnResources",
-                    "Effect": "Allow",
-                    "Action": "ec2:CreateTags",
+                    "Action": "ec2:CreateTags", 
                     "Resource": [
-                        "arn:aws:ec2:*:*:subnet/*",
-                        "arn:aws:ec2:*:*:route-table/*",
-                        "arn:aws:ec2:*:*:security-group/*",
-                        "arn:aws:ec2:*:*:vpc/*",
-                        "arn:aws:ec2:*:*:internet-gateway/*",
+                        "arn:aws:ec2:*:*:subnet/*", 
+                        "arn:aws:ec2:*:*:route-table/*", 
+                        "arn:aws:ec2:*:*:security-group/*", 
+                        "arn:aws:ec2:*:*:vpc/*", 
+                        "arn:aws:ec2:*:*:internet-gateway/*", 
                         "arn:aws:ec2:*:*:elastic-ip/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "ec2:CreateAction": [
-                                "CreateVpc",
-                                "CreateSecurityGroup",
-                                "CreateSubnet",
-                                "CreateInternetGateway",
-                                "CreateRouteTable",
+                                "CreateVpc", 
+                                "CreateSecurityGroup", 
+                                "CreateSubnet", 
+                                "CreateInternetGateway", 
+                                "CreateRouteTable", 
                                 "AllocateAddress"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "CreateTagsOnResources"
+                }, 
                 {
-                    "Sid": "VPCPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeVpcAttribute",
-                        "ec2:DescribeSecurityGroups",
-                        "ec2:DescribeInternetGateways",
-                        "ec2:DescribeSecurityGroupRules",
-                        "ec2:DescribeAvailabilityZones",
-                        "ec2:DescribeNetworkAcls",
+                        "ec2:DescribeVpcAttribute", 
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:DescribeInternetGateways", 
+                        "ec2:DescribeSecurityGroupRules", 
+                        "ec2:DescribeAvailabilityZones", 
+                        "ec2:DescribeNetworkAcls", 
                         "ec2:DescribeRouteTables"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "VPCPermissions"
+                }, 
                 {
-                    "Sid": "CloudWatch",
-                    "Effect": "Allow",
                     "Action": [
                         "cloudwatch:PutMetricData"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "cloudwatch:namespace": [
-                                "AWS/Redshift-Serverless",
+                                "AWS/Redshift-Serverless", 
                                 "AWS/Redshift"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "CloudWatch"
+                }, 
                 {
-                    "Sid": "SecretManager",
-                    "Effect": "Allow",
                     "Action": [
-                        "secretsmanager:DescribeSecret",
-                        "secretsmanager:DeleteSecret",
-                        "secretsmanager:PutSecretValue",
-                        "secretsmanager:UpdateSecret",
-                        "secretsmanager:UpdateSecretVersionStage",
+                        "secretsmanager:DescribeSecret", 
+                        "secretsmanager:DeleteSecret", 
+                        "secretsmanager:PutSecretValue", 
+                        "secretsmanager:UpdateSecret", 
+                        "secretsmanager:UpdateSecretVersionStage", 
                         "secretsmanager:RotateSecret"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:secretsmanager:*:*:secret:redshift!*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
-                            "secretsmanager:ResourceTag/aws:secretsmanager:owningService": "redshift",
+                            "secretsmanager:ResourceTag/aws:secretsmanager:owningService": "redshift", 
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "SecretManager"
+                }, 
                 {
-                    "Sid": "SecretsManagerRandomPassword",
-                    "Effect": "Allow",
                     "Action": [
                         "secretsmanager:GetRandomPassword"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "SecretsManagerRandomPassword"
+                }, 
                 {
-                    "Sid": "IPV6Permissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:AssignIpv6Addresses",
+                        "ec2:AssignIpv6Addresses", 
                         "ec2:UnassignIpv6Addresses"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ec2:*:*:network-interface/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "IPV6Permissions"
+                }, 
                 {
-                    "Sid": "ServiceQuotasToCheckCustomerLimits",
-                    "Effect": "Allow",
                     "Action": [
                         "servicequotas:GetServiceQuota"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:servicequotas:*:*:ec2/L-0263D0A3",
+                        "arn:aws:servicequotas:*:*:ec2/L-0263D0A3", 
                         "arn:aws:servicequotas:*:*:vpc/L-29B6F2EB"
-                    ]
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "ServiceQuotasToCheckCustomerLimits"
                 }
             ]
-        },
-        "VersionId": "v13",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-03-15T20:00:47+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

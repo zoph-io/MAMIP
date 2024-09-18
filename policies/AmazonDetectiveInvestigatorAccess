@@ -1,68 +1,68 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-11-27T03:13:25Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "DetectivePermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "detective:BatchGetGraphMemberDatasources",
-                        "detective:BatchGetMembershipDatasources",
-                        "detective:DescribeOrganizationConfiguration",
-                        "detective:GetFreeTrialEligibility",
-                        "detective:GetGraphIngestState",
-                        "detective:GetMembers",
-                        "detective:GetPricingInformation",
-                        "detective:GetUsageInformation",
-                        "detective:ListDatasourcePackages",
-                        "detective:ListGraphs",
-                        "detective:ListHighDegreeEntities",
-                        "detective:ListInvitations",
-                        "detective:ListMembers",
-                        "detective:ListOrganizationAdminAccount",
-                        "detective:ListTagsForResource",
-                        "detective:SearchGraph",
-                        "detective:StartInvestigation",
-                        "detective:GetInvestigation",
-                        "detective:ListInvestigations",
-                        "detective:UpdateInvestigationState",
-                        "detective:ListIndicators",
+                        "detective:BatchGetGraphMemberDatasources", 
+                        "detective:BatchGetMembershipDatasources", 
+                        "detective:DescribeOrganizationConfiguration", 
+                        "detective:GetFreeTrialEligibility", 
+                        "detective:GetGraphIngestState", 
+                        "detective:GetMembers", 
+                        "detective:GetPricingInformation", 
+                        "detective:GetUsageInformation", 
+                        "detective:ListDatasourcePackages", 
+                        "detective:ListGraphs", 
+                        "detective:ListHighDegreeEntities", 
+                        "detective:ListInvitations", 
+                        "detective:ListMembers", 
+                        "detective:ListOrganizationAdminAccount", 
+                        "detective:ListTagsForResource", 
+                        "detective:SearchGraph", 
+                        "detective:StartInvestigation", 
+                        "detective:GetInvestigation", 
+                        "detective:ListInvestigations", 
+                        "detective:UpdateInvestigationState", 
+                        "detective:ListIndicators", 
                         "detective:InvokeAssistant"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DetectivePermissions"
+                }, 
                 {
-                    "Sid": "OrganizationsPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "organizations:DescribeOrganization",
+                        "organizations:DescribeOrganization", 
                         "organizations:ListAccounts"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "OrganizationsPermissions"
+                }, 
                 {
-                    "Sid": "GuardDutyPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "guardduty:ArchiveFindings",
-                        "guardduty:GetFindings",
+                        "guardduty:ArchiveFindings", 
+                        "guardduty:GetFindings", 
                         "guardduty:ListDetectors"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "GuardDutyPermissions"
+                }, 
                 {
-                    "Sid": "SecurityHubPermissions",
-                    "Effect": "Allow",
                     "Action": [
                         "securityHub:GetFindings"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "SecurityHubPermissions"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-11-27T03:13:25+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

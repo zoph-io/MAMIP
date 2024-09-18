@@ -1,33 +1,33 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-09-06T20:26:09Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "storagegateway:*"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeSnapshots",
+                        "ec2:DescribeSnapshots", 
                         "ec2:DeleteSnapshot"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Sid": "fetchStorageGatewayParams",
-                    "Effect": "Allow",
-                    "Action": "ssm:GetParameters",
-                    "Resource": "arn:aws:ssm:*::parameter/aws/service/storagegateway/*"
+                    "Action": "ssm:GetParameters", 
+                    "Resource": "arn:aws:ssm:*::parameter/aws/service/storagegateway/*", 
+                    "Effect": "Allow", 
+                    "Sid": "fetchStorageGatewayParams"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-09-06T20:26:09+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,162 +1,164 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-05-16T21:16:38Z", 
+        "VersionId": "v10", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:AttachVolume",
-                        "ec2:RebootInstances",
-                        "ec2:StartInstances",
+                        "ec2:AttachVolume", 
+                        "ec2:RebootInstances", 
+                        "ec2:StartInstances", 
                         "ec2:StopInstances"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:ec2:*:*:volume/*",
+                        "arn:aws:ec2:*:*:volume/*", 
                         "arn:aws:ec2:*:*:instance/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "ec2:ResourceTag/LaunchWizardResourceGroupID": "*"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:ReplaceRoute"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:route-table/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:route-table/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "ec2:ResourceTag/LaunchWizardApplicationType": "*"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeAddresses",
-                        "ec2:AssociateAddress",
-                        "ec2:DescribeInstances",
-                        "ec2:DescribeImages",
-                        "ec2:DescribeRegions",
-                        "ec2:DescribeVolumes",
-                        "ec2:DescribeRouteTables",
-                        "ec2:ModifyInstanceAttribute",
-                        "cloudwatch:GetMetricStatistics",
-                        "cloudwatch:PutMetricData",
+                        "ec2:DescribeAddresses", 
+                        "ec2:AssociateAddress", 
+                        "ec2:DescribeInstances", 
+                        "ec2:DescribeImages", 
+                        "ec2:DescribeRegions", 
+                        "ec2:DescribeVolumes", 
+                        "ec2:DescribeRouteTables", 
+                        "ec2:ModifyInstanceAttribute", 
+                        "cloudwatch:GetMetricStatistics", 
+                        "cloudwatch:PutMetricData", 
                         "ssm:GetCommandInvocation"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:CreateTags",
+                        "ec2:CreateTags", 
                         "ec2:CreateVolume"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:volume/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:volume/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAllValues:StringEquals": {
                             "aws:TagKeys": [
-                                "LaunchWizardResourceGroupID",
+                                "LaunchWizardResourceGroupID", 
                                 "LaunchWizardApplicationType"
                             ]
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:GetObject",
-                        "s3:ListBucket",
-                        "s3:PutObject",
-                        "s3:PutObjectTagging",
-                        "s3:GetBucketLocation",
-                        "logs:PutLogEvents",
-                        "logs:DescribeLogGroups",
+                        "s3:GetObject", 
+                        "s3:ListBucket", 
+                        "s3:PutObject", 
+                        "s3:PutObjectTagging", 
+                        "s3:GetBucketLocation", 
+                        "logs:PutLogEvents", 
+                        "logs:DescribeLogGroups", 
                         "logs:DescribeLogStreams"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:logs:*:*:*",
-                        "arn:aws:s3:::launchwizard*",
+                        "arn:aws:logs:*:*:*", 
+                        "arn:aws:s3:::launchwizard*", 
                         "arn:aws:s3:::aws-sap-data-provider/config.properties"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "logs:Create*",
-                    "Resource": "arn:aws:logs:*:*:*"
-                },
+                    "Action": "logs:Create*", 
+                    "Resource": "arn:aws:logs:*:*:*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:Describe*",
-                        "cloudformation:DescribeStackResources",
-                        "cloudformation:SignalResource",
-                        "cloudformation:DescribeStackResource",
+                        "ec2:Describe*", 
+                        "cloudformation:DescribeStackResources", 
+                        "cloudformation:SignalResource", 
+                        "cloudformation:DescribeStackResource", 
                         "cloudformation:DescribeStacks"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAllValues:StringEquals": {
                             "aws:TagKeys": "LaunchWizardResourceGroupID"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "dynamodb:BatchGetItem",
-                        "dynamodb:PutItem",
-                        "sqs:ReceiveMessage",
-                        "sqs:SendMessage",
-                        "dynamodb:Scan",
-                        "s3:ListBucket",
-                        "dynamodb:Query",
-                        "dynamodb:UpdateItem",
-                        "dynamodb:DeleteTable",
-                        "dynamodb:CreateTable",
-                        "s3:GetObject",
-                        "dynamodb:DescribeTable",
-                        "s3:GetBucketLocation",
+                        "dynamodb:BatchGetItem", 
+                        "dynamodb:PutItem", 
+                        "sqs:ReceiveMessage", 
+                        "sqs:SendMessage", 
+                        "dynamodb:Scan", 
+                        "s3:ListBucket", 
+                        "dynamodb:Query", 
+                        "dynamodb:UpdateItem", 
+                        "dynamodb:DeleteTable", 
+                        "dynamodb:CreateTable", 
+                        "s3:GetObject", 
+                        "dynamodb:DescribeTable", 
+                        "s3:GetBucketLocation", 
                         "dynamodb:UpdateTable"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:s3:::launchwizard*",
-                        "arn:aws:dynamodb:*:*:table/LaunchWizard*",
+                        "arn:aws:s3:::launchwizard*", 
+                        "arn:aws:dynamodb:*:*:table/LaunchWizard*", 
                         "arn:aws:sqs:*:*:LaunchWizard*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "ssm:SendCommand",
-                    "Resource": "arn:aws:ec2:*:*:instance/*",
+                    "Action": "ssm:SendCommand", 
+                    "Resource": "arn:aws:ec2:*:*:instance/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "ssm:resourceTag/LaunchWizardApplicationType": "*"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ssm:SendCommand",
+                        "ssm:SendCommand", 
                         "ssm:GetDocument"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ssm:*:*:document/AWSSAP-InstallBackint"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "fsx:DescribeFileSystems",
-                        "fsx:ListTagsForResource",
+                        "fsx:DescribeFileSystems", 
+                        "fsx:ListTagsForResource", 
                         "fsx:DescribeStorageVirtualMachines"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAllValues:StringLike": {
                             "aws:TagKeys": "LaunchWizard*"
@@ -164,9 +166,7 @@
                     }
                 }
             ]
-        },
-        "VersionId": "v10",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-05-16T21:16:38+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

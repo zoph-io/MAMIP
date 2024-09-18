@@ -1,21 +1,21 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-09-09T21:21:02Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "supportplans:GetSupportPlan",
-                        "supportplans:GetSupportPlanUpdateStatus",
+                        "supportplans:GetSupportPlan", 
+                        "supportplans:GetSupportPlanUpdateStatus", 
                         "supportplans:ListSupportPlanModifiers"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-09-09T21:21:02+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

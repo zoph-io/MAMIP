@@ -1,38 +1,38 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-11-27T13:44:15Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "DRSAgentPolicy1",
-                    "Effect": "Allow",
                     "Action": [
-                        "drs:SendAgentMetricsForDrs",
-                        "drs:SendAgentLogsForDrs",
-                        "drs:UpdateAgentSourcePropertiesForDrs",
-                        "drs:UpdateAgentReplicationInfoForDrs",
-                        "drs:UpdateAgentConversionInfoForDrs",
-                        "drs:GetAgentCommandForDrs",
-                        "drs:GetAgentConfirmedResumeInfoForDrs",
-                        "drs:GetAgentRuntimeConfigurationForDrs",
-                        "drs:UpdateAgentBacklogForDrs",
-                        "drs:GetAgentReplicationInfoForDrs",
+                        "drs:SendAgentMetricsForDrs", 
+                        "drs:SendAgentLogsForDrs", 
+                        "drs:UpdateAgentSourcePropertiesForDrs", 
+                        "drs:UpdateAgentReplicationInfoForDrs", 
+                        "drs:UpdateAgentConversionInfoForDrs", 
+                        "drs:GetAgentCommandForDrs", 
+                        "drs:GetAgentConfirmedResumeInfoForDrs", 
+                        "drs:GetAgentRuntimeConfigurationForDrs", 
+                        "drs:UpdateAgentBacklogForDrs", 
+                        "drs:GetAgentReplicationInfoForDrs", 
                         "drs:IssueAgentCertificateForDrs"
-                    ],
-                    "Resource": "arn:aws:drs:*:*:source-server/${aws:SourceIdentity}"
-                },
+                    ], 
+                    "Resource": "arn:aws:drs:*:*:source-server/${aws:SourceIdentity}", 
+                    "Effect": "Allow", 
+                    "Sid": "DRSAgentPolicy1"
+                }, 
                 {
-                    "Sid": "DRSAgentPolicy2",
-                    "Effect": "Allow",
                     "Action": [
                         "drs:GetAgentInstallationAssetsForDrs"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DRSAgentPolicy2"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-11-27T13:44:15+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

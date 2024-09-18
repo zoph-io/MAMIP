@@ -1,65 +1,65 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-11-30T07:32:17Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AllowReadOnlyPermissionsForNeptuneGraph",
-                    "Effect": "Allow",
                     "Action": [
-                        "neptune-graph:Get*",
-                        "neptune-graph:List*",
+                        "neptune-graph:Get*", 
+                        "neptune-graph:List*", 
                         "neptune-graph:Read*"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowReadOnlyPermissionsForNeptuneGraph"
+                }, 
                 {
-                    "Sid": "AllowReadOnlyPermissionsForEC2",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeVpcEndpoints",
-                        "ec2:DescribeVpcAttribute",
-                        "ec2:DescribeSecurityGroups",
-                        "ec2:DescribeSubnets",
-                        "ec2:DescribeVpcs",
+                        "ec2:DescribeVpcEndpoints", 
+                        "ec2:DescribeVpcAttribute", 
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeVpcs", 
                         "ec2:DescribeAvailabilityZones"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowReadOnlyPermissionsForEC2"
+                }, 
                 {
-                    "Sid": "AllowReadOnlyPermissionsForKMS",
-                    "Effect": "Allow",
                     "Action": [
-                        "kms:ListKeys",
+                        "kms:ListKeys", 
                         "kms:ListAliases"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowReadOnlyPermissionsForKMS"
+                }, 
                 {
-                    "Sid": "AllowReadOnlyPermissionsForCloudwatch",
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudwatch:GetMetricData",
-                        "cloudwatch:ListMetrics",
+                        "cloudwatch:GetMetricData", 
+                        "cloudwatch:ListMetrics", 
                         "cloudwatch:GetMetricStatistics"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowReadOnlyPermissionsForCloudwatch"
+                }, 
                 {
-                    "Sid": "AllowReadOnlyPermissionsForLogs",
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:DescribeLogStreams",
+                        "logs:DescribeLogStreams", 
                         "logs:GetLogEvents"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:logs:*:*:log-group:/aws/neptune/*:log-stream:*"
-                    ]
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowReadOnlyPermissionsForLogs"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-11-30T07:32:17+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

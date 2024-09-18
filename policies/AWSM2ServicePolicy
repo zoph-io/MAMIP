@@ -1,48 +1,50 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-06-07T20:26:39Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeSubnets",
-                        "ec2:CreateNetworkInterface",
-                        "ec2:DeleteNetworkInterface",
-                        "ec2:DescribeNetworkInterfaces",
-                        "ec2:CreateNetworkInterfacePermission",
+                        "ec2:DescribeSubnets", 
+                        "ec2:CreateNetworkInterface", 
+                        "ec2:DeleteNetworkInterface", 
+                        "ec2:DescribeNetworkInterfaces", 
+                        "ec2:CreateNetworkInterfacePermission", 
                         "ec2:ModifyNetworkInterfaceAttribute"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "elasticfilesystem:DescribeMountTargets"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "elasticloadbalancing:RegisterTargets",
+                        "elasticloadbalancing:RegisterTargets", 
                         "elasticloadbalancing:DeregisterTargets"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "fsx:DescribeFileSystems"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "cloudwatch:PutMetricData"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "cloudwatch:namespace": [
@@ -52,9 +54,7 @@
                     }
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-06-07T20:26:39+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

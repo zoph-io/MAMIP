@@ -1,33 +1,35 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-08-16T16:35:12Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "trustedadvisor:DescribeAccount*",
-                        "trustedadvisor:DescribeOrganization",
-                        "trustedadvisor:DescribeRisk*",
-                        "trustedadvisor:DownloadRisk",
+                        "trustedadvisor:DescribeAccount*", 
+                        "trustedadvisor:DescribeOrganization", 
+                        "trustedadvisor:DescribeRisk*", 
+                        "trustedadvisor:DownloadRisk", 
                         "trustedadvisor:DescribeNotificationConfigurations"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "organizations:DescribeOrganization",
+                        "organizations:DescribeOrganization", 
                         "organizations:ListAWSServiceAccessForOrganization"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "organizations:ListDelegatedAdministrators"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "organizations:ServicePrincipal": [
@@ -37,9 +39,7 @@
                     }
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-08-16T16:35:12+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

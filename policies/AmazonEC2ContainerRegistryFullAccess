@@ -1,22 +1,24 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-12-05T00:04:19Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ecr:*",
+                        "ecr:*", 
                         "cloudtrail:LookupEvents"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "iam:CreateServiceLinkedRole"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:AWSServiceName": [
@@ -26,9 +28,7 @@
                     }
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-12-05T00:04:19+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

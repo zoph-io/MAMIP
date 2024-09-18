@@ -1,55 +1,57 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-01-10T19:27:33Z", 
+        "VersionId": "v4", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "backup-storage:MountCapsule",
-                        "ec2:CreateNetworkInterface",
-                        "ec2:DeleteNetworkInterface",
-                        "ec2:DescribeSecurityGroups",
-                        "ec2:DescribeSubnets",
-                        "ec2:DescribeNetworkInterfaceAttribute",
-                        "ec2:ModifyNetworkInterfaceAttribute",
+                        "backup-storage:MountCapsule", 
+                        "ec2:CreateNetworkInterface", 
+                        "ec2:DeleteNetworkInterface", 
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeNetworkInterfaceAttribute", 
+                        "ec2:ModifyNetworkInterfaceAttribute", 
                         "tag:GetResources"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "kms:DescribeKey"
-                    ],
-                    "Resource": "arn:aws:kms:*:*:key/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:kms:*:*:key/*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "backup:CreateBackupVault",
+                        "backup:CreateBackupVault", 
                         "backup:PutBackupVaultAccessPolicy"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:backup:*:*:backup-vault:aws/efs/automatic-backup-vault"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "backup:CreateBackupPlan",
+                        "backup:CreateBackupPlan", 
                         "backup:CreateBackupSelection"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:backup:*:*:backup-plan:*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "iam:CreateServiceLinkedRole"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:AWSServiceName": [
@@ -57,35 +59,33 @@
                             ]
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "iam:PassRole"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:iam::*:role/aws-service-role/backup.amazonaws.com/AWSServiceRoleForBackup"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "iam:PassedToService": "backup.amazonaws.com"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "elasticfilesystem:DescribeFileSystems",
-                        "elasticfilesystem:CreateReplicationConfiguration",
-                        "elasticfilesystem:DescribeReplicationConfigurations",
+                        "elasticfilesystem:DescribeFileSystems", 
+                        "elasticfilesystem:CreateReplicationConfiguration", 
+                        "elasticfilesystem:DescribeReplicationConfigurations", 
                         "elasticfilesystem:DeleteReplicationConfiguration"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v4",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-01-10T19:27:33+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

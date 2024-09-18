@@ -1,27 +1,27 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-09-18T17:45:47Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
-                    "Action": "logs:PutLogEvents",
-                    "Resource": "arn:aws:logs:*:*:log-group:/aws/MediaPackage/*:log-stream:*"
-                },
+                    "Action": "logs:PutLogEvents", 
+                    "Resource": "arn:aws:logs:*:*:log-group:/aws/MediaPackage/*:log-stream:*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:CreateLogStream",
-                        "logs:CreateLogGroup",
-                        "logs:DescribeLogGroups",
+                        "logs:CreateLogStream", 
+                        "logs:CreateLogGroup", 
+                        "logs:DescribeLogGroups", 
                         "logs:DescribeLogStreams"
-                    ],
-                    "Resource": "arn:aws:logs:*:*:log-group:/aws/MediaPackage/*"
+                    ], 
+                    "Resource": "arn:aws:logs:*:*:log-group:/aws/MediaPackage/*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-09-18T17:45:47+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

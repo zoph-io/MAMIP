@@ -1,49 +1,49 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2018-11-27T02:16:56Z", 
+        "VersionId": "v5", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Action": "ec2:*",
-                    "Effect": "Allow",
-                    "Resource": "*"
-                },
+                    "Action": "ec2:*", 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "elasticloadbalancing:*",
-                    "Resource": "*"
-                },
+                    "Action": "elasticloadbalancing:*", 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "cloudwatch:*",
-                    "Resource": "*"
-                },
+                    "Action": "cloudwatch:*", 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "autoscaling:*",
-                    "Resource": "*"
-                },
+                    "Action": "autoscaling:*", 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "iam:CreateServiceLinkedRole",
-                    "Resource": "*",
+                    "Action": "iam:CreateServiceLinkedRole", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:AWSServiceName": [
-                                "autoscaling.amazonaws.com",
-                                "ec2scheduled.amazonaws.com",
-                                "elasticloadbalancing.amazonaws.com",
-                                "spot.amazonaws.com",
-                                "spotfleet.amazonaws.com",
+                                "autoscaling.amazonaws.com", 
+                                "ec2scheduled.amazonaws.com", 
+                                "elasticloadbalancing.amazonaws.com", 
+                                "spot.amazonaws.com", 
+                                "spotfleet.amazonaws.com", 
                                 "transitgateway.amazonaws.com"
                             ]
                         }
                     }
                 }
             ]
-        },
-        "VersionId": "v5",
-        "IsDefaultVersion": true,
-        "CreateDate": "2018-11-27T02:16:56+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,46 +1,46 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-10-24T22:25:39Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "tag:GetTagValues",
+                        "tag:GetTagValues", 
                         "tag:GetTagKeys"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "aps:CreateWorkspace",
-                        "aps:DescribeWorkspace",
-                        "aps:UpdateWorkspaceAlias",
-                        "aps:DeleteWorkspace",
-                        "aps:ListWorkspaces",
-                        "aps:DescribeAlertManagerDefinition",
-                        "aps:DescribeRuleGroupsNamespace",
-                        "aps:CreateAlertManagerDefinition",
-                        "aps:CreateRuleGroupsNamespace",
-                        "aps:DeleteAlertManagerDefinition",
-                        "aps:DeleteRuleGroupsNamespace",
-                        "aps:ListRuleGroupsNamespaces",
-                        "aps:PutAlertManagerDefinition",
-                        "aps:PutRuleGroupsNamespace",
-                        "aps:TagResource",
-                        "aps:UntagResource",
-                        "aps:CreateLoggingConfiguration",
-                        "aps:UpdateLoggingConfiguration",
-                        "aps:DeleteLoggingConfiguration",
+                        "aps:CreateWorkspace", 
+                        "aps:DescribeWorkspace", 
+                        "aps:UpdateWorkspaceAlias", 
+                        "aps:DeleteWorkspace", 
+                        "aps:ListWorkspaces", 
+                        "aps:DescribeAlertManagerDefinition", 
+                        "aps:DescribeRuleGroupsNamespace", 
+                        "aps:CreateAlertManagerDefinition", 
+                        "aps:CreateRuleGroupsNamespace", 
+                        "aps:DeleteAlertManagerDefinition", 
+                        "aps:DeleteRuleGroupsNamespace", 
+                        "aps:ListRuleGroupsNamespaces", 
+                        "aps:PutAlertManagerDefinition", 
+                        "aps:PutRuleGroupsNamespace", 
+                        "aps:TagResource", 
+                        "aps:UntagResource", 
+                        "aps:CreateLoggingConfiguration", 
+                        "aps:UpdateLoggingConfiguration", 
+                        "aps:DeleteLoggingConfiguration", 
                         "aps:DescribeLoggingConfiguration"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-10-24T22:25:39+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

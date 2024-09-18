@@ -1,35 +1,35 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2019-04-05T21:57:56Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "A4bPcaTagAccess",
                     "Action": [
-                        "acm-pca:GetCertificate",
-                        "acm-pca:IssueCertificate",
+                        "acm-pca:GetCertificate", 
+                        "acm-pca:IssueCertificate", 
                         "acm-pca:RevokeCertificate"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceTag/a4b": "enabled"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "A4bPcaTagAccess"
+                }, 
                 {
-                    "Sid": "A4bNetworkProfileAccess",
-                    "Effect": "Allow",
                     "Action": [
                         "secretsmanager:GetSecretValue"
-                    ],
-                    "Resource": "arn:aws:secretsmanager:*:*:secret:A4BNetworkProfile*"
+                    ], 
+                    "Resource": "arn:aws:secretsmanager:*:*:secret:A4BNetworkProfile*", 
+                    "Effect": "Allow", 
+                    "Sid": "A4bNetworkProfileAccess"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2019-04-05T21:57:56+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

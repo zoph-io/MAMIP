@@ -1,64 +1,66 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2021-04-07T07:21:57Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "mgn:SendClientMetricsForMgn",
-                        "mgn:SendClientLogsForMgn",
-                        "mgn:GetChannelCommandsForMgn",
-                        "mgn:SendChannelCommandResultForMgn",
-                        "mgn:GetAgentSnapshotCreditsForMgn",
-                        "mgn:DescribeReplicationServerAssociationsForMgn",
-                        "mgn:DescribeSnapshotRequestsForMgn",
-                        "mgn:BatchDeleteSnapshotRequestForMgn",
-                        "mgn:NotifyAgentAuthenticationForMgn",
-                        "mgn:BatchCreateVolumeSnapshotGroupForMgn",
-                        "mgn:UpdateAgentReplicationProcessStateForMgn",
-                        "mgn:NotifyAgentReplicationProgressForMgn",
-                        "mgn:NotifyAgentConnectedForMgn",
+                        "mgn:SendClientMetricsForMgn", 
+                        "mgn:SendClientLogsForMgn", 
+                        "mgn:GetChannelCommandsForMgn", 
+                        "mgn:SendChannelCommandResultForMgn", 
+                        "mgn:GetAgentSnapshotCreditsForMgn", 
+                        "mgn:DescribeReplicationServerAssociationsForMgn", 
+                        "mgn:DescribeSnapshotRequestsForMgn", 
+                        "mgn:BatchDeleteSnapshotRequestForMgn", 
+                        "mgn:NotifyAgentAuthenticationForMgn", 
+                        "mgn:BatchCreateVolumeSnapshotGroupForMgn", 
+                        "mgn:UpdateAgentReplicationProcessStateForMgn", 
+                        "mgn:NotifyAgentReplicationProgressForMgn", 
+                        "mgn:NotifyAgentConnectedForMgn", 
                         "mgn:NotifyAgentDisconnectedForMgn"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeInstances",
+                        "ec2:DescribeInstances", 
                         "ec2:DescribeSnapshots"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateSnapshot"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:volume/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:volume/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "aws:ResourceTag/AWSApplicationMigrationServiceManaged": "false"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateSnapshot"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:snapshot/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:snapshot/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "aws:RequestTag/AWSApplicationMigrationServiceManaged": "false"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "ec2:CreateTags",
-                    "Resource": "*",
+                    "Action": "ec2:CreateTags", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "ec2:CreateAction": "CreateSnapshot"
@@ -66,9 +68,7 @@
                     }
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2021-04-07T07:21:57+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

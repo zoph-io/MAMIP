@@ -1,51 +1,53 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-02-07T00:06:00Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:CreateBucket",
-                        "s3:ListBucketVersions",
-                        "s3:ListBucket",
-                        "s3:GetBucketVersioning",
-                        "s3:GetBucketLocation",
-                        "s3:PutBucketVersioning",
-                        "s3:PutBucketOwnershipControls",
+                        "s3:CreateBucket", 
+                        "s3:ListBucketVersions", 
+                        "s3:ListBucket", 
+                        "s3:GetBucketVersioning", 
+                        "s3:GetBucketLocation", 
+                        "s3:PutBucketVersioning", 
+                        "s3:PutBucketOwnershipControls", 
                         "s3:GetBucketOwnershipControls"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:s3:::*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:GetObject",
-                        "s3:GetObjectVersion",
-                        "s3:DeleteObject",
-                        "s3:PutObjectVersionAcl",
-                        "s3:GetObjectVersionAcl",
-                        "s3:GetObjectTagging",
-                        "s3:PutObjectTagging",
-                        "s3:GetObjectAcl",
-                        "s3:PutObjectAcl",
-                        "s3:ListMultipartUploadParts",
+                        "s3:GetObject", 
+                        "s3:GetObjectVersion", 
+                        "s3:DeleteObject", 
+                        "s3:PutObjectVersionAcl", 
+                        "s3:GetObjectVersionAcl", 
+                        "s3:GetObjectTagging", 
+                        "s3:PutObjectTagging", 
+                        "s3:GetObjectAcl", 
+                        "s3:PutObjectAcl", 
+                        "s3:ListMultipartUploadParts", 
                         "s3:PutObject"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:s3:::*/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "kms:DescribeKey",
-                        "kms:GenerateDataKey",
+                        "kms:DescribeKey", 
+                        "kms:GenerateDataKey", 
                         "kms:Decrypt"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "kms:ViaService": "s3.*.amazonaws.com"
@@ -53,9 +55,7 @@
                     }
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-02-07T00:06:00+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

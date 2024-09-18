@@ -1,103 +1,103 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-10-09T15:59:41Z", 
+        "VersionId": "v4", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "glue:CreateDatabase",
-                        "glue:CreatePartition",
-                        "glue:CreateTable",
-                        "glue:DeleteDatabase",
-                        "glue:DeletePartition",
-                        "glue:DeleteTable",
-                        "glue:GetDatabase",
-                        "glue:GetDatabases",
-                        "glue:GetPartition",
-                        "glue:GetPartitions",
-                        "glue:GetTable",
-                        "glue:GetTableVersions",
-                        "glue:GetTables",
-                        "glue:UpdateDatabase",
-                        "glue:UpdatePartition",
-                        "glue:UpdateTable",
-                        "glue:CreateConnection",
-                        "glue:CreateJob",
-                        "glue:DeleteConnection",
-                        "glue:DeleteJob",
-                        "glue:GetConnection",
-                        "glue:GetConnections",
-                        "glue:GetDevEndpoint",
-                        "glue:GetDevEndpoints",
-                        "glue:GetJob",
-                        "glue:GetJobs",
-                        "glue:UpdateJob",
-                        "glue:BatchDeleteConnection",
-                        "glue:UpdateConnection",
-                        "glue:GetUserDefinedFunction",
-                        "glue:UpdateUserDefinedFunction",
-                        "glue:GetUserDefinedFunctions",
-                        "glue:DeleteUserDefinedFunction",
-                        "glue:CreateUserDefinedFunction",
-                        "glue:BatchGetPartition",
-                        "glue:BatchDeletePartition",
-                        "glue:BatchCreatePartition",
-                        "glue:BatchDeleteTable",
-                        "glue:UpdateDevEndpoint",
-                        "s3:GetBucketLocation",
-                        "s3:ListBucket",
-                        "s3:ListAllMyBuckets",
-                        "s3:GetBucketAcl",
+                        "glue:CreateDatabase", 
+                        "glue:CreatePartition", 
+                        "glue:CreateTable", 
+                        "glue:DeleteDatabase", 
+                        "glue:DeletePartition", 
+                        "glue:DeleteTable", 
+                        "glue:GetDatabase", 
+                        "glue:GetDatabases", 
+                        "glue:GetPartition", 
+                        "glue:GetPartitions", 
+                        "glue:GetTable", 
+                        "glue:GetTableVersions", 
+                        "glue:GetTables", 
+                        "glue:UpdateDatabase", 
+                        "glue:UpdatePartition", 
+                        "glue:UpdateTable", 
+                        "glue:CreateConnection", 
+                        "glue:CreateJob", 
+                        "glue:DeleteConnection", 
+                        "glue:DeleteJob", 
+                        "glue:GetConnection", 
+                        "glue:GetConnections", 
+                        "glue:GetDevEndpoint", 
+                        "glue:GetDevEndpoints", 
+                        "glue:GetJob", 
+                        "glue:GetJobs", 
+                        "glue:UpdateJob", 
+                        "glue:BatchDeleteConnection", 
+                        "glue:UpdateConnection", 
+                        "glue:GetUserDefinedFunction", 
+                        "glue:UpdateUserDefinedFunction", 
+                        "glue:GetUserDefinedFunctions", 
+                        "glue:DeleteUserDefinedFunction", 
+                        "glue:CreateUserDefinedFunction", 
+                        "glue:BatchGetPartition", 
+                        "glue:BatchDeletePartition", 
+                        "glue:BatchCreatePartition", 
+                        "glue:BatchDeleteTable", 
+                        "glue:UpdateDevEndpoint", 
+                        "s3:GetBucketLocation", 
+                        "s3:ListBucket", 
+                        "s3:ListAllMyBuckets", 
+                        "s3:GetBucketAcl", 
                         "codewhisperer:GenerateRecommendations"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "s3:GetObject"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:s3:::crawler-public*",
+                        "arn:aws:s3:::crawler-public*", 
                         "arn:aws:s3:::aws-glue*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:PutObject",
+                        "s3:PutObject", 
                         "s3:DeleteObject"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:s3:::aws-glue*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:CreateTags",
+                        "ec2:CreateTags", 
                         "ec2:DeleteTags"
-                    ],
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:network-interface/*", 
+                        "arn:aws:ec2:*:*:security-group/*", 
+                        "arn:aws:ec2:*:*:instance/*"
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAllValues:StringEquals": {
                             "aws:TagKeys": [
                                 "aws-glue-service-resource"
                             ]
                         }
-                    },
-                    "Resource": [
-                        "arn:aws:ec2:*:*:network-interface/*",
-                        "arn:aws:ec2:*:*:security-group/*",
-                        "arn:aws:ec2:*:*:instance/*"
-                    ]
+                    }
                 }
             ]
-        },
-        "VersionId": "v4",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-10-09T15:59:41+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

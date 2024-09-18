@@ -1,352 +1,352 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-06-26T09:46:54Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "PatchingAutomationRoleGetPermissions",
-                    "Effect": "Allow",
                     "Action": [
                         "iam:GetRole"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:iam::*:role/AWS-QuickSetup-AutomationRole-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "PatchingAutomationRoleGetPermissions"
+                }, 
                 {
-                    "Sid": "PatchingAutomationRolePassPermissions",
-                    "Effect": "Allow",
                     "Action": [
                         "iam:PassRole"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:iam::*:role/AWS-QuickSetup-AutomationRole-*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:PassedToService": [
                                 "ssm.amazonaws.com"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "PatchingAutomationRolePassPermissions"
+                }, 
                 {
-                    "Sid": "DefaultInstanceRolePermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "iam:CreateRole",
-                        "iam:DeleteRole",
-                        "iam:UpdateRole",
+                        "iam:CreateRole", 
+                        "iam:DeleteRole", 
+                        "iam:UpdateRole", 
                         "iam:GetRole"
-                    ],
+                    ], 
+                    "Resource": [
+                        "arn:aws:iam::*:role/AmazonSSMRoleForInstancesQuickSetup"
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
-                        "StringLike": {
-                            "aws:PrincipalTag/QuickSetupManagerID": "*"
-                        },
                         "ArnLike": {
                             "aws:PrincipalArn": "arn:aws:iam::*:role/AWS-QuickSetup-AutomationRole-*"
+                        }, 
+                        "StringLike": {
+                            "aws:PrincipalTag/QuickSetupManagerID": "*"
                         }
-                    },
-                    "Resource": [
-                        "arn:aws:iam::*:role/AmazonSSMRoleForInstancesQuickSetup"
-                    ]
-                },
+                    }, 
+                    "Sid": "DefaultInstanceRolePermissions"
+                }, 
                 {
-                    "Sid": "DefaultInstanceRolePassPermissions",
-                    "Effect": "Allow",
                     "Action": [
                         "iam:PassRole"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:iam::*:role/AmazonSSMRoleForInstancesQuickSetup"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:PassedToService": [
-                                "ec2.amazonaws.com",
+                                "ec2.amazonaws.com", 
                                 "ssm.amazonaws.com"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "DefaultInstanceRolePassPermissions"
+                }, 
                 {
-                    "Sid": "PoliciesAttachPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "iam:AttachRolePolicy",
+                        "iam:AttachRolePolicy", 
                         "iam:DetachRolePolicy"
-                    ],
+                    ], 
+                    "Resource": "arn:aws:iam::*:role/*", 
+                    "Effect": "Allow", 
                     "Condition": {
+                        "ArnLike": {
+                            "aws:PrincipalArn": "arn:aws:iam::*:role/AWS-QuickSetup-AutomationRole-*"
+                        }, 
+                        "StringLike": {
+                            "aws:PrincipalTag/QuickSetupManagerID": "*"
+                        }, 
                         "ArnEquals": {
                             "iam:PolicyARN": [
-                                "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore",
+                                "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore", 
                                 "arn:aws:iam::aws:policy/AWSQuickSetupPatchPolicyBaselineAccess"
                             ]
-                        },
-                        "StringLike": {
-                            "aws:PrincipalTag/QuickSetupManagerID": "*"
-                        },
-                        "ArnLike": {
-                            "aws:PrincipalArn": "arn:aws:iam::*:role/AWS-QuickSetup-AutomationRole-*"
                         }
-                    },
-                    "Resource": "arn:aws:iam::*:role/*"
-                },
+                    }, 
+                    "Sid": "PoliciesAttachPermissions"
+                }, 
                 {
-                    "Sid": "CreateSLRPermissions",
-                    "Effect": "Allow",
                     "Action": [
                         "iam:CreateServiceLinkedRole"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:iam::*:role/aws-service-role/ssm.amazonaws.com/AWSServiceRoleForAmazonSSM"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:AWSServiceName": "ssm.amazonaws.com"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "CreateSLRPermissions"
+                }, 
                 {
-                    "Sid": "InstanceRoleAddPermissions",
-                    "Effect": "Allow",
                     "Action": [
                         "iam:AddRoleToInstanceProfile"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "InstanceRoleAddPermissions"
+                }, 
                 {
-                    "Sid": "ManagedInstanceRoleUpdatePermissions",
-                    "Effect": "Allow",
                     "Action": [
                         "ssm:UpdateManagedInstanceRole"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ManagedInstanceRoleUpdatePermissions"
+                }, 
                 {
-                    "Sid": "IAMReadOnlyPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "iam:GetInstanceProfile",
-                        "iam:GetRolePolicy",
-                        "iam:ListInstanceProfilesForRole",
+                        "iam:GetInstanceProfile", 
+                        "iam:GetRolePolicy", 
+                        "iam:ListInstanceProfilesForRole", 
                         "iam:ListRoles"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "IAMReadOnlyPermissions"
+                }, 
                 {
-                    "Sid": "InstanceProfileCreatePermissions",
-                    "Effect": "Allow",
                     "Action": [
                         "iam:CreateInstanceProfile"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:iam::*:instance-profile/AmazonSSMRoleForInstancesQuickSetup"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "InstanceProfileCreatePermissions"
+                }, 
                 {
-                    "Sid": "InstanceProfileAssociationPermissions",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:AssociateIamInstanceProfile"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
-                        "Null": {
-                            "ec2:InstanceProfile": "true"
-                        },
                         "ArnLike": {
                             "ec2:NewInstanceProfile": "arn:aws:iam::*:instance-profile/AmazonSSMRoleForInstancesQuickSetup"
+                        }, 
+                        "Null": {
+                            "ec2:InstanceProfile": "true"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "InstanceProfileAssociationPermissions"
+                }, 
                 {
-                    "Sid": "InstanceProfileDisassociationPermissions",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:DisassociateIamInstanceProfile"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ArnLike": {
                             "ec2:InstanceProfile": "arn:aws:iam::*:instance-profile/AmazonSSMRoleForInstancesQuickSetup"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "InstanceProfileDisassociationPermissions"
+                }, 
                 {
-                    "Sid": "SSMAssociationsPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "ssm:DescribeAssociationExecutions",
-                        "ssm:UpdateAssociation",
+                        "ssm:DescribeAssociationExecutions", 
+                        "ssm:UpdateAssociation", 
                         "ssm:DescribeAssociation"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:ssm:*:*:document/AWSQuickSetup-*",
-                        "arn:aws:ec2:*:*:instance/*",
-                        "arn:aws:ssm:*:*:managed-instance/*",
+                        "arn:aws:ssm:*:*:document/AWSQuickSetup-*", 
+                        "arn:aws:ec2:*:*:instance/*", 
+                        "arn:aws:ssm:*:*:managed-instance/*", 
                         "arn:aws:ssm:*:*:association/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "SSMAssociationsPermissions"
+                }, 
                 {
-                    "Sid": "BaselineS3Permissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:CreateBucket",
-                        "s3:Put*",
-                        "s3:Get*",
-                        "s3:List*",
-                        "s3:DeleteObject",
-                        "s3:DeleteObjectVersion",
+                        "s3:CreateBucket", 
+                        "s3:Put*", 
+                        "s3:Get*", 
+                        "s3:List*", 
+                        "s3:DeleteObject", 
+                        "s3:DeleteObjectVersion", 
                         "s3:DeleteBucket"
-                    ],
+                    ], 
+                    "Resource": "arn:aws:s3:::aws-quicksetup-patchpolicy-*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceAccount": [
                                 "${aws:PrincipalAccount}"
                             ]
                         }
-                    },
-                    "Resource": "arn:aws:s3:::aws-quicksetup-patchpolicy-*"
-                },
+                    }, 
+                    "Sid": "BaselineS3Permissions"
+                }, 
                 {
-                    "Sid": "PatchingFunctionsPermissions",
-                    "Effect": "Allow",
                     "Action": [
                         "lambda:InvokeFunction"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:lambda:*:*:function:baseline-overrides-*",
+                        "arn:aws:lambda:*:*:function:baseline-overrides-*", 
                         "arn:aws:lambda:*:*:function:delete-name-tags-*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceAccount": [
                                 "${aws:PrincipalAccount}"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "PatchingFunctionsPermissions"
+                }, 
                 {
-                    "Sid": "LoggingPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:CreateLogStream",
+                        "logs:CreateLogStream", 
                         "logs:PutLogEvents"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:logs:*:*:log-group:/aws/lambda/baseline-overrides-*",
+                        "arn:aws:logs:*:*:log-group:/aws/lambda/baseline-overrides-*", 
                         "arn:aws:logs:*:*:log-group:/aws/lambda/delete-name-tags-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "LoggingPermissions"
+                }, 
                 {
-                    "Sid": "SSMTaggingPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "ssm:AddTagsToResource",
+                        "ssm:AddTagsToResource", 
                         "ssm:RemoveTagsFromResource"
-                    ],
-                    "Resource": "arn:aws:ssm:*:*:managed-instance/*",
+                    ], 
+                    "Resource": "arn:aws:ssm:*:*:managed-instance/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAllValues:StringLike": {
                             "aws:TagKeys": "QSConfigName-*"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "SSMTaggingPermissions"
+                }, 
                 {
-                    "Sid": "EC2TaggingPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:CreateTags",
+                        "ec2:CreateTags", 
                         "ec2:DeleteTags"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:instance/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:instance/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAllValues:StringLike": {
                             "aws:TagKeys": "QSConfigName-*"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "EC2TaggingPermissions"
+                }, 
                 {
-                    "Sid": "RoleTaggingPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "iam:TagRole",
+                        "iam:TagRole", 
                         "iam:UntagRole"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAllValues:StringLike": {
                             "aws:TagKeys": "QSConfigId-*"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "RoleTaggingPermissions"
+                }, 
                 {
-                    "Sid": "PatchingReadOnlyPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "ssm:GetPatchBaseline",
-                        "ssm:GetInventory",
-                        "ssm:DescribeInstanceInformation",
-                        "ssm:DescribeAssociation",
-                        "ssm:GetAutomationExecution",
-                        "ssm:ListTagsForResource",
-                        "ec2:DescribeIamInstanceProfileAssociations",
+                        "ssm:GetPatchBaseline", 
+                        "ssm:GetInventory", 
+                        "ssm:DescribeInstanceInformation", 
+                        "ssm:DescribeAssociation", 
+                        "ssm:GetAutomationExecution", 
+                        "ssm:ListTagsForResource", 
+                        "ec2:DescribeIamInstanceProfileAssociations", 
                         "ec2:DescribeInstances"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "PatchingReadOnlyPermissions"
+                }, 
                 {
-                    "Sid": "PatchingAutomationsStartPermissions",
-                    "Effect": "Allow",
                     "Action": [
                         "ssm:StartAutomationExecution"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:ssm:*:*:automation-definition/AWS-EnableExplorer*",
-                        "arn:aws:ssm:*:*:automation-definition/AWS-RunPatchBaseline*",
-                        "arn:aws:ssm:*:*:automation-definition/AWS-AttachIAMToInstance*",
-                        "arn:aws:ssm:*:*:automation-definition/QuickSetup-*",
+                        "arn:aws:ssm:*:*:automation-definition/AWS-EnableExplorer*", 
+                        "arn:aws:ssm:*:*:automation-definition/AWS-RunPatchBaseline*", 
+                        "arn:aws:ssm:*:*:automation-definition/AWS-AttachIAMToInstance*", 
+                        "arn:aws:ssm:*:*:automation-definition/QuickSetup-*", 
                         "arn:aws:ssm:*:*:automation-definition/AWSQuickSetup-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "PatchingAutomationsStartPermissions"
+                }, 
                 {
-                    "Sid": "ReadOnlyPermissionsForEnablingExplorer",
-                    "Effect": "Allow",
                     "Action": [
-                        "iam:ListRoles",
-                        "config:DescribeConfigurationRecorders",
-                        "compute-optimizer:GetEnrollmentStatus",
+                        "iam:ListRoles", 
+                        "config:DescribeConfigurationRecorders", 
+                        "compute-optimizer:GetEnrollmentStatus", 
                         "support:DescribeTrustedAdvisorChecks"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ReadOnlyPermissionsForEnablingExplorer"
+                }, 
                 {
-                    "Sid": "ExplorerServiceSettingsPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "ssm:UpdateServiceSetting",
+                        "ssm:UpdateServiceSetting", 
                         "ssm:GetServiceSetting"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:ssm:*:*:servicesetting/ssm/opsitem/ssm-patchmanager",
-                        "arn:aws:ssm:*:*:servicesetting/ssm/opsitem/EC2",
-                        "arn:aws:ssm:*:*:servicesetting/ssm/opsdata/ExplorerOnboarded",
-                        "arn:aws:ssm:*:*:servicesetting/ssm/opsdata/Association",
-                        "arn:aws:ssm:*:*:servicesetting/ssm/opsdata/ComputeOptimizer",
-                        "arn:aws:ssm:*:*:servicesetting/ssm/opsdata/ConfigCompliance",
-                        "arn:aws:ssm:*:*:servicesetting/ssm/opsdata/OpsData-TrustedAdvisor",
+                        "arn:aws:ssm:*:*:servicesetting/ssm/opsitem/ssm-patchmanager", 
+                        "arn:aws:ssm:*:*:servicesetting/ssm/opsitem/EC2", 
+                        "arn:aws:ssm:*:*:servicesetting/ssm/opsdata/ExplorerOnboarded", 
+                        "arn:aws:ssm:*:*:servicesetting/ssm/opsdata/Association", 
+                        "arn:aws:ssm:*:*:servicesetting/ssm/opsdata/ComputeOptimizer", 
+                        "arn:aws:ssm:*:*:servicesetting/ssm/opsdata/ConfigCompliance", 
+                        "arn:aws:ssm:*:*:servicesetting/ssm/opsdata/OpsData-TrustedAdvisor", 
                         "arn:aws:ssm:*:*:servicesetting/ssm/opsdata/SupportCenterCase"
-                    ]
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "ExplorerServiceSettingsPermissions"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-06-26T09:46:54+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

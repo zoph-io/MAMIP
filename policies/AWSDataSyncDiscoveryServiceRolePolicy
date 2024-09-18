@@ -1,46 +1,46 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-03-20T22:19:51Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "secretsmanager:GetSecretValue"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:*:secretsmanager:*:*:secret:datasync!*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
-                            "secretsmanager:ResourceTag/aws:secretsmanager:owningService": "datasync",
+                            "secretsmanager:ResourceTag/aws:secretsmanager:owningService": "datasync", 
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:CreateLogGroup",
+                        "logs:CreateLogGroup", 
                         "logs:CreateLogStream"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:*:logs:*:*:log-group:/aws/datasync*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "logs:PutLogEvents"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:*:logs:*:*:log-group:/aws/datasync:log-stream:*"
-                    ]
+                    ], 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-03-20T22:19:51+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

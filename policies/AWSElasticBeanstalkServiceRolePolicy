@@ -1,64 +1,64 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2019-06-06T21:59:51Z", 
+        "VersionId": "v6", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AllowCloudformationReadOperationsOnElasticBeanstalkStacks",
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudformation:DescribeStackResource",
-                        "cloudformation:DescribeStackResources",
+                        "cloudformation:DescribeStackResource", 
+                        "cloudformation:DescribeStackResources", 
                         "cloudformation:DescribeStacks"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:cloudformation:*:*:stack/awseb-*",
+                        "arn:aws:cloudformation:*:*:stack/awseb-*", 
                         "arn:aws:cloudformation:*:*:stack/eb-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowCloudformationReadOperationsOnElasticBeanstalkStacks"
+                }, 
                 {
-                    "Sid": "AllowOperations",
-                    "Effect": "Allow",
                     "Action": [
-                        "autoscaling:DescribeAutoScalingGroups",
-                        "autoscaling:DescribeAutoScalingInstances",
-                        "autoscaling:DescribeNotificationConfigurations",
-                        "autoscaling:DescribeScalingActivities",
-                        "autoscaling:PutNotificationConfiguration",
-                        "ec2:DescribeInstanceStatus",
-                        "ec2:AssociateAddress",
-                        "ec2:DescribeAddresses",
-                        "ec2:DescribeInstances",
-                        "ec2:DescribeSecurityGroups",
-                        "elasticloadbalancing:DescribeInstanceHealth",
-                        "elasticloadbalancing:DescribeLoadBalancers",
-                        "elasticloadbalancing:DescribeTargetHealth",
-                        "elasticloadbalancing:DescribeTargetGroups",
-                        "lambda:GetFunction",
-                        "sqs:GetQueueAttributes",
-                        "sqs:GetQueueUrl",
+                        "autoscaling:DescribeAutoScalingGroups", 
+                        "autoscaling:DescribeAutoScalingInstances", 
+                        "autoscaling:DescribeNotificationConfigurations", 
+                        "autoscaling:DescribeScalingActivities", 
+                        "autoscaling:PutNotificationConfiguration", 
+                        "ec2:DescribeInstanceStatus", 
+                        "ec2:AssociateAddress", 
+                        "ec2:DescribeAddresses", 
+                        "ec2:DescribeInstances", 
+                        "ec2:DescribeSecurityGroups", 
+                        "elasticloadbalancing:DescribeInstanceHealth", 
+                        "elasticloadbalancing:DescribeLoadBalancers", 
+                        "elasticloadbalancing:DescribeTargetHealth", 
+                        "elasticloadbalancing:DescribeTargetGroups", 
+                        "lambda:GetFunction", 
+                        "sqs:GetQueueAttributes", 
+                        "sqs:GetQueueUrl", 
                         "sns:Publish"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowOperations"
+                }, 
                 {
-                    "Sid": "AllowOperationsOnHealthStreamingLogs",
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:CreateLogStream",
-                        "logs:DescribeLogGroups",
-                        "logs:DescribeLogStreams",
-                        "logs:DeleteLogGroup",
+                        "logs:CreateLogStream", 
+                        "logs:DescribeLogGroups", 
+                        "logs:DescribeLogStreams", 
+                        "logs:DeleteLogGroup", 
                         "logs:PutLogEvents"
-                    ],
-                    "Resource": "arn:aws:logs:*:*:log-group:/aws/elasticbeanstalk/*"
+                    ], 
+                    "Resource": "arn:aws:logs:*:*:log-group:/aws/elasticbeanstalk/*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowOperationsOnHealthStreamingLogs"
                 }
             ]
-        },
-        "VersionId": "v6",
-        "IsDefaultVersion": true,
-        "CreateDate": "2019-06-06T21:59:51+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

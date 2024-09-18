@@ -1,21 +1,21 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2019-11-20T00:25:33Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "a4b:Get*",
-                        "a4b:List*",
+                        "a4b:Get*", 
+                        "a4b:List*", 
                         "a4b:Search*"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2019-11-20T00:25:33+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

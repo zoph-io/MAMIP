@@ -1,34 +1,34 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-06-05T21:43:37Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AllowSQS",
-                    "Effect": "Allow",
                     "Action": [
-                        "sqs:TagQueue",
-                        "sqs:DeleteQueue",
-                        "sqs:GetQueueAttributes",
+                        "sqs:TagQueue", 
+                        "sqs:DeleteQueue", 
+                        "sqs:GetQueueAttributes", 
                         "sqs:CreateQueue"
-                    ],
-                    "Resource": "arn:aws:sqs:*:*:awseb-e-*"
-                },
+                    ], 
+                    "Resource": "arn:aws:sqs:*:*:awseb-e-*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowSQS"
+                }, 
                 {
-                    "Sid": "AllowDDB",
-                    "Effect": "Allow",
                     "Action": [
-                        "dynamodb:CreateTable",
-                        "dynamodb:TagResource",
-                        "dynamodb:DescribeTable",
+                        "dynamodb:CreateTable", 
+                        "dynamodb:TagResource", 
+                        "dynamodb:DescribeTable", 
                         "dynamodb:DeleteTable"
-                    ],
-                    "Resource": "arn:aws:dynamodb:*:*:table/awseb-e-*"
+                    ], 
+                    "Resource": "arn:aws:dynamodb:*:*:table/awseb-e-*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowDDB"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-06-05T21:43:37+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

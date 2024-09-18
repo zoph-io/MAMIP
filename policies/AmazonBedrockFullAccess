@@ -1,54 +1,54 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-12-06T15:47:17Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "BedrockAll",
-                    "Effect": "Allow",
                     "Action": [
                         "bedrock:*"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "BedrockAll"
+                }, 
                 {
-                    "Sid": "DescribeKey",
-                    "Effect": "Allow",
                     "Action": [
                         "kms:DescribeKey"
-                    ],
-                    "Resource": "arn:*:kms:*:::*"
-                },
+                    ], 
+                    "Resource": "arn:*:kms:*:::*", 
+                    "Effect": "Allow", 
+                    "Sid": "DescribeKey"
+                }, 
                 {
-                    "Sid": "APIsWithAllResourceAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "iam:ListRoles",
-                        "ec2:DescribeVpcs",
-                        "ec2:DescribeSubnets",
+                        "iam:ListRoles", 
+                        "ec2:DescribeVpcs", 
+                        "ec2:DescribeSubnets", 
                         "ec2:DescribeSecurityGroups"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "APIsWithAllResourceAccess"
+                }, 
                 {
-                    "Sid": "PassRoleToBedrock",
-                    "Effect": "Allow",
                     "Action": [
                         "iam:PassRole"
-                    ],
-                    "Resource": "arn:aws:iam::*:role/*AmazonBedrock*",
+                    ], 
+                    "Resource": "arn:aws:iam::*:role/*AmazonBedrock*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:PassedToService": [
                                 "bedrock.amazonaws.com"
                             ]
                         }
-                    }
+                    }, 
+                    "Sid": "PassRoleToBedrock"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-12-06T15:47:17+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

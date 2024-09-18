@@ -1,99 +1,99 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-04-26T21:29:34Z", 
+        "VersionId": "v5", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "XRayPermission",
-                    "Effect": "Allow",
                     "Action": [
                         "xray:GetServiceGraph"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "XRayPermission"
+                }, 
                 {
-                    "Sid": "CWLogsPermission",
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:StartQuery",
+                        "logs:StartQuery", 
                         "logs:GetQueryResults"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:logs:*:*:log-group:/aws/appsignals/*:*",
+                        "arn:aws:logs:*:*:log-group:/aws/appsignals/*:*", 
                         "arn:aws:logs:*:*:log-group:/aws/application-signals/data:*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "CWLogsPermission"
+                }, 
                 {
-                    "Sid": "CWListMetricsPermission",
-                    "Effect": "Allow",
                     "Action": [
                         "cloudwatch:ListMetrics"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "CWListMetricsPermission"
+                }, 
                 {
-                    "Sid": "CWGetMetricDataPermission",
-                    "Effect": "Allow",
                     "Action": [
                         "cloudwatch:GetMetricData"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "CWGetMetricDataPermission"
+                }, 
                 {
-                    "Sid": "TagsPermission",
-                    "Effect": "Allow",
                     "Action": [
                         "tag:GetResources"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "TagsPermission"
+                }, 
                 {
-                    "Sid": "EC2AutoScalingPermission",
-                    "Effect": "Allow",
                     "Action": [
                         "autoscaling:DescribeAutoScalingGroups"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
-                    }
+                    }, 
+                    "Sid": "EC2AutoScalingPermission"
                 }
             ]
-        },
-        "VersionId": "v5",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-04-26T21:29:34+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,101 +1,101 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2019-01-24T19:20:51Z", 
+        "VersionId": "v8", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ssm:DescribeAssociation",
-                        "ssm:GetDeployablePatchSnapshotForInstance",
-                        "ssm:GetDocument",
-                        "ssm:DescribeDocument",
-                        "ssm:GetManifest",
-                        "ssm:GetParameters",
-                        "ssm:ListAssociations",
-                        "ssm:ListInstanceAssociations",
-                        "ssm:PutInventory",
-                        "ssm:PutComplianceItems",
-                        "ssm:PutConfigurePackageResult",
-                        "ssm:UpdateAssociationStatus",
-                        "ssm:UpdateInstanceAssociationStatus",
+                        "ssm:DescribeAssociation", 
+                        "ssm:GetDeployablePatchSnapshotForInstance", 
+                        "ssm:GetDocument", 
+                        "ssm:DescribeDocument", 
+                        "ssm:GetManifest", 
+                        "ssm:GetParameters", 
+                        "ssm:ListAssociations", 
+                        "ssm:ListInstanceAssociations", 
+                        "ssm:PutInventory", 
+                        "ssm:PutComplianceItems", 
+                        "ssm:PutConfigurePackageResult", 
+                        "ssm:UpdateAssociationStatus", 
+                        "ssm:UpdateInstanceAssociationStatus", 
                         "ssm:UpdateInstanceInformation"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ssmmessages:CreateControlChannel",
-                        "ssmmessages:CreateDataChannel",
-                        "ssmmessages:OpenControlChannel",
+                        "ssmmessages:CreateControlChannel", 
+                        "ssmmessages:CreateDataChannel", 
+                        "ssmmessages:OpenControlChannel", 
                         "ssmmessages:OpenDataChannel"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2messages:AcknowledgeMessage",
-                        "ec2messages:DeleteMessage",
-                        "ec2messages:FailMessage",
-                        "ec2messages:GetEndpoint",
-                        "ec2messages:GetMessages",
+                        "ec2messages:AcknowledgeMessage", 
+                        "ec2messages:DeleteMessage", 
+                        "ec2messages:FailMessage", 
+                        "ec2messages:GetEndpoint", 
+                        "ec2messages:GetMessages", 
                         "ec2messages:SendReply"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "cloudwatch:PutMetricData"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:DescribeInstanceStatus"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ds:CreateComputer",
+                        "ds:CreateComputer", 
                         "ds:DescribeDirectories"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:CreateLogGroup",
-                        "logs:CreateLogStream",
-                        "logs:DescribeLogGroups",
-                        "logs:DescribeLogStreams",
+                        "logs:CreateLogGroup", 
+                        "logs:CreateLogStream", 
+                        "logs:DescribeLogGroups", 
+                        "logs:DescribeLogStreams", 
                         "logs:PutLogEvents"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:GetBucketLocation",
-                        "s3:PutObject",
-                        "s3:GetObject",
-                        "s3:GetEncryptionConfiguration",
-                        "s3:AbortMultipartUpload",
-                        "s3:ListMultipartUploadParts",
-                        "s3:ListBucket",
+                        "s3:GetBucketLocation", 
+                        "s3:PutObject", 
+                        "s3:GetObject", 
+                        "s3:GetEncryptionConfiguration", 
+                        "s3:AbortMultipartUpload", 
+                        "s3:ListMultipartUploadParts", 
+                        "s3:ListBucket", 
                         "s3:ListBucketMultipartUploads"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v8",
-        "IsDefaultVersion": true,
-        "CreateDate": "2019-01-24T19:20:51+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,58 +1,58 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2016-09-21T18:16:43Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "kinesisanalytics:Describe*",
-                        "kinesisanalytics:Get*",
+                        "kinesisanalytics:Describe*", 
+                        "kinesisanalytics:Get*", 
                         "kinesisanalytics:List*"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "kinesis:DescribeStream",
+                        "kinesis:DescribeStream", 
                         "kinesis:ListStreams"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "firehose:DescribeDeliveryStream",
+                        "firehose:DescribeDeliveryStream", 
                         "firehose:ListDeliveryStreams"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudwatch:GetMetricStatistics",
+                        "cloudwatch:GetMetricStatistics", 
                         "cloudwatch:ListMetrics"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "logs:GetLogEvents",
-                    "Resource": "*"
-                },
+                    "Action": "logs:GetLogEvents", 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "iam:ListPolicyVersions",
+                        "iam:ListPolicyVersions", 
                         "iam:ListRoles"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2016-09-21T18:16:43+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

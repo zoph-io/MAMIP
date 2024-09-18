@@ -1,151 +1,151 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-06-20T16:10:44Z", 
+        "VersionId": "v12", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "BaseAthenaPermissions",
-                    "Effect": "Allow",
                     "Action": [
                         "athena:*"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "BaseAthenaPermissions"
+                }, 
                 {
-                    "Sid": "BaseGluePermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "glue:CreateDatabase",
-                        "glue:DeleteDatabase",
-                        "glue:GetDatabase",
-                        "glue:GetDatabases",
-                        "glue:UpdateDatabase",
-                        "glue:CreateTable",
-                        "glue:DeleteTable",
-                        "glue:BatchDeleteTable",
-                        "glue:UpdateTable",
-                        "glue:GetTable",
-                        "glue:GetTables",
-                        "glue:BatchCreatePartition",
-                        "glue:CreatePartition",
-                        "glue:DeletePartition",
-                        "glue:BatchDeletePartition",
-                        "glue:UpdatePartition",
-                        "glue:GetPartition",
-                        "glue:GetPartitions",
-                        "glue:BatchGetPartition",
-                        "glue:StartColumnStatisticsTaskRun",
-                        "glue:GetColumnStatisticsTaskRun",
-                        "glue:GetColumnStatisticsTaskRuns",
+                        "glue:CreateDatabase", 
+                        "glue:DeleteDatabase", 
+                        "glue:GetDatabase", 
+                        "glue:GetDatabases", 
+                        "glue:UpdateDatabase", 
+                        "glue:CreateTable", 
+                        "glue:DeleteTable", 
+                        "glue:BatchDeleteTable", 
+                        "glue:UpdateTable", 
+                        "glue:GetTable", 
+                        "glue:GetTables", 
+                        "glue:BatchCreatePartition", 
+                        "glue:CreatePartition", 
+                        "glue:DeletePartition", 
+                        "glue:BatchDeletePartition", 
+                        "glue:UpdatePartition", 
+                        "glue:GetPartition", 
+                        "glue:GetPartitions", 
+                        "glue:BatchGetPartition", 
+                        "glue:StartColumnStatisticsTaskRun", 
+                        "glue:GetColumnStatisticsTaskRun", 
+                        "glue:GetColumnStatisticsTaskRuns", 
                         "glue:GetCatalogImportStatus"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "BaseGluePermissions"
+                }, 
                 {
-                    "Sid": "BaseQueryResultsPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:GetBucketLocation",
-                        "s3:GetObject",
-                        "s3:ListBucket",
-                        "s3:ListBucketMultipartUploads",
-                        "s3:ListMultipartUploadParts",
-                        "s3:AbortMultipartUpload",
-                        "s3:CreateBucket",
-                        "s3:PutObject",
+                        "s3:GetBucketLocation", 
+                        "s3:GetObject", 
+                        "s3:ListBucket", 
+                        "s3:ListBucketMultipartUploads", 
+                        "s3:ListMultipartUploadParts", 
+                        "s3:AbortMultipartUpload", 
+                        "s3:CreateBucket", 
+                        "s3:PutObject", 
                         "s3:PutBucketPublicAccessBlock"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:s3:::aws-athena-query-results-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "BaseQueryResultsPermissions"
+                }, 
                 {
-                    "Sid": "BaseAthenaExamplesPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:GetObject",
+                        "s3:GetObject", 
                         "s3:ListBucket"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:s3:::athena-examples*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "BaseAthenaExamplesPermissions"
+                }, 
                 {
-                    "Sid": "BaseS3BucketPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:ListBucket",
-                        "s3:GetBucketLocation",
+                        "s3:ListBucket", 
+                        "s3:GetBucketLocation", 
                         "s3:ListAllMyBuckets"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "BaseS3BucketPermissions"
+                }, 
                 {
-                    "Sid": "BaseSNSPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "sns:ListTopics",
+                        "sns:ListTopics", 
                         "sns:GetTopicAttributes"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "BaseSNSPermissions"
+                }, 
                 {
-                    "Sid": "BaseCloudWatchPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudwatch:PutMetricAlarm",
-                        "cloudwatch:DescribeAlarms",
-                        "cloudwatch:DeleteAlarms",
+                        "cloudwatch:PutMetricAlarm", 
+                        "cloudwatch:DescribeAlarms", 
+                        "cloudwatch:DeleteAlarms", 
                         "cloudwatch:GetMetricData"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "BaseCloudWatchPermissions"
+                }, 
                 {
-                    "Sid": "BaseLakeFormationPermissions",
-                    "Effect": "Allow",
                     "Action": [
                         "lakeformation:GetDataAccess"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "BaseLakeFormationPermissions"
+                }, 
                 {
-                    "Sid": "BaseDataZonePermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "datazone:ListDomains",
-                        "datazone:ListProjects",
+                        "datazone:ListDomains", 
+                        "datazone:ListProjects", 
                         "datazone:ListAccountEnvironments"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "BaseDataZonePermissions"
+                }, 
                 {
-                    "Sid": "BasePricingPermissions",
-                    "Effect": "Allow",
                     "Action": [
                         "pricing:GetProducts"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "BasePricingPermissions"
                 }
             ]
-        },
-        "VersionId": "v12",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-06-20T16:10:44+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

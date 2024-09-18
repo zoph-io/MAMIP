@@ -1,49 +1,49 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-11-27T13:32:09Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "DRSStagingAccountPolicyv21",
-                    "Effect": "Allow",
                     "Action": [
-                        "drs:DescribeSourceServers",
-                        "drs:DescribeRecoverySnapshots",
-                        "drs:CreateConvertedSnapshotForDrs",
-                        "drs:GetReplicationConfiguration",
-                        "drs:DescribeJobs",
+                        "drs:DescribeSourceServers", 
+                        "drs:DescribeRecoverySnapshots", 
+                        "drs:CreateConvertedSnapshotForDrs", 
+                        "drs:GetReplicationConfiguration", 
+                        "drs:DescribeJobs", 
                         "drs:DescribeJobLogItems"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DRSStagingAccountPolicyv21"
+                }, 
                 {
-                    "Sid": "DRSStagingAccountPolicyv22",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:ModifySnapshotAttribute"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:snapshot/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:snapshot/*", 
+                    "Effect": "Allow", 
                     "Condition": {
-                        "StringEquals": {
-                            "ec2:Add/userId": "${aws:SourceIdentity}"
-                        },
                         "Null": {
                             "aws:ResourceTag/AWSElasticDisasterRecoveryManaged": "false"
+                        }, 
+                        "StringEquals": {
+                            "ec2:Add/userId": "${aws:SourceIdentity}"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "DRSStagingAccountPolicyv22"
+                }, 
                 {
-                    "Sid": "DRSStagingAccountPolicyv23",
-                    "Effect": "Allow",
-                    "Action": "drs:IssueAgentCertificateForDrs",
+                    "Action": "drs:IssueAgentCertificateForDrs", 
                     "Resource": [
                         "arn:aws:drs:*:*:source-server/*"
-                    ]
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "DRSStagingAccountPolicyv23"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-11-27T13:32:09+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

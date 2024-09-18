@@ -1,28 +1,28 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2021-12-09T03:01:51Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "LookoutVisionReadOnlyAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "lookoutvision:DescribeDataset",
-                        "lookoutvision:DescribeModel",
-                        "lookoutvision:DescribeProject",
-                        "lookoutvision:DescribeModelPackagingJob",
-                        "lookoutvision:ListDatasetEntries",
-                        "lookoutvision:ListModels",
-                        "lookoutvision:ListProjects",
-                        "lookoutvision:ListTagsForResource",
+                        "lookoutvision:DescribeDataset", 
+                        "lookoutvision:DescribeModel", 
+                        "lookoutvision:DescribeProject", 
+                        "lookoutvision:DescribeModelPackagingJob", 
+                        "lookoutvision:ListDatasetEntries", 
+                        "lookoutvision:ListModels", 
+                        "lookoutvision:ListProjects", 
+                        "lookoutvision:ListTagsForResource", 
                         "lookoutvision:ListModelPackagingJobs"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "LookoutVisionReadOnlyAccess"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2021-12-09T03:01:51+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

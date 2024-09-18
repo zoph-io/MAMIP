@@ -1,34 +1,34 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-08-19T16:12:55Z", 
+        "VersionId": "v6", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "NotAction": [
-                        "iam:*",
-                        "organizations:*",
+                        "iam:*", 
+                        "organizations:*", 
                         "account:*"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "account:GetAccountInformation",
-                        "account:GetPrimaryEmail",
-                        "account:ListRegions",
-                        "iam:CreateServiceLinkedRole",
-                        "iam:DeleteServiceLinkedRole",
-                        "iam:ListRoles",
+                        "account:GetAccountInformation", 
+                        "account:GetPrimaryEmail", 
+                        "account:ListRegions", 
+                        "iam:CreateServiceLinkedRole", 
+                        "iam:DeleteServiceLinkedRole", 
+                        "iam:ListRoles", 
                         "organizations:DescribeOrganization"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v6",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-08-19T16:12:55+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

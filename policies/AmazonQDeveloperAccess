@@ -1,46 +1,46 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-07-09T08:35:15Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AllowAmazonQDeveloperAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "q:StartConversation",
-                        "q:SendMessage",
-                        "q:GetConversation",
-                        "q:ListConversations",
-                        "q:PassRequest",
-                        "q:StartTroubleshootingAnalysis",
-                        "q:StartTroubleshootingResolutionExplanation",
-                        "q:GetTroubleshootingResults",
-                        "q:UpdateTroubleshootingCommandResult",
+                        "q:StartConversation", 
+                        "q:SendMessage", 
+                        "q:GetConversation", 
+                        "q:ListConversations", 
+                        "q:PassRequest", 
+                        "q:StartTroubleshootingAnalysis", 
+                        "q:StartTroubleshootingResolutionExplanation", 
+                        "q:GetTroubleshootingResults", 
+                        "q:UpdateTroubleshootingCommandResult", 
                         "q:GetIdentityMetaData"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowAmazonQDeveloperAccess"
+                }, 
                 {
-                    "Sid": "AllowCloudControlReadAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudformation:GetResource",
+                        "cloudformation:GetResource", 
                         "cloudformation:ListResources"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowCloudControlReadAccess"
+                }, 
                 {
-                    "Sid": "AllowSetTrustedIdentity",
-                    "Effect": "Allow",
                     "Action": [
                         "sts:SetContext"
-                    ],
-                    "Resource": "arn:aws:sts::*:self"
+                    ], 
+                    "Resource": "arn:aws:sts::*:self", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowSetTrustedIdentity"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-07-09T08:35:15+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

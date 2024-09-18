@@ -1,28 +1,30 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2019-12-09T23:52:37Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": [
-                        "iam:CreateRole",
-                        "iam:DeleteRole",
+                        "iam:CreateRole", 
+                        "iam:DeleteRole", 
                         "iam:GetRole"
-                    ],
-                    "Effect": "Allow",
+                    ], 
                     "Resource": [
                         "arn:aws:iam::*:role/stacksets-exec-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
                     "Action": [
-                        "iam:DetachRolePolicy",
+                        "iam:DetachRolePolicy", 
                         "iam:AttachRolePolicy"
-                    ],
-                    "Effect": "Allow",
+                    ], 
                     "Resource": [
                         "arn:aws:iam::*:role/stacksets-exec-*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:PolicyARN": "arn:aws:iam::aws:policy/AdministratorAccess"
@@ -30,9 +32,7 @@
                     }
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2019-12-09T23:52:37+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

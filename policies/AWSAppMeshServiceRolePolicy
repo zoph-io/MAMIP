@@ -1,29 +1,29 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-10-10T16:46:37Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "CloudMapServiceDiscovery",
-                    "Effect": "Allow",
                     "Action": [
-                        "servicediscovery:DiscoverInstances",
+                        "servicediscovery:DiscoverInstances", 
                         "servicediscovery:DiscoverInstancesRevision"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "CloudMapServiceDiscovery"
+                }, 
                 {
-                    "Sid": "ACMCertificateVerification",
-                    "Effect": "Allow",
                     "Action": [
                         "acm:DescribeCertificate"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ACMCertificateVerification"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-10-10T16:46:37+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

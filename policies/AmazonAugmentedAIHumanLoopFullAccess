@@ -1,20 +1,20 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2019-12-03T16:20:47Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "sagemaker:*HumanLoop",
+                        "sagemaker:*HumanLoop", 
                         "sagemaker:*HumanLoops"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2019-12-03T16:20:47+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

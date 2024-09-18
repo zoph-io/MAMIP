@@ -1,22 +1,22 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-05-02T16:15:49Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "cassandra:Select",
-                        "cassandra:SelectMultiRegionResource",
-                        "cassandra:Modify",
+                        "cassandra:Select", 
+                        "cassandra:SelectMultiRegionResource", 
+                        "cassandra:Modify", 
                         "cassandra:ModifyMultiRegionResource"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-05-02T16:15:49+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

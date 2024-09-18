@@ -1,76 +1,76 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-11-29T15:11:26Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "CloudwatchLogStreamPublishPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:PutLogEvents",
-                        "logs:CreateLogStream",
+                        "logs:PutLogEvents", 
+                        "logs:CreateLogStream", 
                         "logs:DescribeLogStreams"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:logs:*:*:log-group:/aws/sagemaker/Clusters/*:log-stream:*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "CloudwatchLogStreamPublishPermissions"
+                }, 
                 {
-                    "Sid": "CloudwatchLogGroupCreationPermissions",
-                    "Effect": "Allow",
                     "Action": [
                         "logs:CreateLogGroup"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:logs:*:*:log-group:/aws/sagemaker/Clusters/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "CloudwatchLogGroupCreationPermissions"
+                }, 
                 {
-                    "Sid": "CloudwatchPutMetricDataAccess",
-                    "Effect": "Allow",
                     "Action": [
                         "cloudwatch:PutMetricData"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "cloudwatch:namespace": "/aws/sagemaker/Clusters"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "CloudwatchPutMetricDataAccess"
+                }, 
                 {
-                    "Sid": "DataRetrievalFromS3BucketPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:ListBucket",
+                        "s3:ListBucket", 
                         "s3:GetObject"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:s3:::sagemaker-*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "DataRetrievalFromS3BucketPermissions"
+                }, 
                 {
-                    "Sid": "SSMConnectivityPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "ssmmessages:CreateControlChannel",
-                        "ssmmessages:CreateDataChannel",
-                        "ssmmessages:OpenControlChannel",
+                        "ssmmessages:CreateControlChannel", 
+                        "ssmmessages:CreateDataChannel", 
+                        "ssmmessages:OpenControlChannel", 
                         "ssmmessages:OpenDataChannel"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "SSMConnectivityPermissions"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-11-29T15:11:26+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

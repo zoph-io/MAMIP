@@ -1,64 +1,64 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-12-18T17:47:30Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:GetObjectVersion",
-                        "s3:PutObject",
+                        "s3:GetObjectVersion", 
+                        "s3:PutObject", 
                         "s3:GetObject"
-                    ],
-                    "Resource": "arn:aws:s3:::afr-ota*"
-                },
+                    ], 
+                    "Resource": "arn:aws:s3:::afr-ota*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "signer:StartSigningJob",
-                        "signer:DescribeSigningJob",
-                        "signer:GetSigningProfile",
+                        "signer:StartSigningJob", 
+                        "signer:DescribeSigningJob", 
+                        "signer:GetSigningProfile", 
                         "signer:PutSigningProfile"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:ListBucketVersions",
-                        "s3:ListBucket",
-                        "s3:ListAllMyBuckets",
+                        "s3:ListBucketVersions", 
+                        "s3:ListBucket", 
+                        "s3:ListAllMyBuckets", 
                         "s3:GetBucketLocation"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "iot:DeleteJob",
+                        "iot:DeleteJob", 
                         "iot:DescribeJob"
-                    ],
-                    "Resource": "arn:aws:iot:*:*:job/AFR_OTA*"
-                },
+                    ], 
+                    "Resource": "arn:aws:iot:*:*:job/AFR_OTA*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "iot:DeleteStream"
-                    ],
-                    "Resource": "arn:aws:iot:*:*:stream/AFR_OTA*"
-                },
+                    ], 
+                    "Resource": "arn:aws:iot:*:*:stream/AFR_OTA*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "iot:CreateStream",
+                        "iot:CreateStream", 
                         "iot:CreateJob"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-12-18T17:47:30+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

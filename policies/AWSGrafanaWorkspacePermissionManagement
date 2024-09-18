@@ -1,42 +1,42 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-03-15T22:17:26Z", 
+        "VersionId": "v4", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AWSGrafanaPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "grafana:DescribeWorkspace",
-                        "grafana:DescribeWorkspaceAuthentication",
-                        "grafana:UpdatePermissions",
-                        "grafana:ListPermissions",
+                        "grafana:DescribeWorkspace", 
+                        "grafana:DescribeWorkspaceAuthentication", 
+                        "grafana:UpdatePermissions", 
+                        "grafana:ListPermissions", 
                         "grafana:ListWorkspaces"
-                    ],
-                    "Resource": "arn:aws:grafana:*:*:/workspaces*"
-                },
+                    ], 
+                    "Resource": "arn:aws:grafana:*:*:/workspaces*", 
+                    "Effect": "Allow", 
+                    "Sid": "AWSGrafanaPermissions"
+                }, 
                 {
-                    "Sid": "IAMIdentityCenterPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "sso:DescribeRegisteredRegions",
-                        "sso:GetSharedSsoConfiguration",
-                        "sso:ListDirectoryAssociations",
-                        "sso:GetManagedApplicationInstance",
-                        "sso:ListProfiles",
-                        "sso:AssociateProfile",
-                        "sso:DisassociateProfile",
-                        "sso:GetProfile",
-                        "sso:ListProfileAssociations",
-                        "sso-directory:DescribeUser",
+                        "sso:DescribeRegisteredRegions", 
+                        "sso:GetSharedSsoConfiguration", 
+                        "sso:ListDirectoryAssociations", 
+                        "sso:GetManagedApplicationInstance", 
+                        "sso:ListProfiles", 
+                        "sso:AssociateProfile", 
+                        "sso:DisassociateProfile", 
+                        "sso:GetProfile", 
+                        "sso:ListProfileAssociations", 
+                        "sso-directory:DescribeUser", 
                         "sso-directory:DescribeGroup"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "IAMIdentityCenterPermissions"
                 }
             ]
-        },
-        "VersionId": "v4",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-03-15T22:17:26+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

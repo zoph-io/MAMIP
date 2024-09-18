@@ -1,22 +1,24 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-06-25T21:23:52Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": [
-                        "codeartifact:Describe*",
-                        "codeartifact:Get*",
-                        "codeartifact:List*",
+                        "codeartifact:Describe*", 
+                        "codeartifact:Get*", 
+                        "codeartifact:List*", 
                         "codeartifact:ReadFromRepository"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "sts:GetServiceBearerToken",
-                    "Resource": "*",
+                    "Action": "sts:GetServiceBearerToken", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "sts:AWSServiceName": "codeartifact.amazonaws.com"
@@ -24,9 +26,7 @@
                     }
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-06-25T21:23:52+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

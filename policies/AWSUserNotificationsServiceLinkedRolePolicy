@@ -1,36 +1,36 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-04-19T13:28:34Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "events:DescribeRule",
-                        "events:PutRule",
-                        "events:PutTargets",
-                        "events:DeleteRule",
-                        "events:ListTargetsByRule",
+                        "events:DescribeRule", 
+                        "events:PutRule", 
+                        "events:PutTargets", 
+                        "events:DeleteRule", 
+                        "events:ListTargetsByRule", 
                         "events:RemoveTargets"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:events:*:*:rule/AWSUserNotificationsManagedRule-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "cloudwatch:PutMetricData",
+                    "Action": "cloudwatch:PutMetricData", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "cloudwatch:namespace": "AWS/Notifications"
                         }
-                    },
-                    "Resource": "*"
+                    }
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-04-19T13:28:34+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

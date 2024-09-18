@@ -1,97 +1,97 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-12-07T21:50:00Z", 
+        "VersionId": "v6", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AppRegistryUpdateStackAndResourceGroupTagging",
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudformation:UpdateStack",
+                        "cloudformation:UpdateStack", 
                         "tag:GetResources"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAnyValue:StringEquals": {
                             "aws:CalledVia": "servicecatalog-appregistry.amazonaws.com"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "AppRegistryUpdateStackAndResourceGroupTagging"
+                }, 
                 {
-                    "Sid": "AppRegistryResourceGroupsIntegration",
-                    "Effect": "Allow",
                     "Action": [
-                        "resource-groups:CreateGroup",
-                        "resource-groups:DeleteGroup",
-                        "resource-groups:GetGroup",
-                        "resource-groups:GetTags",
-                        "resource-groups:Tag",
-                        "resource-groups:Untag",
-                        "resource-groups:GetGroupConfiguration",
-                        "resource-groups:AssociateResource",
+                        "resource-groups:CreateGroup", 
+                        "resource-groups:DeleteGroup", 
+                        "resource-groups:GetGroup", 
+                        "resource-groups:GetTags", 
+                        "resource-groups:Tag", 
+                        "resource-groups:Untag", 
+                        "resource-groups:GetGroupConfiguration", 
+                        "resource-groups:AssociateResource", 
                         "resource-groups:DisassociateResource"
-                    ],
-                    "Resource": "arn:aws:resource-groups:*:*:group/AWS_*",
+                    ], 
+                    "Resource": "arn:aws:resource-groups:*:*:group/AWS_*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAnyValue:StringEquals": {
                             "aws:CalledVia": "servicecatalog-appregistry.amazonaws.com"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "AppRegistryResourceGroupsIntegration"
+                }, 
                 {
-                    "Sid": "AppRegistryServiceLinkedRole",
-                    "Effect": "Allow",
-                    "Action": "iam:CreateServiceLinkedRole",
-                    "Resource": "arn:aws:iam::*:role/aws-service-role/servicecatalog-appregistry.amazonaws.com/AWSServiceRoleForAWSServiceCatalogAppRegistry*",
+                    "Action": "iam:CreateServiceLinkedRole", 
+                    "Resource": "arn:aws:iam::*:role/aws-service-role/servicecatalog-appregistry.amazonaws.com/AWSServiceRoleForAWSServiceCatalogAppRegistry*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:AWSServiceName": "servicecatalog-appregistry.amazonaws.com"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "AppRegistryServiceLinkedRole"
+                }, 
                 {
-                    "Sid": "AppRegistryOperations",
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudformation:DescribeStacks",
-                        "servicecatalog:CreateApplication",
-                        "servicecatalog:GetApplication",
-                        "servicecatalog:UpdateApplication",
-                        "servicecatalog:DeleteApplication",
-                        "servicecatalog:ListApplications",
-                        "servicecatalog:AssociateResource",
-                        "servicecatalog:DisassociateResource",
-                        "servicecatalog:GetAssociatedResource",
-                        "servicecatalog:ListAssociatedResources",
-                        "servicecatalog:AssociateAttributeGroup",
-                        "servicecatalog:DisassociateAttributeGroup",
-                        "servicecatalog:ListAssociatedAttributeGroups",
-                        "servicecatalog:CreateAttributeGroup",
-                        "servicecatalog:UpdateAttributeGroup",
-                        "servicecatalog:DeleteAttributeGroup",
-                        "servicecatalog:GetAttributeGroup",
-                        "servicecatalog:ListAttributeGroups",
-                        "servicecatalog:SyncResource",
-                        "servicecatalog:ListAttributeGroupsForApplication",
-                        "servicecatalog:GetConfiguration",
+                        "cloudformation:DescribeStacks", 
+                        "servicecatalog:CreateApplication", 
+                        "servicecatalog:GetApplication", 
+                        "servicecatalog:UpdateApplication", 
+                        "servicecatalog:DeleteApplication", 
+                        "servicecatalog:ListApplications", 
+                        "servicecatalog:AssociateResource", 
+                        "servicecatalog:DisassociateResource", 
+                        "servicecatalog:GetAssociatedResource", 
+                        "servicecatalog:ListAssociatedResources", 
+                        "servicecatalog:AssociateAttributeGroup", 
+                        "servicecatalog:DisassociateAttributeGroup", 
+                        "servicecatalog:ListAssociatedAttributeGroups", 
+                        "servicecatalog:CreateAttributeGroup", 
+                        "servicecatalog:UpdateAttributeGroup", 
+                        "servicecatalog:DeleteAttributeGroup", 
+                        "servicecatalog:GetAttributeGroup", 
+                        "servicecatalog:ListAttributeGroups", 
+                        "servicecatalog:SyncResource", 
+                        "servicecatalog:ListAttributeGroupsForApplication", 
+                        "servicecatalog:GetConfiguration", 
                         "servicecatalog:PutConfiguration"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AppRegistryOperations"
+                }, 
                 {
-                    "Sid": "AppRegistryResourceTagging",
-                    "Effect": "Allow",
                     "Action": [
-                        "servicecatalog:ListTagsForResource",
-                        "servicecatalog:UntagResource",
+                        "servicecatalog:ListTagsForResource", 
+                        "servicecatalog:UntagResource", 
                         "servicecatalog:TagResource"
-                    ],
-                    "Resource": "arn:aws:servicecatalog:*:*:*"
+                    ], 
+                    "Resource": "arn:aws:servicecatalog:*:*:*", 
+                    "Effect": "Allow", 
+                    "Sid": "AppRegistryResourceTagging"
                 }
             ]
-        },
-        "VersionId": "v6",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-12-07T21:50:00+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

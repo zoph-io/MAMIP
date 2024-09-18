@@ -1,155 +1,155 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-10-20T20:05:47Z", 
+        "VersionId": "v17", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "IAMRoleProvisioningActions",
-                    "Effect": "Allow",
                     "Action": [
-                        "iam:AttachRolePolicy",
-                        "iam:CreateRole",
-                        "iam:PutRolePolicy",
-                        "iam:UpdateRole",
-                        "iam:UpdateRoleDescription",
-                        "iam:UpdateAssumeRolePolicy",
-                        "iam:PutRolePermissionsBoundary",
+                        "iam:AttachRolePolicy", 
+                        "iam:CreateRole", 
+                        "iam:PutRolePolicy", 
+                        "iam:UpdateRole", 
+                        "iam:UpdateRoleDescription", 
+                        "iam:UpdateAssumeRolePolicy", 
+                        "iam:PutRolePermissionsBoundary", 
                         "iam:DeleteRolePermissionsBoundary"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:iam::*:role/aws-reserved/sso.amazonaws.com/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringNotEquals": {
                             "aws:PrincipalOrgMasterAccountId": "${aws:PrincipalAccount}"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "IAMRoleProvisioningActions"
+                }, 
                 {
-                    "Sid": "IAMRoleReadActions",
-                    "Effect": "Allow",
                     "Action": [
-                        "iam:GetRole",
+                        "iam:GetRole", 
                         "iam:ListRoles"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "IAMRoleReadActions"
+                }, 
                 {
-                    "Sid": "IAMRoleCleanupActions",
-                    "Effect": "Allow",
                     "Action": [
-                        "iam:DeleteRole",
-                        "iam:DeleteRolePolicy",
-                        "iam:DetachRolePolicy",
-                        "iam:ListRolePolicies",
+                        "iam:DeleteRole", 
+                        "iam:DeleteRolePolicy", 
+                        "iam:DetachRolePolicy", 
+                        "iam:ListRolePolicies", 
                         "iam:ListAttachedRolePolicies"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:iam::*:role/aws-reserved/sso.amazonaws.com/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "IAMRoleCleanupActions"
+                }, 
                 {
-                    "Sid": "IAMSLRCleanupActions",
-                    "Effect": "Allow",
                     "Action": [
-                        "iam:DeleteServiceLinkedRole",
-                        "iam:GetServiceLinkedRoleDeletionStatus",
-                        "iam:DeleteRole",
+                        "iam:DeleteServiceLinkedRole", 
+                        "iam:GetServiceLinkedRoleDeletionStatus", 
+                        "iam:DeleteRole", 
                         "iam:GetRole"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:iam::*:role/aws-service-role/sso.amazonaws.com/AWSServiceRoleForSSO"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "IAMSLRCleanupActions"
+                }, 
                 {
-                    "Sid": "IAMSAMLProviderCreationAction",
-                    "Effect": "Allow",
                     "Action": [
                         "iam:CreateSAMLProvider"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:iam::*:saml-provider/AWSSSO_*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringNotEquals": {
                             "aws:PrincipalOrgMasterAccountId": "${aws:PrincipalAccount}"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "IAMSAMLProviderCreationAction"
+                }, 
                 {
-                    "Sid": "IAMSAMLProviderUpdateAction",
-                    "Effect": "Allow",
                     "Action": [
                         "iam:UpdateSAMLProvider"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:iam::*:saml-provider/AWSSSO_*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "IAMSAMLProviderUpdateAction"
+                }, 
                 {
-                    "Sid": "IAMSAMLProviderCleanupActions",
-                    "Effect": "Allow",
                     "Action": [
-                        "iam:DeleteSAMLProvider",
+                        "iam:DeleteSAMLProvider", 
                         "iam:GetSAMLProvider"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:iam::*:saml-provider/AWSSSO_*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "IAMSAMLProviderCleanupActions"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "organizations:DescribeAccount",
-                        "organizations:DescribeOrganization",
-                        "organizations:ListAccounts",
-                        "organizations:ListDelegatedAdministrators",
+                        "organizations:DescribeAccount", 
+                        "organizations:DescribeOrganization", 
+                        "organizations:ListAccounts", 
+                        "organizations:ListDelegatedAdministrators", 
                         "organizations:ListAWSServiceAccessForOrganization"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Sid": "AllowUnauthAppForDirectory",
-                    "Effect": "Allow",
                     "Action": [
                         "ds:UnauthorizeApplication"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowUnauthAppForDirectory"
+                }, 
                 {
-                    "Sid": "AllowDescribeForDirectory",
-                    "Effect": "Allow",
                     "Action": [
-                        "ds:DescribeDirectories",
+                        "ds:DescribeDirectories", 
                         "ds:DescribeTrusts"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowDescribeForDirectory"
+                }, 
                 {
-                    "Sid": "AllowDescribeAndListOperationsOnIdentitySource",
-                    "Effect": "Allow",
                     "Action": [
-                        "identitystore:DescribeUser",
-                        "identitystore:DescribeGroup",
-                        "identitystore:ListGroups",
+                        "identitystore:DescribeUser", 
+                        "identitystore:DescribeGroup", 
+                        "identitystore:ListGroups", 
                         "identitystore:ListUsers"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowDescribeAndListOperationsOnIdentitySource"
                 }
             ]
-        },
-        "VersionId": "v17",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-10-20T20:05:47+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

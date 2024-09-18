@@ -1,93 +1,93 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-12-14T21:00:52Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": [
                         "chime:*"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
                     "Action": [
-                        "s3:ListBucket",
-                        "s3:ListAllMyBuckets",
-                        "s3:GetBucketAcl",
-                        "s3:GetBucketLocation",
-                        "s3:GetBucketLogging",
-                        "s3:GetBucketVersioning",
+                        "s3:ListBucket", 
+                        "s3:ListAllMyBuckets", 
+                        "s3:GetBucketAcl", 
+                        "s3:GetBucketLocation", 
+                        "s3:GetBucketLogging", 
+                        "s3:GetBucketVersioning", 
                         "s3:GetBucketWebsite"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
                     "Action": [
-                        "logs:CreateLogDelivery",
-                        "logs:DeleteLogDelivery",
-                        "logs:GetLogDelivery",
-                        "logs:ListLogDeliveries",
-                        "logs:DescribeResourcePolicies",
-                        "logs:PutResourcePolicy",
-                        "logs:CreateLogGroup",
+                        "logs:CreateLogDelivery", 
+                        "logs:DeleteLogDelivery", 
+                        "logs:GetLogDelivery", 
+                        "logs:ListLogDeliveries", 
+                        "logs:DescribeResourcePolicies", 
+                        "logs:PutResourcePolicy", 
+                        "logs:CreateLogGroup", 
                         "logs:DescribeLogGroups"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "sns:CreateTopic",
+                        "sns:CreateTopic", 
                         "sns:GetTopicAttributes"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:sns:*:*:ChimeVoiceConnector-Streaming*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "sqs:GetQueueAttributes",
+                        "sqs:GetQueueAttributes", 
                         "sqs:CreateQueue"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:sqs:*:*:ChimeVoiceConnector-Streaming*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
                     "Action": [
                         "kinesis:ListStreams"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "kinesis:DescribeStream"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:kinesis:*:*:stream/chime-chat-*",
+                        "arn:aws:kinesis:*:*:stream/chime-chat-*", 
                         "arn:aws:kinesis:*:*:stream/chime-messaging-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:GetEncryptionConfiguration",
+                        "s3:GetEncryptionConfiguration", 
                         "s3:ListBucket"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:s3:::chime-chat-*"
-                    ]
+                    ], 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-12-14T21:00:52+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

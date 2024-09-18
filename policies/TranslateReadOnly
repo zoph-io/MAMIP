@@ -1,29 +1,29 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-05-24T17:19:30Z", 
+        "VersionId": "v7", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "translate:TranslateText",
-                        "translate:TranslateDocument",
-                        "translate:GetTerminology",
-                        "translate:ListTerminologies",
-                        "translate:ListTextTranslationJobs",
-                        "translate:DescribeTextTranslationJob",
-                        "translate:GetParallelData",
-                        "translate:ListParallelData",
-                        "comprehend:DetectDominantLanguage",
-                        "cloudwatch:GetMetricStatistics",
+                        "translate:TranslateText", 
+                        "translate:TranslateDocument", 
+                        "translate:GetTerminology", 
+                        "translate:ListTerminologies", 
+                        "translate:ListTextTranslationJobs", 
+                        "translate:DescribeTextTranslationJob", 
+                        "translate:GetParallelData", 
+                        "translate:ListParallelData", 
+                        "comprehend:DetectDominantLanguage", 
+                        "cloudwatch:GetMetricStatistics", 
                         "cloudwatch:ListMetrics"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v7",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-05-24T17:19:30+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

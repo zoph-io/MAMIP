@@ -1,33 +1,35 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2021-11-29T15:46:12Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "rum:*"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "iam:GetRole",
+                        "iam:GetRole", 
                         "iam:CreateServiceLinkedRole"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:iam::*:role/aws-service-role/rum.amazonaws.com/AWSServiceRoleForRealUserMonitoring"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "iam:PassRole"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:iam::*:role/RUM-Monitor*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:PassedToService": [
@@ -35,75 +37,73 @@
                             ]
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudwatch:GetMetricData",
-                        "cloudwatch:GetMetricStatistics",
+                        "cloudwatch:GetMetricData", 
+                        "cloudwatch:GetMetricStatistics", 
                         "cloudwatch:ListMetrics"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "cloudwatch:DescribeAlarms"
-                    ],
-                    "Resource": "arn:aws:cloudwatch:*:*:alarm:*"
-                },
+                    ], 
+                    "Resource": "arn:aws:cloudwatch:*:*:alarm:*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "cognito-identity:CreateIdentityPool",
-                        "cognito-identity:ListIdentityPools",
-                        "cognito-identity:DescribeIdentityPool",
-                        "cognito-identity:GetIdentityPoolRoles",
+                        "cognito-identity:CreateIdentityPool", 
+                        "cognito-identity:ListIdentityPools", 
+                        "cognito-identity:DescribeIdentityPool", 
+                        "cognito-identity:GetIdentityPoolRoles", 
                         "cognito-identity:SetIdentityPoolRoles"
-                    ],
-                    "Resource": "arn:aws:cognito-identity:*:*:identitypool/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:cognito-identity:*:*:identitypool/*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:CreateLogGroup",
-                        "logs:DeleteLogGroup",
-                        "logs:PutRetentionPolicy",
+                        "logs:CreateLogGroup", 
+                        "logs:DeleteLogGroup", 
+                        "logs:PutRetentionPolicy", 
                         "logs:CreateLogStream"
-                    ],
-                    "Resource": "arn:aws:logs:*:*:log-group:*RUMService*"
-                },
+                    ], 
+                    "Resource": "arn:aws:logs:*:*:log-group:*RUMService*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:CreateLogDelivery",
-                        "logs:GetLogDelivery",
-                        "logs:UpdateLogDelivery",
-                        "logs:DeleteLogDelivery",
-                        "logs:ListLogDeliveries",
+                        "logs:CreateLogDelivery", 
+                        "logs:GetLogDelivery", 
+                        "logs:UpdateLogDelivery", 
+                        "logs:DeleteLogDelivery", 
+                        "logs:ListLogDeliveries", 
                         "logs:DescribeResourcePolicies"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "logs:DescribeLogGroups"
-                    ],
-                    "Resource": "arn:aws:logs:*:*:log-group::log-stream:*"
-                },
+                    ], 
+                    "Resource": "arn:aws:logs:*:*:log-group::log-stream:*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "synthetics:describeCanaries",
+                        "synthetics:describeCanaries", 
                         "synthetics:describeCanariesLastRun"
-                    ],
-                    "Resource": "arn:aws:synthetics:*:*:canary:*"
+                    ], 
+                    "Resource": "arn:aws:synthetics:*:*:canary:*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2021-11-29T15:46:12+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,32 +1,32 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-01-10T20:19:18Z", 
+        "VersionId": "v5", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "FSxReadOnlyPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudwatch:DescribeAlarms",
-                        "cloudwatch:GetMetricData",
-                        "ds:DescribeDirectories",
-                        "ec2:DescribeNetworkInterfaceAttribute",
-                        "ec2:DescribeSecurityGroups",
-                        "ec2:GetSecurityGroupsForVpc",
-                        "ec2:DescribeSubnets",
-                        "ec2:DescribeVpcs",
-                        "firehose:ListDeliveryStreams",
-                        "fsx:Describe*",
-                        "fsx:ListTagsForResource",
-                        "kms:DescribeKey",
+                        "cloudwatch:DescribeAlarms", 
+                        "cloudwatch:GetMetricData", 
+                        "ds:DescribeDirectories", 
+                        "ec2:DescribeNetworkInterfaceAttribute", 
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:GetSecurityGroupsForVpc", 
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeVpcs", 
+                        "firehose:ListDeliveryStreams", 
+                        "fsx:Describe*", 
+                        "fsx:ListTagsForResource", 
+                        "kms:DescribeKey", 
                         "logs:DescribeLogGroups"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "FSxReadOnlyPermissions"
                 }
             ]
-        },
-        "VersionId": "v5",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-01-10T20:19:18+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

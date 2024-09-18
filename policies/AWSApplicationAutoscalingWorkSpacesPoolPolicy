@@ -1,59 +1,59 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-06-17T18:39:07Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "WorkSpacesActionsOnAllPools",
-                    "Effect": "Allow",
                     "Action": [
-                        "workspaces:DescribeWorkspacesPools",
+                        "workspaces:DescribeWorkspacesPools", 
                         "workspaces:UpdateWorkspacesPool"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "WorkSpacesActionsOnAllPools"
+                }, 
                 {
-                    "Sid": "CloudWatchActionsOnAllAlarms",
-                    "Effect": "Allow",
                     "Action": [
                         "cloudwatch:DescribeAlarms"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:cloudwatch:*:*:alarm:*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "CloudWatchActionsOnAllAlarms"
+                }, 
                 {
-                    "Sid": "CloudWatchActionsOnTargetTrackingAlarms",
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudwatch:PutMetricAlarm",
+                        "cloudwatch:PutMetricAlarm", 
                         "cloudwatch:DeleteAlarms"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:cloudwatch:*:*:alarm:TargetTracking*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
-                    }
+                    }, 
+                    "Sid": "CloudWatchActionsOnTargetTrackingAlarms"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-06-17T18:39:07+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

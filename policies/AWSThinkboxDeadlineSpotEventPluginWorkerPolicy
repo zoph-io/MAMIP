@@ -1,60 +1,60 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-12-07T23:31:31Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeInstances",
+                        "ec2:DescribeInstances", 
                         "ec2:DescribeTags"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:TerminateInstances"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ec2:*:*:instance/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "ec2:ResourceTag/DeadlineTrackedAWSResource": "SpotEventPlugin"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:TerminateInstances"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ec2:*:*:instance/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "ec2:ResourceTag/DeadlineResourceTracker": "SpotEventPlugin"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "sqs:GetQueueUrl",
+                        "sqs:GetQueueUrl", 
                         "sqs:SendMessage"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:sqs:*:*:DeadlineAWSComputeNodeState*"
-                    ]
+                    ], 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-12-07T23:31:31+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

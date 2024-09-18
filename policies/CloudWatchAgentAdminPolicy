@@ -1,41 +1,41 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-02-05T20:59:57Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "CWACloudWatchPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudwatch:PutMetricData",
-                        "ec2:DescribeTags",
-                        "logs:PutLogEvents",
-                        "logs:PutRetentionPolicy",
-                        "logs:DescribeLogStreams",
-                        "logs:DescribeLogGroups",
-                        "logs:CreateLogStream",
-                        "logs:CreateLogGroup",
-                        "xray:PutTraceSegments",
-                        "xray:PutTelemetryRecords",
-                        "xray:GetSamplingRules",
-                        "xray:GetSamplingTargets",
+                        "cloudwatch:PutMetricData", 
+                        "ec2:DescribeTags", 
+                        "logs:PutLogEvents", 
+                        "logs:PutRetentionPolicy", 
+                        "logs:DescribeLogStreams", 
+                        "logs:DescribeLogGroups", 
+                        "logs:CreateLogStream", 
+                        "logs:CreateLogGroup", 
+                        "xray:PutTraceSegments", 
+                        "xray:PutTelemetryRecords", 
+                        "xray:GetSamplingRules", 
+                        "xray:GetSamplingTargets", 
                         "xray:GetSamplingStatisticSummaries"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "CWACloudWatchPermissions"
+                }, 
                 {
-                    "Sid": "CWASSMPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "ssm:GetParameter",
+                        "ssm:GetParameter", 
                         "ssm:PutParameter"
-                    ],
-                    "Resource": "arn:aws:ssm:*:*:parameter/AmazonCloudWatch-*"
+                    ], 
+                    "Resource": "arn:aws:ssm:*:*:parameter/AmazonCloudWatch-*", 
+                    "Effect": "Allow", 
+                    "Sid": "CWASSMPermissions"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-02-05T20:59:57+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

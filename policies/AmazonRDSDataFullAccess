@@ -1,51 +1,51 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2019-11-20T21:58:46Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "SecretsManagerDbCredentialsAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "secretsmanager:GetSecretValue",
-                        "secretsmanager:PutResourcePolicy",
-                        "secretsmanager:PutSecretValue",
-                        "secretsmanager:DeleteSecret",
-                        "secretsmanager:DescribeSecret",
+                        "secretsmanager:GetSecretValue", 
+                        "secretsmanager:PutResourcePolicy", 
+                        "secretsmanager:PutSecretValue", 
+                        "secretsmanager:DeleteSecret", 
+                        "secretsmanager:DescribeSecret", 
                         "secretsmanager:TagResource"
-                    ],
-                    "Resource": "arn:aws:secretsmanager:*:*:secret:rds-db-credentials/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:secretsmanager:*:*:secret:rds-db-credentials/*", 
+                    "Effect": "Allow", 
+                    "Sid": "SecretsManagerDbCredentialsAccess"
+                }, 
                 {
-                    "Sid": "RDSDataServiceAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "dbqms:CreateFavoriteQuery",
-                        "dbqms:DescribeFavoriteQueries",
-                        "dbqms:UpdateFavoriteQuery",
-                        "dbqms:DeleteFavoriteQueries",
-                        "dbqms:GetQueryString",
-                        "dbqms:CreateQueryHistory",
-                        "dbqms:DescribeQueryHistory",
-                        "dbqms:UpdateQueryHistory",
-                        "dbqms:DeleteQueryHistory",
-                        "rds-data:ExecuteSql",
-                        "rds-data:ExecuteStatement",
-                        "rds-data:BatchExecuteStatement",
-                        "rds-data:BeginTransaction",
-                        "rds-data:CommitTransaction",
-                        "rds-data:RollbackTransaction",
-                        "secretsmanager:CreateSecret",
-                        "secretsmanager:ListSecrets",
-                        "secretsmanager:GetRandomPassword",
+                        "dbqms:CreateFavoriteQuery", 
+                        "dbqms:DescribeFavoriteQueries", 
+                        "dbqms:UpdateFavoriteQuery", 
+                        "dbqms:DeleteFavoriteQueries", 
+                        "dbqms:GetQueryString", 
+                        "dbqms:CreateQueryHistory", 
+                        "dbqms:DescribeQueryHistory", 
+                        "dbqms:UpdateQueryHistory", 
+                        "dbqms:DeleteQueryHistory", 
+                        "rds-data:ExecuteSql", 
+                        "rds-data:ExecuteStatement", 
+                        "rds-data:BatchExecuteStatement", 
+                        "rds-data:BeginTransaction", 
+                        "rds-data:CommitTransaction", 
+                        "rds-data:RollbackTransaction", 
+                        "secretsmanager:CreateSecret", 
+                        "secretsmanager:ListSecrets", 
+                        "secretsmanager:GetRandomPassword", 
                         "tag:GetResources"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "RDSDataServiceAccess"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2019-11-20T21:58:46+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

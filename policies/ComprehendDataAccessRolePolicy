@@ -1,22 +1,22 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2019-03-06T22:28:15Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": {
-                "Effect": "Allow",
                 "Action": [
-                    "s3:GetObject",
-                    "s3:ListBucket",
+                    "s3:GetObject", 
+                    "s3:ListBucket", 
                     "s3:PutObject"
-                ],
+                ], 
                 "Resource": [
-                    "arn:aws:s3:::*Comprehend*",
+                    "arn:aws:s3:::*Comprehend*", 
                     "arn:aws:s3:::*comprehend*"
-                ]
+                ], 
+                "Effect": "Allow"
             }
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2019-03-06T22:28:15+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

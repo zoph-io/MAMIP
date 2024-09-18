@@ -1,166 +1,166 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-03-14T17:06:23Z", 
+        "VersionId": "v3", 
         "Document": {
+            "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": [
-                        "codepipeline:*",
-                        "cloudformation:DescribeStacks",
-                        "cloudformation:ListStacks",
-                        "cloudformation:ListChangeSets",
-                        "cloudtrail:DescribeTrails",
-                        "codebuild:BatchGetProjects",
-                        "codebuild:CreateProject",
-                        "codebuild:ListCuratedEnvironmentImages",
-                        "codebuild:ListProjects",
-                        "codecommit:ListBranches",
-                        "codecommit:GetReferences",
-                        "codecommit:ListRepositories",
-                        "codedeploy:BatchGetDeploymentGroups",
-                        "codedeploy:ListApplications",
-                        "codedeploy:ListDeploymentGroups",
-                        "ec2:DescribeSecurityGroups",
-                        "ec2:DescribeSubnets",
-                        "ec2:DescribeVpcs",
-                        "ecr:DescribeRepositories",
-                        "ecr:ListImages",
-                        "ecs:ListClusters",
-                        "ecs:ListServices",
-                        "elasticbeanstalk:DescribeApplications",
-                        "elasticbeanstalk:DescribeEnvironments",
-                        "iam:ListRoles",
-                        "iam:GetRole",
-                        "lambda:ListFunctions",
-                        "events:ListRules",
-                        "events:ListTargetsByRule",
-                        "events:DescribeRule",
-                        "opsworks:DescribeApps",
-                        "opsworks:DescribeLayers",
-                        "opsworks:DescribeStacks",
-                        "s3:ListAllMyBuckets",
-                        "sns:ListTopics",
-                        "codestar-notifications:ListNotificationRules",
-                        "codestar-notifications:ListTargets",
-                        "codestar-notifications:ListTagsforResource",
-                        "codestar-notifications:ListEventTypes",
+                        "codepipeline:*", 
+                        "cloudformation:DescribeStacks", 
+                        "cloudformation:ListStacks", 
+                        "cloudformation:ListChangeSets", 
+                        "cloudtrail:DescribeTrails", 
+                        "codebuild:BatchGetProjects", 
+                        "codebuild:CreateProject", 
+                        "codebuild:ListCuratedEnvironmentImages", 
+                        "codebuild:ListProjects", 
+                        "codecommit:ListBranches", 
+                        "codecommit:GetReferences", 
+                        "codecommit:ListRepositories", 
+                        "codedeploy:BatchGetDeploymentGroups", 
+                        "codedeploy:ListApplications", 
+                        "codedeploy:ListDeploymentGroups", 
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeVpcs", 
+                        "ecr:DescribeRepositories", 
+                        "ecr:ListImages", 
+                        "ecs:ListClusters", 
+                        "ecs:ListServices", 
+                        "elasticbeanstalk:DescribeApplications", 
+                        "elasticbeanstalk:DescribeEnvironments", 
+                        "iam:ListRoles", 
+                        "iam:GetRole", 
+                        "lambda:ListFunctions", 
+                        "events:ListRules", 
+                        "events:ListTargetsByRule", 
+                        "events:DescribeRule", 
+                        "opsworks:DescribeApps", 
+                        "opsworks:DescribeLayers", 
+                        "opsworks:DescribeStacks", 
+                        "s3:ListAllMyBuckets", 
+                        "sns:ListTopics", 
+                        "codestar-notifications:ListNotificationRules", 
+                        "codestar-notifications:ListTargets", 
+                        "codestar-notifications:ListTagsforResource", 
+                        "codestar-notifications:ListEventTypes", 
                         "states:ListStateMachines"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Sid": "CodePipelineAuthoringAccess"
-                },
+                }, 
                 {
                     "Action": [
-                        "s3:GetObject",
-                        "s3:ListBucket",
-                        "s3:GetBucketPolicy",
-                        "s3:GetBucketVersioning",
-                        "s3:GetObjectVersion",
-                        "s3:CreateBucket",
+                        "s3:GetObject", 
+                        "s3:ListBucket", 
+                        "s3:GetBucketPolicy", 
+                        "s3:GetBucketVersioning", 
+                        "s3:GetObjectVersion", 
+                        "s3:CreateBucket", 
                         "s3:PutBucketPolicy"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "arn:aws:s3::*:codepipeline-*",
+                    ], 
+                    "Resource": "arn:aws:s3::*:codepipeline-*", 
+                    "Effect": "Allow", 
                     "Sid": "CodePipelineArtifactsReadWriteAccess"
-                },
+                }, 
                 {
                     "Action": [
-                        "cloudtrail:PutEventSelectors",
-                        "cloudtrail:CreateTrail",
-                        "cloudtrail:GetEventSelectors",
+                        "cloudtrail:PutEventSelectors", 
+                        "cloudtrail:CreateTrail", 
+                        "cloudtrail:GetEventSelectors", 
                         "cloudtrail:StartLogging"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "arn:aws:cloudtrail:*:*:trail/codepipeline-source-trail",
+                    ], 
+                    "Resource": "arn:aws:cloudtrail:*:*:trail/codepipeline-source-trail", 
+                    "Effect": "Allow", 
                     "Sid": "CodePipelineSourceTrailReadWriteAccess"
-                },
+                }, 
                 {
                     "Action": [
                         "iam:PassRole"
-                    ],
-                    "Effect": "Allow",
+                    ], 
                     "Resource": [
                         "arn:aws:iam::*:role/service-role/cwe-role-*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:PassedToService": [
                                 "events.amazonaws.com"
                             ]
                         }
-                    },
+                    }, 
                     "Sid": "EventsIAMPassRole"
-                },
+                }, 
                 {
                     "Action": [
                         "iam:PassRole"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:PassedToService": [
                                 "codepipeline.amazonaws.com"
                             ]
                         }
-                    },
+                    }, 
                     "Sid": "CodePipelineIAMPassRole"
-                },
+                }, 
                 {
                     "Action": [
-                        "events:PutRule",
-                        "events:PutTargets",
-                        "events:DeleteRule",
-                        "events:DisableRule",
+                        "events:PutRule", 
+                        "events:PutTargets", 
+                        "events:DeleteRule", 
+                        "events:DisableRule", 
                         "events:RemoveTargets"
-                    ],
-                    "Effect": "Allow",
+                    ], 
                     "Resource": [
                         "arn:aws:events:*:*:rule/codepipeline-*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Sid": "CodePipelineEventsReadWriteAccess"
-                },
+                }, 
                 {
-                    "Sid": "CodeStarNotificationsReadWriteAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "codestar-notifications:CreateNotificationRule",
-                        "codestar-notifications:DescribeNotificationRule",
-                        "codestar-notifications:UpdateNotificationRule",
-                        "codestar-notifications:DeleteNotificationRule",
-                        "codestar-notifications:Subscribe",
+                        "codestar-notifications:CreateNotificationRule", 
+                        "codestar-notifications:DescribeNotificationRule", 
+                        "codestar-notifications:UpdateNotificationRule", 
+                        "codestar-notifications:DeleteNotificationRule", 
+                        "codestar-notifications:Subscribe", 
                         "codestar-notifications:Unsubscribe"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "codestar-notifications:NotificationsForResource": "arn:aws:codepipeline:*"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "CodeStarNotificationsReadWriteAccess"
+                }, 
                 {
-                    "Sid": "CodeStarNotificationsSNSTopicCreateAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "sns:CreateTopic",
+                        "sns:CreateTopic", 
                         "sns:SetTopicAttributes"
-                    ],
-                    "Resource": "arn:aws:sns:*:*:codestar-notifications*"
-                },
+                    ], 
+                    "Resource": "arn:aws:sns:*:*:codestar-notifications*", 
+                    "Effect": "Allow", 
+                    "Sid": "CodeStarNotificationsSNSTopicCreateAccess"
+                }, 
                 {
-                    "Sid": "CodeStarNotificationsChatbotAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "chatbot:DescribeSlackChannelConfigurations",
+                        "chatbot:DescribeSlackChannelConfigurations", 
                         "chatbot:ListMicrosoftTeamsChannelConfigurations"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "CodeStarNotificationsChatbotAccess"
                 }
-            ],
-            "Version": "2012-10-17"
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-03-14T17:06:23+00:00"
+            ]
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,35 +1,35 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2016-02-22T17:24:05Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudwatch:*",
-                        "datapipeline:*",
-                        "dynamodb:*",
-                        "ec2:Describe*",
-                        "elasticmapreduce:AddJobFlowSteps",
-                        "elasticmapreduce:Describe*",
-                        "elasticmapreduce:ListInstance*",
-                        "elasticmapreduce:ModifyInstanceGroups",
-                        "rds:Describe*",
-                        "redshift:DescribeClusters",
-                        "redshift:DescribeClusterSecurityGroups",
-                        "s3:*",
-                        "sdb:*",
-                        "sns:*",
+                        "cloudwatch:*", 
+                        "datapipeline:*", 
+                        "dynamodb:*", 
+                        "ec2:Describe*", 
+                        "elasticmapreduce:AddJobFlowSteps", 
+                        "elasticmapreduce:Describe*", 
+                        "elasticmapreduce:ListInstance*", 
+                        "elasticmapreduce:ModifyInstanceGroups", 
+                        "rds:Describe*", 
+                        "redshift:DescribeClusters", 
+                        "redshift:DescribeClusterSecurityGroups", 
+                        "s3:*", 
+                        "sdb:*", 
+                        "sns:*", 
                         "sqs:*"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
+                    ], 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2016-02-22T17:24:05+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

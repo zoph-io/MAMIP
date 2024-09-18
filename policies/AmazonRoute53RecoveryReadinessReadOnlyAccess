@@ -1,40 +1,40 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2021-11-09T20:14:51Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "route53-recovery-readiness:GetCell",
-                        "route53-recovery-readiness:GetReadinessCheck",
-                        "route53-recovery-readiness:GetReadinessCheckResourceStatus",
-                        "route53-recovery-readiness:GetReadinessCheckStatus",
-                        "route53-recovery-readiness:GetRecoveryGroup",
-                        "route53-recovery-readiness:GetRecoveryGroupReadinessSummary",
-                        "route53-recovery-readiness:GetResourceSet",
-                        "route53-recovery-readiness:ListCells",
-                        "route53-recovery-readiness:ListCrossAccountAuthorizations",
-                        "route53-recovery-readiness:ListReadinessChecks",
-                        "route53-recovery-readiness:ListRecoveryGroups",
-                        "route53-recovery-readiness:ListResourceSets",
-                        "route53-recovery-readiness:ListRules",
+                        "route53-recovery-readiness:GetCell", 
+                        "route53-recovery-readiness:GetReadinessCheck", 
+                        "route53-recovery-readiness:GetReadinessCheckResourceStatus", 
+                        "route53-recovery-readiness:GetReadinessCheckStatus", 
+                        "route53-recovery-readiness:GetRecoveryGroup", 
+                        "route53-recovery-readiness:GetRecoveryGroupReadinessSummary", 
+                        "route53-recovery-readiness:GetResourceSet", 
+                        "route53-recovery-readiness:ListCells", 
+                        "route53-recovery-readiness:ListCrossAccountAuthorizations", 
+                        "route53-recovery-readiness:ListReadinessChecks", 
+                        "route53-recovery-readiness:ListRecoveryGroups", 
+                        "route53-recovery-readiness:ListResourceSets", 
+                        "route53-recovery-readiness:ListRules", 
                         "route53-recovery-readiness:ListTagsForResources"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "route53-recovery-readiness:GetArchitectureRecommendations",
+                        "route53-recovery-readiness:GetArchitectureRecommendations", 
                         "route53-recovery-readiness:GetCellReadinessSummary"
-                    ],
-                    "Resource": "arn:aws:route53-recovery-readiness::*:*"
+                    ], 
+                    "Resource": "arn:aws:route53-recovery-readiness::*:*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2021-11-09T20:14:51+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

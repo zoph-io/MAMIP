@@ -1,71 +1,71 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-04-02T16:14:47Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Action": "codedeploy:*",
-                    "Effect": "Allow",
-                    "Resource": "*"
-                },
+                    "Action": "codedeploy:*", 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Sid": "CodeStarNotificationsReadWriteAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "codestar-notifications:CreateNotificationRule",
-                        "codestar-notifications:DescribeNotificationRule",
-                        "codestar-notifications:UpdateNotificationRule",
-                        "codestar-notifications:DeleteNotificationRule",
-                        "codestar-notifications:Subscribe",
+                        "codestar-notifications:CreateNotificationRule", 
+                        "codestar-notifications:DescribeNotificationRule", 
+                        "codestar-notifications:UpdateNotificationRule", 
+                        "codestar-notifications:DeleteNotificationRule", 
+                        "codestar-notifications:Subscribe", 
                         "codestar-notifications:Unsubscribe"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "codestar-notifications:NotificationsForResource": "arn:aws:codedeploy:*"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "CodeStarNotificationsReadWriteAccess"
+                }, 
                 {
-                    "Sid": "CodeStarNotificationsListAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "codestar-notifications:ListNotificationRules",
-                        "codestar-notifications:ListTargets",
-                        "codestar-notifications:ListTagsforResource",
+                        "codestar-notifications:ListNotificationRules", 
+                        "codestar-notifications:ListTargets", 
+                        "codestar-notifications:ListTagsforResource", 
                         "codestar-notifications:ListEventTypes"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "CodeStarNotificationsListAccess"
+                }, 
                 {
-                    "Sid": "CodeStarNotificationsSNSTopicCreateAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "sns:CreateTopic",
+                        "sns:CreateTopic", 
                         "sns:SetTopicAttributes"
-                    ],
-                    "Resource": "arn:aws:sns:*:*:codestar-notifications*"
-                },
+                    ], 
+                    "Resource": "arn:aws:sns:*:*:codestar-notifications*", 
+                    "Effect": "Allow", 
+                    "Sid": "CodeStarNotificationsSNSTopicCreateAccess"
+                }, 
                 {
-                    "Sid": "CodeStarNotificationsChatbotAccess",
-                    "Effect": "Allow",
                     "Action": [
                         "chatbot:DescribeSlackChannelConfigurations"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "CodeStarNotificationsChatbotAccess"
+                }, 
                 {
-                    "Sid": "SNSTopicListAccess",
-                    "Effect": "Allow",
                     "Action": [
                         "sns:ListTopics"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "SNSTopicListAccess"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-04-02T16:14:47+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

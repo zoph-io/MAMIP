@@ -1,37 +1,37 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-03-28T00:06:28Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "CodeStarEC2",
-                    "Effect": "Allow",
                     "Action": [
-                        "codestar:*",
-                        "ec2:DescribeKeyPairs",
-                        "ec2:DescribeVpcs",
-                        "ec2:DescribeSubnets",
-                        "cloud9:DescribeEnvironment*",
+                        "codestar:*", 
+                        "ec2:DescribeKeyPairs", 
+                        "ec2:DescribeVpcs", 
+                        "ec2:DescribeSubnets", 
+                        "cloud9:DescribeEnvironment*", 
                         "cloud9:ValidateEnvironmentName"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "CodeStarEC2"
+                }, 
                 {
-                    "Sid": "CodeStarCF",
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudformation:DescribeStack*",
-                        "cloudformation:ListStacks*",
+                        "cloudformation:DescribeStack*", 
+                        "cloudformation:ListStacks*", 
                         "cloudformation:GetTemplateSummary"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:cloudformation:*:*:stack/awscodestar-*"
-                    ]
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "CodeStarCF"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-03-28T00:06:28+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,54 +1,54 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-01-19T23:30:25Z", 
+        "VersionId": "v4", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Resource": "*",
                     "Action": [
-                        "aws-marketplace:ViewSubscriptions",
-                        "ec2:DescribeAccountAttributes",
-                        "ec2:DescribeAddresses",
-                        "ec2:DescribeImages",
-                        "ec2:DescribeInstances",
-                        "ec2:DescribeKeyPairs",
-                        "ec2:DescribeSecurityGroups",
-                        "ec2:DescribeSubnets",
+                        "aws-marketplace:ViewSubscriptions", 
+                        "ec2:DescribeAccountAttributes", 
+                        "ec2:DescribeAddresses", 
+                        "ec2:DescribeImages", 
+                        "ec2:DescribeInstances", 
+                        "ec2:DescribeKeyPairs", 
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:DescribeSubnets", 
                         "ec2:DescribeVpcs"
-                    ],
+                    ], 
+                    "Resource": "*", 
                     "Effect": "Allow"
-                },
+                }, 
                 {
-                    "Resource": "*",
-                    "Effect": "Allow",
                     "Action": [
-                        "aws-marketplace:ListBuilds",
-                        "aws-marketplace:DescribeBuilds",
-                        "iam:ListRoles",
-                        "iam:ListInstanceProfiles",
-                        "sns:GetTopicAttributes",
+                        "aws-marketplace:ListBuilds", 
+                        "aws-marketplace:DescribeBuilds", 
+                        "iam:ListRoles", 
+                        "iam:ListInstanceProfiles", 
+                        "sns:GetTopicAttributes", 
                         "sns:ListTopics"
-                    ]
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Resource": "*",
-                    "Effect": "Allow",
                     "Action": [
-                        "aws-marketplace:ListPrivateMarketplaceRequests",
+                        "aws-marketplace:ListPrivateMarketplaceRequests", 
                         "aws-marketplace:DescribePrivateMarketplaceRequests"
-                    ]
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "aws-marketplace:ListPrivateListings"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v4",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-01-19T23:30:25+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,70 +1,70 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-04-29T16:05:44Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "QBusinessPutMetricDataPermission",
-                    "Effect": "Allow",
                     "Action": [
                         "cloudwatch:PutMetricData"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "cloudwatch:namespace": "AWS/QBusiness"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "QBusinessPutMetricDataPermission"
+                }, 
                 {
-                    "Sid": "QBusinessCreateLogGroupPermission",
-                    "Effect": "Allow",
                     "Action": [
                         "logs:CreateLogGroup"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:logs:*:*:log-group:/aws/qbusiness/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "QBusinessCreateLogGroupPermission"
+                }, 
                 {
-                    "Sid": "QBusinessDescribeLogGroupsPermission",
-                    "Effect": "Allow",
                     "Action": [
                         "logs:DescribeLogGroups"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "QBusinessDescribeLogGroupsPermission"
+                }, 
                 {
-                    "Sid": "QBusinessLogStreamPermission",
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:DescribeLogStreams",
-                        "logs:CreateLogStream",
+                        "logs:DescribeLogStreams", 
+                        "logs:CreateLogStream", 
                         "logs:PutLogEvents"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:logs:*:*:log-group:/aws/qbusiness/*:log-stream:*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
-                    }
+                    }, 
+                    "Sid": "QBusinessLogStreamPermission"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-04-29T16:05:44+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

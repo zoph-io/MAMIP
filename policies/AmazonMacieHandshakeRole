@@ -1,12 +1,14 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2018-06-28T15:46:10Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
-                    "Action": "iam:CreateServiceLinkedRole",
-                    "Resource": "*",
+                    "Action": "iam:CreateServiceLinkedRole", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAnyValue:StringEquals": {
                             "iam:AWSServiceName": "macie.amazonaws.com"
@@ -14,9 +16,7 @@
                     }
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2018-06-28T15:46:10+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

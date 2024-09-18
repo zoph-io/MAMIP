@@ -1,39 +1,39 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2019-08-22T19:36:29Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "iam:DeleteRole",
+                        "iam:DeleteRole", 
                         "iam:ListAttachedRolePolicies"
-                    ],
-                    "Resource": "arn:aws:iam::*:role/AWSIQPermission-*"
-                },
+                    ], 
+                    "Resource": "arn:aws:iam::*:role/AWSIQPermission-*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "iam:AttachRolePolicy"
-                    ],
-                    "Resource": "arn:aws:iam::*:role/AWSIQPermission-*",
+                    ], 
+                    "Resource": "arn:aws:iam::*:role/AWSIQPermission-*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ArnEquals": {
                             "iam:PolicyARN": "arn:aws:iam::aws:policy/AWSDenyAll"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "iam:DetachRolePolicy"
-                    ],
-                    "Resource": "arn:aws:iam::*:role/AWSIQPermission-*"
+                    ], 
+                    "Resource": "arn:aws:iam::*:role/AWSIQPermission-*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2019-08-22T19:36:29+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,462 +1,462 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-07-25T16:24:03Z", 
+        "VersionId": "v25", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "CloudWatch",
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudwatch:DescribeAlarmHistory",
-                        "cloudwatch:DescribeAlarms",
-                        "cloudwatch:GetMetricData",
-                        "cloudwatch:ListMetrics",
-                        "cloudwatch:PutMetricAlarm",
-                        "cloudwatch:DeleteAlarms",
-                        "cloudwatch:PutAnomalyDetector",
-                        "cloudwatch:DeleteAnomalyDetector",
+                        "cloudwatch:DescribeAlarmHistory", 
+                        "cloudwatch:DescribeAlarms", 
+                        "cloudwatch:GetMetricData", 
+                        "cloudwatch:ListMetrics", 
+                        "cloudwatch:PutMetricAlarm", 
+                        "cloudwatch:DeleteAlarms", 
+                        "cloudwatch:PutAnomalyDetector", 
+                        "cloudwatch:DeleteAnomalyDetector", 
                         "cloudwatch:DescribeAnomalyDetectors"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "CloudWatch"
+                }, 
                 {
-                    "Sid": "CloudWatchLogs",
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:FilterLogEvents",
-                        "logs:GetLogEvents",
-                        "logs:DescribeLogStreams",
+                        "logs:FilterLogEvents", 
+                        "logs:GetLogEvents", 
+                        "logs:DescribeLogStreams", 
                         "logs:DescribeLogGroups"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "CloudWatchLogs"
+                }, 
                 {
-                    "Sid": "EventBridge",
-                    "Effect": "Allow",
                     "Action": [
                         "events:DescribeRule"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "EventBridge"
+                }, 
                 {
-                    "Sid": "CloudFormation",
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudFormation:CreateStack",
-                        "cloudFormation:UpdateStack",
-                        "cloudFormation:DeleteStack",
-                        "cloudFormation:DescribeStackResources",
+                        "cloudFormation:CreateStack", 
+                        "cloudFormation:UpdateStack", 
+                        "cloudFormation:DeleteStack", 
+                        "cloudFormation:DescribeStackResources", 
                         "cloudFormation:UpdateTerminationProtection"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:cloudformation:*:*:stack/ApplicationInsights-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "CloudFormation"
+                }, 
                 {
-                    "Sid": "CloudFormationStacks",
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudFormation:DescribeStacks",
-                        "cloudFormation:ListStackResources",
+                        "cloudFormation:DescribeStacks", 
+                        "cloudFormation:ListStackResources", 
                         "cloudFormation:ListStacks"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "CloudFormationStacks"
+                }, 
                 {
-                    "Sid": "Tag",
-                    "Effect": "Allow",
                     "Action": [
                         "tag:GetResources"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "Tag"
+                }, 
                 {
-                    "Sid": "ResourceGroups",
-                    "Effect": "Allow",
                     "Action": [
-                        "resource-groups:ListGroupResources",
-                        "resource-groups:GetGroupQuery",
+                        "resource-groups:ListGroupResources", 
+                        "resource-groups:GetGroupQuery", 
                         "resource-groups:GetGroup"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "ResourceGroups"
+                }, 
                 {
-                    "Sid": "ApplicationInsightsResourceGroup",
-                    "Effect": "Allow",
                     "Action": [
-                        "resource-groups:CreateGroup",
+                        "resource-groups:CreateGroup", 
                         "resource-groups:DeleteGroup"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:resource-groups:*:*:group/ApplicationInsights-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "ApplicationInsightsResourceGroup"
+                }, 
                 {
-                    "Sid": "ElasticLoadBalancing",
-                    "Effect": "Allow",
                     "Action": [
-                        "elasticloadbalancing:DescribeLoadBalancers",
-                        "elasticloadbalancing:DescribeTargetGroups",
+                        "elasticloadbalancing:DescribeLoadBalancers", 
+                        "elasticloadbalancing:DescribeTargetGroups", 
                         "elasticloadbalancing:DescribeTargetHealth"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "ElasticLoadBalancing"
+                }, 
                 {
-                    "Sid": "AutoScaling",
-                    "Effect": "Allow",
                     "Action": [
                         "autoscaling:DescribeAutoScalingGroups"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AutoScaling"
+                }, 
                 {
-                    "Sid": "SSMParameter",
-                    "Effect": "Allow",
                     "Action": [
-                        "ssm:PutParameter",
-                        "ssm:DeleteParameter",
-                        "ssm:AddTagsToResource",
-                        "ssm:RemoveTagsFromResource",
+                        "ssm:PutParameter", 
+                        "ssm:DeleteParameter", 
+                        "ssm:AddTagsToResource", 
+                        "ssm:RemoveTagsFromResource", 
                         "ssm:GetParameters"
-                    ],
-                    "Resource": "arn:aws:ssm:*:*:parameter/AmazonCloudWatch-ApplicationInsights-*"
-                },
+                    ], 
+                    "Resource": "arn:aws:ssm:*:*:parameter/AmazonCloudWatch-ApplicationInsights-*", 
+                    "Effect": "Allow", 
+                    "Sid": "SSMParameter"
+                }, 
                 {
-                    "Sid": "SSMAssociation",
-                    "Effect": "Allow",
                     "Action": [
-                        "ssm:CreateAssociation",
-                        "ssm:UpdateAssociation",
-                        "ssm:DeleteAssociation",
+                        "ssm:CreateAssociation", 
+                        "ssm:UpdateAssociation", 
+                        "ssm:DeleteAssociation", 
                         "ssm:DescribeAssociation"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:ec2:*:*:instance/*",
-                        "arn:aws:ssm:*:*:association/*",
-                        "arn:aws:ssm:*:*:managed-instance/*",
-                        "arn:aws:ssm:*:*:document/AWSEC2-ApplicationInsightsCloudwatchAgentInstallAndConfigure",
-                        "arn:aws:ssm:*:*:document/AWS-ConfigureAWSPackage",
+                        "arn:aws:ec2:*:*:instance/*", 
+                        "arn:aws:ssm:*:*:association/*", 
+                        "arn:aws:ssm:*:*:managed-instance/*", 
+                        "arn:aws:ssm:*:*:document/AWSEC2-ApplicationInsightsCloudwatchAgentInstallAndConfigure", 
+                        "arn:aws:ssm:*:*:document/AWS-ConfigureAWSPackage", 
                         "arn:aws:ssm:*:*:document/AmazonCloudWatch-ManageAgent"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "SSMAssociation"
+                }, 
                 {
-                    "Sid": "SSMOpsItem",
-                    "Effect": "Allow",
                     "Action": [
-                        "ssm:GetOpsItem",
-                        "ssm:CreateOpsItem",
-                        "ssm:DescribeOpsItems",
-                        "ssm:UpdateOpsItem",
+                        "ssm:GetOpsItem", 
+                        "ssm:CreateOpsItem", 
+                        "ssm:DescribeOpsItems", 
+                        "ssm:UpdateOpsItem", 
                         "ssm:DescribeInstanceInformation"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "SSMOpsItem"
+                }, 
                 {
-                    "Sid": "SSMTags",
-                    "Effect": "Allow",
                     "Action": [
                         "ssm:AddTagsToResource"
-                    ],
-                    "Resource": "arn:aws:ssm:*:*:opsitem/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:ssm:*:*:opsitem/*", 
+                    "Effect": "Allow", 
+                    "Sid": "SSMTags"
+                }, 
                 {
-                    "Sid": "SSMGetCommandInvocation",
-                    "Effect": "Allow",
                     "Action": [
-                        "ssm:ListCommandInvocations",
+                        "ssm:ListCommandInvocations", 
                         "ssm:GetCommandInvocation"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "SSMGetCommandInvocation"
+                }, 
                 {
-                    "Sid": "SSMSendCommand",
-                    "Effect": "Allow",
-                    "Action": "ssm:SendCommand",
+                    "Action": "ssm:SendCommand", 
                     "Resource": [
-                        "arn:aws:ec2:*:*:instance/*",
-                        "arn:aws:ssm:*:*:document/AWSEC2-CheckPerformanceCounterSets",
-                        "arn:aws:ssm:*:*:document/AWS-ConfigureAWSPackage",
-                        "arn:aws:ssm:*:*:document/AWSEC2-DetectWorkload",
+                        "arn:aws:ec2:*:*:instance/*", 
+                        "arn:aws:ssm:*:*:document/AWSEC2-CheckPerformanceCounterSets", 
+                        "arn:aws:ssm:*:*:document/AWS-ConfigureAWSPackage", 
+                        "arn:aws:ssm:*:*:document/AWSEC2-DetectWorkload", 
                         "arn:aws:ssm:*:*:document/AmazonCloudWatch-ManageAgent"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "SSMSendCommand"
+                }, 
                 {
-                    "Sid": "EC2",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeInstances",
-                        "ec2:DescribeVolumes",
-                        "ec2:DescribeVolumeStatus",
-                        "ec2:DescribeVpcs",
-                        "ec2:DescribeVpcAttribute",
+                        "ec2:DescribeInstances", 
+                        "ec2:DescribeVolumes", 
+                        "ec2:DescribeVolumeStatus", 
+                        "ec2:DescribeVpcs", 
+                        "ec2:DescribeVpcAttribute", 
                         "ec2:DescribeNatGateways"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "EC2"
+                }, 
                 {
-                    "Sid": "RDS",
-                    "Effect": "Allow",
                     "Action": [
-                        "rds:DescribeDBInstances",
+                        "rds:DescribeDBInstances", 
                         "rds:DescribeDBClusters"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "RDS"
+                }, 
                 {
-                    "Sid": "Lambda",
-                    "Effect": "Allow",
                     "Action": [
-                        "lambda:ListFunctions",
-                        "lambda:GetFunctionConfiguration",
+                        "lambda:ListFunctions", 
+                        "lambda:GetFunctionConfiguration", 
                         "lambda:ListEventSourceMappings"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "Lambda"
+                }, 
                 {
-                    "Sid": "EventBridgeManagedRule",
-                    "Effect": "Allow",
                     "Action": [
-                        "events:PutRule",
-                        "events:PutTargets",
-                        "events:RemoveTargets",
+                        "events:PutRule", 
+                        "events:PutTargets", 
+                        "events:RemoveTargets", 
                         "events:DeleteRule"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:events:*:*:rule/AmazonCloudWatch-ApplicationInsights-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "EventBridgeManagedRule"
+                }, 
                 {
-                    "Sid": "XRay",
-                    "Effect": "Allow",
                     "Action": [
-                        "xray:GetServiceGraph",
-                        "xray:GetTraceSummaries",
-                        "xray:GetTimeSeriesServiceStatistics",
+                        "xray:GetServiceGraph", 
+                        "xray:GetTraceSummaries", 
+                        "xray:GetTimeSeriesServiceStatistics", 
                         "xray:GetTraceGraph"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "XRay"
+                }, 
                 {
-                    "Sid": "DynamoDB",
-                    "Effect": "Allow",
                     "Action": [
-                        "dynamodb:ListTables",
-                        "dynamodb:DescribeTable",
-                        "dynamodb:DescribeContributorInsights",
+                        "dynamodb:ListTables", 
+                        "dynamodb:DescribeTable", 
+                        "dynamodb:DescribeContributorInsights", 
                         "dynamodb:DescribeTimeToLive"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "DynamoDB"
+                }, 
                 {
-                    "Sid": "ApplicationAutoscaling",
-                    "Effect": "Allow",
                     "Action": [
                         "application-autoscaling:DescribeScalableTargets"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "ApplicationAutoscaling"
+                }, 
                 {
-                    "Sid": "S3",
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:ListAllMyBuckets",
-                        "s3:GetMetricsConfiguration",
+                        "s3:ListAllMyBuckets", 
+                        "s3:GetMetricsConfiguration", 
                         "s3:GetReplicationConfiguration"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "S3"
+                }, 
                 {
-                    "Sid": "States",
-                    "Effect": "Allow",
                     "Action": [
-                        "states:ListStateMachines",
-                        "states:DescribeExecution",
-                        "states:DescribeStateMachine",
+                        "states:ListStateMachines", 
+                        "states:DescribeExecution", 
+                        "states:DescribeStateMachine", 
                         "states:GetExecutionHistory"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "States"
+                }, 
                 {
-                    "Sid": "APIGateway",
-                    "Effect": "Allow",
                     "Action": [
                         "apigateway:GET"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "APIGateway"
+                }, 
                 {
-                    "Sid": "ECS",
-                    "Effect": "Allow",
                     "Action": [
-                        "ecs:DescribeClusters",
-                        "ecs:DescribeContainerInstances",
-                        "ecs:DescribeServices",
-                        "ecs:DescribeTaskDefinition",
-                        "ecs:DescribeTasks",
-                        "ecs:DescribeTaskSets",
-                        "ecs:ListClusters",
-                        "ecs:ListContainerInstances",
-                        "ecs:ListServices",
+                        "ecs:DescribeClusters", 
+                        "ecs:DescribeContainerInstances", 
+                        "ecs:DescribeServices", 
+                        "ecs:DescribeTaskDefinition", 
+                        "ecs:DescribeTasks", 
+                        "ecs:DescribeTaskSets", 
+                        "ecs:ListClusters", 
+                        "ecs:ListContainerInstances", 
+                        "ecs:ListServices", 
                         "ecs:ListTasks"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "ECS"
+                }, 
                 {
-                    "Sid": "ECSCluster",
-                    "Effect": "Allow",
                     "Action": [
                         "ecs:UpdateClusterSettings"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ecs:*:*:cluster/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "ECSCluster"
+                }, 
                 {
-                    "Sid": "EKS",
-                    "Effect": "Allow",
                     "Action": [
-                        "eks:DescribeCluster",
-                        "eks:DescribeFargateProfile",
-                        "eks:DescribeNodegroup",
-                        "eks:ListClusters",
-                        "eks:ListFargateProfiles",
-                        "eks:ListNodegroups",
-                        "fsx:DescribeFileSystems",
+                        "eks:DescribeCluster", 
+                        "eks:DescribeFargateProfile", 
+                        "eks:DescribeNodegroup", 
+                        "eks:ListClusters", 
+                        "eks:ListFargateProfiles", 
+                        "eks:ListNodegroups", 
+                        "fsx:DescribeFileSystems", 
                         "fsx:DescribeVolumes"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "EKS"
+                }, 
                 {
-                    "Sid": "SNS",
-                    "Effect": "Allow",
                     "Action": [
-                        "sns:GetSubscriptionAttributes",
-                        "sns:GetTopicAttributes",
-                        "sns:GetSMSAttributes",
-                        "sns:ListSubscriptionsByTopic",
+                        "sns:GetSubscriptionAttributes", 
+                        "sns:GetTopicAttributes", 
+                        "sns:GetSMSAttributes", 
+                        "sns:ListSubscriptionsByTopic", 
                         "sns:ListTopics"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "SNS"
+                }, 
                 {
-                    "Sid": "SQS",
-                    "Effect": "Allow",
                     "Action": [
                         "sqs:ListQueues"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "SQS"
+                }, 
                 {
-                    "Sid": "CloudWatchLogsDeleteSubscriptionFilter",
-                    "Effect": "Allow",
                     "Action": [
                         "logs:DeleteSubscriptionFilter"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:logs:*:*:log-group:*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "CloudWatchLogsDeleteSubscriptionFilter"
+                }, 
                 {
-                    "Sid": "CloudWatchLogsCreateSubscriptionFilter",
-                    "Effect": "Allow",
                     "Action": [
                         "logs:PutSubscriptionFilter"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:logs:*:*:log-group:*",
+                        "arn:aws:logs:*:*:log-group:*", 
                         "arn:aws:logs:*:*:destination:AmazonCloudWatch-ApplicationInsights-LogIngestionDestination*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "CloudWatchLogsCreateSubscriptionFilter"
+                }, 
                 {
-                    "Sid": "EFS",
-                    "Effect": "Allow",
                     "Action": [
                         "elasticfilesystem:DescribeFileSystems"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "EFS"
+                }, 
                 {
-                    "Sid": "Route53",
-                    "Effect": "Allow",
                     "Action": [
-                        "route53:GetHostedZone",
-                        "route53:GetHealthCheck",
-                        "route53:ListHostedZones",
-                        "route53:ListHealthChecks",
+                        "route53:GetHostedZone", 
+                        "route53:GetHealthCheck", 
+                        "route53:ListHostedZones", 
+                        "route53:ListHealthChecks", 
                         "route53:ListQueryLoggingConfigs"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "Route53"
+                }, 
                 {
-                    "Sid": "Route53Resolver",
-                    "Effect": "Allow",
                     "Action": [
-                        "route53resolver:ListFirewallRuleGroupAssociations",
-                        "route53resolver:GetFirewallRuleGroup",
-                        "route53resolver:ListFirewallRuleGroups",
-                        "route53resolver:ListResolverEndpoints",
-                        "route53resolver:GetResolverQueryLogConfig",
-                        "route53resolver:ListResolverQueryLogConfigs",
-                        "route53resolver:ListResolverQueryLogConfigAssociations",
-                        "route53resolver:GetResolverEndpoint",
+                        "route53resolver:ListFirewallRuleGroupAssociations", 
+                        "route53resolver:GetFirewallRuleGroup", 
+                        "route53resolver:ListFirewallRuleGroups", 
+                        "route53resolver:ListResolverEndpoints", 
+                        "route53resolver:GetResolverQueryLogConfig", 
+                        "route53resolver:ListResolverQueryLogConfigs", 
+                        "route53resolver:ListResolverQueryLogConfigAssociations", 
+                        "route53resolver:GetResolverEndpoint", 
                         "route53resolver:GetFirewallRuleGroupAssociation"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "Route53Resolver"
                 }
             ]
-        },
-        "VersionId": "v25",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-07-25T16:24:03+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,33 +1,33 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2019-09-25T20:22:34Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": [
-                        "iq:*",
+                        "iq:*", 
                         "iq-permission:*"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "iam:CreateServiceLinkedRole",
-                    "Resource": "*",
+                    "Action": "iam:CreateServiceLinkedRole", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:AWSServiceName": [
-                                "permission.iq.amazonaws.com",
+                                "permission.iq.amazonaws.com", 
                                 "contract.iq.amazonaws.com"
                             ]
                         }
                     }
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2019-09-25T20:22:34+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

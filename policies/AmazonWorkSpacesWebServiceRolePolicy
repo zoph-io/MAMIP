@@ -1,102 +1,102 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-12-15T22:46:33Z", 
+        "VersionId": "v5", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeVpcs",
-                        "ec2:DescribeSubnets",
-                        "ec2:DescribeAvailabilityZones",
-                        "ec2:DescribeNetworkInterfaces",
-                        "ec2:AssociateAddress",
-                        "ec2:DisassociateAddress",
-                        "ec2:DescribeRouteTables",
-                        "ec2:DescribeSecurityGroups",
+                        "ec2:DescribeVpcs", 
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeAvailabilityZones", 
+                        "ec2:DescribeNetworkInterfaces", 
+                        "ec2:AssociateAddress", 
+                        "ec2:DisassociateAddress", 
+                        "ec2:DescribeRouteTables", 
+                        "ec2:DescribeSecurityGroups", 
                         "ec2:DescribeVpcEndpoints"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateNetworkInterface"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:ec2:*:*:subnet/*",
+                        "arn:aws:ec2:*:*:subnet/*", 
                         "arn:aws:ec2:*:*:security-group/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateNetworkInterface"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:network-interface/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:network-interface/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:RequestTag/WorkSpacesWebManaged": "true"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateTags"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:network-interface/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:network-interface/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "ec2:CreateAction": "CreateNetworkInterface"
-                        },
+                        }, 
                         "ForAllValues:StringEquals": {
                             "aws:TagKeys": [
                                 "WorkSpacesWebManaged"
                             ]
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:DeleteNetworkInterface"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:network-interface/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:network-interface/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceTag/WorkSpacesWebManaged": "true"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "cloudwatch:PutMetricData"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "cloudwatch:namespace": [
-                                "AWS/WorkSpacesWeb",
+                                "AWS/WorkSpacesWeb", 
                                 "AWS/Usage"
                             ]
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "kinesis:PutRecord",
-                        "kinesis:PutRecords",
+                        "kinesis:PutRecord", 
+                        "kinesis:PutRecords", 
                         "kinesis:DescribeStreamSummary"
-                    ],
-                    "Resource": "arn:aws:kinesis:*:*:stream/amazon-workspaces-web-*"
+                    ], 
+                    "Resource": "arn:aws:kinesis:*:*:stream/amazon-workspaces-web-*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v5",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-12-15T22:46:33+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

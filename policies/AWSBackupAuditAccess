@@ -1,57 +1,57 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-04-10T21:23:31Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "backup:CreateFramework",
-                        "backup:UpdateFramework",
-                        "backup:ListFrameworks",
-                        "backup:DescribeFramework",
-                        "backup:DeleteFramework",
-                        "backup:ListBackupPlans",
-                        "backup:ListBackupVaults",
-                        "backup:CreateReportPlan",
-                        "backup:UpdateReportPlan",
-                        "backup:ListReportPlans",
-                        "backup:DescribeReportPlan",
-                        "backup:DeleteReportPlan",
-                        "backup:StartReportJob",
-                        "backup:ListReportJobs",
+                        "backup:CreateFramework", 
+                        "backup:UpdateFramework", 
+                        "backup:ListFrameworks", 
+                        "backup:DescribeFramework", 
+                        "backup:DeleteFramework", 
+                        "backup:ListBackupPlans", 
+                        "backup:ListBackupVaults", 
+                        "backup:CreateReportPlan", 
+                        "backup:UpdateReportPlan", 
+                        "backup:ListReportPlans", 
+                        "backup:DescribeReportPlan", 
+                        "backup:DeleteReportPlan", 
+                        "backup:StartReportJob", 
+                        "backup:ListReportJobs", 
                         "backup:DescribeReportJob"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "config:DescribeConfigurationRecorders",
-                        "config:DescribeConfigurationRecorderStatus",
+                        "config:DescribeConfigurationRecorders", 
+                        "config:DescribeConfigurationRecorderStatus", 
                         "config:DescribeComplianceByConfigRule"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "config:GetComplianceDetailsByConfigRule"
-                    ],
-                    "Resource": "arn:aws:config:*:*:config-rule/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:config:*:*:config-rule/*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:ListAllMyBuckets",
+                        "s3:ListAllMyBuckets", 
                         "s3:GetBucketLocation"
-                    ],
-                    "Resource": "arn:aws:s3:::*"
+                    ], 
+                    "Resource": "arn:aws:s3:::*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-04-10T21:23:31+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

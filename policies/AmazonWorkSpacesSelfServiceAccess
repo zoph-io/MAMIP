@@ -1,21 +1,21 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2019-06-27T19:22:52Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": [
-                        "workspaces:RebootWorkspaces",
-                        "workspaces:RebuildWorkspaces",
+                        "workspaces:RebootWorkspaces", 
+                        "workspaces:RebuildWorkspaces", 
                         "workspaces:ModifyWorkspaceProperties"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2019-06-27T19:22:52+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

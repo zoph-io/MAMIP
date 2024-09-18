@@ -1,80 +1,82 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2019-05-31T21:37:49Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Action": "iotsitewise:*",
-                    "Effect": "Allow",
-                    "Resource": "*"
-                },
+                    "Action": "iotsitewise:*", 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
                     "Action": [
-                        "iotanalytics:List*",
-                        "iotanalytics:Describe*",
+                        "iotanalytics:List*", 
+                        "iotanalytics:Describe*", 
                         "iotanalytics:Create*"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
                     "Action": [
-                        "iot:DescribeEndpoint",
+                        "iot:DescribeEndpoint", 
                         "iot:GetThingShadow"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
                     "Action": [
-                        "greengrass:GetGroup",
-                        "greengrass:GetGroupVersion",
-                        "greengrass:GetCoreDefinitionVersion",
+                        "greengrass:GetGroup", 
+                        "greengrass:GetGroupVersion", 
+                        "greengrass:GetCoreDefinitionVersion", 
                         "greengrass:ListGroups"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
                     "Action": [
-                        "secretsmanager:ListSecrets",
+                        "secretsmanager:ListSecrets", 
                         "secretsmanager:CreateSecret"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
                     "Action": [
                         "secretsmanager:UpdateSecret"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "arn:aws:secretsmanager:*:*:secret:greengrass-*"
-                },
+                    ], 
+                    "Resource": "arn:aws:secretsmanager:*:*:secret:greengrass-*", 
+                    "Effect": "Allow"
+                }, 
                 {
                     "Action": [
                         "tag:GetResources"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
                     "Action": [
                         "iam:CreateServiceLinkedRole"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "arn:aws:iam::*:role/aws-service-role/iotsitewise.amazonaws.com/AWSServiceRoleForIoTSiteWise*",
+                    ], 
+                    "Resource": "arn:aws:iam::*:role/aws-service-role/iotsitewise.amazonaws.com/AWSServiceRoleForIoTSiteWise*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:AWSServiceName": "iotsitewise.amazonaws.com"
                         }
                     }
-                },
+                }, 
                 {
                     "Action": [
                         "iam:PassRole"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "arn:aws:iam::*:role/aws-service-role/iotsitewise.amazonaws.com/AWSServiceRoleForIoTSiteWise*",
+                    ], 
+                    "Resource": "arn:aws:iam::*:role/aws-service-role/iotsitewise.amazonaws.com/AWSServiceRoleForIoTSiteWise*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:PassedToService": "iotsitewise.amazonaws.com"
@@ -82,9 +84,7 @@
                     }
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2019-05-31T21:37:49+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

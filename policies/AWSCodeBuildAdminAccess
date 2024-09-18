@@ -1,148 +1,148 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-05-02T01:45:44Z", 
+        "VersionId": "v14", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AWSServicesAccess",
                     "Action": [
-                        "codebuild:*",
-                        "codecommit:GetBranch",
-                        "codecommit:GetCommit",
-                        "codecommit:GetRepository",
-                        "codecommit:ListBranches",
-                        "codecommit:ListRepositories",
-                        "cloudwatch:GetMetricStatistics",
-                        "ec2:DescribeVpcs",
-                        "ec2:DescribeSecurityGroups",
-                        "ec2:DescribeSubnets",
-                        "ecr:DescribeRepositories",
-                        "ecr:ListImages",
-                        "elasticfilesystem:DescribeFileSystems",
-                        "events:DeleteRule",
-                        "events:DescribeRule",
-                        "events:DisableRule",
-                        "events:EnableRule",
-                        "events:ListTargetsByRule",
-                        "events:ListRuleNamesByTarget",
-                        "events:PutRule",
-                        "events:PutTargets",
-                        "events:RemoveTargets",
-                        "logs:GetLogEvents",
-                        "s3:GetBucketLocation",
+                        "codebuild:*", 
+                        "codecommit:GetBranch", 
+                        "codecommit:GetCommit", 
+                        "codecommit:GetRepository", 
+                        "codecommit:ListBranches", 
+                        "codecommit:ListRepositories", 
+                        "cloudwatch:GetMetricStatistics", 
+                        "ec2:DescribeVpcs", 
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:DescribeSubnets", 
+                        "ecr:DescribeRepositories", 
+                        "ecr:ListImages", 
+                        "elasticfilesystem:DescribeFileSystems", 
+                        "events:DeleteRule", 
+                        "events:DescribeRule", 
+                        "events:DisableRule", 
+                        "events:EnableRule", 
+                        "events:ListTargetsByRule", 
+                        "events:ListRuleNamesByTarget", 
+                        "events:PutRule", 
+                        "events:PutTargets", 
+                        "events:RemoveTargets", 
+                        "logs:GetLogEvents", 
+                        "s3:GetBucketLocation", 
                         "s3:ListAllMyBuckets"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AWSServicesAccess"
+                }, 
                 {
-                    "Sid": "CWLDeleteLogGroupAccess",
                     "Action": [
                         "logs:DeleteLogGroup"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "arn:aws:logs:*:*:log-group:/aws/codebuild/*:log-stream:*"
-                },
+                    ], 
+                    "Resource": "arn:aws:logs:*:*:log-group:/aws/codebuild/*:log-stream:*", 
+                    "Effect": "Allow", 
+                    "Sid": "CWLDeleteLogGroupAccess"
+                }, 
                 {
-                    "Sid": "SSMParameterWriteAccess",
-                    "Effect": "Allow",
                     "Action": [
                         "ssm:PutParameter"
-                    ],
-                    "Resource": "arn:aws:ssm:*:*:parameter/CodeBuild/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:ssm:*:*:parameter/CodeBuild/*", 
+                    "Effect": "Allow", 
+                    "Sid": "SSMParameterWriteAccess"
+                }, 
                 {
-                    "Sid": "SSMStartSessionAccess",
-                    "Effect": "Allow",
                     "Action": [
                         "ssm:StartSession"
-                    ],
-                    "Resource": "arn:aws:ecs:*:*:task/*/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:ecs:*:*:task/*/*", 
+                    "Effect": "Allow", 
+                    "Sid": "SSMStartSessionAccess"
+                }, 
                 {
-                    "Sid": "CodeStarConnectionsReadWriteAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "codestar-connections:CreateConnection",
-                        "codestar-connections:DeleteConnection",
-                        "codestar-connections:UpdateConnectionInstallation",
-                        "codestar-connections:TagResource",
-                        "codestar-connections:UntagResource",
-                        "codestar-connections:ListConnections",
-                        "codestar-connections:ListInstallationTargets",
-                        "codestar-connections:ListTagsForResource",
-                        "codestar-connections:GetConnection",
-                        "codestar-connections:GetIndividualAccessToken",
-                        "codestar-connections:GetInstallationUrl",
-                        "codestar-connections:PassConnection",
-                        "codestar-connections:StartOAuthHandshake",
+                        "codestar-connections:CreateConnection", 
+                        "codestar-connections:DeleteConnection", 
+                        "codestar-connections:UpdateConnectionInstallation", 
+                        "codestar-connections:TagResource", 
+                        "codestar-connections:UntagResource", 
+                        "codestar-connections:ListConnections", 
+                        "codestar-connections:ListInstallationTargets", 
+                        "codestar-connections:ListTagsForResource", 
+                        "codestar-connections:GetConnection", 
+                        "codestar-connections:GetIndividualAccessToken", 
+                        "codestar-connections:GetInstallationUrl", 
+                        "codestar-connections:PassConnection", 
+                        "codestar-connections:StartOAuthHandshake", 
                         "codestar-connections:UseConnection"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:codestar-connections:*:*:connection/*",
+                        "arn:aws:codestar-connections:*:*:connection/*", 
                         "arn:aws:codeconnections:*:*:connection/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "CodeStarConnectionsReadWriteAccess"
+                }, 
                 {
-                    "Sid": "CodeStarNotificationsReadWriteAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "codestar-notifications:CreateNotificationRule",
-                        "codestar-notifications:DescribeNotificationRule",
-                        "codestar-notifications:UpdateNotificationRule",
-                        "codestar-notifications:DeleteNotificationRule",
-                        "codestar-notifications:Subscribe",
+                        "codestar-notifications:CreateNotificationRule", 
+                        "codestar-notifications:DescribeNotificationRule", 
+                        "codestar-notifications:UpdateNotificationRule", 
+                        "codestar-notifications:DeleteNotificationRule", 
+                        "codestar-notifications:Subscribe", 
                         "codestar-notifications:Unsubscribe"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "codestar-notifications:NotificationsForResource": "arn:aws:codebuild:*"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "CodeStarNotificationsReadWriteAccess"
+                }, 
                 {
-                    "Sid": "CodeStarNotificationsListAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "codestar-notifications:ListNotificationRules",
-                        "codestar-notifications:ListEventTypes",
-                        "codestar-notifications:ListTargets",
+                        "codestar-notifications:ListNotificationRules", 
+                        "codestar-notifications:ListEventTypes", 
+                        "codestar-notifications:ListTargets", 
                         "codestar-notifications:ListTagsforResource"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "CodeStarNotificationsListAccess"
+                }, 
                 {
-                    "Sid": "CodeStarNotificationsSNSTopicCreateAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "sns:CreateTopic",
+                        "sns:CreateTopic", 
                         "sns:SetTopicAttributes"
-                    ],
-                    "Resource": "arn:aws:sns:*:*:codestar-notifications*"
-                },
+                    ], 
+                    "Resource": "arn:aws:sns:*:*:codestar-notifications*", 
+                    "Effect": "Allow", 
+                    "Sid": "CodeStarNotificationsSNSTopicCreateAccess"
+                }, 
                 {
-                    "Sid": "SNSTopicListAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "sns:ListTopics",
+                        "sns:ListTopics", 
                         "sns:GetTopicAttributes"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "SNSTopicListAccess"
+                }, 
                 {
-                    "Sid": "CodeStarNotificationsChatbotAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "chatbot:DescribeSlackChannelConfigurations",
+                        "chatbot:DescribeSlackChannelConfigurations", 
                         "chatbot:ListMicrosoftTeamsChannelConfigurations"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "CodeStarNotificationsChatbotAccess"
                 }
             ]
-        },
-        "VersionId": "v14",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-05-02T01:45:44+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

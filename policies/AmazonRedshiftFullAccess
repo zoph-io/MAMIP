@@ -1,90 +1,90 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-07-07T23:31:13Z", 
+        "VersionId": "v5", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": [
-                        "redshift:*",
-                        "redshift-serverless:*",
-                        "ec2:DescribeAccountAttributes",
-                        "ec2:DescribeAddresses",
-                        "ec2:DescribeAvailabilityZones",
-                        "ec2:DescribeSecurityGroups",
-                        "ec2:DescribeSubnets",
-                        "ec2:DescribeVpcs",
-                        "ec2:DescribeInternetGateways",
-                        "sns:CreateTopic",
-                        "sns:Get*",
-                        "sns:List*",
-                        "cloudwatch:Describe*",
-                        "cloudwatch:Get*",
-                        "cloudwatch:List*",
-                        "cloudwatch:PutMetricAlarm",
-                        "cloudwatch:EnableAlarmActions",
-                        "cloudwatch:DisableAlarmActions",
-                        "tag:GetResources",
-                        "tag:UntagResources",
-                        "tag:GetTagValues",
-                        "tag:GetTagKeys",
+                        "redshift:*", 
+                        "redshift-serverless:*", 
+                        "ec2:DescribeAccountAttributes", 
+                        "ec2:DescribeAddresses", 
+                        "ec2:DescribeAvailabilityZones", 
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeVpcs", 
+                        "ec2:DescribeInternetGateways", 
+                        "sns:CreateTopic", 
+                        "sns:Get*", 
+                        "sns:List*", 
+                        "cloudwatch:Describe*", 
+                        "cloudwatch:Get*", 
+                        "cloudwatch:List*", 
+                        "cloudwatch:PutMetricAlarm", 
+                        "cloudwatch:EnableAlarmActions", 
+                        "cloudwatch:DisableAlarmActions", 
+                        "tag:GetResources", 
+                        "tag:UntagResources", 
+                        "tag:GetTagValues", 
+                        "tag:GetTagKeys", 
                         "tag:TagResources"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "iam:CreateServiceLinkedRole",
-                    "Resource": "arn:aws:iam::*:role/aws-service-role/redshift.amazonaws.com/AWSServiceRoleForRedshift",
+                    "Action": "iam:CreateServiceLinkedRole", 
+                    "Resource": "arn:aws:iam::*:role/aws-service-role/redshift.amazonaws.com/AWSServiceRoleForRedshift", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "iam:AWSServiceName": "redshift.amazonaws.com"
                         }
                     }
-                },
+                }, 
                 {
-                    "Sid": "DataAPIPermissions",
                     "Action": [
-                        "redshift-data:ExecuteStatement",
-                        "redshift-data:CancelStatement",
-                        "redshift-data:ListStatements",
-                        "redshift-data:GetStatementResult",
-                        "redshift-data:DescribeStatement",
-                        "redshift-data:ListDatabases",
-                        "redshift-data:ListSchemas",
-                        "redshift-data:ListTables",
+                        "redshift-data:ExecuteStatement", 
+                        "redshift-data:CancelStatement", 
+                        "redshift-data:ListStatements", 
+                        "redshift-data:GetStatementResult", 
+                        "redshift-data:DescribeStatement", 
+                        "redshift-data:ListDatabases", 
+                        "redshift-data:ListSchemas", 
+                        "redshift-data:ListTables", 
                         "redshift-data:DescribeTable"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DataAPIPermissions"
+                }, 
                 {
-                    "Sid": "SecretsManagerListPermissions",
                     "Action": [
                         "secretsmanager:ListSecrets"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "SecretsManagerListPermissions"
+                }, 
                 {
-                    "Sid": "SecretsManagerCreateGetPermissions",
                     "Action": [
-                        "secretsmanager:CreateSecret",
-                        "secretsmanager:GetSecretValue",
+                        "secretsmanager:CreateSecret", 
+                        "secretsmanager:GetSecretValue", 
                         "secretsmanager:TagResource"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "secretsmanager:ResourceTag/RedshiftDataFullAccess": "*"
                         }
-                    }
+                    }, 
+                    "Sid": "SecretsManagerCreateGetPermissions"
                 }
             ]
-        },
-        "VersionId": "v5",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-07-07T23:31:13+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

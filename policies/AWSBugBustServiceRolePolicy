@@ -1,16 +1,18 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2021-06-24T06:59:05Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "codeguru-reviewer:ListRecommendations",
-                        "codeguru-reviewer:UntagResource",
+                        "codeguru-reviewer:ListRecommendations", 
+                        "codeguru-reviewer:UntagResource", 
                         "codeguru-reviewer:DescribeCodeReview"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:ResourceTag/bugbust": "enabled"
@@ -18,9 +20,7 @@
                     }
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2021-06-24T06:59:05+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

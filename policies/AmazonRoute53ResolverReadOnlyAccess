@@ -1,27 +1,27 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-08-05T18:54:11Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AmazonRoute53ResolverReadOnlyAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "route53resolver:Get*",
-                        "route53resolver:List*",
-                        "ec2:DescribeNetworkInterfaces",
-                        "ec2:DescribeSecurityGroups",
-                        "ec2:DescribeVpcs",
+                        "route53resolver:Get*", 
+                        "route53resolver:List*", 
+                        "ec2:DescribeNetworkInterfaces", 
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:DescribeVpcs", 
                         "ec2:DescribeSubnets"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonRoute53ResolverReadOnlyAccess"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-08-05T18:54:11+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

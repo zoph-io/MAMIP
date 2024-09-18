@@ -1,118 +1,118 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-10-16T18:46:10Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "EntityResolutionAccess",
-                    "Effect": "Allow",
                     "Action": [
                         "entityresolution:*"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "EntityResolutionAccess"
+                }, 
                 {
-                    "Sid": "GlueSourcesConsoleDisplay",
-                    "Effect": "Allow",
                     "Action": [
-                        "glue:GetSchema",
-                        "glue:SearchTables",
-                        "glue:GetSchemaByDefinition",
-                        "glue:GetSchemaVersion",
-                        "glue:GetSchemaVersionsDiff",
-                        "glue:GetDatabase",
-                        "glue:GetDatabases",
-                        "glue:GetTable",
-                        "glue:GetTables",
-                        "glue:GetTableVersion",
+                        "glue:GetSchema", 
+                        "glue:SearchTables", 
+                        "glue:GetSchemaByDefinition", 
+                        "glue:GetSchemaVersion", 
+                        "glue:GetSchemaVersionsDiff", 
+                        "glue:GetDatabase", 
+                        "glue:GetDatabases", 
+                        "glue:GetTable", 
+                        "glue:GetTables", 
+                        "glue:GetTableVersion", 
                         "glue:GetTableVersions"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "GlueSourcesConsoleDisplay"
+                }, 
                 {
-                    "Sid": "S3BucketsConsoleDisplay",
-                    "Effect": "Allow",
                     "Action": [
                         "s3:ListAllMyBuckets"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "S3BucketsConsoleDisplay"
+                }, 
                 {
-                    "Sid": "S3SourcesConsoleDisplay",
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:ListBucket",
-                        "s3:GetBucketLocation",
-                        "s3:ListBucketVersions",
+                        "s3:ListBucket", 
+                        "s3:GetBucketLocation", 
+                        "s3:ListBucketVersions", 
                         "s3:GetBucketVersioning"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "S3SourcesConsoleDisplay"
+                }, 
                 {
-                    "Sid": "TaggingConsoleDisplay",
-                    "Effect": "Allow",
                     "Action": [
-                        "tag:GetTagKeys",
+                        "tag:GetTagKeys", 
                         "tag:GetTagValues"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "TaggingConsoleDisplay"
+                }, 
                 {
-                    "Sid": "KMSConsoleDisplay",
-                    "Effect": "Allow",
                     "Action": [
-                        "kms:DescribeKey",
+                        "kms:DescribeKey", 
                         "kms:ListAliases"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "KMSConsoleDisplay"
+                }, 
                 {
-                    "Sid": "ListRolesToPickRoleForPassing",
-                    "Effect": "Allow",
                     "Action": [
                         "iam:ListRoles"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ListRolesToPickRoleForPassing"
+                }, 
                 {
-                    "Sid": "PassRoleToEntityResolutionService",
-                    "Effect": "Allow",
                     "Action": [
                         "iam:PassRole"
-                    ],
-                    "Resource": "arn:aws:iam::*:role/*entityresolution*",
+                    ], 
+                    "Resource": "arn:aws:iam::*:role/*entityresolution*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:PassedToService": [
                                 "entityresolution.amazonaws.com"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "PassRoleToEntityResolutionService"
+                }, 
                 {
-                    "Sid": "ManageEventBridgeRules",
-                    "Effect": "Allow",
                     "Action": [
-                        "events:DeleteRule",
-                        "events:PutTargets",
+                        "events:DeleteRule", 
+                        "events:PutTargets", 
                         "events:PutRule"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:events:*:*:rule/entity-resolution-automatic*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "ManageEventBridgeRules"
+                }, 
                 {
-                    "Sid": "ADXReadAccess",
-                    "Effect": "Allow",
                     "Action": [
                         "dataexchange:GetDataSet"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ADXReadAccess"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-10-16T18:46:10+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

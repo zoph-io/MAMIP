@@ -1,73 +1,73 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-10-25T09:05:23Z", 
+        "VersionId": "v7", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "EventBridge",
-                    "Effect": "Allow",
                     "Action": [
-                        "events:PutRule",
-                        "events:DeleteRule",
-                        "events:PutTargets",
+                        "events:PutRule", 
+                        "events:DeleteRule", 
+                        "events:PutTargets", 
                         "events:RemoveTargets"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "events:ManagedBy": "fis.amazonaws.com"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "EventBridge"
+                }, 
                 {
-                    "Sid": "EventBridgeDescribe",
-                    "Effect": "Allow",
                     "Action": [
                         "events:DescribeRule"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "EventBridgeDescribe"
+                }, 
                 {
-                    "Sid": "Tagging",
-                    "Effect": "Allow",
                     "Action": [
                         "tag:GetResources"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "Tagging"
+                }, 
                 {
-                    "Sid": "CloudWatch",
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudwatch:DescribeAlarms",
+                        "cloudwatch:DescribeAlarms", 
                         "cloudwatch:DescribeAlarmHistory"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "CloudWatch"
+                }, 
                 {
-                    "Sid": "DescribeUserResources",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeInstances",
-                        "ec2:DescribeSubnets",
-                        "iam:GetUser",
-                        "iam:GetRole",
-                        "iam:ListUsers",
-                        "iam:ListRoles",
-                        "rds:DescribeDBClusters",
-                        "rds:DescribeDBInstances",
-                        "ecs:DescribeClusters",
-                        "ecs:DescribeTasks",
-                        "ecs:ListTasks",
-                        "eks:DescribeNodegroup",
+                        "ec2:DescribeInstances", 
+                        "ec2:DescribeSubnets", 
+                        "iam:GetUser", 
+                        "iam:GetRole", 
+                        "iam:ListUsers", 
+                        "iam:ListRoles", 
+                        "rds:DescribeDBClusters", 
+                        "rds:DescribeDBInstances", 
+                        "ecs:DescribeClusters", 
+                        "ecs:DescribeTasks", 
+                        "ecs:ListTasks", 
+                        "eks:DescribeNodegroup", 
                         "eks:DescribeCluster"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DescribeUserResources"
                 }
             ]
-        },
-        "VersionId": "v7",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-10-25T09:05:23+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

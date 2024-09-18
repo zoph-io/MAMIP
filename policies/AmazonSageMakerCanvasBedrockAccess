@@ -1,34 +1,34 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-02-02T18:37:25Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "S3CanvasAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:GetObject",
+                        "s3:GetObject", 
                         "s3:PutObject"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:s3:::sagemaker-*/Canvas",
+                        "arn:aws:s3:::sagemaker-*/Canvas", 
                         "arn:aws:s3:::sagemaker-*/Canvas/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "S3CanvasAccess"
+                }, 
                 {
-                    "Sid": "S3BucketAccess",
-                    "Effect": "Allow",
                     "Action": [
                         "s3:ListBucket"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:s3:::sagemaker-*"
-                    ]
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "S3BucketAccess"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-02-02T18:37:25+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

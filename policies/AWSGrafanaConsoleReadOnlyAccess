@@ -1,21 +1,21 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-02-15T22:30:54Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AWSGrafanaConsoleReadOnlyAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "grafana:Describe*",
+                        "grafana:Describe*", 
                         "grafana:List*"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AWSGrafanaConsoleReadOnlyAccess"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-02-15T22:30:54+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

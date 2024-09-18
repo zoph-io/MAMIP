@@ -1,14 +1,16 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-03-03T01:43:49Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "kms:GenerateDataKey"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "kms:ViaService": [
@@ -16,22 +18,20 @@
                             ]
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "kinesis:PutRecord",
-                        "kinesis:PutRecords",
+                        "kinesis:PutRecord", 
+                        "kinesis:PutRecords", 
                         "kinesis:DescribeStream"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:kinesis:*:*:stream/chime-messaging-*"
-                    ]
+                    ], 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-03-03T01:43:49+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

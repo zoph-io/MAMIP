@@ -1,62 +1,62 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-11-15T23:34:33Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "ManageMarketplaceDeploymentSecrets",
-                    "Effect": "Allow",
                     "Action": [
-                        "secretsmanager:CreateSecret",
-                        "secretsmanager:PutSecretValue",
-                        "secretsmanager:DescribeSecret",
-                        "secretsmanager:DeleteSecret",
+                        "secretsmanager:CreateSecret", 
+                        "secretsmanager:PutSecretValue", 
+                        "secretsmanager:DescribeSecret", 
+                        "secretsmanager:DeleteSecret", 
                         "secretsmanager:RemoveRegionsFromReplication"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:secretsmanager:*:*:secret:marketplace-deployment*!*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "ManageMarketplaceDeploymentSecrets"
+                }, 
                 {
-                    "Sid": "ListSecrets",
-                    "Effect": "Allow",
                     "Action": [
                         "secretsmanager:ListSecrets"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "ListSecrets"
+                }, 
                 {
-                    "Sid": "TagMarketplaceDeploymentSecrets",
-                    "Effect": "Allow",
                     "Action": [
                         "secretsmanager:TagResource"
-                    ],
-                    "Resource": "arn:aws:secretsmanager:*:*:secret:marketplace-deployment!*",
+                    ], 
+                    "Resource": "arn:aws:secretsmanager:*:*:secret:marketplace-deployment!*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "aws:RequestTag/expirationDate": "false"
-                        },
+                        }, 
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
                         "ForAllValues:StringEquals": {
                             "aws:TagKeys": [
                                 "expirationDate"
                             ]
-                        },
-                        "StringEquals": {
-                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
-                    }
+                    }, 
+                    "Sid": "TagMarketplaceDeploymentSecrets"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-11-15T23:34:33+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

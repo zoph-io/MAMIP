@@ -1,17 +1,17 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2015-04-09T14:03:18Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
-                    "Action": "wam:AuthenticatePackager",
-                    "Resource": "*"
+                    "Action": "wam:AuthenticatePackager", 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2015-04-09T14:03:18+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

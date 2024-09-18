@@ -1,210 +1,210 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-12-04T19:32:25Z", 
+        "VersionId": "v11", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "ECSTaskManagement",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:AttachNetworkInterface",
-                        "ec2:CreateNetworkInterface",
-                        "ec2:CreateNetworkInterfacePermission",
-                        "ec2:DeleteNetworkInterface",
-                        "ec2:DeleteNetworkInterfacePermission",
-                        "ec2:Describe*",
-                        "ec2:DetachNetworkInterface",
-                        "elasticloadbalancing:DeregisterInstancesFromLoadBalancer",
-                        "elasticloadbalancing:DeregisterTargets",
-                        "elasticloadbalancing:Describe*",
-                        "elasticloadbalancing:RegisterInstancesWithLoadBalancer",
-                        "elasticloadbalancing:RegisterTargets",
-                        "route53:ChangeResourceRecordSets",
-                        "route53:CreateHealthCheck",
-                        "route53:DeleteHealthCheck",
-                        "route53:Get*",
-                        "route53:List*",
-                        "route53:UpdateHealthCheck",
-                        "servicediscovery:DeregisterInstance",
-                        "servicediscovery:Get*",
-                        "servicediscovery:List*",
-                        "servicediscovery:RegisterInstance",
+                        "ec2:AttachNetworkInterface", 
+                        "ec2:CreateNetworkInterface", 
+                        "ec2:CreateNetworkInterfacePermission", 
+                        "ec2:DeleteNetworkInterface", 
+                        "ec2:DeleteNetworkInterfacePermission", 
+                        "ec2:Describe*", 
+                        "ec2:DetachNetworkInterface", 
+                        "elasticloadbalancing:DeregisterInstancesFromLoadBalancer", 
+                        "elasticloadbalancing:DeregisterTargets", 
+                        "elasticloadbalancing:Describe*", 
+                        "elasticloadbalancing:RegisterInstancesWithLoadBalancer", 
+                        "elasticloadbalancing:RegisterTargets", 
+                        "route53:ChangeResourceRecordSets", 
+                        "route53:CreateHealthCheck", 
+                        "route53:DeleteHealthCheck", 
+                        "route53:Get*", 
+                        "route53:List*", 
+                        "route53:UpdateHealthCheck", 
+                        "servicediscovery:DeregisterInstance", 
+                        "servicediscovery:Get*", 
+                        "servicediscovery:List*", 
+                        "servicediscovery:RegisterInstance", 
                         "servicediscovery:UpdateInstanceCustomHealthStatus"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ECSTaskManagement"
+                }, 
                 {
-                    "Sid": "AutoScaling",
-                    "Effect": "Allow",
                     "Action": [
                         "autoscaling:Describe*"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AutoScaling"
+                }, 
                 {
-                    "Sid": "AutoScalingManagement",
-                    "Effect": "Allow",
                     "Action": [
-                        "autoscaling:DeletePolicy",
-                        "autoscaling:PutScalingPolicy",
-                        "autoscaling:SetInstanceProtection",
-                        "autoscaling:UpdateAutoScalingGroup",
-                        "autoscaling:PutLifecycleHook",
-                        "autoscaling:DeleteLifecycleHook",
-                        "autoscaling:CompleteLifecycleAction",
+                        "autoscaling:DeletePolicy", 
+                        "autoscaling:PutScalingPolicy", 
+                        "autoscaling:SetInstanceProtection", 
+                        "autoscaling:UpdateAutoScalingGroup", 
+                        "autoscaling:PutLifecycleHook", 
+                        "autoscaling:DeleteLifecycleHook", 
+                        "autoscaling:CompleteLifecycleAction", 
                         "autoscaling:RecordLifecycleActionHeartbeat"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "autoscaling:ResourceTag/AmazonECSManaged": "false"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "AutoScalingManagement"
+                }, 
                 {
-                    "Sid": "AutoScalingPlanManagement",
-                    "Effect": "Allow",
                     "Action": [
-                        "autoscaling-plans:CreateScalingPlan",
-                        "autoscaling-plans:DeleteScalingPlan",
-                        "autoscaling-plans:DescribeScalingPlans",
+                        "autoscaling-plans:CreateScalingPlan", 
+                        "autoscaling-plans:DeleteScalingPlan", 
+                        "autoscaling-plans:DescribeScalingPlans", 
                         "autoscaling-plans:DescribeScalingPlanResources"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AutoScalingPlanManagement"
+                }, 
                 {
-                    "Sid": "EventBridge",
-                    "Effect": "Allow",
                     "Action": [
-                        "events:DescribeRule",
+                        "events:DescribeRule", 
                         "events:ListTargetsByRule"
-                    ],
-                    "Resource": "arn:aws:events:*:*:rule/ecs-managed-*"
-                },
+                    ], 
+                    "Resource": "arn:aws:events:*:*:rule/ecs-managed-*", 
+                    "Effect": "Allow", 
+                    "Sid": "EventBridge"
+                }, 
                 {
-                    "Sid": "EventBridgeRuleManagement",
-                    "Effect": "Allow",
                     "Action": [
-                        "events:PutRule",
+                        "events:PutRule", 
                         "events:PutTargets"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "events:ManagedBy": "ecs.amazonaws.com"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "EventBridgeRuleManagement"
+                }, 
                 {
-                    "Sid": "CWAlarmManagement",
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudwatch:DeleteAlarms",
-                        "cloudwatch:DescribeAlarms",
+                        "cloudwatch:DeleteAlarms", 
+                        "cloudwatch:DescribeAlarms", 
                         "cloudwatch:PutMetricAlarm"
-                    ],
-                    "Resource": "arn:aws:cloudwatch:*:*:alarm:*"
-                },
+                    ], 
+                    "Resource": "arn:aws:cloudwatch:*:*:alarm:*", 
+                    "Effect": "Allow", 
+                    "Sid": "CWAlarmManagement"
+                }, 
                 {
-                    "Sid": "ECSTagging",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateTags"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:network-interface/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:network-interface/*", 
+                    "Effect": "Allow", 
+                    "Sid": "ECSTagging"
+                }, 
                 {
-                    "Sid": "CWLogGroupManagement",
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:CreateLogGroup",
-                        "logs:DescribeLogGroups",
+                        "logs:CreateLogGroup", 
+                        "logs:DescribeLogGroups", 
                         "logs:PutRetentionPolicy"
-                    ],
-                    "Resource": "arn:aws:logs:*:*:log-group:/aws/ecs/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:logs:*:*:log-group:/aws/ecs/*", 
+                    "Effect": "Allow", 
+                    "Sid": "CWLogGroupManagement"
+                }, 
                 {
-                    "Sid": "CWLogStreamManagement",
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:CreateLogStream",
-                        "logs:DescribeLogStreams",
+                        "logs:CreateLogStream", 
+                        "logs:DescribeLogStreams", 
                         "logs:PutLogEvents"
-                    ],
-                    "Resource": "arn:aws:logs:*:*:log-group:/aws/ecs/*:log-stream:*"
-                },
+                    ], 
+                    "Resource": "arn:aws:logs:*:*:log-group:/aws/ecs/*:log-stream:*", 
+                    "Effect": "Allow", 
+                    "Sid": "CWLogStreamManagement"
+                }, 
                 {
-                    "Sid": "ExecuteCommandSessionManagement",
-                    "Effect": "Allow",
                     "Action": [
                         "ssm:DescribeSessions"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ExecuteCommandSessionManagement"
+                }, 
                 {
-                    "Sid": "ExecuteCommand",
-                    "Effect": "Allow",
                     "Action": [
                         "ssm:StartSession"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:ecs:*:*:task/*",
+                        "arn:aws:ecs:*:*:task/*", 
                         "arn:aws:ssm:*:*:document/AmazonECS-ExecuteInteractiveCommand"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "ExecuteCommand"
+                }, 
                 {
-                    "Sid": "CloudMapResourceCreation",
-                    "Effect": "Allow",
                     "Action": [
-                        "servicediscovery:CreateHttpNamespace",
+                        "servicediscovery:CreateHttpNamespace", 
                         "servicediscovery:CreateService"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAllValues:StringEquals": {
                             "aws:TagKeys": [
                                 "AmazonECSManaged"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "CloudMapResourceCreation"
+                }, 
                 {
-                    "Sid": "CloudMapResourceTagging",
-                    "Effect": "Allow",
-                    "Action": "servicediscovery:TagResource",
-                    "Resource": "*",
+                    "Action": "servicediscovery:TagResource", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:RequestTag/AmazonECSManaged": "*"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "CloudMapResourceTagging"
+                }, 
                 {
-                    "Sid": "CloudMapResourceDeletion",
-                    "Effect": "Allow",
                     "Action": [
                         "servicediscovery:DeleteService"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "aws:ResourceTag/AmazonECSManaged": "false"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "CloudMapResourceDeletion"
+                }, 
                 {
-                    "Sid": "CloudMapResourceDiscovery",
-                    "Effect": "Allow",
                     "Action": [
-                        "servicediscovery:DiscoverInstances",
+                        "servicediscovery:DiscoverInstances", 
                         "servicediscovery:DiscoverInstancesRevision"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "CloudMapResourceDiscovery"
                 }
             ]
-        },
-        "VersionId": "v11",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-12-04T19:32:25+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

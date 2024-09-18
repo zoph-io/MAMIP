@@ -1,46 +1,46 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-08-09T07:25:24Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AllowThinClientFullAccess",
-                    "Effect": "Allow",
                     "Action": [
                         "thinclient:*"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowThinClientFullAccess"
+                }, 
                 {
-                    "Sid": "AllowWorkSpacesAccess",
-                    "Effect": "Allow",
                     "Action": [
                         "workspaces:DescribeWorkspaceDirectories"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowWorkSpacesAccess"
+                }, 
                 {
-                    "Sid": "AllowWorkSpacesWebAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "workspaces-web:GetPortal",
-                        "workspaces-web:GetUserSettings",
+                        "workspaces-web:GetPortal", 
+                        "workspaces-web:GetUserSettings", 
                         "workspaces-web:ListPortals"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowWorkSpacesWebAccess"
+                }, 
                 {
-                    "Sid": "AllowAppStreamAccess",
-                    "Effect": "Allow",
                     "Action": [
                         "appstream:DescribeStacks"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowAppStreamAccess"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-08-09T07:25:24+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

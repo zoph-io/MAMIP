@@ -1,23 +1,23 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2019-08-06T14:13:58Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "0",
-                    "Effect": "Allow",
                     "Action": [
-                        "acm:ExportCertificate",
-                        "acm:DescribeCertificate",
-                        "acm:ListCertificates",
+                        "acm:ExportCertificate", 
+                        "acm:DescribeCertificate", 
+                        "acm:ListCertificates", 
                         "acm-pca:DescribeCertificateAuthority"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "0"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2019-08-06T14:13:58+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

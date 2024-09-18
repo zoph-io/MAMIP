@@ -1,86 +1,86 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-11-27T13:39:44Z", 
+        "VersionId": "v5", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "DRSEc2InstancePolicy1",
-                    "Effect": "Allow",
                     "Action": [
-                        "drs:GetAgentInstallationAssetsForDrs",
-                        "drs:SendClientLogsForDrs",
-                        "drs:SendClientMetricsForDrs",
-                        "drs:CreateSourceServerForDrs",
+                        "drs:GetAgentInstallationAssetsForDrs", 
+                        "drs:SendClientLogsForDrs", 
+                        "drs:SendClientMetricsForDrs", 
+                        "drs:CreateSourceServerForDrs", 
                         "drs:CreateSourceNetwork"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DRSEc2InstancePolicy1"
+                }, 
                 {
-                    "Sid": "DRSEc2InstancePolicy2",
-                    "Effect": "Allow",
                     "Action": [
                         "drs:TagResource"
-                    ],
-                    "Resource": "arn:aws:drs:*:*:source-server/*",
+                    ], 
+                    "Resource": "arn:aws:drs:*:*:source-server/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "drs:CreateAction": "CreateSourceServerForDrs"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "DRSEc2InstancePolicy2"
+                }, 
                 {
-                    "Sid": "DRSEc2InstancePolicy3",
-                    "Effect": "Allow",
                     "Action": [
                         "drs:TagResource"
-                    ],
-                    "Resource": "arn:aws:drs:*:*:source-network/*",
+                    ], 
+                    "Resource": "arn:aws:drs:*:*:source-network/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "drs:CreateAction": "CreateSourceNetwork"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "DRSEc2InstancePolicy3"
+                }, 
                 {
-                    "Sid": "DRSEc2InstancePolicy4",
-                    "Effect": "Allow",
                     "Action": [
-                        "drs:SendAgentMetricsForDrs",
-                        "drs:SendAgentLogsForDrs",
-                        "drs:UpdateAgentSourcePropertiesForDrs",
-                        "drs:UpdateAgentReplicationInfoForDrs",
-                        "drs:UpdateAgentConversionInfoForDrs",
-                        "drs:GetAgentCommandForDrs",
-                        "drs:GetAgentConfirmedResumeInfoForDrs",
-                        "drs:GetAgentRuntimeConfigurationForDrs",
-                        "drs:UpdateAgentBacklogForDrs",
+                        "drs:SendAgentMetricsForDrs", 
+                        "drs:SendAgentLogsForDrs", 
+                        "drs:UpdateAgentSourcePropertiesForDrs", 
+                        "drs:UpdateAgentReplicationInfoForDrs", 
+                        "drs:UpdateAgentConversionInfoForDrs", 
+                        "drs:GetAgentCommandForDrs", 
+                        "drs:GetAgentConfirmedResumeInfoForDrs", 
+                        "drs:GetAgentRuntimeConfigurationForDrs", 
+                        "drs:UpdateAgentBacklogForDrs", 
                         "drs:GetAgentReplicationInfoForDrs"
-                    ],
-                    "Resource": "arn:aws:drs:*:*:source-server/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:drs:*:*:source-server/*", 
+                    "Effect": "Allow", 
+                    "Sid": "DRSEc2InstancePolicy4"
+                }, 
                 {
-                    "Sid": "DRSEc2InstancePolicy5",
-                    "Effect": "Allow",
                     "Action": [
-                        "sts:AssumeRole",
+                        "sts:AssumeRole", 
                         "sts:TagSession"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:iam::*:role/service-role/DRSCrossAccountAgentAuthorizedRole_*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
-                        "StringLike": {
-                            "aws:RequestTag/SourceInstanceARN": "${ec2:SourceInstanceARN}"
-                        },
                         "ForAnyValue:StringEquals": {
                             "sts:TransitiveTagKeys": "SourceInstanceARN"
+                        }, 
+                        "StringLike": {
+                            "aws:RequestTag/SourceInstanceARN": "${ec2:SourceInstanceARN}"
                         }
-                    }
+                    }, 
+                    "Sid": "DRSEc2InstancePolicy5"
                 }
             ]
-        },
-        "VersionId": "v5",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-11-27T13:39:44+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,16 +1,18 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-11-18T18:26:40Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "organizations:DisableAWSServiceAccess",
-                        "organizations:EnableAWSServiceAccess",
+                        "organizations:DisableAWSServiceAccess", 
+                        "organizations:EnableAWSServiceAccess", 
                         "organizations:ListDelegatedAdministrators"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "organizations:ServicePrincipal": [
@@ -18,14 +20,14 @@
                             ]
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "organizations:RegisterDelegatedAdministrator",
+                        "organizations:RegisterDelegatedAdministrator", 
                         "organizations:DeregisterDelegatedAdministrator"
-                    ],
-                    "Resource": "arn:aws:organizations::*:account/*",
+                    ], 
+                    "Resource": "arn:aws:organizations::*:account/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "organizations:ServicePrincipal": [
@@ -33,24 +35,24 @@
                             ]
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "organizations:AttachPolicy",
-                        "organizations:ListPoliciesForTarget",
-                        "organizations:ListTargetsForPolicy",
-                        "organizations:DetachPolicy",
-                        "organizations:DisablePolicyType",
-                        "organizations:DescribePolicy",
-                        "organizations:DescribeEffectivePolicy",
-                        "organizations:ListPolicies",
-                        "organizations:EnablePolicyType",
-                        "organizations:CreatePolicy",
-                        "organizations:UpdatePolicy",
+                        "organizations:AttachPolicy", 
+                        "organizations:ListPoliciesForTarget", 
+                        "organizations:ListTargetsForPolicy", 
+                        "organizations:DetachPolicy", 
+                        "organizations:DisablePolicyType", 
+                        "organizations:DescribePolicy", 
+                        "organizations:DescribeEffectivePolicy", 
+                        "organizations:ListPolicies", 
+                        "organizations:EnablePolicyType", 
+                        "organizations:CreatePolicy", 
+                        "organizations:UpdatePolicy", 
                         "organizations:DeletePolicy"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLikeIfExists": {
                             "organizations:PolicyType": [
@@ -58,27 +60,25 @@
                             ]
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "organizations:ListRoots",
-                        "organizations:ListParents",
-                        "organizations:ListAWSServiceAccessForOrganization",
-                        "organizations:ListAccountsForParent",
-                        "organizations:ListAccounts",
-                        "organizations:DescribeOrganization",
-                        "organizations:ListOrganizationalUnitsForParent",
-                        "organizations:ListChildren",
-                        "organizations:DescribeAccount",
+                        "organizations:ListRoots", 
+                        "organizations:ListParents", 
+                        "organizations:ListAWSServiceAccessForOrganization", 
+                        "organizations:ListAccountsForParent", 
+                        "organizations:ListAccounts", 
+                        "organizations:DescribeOrganization", 
+                        "organizations:ListOrganizationalUnitsForParent", 
+                        "organizations:ListChildren", 
+                        "organizations:DescribeAccount", 
                         "organizations:DescribeOrganizationalUnit"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-11-18T18:26:40+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

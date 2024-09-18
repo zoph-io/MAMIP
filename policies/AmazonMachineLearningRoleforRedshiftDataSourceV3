@@ -1,40 +1,40 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-06-24T18:00:09Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:AuthorizeSecurityGroupIngress",
-                        "ec2:CreateSecurityGroup",
-                        "ec2:DescribeInternetGateways",
-                        "ec2:DescribeSecurityGroups",
-                        "ec2:RevokeSecurityGroupIngress",
-                        "redshift:AuthorizeClusterSecurityGroupIngress",
-                        "redshift:CreateClusterSecurityGroup",
-                        "redshift:DescribeClusters",
-                        "redshift:DescribeClusterSecurityGroups",
-                        "redshift:ModifyCluster",
+                        "ec2:AuthorizeSecurityGroupIngress", 
+                        "ec2:CreateSecurityGroup", 
+                        "ec2:DescribeInternetGateways", 
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:RevokeSecurityGroupIngress", 
+                        "redshift:AuthorizeClusterSecurityGroupIngress", 
+                        "redshift:CreateClusterSecurityGroup", 
+                        "redshift:DescribeClusters", 
+                        "redshift:DescribeClusterSecurityGroups", 
+                        "redshift:ModifyCluster", 
                         "redshift:RevokeClusterSecurityGroupIngress"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:PutBucketPolicy",
-                        "s3:GetBucketLocation",
-                        "s3:GetBucketPolicy",
-                        "s3:GetObject",
+                        "s3:PutBucketPolicy", 
+                        "s3:GetBucketLocation", 
+                        "s3:GetBucketPolicy", 
+                        "s3:GetObject", 
                         "s3:PutObject"
-                    ],
-                    "Resource": "arn:aws:s3:::amazon-machine-learning*"
+                    ], 
+                    "Resource": "arn:aws:s3:::amazon-machine-learning*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-06-24T18:00:09+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

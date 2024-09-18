@@ -1,33 +1,35 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2019-02-18T19:17:03Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeSpotFleetRequests",
+                        "ec2:DescribeSpotFleetRequests", 
                         "ec2:ModifySpotFleetRequest"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudwatch:DescribeAlarms",
-                        "cloudwatch:PutMetricAlarm",
+                        "cloudwatch:DescribeAlarms", 
+                        "cloudwatch:PutMetricAlarm", 
                         "cloudwatch:DeleteAlarms"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Action": "iam:CreateServiceLinkedRole",
-                    "Effect": "Allow",
-                    "Resource": "arn:aws:iam::*:role/aws-service-role/ec2.application-autoscaling.amazonaws.com/AWSServiceRoleForApplicationAutoScaling_EC2SpotFleetRequest",
+                    "Action": "iam:CreateServiceLinkedRole", 
+                    "Resource": "arn:aws:iam::*:role/aws-service-role/ec2.application-autoscaling.amazonaws.com/AWSServiceRoleForApplicationAutoScaling_EC2SpotFleetRequest", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "iam:AWSServiceName": "ec2.application-autoscaling.amazonaws.com"
@@ -35,9 +37,7 @@
                     }
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2019-02-18T19:17:03+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,61 +1,61 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-09-09T19:38:36Z", 
+        "VersionId": "v7", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "BucketAccess",
                     "Action": [
-                        "s3:Get*",
-                        "s3:List*",
+                        "s3:Get*", 
+                        "s3:List*", 
                         "s3:PutObject"
-                    ],
-                    "Effect": "Allow",
+                    ], 
                     "Resource": [
-                        "arn:aws:s3:::elasticbeanstalk-*",
+                        "arn:aws:s3:::elasticbeanstalk-*", 
                         "arn:aws:s3:::elasticbeanstalk-*/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "BucketAccess"
+                }, 
                 {
-                    "Sid": "XRayAccess",
                     "Action": [
-                        "xray:PutTraceSegments",
-                        "xray:PutTelemetryRecords",
-                        "xray:GetSamplingRules",
-                        "xray:GetSamplingTargets",
+                        "xray:PutTraceSegments", 
+                        "xray:PutTelemetryRecords", 
+                        "xray:GetSamplingRules", 
+                        "xray:GetSamplingTargets", 
                         "xray:GetSamplingStatisticSummaries"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "XRayAccess"
+                }, 
                 {
-                    "Sid": "CloudWatchLogsAccess",
                     "Action": [
-                        "logs:PutLogEvents",
-                        "logs:CreateLogStream",
-                        "logs:DescribeLogStreams",
+                        "logs:PutLogEvents", 
+                        "logs:CreateLogStream", 
+                        "logs:DescribeLogStreams", 
                         "logs:DescribeLogGroups"
-                    ],
-                    "Effect": "Allow",
+                    ], 
                     "Resource": [
                         "arn:aws:logs:*:*:log-group:/aws/elasticbeanstalk*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "CloudWatchLogsAccess"
+                }, 
                 {
-                    "Sid": "ElasticBeanstalkHealthAccess",
                     "Action": [
                         "elasticbeanstalk:PutInstanceStatistics"
-                    ],
-                    "Effect": "Allow",
+                    ], 
                     "Resource": [
-                        "arn:aws:elasticbeanstalk:*:*:application/*",
+                        "arn:aws:elasticbeanstalk:*:*:application/*", 
                         "arn:aws:elasticbeanstalk:*:*:environment/*"
-                    ]
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "ElasticBeanstalkHealthAccess"
                 }
             ]
-        },
-        "VersionId": "v7",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-09-09T19:38:36+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

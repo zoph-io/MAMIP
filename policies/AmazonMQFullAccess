@@ -1,43 +1,45 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-11-04T16:34:09Z", 
+        "VersionId": "v5", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "mq:*",
-                        "cloudformation:CreateStack",
-                        "ec2:CreateNetworkInterface",
-                        "ec2:CreateNetworkInterfacePermission",
-                        "ec2:DeleteNetworkInterface",
-                        "ec2:DeleteNetworkInterfacePermission",
-                        "ec2:DetachNetworkInterface",
-                        "ec2:DescribeInternetGateways",
-                        "ec2:DescribeNetworkInterfaces",
-                        "ec2:DescribeNetworkInterfacePermissions",
-                        "ec2:DescribeRouteTables",
-                        "ec2:DescribeSecurityGroups",
-                        "ec2:DescribeSubnets",
-                        "ec2:DescribeVpcs",
-                        "ec2:CreateSecurityGroup",
+                        "mq:*", 
+                        "cloudformation:CreateStack", 
+                        "ec2:CreateNetworkInterface", 
+                        "ec2:CreateNetworkInterfacePermission", 
+                        "ec2:DeleteNetworkInterface", 
+                        "ec2:DeleteNetworkInterfacePermission", 
+                        "ec2:DetachNetworkInterface", 
+                        "ec2:DescribeInternetGateways", 
+                        "ec2:DescribeNetworkInterfaces", 
+                        "ec2:DescribeNetworkInterfacePermissions", 
+                        "ec2:DescribeRouteTables", 
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeVpcs", 
+                        "ec2:CreateSecurityGroup", 
                         "ec2:AuthorizeSecurityGroupIngress"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "logs:CreateLogGroup"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:logs:*:*:log-group:/aws/amazonmq/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Action": "iam:CreateServiceLinkedRole",
-                    "Effect": "Allow",
-                    "Resource": "*",
+                    "Action": "iam:CreateServiceLinkedRole", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "iam:AWSServiceName": "mq.amazonaws.com"
@@ -45,9 +47,7 @@
                     }
                 }
             ]
-        },
-        "VersionId": "v5",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-11-04T16:34:09+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,26 +1,26 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-04-01T17:28:28Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "JoinFleetPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "deadline:CreateWorker",
+                        "deadline:CreateWorker", 
                         "deadline:AssumeFleetRoleForWorker"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:PrincipalAccount": "${aws:ResourceAccount}"
                         }
-                    }
+                    }, 
+                    "Sid": "JoinFleetPermissions"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-04-01T17:28:28+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

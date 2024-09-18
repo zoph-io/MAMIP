@@ -1,36 +1,36 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-05-10T20:28:02Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:AbortMultipartUpload",
-                        "s3:PutObject",
-                        "s3:GetObject",
+                        "s3:AbortMultipartUpload", 
+                        "s3:PutObject", 
+                        "s3:GetObject", 
                         "s3:ListBucketMultipartUploads"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:s3:::*SageMaker*",
-                        "arn:aws:s3:::*Sagemaker*",
+                        "arn:aws:s3:::*SageMaker*", 
+                        "arn:aws:s3:::*Sagemaker*", 
                         "arn:aws:s3:::*sagemaker*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "sagemaker-geospatial:GetEarthObservationJob",
-                    "Resource": "arn:aws:sagemaker-geospatial:*:*:earth-observation-job/*"
-                },
+                    "Action": "sagemaker-geospatial:GetEarthObservationJob", 
+                    "Resource": "arn:aws:sagemaker-geospatial:*:*:earth-observation-job/*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "sagemaker-geospatial:GetRasterDataCollection",
-                    "Resource": "arn:aws:sagemaker-geospatial:*:*:raster-data-collection/*"
+                    "Action": "sagemaker-geospatial:GetRasterDataCollection", 
+                    "Resource": "arn:aws:sagemaker-geospatial:*:*:raster-data-collection/*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-05-10T20:28:02+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

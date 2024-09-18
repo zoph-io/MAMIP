@@ -1,35 +1,35 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-06-05T21:46:22Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AllowBeanstalkManageSNS",
-                    "Effect": "Allow",
                     "Action": [
-                        "sns:CreateTopic",
-                        "sns:SetTopicAttributes",
+                        "sns:CreateTopic", 
+                        "sns:SetTopicAttributes", 
                         "sns:DeleteTopic"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:sns:*:*:ElasticBeanstalkNotifications-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowBeanstalkManageSNS"
+                }, 
                 {
-                    "Sid": "AllowSNSPublish",
-                    "Effect": "Allow",
                     "Action": [
-                        "sns:GetTopicAttributes",
-                        "sns:Subscribe",
-                        "sns:Unsubscribe",
+                        "sns:GetTopicAttributes", 
+                        "sns:Subscribe", 
+                        "sns:Unsubscribe", 
                         "sns:Publish"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowSNSPublish"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-06-05T21:46:22+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

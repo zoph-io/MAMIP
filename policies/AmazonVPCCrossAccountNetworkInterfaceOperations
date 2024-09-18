@@ -1,64 +1,64 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-09-25T15:12:17Z", 
+        "VersionId": "v5", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeRouteTables",
-                        "ec2:CreateRoute",
-                        "ec2:DeleteRoute",
+                        "ec2:DescribeRouteTables", 
+                        "ec2:CreateRoute", 
+                        "ec2:DeleteRoute", 
                         "ec2:ReplaceRoute"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeNetworkInterfaces",
-                        "ec2:CreateNetworkInterface",
-                        "ec2:DeleteNetworkInterface",
-                        "ec2:CreateNetworkInterfacePermission",
-                        "ec2:DeleteNetworkInterfacePermission",
-                        "ec2:DescribeNetworkInterfacePermissions",
-                        "ec2:ModifyNetworkInterfaceAttribute",
-                        "ec2:DescribeNetworkInterfaceAttribute",
-                        "ec2:DescribeAvailabilityZones",
-                        "ec2:DescribeRegions",
-                        "ec2:DescribeVpcs",
+                        "ec2:DescribeNetworkInterfaces", 
+                        "ec2:CreateNetworkInterface", 
+                        "ec2:DeleteNetworkInterface", 
+                        "ec2:CreateNetworkInterfacePermission", 
+                        "ec2:DeleteNetworkInterfacePermission", 
+                        "ec2:DescribeNetworkInterfacePermissions", 
+                        "ec2:ModifyNetworkInterfaceAttribute", 
+                        "ec2:DescribeNetworkInterfaceAttribute", 
+                        "ec2:DescribeAvailabilityZones", 
+                        "ec2:DescribeRegions", 
+                        "ec2:DescribeVpcs", 
                         "ec2:DescribeSubnets"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:AssignPrivateIpAddresses",
+                        "ec2:AssignPrivateIpAddresses", 
                         "ec2:UnassignPrivateIpAddresses"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:AssignIpv6Addresses",
+                        "ec2:AssignIpv6Addresses", 
                         "ec2:UnassignIpv6Addresses"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
+                    ], 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v5",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-09-25T15:12:17+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

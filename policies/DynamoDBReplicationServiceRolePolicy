@@ -1,53 +1,53 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-01-08T20:10:36Z", 
+        "VersionId": "v8", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "DynamoDBActionsNeededForSteadyStateReplication",
-                    "Effect": "Allow",
                     "Action": [
-                        "dynamodb:GetItem",
-                        "dynamodb:PutItem",
-                        "dynamodb:UpdateItem",
-                        "dynamodb:DeleteItem",
-                        "dynamodb:DescribeTable",
-                        "dynamodb:UpdateTable",
-                        "dynamodb:Scan",
-                        "dynamodb:DescribeStream",
-                        "dynamodb:GetRecords",
-                        "dynamodb:GetShardIterator",
-                        "dynamodb:DescribeTimeToLive",
-                        "dynamodb:UpdateTimeToLive",
-                        "dynamodb:DescribeLimits",
-                        "dynamodb:GetResourcePolicy",
-                        "application-autoscaling:RegisterScalableTarget",
-                        "application-autoscaling:DescribeScalableTargets",
-                        "application-autoscaling:PutScalingPolicy",
-                        "application-autoscaling:DescribeScalingPolicies",
+                        "dynamodb:GetItem", 
+                        "dynamodb:PutItem", 
+                        "dynamodb:UpdateItem", 
+                        "dynamodb:DeleteItem", 
+                        "dynamodb:DescribeTable", 
+                        "dynamodb:UpdateTable", 
+                        "dynamodb:Scan", 
+                        "dynamodb:DescribeStream", 
+                        "dynamodb:GetRecords", 
+                        "dynamodb:GetShardIterator", 
+                        "dynamodb:DescribeTimeToLive", 
+                        "dynamodb:UpdateTimeToLive", 
+                        "dynamodb:DescribeLimits", 
+                        "dynamodb:GetResourcePolicy", 
+                        "application-autoscaling:RegisterScalableTarget", 
+                        "application-autoscaling:DescribeScalableTargets", 
+                        "application-autoscaling:PutScalingPolicy", 
+                        "application-autoscaling:DescribeScalingPolicies", 
                         "account:ListRegions"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DynamoDBActionsNeededForSteadyStateReplication"
+                }, 
                 {
-                    "Sid": "DynamoDBReplicationServiceRolePolicy",
-                    "Effect": "Allow",
                     "Action": [
                         "iam:CreateServiceLinkedRole"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:AWSServiceName": [
                                 "dynamodb.application-autoscaling.amazonaws.com"
                             ]
                         }
-                    }
+                    }, 
+                    "Sid": "DynamoDBReplicationServiceRolePolicy"
                 }
             ]
-        },
-        "VersionId": "v8",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-01-08T20:10:36+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,21 +1,21 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-06-24T20:28:27Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": [
-                        "honeycode:ListTeamAssociations",
-                        "honeycode:ApproveTeamAssociation",
+                        "honeycode:ListTeamAssociations", 
+                        "honeycode:ApproveTeamAssociation", 
                         "honeycode:RejectTeamAssociation"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
                     "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-06-24T20:28:27+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

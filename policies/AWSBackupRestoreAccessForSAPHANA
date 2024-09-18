@@ -1,42 +1,42 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-11-10T22:43:27Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "backup:Get*",
-                        "backup:List*",
-                        "backup:Describe*",
-                        "backup:StartBackupJob",
+                        "backup:Get*", 
+                        "backup:List*", 
+                        "backup:Describe*", 
+                        "backup:StartBackupJob", 
                         "backup:StartRestoreJob"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ssm-sap:GetOperation",
+                        "ssm-sap:GetOperation", 
                         "ssm-sap:ListDatabases"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ssm-sap:BackupDatabase",
-                        "ssm-sap:RestoreDatabase",
-                        "ssm-sap:UpdateHanaBackupSettings",
-                        "ssm-sap:GetDatabase",
+                        "ssm-sap:BackupDatabase", 
+                        "ssm-sap:RestoreDatabase", 
+                        "ssm-sap:UpdateHanaBackupSettings", 
+                        "ssm-sap:GetDatabase", 
                         "ssm-sap:ListTagsForResource"
-                    ],
-                    "Resource": "arn:aws:ssm-sap:*:*:*"
+                    ], 
+                    "Resource": "arn:aws:ssm-sap:*:*:*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-11-10T22:43:27+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

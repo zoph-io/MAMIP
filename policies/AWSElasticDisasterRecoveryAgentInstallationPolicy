@@ -1,65 +1,65 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-11-27T12:38:51Z", 
+        "VersionId": "v6", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "DRSAgentInstallationPolicy1",
-                    "Effect": "Allow",
                     "Action": [
-                        "drs:GetAgentInstallationAssetsForDrs",
-                        "drs:SendClientLogsForDrs",
-                        "drs:SendClientMetricsForDrs",
-                        "drs:CreateSourceServerForDrs",
-                        "drs:CreateRecoveryInstanceForDrs",
-                        "drs:DescribeRecoveryInstances",
+                        "drs:GetAgentInstallationAssetsForDrs", 
+                        "drs:SendClientLogsForDrs", 
+                        "drs:SendClientMetricsForDrs", 
+                        "drs:CreateSourceServerForDrs", 
+                        "drs:CreateRecoveryInstanceForDrs", 
+                        "drs:DescribeRecoveryInstances", 
                         "drs:CreateSourceNetwork"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DRSAgentInstallationPolicy1"
+                }, 
                 {
-                    "Sid": "DRSAgentInstallationPolicy2",
-                    "Effect": "Allow",
-                    "Action": "drs:TagResource",
-                    "Resource": "arn:aws:drs:*:*:source-server/*",
+                    "Action": "drs:TagResource", 
+                    "Resource": "arn:aws:drs:*:*:source-server/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "drs:CreateAction": "CreateSourceServerForDrs"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "DRSAgentInstallationPolicy2"
+                }, 
                 {
-                    "Sid": "DRSAgentInstallationPolicy3",
-                    "Effect": "Allow",
-                    "Action": "drs:TagResource",
-                    "Resource": "arn:aws:drs:*:*:source-server/*",
+                    "Action": "drs:TagResource", 
+                    "Resource": "arn:aws:drs:*:*:source-server/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "drs:CreateAction": "CreateRecoveryInstanceForDrs"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "DRSAgentInstallationPolicy3"
+                }, 
                 {
-                    "Sid": "DRSAgentInstallationPolicy4",
-                    "Effect": "Allow",
-                    "Action": "drs:TagResource",
-                    "Resource": "arn:aws:drs:*:*:source-network/*",
+                    "Action": "drs:TagResource", 
+                    "Resource": "arn:aws:drs:*:*:source-network/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "drs:CreateAction": "CreateSourceNetwork"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "DRSAgentInstallationPolicy4"
+                }, 
                 {
-                    "Sid": "DRSAgentInstallationPolicy5",
-                    "Effect": "Allow",
-                    "Action": "drs:IssueAgentCertificateForDrs",
-                    "Resource": "arn:aws:drs:*:*:source-server/*"
+                    "Action": "drs:IssueAgentCertificateForDrs", 
+                    "Resource": "arn:aws:drs:*:*:source-server/*", 
+                    "Effect": "Allow", 
+                    "Sid": "DRSAgentInstallationPolicy5"
                 }
             ]
-        },
-        "VersionId": "v6",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-11-27T12:38:51+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

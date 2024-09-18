@@ -1,37 +1,37 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-01-15T01:45:33Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "iam:DeleteServiceLinkedRole",
+                        "iam:DeleteServiceLinkedRole", 
                         "iam:GetServiceLinkedRoleDeletionStatus"
-                    ],
-                    "Resource": "arn:aws:iam::*:role/aws-service-role/lightsail.amazonaws.com/AWSServiceRoleForLightsail*"
-                },
+                    ], 
+                    "Resource": "arn:aws:iam::*:role/aws-service-role/lightsail.amazonaws.com/AWSServiceRoleForLightsail*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:CopySnapshot",
-                        "ec2:DescribeSnapshots",
-                        "ec2:CopyImage",
+                        "ec2:CopySnapshot", 
+                        "ec2:DescribeSnapshots", 
+                        "ec2:CopyImage", 
                         "ec2:DescribeImages"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "s3:GetAccountPublicAccessBlock"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-01-15T01:45:33+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

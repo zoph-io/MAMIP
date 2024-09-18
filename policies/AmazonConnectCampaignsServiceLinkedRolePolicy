@@ -1,27 +1,27 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-11-08T16:16:16Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "connect-campaigns:ListCampaigns"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "connect:BatchPutContact",
+                        "connect:BatchPutContact", 
                         "connect:StopContact"
-                    ],
-                    "Resource": "arn:aws:connect:*:*:instance/*"
+                    ], 
+                    "Resource": "arn:aws:connect:*:*:instance/*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-11-08T16:16:16+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

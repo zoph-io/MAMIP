@@ -1,35 +1,35 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-04-20T12:34:44Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "support:DescribeAttachment",
-                        "support:DescribeCaseAttributes",
-                        "support:DescribeCases",
-                        "support:DescribeCommunications",
-                        "support:DescribeIssueTypes",
-                        "support:DescribeServices",
-                        "support:DescribeSeverityLevels",
-                        "support:DescribeSupportLevel",
-                        "support:SearchForCases",
-                        "support:AddAttachmentsToSet",
-                        "support:AddCommunicationToCase",
-                        "support:CreateCase",
-                        "support:InitiateCallForCase",
-                        "support:InitiateChatForCase",
-                        "support:PutCaseAttributes",
-                        "support:RateCaseCommunication",
+                        "support:DescribeAttachment", 
+                        "support:DescribeCaseAttributes", 
+                        "support:DescribeCases", 
+                        "support:DescribeCommunications", 
+                        "support:DescribeIssueTypes", 
+                        "support:DescribeServices", 
+                        "support:DescribeSeverityLevels", 
+                        "support:DescribeSupportLevel", 
+                        "support:SearchForCases", 
+                        "support:AddAttachmentsToSet", 
+                        "support:AddCommunicationToCase", 
+                        "support:CreateCase", 
+                        "support:InitiateCallForCase", 
+                        "support:InitiateChatForCase", 
+                        "support:PutCaseAttributes", 
+                        "support:RateCaseCommunication", 
                         "support:ResolveCase"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-04-20T12:34:44+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

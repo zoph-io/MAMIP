@@ -1,53 +1,53 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-08-09T07:11:12Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AllowThinClientReadAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "thinclient:GetDevice",
-                        "thinclient:GetEnvironment",
-                        "thinclient:GetSoftwareSet",
-                        "thinclient:ListDevices",
-                        "thinclient:ListDeviceSessions",
-                        "thinclient:ListEnvironments",
-                        "thinclient:ListSoftwareSets",
+                        "thinclient:GetDevice", 
+                        "thinclient:GetEnvironment", 
+                        "thinclient:GetSoftwareSet", 
+                        "thinclient:ListDevices", 
+                        "thinclient:ListDeviceSessions", 
+                        "thinclient:ListEnvironments", 
+                        "thinclient:ListSoftwareSets", 
                         "thinclient:ListTagsForResource"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowThinClientReadAccess"
+                }, 
                 {
-                    "Sid": "AllowWorkSpacesAccess",
-                    "Effect": "Allow",
                     "Action": [
                         "workspaces:DescribeWorkspaceDirectories"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowWorkSpacesAccess"
+                }, 
                 {
-                    "Sid": "AllowWorkSpacesWebAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "workspaces-web:GetPortal",
-                        "workspaces-web:GetUserSettings",
+                        "workspaces-web:GetPortal", 
+                        "workspaces-web:GetUserSettings", 
                         "workspaces-web:ListPortals"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowWorkSpacesWebAccess"
+                }, 
                 {
-                    "Sid": "AllowAppStreamAccess",
-                    "Effect": "Allow",
                     "Action": [
                         "appstream:DescribeStacks"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowAppStreamAccess"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-08-09T07:11:12+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

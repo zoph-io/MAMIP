@@ -1,22 +1,22 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2015-02-06T18:40:57Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "route53domains:Get*",
+                        "route53domains:Get*", 
                         "route53domains:List*"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
+                    ], 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2015-02-06T18:40:57+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

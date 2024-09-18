@@ -1,66 +1,66 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-04-26T18:36:40Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "trustedadvisor:DescribeChecks",
+                        "trustedadvisor:DescribeChecks", 
                         "trustedadvisor:DescribeCheckItems"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudformation:DescribeStacks",
-                        "cloudformation:ListStackResources",
-                        "resource-groups:ListGroupResources",
+                        "cloudformation:DescribeStacks", 
+                        "cloudformation:ListStackResources", 
+                        "resource-groups:ListGroupResources", 
                         "tag:GetResources"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "servicecatalog:ListAssociatedResources",
-                        "servicecatalog:GetApplication",
+                        "servicecatalog:ListAssociatedResources", 
+                        "servicecatalog:GetApplication", 
                         "servicecatalog:CreateAttributeGroup"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "servicecatalog:AssociateAttributeGroup",
+                        "servicecatalog:AssociateAttributeGroup", 
                         "servicecatalog:DisassociateAttributeGroup"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:*:servicecatalog:*:*:/applications/*",
+                        "arn:*:servicecatalog:*:*:/applications/*", 
                         "arn:*:servicecatalog:*:*:/attribute-groups/AWS_WellArchitected-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "servicecatalog:UpdateAttributeGroup",
+                        "servicecatalog:UpdateAttributeGroup", 
                         "servicecatalog:DeleteAttributeGroup"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:*:servicecatalog:*:*:/attribute-groups/AWS_WellArchitected-*"
-                    ]
+                    ], 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-04-26T18:36:40+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,48 +1,50 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2018-02-06T21:59:13Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
-                    "Action": "autoscaling:*",
-                    "Resource": "*"
-                },
+                    "Action": "autoscaling:*", 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "cloudwatch:PutMetricAlarm",
-                    "Resource": "*"
-                },
+                    "Action": "cloudwatch:PutMetricAlarm", 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeAccountAttributes",
-                        "ec2:DescribeAvailabilityZones",
-                        "ec2:DescribeImages",
-                        "ec2:DescribeInstanceAttribute",
-                        "ec2:DescribeInstances",
-                        "ec2:DescribeKeyPairs",
-                        "ec2:DescribeLaunchTemplateVersions",
-                        "ec2:DescribePlacementGroups",
-                        "ec2:DescribeSecurityGroups",
-                        "ec2:DescribeSpotInstanceRequests",
-                        "ec2:DescribeSubnets",
+                        "ec2:DescribeAccountAttributes", 
+                        "ec2:DescribeAvailabilityZones", 
+                        "ec2:DescribeImages", 
+                        "ec2:DescribeInstanceAttribute", 
+                        "ec2:DescribeInstances", 
+                        "ec2:DescribeKeyPairs", 
+                        "ec2:DescribeLaunchTemplateVersions", 
+                        "ec2:DescribePlacementGroups", 
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:DescribeSpotInstanceRequests", 
+                        "ec2:DescribeSubnets", 
                         "ec2:DescribeVpcClassicLink"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "elasticloadbalancing:DescribeLoadBalancers",
+                        "elasticloadbalancing:DescribeLoadBalancers", 
                         "elasticloadbalancing:DescribeTargetGroups"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "iam:CreateServiceLinkedRole",
-                    "Resource": "*",
+                    "Action": "iam:CreateServiceLinkedRole", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:AWSServiceName": "autoscaling.amazonaws.com"
@@ -50,9 +52,7 @@
                     }
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2018-02-06T21:59:13+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,82 +1,82 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-04-02T20:38:17Z", 
+        "VersionId": "v6", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "DirectoryServiceFullAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "ds:*",
-                        "ec2:AuthorizeSecurityGroupEgress",
-                        "ec2:AuthorizeSecurityGroupIngress",
-                        "ec2:CreateNetworkInterface",
-                        "ec2:CreateSecurityGroup",
-                        "ec2:DeleteNetworkInterface",
-                        "ec2:DeleteSecurityGroup",
-                        "ec2:DescribeNetworkInterfaces",
-                        "ec2:DescribeSubnets",
-                        "ec2:DescribeVpcs",
-                        "ec2:RevokeSecurityGroupEgress",
-                        "ec2:RevokeSecurityGroupIngress",
-                        "ec2:DescribeSecurityGroups",
-                        "sns:GetTopicAttributes",
-                        "sns:ListSubscriptions",
-                        "sns:ListSubscriptionsByTopic",
-                        "sns:ListTopics",
-                        "iam:ListRoles",
-                        "organizations:ListAccountsForParent",
-                        "organizations:ListRoots",
-                        "organizations:ListAccounts",
-                        "organizations:DescribeOrganization",
-                        "organizations:DescribeAccount",
-                        "organizations:ListOrganizationalUnitsForParent",
+                        "ds:*", 
+                        "ec2:AuthorizeSecurityGroupEgress", 
+                        "ec2:AuthorizeSecurityGroupIngress", 
+                        "ec2:CreateNetworkInterface", 
+                        "ec2:CreateSecurityGroup", 
+                        "ec2:DeleteNetworkInterface", 
+                        "ec2:DeleteSecurityGroup", 
+                        "ec2:DescribeNetworkInterfaces", 
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeVpcs", 
+                        "ec2:RevokeSecurityGroupEgress", 
+                        "ec2:RevokeSecurityGroupIngress", 
+                        "ec2:DescribeSecurityGroups", 
+                        "sns:GetTopicAttributes", 
+                        "sns:ListSubscriptions", 
+                        "sns:ListSubscriptionsByTopic", 
+                        "sns:ListTopics", 
+                        "iam:ListRoles", 
+                        "organizations:ListAccountsForParent", 
+                        "organizations:ListRoots", 
+                        "organizations:ListAccounts", 
+                        "organizations:DescribeOrganization", 
+                        "organizations:DescribeAccount", 
+                        "organizations:ListOrganizationalUnitsForParent", 
                         "organizations:ListAWSServiceAccessForOrganization"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DirectoryServiceFullAccess"
+                }, 
                 {
-                    "Sid": "DirectoryServiceEventTopic",
-                    "Effect": "Allow",
                     "Action": [
-                        "sns:CreateTopic",
-                        "sns:DeleteTopic",
-                        "sns:SetTopicAttributes",
-                        "sns:Subscribe",
+                        "sns:CreateTopic", 
+                        "sns:DeleteTopic", 
+                        "sns:SetTopicAttributes", 
+                        "sns:Subscribe", 
                         "sns:Unsubscribe"
-                    ],
-                    "Resource": "arn:aws:sns:*:*:DirectoryMonitoring*"
-                },
+                    ], 
+                    "Resource": "arn:aws:sns:*:*:DirectoryMonitoring*", 
+                    "Effect": "Allow", 
+                    "Sid": "DirectoryServiceEventTopic"
+                }, 
                 {
-                    "Sid": "DirectoryServiceOrganizations",
-                    "Effect": "Allow",
                     "Action": [
-                        "organizations:EnableAWSServiceAccess",
+                        "organizations:EnableAWSServiceAccess", 
                         "organizations:DisableAWSServiceAccess"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "organizations:ServicePrincipal": "ds.amazonaws.com"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "DirectoryServiceOrganizations"
+                }, 
                 {
-                    "Sid": "DirectoryServiceTags",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:CreateTags",
+                        "ec2:CreateTags", 
                         "ec2:DeleteTags"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:ec2:*:*:network-interface/*",
+                        "arn:aws:ec2:*:*:network-interface/*", 
                         "arn:aws:ec2:*:*:security-group/*"
-                    ]
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "DirectoryServiceTags"
                 }
             ]
-        },
-        "VersionId": "v6",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-04-02T20:38:17+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

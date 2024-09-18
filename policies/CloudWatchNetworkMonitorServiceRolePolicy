@@ -1,58 +1,58 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-12-21T18:53:19Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "PublishCw",
-                    "Effect": "Allow",
-                    "Action": "cloudwatch:PutMetricData",
-                    "Resource": "*",
+                    "Action": "cloudwatch:PutMetricData", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "cloudwatch:namespace": "AWS/NetworkMonitor"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "PublishCw"
+                }, 
                 {
-                    "Sid": "DescribeAny",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeNetworkInterfaces",
-                        "ec2:DescribeNetworkInterfaceAttribute",
-                        "ec2:DescribeVpcs",
-                        "ec2:DescribeNetworkInterfacePermissions",
-                        "ec2:DescribeSubnets",
+                        "ec2:DescribeNetworkInterfaces", 
+                        "ec2:DescribeNetworkInterfaceAttribute", 
+                        "ec2:DescribeVpcs", 
+                        "ec2:DescribeNetworkInterfacePermissions", 
+                        "ec2:DescribeSubnets", 
                         "ec2:DescribeSecurityGroups"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DescribeAny"
+                }, 
                 {
-                    "Sid": "DeleteModifyEc2Resources",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:AuthorizeSecurityGroupEgress",
-                        "ec2:CreateNetworkInterfacePermission",
-                        "ec2:DeleteNetworkInterfacePermission",
-                        "ec2:RevokeSecurityGroupEgress",
-                        "ec2:ModifyNetworkInterfaceAttribute",
-                        "ec2:DeleteNetworkInterface",
+                        "ec2:AuthorizeSecurityGroupEgress", 
+                        "ec2:CreateNetworkInterfacePermission", 
+                        "ec2:DeleteNetworkInterfacePermission", 
+                        "ec2:RevokeSecurityGroupEgress", 
+                        "ec2:ModifyNetworkInterfaceAttribute", 
+                        "ec2:DeleteNetworkInterface", 
                         "ec2:DeleteSecurityGroup"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:ec2:*:*:network-interface/*",
+                        "arn:aws:ec2:*:*:network-interface/*", 
                         "arn:aws:ec2:*:*:security-group/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceTag/ManagedByCloudWatchNetworkMonitor": "true"
                         }
-                    }
+                    }, 
+                    "Sid": "DeleteModifyEc2Resources"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-12-21T18:53:19+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

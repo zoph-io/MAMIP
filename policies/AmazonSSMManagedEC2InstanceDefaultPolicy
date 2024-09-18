@@ -1,56 +1,56 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-07-16T18:14:07Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AllowSSMAgentPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "ssm:DescribeAssociation",
-                        "ssm:GetDeployablePatchSnapshotForInstance",
-                        "ssm:GetDocument",
-                        "ssm:DescribeDocument",
-                        "ssm:GetManifest",
-                        "ssm:ListAssociations",
-                        "ssm:ListInstanceAssociations",
-                        "ssm:PutInventory",
-                        "ssm:PutComplianceItems",
-                        "ssm:PutConfigurePackageResult",
-                        "ssm:UpdateAssociationStatus",
-                        "ssm:UpdateInstanceAssociationStatus",
+                        "ssm:DescribeAssociation", 
+                        "ssm:GetDeployablePatchSnapshotForInstance", 
+                        "ssm:GetDocument", 
+                        "ssm:DescribeDocument", 
+                        "ssm:GetManifest", 
+                        "ssm:ListAssociations", 
+                        "ssm:ListInstanceAssociations", 
+                        "ssm:PutInventory", 
+                        "ssm:PutComplianceItems", 
+                        "ssm:PutConfigurePackageResult", 
+                        "ssm:UpdateAssociationStatus", 
+                        "ssm:UpdateInstanceAssociationStatus", 
                         "ssm:UpdateInstanceInformation"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowSSMAgentPermissions"
+                }, 
                 {
-                    "Sid": "AllowSSMChannelMessaging",
-                    "Effect": "Allow",
                     "Action": [
-                        "ssmmessages:CreateControlChannel",
-                        "ssmmessages:CreateDataChannel",
-                        "ssmmessages:OpenControlChannel",
+                        "ssmmessages:CreateControlChannel", 
+                        "ssmmessages:CreateDataChannel", 
+                        "ssmmessages:OpenControlChannel", 
                         "ssmmessages:OpenDataChannel"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowSSMChannelMessaging"
+                }, 
                 {
-                    "Sid": "AllowSSMLegacyMessaging",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2messages:AcknowledgeMessage",
-                        "ec2messages:DeleteMessage",
-                        "ec2messages:FailMessage",
-                        "ec2messages:GetEndpoint",
-                        "ec2messages:GetMessages",
+                        "ec2messages:AcknowledgeMessage", 
+                        "ec2messages:DeleteMessage", 
+                        "ec2messages:FailMessage", 
+                        "ec2messages:GetEndpoint", 
+                        "ec2messages:GetMessages", 
                         "ec2messages:SendReply"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowSSMLegacyMessaging"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-07-16T18:14:07+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

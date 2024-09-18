@@ -1,40 +1,42 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2021-09-29T14:43:09Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeCapacityReservations",
+                        "ec2:DescribeCapacityReservations", 
                         "ec2:DescribeInstances"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:CreateCapacityReservation",
-                        "ec2:CancelCapacityReservation",
+                        "ec2:CreateCapacityReservation", 
+                        "ec2:CancelCapacityReservation", 
                         "ec2:ModifyCapacityReservation"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ec2:*:*:capacity-reservation/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "ec2:CapacityReservationFleet": "arn:aws:ec2:*:*:capacity-reservation-fleet/crf-*"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateTags"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ec2:*:*:capacity-reservation/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "ec2:CreateAction": "CreateCapacityReservation"
@@ -42,9 +44,7 @@
                     }
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2021-09-29T14:43:09+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

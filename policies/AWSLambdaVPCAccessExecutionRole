@@ -1,28 +1,28 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-01-05T22:38:26Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AWSLambdaVPCAccessExecutionPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:CreateLogGroup",
-                        "logs:CreateLogStream",
-                        "logs:PutLogEvents",
-                        "ec2:CreateNetworkInterface",
-                        "ec2:DescribeNetworkInterfaces",
-                        "ec2:DescribeSubnets",
-                        "ec2:DeleteNetworkInterface",
-                        "ec2:AssignPrivateIpAddresses",
+                        "logs:CreateLogGroup", 
+                        "logs:CreateLogStream", 
+                        "logs:PutLogEvents", 
+                        "ec2:CreateNetworkInterface", 
+                        "ec2:DescribeNetworkInterfaces", 
+                        "ec2:DescribeSubnets", 
+                        "ec2:DeleteNetworkInterface", 
+                        "ec2:AssignPrivateIpAddresses", 
                         "ec2:UnassignPrivateIpAddresses"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AWSLambdaVPCAccessExecutionPermissions"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-01-05T22:38:26+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,128 +1,128 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-03-27T21:40:34Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "TagWriteAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "quicksight:ListTagsForResource",
-                        "quicksight:TagResource",
+                        "quicksight:ListTagsForResource", 
+                        "quicksight:TagResource", 
                         "quicksight:UntagResource"
-                    ],
-                    "Resource": "arn:aws:quicksight:*:*:*/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:quicksight:*:*:*/*", 
+                    "Effect": "Allow", 
+                    "Sid": "TagWriteAccess"
+                }, 
                 {
-                    "Sid": "DashboardWriteAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "quicksight:CreateDashboard",
-                        "quicksight:DeleteDashboard",
-                        "quicksight:DescribeDashboard",
-                        "quicksight:UpdateDashboard",
-                        "quicksight:UpdateDashboardPublishedVersion",
-                        "quicksight:DescribeDashboardPermissions",
-                        "quicksight:UpdateDashboardPermissions",
+                        "quicksight:CreateDashboard", 
+                        "quicksight:DeleteDashboard", 
+                        "quicksight:DescribeDashboard", 
+                        "quicksight:UpdateDashboard", 
+                        "quicksight:UpdateDashboardPublishedVersion", 
+                        "quicksight:DescribeDashboardPermissions", 
+                        "quicksight:UpdateDashboardPermissions", 
                         "quicksight:UpdateDashboardLinks"
-                    ],
-                    "Resource": "arn:aws:quicksight:*:*:dashboard/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:quicksight:*:*:dashboard/*", 
+                    "Effect": "Allow", 
+                    "Sid": "DashboardWriteAccess"
+                }, 
                 {
-                    "Sid": "AnalysisWriteAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "quicksight:CreateAnalysis",
-                        "quicksight:DeleteAnalysis",
-                        "quicksight:DescribeAnalysis",
-                        "quicksight:UpdateAnalysis",
-                        "quicksight:DescribeAnalysisPermissions",
+                        "quicksight:CreateAnalysis", 
+                        "quicksight:DeleteAnalysis", 
+                        "quicksight:DescribeAnalysis", 
+                        "quicksight:UpdateAnalysis", 
+                        "quicksight:DescribeAnalysisPermissions", 
                         "quicksight:UpdateAnalysisPermissions"
-                    ],
-                    "Resource": "arn:aws:quicksight:*:*:analysis/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:quicksight:*:*:analysis/*", 
+                    "Effect": "Allow", 
+                    "Sid": "AnalysisWriteAccess"
+                }, 
                 {
-                    "Sid": "DataSetWriteAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "quicksight:CreateDataSet",
-                        "quicksight:DeleteDataSet",
-                        "quicksight:DescribeDataSet",
-                        "quicksight:PassDataSet",
-                        "quicksight:UpdateDataSet",
-                        "quicksight:DeleteDataSetRefreshProperties",
-                        "quicksight:DescribeDataSetRefreshProperties",
-                        "quicksight:PutDataSetRefreshProperties",
-                        "quicksight:UpdateDataSetPermissions",
-                        "quicksight:DescribeDataSetPermissions",
+                        "quicksight:CreateDataSet", 
+                        "quicksight:DeleteDataSet", 
+                        "quicksight:DescribeDataSet", 
+                        "quicksight:PassDataSet", 
+                        "quicksight:UpdateDataSet", 
+                        "quicksight:DeleteDataSetRefreshProperties", 
+                        "quicksight:DescribeDataSetRefreshProperties", 
+                        "quicksight:PutDataSetRefreshProperties", 
+                        "quicksight:UpdateDataSetPermissions", 
+                        "quicksight:DescribeDataSetPermissions", 
                         "quicksight:ListRefreshSchedules"
-                    ],
-                    "Resource": "arn:aws:quicksight:*:*:dataset/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:quicksight:*:*:dataset/*", 
+                    "Effect": "Allow", 
+                    "Sid": "DataSetWriteAccess"
+                }, 
                 {
-                    "Sid": "DataSourceWriteAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "quicksight:CreateDataSource",
-                        "quicksight:DescribeDataSource",
-                        "quicksight:DeleteDataSource",
-                        "quicksight:PassDataSource",
-                        "quicksight:UpdateDataSource",
-                        "quicksight:UpdateDataSourcePermissions",
+                        "quicksight:CreateDataSource", 
+                        "quicksight:DescribeDataSource", 
+                        "quicksight:DeleteDataSource", 
+                        "quicksight:PassDataSource", 
+                        "quicksight:UpdateDataSource", 
+                        "quicksight:UpdateDataSourcePermissions", 
                         "quicksight:DescribeDataSourcePermissions"
-                    ],
-                    "Resource": "arn:aws:quicksight:*:*:datasource/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:quicksight:*:*:datasource/*", 
+                    "Effect": "Allow", 
+                    "Sid": "DataSourceWriteAccess"
+                }, 
                 {
-                    "Sid": "ThemeWriteAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "quicksight:CreateTheme",
-                        "quicksight:DeleteTheme",
-                        "quicksight:DescribeTheme",
-                        "quicksight:UpdateTheme",
-                        "quicksight:DescribeThemePermissions",
+                        "quicksight:CreateTheme", 
+                        "quicksight:DeleteTheme", 
+                        "quicksight:DescribeTheme", 
+                        "quicksight:UpdateTheme", 
+                        "quicksight:DescribeThemePermissions", 
                         "quicksight:UpdateThemePermissions"
-                    ],
-                    "Resource": "arn:aws:quicksight:*:*:theme/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:quicksight:*:*:theme/*", 
+                    "Effect": "Allow", 
+                    "Sid": "ThemeWriteAccess"
+                }, 
                 {
-                    "Sid": "RefreshScheduleWriteAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "quicksight:CreateRefreshSchedule",
-                        "quicksight:DescribeRefreshSchedule",
-                        "quicksight:DeleteRefreshSchedule",
+                        "quicksight:CreateRefreshSchedule", 
+                        "quicksight:DescribeRefreshSchedule", 
+                        "quicksight:DeleteRefreshSchedule", 
                         "quicksight:UpdateRefreshSchedule"
-                    ],
-                    "Resource": "arn:aws:quicksight:*:*:dataset/*/refresh-schedule/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:quicksight:*:*:dataset/*/refresh-schedule/*", 
+                    "Effect": "Allow", 
+                    "Sid": "RefreshScheduleWriteAccess"
+                }, 
                 {
-                    "Sid": "VPCConnectionWriteAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "quicksight:ListVPCConnections",
-                        "quicksight:CreateVPCConnection",
-                        "quicksight:DescribeVPCConnection",
-                        "quicksight:DeleteVPCConnection",
+                        "quicksight:ListVPCConnections", 
+                        "quicksight:CreateVPCConnection", 
+                        "quicksight:DescribeVPCConnection", 
+                        "quicksight:DeleteVPCConnection", 
                         "quicksight:UpdateVPCConnection"
-                    ],
-                    "Resource": "arn:aws:quicksight:*:*:vpcConnection/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:quicksight:*:*:vpcConnection/*", 
+                    "Effect": "Allow", 
+                    "Sid": "VPCConnectionWriteAccess"
+                }, 
                 {
-                    "Sid": "AssetBundleImportOperations",
-                    "Effect": "Allow",
                     "Action": [
-                        "quicksight:DescribeAssetBundleImportJob",
-                        "quicksight:ListAssetBundleImportJobs",
+                        "quicksight:DescribeAssetBundleImportJob", 
+                        "quicksight:ListAssetBundleImportJobs", 
                         "quicksight:StartAssetBundleImportJob"
-                    ],
-                    "Resource": "arn:aws:quicksight:*:*:asset-bundle-import-job/*"
+                    ], 
+                    "Resource": "arn:aws:quicksight:*:*:asset-bundle-import-job/*", 
+                    "Effect": "Allow", 
+                    "Sid": "AssetBundleImportOperations"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-03-27T21:40:34+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,56 +1,56 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-04-20T02:25:10Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:CreateBucket",
-                        "s3:PutObject",
-                        "s3:GetObject",
+                        "s3:CreateBucket", 
+                        "s3:PutObject", 
+                        "s3:GetObject", 
                         "s3:GetBucketAcl"
-                    ],
-                    "Resource": "arn:aws:s3:::migrationhub-orchestrator-*"
-                },
+                    ], 
+                    "Resource": "arn:aws:s3:::migrationhub-orchestrator-*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "s3:ListAllMyBuckets"
-                    ],
-                    "Resource": "arn:aws:s3:::*"
-                },
+                    ], 
+                    "Resource": "arn:aws:s3:::*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "execute-api:Invoke",
+                        "execute-api:Invoke", 
                         "execute-api:ManageConnections"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:execute-api:*:*:*/prod/*/put-log-data",
+                        "arn:aws:execute-api:*:*:*/prod/*/put-log-data", 
                         "arn:aws:execute-api:*:*:*/prod/*/put-metric-data"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "migrationhub-orchestrator:RegisterPlugin",
-                        "migrationhub-orchestrator:GetMessage",
+                        "migrationhub-orchestrator:RegisterPlugin", 
+                        "migrationhub-orchestrator:GetMessage", 
                         "migrationhub-orchestrator:SendMessage"
-                    ],
-                    "Resource": "arn:aws:migrationhub-orchestrator:*:*:*"
-                },
+                    ], 
+                    "Resource": "arn:aws:migrationhub-orchestrator:*:*:*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "secretsmanager:GetSecretValue"
-                    ],
-                    "Resource": "arn:aws:secretsmanager:*:*:secret:migrationhub-orchestrator-*"
+                    ], 
+                    "Resource": "arn:aws:secretsmanager:*:*:secret:migrationhub-orchestrator-*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-04-20T02:25:10+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

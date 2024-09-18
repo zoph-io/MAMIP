@@ -1,101 +1,101 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2018-11-14T00:35:02Z", 
+        "VersionId": "v5", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AllowGreengrassAccessToShadows",
                     "Action": [
-                        "iot:DeleteThingShadow",
-                        "iot:GetThingShadow",
+                        "iot:DeleteThingShadow", 
+                        "iot:GetThingShadow", 
                         "iot:UpdateThingShadow"
-                    ],
-                    "Effect": "Allow",
+                    ], 
                     "Resource": [
-                        "arn:aws:iot:*:*:thing/GG_*",
-                        "arn:aws:iot:*:*:thing/*-gcm",
-                        "arn:aws:iot:*:*:thing/*-gda",
+                        "arn:aws:iot:*:*:thing/GG_*", 
+                        "arn:aws:iot:*:*:thing/*-gcm", 
+                        "arn:aws:iot:*:*:thing/*-gda", 
                         "arn:aws:iot:*:*:thing/*-gci"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowGreengrassAccessToShadows"
+                }, 
                 {
-                    "Sid": "AllowGreengrassToDescribeThings",
                     "Action": [
                         "iot:DescribeThing"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "arn:aws:iot:*:*:thing/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:iot:*:*:thing/*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowGreengrassToDescribeThings"
+                }, 
                 {
-                    "Sid": "AllowGreengrassToDescribeCertificates",
                     "Action": [
                         "iot:DescribeCertificate"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "arn:aws:iot:*:*:cert/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:iot:*:*:cert/*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowGreengrassToDescribeCertificates"
+                }, 
                 {
-                    "Sid": "AllowGreengrassToCallGreengrassServices",
                     "Action": [
                         "greengrass:*"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowGreengrassToCallGreengrassServices"
+                }, 
                 {
-                    "Sid": "AllowGreengrassToGetLambdaFunctions",
                     "Action": [
-                        "lambda:GetFunction",
+                        "lambda:GetFunction", 
                         "lambda:GetFunctionConfiguration"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowGreengrassToGetLambdaFunctions"
+                }, 
                 {
-                    "Sid": "AllowGreengrassToGetGreengrassSecrets",
                     "Action": [
                         "secretsmanager:GetSecretValue"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "arn:aws:secretsmanager:*:*:secret:greengrass-*"
-                },
+                    ], 
+                    "Resource": "arn:aws:secretsmanager:*:*:secret:greengrass-*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowGreengrassToGetGreengrassSecrets"
+                }, 
                 {
-                    "Sid": "AllowGreengrassAccessToS3Objects",
                     "Action": [
                         "s3:GetObject"
-                    ],
-                    "Effect": "Allow",
+                    ], 
                     "Resource": [
-                        "arn:aws:s3:::*Greengrass*",
-                        "arn:aws:s3:::*GreenGrass*",
-                        "arn:aws:s3:::*greengrass*",
-                        "arn:aws:s3:::*Sagemaker*",
-                        "arn:aws:s3:::*SageMaker*",
+                        "arn:aws:s3:::*Greengrass*", 
+                        "arn:aws:s3:::*GreenGrass*", 
+                        "arn:aws:s3:::*greengrass*", 
+                        "arn:aws:s3:::*Sagemaker*", 
+                        "arn:aws:s3:::*SageMaker*", 
                         "arn:aws:s3:::*sagemaker*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowGreengrassAccessToS3Objects"
+                }, 
                 {
-                    "Sid": "AllowGreengrassAccessToS3BucketLocation",
                     "Action": [
                         "s3:GetBucketLocation"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowGreengrassAccessToS3BucketLocation"
+                }, 
                 {
-                    "Sid": "AllowGreengrassAccessToSageMakerTrainingJobs",
                     "Action": [
                         "sagemaker:DescribeTrainingJob"
-                    ],
-                    "Effect": "Allow",
+                    ], 
                     "Resource": [
                         "arn:aws:sagemaker:*:*:training-job/*"
-                    ]
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowGreengrassAccessToSageMakerTrainingJobs"
                 }
             ]
-        },
-        "VersionId": "v5",
-        "IsDefaultVersion": true,
-        "CreateDate": "2018-11-14T00:35:02+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

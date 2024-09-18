@@ -1,29 +1,29 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-12-15T19:43:11Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "ListVmTags",
-                    "Effect": "Allow",
                     "Action": [
                         "backup-gateway:ListTagsForResource"
-                    ],
-                    "Resource": "arn:aws:backup-gateway:*:*:vm/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:backup-gateway:*:*:vm/*", 
+                    "Effect": "Allow", 
+                    "Sid": "ListVmTags"
+                }, 
                 {
-                    "Sid": "VMTagPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "backup-gateway:TagResource",
+                        "backup-gateway:TagResource", 
                         "backup-gateway:UntagResource"
-                    ],
-                    "Resource": "arn:aws:backup-gateway:*:*:vm/*"
+                    ], 
+                    "Resource": "arn:aws:backup-gateway:*:*:vm/*", 
+                    "Effect": "Allow", 
+                    "Sid": "VMTagPermissions"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-12-15T19:43:11+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

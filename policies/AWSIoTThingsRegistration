@@ -1,50 +1,50 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-10-05T19:20:12Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "iot:AddThingToThingGroup",
-                        "iot:AttachPolicy",
-                        "iot:AttachPrincipalPolicy",
-                        "iot:AttachThingPrincipal",
-                        "iot:CreateCertificateFromCsr",
-                        "iot:CreatePolicy",
-                        "iot:CreateThing",
-                        "iot:DescribeCertificate",
-                        "iot:DescribeThing",
-                        "iot:DescribeThingGroup",
-                        "iot:DescribeThingType",
-                        "iot:DetachPolicy",
-                        "iot:DetachThingPrincipal",
-                        "iot:GetPolicy",
-                        "iot:ListAttachedPolicies",
-                        "iot:ListPolicyPrincipals",
-                        "iot:ListPrincipalPolicies",
-                        "iot:ListPrincipalThings",
-                        "iot:ListTargetsForPolicy",
-                        "iot:ListThingGroupsForThing",
-                        "iot:ListThingPrincipals",
-                        "iot:RegisterCertificate",
-                        "iot:RegisterThing",
-                        "iot:RemoveThingFromThingGroup",
-                        "iot:UpdateCertificate",
-                        "iot:UpdateThing",
-                        "iot:UpdateThingGroupsForThing",
-                        "iot:AddThingToBillingGroup",
-                        "iot:DescribeBillingGroup",
+                        "iot:AddThingToThingGroup", 
+                        "iot:AttachPolicy", 
+                        "iot:AttachPrincipalPolicy", 
+                        "iot:AttachThingPrincipal", 
+                        "iot:CreateCertificateFromCsr", 
+                        "iot:CreatePolicy", 
+                        "iot:CreateThing", 
+                        "iot:DescribeCertificate", 
+                        "iot:DescribeThing", 
+                        "iot:DescribeThingGroup", 
+                        "iot:DescribeThingType", 
+                        "iot:DetachPolicy", 
+                        "iot:DetachThingPrincipal", 
+                        "iot:GetPolicy", 
+                        "iot:ListAttachedPolicies", 
+                        "iot:ListPolicyPrincipals", 
+                        "iot:ListPrincipalPolicies", 
+                        "iot:ListPrincipalThings", 
+                        "iot:ListTargetsForPolicy", 
+                        "iot:ListThingGroupsForThing", 
+                        "iot:ListThingPrincipals", 
+                        "iot:RegisterCertificate", 
+                        "iot:RegisterThing", 
+                        "iot:RemoveThingFromThingGroup", 
+                        "iot:UpdateCertificate", 
+                        "iot:UpdateThing", 
+                        "iot:UpdateThingGroupsForThing", 
+                        "iot:AddThingToBillingGroup", 
+                        "iot:DescribeBillingGroup", 
                         "iot:RemoveThingFromBillingGroup"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
+                    ], 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-10-05T19:20:12+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

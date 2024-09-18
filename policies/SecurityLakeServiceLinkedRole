@@ -1,126 +1,126 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-04-19T16:00:05Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "OrganizationsPolicies",
-                    "Effect": "Allow",
                     "Action": [
-                        "organizations:ListAccounts",
+                        "organizations:ListAccounts", 
                         "organizations:DescribeOrganization"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "OrganizationsPolicies"
+                }, 
                 {
-                    "Sid": "DescribeOrgAccounts",
-                    "Effect": "Allow",
                     "Action": [
                         "organizations:DescribeAccount"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:organizations::*:account/o-*/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "DescribeOrgAccounts"
+                }, 
                 {
-                    "Sid": "AllowManagementOfServiceLinkedChannel",
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudtrail:CreateServiceLinkedChannel",
-                        "cloudtrail:DeleteServiceLinkedChannel",
-                        "cloudtrail:GetServiceLinkedChannel",
+                        "cloudtrail:CreateServiceLinkedChannel", 
+                        "cloudtrail:DeleteServiceLinkedChannel", 
+                        "cloudtrail:GetServiceLinkedChannel", 
                         "cloudtrail:UpdateServiceLinkedChannel"
-                    ],
-                    "Resource": "arn:aws:cloudtrail:*:*:channel/aws-service-channel/security-lake/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:cloudtrail:*:*:channel/aws-service-channel/security-lake/*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowManagementOfServiceLinkedChannel"
+                }, 
                 {
-                    "Sid": "AllowListServiceLinkedChannel",
-                    "Effect": "Allow",
                     "Action": [
                         "cloudtrail:ListServiceLinkedChannels"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowListServiceLinkedChannel"
+                }, 
                 {
-                    "Sid": "DescribeAnyVpc",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:DescribeVpcs"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DescribeAnyVpc"
+                }, 
                 {
-                    "Sid": "ListDelegatedAdmins",
-                    "Effect": "Allow",
                     "Action": [
                         "organizations:ListDelegatedAdministrators"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "organizations:ServicePrincipal": "securitylake.amazonaws.com"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "ListDelegatedAdmins"
+                }, 
                 {
-                    "Sid": "AllowWafLoggingConfiguration",
-                    "Effect": "Allow",
                     "Action": [
-                        "wafv2:PutLoggingConfiguration",
-                        "wafv2:GetLoggingConfiguration",
-                        "wafv2:ListLoggingConfigurations",
+                        "wafv2:PutLoggingConfiguration", 
+                        "wafv2:GetLoggingConfiguration", 
+                        "wafv2:ListLoggingConfigurations", 
                         "wafv2:DeleteLoggingConfiguration"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "wafv2:LogScope": "SecurityLake"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "AllowWafLoggingConfiguration"
+                }, 
                 {
-                    "Sid": "AllowPutLoggingConfiguration",
-                    "Effect": "Allow",
                     "Action": [
                         "wafv2:PutLoggingConfiguration"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ArnLike": {
                             "wafv2:LogDestinationResource": "arn:aws:s3:::aws-waf-logs-security-lake-*"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "AllowPutLoggingConfiguration"
+                }, 
                 {
-                    "Sid": "ListWebACLs",
-                    "Effect": "Allow",
                     "Action": [
                         "wafv2:ListWebACLs"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ListWebACLs"
+                }, 
                 {
-                    "Sid": "LogDelivery",
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:CreateLogDelivery",
+                        "logs:CreateLogDelivery", 
                         "logs:DeleteLogDelivery"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAnyValue:StringEquals": {
                             "aws:CalledVia": [
                                 "wafv2.amazonaws.com"
                             ]
                         }
-                    }
+                    }, 
+                    "Sid": "LogDelivery"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-04-19T16:00:05+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

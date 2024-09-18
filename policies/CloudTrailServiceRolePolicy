@@ -1,72 +1,72 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-11-27T01:18:10Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "CloudTrailFullAccess",
-                    "Effect": "Allow",
                     "Action": [
                         "cloudtrail:*"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "CloudTrailFullAccess"
+                }, 
                 {
-                    "Sid": "AwsOrgsAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "organizations:DescribeAccount",
-                        "organizations:DescribeOrganization",
-                        "organizations:ListAccounts",
+                        "organizations:DescribeAccount", 
+                        "organizations:DescribeOrganization", 
+                        "organizations:ListAccounts", 
                         "organizations:ListAWSServiceAccessForOrganization"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AwsOrgsAccess"
+                }, 
                 {
-                    "Sid": "AwsOrgsDelegatedAdminAccess",
-                    "Effect": "Allow",
-                    "Action": "organizations:ListDelegatedAdministrators",
-                    "Resource": "*",
+                    "Action": "organizations:ListDelegatedAdministrators", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "organizations:ServicePrincipal": [
                                 "cloudtrail.amazonaws.com"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "AwsOrgsDelegatedAdminAccess"
+                }, 
                 {
-                    "Sid": "DeleteTableAccess",
-                    "Effect": "Allow",
-                    "Action": "glue:DeleteTable",
+                    "Action": "glue:DeleteTable", 
                     "Resource": [
-                        "arn:*:glue:*:*:catalog",
-                        "arn:*:glue:*:*:database/aws:cloudtrail",
+                        "arn:*:glue:*:*:catalog", 
+                        "arn:*:glue:*:*:database/aws:cloudtrail", 
                         "arn:*:glue:*:*:table/aws:cloudtrail/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "DeleteTableAccess"
+                }, 
                 {
-                    "Sid": "DeregisterResourceAccess",
-                    "Effect": "Allow",
-                    "Action": "lakeformation:DeregisterResource",
-                    "Resource": "*",
+                    "Action": "lakeformation:DeregisterResource", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
-                    }
+                    }, 
+                    "Sid": "DeregisterResourceAccess"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-11-27T01:18:10+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

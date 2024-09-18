@@ -1,32 +1,32 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-12-01T16:16:54Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ecr-public:GetAuthorizationToken",
-                        "sts:GetServiceBearerToken",
-                        "ecr-public:BatchCheckLayerAvailability",
-                        "ecr-public:GetRepositoryPolicy",
-                        "ecr-public:DescribeRepositories",
-                        "ecr-public:DescribeRegistries",
-                        "ecr-public:DescribeImages",
-                        "ecr-public:DescribeImageTags",
-                        "ecr-public:GetRepositoryCatalogData",
-                        "ecr-public:GetRegistryCatalogData",
-                        "ecr-public:InitiateLayerUpload",
-                        "ecr-public:UploadLayerPart",
-                        "ecr-public:CompleteLayerUpload",
+                        "ecr-public:GetAuthorizationToken", 
+                        "sts:GetServiceBearerToken", 
+                        "ecr-public:BatchCheckLayerAvailability", 
+                        "ecr-public:GetRepositoryPolicy", 
+                        "ecr-public:DescribeRepositories", 
+                        "ecr-public:DescribeRegistries", 
+                        "ecr-public:DescribeImages", 
+                        "ecr-public:DescribeImageTags", 
+                        "ecr-public:GetRepositoryCatalogData", 
+                        "ecr-public:GetRegistryCatalogData", 
+                        "ecr-public:InitiateLayerUpload", 
+                        "ecr-public:UploadLayerPart", 
+                        "ecr-public:CompleteLayerUpload", 
                         "ecr-public:PutImage"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-12-01T16:16:54+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

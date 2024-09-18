@@ -1,23 +1,23 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-07-25T21:19:30Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AllowAOSSCloudwatchMetrics",
-                    "Effect": "Allow",
-                    "Action": "cloudwatch:PutMetricData",
-                    "Resource": "*",
+                    "Action": "cloudwatch:PutMetricData", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "cloudwatch:namespace": "AWS/AOSS"
                         }
-                    }
+                    }, 
+                    "Sid": "AllowAOSSCloudwatchMetrics"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-07-25T21:19:30+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

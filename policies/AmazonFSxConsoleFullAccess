@@ -1,150 +1,150 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-01-10T20:07:09Z", 
+        "VersionId": "v11", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "ListResourcesAssociatedWithFSxFileSystem",
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudwatch:DescribeAlarms",
-                        "cloudwatch:GetMetricData",
-                        "ds:DescribeDirectories",
-                        "ec2:DescribeNetworkInterfaceAttribute",
-                        "ec2:DescribeRouteTables",
-                        "ec2:DescribeSecurityGroups",
-                        "ec2:GetSecurityGroupsForVpc",
-                        "ec2:DescribeSubnets",
-                        "ec2:DescribeVpcs",
-                        "firehose:ListDeliveryStreams",
-                        "kms:ListAliases",
-                        "logs:DescribeLogGroups",
+                        "cloudwatch:DescribeAlarms", 
+                        "cloudwatch:GetMetricData", 
+                        "ds:DescribeDirectories", 
+                        "ec2:DescribeNetworkInterfaceAttribute", 
+                        "ec2:DescribeRouteTables", 
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:GetSecurityGroupsForVpc", 
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeVpcs", 
+                        "firehose:ListDeliveryStreams", 
+                        "kms:ListAliases", 
+                        "logs:DescribeLogGroups", 
                         "s3:ListBucket"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ListResourcesAssociatedWithFSxFileSystem"
+                }, 
                 {
-                    "Sid": "FullAccessToFSx",
-                    "Effect": "Allow",
                     "Action": [
-                        "fsx:AssociateFileGateway",
-                        "fsx:AssociateFileSystemAliases",
-                        "fsx:CancelDataRepositoryTask",
-                        "fsx:CopyBackup",
-                        "fsx:CopySnapshotAndUpdateVolume",
-                        "fsx:CreateBackup",
-                        "fsx:CreateDataRepositoryAssociation",
-                        "fsx:CreateDataRepositoryTask",
-                        "fsx:CreateFileCache",
-                        "fsx:CreateFileSystem",
-                        "fsx:CreateFileSystemFromBackup",
-                        "fsx:CreateSnapshot",
-                        "fsx:CreateStorageVirtualMachine",
-                        "fsx:CreateVolume",
-                        "fsx:CreateVolumeFromBackup",
-                        "fsx:DeleteBackup",
-                        "fsx:DeleteDataRepositoryAssociation",
-                        "fsx:DeleteFileCache",
-                        "fsx:DeleteFileSystem",
-                        "fsx:DeleteSnapshot",
-                        "fsx:DeleteStorageVirtualMachine",
-                        "fsx:DeleteVolume",
-                        "fsx:DescribeAssociatedFileGateways",
-                        "fsx:DescribeBackups",
-                        "fsx:DescribeDataRepositoryAssociations",
-                        "fsx:DescribeDataRepositoryTasks",
-                        "fsx:DescribeFileCaches",
-                        "fsx:DescribeFileSystemAliases",
-                        "fsx:DescribeFileSystems",
-                        "fsx:DescribeSharedVpcConfiguration",
-                        "fsx:DescribeSnapshots",
-                        "fsx:DescribeStorageVirtualMachines",
-                        "fsx:DescribeVolumes",
-                        "fsx:DisassociateFileGateway",
-                        "fsx:DisassociateFileSystemAliases",
-                        "fsx:ListTagsForResource",
-                        "fsx:ManageBackupPrincipalAssociations",
-                        "fsx:ReleaseFileSystemNfsV3Locks",
-                        "fsx:RestoreVolumeFromSnapshot",
-                        "fsx:TagResource",
-                        "fsx:UntagResource",
-                        "fsx:UpdateDataRepositoryAssociation",
-                        "fsx:UpdateFileCache",
-                        "fsx:UpdateFileSystem",
-                        "fsx:UpdateSharedVpcConfiguration",
-                        "fsx:UpdateSnapshot",
-                        "fsx:UpdateStorageVirtualMachine",
+                        "fsx:AssociateFileGateway", 
+                        "fsx:AssociateFileSystemAliases", 
+                        "fsx:CancelDataRepositoryTask", 
+                        "fsx:CopyBackup", 
+                        "fsx:CopySnapshotAndUpdateVolume", 
+                        "fsx:CreateBackup", 
+                        "fsx:CreateDataRepositoryAssociation", 
+                        "fsx:CreateDataRepositoryTask", 
+                        "fsx:CreateFileCache", 
+                        "fsx:CreateFileSystem", 
+                        "fsx:CreateFileSystemFromBackup", 
+                        "fsx:CreateSnapshot", 
+                        "fsx:CreateStorageVirtualMachine", 
+                        "fsx:CreateVolume", 
+                        "fsx:CreateVolumeFromBackup", 
+                        "fsx:DeleteBackup", 
+                        "fsx:DeleteDataRepositoryAssociation", 
+                        "fsx:DeleteFileCache", 
+                        "fsx:DeleteFileSystem", 
+                        "fsx:DeleteSnapshot", 
+                        "fsx:DeleteStorageVirtualMachine", 
+                        "fsx:DeleteVolume", 
+                        "fsx:DescribeAssociatedFileGateways", 
+                        "fsx:DescribeBackups", 
+                        "fsx:DescribeDataRepositoryAssociations", 
+                        "fsx:DescribeDataRepositoryTasks", 
+                        "fsx:DescribeFileCaches", 
+                        "fsx:DescribeFileSystemAliases", 
+                        "fsx:DescribeFileSystems", 
+                        "fsx:DescribeSharedVpcConfiguration", 
+                        "fsx:DescribeSnapshots", 
+                        "fsx:DescribeStorageVirtualMachines", 
+                        "fsx:DescribeVolumes", 
+                        "fsx:DisassociateFileGateway", 
+                        "fsx:DisassociateFileSystemAliases", 
+                        "fsx:ListTagsForResource", 
+                        "fsx:ManageBackupPrincipalAssociations", 
+                        "fsx:ReleaseFileSystemNfsV3Locks", 
+                        "fsx:RestoreVolumeFromSnapshot", 
+                        "fsx:TagResource", 
+                        "fsx:UntagResource", 
+                        "fsx:UpdateDataRepositoryAssociation", 
+                        "fsx:UpdateFileCache", 
+                        "fsx:UpdateFileSystem", 
+                        "fsx:UpdateSharedVpcConfiguration", 
+                        "fsx:UpdateSnapshot", 
+                        "fsx:UpdateStorageVirtualMachine", 
                         "fsx:UpdateVolume"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "FullAccessToFSx"
+                }, 
                 {
-                    "Sid": "CreateFSxSLR",
-                    "Effect": "Allow",
-                    "Action": "iam:CreateServiceLinkedRole",
-                    "Resource": "*",
+                    "Action": "iam:CreateServiceLinkedRole", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:AWSServiceName": [
                                 "fsx.amazonaws.com"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "CreateFSxSLR"
+                }, 
                 {
-                    "Sid": "CreateSLRForLustreS3Integration",
-                    "Effect": "Allow",
-                    "Action": "iam:CreateServiceLinkedRole",
-                    "Resource": "*",
+                    "Action": "iam:CreateServiceLinkedRole", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:AWSServiceName": [
                                 "s3.data-source.lustre.fsx.amazonaws.com"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "CreateSLRForLustreS3Integration"
+                }, 
                 {
-                    "Sid": "CreateTags",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateTags"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ec2:*:*:route-table/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
-                        "StringEquals": {
-                            "aws:RequestTag/AmazonFSx": "ManagedByAmazonFSx"
-                        },
                         "ForAnyValue:StringEquals": {
                             "aws:CalledVia": [
                                 "fsx.amazonaws.com"
                             ]
+                        }, 
+                        "StringEquals": {
+                            "aws:RequestTag/AmazonFSx": "ManagedByAmazonFSx"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "CreateTags"
+                }, 
                 {
-                    "Sid": "ManageCrossAccountDataReplication",
-                    "Effect": "Allow",
                     "Action": [
-                        "fsx:PutResourcePolicy",
-                        "fsx:GetResourcePolicy",
+                        "fsx:PutResourcePolicy", 
+                        "fsx:GetResourcePolicy", 
                         "fsx:DeleteResourcePolicy"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAnyValue:StringEquals": {
                             "aws:CalledVia": [
                                 "ram.amazonaws.com"
                             ]
                         }
-                    }
+                    }, 
+                    "Sid": "ManageCrossAccountDataReplication"
                 }
             ]
-        },
-        "VersionId": "v11",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-01-10T20:07:09+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

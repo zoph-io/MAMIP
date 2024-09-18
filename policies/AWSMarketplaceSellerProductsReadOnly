@@ -1,33 +1,33 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-11-19T00:08:42Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "aws-marketplace:ListChangeSets",
-                        "aws-marketplace:DescribeChangeSet",
-                        "aws-marketplace:ListEntities",
-                        "aws-marketplace:DescribeEntity",
-                        "aws-marketplace:ListTasks",
-                        "aws-marketplace:DescribeTask",
-                        "ec2:DescribeImages",
+                        "aws-marketplace:ListChangeSets", 
+                        "aws-marketplace:DescribeChangeSet", 
+                        "aws-marketplace:ListEntities", 
+                        "aws-marketplace:DescribeEntity", 
+                        "aws-marketplace:ListTasks", 
+                        "aws-marketplace:DescribeTask", 
+                        "ec2:DescribeImages", 
                         "ec2:DescribeSnapshots"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "aws-marketplace:ListTagsForResource"
-                    ],
-                    "Resource": "arn:aws:aws-marketplace:*:*:AWSMarketplace/*"
+                    ], 
+                    "Resource": "arn:aws:aws-marketplace:*:*:AWSMarketplace/*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-11-19T00:08:42+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

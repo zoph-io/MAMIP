@@ -1,154 +1,154 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-04-29T20:49:54Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "CustomLabelingJobs",
-                    "Effect": "Allow",
                     "Action": [
                         "lambda:InvokeFunction"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:lambda:*:*:function:*GtRecipe*",
-                        "arn:aws:lambda:*:*:function:*LabelingFunction*",
-                        "arn:aws:lambda:*:*:function:*SageMaker*",
-                        "arn:aws:lambda:*:*:function:*sagemaker*",
+                        "arn:aws:lambda:*:*:function:*GtRecipe*", 
+                        "arn:aws:lambda:*:*:function:*LabelingFunction*", 
+                        "arn:aws:lambda:*:*:function:*SageMaker*", 
+                        "arn:aws:lambda:*:*:function:*sagemaker*", 
                         "arn:aws:lambda:*:*:function:*Sagemaker*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "CustomLabelingJobs"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:AbortMultipartUpload",
-                        "s3:GetObject",
+                        "s3:AbortMultipartUpload", 
+                        "s3:GetObject", 
                         "s3:PutObject"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:s3:::*GroundTruth*",
-                        "arn:aws:s3:::*Groundtruth*",
-                        "arn:aws:s3:::*groundtruth*",
-                        "arn:aws:s3:::*SageMaker*",
-                        "arn:aws:s3:::*Sagemaker*",
+                        "arn:aws:s3:::*GroundTruth*", 
+                        "arn:aws:s3:::*Groundtruth*", 
+                        "arn:aws:s3:::*groundtruth*", 
+                        "arn:aws:s3:::*SageMaker*", 
+                        "arn:aws:s3:::*Sagemaker*", 
                         "arn:aws:s3:::*sagemaker*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "s3:GetObject"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEqualsIgnoreCase": {
                             "s3:ExistingObjectTag/SageMaker": "true"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:GetBucketLocation",
+                        "s3:GetBucketLocation", 
                         "s3:ListBucket"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Sid": "CloudWatch",
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudwatch:PutMetricData",
-                        "logs:CreateLogStream",
-                        "logs:CreateLogGroup",
-                        "logs:DescribeLogStreams",
+                        "cloudwatch:PutMetricData", 
+                        "logs:CreateLogStream", 
+                        "logs:CreateLogGroup", 
+                        "logs:DescribeLogStreams", 
                         "logs:PutLogEvents"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "CloudWatch"
+                }, 
                 {
-                    "Sid": "StreamingQueue",
-                    "Effect": "Allow",
                     "Action": [
-                        "sqs:CreateQueue",
-                        "sqs:DeleteMessage",
-                        "sqs:GetQueueAttributes",
-                        "sqs:GetQueueUrl",
-                        "sqs:ReceiveMessage",
-                        "sqs:SendMessage",
+                        "sqs:CreateQueue", 
+                        "sqs:DeleteMessage", 
+                        "sqs:GetQueueAttributes", 
+                        "sqs:GetQueueUrl", 
+                        "sqs:ReceiveMessage", 
+                        "sqs:SendMessage", 
                         "sqs:SetQueueAttributes"
-                    ],
-                    "Resource": "arn:aws:sqs:*:*:*GroundTruth*"
-                },
+                    ], 
+                    "Resource": "arn:aws:sqs:*:*:*GroundTruth*", 
+                    "Effect": "Allow", 
+                    "Sid": "StreamingQueue"
+                }, 
                 {
-                    "Sid": "StreamingTopicSubscribe",
-                    "Effect": "Allow",
-                    "Action": "sns:Subscribe",
+                    "Action": "sns:Subscribe", 
                     "Resource": [
-                        "arn:aws:sns:*:*:*GroundTruth*",
-                        "arn:aws:sns:*:*:*Groundtruth*",
-                        "arn:aws:sns:*:*:*groundTruth*",
-                        "arn:aws:sns:*:*:*groundtruth*",
-                        "arn:aws:sns:*:*:*SageMaker*",
-                        "arn:aws:sns:*:*:*Sagemaker*",
-                        "arn:aws:sns:*:*:*sageMaker*",
+                        "arn:aws:sns:*:*:*GroundTruth*", 
+                        "arn:aws:sns:*:*:*Groundtruth*", 
+                        "arn:aws:sns:*:*:*groundTruth*", 
+                        "arn:aws:sns:*:*:*groundtruth*", 
+                        "arn:aws:sns:*:*:*SageMaker*", 
+                        "arn:aws:sns:*:*:*Sagemaker*", 
+                        "arn:aws:sns:*:*:*sageMaker*", 
                         "arn:aws:sns:*:*:*sagemaker*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
-                        "StringEquals": {
-                            "sns:Protocol": "sqs"
-                        },
                         "StringLike": {
                             "sns:Endpoint": "arn:aws:sqs:*:*:*GroundTruth*"
+                        }, 
+                        "StringEquals": {
+                            "sns:Protocol": "sqs"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "StreamingTopicSubscribe"
+                }, 
                 {
-                    "Sid": "StreamingTopic",
-                    "Effect": "Allow",
                     "Action": [
                         "sns:Publish"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:sns:*:*:*GroundTruth*",
-                        "arn:aws:sns:*:*:*Groundtruth*",
-                        "arn:aws:sns:*:*:*groundTruth*",
-                        "arn:aws:sns:*:*:*groundtruth*",
-                        "arn:aws:sns:*:*:*SageMaker*",
-                        "arn:aws:sns:*:*:*Sagemaker*",
-                        "arn:aws:sns:*:*:*sageMaker*",
+                        "arn:aws:sns:*:*:*GroundTruth*", 
+                        "arn:aws:sns:*:*:*Groundtruth*", 
+                        "arn:aws:sns:*:*:*groundTruth*", 
+                        "arn:aws:sns:*:*:*groundtruth*", 
+                        "arn:aws:sns:*:*:*SageMaker*", 
+                        "arn:aws:sns:*:*:*Sagemaker*", 
+                        "arn:aws:sns:*:*:*sageMaker*", 
                         "arn:aws:sns:*:*:*sagemaker*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "StreamingTopic"
+                }, 
                 {
-                    "Sid": "StreamingTopicUnsubscribe",
-                    "Effect": "Allow",
                     "Action": [
                         "sns:Unsubscribe"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "StreamingTopicUnsubscribe"
+                }, 
                 {
-                    "Sid": "WorkforceVPC",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:CreateVpcEndpoint",
-                        "ec2:DescribeVpcEndpoints",
+                        "ec2:CreateVpcEndpoint", 
+                        "ec2:DescribeVpcEndpoints", 
                         "ec2:DeleteVpcEndpoints"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLikeIfExists": {
                             "ec2:VpceServiceName": [
-                                "*sagemaker-task-resources*",
+                                "*sagemaker-task-resources*", 
                                 "aws.sagemaker*labeling*"
                             ]
                         }
-                    }
+                    }, 
+                    "Sid": "WorkforceVPC"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-04-29T20:49:54+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

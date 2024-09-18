@@ -1,21 +1,21 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-01-05T16:57:08Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "tag:GetResources",
-                        "cloudformation:DescribeStacks",
+                        "tag:GetResources", 
+                        "cloudformation:DescribeStacks", 
                         "cloudformation:ListStackResources"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-01-05T16:57:08+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

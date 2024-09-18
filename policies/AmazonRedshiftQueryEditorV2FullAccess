@@ -1,61 +1,61 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-02-21T17:20:52Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "RedshiftPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "redshift:DescribeClusters",
-                        "redshift-serverless:ListNamespaces",
+                        "redshift:DescribeClusters", 
+                        "redshift-serverless:ListNamespaces", 
                         "redshift-serverless:ListWorkgroups"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "RedshiftPermissions"
+                }, 
                 {
-                    "Sid": "KeyManagementServicePermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "kms:DescribeKey",
+                        "kms:DescribeKey", 
                         "kms:ListAliases"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "KeyManagementServicePermissions"
+                }, 
                 {
-                    "Sid": "SecretsManagerPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "secretsmanager:CreateSecret",
-                        "secretsmanager:GetSecretValue",
-                        "secretsmanager:DeleteSecret",
+                        "secretsmanager:CreateSecret", 
+                        "secretsmanager:GetSecretValue", 
+                        "secretsmanager:DeleteSecret", 
                         "secretsmanager:TagResource"
-                    ],
-                    "Resource": "arn:aws:secretsmanager:*:*:sqlworkbench!*"
-                },
+                    ], 
+                    "Resource": "arn:aws:secretsmanager:*:*:sqlworkbench!*", 
+                    "Effect": "Allow", 
+                    "Sid": "SecretsManagerPermissions"
+                }, 
                 {
-                    "Sid": "ResourceGroupsTaggingPermissions",
-                    "Effect": "Allow",
                     "Action": [
                         "tag:GetResources"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:CalledViaLast": "sqlworkbench.amazonaws.com"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "ResourceGroupsTaggingPermissions"
+                }, 
                 {
-                    "Sid": "AmazonRedshiftQueryEditorV2Permissions",
-                    "Effect": "Allow",
-                    "Action": "sqlworkbench:*",
-                    "Resource": "*"
+                    "Action": "sqlworkbench:*", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonRedshiftQueryEditorV2Permissions"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-02-21T17:20:52+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

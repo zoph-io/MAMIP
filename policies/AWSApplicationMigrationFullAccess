@@ -1,260 +1,260 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-05-19T08:30:02Z", 
+        "VersionId": "v8", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "VisualEditor0",
-                    "Effect": "Allow",
                     "Action": [
                         "mgn:*"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "VisualEditor0"
+                }, 
                 {
-                    "Sid": "VisualEditor1",
-                    "Effect": "Allow",
                     "Action": [
-                        "kms:ListAliases",
+                        "kms:ListAliases", 
                         "kms:DescribeKey"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "VisualEditor1"
+                }, 
                 {
-                    "Sid": "VisualEditor2",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeKeyPairs",
-                        "ec2:DescribeTags",
-                        "ec2:DescribeNetworkInterfaces",
-                        "ec2:DescribePlacementGroups",
-                        "ec2:DescribeAccountAttributes",
-                        "ec2:DescribeAvailabilityZones",
-                        "ec2:DescribeImages",
-                        "ec2:DescribeInstances",
-                        "ec2:DescribeInstanceTypes",
-                        "ec2:DescribeInstanceAttribute",
-                        "ec2:DescribeInstanceStatus",
-                        "ec2:DescribeInstanceTypeOfferings",
-                        "ec2:DescribeLaunchTemplateVersions",
-                        "ec2:DescribeLaunchTemplates",
-                        "ec2:DescribeSecurityGroups",
-                        "ec2:DescribeSnapshots",
-                        "ec2:DescribeSubnets",
-                        "ec2:DescribeVolumes",
-                        "ec2:GetEbsEncryptionByDefault",
+                        "ec2:DescribeKeyPairs", 
+                        "ec2:DescribeTags", 
+                        "ec2:DescribeNetworkInterfaces", 
+                        "ec2:DescribePlacementGroups", 
+                        "ec2:DescribeAccountAttributes", 
+                        "ec2:DescribeAvailabilityZones", 
+                        "ec2:DescribeImages", 
+                        "ec2:DescribeInstances", 
+                        "ec2:DescribeInstanceTypes", 
+                        "ec2:DescribeInstanceAttribute", 
+                        "ec2:DescribeInstanceStatus", 
+                        "ec2:DescribeInstanceTypeOfferings", 
+                        "ec2:DescribeLaunchTemplateVersions", 
+                        "ec2:DescribeLaunchTemplates", 
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:DescribeSnapshots", 
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeVolumes", 
+                        "ec2:GetEbsEncryptionByDefault", 
                         "ec2:GetEbsDefaultKmsKeyId"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "VisualEditor2"
+                }, 
                 {
-                    "Sid": "VisualEditor3",
-                    "Effect": "Allow",
-                    "Action": "license-manager:ListLicenseConfigurations",
-                    "Resource": "*"
-                },
+                    "Action": "license-manager:ListLicenseConfigurations", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "VisualEditor3"
+                }, 
                 {
-                    "Sid": "VisualEditor4",
-                    "Effect": "Allow",
-                    "Action": "elasticloadbalancing:DescribeLoadBalancers",
-                    "Resource": "*"
-                },
+                    "Action": "elasticloadbalancing:DescribeLoadBalancers", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "VisualEditor4"
+                }, 
                 {
-                    "Sid": "VisualEditor5",
-                    "Effect": "Allow",
-                    "Action": "iam:ListInstanceProfiles",
-                    "Resource": "*"
-                },
+                    "Action": "iam:ListInstanceProfiles", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "VisualEditor5"
+                }, 
                 {
-                    "Sid": "VisualEditor6",
-                    "Effect": "Allow",
-                    "Action": "iam:PassRole",
+                    "Action": "iam:PassRole", 
                     "Resource": [
-                        "arn:aws:iam::*:role/service-role/AWSApplicationMigrationLaunchInstanceWithSsmRole",
+                        "arn:aws:iam::*:role/service-role/AWSApplicationMigrationLaunchInstanceWithSsmRole", 
                         "arn:aws:iam::*:role/service-role/AWSApplicationMigrationLaunchInstanceWithDrsRole"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
+                        "Bool": {
+                            "aws:ViaAWSService": "true"
+                        }, 
                         "StringEquals": {
                             "iam:PassedToService": "ec2.amazonaws.com"
-                        },
-                        "Bool": {
-                            "aws:ViaAWSService": "true"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "VisualEditor6"
+                }, 
                 {
-                    "Sid": "VisualEditor7",
-                    "Effect": "Allow",
                     "Action": [
                         "drs:DescribeSourceServers"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "VisualEditor7"
+                }, 
                 {
-                    "Sid": "VisualEditor8",
-                    "Effect": "Allow",
                     "Action": [
                         "ssm:SendCommand"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ec2:*:*:instance/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
-                        "Bool": {
-                            "aws:ViaAWSService": "true"
-                        },
                         "Null": {
                             "aws:ResourceTag/AWSApplicationMigrationServiceManaged": "false"
+                        }, 
+                        "Bool": {
+                            "aws:ViaAWSService": "true"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "VisualEditor8"
+                }, 
                 {
-                    "Sid": "VisualEditor9",
-                    "Effect": "Allow",
                     "Action": [
                         "ssm:ListCommandInvocations"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "VisualEditor9"
+                }, 
                 {
-                    "Sid": "VisualEditor10",
-                    "Effect": "Allow",
                     "Action": [
-                        "ssm:DescribeInstanceInformation",
+                        "ssm:DescribeInstanceInformation", 
                         "ssm:GetCommandInvocation"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Bool": {
                             "aws:ViaAWSService": "true"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "VisualEditor10"
+                }, 
                 {
-                    "Sid": "VisualEditor11",
-                    "Effect": "Allow",
                     "Action": [
-                        "ssm:DescribeDocument",
+                        "ssm:DescribeDocument", 
                         "ssm:SendCommand"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:ssm:*:*:document/AWSDisasterRecovery-InstallDRAgentOnInstance",
+                        "arn:aws:ssm:*:*:document/AWSDisasterRecovery-InstallDRAgentOnInstance", 
                         "arn:aws:ssm:*:*:document/AWSMigration-*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Bool": {
                             "aws:ViaAWSService": "true"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "VisualEditor11"
+                }, 
                 {
-                    "Sid": "VisualEditor12",
-                    "Effect": "Allow",
                     "Action": [
                         "drs:DisconnectSourceServer"
-                    ],
-                    "Resource": "arn:aws:drs:*:*:source-server/*",
+                    ], 
+                    "Resource": "arn:aws:drs:*:*:source-server/*", 
+                    "Effect": "Allow", 
                     "Condition": {
-                        "Bool": {
-                            "aws:ViaAWSService": "true"
-                        },
                         "Null": {
                             "aws:ResourceTag/AWSApplicationMigrationServiceConfiguredDR": "false"
+                        }, 
+                        "Bool": {
+                            "aws:ViaAWSService": "true"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "VisualEditor12"
+                }, 
                 {
-                    "Sid": "VisualEditor13",
-                    "Effect": "Allow",
                     "Action": [
-                        "ssm:GetParameter",
+                        "ssm:GetParameter", 
                         "ssm:PutParameter"
-                    ],
-                    "Resource": "arn:aws:ssm:*:*:parameter/ManagedByAWSApplicationMigrationService-*"
-                },
+                    ], 
+                    "Resource": "arn:aws:ssm:*:*:parameter/ManagedByAWSApplicationMigrationService-*", 
+                    "Effect": "Allow", 
+                    "Sid": "VisualEditor13"
+                }, 
                 {
-                    "Sid": "VisualEditor14",
-                    "Effect": "Allow",
                     "Action": [
                         "servicequotas:GetServiceQuota"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "VisualEditor14"
+                }, 
                 {
-                    "Sid": "VisualEditor15",
-                    "Effect": "Allow",
                     "Action": [
                         "ssm:GetAutomationExecution"
-                    ],
-                    "Resource": "arn:aws:ssm:*:*:automation-execution/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:ssm:*:*:automation-execution/*", 
+                    "Effect": "Allow", 
+                    "Sid": "VisualEditor15"
+                }, 
                 {
-                    "Sid": "VisualEditor16",
-                    "Effect": "Allow",
                     "Action": [
                         "ssm:GetDocument"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:ssm:*:*:document/AWSDisasterRecovery-InstallDRAgentOnInstance",
+                        "arn:aws:ssm:*:*:document/AWSDisasterRecovery-InstallDRAgentOnInstance", 
                         "arn:aws:ssm:*:*:document/AWSMigration-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "VisualEditor16"
+                }, 
                 {
-                    "Sid": "VisualEditor17",
-                    "Effect": "Allow",
                     "Action": [
                         "ssm:GetParameters"
-                    ],
-                    "Resource": "arn:aws:ssm:*:*:parameter/ManagedByAWSApplicationMigrationService-*",
+                    ], 
+                    "Resource": "arn:aws:ssm:*:*:parameter/ManagedByAWSApplicationMigrationService-*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAnyValue:StringEquals": {
                             "aws:CalledVia": "ssm.amazonaws.com"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "VisualEditor17"
+                }, 
                 {
-                    "Sid": "VisualEditor18",
-                    "Effect": "Allow",
                     "Action": [
                         "ssm:StartAutomationExecution"
-                    ],
-                    "Resource": "arn:aws:ssm:*:*:automation-definition/AWSMigration-*:$DEFAULT",
+                    ], 
+                    "Resource": "arn:aws:ssm:*:*:automation-definition/AWSMigration-*:$DEFAULT", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAnyValue:StringEquals": {
                             "aws:CalledVia": "mgn.amazonaws.com"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "VisualEditor18"
+                }, 
                 {
-                    "Sid": "VisualEditor19",
-                    "Effect": "Allow",
-                    "Action": "ssm:ListCommands",
-                    "Resource": "*",
+                    "Action": "ssm:ListCommands", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAnyValue:StringEquals": {
                             "aws:CalledVia": "ssm.amazonaws.com"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "VisualEditor19"
+                }, 
                 {
-                    "Sid": "VisualEditor20",
-                    "Effect": "Allow",
                     "Action": [
                         "ssm:DescribeParameters"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAnyValue:StringEquals": {
                             "aws:CalledVia": [
                                 "mgn.amazonaws.com"
                             ]
                         }
-                    }
+                    }, 
+                    "Sid": "VisualEditor20"
                 }
             ]
-        },
-        "VersionId": "v8",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-05-19T08:30:02+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

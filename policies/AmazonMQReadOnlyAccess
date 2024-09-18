@@ -1,24 +1,24 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2017-11-28T19:02:03Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": [
-                        "mq:Describe*",
-                        "mq:List*",
-                        "ec2:DescribeNetworkInterfaces",
-                        "ec2:DescribeSecurityGroups",
-                        "ec2:DescribeSubnets",
+                        "mq:Describe*", 
+                        "mq:List*", 
+                        "ec2:DescribeNetworkInterfaces", 
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:DescribeSubnets", 
                         "ec2:DescribeVpcs"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2017-11-28T19:02:03+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

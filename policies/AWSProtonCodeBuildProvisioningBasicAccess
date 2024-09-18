@@ -1,28 +1,28 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-11-09T21:04:16Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:CreateLogStream",
-                        "logs:CreateLogGroup",
+                        "logs:CreateLogStream", 
+                        "logs:CreateLogGroup", 
                         "logs:PutLogEvents"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:logs:*:*:log-group:/aws/codebuild/AWSProton-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "proton:NotifyResourceDeploymentStatusChange",
-                    "Resource": "arn:aws:proton:*:*:*"
+                    "Action": "proton:NotifyResourceDeploymentStatusChange", 
+                    "Resource": "arn:aws:proton:*:*:*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-11-09T21:04:16+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

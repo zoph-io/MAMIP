@@ -1,39 +1,39 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-11-13T18:52:34Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "SageMaker",
-                    "Effect": "Allow",
                     "Action": [
-                        "sagemaker:DescribeEndpoint",
-                        "sagemaker:DescribeEndpointConfig",
-                        "sagemaker:DescribeInferenceComponent",
-                        "sagemaker:UpdateEndpointWeightsAndCapacities",
-                        "sagemaker:UpdateInferenceComponentRuntimeConfig",
-                        "cloudwatch:DescribeAlarms",
+                        "sagemaker:DescribeEndpoint", 
+                        "sagemaker:DescribeEndpointConfig", 
+                        "sagemaker:DescribeInferenceComponent", 
+                        "sagemaker:UpdateEndpointWeightsAndCapacities", 
+                        "sagemaker:UpdateInferenceComponentRuntimeConfig", 
+                        "cloudwatch:DescribeAlarms", 
                         "cloudwatch:GetMetricData"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "SageMaker"
+                }, 
                 {
-                    "Sid": "SageMakerCloudWatchUpdate",
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudwatch:PutMetricAlarm",
+                        "cloudwatch:PutMetricAlarm", 
                         "cloudwatch:DeleteAlarms"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:cloudwatch:*:*:alarm:TargetTracking*"
-                    ]
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "SageMakerCloudWatchUpdate"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-11-13T18:52:34+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

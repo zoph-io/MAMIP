@@ -1,28 +1,28 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-06-05T21:46:55Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AllowRDS",
-                    "Effect": "Allow",
                     "Action": [
-                        "rds:CreateDBSecurityGroup",
-                        "rds:DeleteDBSecurityGroup",
-                        "rds:AuthorizeDBSecurityGroupIngress",
-                        "rds:CreateDBInstance",
-                        "rds:ModifyDBInstance",
+                        "rds:CreateDBSecurityGroup", 
+                        "rds:DeleteDBSecurityGroup", 
+                        "rds:AuthorizeDBSecurityGroupIngress", 
+                        "rds:CreateDBInstance", 
+                        "rds:ModifyDBInstance", 
                         "rds:DeleteDBInstance"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:rds:*:*:secgrp:awseb-e-*",
+                        "arn:aws:rds:*:*:secgrp:awseb-e-*", 
                         "arn:aws:rds:*:*:db:*"
-                    ]
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowRDS"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-06-05T21:46:55+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

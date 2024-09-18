@@ -1,21 +1,21 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-08-17T18:18:36Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "EntityResolutionRead",
-                    "Effect": "Allow",
                     "Action": [
-                        "entityresolution:Get*",
+                        "entityresolution:Get*", 
                         "entityresolution:List*"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "EntityResolutionRead"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-08-17T18:18:36+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

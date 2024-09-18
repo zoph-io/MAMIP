@@ -1,97 +1,97 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-11-16T22:04:02Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "redshiftDataScopeDownPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "redshift-data:BatchExecuteStatement",
-                        "redshift-data:DescribeTable",
-                        "redshift-data:ExecuteStatement",
-                        "redshift-data:ListTables",
-                        "redshift-data:ListSchemas",
+                        "redshift-data:BatchExecuteStatement", 
+                        "redshift-data:DescribeTable", 
+                        "redshift-data:ExecuteStatement", 
+                        "redshift-data:ListTables", 
+                        "redshift-data:ListSchemas", 
                         "redshift-data:ListDatabases"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:redshift-serverless:*:*:workgroup/*",
+                        "arn:aws:redshift-serverless:*:*:workgroup/*", 
                         "arn:aws:redshift:*:*:cluster:*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "redshiftDataScopeDownPermissions"
+                }, 
                 {
-                    "Sid": "listSecretsPermission",
-                    "Effect": "Allow",
-                    "Action": "secretsmanager:ListSecrets",
-                    "Resource": "*"
-                },
+                    "Action": "secretsmanager:ListSecrets", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "listSecretsPermission"
+                }, 
                 {
-                    "Sid": "getWorkgroupPermission",
-                    "Effect": "Allow",
-                    "Action": "redshift-serverless:GetWorkgroup",
+                    "Action": "redshift-serverless:GetWorkgroup", 
                     "Resource": [
                         "arn:aws:redshift-serverless:*:*:workgroup/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "getWorkgroupPermission"
+                }, 
                 {
-                    "Sid": "getNamespacePermission",
-                    "Effect": "Allow",
-                    "Action": "redshift-serverless:GetNamespace",
+                    "Action": "redshift-serverless:GetNamespace", 
                     "Resource": [
                         "arn:aws:redshift-serverless:*:*:namespace/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "getNamespacePermission"
+                }, 
                 {
-                    "Sid": "redshiftDataPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "redshift-data:DescribeStatement",
-                        "redshift-data:GetStatementResult",
+                        "redshift-data:DescribeStatement", 
+                        "redshift-data:GetStatementResult", 
                         "redshift:DescribeClusters"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "redshiftDataPermissions"
+                }, 
                 {
-                    "Sid": "dataSharesPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "redshift:AuthorizeDataShare",
+                        "redshift:AuthorizeDataShare", 
                         "redshift:DescribeDataShares"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:redshift:*:*:datashare:*/datazone*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "dataSharesPermissions"
+                }, 
                 {
-                    "Sid": "associateDataShareConsumerPermission",
-                    "Effect": "Allow",
-                    "Action": "redshift:AssociateDataShareConsumer",
-                    "Resource": "arn:aws:redshift:*:*:datashare:*/datazone*"
+                    "Action": "redshift:AssociateDataShareConsumer", 
+                    "Resource": "arn:aws:redshift:*:*:datashare:*/datazone*", 
+                    "Effect": "Allow", 
+                    "Sid": "associateDataShareConsumerPermission"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-11-16T22:04:02+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

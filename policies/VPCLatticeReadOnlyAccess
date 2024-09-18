@@ -1,38 +1,38 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-03-30T02:47:25Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "vpc-lattice:Get*",
-                        "vpc-lattice:List*",
-                        "acm:DescribeCertificate",
-                        "acm:ListCertificates",
-                        "cloudwatch:GetMetricData",
-                        "ec2:DescribeInstances",
-                        "ec2:DescribeSecurityGroups",
-                        "ec2:DescribeSubnets",
-                        "ec2:DescribeVpcAttribute",
-                        "ec2:DescribeVpcs",
-                        "elasticloadbalancing:DescribeLoadBalancers",
-                        "firehose:DescribeDeliveryStream",
-                        "firehose:ListDeliveryStreams",
-                        "lambda:ListAliases",
-                        "lambda:ListFunctions",
-                        "lambda:ListVersionsByFunction",
-                        "logs:DescribeLogGroups",
-                        "logs:GetLogDelivery",
-                        "logs:ListLogDeliveries",
+                        "vpc-lattice:Get*", 
+                        "vpc-lattice:List*", 
+                        "acm:DescribeCertificate", 
+                        "acm:ListCertificates", 
+                        "cloudwatch:GetMetricData", 
+                        "ec2:DescribeInstances", 
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeVpcAttribute", 
+                        "ec2:DescribeVpcs", 
+                        "elasticloadbalancing:DescribeLoadBalancers", 
+                        "firehose:DescribeDeliveryStream", 
+                        "firehose:ListDeliveryStreams", 
+                        "lambda:ListAliases", 
+                        "lambda:ListFunctions", 
+                        "lambda:ListVersionsByFunction", 
+                        "logs:DescribeLogGroups", 
+                        "logs:GetLogDelivery", 
+                        "logs:ListLogDeliveries", 
                         "s3:ListAllMyBuckets"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-03-30T02:47:25+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

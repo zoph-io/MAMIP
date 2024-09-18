@@ -1,59 +1,59 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-06-13T19:05:04Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "ComputeOptimizerFullAccess",
-                    "Effect": "Allow",
                     "Action": [
                         "compute-optimizer:*"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ComputeOptimizerFullAccess"
+                }, 
                 {
-                    "Sid": "AwsOrgsAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "organizations:DescribeOrganization",
-                        "organizations:ListAccounts",
-                        "organizations:ListAWSServiceAccessForOrganization",
+                        "organizations:DescribeOrganization", 
+                        "organizations:ListAccounts", 
+                        "organizations:ListAWSServiceAccessForOrganization", 
                         "organizations:ListDelegatedAdministrators"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AwsOrgsAccess"
+                }, 
                 {
-                    "Sid": "CloudWatchAccess",
-                    "Effect": "Allow",
                     "Action": [
                         "cloudwatch:GetMetricData"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "CloudWatchAccess"
+                }, 
                 {
-                    "Sid": "AutoScalingAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "autoscaling:DescribeAutoScalingInstances",
+                        "autoscaling:DescribeAutoScalingInstances", 
                         "autoscaling:DescribeAutoScalingGroups"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AutoScalingAccess"
+                }, 
                 {
-                    "Sid": "Ec2Access",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeInstances",
+                        "ec2:DescribeInstances", 
                         "ec2:DescribeVolumes"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "Ec2Access"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-06-13T19:05:04+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

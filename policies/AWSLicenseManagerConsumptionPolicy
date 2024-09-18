@@ -1,20 +1,20 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2021-08-11T23:18:08Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": {
-                "Effect": "Allow",
                 "Action": [
-                    "license-manager:CheckoutLicense",
-                    "license-manager:CheckInLicense",
-                    "license-manager:ExtendLicenseConsumption",
+                    "license-manager:CheckoutLicense", 
+                    "license-manager:CheckInLicense", 
+                    "license-manager:ExtendLicenseConsumption", 
                     "license-manager:GetLicense"
-                ],
-                "Resource": "*"
+                ], 
+                "Resource": "*", 
+                "Effect": "Allow"
             }
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2021-08-11T23:18:08+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

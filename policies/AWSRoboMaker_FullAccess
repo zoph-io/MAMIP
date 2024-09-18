@@ -1,47 +1,49 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2021-09-16T21:06:10Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
-                    "Action": "robomaker:*",
-                    "Resource": "*"
-                },
+                    "Action": "robomaker:*", 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "s3:GetObject",
-                    "Resource": "*",
+                    "Action": "s3:GetObject", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:CalledViaFirst": "robomaker.amazonaws.com"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "ecr:BatchGetImage",
-                    "Resource": "*",
+                    "Action": "ecr:BatchGetImage", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:CalledViaFirst": "robomaker.amazonaws.com"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "ecr-public:DescribeImages",
-                    "Resource": "*",
+                    "Action": "ecr-public:DescribeImages", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:CalledViaFirst": "robomaker.amazonaws.com"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "iam:CreateServiceLinkedRole",
-                    "Resource": "*",
+                    "Action": "iam:CreateServiceLinkedRole", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:AWSServiceName": "robomaker.amazonaws.com"
@@ -49,9 +51,7 @@
                     }
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2021-09-16T21:06:10+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

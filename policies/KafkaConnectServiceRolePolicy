@@ -1,55 +1,57 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2021-09-07T13:12:44Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateNetworkInterface"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:network-interface/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:network-interface/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:RequestTag/AmazonMSKConnectManaged": "true"
-                        },
+                        }, 
                         "ForAllValues:StringEquals": {
                             "aws:TagKeys": "AmazonMSKConnectManaged"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateNetworkInterface"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:ec2:*:*:subnet/*",
+                        "arn:aws:ec2:*:*:subnet/*", 
                         "arn:aws:ec2:*:*:security-group/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateTags"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:network-interface/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:network-interface/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "ec2:CreateAction": "CreateNetworkInterface"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeNetworkInterfaces",
-                        "ec2:CreateNetworkInterfacePermission",
-                        "ec2:AttachNetworkInterface",
-                        "ec2:DetachNetworkInterface",
+                        "ec2:DescribeNetworkInterfaces", 
+                        "ec2:CreateNetworkInterfacePermission", 
+                        "ec2:AttachNetworkInterface", 
+                        "ec2:DetachNetworkInterface", 
                         "ec2:DeleteNetworkInterface"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:network-interface/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:network-interface/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "ec2:ResourceTag/AmazonMSKConnectManaged": "true"
@@ -57,9 +59,7 @@
                     }
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2021-09-07T13:12:44+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

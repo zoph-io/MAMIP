@@ -1,71 +1,73 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-02-24T01:39:49Z", 
+        "VersionId": "v5", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "config:PutConfigRule",
+                        "config:PutConfigRule", 
                         "config:DeleteConfigRule"
-                    ],
-                    "Resource": "arn:aws:config:*:*:config-rule/aws-service-rule/config-multiaccountsetup.amazonaws.com/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:config:*:*:config-rule/aws-service-rule/config-multiaccountsetup.amazonaws.com/*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "config:DescribeConfigurationRecorders"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "organizations:ListAccounts",
-                        "organizations:DescribeOrganization",
-                        "organizations:ListAWSServiceAccessForOrganization",
+                        "organizations:ListAccounts", 
+                        "organizations:DescribeOrganization", 
+                        "organizations:ListAWSServiceAccessForOrganization", 
                         "organizations:DescribeAccount"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "config:PutConformancePack",
+                        "config:PutConformancePack", 
                         "config:DeleteConformancePack"
-                    ],
-                    "Resource": "arn:aws:config:*:*:conformance-pack/aws-service-conformance-pack/config-multiaccountsetup.amazonaws.com/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:config:*:*:conformance-pack/aws-service-conformance-pack/config-multiaccountsetup.amazonaws.com/*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "config:DescribeConformancePackStatus"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "iam:GetRole"
-                    ],
-                    "Resource": "arn:aws:iam::*:role/aws-service-role/config-conforms.amazonaws.com/AWSServiceRoleForConfigConforms"
-                },
+                    ], 
+                    "Resource": "arn:aws:iam::*:role/aws-service-role/config-conforms.amazonaws.com/AWSServiceRoleForConfigConforms", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "iam:CreateServiceLinkedRole"
-                    ],
-                    "Resource": "arn:aws:iam::*:role/aws-service-role/config-conforms.amazonaws.com/AWSServiceRoleForConfigConforms",
+                    ], 
+                    "Resource": "arn:aws:iam::*:role/aws-service-role/config-conforms.amazonaws.com/AWSServiceRoleForConfigConforms", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "iam:AWSServiceName": "config-conforms.amazonaws.com"
                         }
                     }
-                },
+                }, 
                 {
-                    "Action": "iam:PassRole",
-                    "Resource": "*",
-                    "Effect": "Allow",
+                    "Action": "iam:PassRole", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:PassedToService": "ssm.amazonaws.com"
@@ -73,9 +75,7 @@
                     }
                 }
             ]
-        },
-        "VersionId": "v5",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-02-24T01:39:49+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

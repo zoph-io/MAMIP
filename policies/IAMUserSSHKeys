@@ -1,23 +1,23 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2015-07-09T17:08:54Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "iam:DeleteSSHPublicKey",
-                        "iam:GetSSHPublicKey",
-                        "iam:ListSSHPublicKeys",
-                        "iam:UpdateSSHPublicKey",
+                        "iam:DeleteSSHPublicKey", 
+                        "iam:GetSSHPublicKey", 
+                        "iam:ListSSHPublicKeys", 
+                        "iam:UpdateSSHPublicKey", 
                         "iam:UploadSSHPublicKey"
-                    ],
-                    "Resource": "arn:aws:iam::*:user/${aws:username}"
+                    ], 
+                    "Resource": "arn:aws:iam::*:user/${aws:username}", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2015-07-09T17:08:54+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

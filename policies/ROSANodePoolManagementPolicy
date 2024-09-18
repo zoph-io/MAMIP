@@ -1,248 +1,248 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-05-02T14:01:47Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "ReadPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeDhcpOptions",
-                        "ec2:DescribeImages",
-                        "ec2:DescribeInstances",
-                        "ec2:DescribeInternetGateways",
-                        "ec2:DescribeNetworkInterfaces",
-                        "ec2:DescribeNetworkInterfaceAttribute",
-                        "ec2:DescribeRouteTables",
-                        "ec2:DescribeSecurityGroups",
-                        "ec2:DescribeSubnets",
+                        "ec2:DescribeDhcpOptions", 
+                        "ec2:DescribeImages", 
+                        "ec2:DescribeInstances", 
+                        "ec2:DescribeInternetGateways", 
+                        "ec2:DescribeNetworkInterfaces", 
+                        "ec2:DescribeNetworkInterfaceAttribute", 
+                        "ec2:DescribeRouteTables", 
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:DescribeSubnets", 
                         "ec2:DescribeVpcs"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "ReadPermissions"
+                }, 
                 {
-                    "Sid": "CreateServiceLinkedRole",
-                    "Effect": "Allow",
                     "Action": [
                         "iam:CreateServiceLinkedRole"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:*:iam::*:role/aws-service-role/elasticloadbalancing.amazonaws.com/AWSServiceRoleForElasticLoadBalancing"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "iam:AWSServiceName": "elasticloadbalancing.amazonaws.com"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "CreateServiceLinkedRole"
+                }, 
                 {
-                    "Sid": "PassWorkerRole",
-                    "Effect": "Allow",
                     "Action": [
                         "iam:PassRole"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:*:iam::*:role/*-ROSA-Worker-Role"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:PassedToService": [
                                 "ec2.amazonaws.com"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "PassWorkerRole"
+                }, 
                 {
-                    "Sid": "AuthorizeSecurityGroupIngressRestrictedResourceTag",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:AuthorizeSecurityGroupIngress"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:ec2:*:*:security-group/*",
+                        "arn:aws:ec2:*:*:security-group/*", 
                         "arn:aws:ec2:*:*:security-group-rule/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceTag/red-hat-managed": "true"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "AuthorizeSecurityGroupIngressRestrictedResourceTag"
+                }, 
                 {
-                    "Sid": "NetworkInterfaces",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:ModifyNetworkInterfaceAttribute"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ec2:*:*:instance/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceTag/red-hat-managed": "true"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "NetworkInterfaces"
+                }, 
                 {
-                    "Sid": "NetworkInterfacesNoCondition",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:ModifyNetworkInterfaceAttribute"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:ec2:*:*:network-interface/*",
-                        "arn:aws:ec2:*:*:security-group/*",
+                        "arn:aws:ec2:*:*:network-interface/*", 
+                        "arn:aws:ec2:*:*:security-group/*", 
                         "arn:aws:ec2:*:*:vpc/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "NetworkInterfacesNoCondition"
+                }, 
                 {
-                    "Sid": "TerminateInstances",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:TerminateInstances"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ec2:*:*:instance/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceTag/red-hat-managed": "true"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "TerminateInstances"
+                }, 
                 {
-                    "Sid": "CreateTags",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateTags"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:ec2:*:*:instance/*",
+                        "arn:aws:ec2:*:*:instance/*", 
                         "arn:aws:ec2:*:*:volume/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "ec2:CreateAction": [
                                 "RunInstances"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "CreateTags"
+                }, 
                 {
-                    "Sid": "CreateTagsCAPAControllerReconcileInstance",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateTags"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ec2:*:*:instance/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceTag/red-hat-managed": "true"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "CreateTagsCAPAControllerReconcileInstance"
+                }, 
                 {
-                    "Sid": "CreateTagsCAPAControllerReconcileVolume",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateTags"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ec2:*:*:volume/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:RequestTag/red-hat-managed": "true"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "CreateTagsCAPAControllerReconcileVolume"
+                }, 
                 {
-                    "Sid": "RunInstancesRequest",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:RunInstances"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ec2:*:*:instance/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:RequestTag/red-hat-managed": "true"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "RunInstancesRequest"
+                }, 
                 {
-                    "Sid": "RunInstancesNoCondition",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:RunInstances"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:ec2:*:*:network-interface/*",
-                        "arn:aws:ec2:*:*:subnet/*",
-                        "arn:aws:ec2:*:*:security-group/*",
+                        "arn:aws:ec2:*:*:network-interface/*", 
+                        "arn:aws:ec2:*:*:subnet/*", 
+                        "arn:aws:ec2:*:*:security-group/*", 
                         "arn:aws:ec2:*:*:volume/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "RunInstancesNoCondition"
+                }, 
                 {
-                    "Sid": "RunInstancesRedHatAMI",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:RunInstances"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ec2:*:*:image/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "ec2:Owner": [
-                                "531415883065",
+                                "531415883065", 
                                 "251351625822"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "RunInstancesRedHatAMI"
+                }, 
                 {
-                    "Sid": "ManagedKMSRestrictedResourceTag",
-                    "Effect": "Allow",
                     "Action": [
-                        "kms:DescribeKey",
+                        "kms:DescribeKey", 
                         "kms:GenerateDataKeyWithoutPlaintext"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:ResourceTag/red-hat": "true"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "ManagedKMSRestrictedResourceTag"
+                }, 
                 {
-                    "Sid": "CreateGrantRestricted",
-                    "Effect": "Allow",
                     "Action": [
                         "kms:CreateGrant"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
-                        "Bool": {
-                            "kms:GrantIsForAWSResource": true
-                        },
                         "StringEquals": {
                             "aws:ResourceTag/red-hat": "true"
-                        },
+                        }, 
                         "StringLike": {
                             "kms:ViaService": "ec2.*.amazonaws.com"
+                        }, 
+                        "Bool": {
+                            "kms:GrantIsForAWSResource": true
                         }
-                    }
+                    }, 
+                    "Sid": "CreateGrantRestricted"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-05-02T14:01:47+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,59 +1,59 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2019-06-19T21:14:41Z", 
+        "VersionId": "v4", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": [
-                        "mgh:*",
+                        "mgh:*", 
                         "discovery:*"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
                     "Action": [
                         "iam:GetRole"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "iam:CreateServiceLinkedRole",
-                    "Resource": "arn:aws:iam::*:role/aws-service-role/continuousexport.discovery.amazonaws.com/AWSServiceRoleForApplicationDiscoveryServiceContinuousExport*",
+                    "Action": "iam:CreateServiceLinkedRole", 
+                    "Resource": "arn:aws:iam::*:role/aws-service-role/continuousexport.discovery.amazonaws.com/AWSServiceRoleForApplicationDiscoveryServiceContinuousExport*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:AWSServiceName": "continuousexport.discovery.amazonaws.com"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "iam:DeleteServiceLinkedRole",
+                        "iam:DeleteServiceLinkedRole", 
                         "iam:GetServiceLinkedRoleDeletionStatus"
-                    ],
-                    "Resource": "arn:aws:iam::*:role/aws-service-role/continuousexport.discovery.amazonaws.com/AWSServiceRoleForApplicationDiscoveryServiceContinuousExport*"
-                },
+                    ], 
+                    "Resource": "arn:aws:iam::*:role/aws-service-role/continuousexport.discovery.amazonaws.com/AWSServiceRoleForApplicationDiscoveryServiceContinuousExport*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "iam:CreateServiceLinkedRole",
-                    "Resource": "*",
+                    "Action": "iam:CreateServiceLinkedRole", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:AWSServiceName": [
-                                "migrationhub.amazonaws.com",
-                                "dmsintegration.migrationhub.amazonaws.com",
+                                "migrationhub.amazonaws.com", 
+                                "dmsintegration.migrationhub.amazonaws.com", 
                                 "smsintegration.migrationhub.amazonaws.com"
                             ]
                         }
                     }
                 }
             ]
-        },
-        "VersionId": "v4",
-        "IsDefaultVersion": true,
-        "CreateDate": "2019-06-19T21:14:41+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

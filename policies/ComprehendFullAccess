@@ -1,24 +1,24 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2017-12-05T01:36:24Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": [
-                        "comprehend:*",
-                        "s3:ListAllMyBuckets",
-                        "s3:ListBucket",
-                        "s3:GetBucketLocation",
-                        "iam:ListRoles",
+                        "comprehend:*", 
+                        "s3:ListAllMyBuckets", 
+                        "s3:ListBucket", 
+                        "s3:GetBucketLocation", 
+                        "iam:ListRoles", 
                         "iam:GetRole"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2017-12-05T01:36:24+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

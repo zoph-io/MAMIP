@@ -1,75 +1,75 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-06-05T20:55:25Z", 
+        "VersionId": "v11", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AllowUseOfAWSWAF",
-                    "Effect": "Allow",
                     "Action": [
-                        "waf:*",
-                        "waf-regional:*",
-                        "wafv2:*",
-                        "elasticloadbalancing:SetWebACL",
-                        "apigateway:SetWebACL",
-                        "appsync:SetWebACL",
-                        "logs:DescribeResourcePolicies",
-                        "logs:DescribeLogGroups",
-                        "cognito-idp:AssociateWebACL",
-                        "cognito-idp:DisassociateWebACL",
-                        "cognito-idp:ListResourcesForWebACL",
-                        "cognito-idp:GetWebACLForResource",
-                        "apprunner:AssociateWebAcl",
-                        "apprunner:DisassociateWebAcl",
-                        "apprunner:DescribeWebAclForService",
-                        "apprunner:ListServices",
-                        "apprunner:ListAssociatedServicesForWebAcl",
-                        "ec2:AssociateVerifiedAccessInstanceWebAcl",
-                        "ec2:DisassociateVerifiedAccessInstanceWebAcl",
-                        "ec2:DescribeVerifiedAccessInstanceWebAclAssociations",
+                        "waf:*", 
+                        "waf-regional:*", 
+                        "wafv2:*", 
+                        "elasticloadbalancing:SetWebACL", 
+                        "apigateway:SetWebACL", 
+                        "appsync:SetWebACL", 
+                        "logs:DescribeResourcePolicies", 
+                        "logs:DescribeLogGroups", 
+                        "cognito-idp:AssociateWebACL", 
+                        "cognito-idp:DisassociateWebACL", 
+                        "cognito-idp:ListResourcesForWebACL", 
+                        "cognito-idp:GetWebACLForResource", 
+                        "apprunner:AssociateWebAcl", 
+                        "apprunner:DisassociateWebAcl", 
+                        "apprunner:DescribeWebAclForService", 
+                        "apprunner:ListServices", 
+                        "apprunner:ListAssociatedServicesForWebAcl", 
+                        "ec2:AssociateVerifiedAccessInstanceWebAcl", 
+                        "ec2:DisassociateVerifiedAccessInstanceWebAcl", 
+                        "ec2:DescribeVerifiedAccessInstanceWebAclAssociations", 
                         "ec2:GetVerifiedAccessInstanceWebAcl"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowUseOfAWSWAF"
+                }, 
                 {
-                    "Sid": "AllowLogDeliverySubscription",
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:CreateLogDelivery",
+                        "logs:CreateLogDelivery", 
                         "logs:DeleteLogDelivery"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowLogDeliverySubscription"
+                }, 
                 {
-                    "Sid": "GrantLogDeliveryPermissionForS3Bucket",
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:PutBucketPolicy",
+                        "s3:PutBucketPolicy", 
                         "s3:GetBucketPolicy"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:s3:::aws-waf-logs-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "GrantLogDeliveryPermissionForS3Bucket"
+                }, 
                 {
-                    "Sid": "GrantLogDeliveryPermissionForCloudWatchLogGroup",
-                    "Effect": "Allow",
                     "Action": [
                         "logs:PutResourcePolicy"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAnyValue:StringEquals": {
                             "aws:CalledVia": [
                                 "wafv2.amazonaws.com"
                             ]
                         }
-                    }
+                    }, 
+                    "Sid": "GrantLogDeliveryPermissionForCloudWatchLogGroup"
                 }
             ]
-        },
-        "VersionId": "v11",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-06-05T20:55:25+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

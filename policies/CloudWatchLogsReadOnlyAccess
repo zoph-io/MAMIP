@@ -1,29 +1,29 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-11-26T18:11:33Z", 
+        "VersionId": "v6", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "CloudWatchLogsReadOnlyAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:Describe*",
-                        "logs:Get*",
-                        "logs:List*",
-                        "logs:StartQuery",
-                        "logs:StopQuery",
-                        "logs:TestMetricFilter",
-                        "logs:FilterLogEvents",
-                        "logs:StartLiveTail",
-                        "logs:StopLiveTail",
+                        "logs:Describe*", 
+                        "logs:Get*", 
+                        "logs:List*", 
+                        "logs:StartQuery", 
+                        "logs:StopQuery", 
+                        "logs:TestMetricFilter", 
+                        "logs:FilterLogEvents", 
+                        "logs:StartLiveTail", 
+                        "logs:StopLiveTail", 
                         "cloudwatch:GenerateQuery"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "CloudWatchLogsReadOnlyAccess"
                 }
             ]
-        },
-        "VersionId": "v6",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-11-26T18:11:33+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

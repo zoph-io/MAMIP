@@ -1,56 +1,56 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-12-19T00:03:51Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "CostOptimizationHubAdminAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "cost-optimization-hub:ListEnrollmentStatuses",
-                        "cost-optimization-hub:UpdateEnrollmentStatus",
-                        "cost-optimization-hub:GetPreferences",
-                        "cost-optimization-hub:UpdatePreferences",
-                        "cost-optimization-hub:GetRecommendation",
-                        "cost-optimization-hub:ListRecommendations",
+                        "cost-optimization-hub:ListEnrollmentStatuses", 
+                        "cost-optimization-hub:UpdateEnrollmentStatus", 
+                        "cost-optimization-hub:GetPreferences", 
+                        "cost-optimization-hub:UpdatePreferences", 
+                        "cost-optimization-hub:GetRecommendation", 
+                        "cost-optimization-hub:ListRecommendations", 
                         "cost-optimization-hub:ListRecommendationSummaries"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "CostOptimizationHubAdminAccess"
+                }, 
                 {
-                    "Sid": "AllowCreationOfServiceLinkedRoleForCostOptimizationHub",
-                    "Effect": "Allow",
                     "Action": [
                         "iam:CreateServiceLinkedRole"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:iam::*:role/aws-service-role/cost-optimization-hub.bcm.amazonaws.com/AWSServiceRoleForCostOptimizationHub"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "iam:AWSServiceName": "cost-optimization-hub.bcm.amazonaws.com"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "AllowCreationOfServiceLinkedRoleForCostOptimizationHub"
+                }, 
                 {
-                    "Sid": "AllowAWSServiceAccessForCostOptimizationHub",
-                    "Effect": "Allow",
                     "Action": [
                         "organizations:EnableAWSServiceAccess"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "organizations:ServicePrincipal": [
                                 "cost-optimization-hub.bcm.amazonaws.com"
                             ]
                         }
-                    }
+                    }, 
+                    "Sid": "AllowAWSServiceAccessForCostOptimizationHub"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-12-19T00:03:51+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

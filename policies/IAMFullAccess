@@ -1,29 +1,29 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2019-06-21T19:40:00Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "iam:*",
-                        "organizations:DescribeAccount",
-                        "organizations:DescribeOrganization",
-                        "organizations:DescribeOrganizationalUnit",
-                        "organizations:DescribePolicy",
-                        "organizations:ListChildren",
-                        "organizations:ListParents",
-                        "organizations:ListPoliciesForTarget",
-                        "organizations:ListRoots",
-                        "organizations:ListPolicies",
+                        "iam:*", 
+                        "organizations:DescribeAccount", 
+                        "organizations:DescribeOrganization", 
+                        "organizations:DescribeOrganizationalUnit", 
+                        "organizations:DescribePolicy", 
+                        "organizations:ListChildren", 
+                        "organizations:ListParents", 
+                        "organizations:ListPoliciesForTarget", 
+                        "organizations:ListRoots", 
+                        "organizations:ListPolicies", 
                         "organizations:ListTargetsForPolicy"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2019-06-21T19:40:00+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

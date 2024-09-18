@@ -1,37 +1,37 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2018-11-14T19:28:28Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "organizations:DescribeAccount",
-                        "organizations:DescribeOrganization",
-                        "organizations:DescribeOrganizationalUnit",
-                        "organizations:ListAccounts",
-                        "organizations:ListAccountsForParent",
-                        "organizations:ListChildren",
-                        "organizations:ListOrganizationalUnitsForParent",
-                        "organizations:ListParents",
+                        "organizations:DescribeAccount", 
+                        "organizations:DescribeOrganization", 
+                        "organizations:DescribeOrganizationalUnit", 
+                        "organizations:ListAccounts", 
+                        "organizations:ListAccountsForParent", 
+                        "organizations:ListChildren", 
+                        "organizations:ListOrganizationalUnitsForParent", 
+                        "organizations:ListParents", 
                         "organizations:ListRoots"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Sid": "AllowDeletionOfServiceLinkedRoleForResourceAccessManager",
-                    "Effect": "Allow",
                     "Action": [
                         "iam:DeleteRole"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:iam::*:role/aws-service-role/ram.amazonaws.com/*"
-                    ]
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowDeletionOfServiceLinkedRoleForResourceAccessManager"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2018-11-14T19:28:28+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

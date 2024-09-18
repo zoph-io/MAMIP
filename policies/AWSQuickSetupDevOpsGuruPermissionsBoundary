@@ -1,121 +1,121 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-06-26T09:44:42Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "CreateSystemsManagerSLRPermissions",
-                    "Effect": "Allow",
                     "Action": [
                         "iam:CreateServiceLinkedRole"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:iam::*:role/aws-service-role/ssm.amazonaws.com/AWSServiceRoleForAmazonSSM"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:AWSServiceName": "ssm.amazonaws.com"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "CreateSystemsManagerSLRPermissions"
+                }, 
                 {
-                    "Sid": "CreateDevOpsGuruSLRPermissions",
-                    "Effect": "Allow",
                     "Action": [
                         "iam:CreateServiceLinkedRole"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:iam::*:role/aws-service-role/devops-guru.amazonaws.com/AWSServiceRoleForDevOpsGuru"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:AWSServiceName": "devops-guru.amazonaws.com"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "CreateDevOpsGuruSLRPermissions"
+                }, 
                 {
-                    "Sid": "CloudformationReadOnlyPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudformation:ListStacks",
+                        "cloudformation:ListStacks", 
                         "cloudformation:DescribeStacks"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "CloudformationReadOnlyPermissions"
+                }, 
                 {
-                    "Sid": "DevOpsGuruNotificationChannelPermissions",
-                    "Effect": "Allow",
                     "Action": [
                         "devops-guru:AddNotificationChannel"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:sns:*:*:DevOpsGuru-Default-Topic",
+                        "arn:aws:sns:*:*:DevOpsGuru-Default-Topic", 
                         "arn:aws:devops-guru:*:*:/channels"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "DevOpsGuruNotificationChannelPermissions"
+                }, 
                 {
-                    "Sid": "DevOpsGuruConfigurationPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "devops-guru:UpdateResourceCollection",
+                        "devops-guru:UpdateResourceCollection", 
                         "devops-guru:UpdateServiceIntegration"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DevOpsGuruConfigurationPermissions"
+                }, 
                 {
-                    "Sid": "SNSReadOnlyPermissions",
-                    "Effect": "Allow",
                     "Action": [
                         "sns:ListTopics"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "SNSReadOnlyPermissions"
+                }, 
                 {
-                    "Sid": "DevOpsGuruDefaultSNSTopicConfigurationPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "sns:AddPermission",
-                        "sns:CreateTopic",
-                        "sns:GetTopicAttributes",
-                        "sns:Publish",
-                        "sns:SetTopicAttributes",
+                        "sns:AddPermission", 
+                        "sns:CreateTopic", 
+                        "sns:GetTopicAttributes", 
+                        "sns:Publish", 
+                        "sns:SetTopicAttributes", 
                         "sns:RemovePermission"
-                    ],
-                    "Resource": "arn:aws:sns:*:*:DevOpsGuru-Default-Topic"
-                },
+                    ], 
+                    "Resource": "arn:aws:sns:*:*:DevOpsGuru-Default-Topic", 
+                    "Effect": "Allow", 
+                    "Sid": "DevOpsGuruDefaultSNSTopicConfigurationPermissions"
+                }, 
                 {
-                    "Sid": "ReadOnlyPermissionsForEnablingExplorer",
-                    "Effect": "Allow",
                     "Action": [
-                        "iam:ListRoles",
-                        "config:DescribeConfigurationRecorders",
-                        "compute-optimizer:GetEnrollmentStatus",
+                        "iam:ListRoles", 
+                        "config:DescribeConfigurationRecorders", 
+                        "compute-optimizer:GetEnrollmentStatus", 
                         "support:DescribeTrustedAdvisorChecks"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ReadOnlyPermissionsForEnablingExplorer"
+                }, 
                 {
-                    "Sid": "SSMExplorerServiceSettingsPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "ssm:UpdateServiceSetting",
+                        "ssm:UpdateServiceSetting", 
                         "ssm:GetServiceSetting"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:ssm:*:*:servicesetting/ssm/opsitem/ssm-patchmanager",
-                        "arn:aws:ssm:*:*:servicesetting/ssm/opsitem/EC2",
-                        "arn:aws:ssm:*:*:servicesetting/ssm/opsdata/ExplorerOnboarded",
-                        "arn:aws:ssm:*:*:servicesetting/ssm/opsdata/Association",
-                        "arn:aws:ssm:*:*:servicesetting/ssm/opsdata/ComputeOptimizer",
-                        "arn:aws:ssm:*:*:servicesetting/ssm/opsdata/ConfigCompliance",
-                        "arn:aws:ssm:*:*:servicesetting/ssm/opsdata/OpsData-TrustedAdvisor",
+                        "arn:aws:ssm:*:*:servicesetting/ssm/opsitem/ssm-patchmanager", 
+                        "arn:aws:ssm:*:*:servicesetting/ssm/opsitem/EC2", 
+                        "arn:aws:ssm:*:*:servicesetting/ssm/opsdata/ExplorerOnboarded", 
+                        "arn:aws:ssm:*:*:servicesetting/ssm/opsdata/Association", 
+                        "arn:aws:ssm:*:*:servicesetting/ssm/opsdata/ComputeOptimizer", 
+                        "arn:aws:ssm:*:*:servicesetting/ssm/opsdata/ConfigCompliance", 
+                        "arn:aws:ssm:*:*:servicesetting/ssm/opsdata/OpsData-TrustedAdvisor", 
                         "arn:aws:ssm:*:*:servicesetting/ssm/opsdata/SupportCenterCase"
-                    ]
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "SSMExplorerServiceSettingsPermissions"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-06-26T09:44:42+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

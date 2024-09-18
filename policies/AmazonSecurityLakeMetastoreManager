@@ -1,100 +1,100 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-04-01T20:04:24Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AllowWriteLambdaLogs",
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:CreateLogStream",
-                        "logs:PutLogEvents",
+                        "logs:CreateLogStream", 
+                        "logs:PutLogEvents", 
                         "logs:CreateLogGroup"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:logs:*:*:log-group:/aws/lambda/AmazonSecurityLake*",
+                        "arn:aws:logs:*:*:log-group:/aws/lambda/AmazonSecurityLake*", 
                         "arn:aws:logs:*:*:/aws/lambda/AmazonSecurityLake*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "AllowWriteLambdaLogs"
+                }, 
                 {
-                    "Sid": "AllowGlueManage",
-                    "Effect": "Allow",
                     "Action": [
-                        "glue:CreatePartition",
-                        "glue:BatchCreatePartition",
-                        "glue:GetTable",
+                        "glue:CreatePartition", 
+                        "glue:BatchCreatePartition", 
+                        "glue:GetTable", 
                         "glue:UpdateTable"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:glue:*:*:table/amazon_security_lake_glue_db*/*",
-                        "arn:aws:glue:*:*:database/amazon_security_lake_glue_db*",
+                        "arn:aws:glue:*:*:table/amazon_security_lake_glue_db*/*", 
+                        "arn:aws:glue:*:*:database/amazon_security_lake_glue_db*", 
                         "arn:aws:glue:*:*:catalog"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "AllowGlueManage"
+                }, 
                 {
-                    "Sid": "AllowToReadFromSqs",
-                    "Effect": "Allow",
                     "Action": [
-                        "sqs:ReceiveMessage",
-                        "sqs:DeleteMessage",
+                        "sqs:ReceiveMessage", 
+                        "sqs:DeleteMessage", 
                         "sqs:GetQueueAttributes"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:sqs:*:*:AmazonSecurityLake*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "AllowToReadFromSqs"
+                }, 
                 {
-                    "Sid": "AllowMetaDataReadWrite",
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:ListBucket",
-                        "s3:PutObject",
+                        "s3:ListBucket", 
+                        "s3:PutObject", 
                         "s3:GetObject"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:s3:::aws-security-data-lake*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "AllowMetaDataReadWrite"
+                }, 
                 {
-                    "Sid": "AllowMetaDataCleanup",
-                    "Effect": "Allow",
                     "Action": [
                         "s3:DeleteObject"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:s3:::aws-security-data-lake*/metadata/*.avro",
+                        "arn:aws:s3:::aws-security-data-lake*/metadata/*.avro", 
                         "arn:aws:s3:::aws-security-data-lake*/metadata/*.metadata.json"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
-                    }
+                    }, 
+                    "Sid": "AllowMetaDataCleanup"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-04-01T20:04:24+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

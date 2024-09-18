@@ -1,45 +1,45 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-01-25T18:21:43Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "EC2PolicyStatement",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:CreateNetworkInterface",
-                        "ec2:DeleteNetworkInterface",
-                        "ec2:DescribeNetworkInterfaces",
-                        "ec2:DescribeSecurityGroups",
-                        "ec2:DescribeSubnets",
-                        "ec2:DescribeVpcs",
-                        "ec2:DescribeDhcpOptions",
+                        "ec2:CreateNetworkInterface", 
+                        "ec2:DeleteNetworkInterface", 
+                        "ec2:DescribeNetworkInterfaces", 
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeVpcs", 
+                        "ec2:DescribeDhcpOptions", 
                         "ec2:DescribeRouteTables"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "EC2PolicyStatement"
+                }, 
                 {
-                    "Sid": "CloudWatchPolicyStatement",
-                    "Effect": "Allow",
                     "Action": [
                         "cloudwatch:PutMetricData"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "cloudwatch:namespace": [
-                                "AWS/EMRServerless",
+                                "AWS/EMRServerless", 
                                 "AWS/Usage"
                             ]
                         }
-                    }
+                    }, 
+                    "Sid": "CloudWatchPolicyStatement"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-01-25T18:21:43+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

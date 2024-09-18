@@ -1,46 +1,46 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-11-26T18:15:46Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "Statement1",
-                    "Effect": "Allow",
                     "Action": [
-                        "elasticloadbalancing:Describe*",
+                        "elasticloadbalancing:Describe*", 
                         "elasticloadbalancing:Get*"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "Statement1"
+                }, 
                 {
-                    "Sid": "Statement2",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeInstances",
-                        "ec2:DescribeClassicLinkInstances",
+                        "ec2:DescribeInstances", 
+                        "ec2:DescribeClassicLinkInstances", 
                         "ec2:DescribeSecurityGroups"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "Statement2"
+                }, 
                 {
-                    "Sid": "Statement3",
-                    "Effect": "Allow",
-                    "Action": "arc-zonal-shift:GetManagedResource",
-                    "Resource": "arn:aws:elasticloadbalancing:*:*:loadbalancer/*"
-                },
+                    "Action": "arc-zonal-shift:GetManagedResource", 
+                    "Resource": "arn:aws:elasticloadbalancing:*:*:loadbalancer/*", 
+                    "Effect": "Allow", 
+                    "Sid": "Statement3"
+                }, 
                 {
-                    "Sid": "Statement4",
-                    "Effect": "Allow",
                     "Action": [
-                        "arc-zonal-shift:ListManagedResources",
+                        "arc-zonal-shift:ListManagedResources", 
                         "arc-zonal-shift:ListZonalShifts"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "Statement4"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-11-26T18:15:46+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

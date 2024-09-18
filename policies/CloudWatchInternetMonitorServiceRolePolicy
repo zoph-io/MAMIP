@@ -1,47 +1,47 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-07-20T04:46:37Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudfront:GetDistribution",
-                        "ec2:DescribeNetworkInterfaces",
-                        "ec2:DescribeVpcs",
-                        "elasticloadbalancing:DescribeLoadBalancers",
+                        "cloudfront:GetDistribution", 
+                        "ec2:DescribeNetworkInterfaces", 
+                        "ec2:DescribeVpcs", 
+                        "elasticloadbalancing:DescribeLoadBalancers", 
                         "workspaces:DescribeWorkspaceDirectories"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "logs:CreateLogGroup",
-                    "Resource": "arn:aws:logs:*:*:log-group:/aws/internet-monitor/*"
-                },
+                    "Action": "logs:CreateLogGroup", 
+                    "Resource": "arn:aws:logs:*:*:log-group:/aws/internet-monitor/*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:CreateLogStream",
-                        "logs:DescribeLogStreams",
+                        "logs:CreateLogStream", 
+                        "logs:DescribeLogStreams", 
                         "logs:PutLogEvents"
-                    ],
-                    "Resource": "arn:aws:logs:*:*:log-group:/aws/internet-monitor/*:log-stream:*"
-                },
+                    ], 
+                    "Resource": "arn:aws:logs:*:*:log-group:/aws/internet-monitor/*:log-stream:*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "cloudwatch:PutMetricData",
+                    "Action": "cloudwatch:PutMetricData", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "cloudwatch:namespace": "AWS/InternetMonitor"
                         }
-                    },
-                    "Resource": "*"
+                    }
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-07-20T04:46:37+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,23 +1,23 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-06-17T17:41:25Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AWSBudgetsReadOnlyAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "aws-portal:ViewBilling",
-                        "budgets:ViewBudget",
-                        "budgets:Describe*",
+                        "aws-portal:ViewBilling", 
+                        "budgets:ViewBudget", 
+                        "budgets:Describe*", 
                         "budgets:ListTagsForResource"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AWSBudgetsReadOnlyAccess"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-06-17T17:41:25+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

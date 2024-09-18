@@ -1,21 +1,21 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-11-28T04:59:23Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "ReadOnlyAccessStatementID",
-                    "Effect": "Allow",
                     "Action": [
-                        "one:Get*",
+                        "one:Get*", 
                         "one:List*"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ReadOnlyAccessStatementID"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-11-28T04:59:23+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

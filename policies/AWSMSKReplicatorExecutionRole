@@ -1,62 +1,62 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-03-25T21:36:08Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "ClusterPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "kafka-cluster:Connect",
-                        "kafka-cluster:DescribeCluster",
-                        "kafka-cluster:AlterCluster",
-                        "kafka-cluster:DescribeTopic",
-                        "kafka-cluster:CreateTopic",
-                        "kafka-cluster:AlterTopic",
-                        "kafka-cluster:WriteData",
-                        "kafka-cluster:ReadData",
-                        "kafka-cluster:AlterGroup",
-                        "kafka-cluster:DescribeGroup",
-                        "kafka-cluster:DescribeTopicDynamicConfiguration",
-                        "kafka-cluster:AlterTopicDynamicConfiguration",
+                        "kafka-cluster:Connect", 
+                        "kafka-cluster:DescribeCluster", 
+                        "kafka-cluster:AlterCluster", 
+                        "kafka-cluster:DescribeTopic", 
+                        "kafka-cluster:CreateTopic", 
+                        "kafka-cluster:AlterTopic", 
+                        "kafka-cluster:WriteData", 
+                        "kafka-cluster:ReadData", 
+                        "kafka-cluster:AlterGroup", 
+                        "kafka-cluster:DescribeGroup", 
+                        "kafka-cluster:DescribeTopicDynamicConfiguration", 
+                        "kafka-cluster:AlterTopicDynamicConfiguration", 
                         "kafka-cluster:WriteDataIdempotently"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:kafka:*:*:cluster/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "ClusterPermissions"
+                }, 
                 {
-                    "Sid": "TopicPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "kafka-cluster:DescribeTopic",
-                        "kafka-cluster:CreateTopic",
-                        "kafka-cluster:AlterTopic",
-                        "kafka-cluster:WriteData",
-                        "kafka-cluster:ReadData",
-                        "kafka-cluster:DescribeTopicDynamicConfiguration",
-                        "kafka-cluster:AlterTopicDynamicConfiguration",
+                        "kafka-cluster:DescribeTopic", 
+                        "kafka-cluster:CreateTopic", 
+                        "kafka-cluster:AlterTopic", 
+                        "kafka-cluster:WriteData", 
+                        "kafka-cluster:ReadData", 
+                        "kafka-cluster:DescribeTopicDynamicConfiguration", 
+                        "kafka-cluster:AlterTopicDynamicConfiguration", 
                         "kafka-cluster:AlterCluster"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:kafka:*:*:topic/*/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "TopicPermissions"
+                }, 
                 {
-                    "Sid": "GroupPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "kafka-cluster:AlterGroup",
+                        "kafka-cluster:AlterGroup", 
                         "kafka-cluster:DescribeGroup"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:kafka:*:*:group/*/*"
-                    ]
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "GroupPermissions"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-03-25T21:36:08+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

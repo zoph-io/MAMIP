@@ -1,33 +1,35 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-03-06T22:25:12Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ecs:RunTask"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "iam:PassRole",
+                    "Action": "iam:PassRole", 
                     "Resource": [
                         "*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "iam:PassedToService": "ecs-tasks.amazonaws.com"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "ecs:TagResource",
-                    "Resource": "*",
+                    "Action": "ecs:TagResource", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "ecs:CreateAction": [
@@ -37,9 +39,7 @@
                     }
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-03-06T22:25:12+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

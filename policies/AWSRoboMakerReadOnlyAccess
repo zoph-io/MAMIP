@@ -1,23 +1,23 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-08-28T23:10:18Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "VisualEditor0",
-                    "Effect": "Allow",
                     "Action": [
-                        "robomaker:List*",
-                        "robomaker:BatchDescribe*",
-                        "robomaker:Describe*",
+                        "robomaker:List*", 
+                        "robomaker:BatchDescribe*", 
+                        "robomaker:Describe*", 
                         "robomaker:Get*"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "VisualEditor0"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-08-28T23:10:18+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,371 +1,371 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-01-17T13:49:07Z", 
+        "VersionId": "v7", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "DRSServiceRolePolicy1",
-                    "Effect": "Allow",
                     "Action": [
                         "drs:ListTagsForResource"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DRSServiceRolePolicy1"
+                }, 
                 {
-                    "Sid": "DRSServiceRolePolicy2",
-                    "Effect": "Allow",
                     "Action": [
                         "drs:TagResource"
-                    ],
-                    "Resource": "arn:aws:drs:*:*:recovery-instance/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:drs:*:*:recovery-instance/*", 
+                    "Effect": "Allow", 
+                    "Sid": "DRSServiceRolePolicy2"
+                }, 
                 {
-                    "Sid": "DRSServiceRolePolicy3",
-                    "Effect": "Allow",
                     "Action": [
-                        "drs:CreateRecoveryInstanceForDrs",
+                        "drs:CreateRecoveryInstanceForDrs", 
                         "drs:TagResource"
-                    ],
-                    "Resource": "arn:aws:drs:*:*:source-server/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:drs:*:*:source-server/*", 
+                    "Effect": "Allow", 
+                    "Sid": "DRSServiceRolePolicy3"
+                }, 
                 {
-                    "Sid": "DRSServiceRolePolicy4",
-                    "Effect": "Allow",
-                    "Action": "iam:GetInstanceProfile",
-                    "Resource": "*"
-                },
+                    "Action": "iam:GetInstanceProfile", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DRSServiceRolePolicy4"
+                }, 
                 {
-                    "Sid": "DRSServiceRolePolicy5",
-                    "Effect": "Allow",
-                    "Action": "kms:ListRetirableGrants",
-                    "Resource": "*"
-                },
+                    "Action": "kms:ListRetirableGrants", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DRSServiceRolePolicy5"
+                }, 
                 {
-                    "Sid": "DRSServiceRolePolicy6",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeAccountAttributes",
-                        "ec2:DescribeAvailabilityZones",
-                        "ec2:DescribeImages",
-                        "ec2:DescribeInstances",
-                        "ec2:DescribeInstanceTypes",
-                        "ec2:DescribeInstanceAttribute",
-                        "ec2:DescribeInstanceStatus",
-                        "ec2:DescribeLaunchTemplateVersions",
-                        "ec2:DescribeLaunchTemplates",
-                        "ec2:DescribeSecurityGroups",
-                        "ec2:DescribeSnapshots",
-                        "ec2:DescribeSubnets",
-                        "ec2:DescribeVolumes",
-                        "ec2:DescribeVolumeAttribute",
-                        "ec2:GetEbsDefaultKmsKeyId",
-                        "ec2:GetEbsEncryptionByDefault",
-                        "ec2:DescribeVpcAttribute",
-                        "ec2:DescribeInternetGateways",
-                        "ec2:DescribeVpcs",
-                        "ec2:DescribeNetworkAcls",
-                        "ec2:DescribeRouteTables",
-                        "ec2:DescribeDhcpOptions",
-                        "ec2:DescribeManagedPrefixLists",
-                        "ec2:GetManagedPrefixListEntries",
+                        "ec2:DescribeAccountAttributes", 
+                        "ec2:DescribeAvailabilityZones", 
+                        "ec2:DescribeImages", 
+                        "ec2:DescribeInstances", 
+                        "ec2:DescribeInstanceTypes", 
+                        "ec2:DescribeInstanceAttribute", 
+                        "ec2:DescribeInstanceStatus", 
+                        "ec2:DescribeLaunchTemplateVersions", 
+                        "ec2:DescribeLaunchTemplates", 
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:DescribeSnapshots", 
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeVolumes", 
+                        "ec2:DescribeVolumeAttribute", 
+                        "ec2:GetEbsDefaultKmsKeyId", 
+                        "ec2:GetEbsEncryptionByDefault", 
+                        "ec2:DescribeVpcAttribute", 
+                        "ec2:DescribeInternetGateways", 
+                        "ec2:DescribeVpcs", 
+                        "ec2:DescribeNetworkAcls", 
+                        "ec2:DescribeRouteTables", 
+                        "ec2:DescribeDhcpOptions", 
+                        "ec2:DescribeManagedPrefixLists", 
+                        "ec2:GetManagedPrefixListEntries", 
                         "ec2:GetManagedPrefixListAssociations"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DRSServiceRolePolicy6"
+                }, 
                 {
-                    "Sid": "DRSServiceRolePolicy7",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:RegisterImage"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DRSServiceRolePolicy7"
+                }, 
                 {
-                    "Sid": "DRSServiceRolePolicy8",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:DeregisterImage"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "aws:ResourceTag/AWSElasticDisasterRecoveryManaged": "false"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "DRSServiceRolePolicy8"
+                }, 
                 {
-                    "Sid": "DRSServiceRolePolicy9",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:DeleteSnapshot"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:snapshot/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:snapshot/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "aws:ResourceTag/AWSElasticDisasterRecoveryManaged": "false"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "DRSServiceRolePolicy9"
+                }, 
                 {
-                    "Sid": "DRSServiceRolePolicy10",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:CreateLaunchTemplateVersion",
-                        "ec2:ModifyLaunchTemplate",
-                        "ec2:DeleteLaunchTemplate",
+                        "ec2:CreateLaunchTemplateVersion", 
+                        "ec2:ModifyLaunchTemplate", 
+                        "ec2:DeleteLaunchTemplate", 
                         "ec2:DeleteLaunchTemplateVersions"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:launch-template/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:launch-template/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "aws:ResourceTag/AWSElasticDisasterRecoveryManaged": "false"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "DRSServiceRolePolicy10"
+                }, 
                 {
-                    "Sid": "DRSServiceRolePolicy11",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DeleteVolume",
+                        "ec2:DeleteVolume", 
                         "ec2:ModifyVolume"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:volume/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:volume/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "aws:ResourceTag/AWSElasticDisasterRecoveryManaged": "false"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "DRSServiceRolePolicy11"
+                }, 
                 {
-                    "Sid": "DRSServiceRolePolicy12",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:StartInstances",
-                        "ec2:StopInstances",
-                        "ec2:TerminateInstances",
-                        "ec2:ModifyInstanceAttribute",
-                        "ec2:GetConsoleOutput",
+                        "ec2:StartInstances", 
+                        "ec2:StopInstances", 
+                        "ec2:TerminateInstances", 
+                        "ec2:ModifyInstanceAttribute", 
+                        "ec2:GetConsoleOutput", 
                         "ec2:GetConsoleScreenshot"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:instance/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:instance/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "aws:ResourceTag/AWSElasticDisasterRecoveryManaged": "false"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "DRSServiceRolePolicy12"
+                }, 
                 {
-                    "Sid": "DRSServiceRolePolicy13",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:RevokeSecurityGroupEgress",
-                        "ec2:AuthorizeSecurityGroupIngress",
+                        "ec2:RevokeSecurityGroupEgress", 
+                        "ec2:AuthorizeSecurityGroupIngress", 
                         "ec2:AuthorizeSecurityGroupEgress"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:security-group/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:security-group/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "aws:ResourceTag/AWSElasticDisasterRecoveryManaged": "false"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "DRSServiceRolePolicy13"
+                }, 
                 {
-                    "Sid": "DRSServiceRolePolicy14",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateVolume"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:volume/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:volume/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "aws:RequestTag/AWSElasticDisasterRecoveryManaged": "false"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "DRSServiceRolePolicy14"
+                }, 
                 {
-                    "Sid": "DRSServiceRolePolicy15",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateSecurityGroup"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:security-group/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:security-group/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "aws:RequestTag/AWSElasticDisasterRecoveryManaged": "false"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "DRSServiceRolePolicy15"
+                }, 
                 {
-                    "Sid": "DRSServiceRolePolicy16",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateSecurityGroup"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:vpc/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:vpc/*", 
+                    "Effect": "Allow", 
+                    "Sid": "DRSServiceRolePolicy16"
+                }, 
                 {
-                    "Sid": "DRSServiceRolePolicy17",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateLaunchTemplate"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:launch-template/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:launch-template/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "aws:RequestTag/AWSElasticDisasterRecoveryManaged": "false"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "DRSServiceRolePolicy17"
+                }, 
                 {
-                    "Sid": "DRSServiceRolePolicy18",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateSnapshot"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:volume/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:volume/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "aws:ResourceTag/AWSElasticDisasterRecoveryManaged": "false"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "DRSServiceRolePolicy18"
+                }, 
                 {
-                    "Sid": "DRSServiceRolePolicy19",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateSnapshot"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:snapshot/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:snapshot/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "aws:RequestTag/AWSElasticDisasterRecoveryManaged": "false"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "DRSServiceRolePolicy19"
+                }, 
                 {
-                    "Sid": "DRSServiceRolePolicy20",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DetachVolume",
+                        "ec2:DetachVolume", 
                         "ec2:AttachVolume"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:instance/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:instance/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "aws:ResourceTag/AWSElasticDisasterRecoveryManaged": "false"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "DRSServiceRolePolicy20"
+                }, 
                 {
-                    "Sid": "DRSServiceRolePolicy21",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:AttachVolume"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:volume/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:volume/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "aws:ResourceTag/AWSElasticDisasterRecoveryManaged": "false"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "DRSServiceRolePolicy21"
+                }, 
                 {
-                    "Sid": "DRSServiceRolePolicy22",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:DetachVolume"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:volume/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:volume/*", 
+                    "Effect": "Allow", 
+                    "Sid": "DRSServiceRolePolicy22"
+                }, 
                 {
-                    "Sid": "DRSServiceRolePolicy23",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:RunInstances"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:instance/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:instance/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "aws:RequestTag/AWSElasticDisasterRecoveryManaged": "false"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "DRSServiceRolePolicy23"
+                }, 
                 {
-                    "Sid": "DRSServiceRolePolicy24",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:RunInstances"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:ec2:*:*:security-group/*",
-                        "arn:aws:ec2:*:*:volume/*",
-                        "arn:aws:ec2:*:*:subnet/*",
-                        "arn:aws:ec2:*:*:image/*",
-                        "arn:aws:ec2:*:*:network-interface/*",
+                        "arn:aws:ec2:*:*:security-group/*", 
+                        "arn:aws:ec2:*:*:volume/*", 
+                        "arn:aws:ec2:*:*:subnet/*", 
+                        "arn:aws:ec2:*:*:image/*", 
+                        "arn:aws:ec2:*:*:network-interface/*", 
                         "arn:aws:ec2:*:*:launch-template/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "DRSServiceRolePolicy24"
+                }, 
                 {
-                    "Sid": "DRSServiceRolePolicy25",
-                    "Effect": "Allow",
-                    "Action": "iam:PassRole",
+                    "Action": "iam:PassRole", 
                     "Resource": [
-                        "arn:aws:iam::*:role/service-role/AWSElasticDisasterRecoveryReplicationServerRole",
-                        "arn:aws:iam::*:role/service-role/AWSElasticDisasterRecoveryConversionServerRole",
+                        "arn:aws:iam::*:role/service-role/AWSElasticDisasterRecoveryReplicationServerRole", 
+                        "arn:aws:iam::*:role/service-role/AWSElasticDisasterRecoveryConversionServerRole", 
                         "arn:aws:iam::*:role/service-role/AWSElasticDisasterRecoveryRecoveryInstanceRole"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:PassedToService": "ec2.amazonaws.com"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "DRSServiceRolePolicy25"
+                }, 
                 {
-                    "Sid": "DRSServiceRolePolicy26",
-                    "Effect": "Allow",
-                    "Action": "ec2:CreateTags",
+                    "Action": "ec2:CreateTags", 
                     "Resource": [
-                        "arn:aws:ec2:*:*:launch-template/*",
-                        "arn:aws:ec2:*:*:security-group/*",
-                        "arn:aws:ec2:*:*:volume/*",
-                        "arn:aws:ec2:*:*:snapshot/*",
+                        "arn:aws:ec2:*:*:launch-template/*", 
+                        "arn:aws:ec2:*:*:security-group/*", 
+                        "arn:aws:ec2:*:*:volume/*", 
+                        "arn:aws:ec2:*:*:snapshot/*", 
                         "arn:aws:ec2:*:*:instance/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "ec2:CreateAction": [
-                                "CreateLaunchTemplate",
-                                "CreateSecurityGroup",
-                                "CreateVolume",
-                                "CreateSnapshot",
+                                "CreateLaunchTemplate", 
+                                "CreateSecurityGroup", 
+                                "CreateVolume", 
+                                "CreateSnapshot", 
                                 "RunInstances"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "DRSServiceRolePolicy26"
+                }, 
                 {
-                    "Sid": "DRSServiceRolePolicy27",
-                    "Effect": "Allow",
-                    "Action": "ec2:CreateTags",
+                    "Action": "ec2:CreateTags", 
                     "Resource": [
                         "arn:aws:ec2:*:*:image/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "aws:RequestTag/AWSElasticDisasterRecoveryManaged": "false"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "DRSServiceRolePolicy27"
+                }, 
                 {
-                    "Sid": "DRSServiceRolePolicy28",
-                    "Effect": "Allow",
-                    "Action": "cloudwatch:GetMetricData",
-                    "Resource": "*"
+                    "Action": "cloudwatch:GetMetricData", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DRSServiceRolePolicy28"
                 }
             ]
-        },
-        "VersionId": "v7",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-01-17T13:49:07+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

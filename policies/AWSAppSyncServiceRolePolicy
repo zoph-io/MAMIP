@@ -1,25 +1,25 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-01-21T19:56:53Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "xray:PutTraceSegments",
-                        "xray:PutTelemetryRecords",
-                        "xray:GetSamplingTargets",
-                        "xray:GetSamplingRules",
+                        "xray:PutTraceSegments", 
+                        "xray:PutTelemetryRecords", 
+                        "xray:GetSamplingTargets", 
+                        "xray:GetSamplingRules", 
                         "xray:GetSamplingStatisticSummaries"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
+                    ], 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-01-21T19:56:53+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

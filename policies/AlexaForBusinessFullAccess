@@ -1,22 +1,24 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-07-01T21:01:55Z", 
+        "VersionId": "v5", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "a4b:*",
+                        "a4b:*", 
                         "kms:DescribeKey"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
                     "Action": [
                         "iam:CreateServiceLinkedRole"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "iam:AWSServiceName": [
@@ -24,28 +26,28 @@
                             ]
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "iam:DeleteServiceLinkedRole",
+                        "iam:DeleteServiceLinkedRole", 
                         "iam:GetServiceLinkedRoleDeletionStatus"
-                    ],
-                    "Resource": "arn:aws:iam::*:role/aws-service-role/*a4b.amazonaws.com/AWSServiceRoleForAlexaForBusiness*"
-                },
+                    ], 
+                    "Resource": "arn:aws:iam::*:role/aws-service-role/*a4b.amazonaws.com/AWSServiceRoleForAlexaForBusiness*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "secretsmanager:GetSecretValue",
-                        "secretsmanager:DeleteSecret",
+                        "secretsmanager:GetSecretValue", 
+                        "secretsmanager:DeleteSecret", 
                         "secretsmanager:UpdateSecret"
-                    ],
-                    "Resource": "arn:aws:secretsmanager:*:*:secret:A4B*"
-                },
+                    ], 
+                    "Resource": "arn:aws:secretsmanager:*:*:secret:A4B*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "secretsmanager:CreateSecret",
-                    "Resource": "*",
+                    "Action": "secretsmanager:CreateSecret", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "secretsmanager:Name": "A4B*"
@@ -53,9 +55,7 @@
                     }
                 }
             ]
-        },
-        "VersionId": "v5",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-07-01T21:01:55+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

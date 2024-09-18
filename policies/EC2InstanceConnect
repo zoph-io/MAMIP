@@ -1,21 +1,21 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2019-06-27T18:53:34Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "EC2InstanceConnect",
                     "Action": [
-                        "ec2:DescribeInstances",
+                        "ec2:DescribeInstances", 
                         "ec2-instance-connect:SendSSHPublicKey"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "EC2InstanceConnect"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2019-06-27T18:53:34+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,62 +1,62 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-10-11T12:13:40Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "cloud9:GetUserSettings",
-                        "cloud9:UpdateUserSettings",
-                        "iam:GetUser",
+                        "cloud9:GetUserSettings", 
+                        "cloud9:UpdateUserSettings", 
+                        "iam:GetUser", 
                         "iam:ListUsers"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "cloud9:DescribeEnvironmentMemberships"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
-                            "cloud9:UserArn": "true",
-                            "cloud9:EnvironmentId": "true"
+                            "cloud9:EnvironmentId": "true", 
+                            "cloud9:UserArn": "true"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ssm:StartSession",
+                        "ssm:StartSession", 
                         "ssm:GetConnectionStatus"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:instance/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:instance/*", 
+                    "Effect": "Allow", 
                     "Condition": {
-                        "StringLike": {
-                            "ssm:resourceTag/aws:cloud9:environment": "*"
-                        },
                         "StringEquals": {
                             "aws:CalledViaFirst": "cloud9.amazonaws.com"
+                        }, 
+                        "StringLike": {
+                            "ssm:resourceTag/aws:cloud9:environment": "*"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ssm:StartSession"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ssm:*:*:document/*"
-                    ]
+                    ], 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-10-11T12:13:40+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

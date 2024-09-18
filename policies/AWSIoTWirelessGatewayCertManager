@@ -1,22 +1,22 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-12-15T15:30:48Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "IoTWirelessGatewayCertManager",
-                    "Effect": "Allow",
                     "Action": [
-                        "iot:CreateKeysAndCertificate",
-                        "iot:DescribeCertificate",
+                        "iot:CreateKeysAndCertificate", 
+                        "iot:DescribeCertificate", 
                         "iot:ListCertificates"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "IoTWirelessGatewayCertManager"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-12-15T15:30:48+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

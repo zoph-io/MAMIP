@@ -1,23 +1,23 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2017-08-07T23:07:28Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ssm:DescribeAutomationExecutions",
-                        "ssm:GetAutomationExecution",
+                        "ssm:DescribeAutomationExecutions", 
+                        "ssm:GetAutomationExecution", 
                         "ssm:SendAutomationSignal"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
+                    ], 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2017-08-07T23:07:28+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

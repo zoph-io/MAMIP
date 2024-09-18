@@ -1,65 +1,65 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2021-10-28T01:27:13Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "deepracer:Add*",
-                        "deepracer:Remove*",
-                        "deepracer:Create*",
-                        "deepracer:Perform*",
-                        "deepracer:Clone*",
-                        "deepracer:Get*",
-                        "deepracer:List*",
-                        "deepracer:Edit*",
-                        "deepracer:Start*",
-                        "deepracer:Set*",
-                        "deepracer:Update*",
-                        "deepracer:Delete*",
-                        "deepracer:Stop*",
-                        "deepracer:Import*",
-                        "deepracer:Tag*",
+                        "deepracer:Add*", 
+                        "deepracer:Remove*", 
+                        "deepracer:Create*", 
+                        "deepracer:Perform*", 
+                        "deepracer:Clone*", 
+                        "deepracer:Get*", 
+                        "deepracer:List*", 
+                        "deepracer:Edit*", 
+                        "deepracer:Start*", 
+                        "deepracer:Set*", 
+                        "deepracer:Update*", 
+                        "deepracer:Delete*", 
+                        "deepracer:Stop*", 
+                        "deepracer:Import*", 
+                        "deepracer:Tag*", 
                         "deepracer:Untag*"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "deepracer:UserToken": "false"
-                        },
+                        }, 
                         "Bool": {
                             "deepracer:MultiUser": "true"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "deepracer:GetAccountConfig",
-                        "deepracer:GetTrack",
-                        "deepracer:ListTracks",
+                        "deepracer:GetAccountConfig", 
+                        "deepracer:GetTrack", 
+                        "deepracer:ListTracks", 
                         "deepracer:TestRewardFunction"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Deny",
                     "Action": [
                         "deepracer:Admin*"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
+                    ], 
+                    "Effect": "Deny"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2021-10-28T01:27:13+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

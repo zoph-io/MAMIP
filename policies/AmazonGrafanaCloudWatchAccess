@@ -1,59 +1,59 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-03-24T22:41:53Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudwatch:DescribeAlarmsForMetric",
-                        "cloudwatch:DescribeAlarmHistory",
-                        "cloudwatch:DescribeAlarms",
-                        "cloudwatch:ListMetrics",
-                        "cloudwatch:GetMetricStatistics",
-                        "cloudwatch:GetMetricData",
+                        "cloudwatch:DescribeAlarmsForMetric", 
+                        "cloudwatch:DescribeAlarmHistory", 
+                        "cloudwatch:DescribeAlarms", 
+                        "cloudwatch:ListMetrics", 
+                        "cloudwatch:GetMetricStatistics", 
+                        "cloudwatch:GetMetricData", 
                         "cloudwatch:GetInsightRuleReport"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:DescribeLogGroups",
-                        "logs:GetLogGroupFields",
-                        "logs:StartQuery",
-                        "logs:StopQuery",
-                        "logs:GetQueryResults",
+                        "logs:DescribeLogGroups", 
+                        "logs:GetLogGroupFields", 
+                        "logs:StartQuery", 
+                        "logs:StopQuery", 
+                        "logs:GetQueryResults", 
                         "logs:GetLogEvents"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeTags",
-                        "ec2:DescribeInstances",
+                        "ec2:DescribeTags", 
+                        "ec2:DescribeInstances", 
                         "ec2:DescribeRegions"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "tag:GetResources",
-                    "Resource": "*"
-                },
+                    "Action": "tag:GetResources", 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "oam:ListSinks",
+                        "oam:ListSinks", 
                         "oam:ListAttachedLinks"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-03-24T22:41:53+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

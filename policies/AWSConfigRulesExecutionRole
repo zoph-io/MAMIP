@@ -1,31 +1,31 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2019-05-13T21:33:30Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "s3:GetObject"
-                    ],
-                    "Resource": "arn:aws:s3:::*/AWSLogs/*/Config/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:s3:::*/AWSLogs/*/Config/*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "config:Put*",
-                        "config:Get*",
-                        "config:List*",
-                        "config:Describe*",
-                        "config:BatchGet*",
+                        "config:Put*", 
+                        "config:Get*", 
+                        "config:List*", 
+                        "config:Describe*", 
+                        "config:BatchGet*", 
                         "config:Select*"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2019-05-13T21:33:30+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

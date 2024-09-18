@@ -1,61 +1,63 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-05-13T17:27:43Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
-                    "Action": "ec2:TerminateInstances",
-                    "Resource": "*",
+                    "Action": "ec2:TerminateInstances", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "ec2:ResourceTag/GameLift": "GameServerGroups"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "autoscaling:CompleteLifecycleAction",
-                        "autoscaling:ResumeProcesses",
-                        "autoscaling:EnterStandby",
-                        "autoscaling:SetInstanceProtection",
-                        "autoscaling:UpdateAutoScalingGroup",
-                        "autoscaling:SuspendProcesses",
+                        "autoscaling:CompleteLifecycleAction", 
+                        "autoscaling:ResumeProcesses", 
+                        "autoscaling:EnterStandby", 
+                        "autoscaling:SetInstanceProtection", 
+                        "autoscaling:UpdateAutoScalingGroup", 
+                        "autoscaling:SuspendProcesses", 
                         "autoscaling:DetachInstances"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceTag/GameLift": "GameServerGroups"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeImages",
-                        "ec2:DescribeInstances",
-                        "autoscaling:DescribeAutoScalingGroups",
-                        "ec2:DescribeLaunchTemplateVersions",
+                        "ec2:DescribeImages", 
+                        "ec2:DescribeInstances", 
+                        "autoscaling:DescribeAutoScalingGroups", 
+                        "ec2:DescribeLaunchTemplateVersions", 
                         "ec2:DescribeSubnets"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "sns:Publish",
+                    "Action": "sns:Publish", 
                     "Resource": [
-                        "arn:*:sns:*:*:ActivatingLifecycleHookTopic-*",
+                        "arn:*:sns:*:*:ActivatingLifecycleHookTopic-*", 
                         "arn:*:sns:*:*:TerminatingLifecycleHookTopic-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "cloudwatch:PutMetricData"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "cloudwatch:namespace": "AWS/GameLift"
@@ -63,9 +65,7 @@
                     }
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-05-13T17:27:43+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

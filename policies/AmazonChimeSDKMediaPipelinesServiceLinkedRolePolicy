@@ -1,57 +1,57 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-12-08T19:14:31Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AllowPutMetricsForChimeSDKNamespace",
-                    "Effect": "Allow",
-                    "Action": "cloudwatch:PutMetricData",
-                    "Resource": "*",
+                    "Action": "cloudwatch:PutMetricData", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "cloudwatch:namespace": "AWS/ChimeSDK"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "AllowPutMetricsForChimeSDKNamespace"
+                }, 
                 {
-                    "Sid": "AllowKinesisVideoStreamsAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "kinesisvideo:GetDataEndpoint",
-                        "kinesisvideo:PutMedia",
-                        "kinesisvideo:UpdateDataRetention",
-                        "kinesisvideo:DescribeStream",
+                        "kinesisvideo:GetDataEndpoint", 
+                        "kinesisvideo:PutMedia", 
+                        "kinesisvideo:UpdateDataRetention", 
+                        "kinesisvideo:DescribeStream", 
                         "kinesisvideo:CreateStream"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:kinesisvideo:*:*:stream/ChimeMediaPipelines-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowKinesisVideoStreamsAccess"
+                }, 
                 {
-                    "Sid": "AllowKinesisVideoStreamsListAccess",
-                    "Effect": "Allow",
                     "Action": [
                         "kinesisvideo:ListStreams"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowKinesisVideoStreamsListAccess"
+                }, 
                 {
-                    "Sid": "AllowChimeMeetingAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "chime:GetMeeting",
-                        "chime:CreateAttendee",
+                        "chime:GetMeeting", 
+                        "chime:CreateAttendee", 
                         "chime:DeleteAttendee"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowChimeMeetingAccess"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-12-08T19:14:31+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

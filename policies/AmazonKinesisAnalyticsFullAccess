@@ -1,63 +1,63 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2016-09-21T19:01:14Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
-                    "Action": "kinesisanalytics:*",
-                    "Resource": "*"
-                },
+                    "Action": "kinesisanalytics:*", 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "kinesis:CreateStream",
-                        "kinesis:DeleteStream",
-                        "kinesis:DescribeStream",
-                        "kinesis:ListStreams",
-                        "kinesis:PutRecord",
+                        "kinesis:CreateStream", 
+                        "kinesis:DeleteStream", 
+                        "kinesis:DescribeStream", 
+                        "kinesis:ListStreams", 
+                        "kinesis:PutRecord", 
                         "kinesis:PutRecords"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "firehose:DescribeDeliveryStream",
+                        "firehose:DescribeDeliveryStream", 
                         "firehose:ListDeliveryStreams"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudwatch:GetMetricStatistics",
+                        "cloudwatch:GetMetricStatistics", 
                         "cloudwatch:ListMetrics"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "logs:GetLogEvents",
-                    "Resource": "*"
-                },
+                    "Action": "logs:GetLogEvents", 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "iam:ListPolicyVersions",
+                        "iam:ListPolicyVersions", 
                         "iam:ListRoles"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "iam:PassRole",
-                    "Resource": "arn:aws:iam::*:role/service-role/kinesis-analytics*"
+                    "Action": "iam:PassRole", 
+                    "Resource": "arn:aws:iam::*:role/service-role/kinesis-analytics*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2016-09-21T19:01:14+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

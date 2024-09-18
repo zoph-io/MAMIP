@@ -1,89 +1,89 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-11-27T03:46:47Z", 
+        "VersionId": "v14", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "SecurityHubServiceRolePermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudtrail:DescribeTrails",
-                        "cloudtrail:GetTrailStatus",
-                        "cloudtrail:GetEventSelectors",
-                        "cloudwatch:DescribeAlarms",
-                        "cloudwatch:DescribeAlarmsForMetric",
-                        "logs:DescribeMetricFilters",
-                        "sns:ListSubscriptionsByTopic",
-                        "config:DescribeConfigurationRecorders",
-                        "config:DescribeConfigurationRecorderStatus",
-                        "config:DescribeConfigRules",
-                        "config:DescribeConfigRuleEvaluationStatus",
-                        "config:BatchGetResourceConfig",
-                        "config:SelectResourceConfig",
-                        "iam:GenerateCredentialReport",
-                        "organizations:ListAccounts",
-                        "config:PutEvaluations",
-                        "tag:GetResources",
-                        "iam:GetCredentialReport",
-                        "organizations:DescribeAccount",
-                        "organizations:DescribeOrganization",
-                        "organizations:ListChildren",
-                        "organizations:ListAWSServiceAccessForOrganization",
-                        "organizations:DescribeOrganizationalUnit",
-                        "securityhub:BatchDisableStandards",
-                        "securityhub:BatchEnableStandards",
-                        "securityhub:BatchUpdateStandardsControlAssociations",
-                        "securityhub:BatchGetSecurityControls",
-                        "securityhub:BatchGetStandardsControlAssociations",
-                        "securityhub:CreateMembers",
-                        "securityhub:DeleteMembers",
-                        "securityhub:DescribeHub",
-                        "securityhub:DescribeOrganizationConfiguration",
-                        "securityhub:DescribeStandards",
-                        "securityhub:DescribeStandardsControls",
-                        "securityhub:DisassociateFromAdministratorAccount",
-                        "securityhub:DisassociateMembers",
-                        "securityhub:DisableSecurityHub",
-                        "securityhub:EnableSecurityHub",
-                        "securityhub:GetEnabledStandards",
-                        "securityhub:ListStandardsControlAssociations",
-                        "securityhub:ListSecurityControlDefinitions",
-                        "securityhub:UpdateOrganizationConfiguration",
-                        "securityhub:UpdateSecurityControl",
-                        "securityhub:UpdateSecurityHubConfiguration",
+                        "cloudtrail:DescribeTrails", 
+                        "cloudtrail:GetTrailStatus", 
+                        "cloudtrail:GetEventSelectors", 
+                        "cloudwatch:DescribeAlarms", 
+                        "cloudwatch:DescribeAlarmsForMetric", 
+                        "logs:DescribeMetricFilters", 
+                        "sns:ListSubscriptionsByTopic", 
+                        "config:DescribeConfigurationRecorders", 
+                        "config:DescribeConfigurationRecorderStatus", 
+                        "config:DescribeConfigRules", 
+                        "config:DescribeConfigRuleEvaluationStatus", 
+                        "config:BatchGetResourceConfig", 
+                        "config:SelectResourceConfig", 
+                        "iam:GenerateCredentialReport", 
+                        "organizations:ListAccounts", 
+                        "config:PutEvaluations", 
+                        "tag:GetResources", 
+                        "iam:GetCredentialReport", 
+                        "organizations:DescribeAccount", 
+                        "organizations:DescribeOrganization", 
+                        "organizations:ListChildren", 
+                        "organizations:ListAWSServiceAccessForOrganization", 
+                        "organizations:DescribeOrganizationalUnit", 
+                        "securityhub:BatchDisableStandards", 
+                        "securityhub:BatchEnableStandards", 
+                        "securityhub:BatchUpdateStandardsControlAssociations", 
+                        "securityhub:BatchGetSecurityControls", 
+                        "securityhub:BatchGetStandardsControlAssociations", 
+                        "securityhub:CreateMembers", 
+                        "securityhub:DeleteMembers", 
+                        "securityhub:DescribeHub", 
+                        "securityhub:DescribeOrganizationConfiguration", 
+                        "securityhub:DescribeStandards", 
+                        "securityhub:DescribeStandardsControls", 
+                        "securityhub:DisassociateFromAdministratorAccount", 
+                        "securityhub:DisassociateMembers", 
+                        "securityhub:DisableSecurityHub", 
+                        "securityhub:EnableSecurityHub", 
+                        "securityhub:GetEnabledStandards", 
+                        "securityhub:ListStandardsControlAssociations", 
+                        "securityhub:ListSecurityControlDefinitions", 
+                        "securityhub:UpdateOrganizationConfiguration", 
+                        "securityhub:UpdateSecurityControl", 
+                        "securityhub:UpdateSecurityHubConfiguration", 
                         "securityhub:UpdateStandardsControl"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "SecurityHubServiceRolePermissions"
+                }, 
                 {
-                    "Sid": "SecurityHubServiceRoleConfigPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "config:PutConfigRule",
-                        "config:DeleteConfigRule",
+                        "config:PutConfigRule", 
+                        "config:DeleteConfigRule", 
                         "config:GetComplianceDetailsByConfigRule"
-                    ],
-                    "Resource": "arn:aws:config:*:*:config-rule/aws-service-rule/*securityhub*"
-                },
+                    ], 
+                    "Resource": "arn:aws:config:*:*:config-rule/aws-service-rule/*securityhub*", 
+                    "Effect": "Allow", 
+                    "Sid": "SecurityHubServiceRoleConfigPermissions"
+                }, 
                 {
-                    "Sid": "SecurityHubServiceRoleOrganizationsPermissions",
-                    "Effect": "Allow",
                     "Action": [
                         "organizations:ListDelegatedAdministrators"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "organizations:ServicePrincipal": [
                                 "securityhub.amazonaws.com"
                             ]
                         }
-                    }
+                    }, 
+                    "Sid": "SecurityHubServiceRoleOrganizationsPermissions"
                 }
             ]
-        },
-        "VersionId": "v14",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-11-27T03:46:47+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

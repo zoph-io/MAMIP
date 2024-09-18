@@ -1,103 +1,103 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-10-11T13:24:10Z", 
+        "VersionId": "v6", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "cloud9:UpdateUserSettings",
-                        "cloud9:GetUserSettings",
-                        "iam:GetUser",
-                        "iam:ListUsers",
-                        "ec2:DescribeVpcs",
-                        "ec2:DescribeSubnets",
-                        "ec2:DescribeInstanceTypeOfferings",
+                        "cloud9:UpdateUserSettings", 
+                        "cloud9:GetUserSettings", 
+                        "iam:GetUser", 
+                        "iam:ListUsers", 
+                        "ec2:DescribeVpcs", 
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeInstanceTypeOfferings", 
                         "ec2:DescribeRouteTables"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "cloud9:CreateEnvironmentEC2",
+                        "cloud9:CreateEnvironmentEC2", 
                         "cloud9:CreateEnvironmentSSH"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "cloud9:OwnerArn": "true"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "cloud9:GetUserPublicKey"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "cloud9:UserArn": "true"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "cloud9:DescribeEnvironmentMemberships"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
-                            "cloud9:UserArn": "true",
-                            "cloud9:EnvironmentId": "true"
+                            "cloud9:EnvironmentId": "true", 
+                            "cloud9:UserArn": "true"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "iam:CreateServiceLinkedRole"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "iam:AWSServiceName": "cloud9.amazonaws.com"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ssm:StartSession",
+                        "ssm:StartSession", 
                         "ssm:GetConnectionStatus"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:instance/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:instance/*", 
+                    "Effect": "Allow", 
                     "Condition": {
-                        "StringLike": {
-                            "ssm:resourceTag/aws:cloud9:environment": "*"
-                        },
                         "StringEquals": {
                             "aws:CalledViaFirst": "cloud9.amazonaws.com"
+                        }, 
+                        "StringLike": {
+                            "ssm:resourceTag/aws:cloud9:environment": "*"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ssm:StartSession"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ssm:*:*:document/*"
-                    ]
+                    ], 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v6",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-10-11T13:24:10+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

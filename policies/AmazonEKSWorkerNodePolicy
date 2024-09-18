@@ -1,29 +1,29 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-11-27T00:06:13Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "WorkerNodePermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeInstances",
-                        "ec2:DescribeInstanceTypes",
-                        "ec2:DescribeRouteTables",
-                        "ec2:DescribeSecurityGroups",
-                        "ec2:DescribeSubnets",
-                        "ec2:DescribeVolumes",
-                        "ec2:DescribeVolumesModifications",
-                        "ec2:DescribeVpcs",
-                        "eks:DescribeCluster",
+                        "ec2:DescribeInstances", 
+                        "ec2:DescribeInstanceTypes", 
+                        "ec2:DescribeRouteTables", 
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeVolumes", 
+                        "ec2:DescribeVolumesModifications", 
+                        "ec2:DescribeVpcs", 
+                        "eks:DescribeCluster", 
                         "eks-auth:AssumeRoleForPodIdentity"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "WorkerNodePermissions"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-11-27T00:06:13+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

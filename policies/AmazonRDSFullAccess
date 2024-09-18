@@ -1,91 +1,91 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-08-17T23:00:17Z", 
+        "VersionId": "v14", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "rds:*",
-                        "application-autoscaling:DeleteScalingPolicy",
-                        "application-autoscaling:DeregisterScalableTarget",
-                        "application-autoscaling:DescribeScalableTargets",
-                        "application-autoscaling:DescribeScalingActivities",
-                        "application-autoscaling:DescribeScalingPolicies",
-                        "application-autoscaling:PutScalingPolicy",
-                        "application-autoscaling:RegisterScalableTarget",
-                        "cloudwatch:DescribeAlarms",
-                        "cloudwatch:GetMetricStatistics",
-                        "cloudwatch:PutMetricAlarm",
-                        "cloudwatch:DeleteAlarms",
-                        "cloudwatch:ListMetrics",
-                        "cloudwatch:GetMetricData",
-                        "ec2:DescribeAccountAttributes",
-                        "ec2:DescribeAvailabilityZones",
-                        "ec2:DescribeCoipPools",
-                        "ec2:DescribeInternetGateways",
-                        "ec2:DescribeLocalGatewayRouteTablePermissions",
-                        "ec2:DescribeLocalGatewayRouteTables",
-                        "ec2:DescribeLocalGatewayRouteTableVpcAssociations",
-                        "ec2:DescribeLocalGateways",
-                        "ec2:DescribeSecurityGroups",
-                        "ec2:DescribeSubnets",
-                        "ec2:DescribeVpcAttribute",
-                        "ec2:DescribeVpcs",
-                        "ec2:GetCoipPoolUsage",
-                        "sns:ListSubscriptions",
-                        "sns:ListTopics",
-                        "sns:Publish",
-                        "logs:DescribeLogStreams",
-                        "logs:GetLogEvents",
-                        "outposts:GetOutpostInstanceTypes",
+                        "rds:*", 
+                        "application-autoscaling:DeleteScalingPolicy", 
+                        "application-autoscaling:DeregisterScalableTarget", 
+                        "application-autoscaling:DescribeScalableTargets", 
+                        "application-autoscaling:DescribeScalingActivities", 
+                        "application-autoscaling:DescribeScalingPolicies", 
+                        "application-autoscaling:PutScalingPolicy", 
+                        "application-autoscaling:RegisterScalableTarget", 
+                        "cloudwatch:DescribeAlarms", 
+                        "cloudwatch:GetMetricStatistics", 
+                        "cloudwatch:PutMetricAlarm", 
+                        "cloudwatch:DeleteAlarms", 
+                        "cloudwatch:ListMetrics", 
+                        "cloudwatch:GetMetricData", 
+                        "ec2:DescribeAccountAttributes", 
+                        "ec2:DescribeAvailabilityZones", 
+                        "ec2:DescribeCoipPools", 
+                        "ec2:DescribeInternetGateways", 
+                        "ec2:DescribeLocalGatewayRouteTablePermissions", 
+                        "ec2:DescribeLocalGatewayRouteTables", 
+                        "ec2:DescribeLocalGatewayRouteTableVpcAssociations", 
+                        "ec2:DescribeLocalGateways", 
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeVpcAttribute", 
+                        "ec2:DescribeVpcs", 
+                        "ec2:GetCoipPoolUsage", 
+                        "sns:ListSubscriptions", 
+                        "sns:ListTopics", 
+                        "sns:Publish", 
+                        "logs:DescribeLogStreams", 
+                        "logs:GetLogEvents", 
+                        "outposts:GetOutpostInstanceTypes", 
                         "devops-guru:GetResourceCollection"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "pi:*",
+                    "Action": "pi:*", 
                     "Resource": [
-                        "arn:aws:pi:*:*:metrics/rds/*",
+                        "arn:aws:pi:*:*:metrics/rds/*", 
                         "arn:aws:pi:*:*:perf-reports/rds/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "iam:CreateServiceLinkedRole",
-                    "Resource": "*",
+                    "Action": "iam:CreateServiceLinkedRole", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "iam:AWSServiceName": [
-                                "rds.amazonaws.com",
+                                "rds.amazonaws.com", 
                                 "rds.application-autoscaling.amazonaws.com"
                             ]
                         }
                     }
-                },
+                }, 
                 {
                     "Action": [
-                        "devops-guru:SearchInsights",
+                        "devops-guru:SearchInsights", 
                         "devops-guru:ListAnomaliesForInsight"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
+                        "Null": {
+                            "devops-guru:ServiceNames": "false"
+                        }, 
                         "ForAllValues:StringEquals": {
                             "devops-guru:ServiceNames": [
                                 "RDS"
                             ]
-                        },
-                        "Null": {
-                            "devops-guru:ServiceNames": "false"
                         }
                     }
                 }
             ]
-        },
-        "VersionId": "v14",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-08-17T23:00:17+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

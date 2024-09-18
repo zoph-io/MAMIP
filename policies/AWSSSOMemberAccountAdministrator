@@ -1,56 +1,56 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-04-26T00:31:10Z", 
+        "VersionId": "v8", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AWSSSOMemberAccountAdministrator",
-                    "Effect": "Allow",
                     "Action": [
-                        "ds:DescribeDirectories",
-                        "ds:AuthorizeApplication",
-                        "ds:UnauthorizeApplication",
-                        "ds:DescribeTrusts",
-                        "iam:ListPolicies",
-                        "organizations:EnableAWSServiceAccess",
-                        "organizations:DescribeOrganization",
-                        "organizations:DescribeAccount",
-                        "organizations:ListRoots",
-                        "organizations:ListAccounts",
-                        "organizations:ListAccountsForParent",
-                        "organizations:ListParents",
-                        "organizations:ListChildren",
-                        "organizations:ListOrganizationalUnitsForParent",
-                        "organizations:ListDelegatedAdministrators",
-                        "sso:*",
-                        "sso-directory:*",
-                        "identitystore:*",
-                        "identitystore-auth:*",
-                        "ds:CreateAlias",
-                        "access-analyzer:ValidatePolicy",
-                        "signin:CreateTrustedIdentityPropagationApplicationForConsole",
+                        "ds:DescribeDirectories", 
+                        "ds:AuthorizeApplication", 
+                        "ds:UnauthorizeApplication", 
+                        "ds:DescribeTrusts", 
+                        "iam:ListPolicies", 
+                        "organizations:EnableAWSServiceAccess", 
+                        "organizations:DescribeOrganization", 
+                        "organizations:DescribeAccount", 
+                        "organizations:ListRoots", 
+                        "organizations:ListAccounts", 
+                        "organizations:ListAccountsForParent", 
+                        "organizations:ListParents", 
+                        "organizations:ListChildren", 
+                        "organizations:ListOrganizationalUnitsForParent", 
+                        "organizations:ListDelegatedAdministrators", 
+                        "sso:*", 
+                        "sso-directory:*", 
+                        "identitystore:*", 
+                        "identitystore-auth:*", 
+                        "ds:CreateAlias", 
+                        "access-analyzer:ValidatePolicy", 
+                        "signin:CreateTrustedIdentityPropagationApplicationForConsole", 
                         "signin:ListTrustedIdentityPropagationApplicationsForConsole"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AWSSSOMemberAccountAdministrator"
+                }, 
                 {
-                    "Sid": "AWSSSOManageDelegatedAdministrator",
-                    "Effect": "Allow",
                     "Action": [
-                        "organizations:RegisterDelegatedAdministrator",
+                        "organizations:RegisterDelegatedAdministrator", 
                         "organizations:DeregisterDelegatedAdministrator"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "organizations:ServicePrincipal": "sso.amazonaws.com"
                         }
-                    }
+                    }, 
+                    "Sid": "AWSSSOManageDelegatedAdministrator"
                 }
             ]
-        },
-        "VersionId": "v8",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-04-26T00:31:10+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

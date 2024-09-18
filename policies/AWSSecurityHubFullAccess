@@ -1,40 +1,40 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-04-23T18:35:45Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "SecurityHubAllowAll",
-                    "Effect": "Allow",
-                    "Action": "securityhub:*",
-                    "Resource": "*"
-                },
+                    "Action": "securityhub:*", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "SecurityHubAllowAll"
+                }, 
                 {
-                    "Sid": "SecurityHubServiceLinkedRole",
-                    "Effect": "Allow",
-                    "Action": "iam:CreateServiceLinkedRole",
-                    "Resource": "*",
+                    "Action": "iam:CreateServiceLinkedRole", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "iam:AWSServiceName": "securityhub.amazonaws.com"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "SecurityHubServiceLinkedRole"
+                }, 
                 {
-                    "Sid": "OtherServicePermission",
-                    "Effect": "Allow",
                     "Action": [
-                        "guardduty:GetDetector",
-                        "guardduty:ListDetectors",
-                        "inspector2:BatchGetAccountStatus",
+                        "guardduty:GetDetector", 
+                        "guardduty:ListDetectors", 
+                        "inspector2:BatchGetAccountStatus", 
                         "pricing:GetProducts"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "OtherServicePermission"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-04-23T18:35:45+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

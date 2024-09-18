@@ -1,49 +1,49 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2017-01-12T19:48:53Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeVpcs",
-                        "ec2:DescribeVpcClassicLink",
-                        "ec2:DescribeAvailabilityZones",
+                        "ec2:DescribeVpcs", 
+                        "ec2:DescribeVpcClassicLink", 
+                        "ec2:DescribeAvailabilityZones", 
                         "ec2:DescribeSubnets"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "elasticloadbalancing:Describe*",
-                    "Resource": "*"
-                },
+                    "Action": "elasticloadbalancing:Describe*", 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudwatch:ListMetrics",
-                        "cloudwatch:GetMetricStatistics",
+                        "cloudwatch:ListMetrics", 
+                        "cloudwatch:GetMetricStatistics", 
                         "cloudwatch:Describe*"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "autoscaling:Describe*",
-                    "Resource": "*"
-                },
+                    "Action": "autoscaling:Describe*", 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "sns:ListSubscriptions",
+                        "sns:ListSubscriptions", 
                         "sns:ListTopics"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2017-01-12T19:48:53+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

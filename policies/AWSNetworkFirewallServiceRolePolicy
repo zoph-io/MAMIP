@@ -1,59 +1,61 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-03-30T17:19:09Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": [
-                        "ec2:DescribeSubnets",
-                        "ec2:DescribeVpcs",
-                        "ec2:CreateVpcEndpoint",
-                        "ec2:DescribeVpcEndpoints",
-                        "ec2:DescribeInstances",
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeVpcs", 
+                        "ec2:CreateVpcEndpoint", 
+                        "ec2:DescribeVpcEndpoints", 
+                        "ec2:DescribeInstances", 
                         "ec2:DescribeNetworkInterfaces"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "acm:DescribeCertificate",
-                    "Resource": "*"
-                },
+                    "Action": "acm:DescribeCertificate", 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "resource-groups:ListGroupResources",
-                    "Resource": "*"
-                },
+                    "Action": "resource-groups:ListGroupResources", 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "tag:GetResources",
-                    "Resource": "*",
+                    "Action": "tag:GetResources", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:CalledViaLast": "resource-groups.amazonaws.com"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateTags"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:vpc-endpoint/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:vpc-endpoint/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
-                            "ec2:CreateAction": "CreateVpcEndpoint",
-                            "aws:RequestTag/AWSNetworkFirewallManaged": "true"
+                            "aws:RequestTag/AWSNetworkFirewallManaged": "true", 
+                            "ec2:CreateAction": "CreateVpcEndpoint"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:DeleteVpcEndpoints"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceTag/AWSNetworkFirewallManaged": "true"
@@ -61,9 +63,7 @@
                     }
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-03-30T17:19:09+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

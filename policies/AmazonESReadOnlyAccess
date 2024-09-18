@@ -1,21 +1,21 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2018-10-03T03:32:56Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": [
-                        "es:Describe*",
-                        "es:List*",
+                        "es:Describe*", 
+                        "es:List*", 
                         "es:Get*"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2018-10-03T03:32:56+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

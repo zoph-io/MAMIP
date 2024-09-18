@@ -1,27 +1,27 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2021-10-28T01:27:13Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "DeepRacerAdminAccessStatement",
-                    "Effect": "Allow",
                     "Action": [
                         "deepracer:*"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "deepracer:UserToken": "true"
                         }
-                    }
+                    }, 
+                    "Sid": "DeepRacerAdminAccessStatement"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2021-10-28T01:27:13+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,30 +1,30 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2019-10-08T23:53:11Z", 
+        "VersionId": "v4", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "s3:GetObject"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:s3:::s3-analytics-export-shared-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
                     "Action": [
-                        "s3:GetAnalyticsConfiguration",
-                        "s3:ListAllMyBuckets",
+                        "s3:GetAnalyticsConfiguration", 
+                        "s3:ListAllMyBuckets", 
                         "s3:GetBucketLocation"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v4",
-        "IsDefaultVersion": true,
-        "CreateDate": "2019-10-08T23:53:11+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

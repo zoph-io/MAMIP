@@ -1,22 +1,22 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-02-06T18:37:31Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "LakeFormationDataAccessServiceRolePolicy",
-                    "Effect": "Allow",
                     "Action": [
                         "s3:ListAllMyBuckets"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:s3:::*"
-                    ]
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "LakeFormationDataAccessServiceRolePolicy"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-02-06T18:37:31+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

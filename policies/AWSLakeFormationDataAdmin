@@ -1,58 +1,58 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-03-22T18:27:42Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AWSLakeFormationDataAdminAllow",
-                    "Effect": "Allow",
                     "Action": [
-                        "lakeformation:*",
-                        "cloudtrail:DescribeTrails",
-                        "cloudtrail:LookupEvents",
-                        "glue:GetDatabase",
-                        "glue:GetDatabases",
-                        "glue:CreateDatabase",
-                        "glue:UpdateDatabase",
-                        "glue:DeleteDatabase",
-                        "glue:GetConnections",
-                        "glue:SearchTables",
-                        "glue:GetTable",
-                        "glue:CreateTable",
-                        "glue:UpdateTable",
-                        "glue:DeleteTable",
-                        "glue:GetTableVersions",
-                        "glue:GetPartitions",
-                        "glue:GetTables",
-                        "glue:ListWorkflows",
-                        "glue:BatchGetWorkflows",
-                        "glue:DeleteWorkflow",
-                        "glue:GetWorkflowRuns",
-                        "glue:StartWorkflowRun",
-                        "glue:GetWorkflow",
-                        "s3:ListBucket",
-                        "s3:GetBucketLocation",
-                        "s3:ListAllMyBuckets",
-                        "s3:GetBucketAcl",
-                        "iam:ListUsers",
-                        "iam:ListRoles",
-                        "iam:GetRole",
+                        "lakeformation:*", 
+                        "cloudtrail:DescribeTrails", 
+                        "cloudtrail:LookupEvents", 
+                        "glue:GetDatabase", 
+                        "glue:GetDatabases", 
+                        "glue:CreateDatabase", 
+                        "glue:UpdateDatabase", 
+                        "glue:DeleteDatabase", 
+                        "glue:GetConnections", 
+                        "glue:SearchTables", 
+                        "glue:GetTable", 
+                        "glue:CreateTable", 
+                        "glue:UpdateTable", 
+                        "glue:DeleteTable", 
+                        "glue:GetTableVersions", 
+                        "glue:GetPartitions", 
+                        "glue:GetTables", 
+                        "glue:ListWorkflows", 
+                        "glue:BatchGetWorkflows", 
+                        "glue:DeleteWorkflow", 
+                        "glue:GetWorkflowRuns", 
+                        "glue:StartWorkflowRun", 
+                        "glue:GetWorkflow", 
+                        "s3:ListBucket", 
+                        "s3:GetBucketLocation", 
+                        "s3:ListAllMyBuckets", 
+                        "s3:GetBucketAcl", 
+                        "iam:ListUsers", 
+                        "iam:ListRoles", 
+                        "iam:GetRole", 
                         "iam:GetRolePolicy"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AWSLakeFormationDataAdminAllow"
+                }, 
                 {
-                    "Sid": "AWSLakeFormationDataAdminDeny",
-                    "Effect": "Deny",
                     "Action": [
                         "lakeformation:PutDataLakeSettings"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Deny", 
+                    "Sid": "AWSLakeFormationDataAdminDeny"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-03-22T18:27:42+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,101 +1,101 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-04-01T16:21:02Z", 
+        "VersionId": "v6", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "MHSRAllowS3Resources",
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:GetObject",
-                        "s3:PutObject",
-                        "s3:GetBucketAcl",
-                        "s3:CreateBucket",
-                        "s3:PutEncryptionConfiguration",
-                        "s3:PutBucketPublicAccessBlock",
-                        "s3:PutBucketVersioning",
-                        "s3:PutLifecycleConfiguration",
-                        "s3:ListBucket",
+                        "s3:GetObject", 
+                        "s3:PutObject", 
+                        "s3:GetBucketAcl", 
+                        "s3:CreateBucket", 
+                        "s3:PutEncryptionConfiguration", 
+                        "s3:PutBucketPublicAccessBlock", 
+                        "s3:PutBucketVersioning", 
+                        "s3:PutLifecycleConfiguration", 
+                        "s3:ListBucket", 
                         "s3:GetBucketLocation"
-                    ],
-                    "Resource": "arn:aws:s3:::migrationhub-strategy-*",
+                    ], 
+                    "Resource": "arn:aws:s3:::migrationhub-strategy-*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "MHSRAllowS3Resources"
+                }, 
                 {
-                    "Sid": "MHSRAllowS3ListBucket",
-                    "Effect": "Allow",
                     "Action": [
                         "s3:ListAllMyBuckets"
-                    ],
-                    "Resource": "arn:aws:s3:::*",
+                    ], 
+                    "Resource": "arn:aws:s3:::*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "MHSRAllowS3ListBucket"
+                }, 
                 {
-                    "Sid": "MHSRAllowMetricsAndLogs",
-                    "Effect": "Allow",
                     "Action": [
-                        "application-transformation:PutMetricData",
-                        "application-transformation:PutLogData",
-                        "application-transformation:StartPortingCompatibilityAssessment",
-                        "application-transformation:GetPortingCompatibilityAssessment",
-                        "application-transformation:StartPortingRecommendationAssessment",
+                        "application-transformation:PutMetricData", 
+                        "application-transformation:PutLogData", 
+                        "application-transformation:StartPortingCompatibilityAssessment", 
+                        "application-transformation:GetPortingCompatibilityAssessment", 
+                        "application-transformation:StartPortingRecommendationAssessment", 
                         "application-transformation:GetPortingRecommendationAssessment"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "MHSRAllowMetricsAndLogs"
+                }, 
                 {
-                    "Sid": "MHSRAllowExecuteAPI",
-                    "Effect": "Allow",
                     "Action": [
-                        "execute-api:Invoke",
+                        "execute-api:Invoke", 
                         "execute-api:ManageConnections"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:execute-api:*:*:*/prod/*/put-log-data",
+                        "arn:aws:execute-api:*:*:*/prod/*/put-log-data", 
                         "arn:aws:execute-api:*:*:*/prod/*/put-metric-data"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "MHSRAllowExecuteAPI"
+                }, 
                 {
-                    "Sid": "MHSRAllowCollectorAPI",
-                    "Effect": "Allow",
                     "Action": [
-                        "migrationhub-strategy:RegisterCollector",
-                        "migrationhub-strategy:GetAntiPattern",
-                        "migrationhub-strategy:GetMessage",
-                        "migrationhub-strategy:SendMessage",
-                        "migrationhub-strategy:ListAntiPatterns",
-                        "migrationhub-strategy:ListJarArtifacts",
-                        "migrationhub-strategy:UpdateCollectorConfiguration",
-                        "migrationhub-strategy:PutLogData",
+                        "migrationhub-strategy:RegisterCollector", 
+                        "migrationhub-strategy:GetAntiPattern", 
+                        "migrationhub-strategy:GetMessage", 
+                        "migrationhub-strategy:SendMessage", 
+                        "migrationhub-strategy:ListAntiPatterns", 
+                        "migrationhub-strategy:ListJarArtifacts", 
+                        "migrationhub-strategy:UpdateCollectorConfiguration", 
+                        "migrationhub-strategy:PutLogData", 
                         "migrationhub-strategy:PutMetricData"
-                    ],
-                    "Resource": "arn:aws:migrationhub-strategy:*:*:*"
-                },
+                    ], 
+                    "Resource": "arn:aws:migrationhub-strategy:*:*:*", 
+                    "Effect": "Allow", 
+                    "Sid": "MHSRAllowCollectorAPI"
+                }, 
                 {
-                    "Sid": "MHSRAllowSecretsManager",
-                    "Effect": "Allow",
                     "Action": [
                         "secretsmanager:GetSecretValue"
-                    ],
-                    "Resource": "arn:aws:secretsmanager:*:*:secret:migrationhub-strategy-*",
+                    ], 
+                    "Resource": "arn:aws:secretsmanager:*:*:secret:migrationhub-strategy-*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
-                    }
+                    }, 
+                    "Sid": "MHSRAllowSecretsManager"
                 }
             ]
-        },
-        "VersionId": "v6",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-04-01T16:21:02+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

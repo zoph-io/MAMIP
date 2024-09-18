@@ -1,44 +1,44 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-04-02T16:20:09Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": [
-                        "codedeploy:Batch*",
-                        "codedeploy:Get*",
+                        "codedeploy:Batch*", 
+                        "codedeploy:Get*", 
                         "codedeploy:List*"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Sid": "CodeStarNotificationsPowerUserAccess",
-                    "Effect": "Allow",
                     "Action": [
                         "codestar-notifications:DescribeNotificationRule"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "codestar-notifications:NotificationsForResource": "arn:aws:codedeploy:*"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "CodeStarNotificationsPowerUserAccess"
+                }, 
                 {
-                    "Sid": "CodeStarNotificationsListAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "codestar-notifications:ListNotificationRules",
-                        "codestar-notifications:ListEventTypes",
+                        "codestar-notifications:ListNotificationRules", 
+                        "codestar-notifications:ListEventTypes", 
                         "codestar-notifications:ListTargets"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "CodeStarNotificationsListAccess"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-04-02T16:20:09+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,25 +1,25 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-11-28T05:00:39Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "InstallerAccessStatementID",
-                    "Effect": "Allow",
                     "Action": [
-                        "one:CreateDeviceActivationQrCode",
-                        "one:GetDeviceInstance",
-                        "one:GetSite",
-                        "one:GetSiteAddress",
-                        "one:ListDeviceInstances",
+                        "one:CreateDeviceActivationQrCode", 
+                        "one:GetDeviceInstance", 
+                        "one:GetSite", 
+                        "one:GetSiteAddress", 
+                        "one:ListDeviceInstances", 
                         "one:ListSites"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "InstallerAccessStatementID"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-11-28T05:00:39+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

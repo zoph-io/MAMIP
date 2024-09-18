@@ -1,58 +1,58 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2019-10-25T18:53:38Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudformation:DescribeStackEvents",
-                        "cloudformation:DescribeStacks",
-                        "cloudformation:DescribeChangeSet",
-                        "cloudformation:ListChangeSets",
-                        "cloudformation:ListStackResources",
-                        "cloudformation:DescribeStackSet",
-                        "cloudformation:DescribeStackInstance",
-                        "cloudformation:DescribeStackSetOperation",
-                        "cloudformation:ListStackInstances",
-                        "cloudformation:ListStackSetOperations",
+                        "cloudformation:DescribeStackEvents", 
+                        "cloudformation:DescribeStacks", 
+                        "cloudformation:DescribeChangeSet", 
+                        "cloudformation:ListChangeSets", 
+                        "cloudformation:ListStackResources", 
+                        "cloudformation:DescribeStackSet", 
+                        "cloudformation:DescribeStackInstance", 
+                        "cloudformation:DescribeStackSetOperation", 
+                        "cloudformation:ListStackInstances", 
+                        "cloudformation:ListStackSetOperations", 
                         "cloudformation:ListStackSetOperationResults"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:cloudformation:*:*:stack/SC-*",
-                        "arn:aws:cloudformation:*:*:stack/StackSet-SC-*",
-                        "arn:aws:cloudformation:*:*:changeSet/SC-*",
+                        "arn:aws:cloudformation:*:*:stack/SC-*", 
+                        "arn:aws:cloudformation:*:*:stack/StackSet-SC-*", 
+                        "arn:aws:cloudformation:*:*:changeSet/SC-*", 
                         "arn:aws:cloudformation:*:*:stackset/SC-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudformation:GetTemplateSummary",
-                        "iam:GetGroup",
-                        "iam:GetRole",
-                        "iam:GetUser",
-                        "iam:ListGroups",
-                        "iam:ListRoles",
-                        "iam:ListUsers",
-                        "servicecatalog:Get*",
-                        "servicecatalog:List*",
-                        "servicecatalog:Describe*",
-                        "servicecatalog:ScanProvisionedProducts",
-                        "servicecatalog:Search*",
-                        "ssm:DescribeDocument",
-                        "ssm:GetAutomationExecution",
-                        "ssm:ListDocuments",
-                        "ssm:ListDocumentVersions",
-                        "config:DescribeConfigurationRecorders",
+                        "cloudformation:GetTemplateSummary", 
+                        "iam:GetGroup", 
+                        "iam:GetRole", 
+                        "iam:GetUser", 
+                        "iam:ListGroups", 
+                        "iam:ListRoles", 
+                        "iam:ListUsers", 
+                        "servicecatalog:Get*", 
+                        "servicecatalog:List*", 
+                        "servicecatalog:Describe*", 
+                        "servicecatalog:ScanProvisionedProducts", 
+                        "servicecatalog:Search*", 
+                        "ssm:DescribeDocument", 
+                        "ssm:GetAutomationExecution", 
+                        "ssm:ListDocuments", 
+                        "ssm:ListDocumentVersions", 
+                        "config:DescribeConfigurationRecorders", 
                         "config:DescribeConfigurationRecorderStatus"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2019-10-25T18:53:38+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,48 +1,48 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-11-26T20:16:13Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AllPrometheusActions",
-                    "Effect": "Allow",
                     "Action": [
                         "aps:*"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllPrometheusActions"
+                }, 
                 {
-                    "Sid": "DescribeCluster",
-                    "Effect": "Allow",
                     "Action": [
-                        "eks:DescribeCluster",
-                        "ec2:DescribeSubnets",
+                        "eks:DescribeCluster", 
+                        "ec2:DescribeSubnets", 
                         "ec2:DescribeSecurityGroups"
-                    ],
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAnyValue:StringEquals": {
                             "aws:CalledVia": [
                                 "aps.amazonaws.com"
                             ]
                         }
-                    },
-                    "Resource": "*"
-                },
+                    }, 
+                    "Sid": "DescribeCluster"
+                }, 
                 {
-                    "Sid": "CreateServiceLinkedRole",
-                    "Effect": "Allow",
-                    "Action": "iam:CreateServiceLinkedRole",
-                    "Resource": "arn:aws:iam::*:role/aws-service-role/scraper.aps.amazonaws.com/AWSServiceRoleForAmazonPrometheusScraper*",
+                    "Action": "iam:CreateServiceLinkedRole", 
+                    "Resource": "arn:aws:iam::*:role/aws-service-role/scraper.aps.amazonaws.com/AWSServiceRoleForAmazonPrometheusScraper*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:AWSServiceName": "scraper.aps.amazonaws.com"
                         }
-                    }
+                    }, 
+                    "Sid": "CreateServiceLinkedRole"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-11-26T20:16:13+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

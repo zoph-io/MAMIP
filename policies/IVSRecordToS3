@@ -1,21 +1,21 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-12-05T00:10:43Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "s3:PutObject"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:s3:::AWSIVS_*/ivs/*"
-                    ]
+                    ], 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-12-05T00:10:43+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

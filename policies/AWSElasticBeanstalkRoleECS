@@ -1,41 +1,41 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-03-23T22:43:56Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AllowECS",
-                    "Effect": "Allow",
                     "Action": [
-                        "ecs:CreateCluster",
-                        "ecs:DeleteCluster",
-                        "ecs:RegisterTaskDefinition",
+                        "ecs:CreateCluster", 
+                        "ecs:DeleteCluster", 
+                        "ecs:RegisterTaskDefinition", 
                         "ecs:DeRegisterTaskDefinition"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowECS"
+                }, 
                 {
-                    "Sid": "AllowECSTagResource",
-                    "Effect": "Allow",
                     "Action": [
                         "ecs:TagResource"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "ecs:CreateAction": [
-                                "CreateCluster",
+                                "CreateCluster", 
                                 "RegisterTaskDefinition"
                             ]
                         }
-                    }
+                    }, 
+                    "Sid": "AllowECSTagResource"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-03-23T22:43:56+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

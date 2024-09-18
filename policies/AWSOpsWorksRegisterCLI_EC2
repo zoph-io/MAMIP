@@ -1,36 +1,36 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2019-06-18T15:56:17Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "opsworks:AssignInstance",
-                        "opsworks:CreateLayer",
-                        "opsworks:DeregisterInstance",
-                        "opsworks:DescribeInstances",
-                        "opsworks:DescribeStackProvisioningParameters",
-                        "opsworks:DescribeStacks",
+                        "opsworks:AssignInstance", 
+                        "opsworks:CreateLayer", 
+                        "opsworks:DeregisterInstance", 
+                        "opsworks:DescribeInstances", 
+                        "opsworks:DescribeStackProvisioningParameters", 
+                        "opsworks:DescribeStacks", 
                         "opsworks:UnassignInstance"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:DescribeInstances"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
+                    ], 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2019-06-18T15:56:17+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

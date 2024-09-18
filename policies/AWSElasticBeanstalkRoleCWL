@@ -1,22 +1,22 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-06-05T21:49:06Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AllowCWL",
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:CreateLogGroup",
-                        "logs:DeleteLogGroup",
+                        "logs:CreateLogGroup", 
+                        "logs:DeleteLogGroup", 
                         "logs:PutRetentionPolicy"
-                    ],
-                    "Resource": "arn:aws:logs:*:*:log-group:/aws/elasticbeanstalk/*"
+                    ], 
+                    "Resource": "arn:aws:logs:*:*:log-group:/aws/elasticbeanstalk/*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowCWL"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-06-05T21:49:06+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

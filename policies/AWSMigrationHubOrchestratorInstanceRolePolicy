@@ -1,29 +1,29 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-04-20T02:43:50Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "secretsmanager:GetSecretValue"
-                    ],
-                    "Resource": "arn:aws:secretsmanager:*:*:secret:migrationhub-orchestrator-*"
-                },
+                    ], 
+                    "Resource": "arn:aws:secretsmanager:*:*:secret:migrationhub-orchestrator-*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "s3:GetObject"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:s3:::migrationhub-orchestrator-*",
+                        "arn:aws:s3:::migrationhub-orchestrator-*", 
                         "arn:aws:s3:::aws-migrationhub-orchestrator-*/*"
-                    ]
+                    ], 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-04-20T02:43:50+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

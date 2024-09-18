@@ -1,20 +1,20 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-11-27T13:29:39Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "oam:Get*",
+                        "oam:Get*", 
                         "oam:List*"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-11-27T13:29:39+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,51 +1,51 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-03-20T08:58:08Z", 
+        "VersionId": "v5", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "mgn:DescribeJobLogItems",
-                        "mgn:DescribeJobs",
-                        "mgn:DescribeSourceServers",
-                        "mgn:DescribeReplicationConfigurationTemplates",
-                        "mgn:GetLaunchConfiguration",
-                        "mgn:DescribeVcenterClients",
-                        "mgn:GetReplicationConfiguration",
-                        "mgn:DescribeLaunchConfigurationTemplates",
-                        "mgn:ListSourceServerActions",
-                        "mgn:ListTemplateActions",
-                        "mgn:ListApplications",
-                        "mgn:ListWaves",
-                        "mgn:ListExports",
-                        "mgn:ListImports",
-                        "mgn:ListImportErrors",
+                        "mgn:DescribeJobLogItems", 
+                        "mgn:DescribeJobs", 
+                        "mgn:DescribeSourceServers", 
+                        "mgn:DescribeReplicationConfigurationTemplates", 
+                        "mgn:GetLaunchConfiguration", 
+                        "mgn:DescribeVcenterClients", 
+                        "mgn:GetReplicationConfiguration", 
+                        "mgn:DescribeLaunchConfigurationTemplates", 
+                        "mgn:ListSourceServerActions", 
+                        "mgn:ListTemplateActions", 
+                        "mgn:ListApplications", 
+                        "mgn:ListWaves", 
+                        "mgn:ListExports", 
+                        "mgn:ListImports", 
+                        "mgn:ListImportErrors", 
                         "mgn:ListExportErrors"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeInstances",
-                        "ec2:DescribeLaunchTemplateVersions",
-                        "ec2:DescribeSecurityGroups",
+                        "ec2:DescribeInstances", 
+                        "ec2:DescribeLaunchTemplateVersions", 
+                        "ec2:DescribeSecurityGroups", 
                         "ec2:DescribeSubnets"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "servicequotas:GetServiceQuota"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v5",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-03-20T08:58:08+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

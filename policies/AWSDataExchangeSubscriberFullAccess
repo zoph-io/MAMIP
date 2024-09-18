@@ -1,98 +1,98 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-05-21T17:36:35Z", 
+        "VersionId": "v7", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "DataExchangeReadOnlyActions",
-                    "Effect": "Allow",
                     "Action": [
-                        "dataexchange:Get*",
+                        "dataexchange:Get*", 
                         "dataexchange:List*"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DataExchangeReadOnlyActions"
+                }, 
                 {
-                    "Sid": "DataExchangeExportActions",
-                    "Effect": "Allow",
                     "Action": [
-                        "dataexchange:CreateJob",
-                        "dataexchange:StartJob",
+                        "dataexchange:CreateJob", 
+                        "dataexchange:StartJob", 
                         "dataexchange:CancelJob"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "dataexchange:JobType": [
-                                "EXPORT_ASSETS_TO_S3",
-                                "EXPORT_ASSET_TO_SIGNED_URL",
+                                "EXPORT_ASSETS_TO_S3", 
+                                "EXPORT_ASSET_TO_SIGNED_URL", 
                                 "EXPORT_REVISIONS_TO_S3"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "DataExchangeExportActions"
+                }, 
                 {
-                    "Sid": "DataExchangeEventActionActions",
-                    "Effect": "Allow",
                     "Action": [
-                        "dataexchange:CreateEventAction",
-                        "dataexchange:UpdateEventAction",
-                        "dataexchange:DeleteEventAction",
+                        "dataexchange:CreateEventAction", 
+                        "dataexchange:UpdateEventAction", 
+                        "dataexchange:DeleteEventAction", 
                         "dataexchange:SendApiAsset"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DataExchangeEventActionActions"
+                }, 
                 {
-                    "Sid": "S3GetActionConditionalResourceAndADX",
-                    "Effect": "Allow",
-                    "Action": "s3:GetObject",
-                    "Resource": "arn:aws:s3:::*aws-data-exchange*",
+                    "Action": "s3:GetObject", 
+                    "Resource": "arn:aws:s3:::*aws-data-exchange*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAnyValue:StringEquals": {
                             "aws:CalledVia": [
                                 "dataexchange.amazonaws.com"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "S3GetActionConditionalResourceAndADX"
+                }, 
                 {
-                    "Sid": "S3ReadActions",
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:GetBucketLocation",
-                        "s3:ListBucket",
+                        "s3:GetBucketLocation", 
+                        "s3:ListBucket", 
                         "s3:ListAllMyBuckets"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "S3ReadActions"
+                }, 
                 {
-                    "Sid": "AWSMarketplaceSubscriberActions",
-                    "Effect": "Allow",
                     "Action": [
-                        "aws-marketplace:Subscribe",
-                        "aws-marketplace:Unsubscribe",
-                        "aws-marketplace:ViewSubscriptions",
-                        "aws-marketplace:GetAgreementRequest",
-                        "aws-marketplace:ListAgreementRequests",
-                        "aws-marketplace:CancelAgreementRequest",
+                        "aws-marketplace:Subscribe", 
+                        "aws-marketplace:Unsubscribe", 
+                        "aws-marketplace:ViewSubscriptions", 
+                        "aws-marketplace:GetAgreementRequest", 
+                        "aws-marketplace:ListAgreementRequests", 
+                        "aws-marketplace:CancelAgreementRequest", 
                         "aws-marketplace:ListPrivateListings"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AWSMarketplaceSubscriberActions"
+                }, 
                 {
-                    "Sid": "KMSActions",
-                    "Effect": "Allow",
                     "Action": [
-                        "kms:DescribeKey",
-                        "kms:ListAliases",
+                        "kms:DescribeKey", 
+                        "kms:ListAliases", 
                         "kms:ListKeys"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "KMSActions"
                 }
             ]
-        },
-        "VersionId": "v7",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-05-21T17:36:35+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

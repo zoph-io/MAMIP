@@ -1,59 +1,59 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-11-13T18:27:50Z", 
+        "VersionId": "v8", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AllowSiteWiseReadGreenGrass",
-                    "Effect": "Allow",
                     "Action": [
-                        "greengrass:GetAssociatedRole",
-                        "greengrass:GetCoreDefinition",
-                        "greengrass:GetCoreDefinitionVersion",
-                        "greengrass:GetGroup",
+                        "greengrass:GetAssociatedRole", 
+                        "greengrass:GetCoreDefinition", 
+                        "greengrass:GetCoreDefinitionVersion", 
+                        "greengrass:GetGroup", 
                         "greengrass:GetGroupVersion"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowSiteWiseReadGreenGrass"
+                }, 
                 {
-                    "Sid": "AllowSiteWiseAccessLogGroup",
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:CreateLogGroup",
+                        "logs:CreateLogGroup", 
                         "logs:DescribeLogGroups"
-                    ],
-                    "Resource": "arn:aws:logs:*:*:log-group:/aws/iotsitewise*"
-                },
+                    ], 
+                    "Resource": "arn:aws:logs:*:*:log-group:/aws/iotsitewise*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowSiteWiseAccessLogGroup"
+                }, 
                 {
-                    "Sid": "AllowSiteWiseAccessLog",
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:CreateLogStream",
-                        "logs:DescribeLogStreams",
+                        "logs:CreateLogStream", 
+                        "logs:DescribeLogStreams", 
                         "logs:PutLogEvents"
-                    ],
-                    "Resource": "arn:aws:logs:*:*:log-group:/aws/iotsitewise*:log-stream:*"
-                },
+                    ], 
+                    "Resource": "arn:aws:logs:*:*:log-group:/aws/iotsitewise*:log-stream:*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowSiteWiseAccessLog"
+                }, 
                 {
-                    "Sid": "AllowSiteWiseAccessSiteWiseManagedWorkspaceInTwinMaker",
-                    "Effect": "Allow",
                     "Action": [
-                        "iottwinmaker:GetWorkspace",
+                        "iottwinmaker:GetWorkspace", 
                         "iottwinmaker:ExecuteQuery"
-                    ],
-                    "Resource": "arn:aws:iottwinmaker:*:*:workspace/*",
+                    ], 
+                    "Resource": "arn:aws:iottwinmaker:*:*:workspace/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAnyValue:StringEquals": {
                             "iottwinmaker:linkedServices": [
                                 "IOTSITEWISE"
                             ]
                         }
-                    }
+                    }, 
+                    "Sid": "AllowSiteWiseAccessSiteWiseManagedWorkspaceInTwinMaker"
                 }
             ]
-        },
-        "VersionId": "v8",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-11-13T18:27:50+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

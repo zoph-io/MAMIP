@@ -1,24 +1,24 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2017-08-02T17:24:58Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": [
-                        "codepipeline:GetPipeline",
-                        "codepipeline:GetPipelineState",
-                        "codepipeline:GetPipelineExecution",
-                        "codepipeline:ListPipelineExecutions",
-                        "codepipeline:ListPipelines",
+                        "codepipeline:GetPipeline", 
+                        "codepipeline:GetPipelineState", 
+                        "codepipeline:GetPipelineExecution", 
+                        "codepipeline:ListPipelineExecutions", 
+                        "codepipeline:ListPipelines", 
                         "codepipeline:PutApprovalResult"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2017-08-02T17:24:58+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,37 +1,37 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-01-19T23:45:29Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": [
-                        "aws-marketplace:ViewSubscriptions",
-                        "aws-marketplace:Subscribe",
+                        "aws-marketplace:ViewSubscriptions", 
+                        "aws-marketplace:Subscribe", 
                         "aws-marketplace:Unsubscribe"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
                     "Action": [
-                        "aws-marketplace:CreatePrivateMarketplaceRequests",
-                        "aws-marketplace:ListPrivateMarketplaceRequests",
+                        "aws-marketplace:CreatePrivateMarketplaceRequests", 
+                        "aws-marketplace:ListPrivateMarketplaceRequests", 
                         "aws-marketplace:DescribePrivateMarketplaceRequests"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "aws-marketplace:ListPrivateListings"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-01-19T23:45:29+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

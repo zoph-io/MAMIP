@@ -1,58 +1,58 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-06-27T19:51:17Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "appfabric:*"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Sid": "KMSListAccess",
-                    "Effect": "Allow",
                     "Action": [
                         "kms:ListAliases"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "KMSListAccess"
+                }, 
                 {
-                    "Sid": "S3ReadAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:GetBucketLocation",
+                        "s3:GetBucketLocation", 
                         "s3:ListAllMyBuckets"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "S3ReadAccess"
+                }, 
                 {
-                    "Sid": "FirehoseReadAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "firehose:DescribeDeliveryStream",
+                        "firehose:DescribeDeliveryStream", 
                         "firehose:ListDeliveryStreams"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "FirehoseReadAccess"
+                }, 
                 {
-                    "Sid": "AllowUseOfServiceLinkedRole",
-                    "Effect": "Allow",
                     "Action": [
                         "iam:CreateServiceLinkedRole"
-                    ],
+                    ], 
+                    "Resource": "arn:aws:iam::*:role/aws-service-role/appfabric.amazonaws.com/AWSServiceRoleForAppFabric", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:AWSServiceName": "appfabric.amazonaws.com"
                         }
-                    },
-                    "Resource": "arn:aws:iam::*:role/aws-service-role/appfabric.amazonaws.com/AWSServiceRoleForAppFabric"
+                    }, 
+                    "Sid": "AllowUseOfServiceLinkedRole"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-06-27T19:51:17+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,102 +1,102 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-04-26T20:25:54Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "DeleteSLR",
-                    "Effect": "Allow",
                     "Action": [
                         "iam:DeleteRole"
-                    ],
-                    "Resource": "arn:aws:iam::*:role/aws-service-role/scraper.aps.amazonaws.com/AWSServiceRoleForAmazonPrometheusScraper*"
-                },
+                    ], 
+                    "Resource": "arn:aws:iam::*:role/aws-service-role/scraper.aps.amazonaws.com/AWSServiceRoleForAmazonPrometheusScraper*", 
+                    "Effect": "Allow", 
+                    "Sid": "DeleteSLR"
+                }, 
                 {
-                    "Sid": "NetworkDiscovery",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeNetworkInterfaces",
-                        "ec2:DescribeSubnets",
+                        "ec2:DescribeNetworkInterfaces", 
+                        "ec2:DescribeSubnets", 
                         "ec2:DescribeSecurityGroups"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "NetworkDiscovery"
+                }, 
                 {
-                    "Sid": "ENIManagement",
-                    "Effect": "Allow",
-                    "Action": "ec2:CreateNetworkInterface",
-                    "Resource": "*",
+                    "Action": "ec2:CreateNetworkInterface", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAllValues:StringEquals": {
                             "aws:TagKeys": [
                                 "AMPAgentlessScraper"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "ENIManagement"
+                }, 
                 {
-                    "Sid": "TagManagement",
-                    "Effect": "Allow",
-                    "Action": "ec2:CreateTags",
-                    "Resource": "arn:aws:ec2:*:*:network-interface/*",
+                    "Action": "ec2:CreateTags", 
+                    "Resource": "arn:aws:ec2:*:*:network-interface/*", 
+                    "Effect": "Allow", 
                     "Condition": {
-                        "StringEquals": {
-                            "ec2:CreateAction": "CreateNetworkInterface"
-                        },
                         "Null": {
                             "aws:RequestTag/AMPAgentlessScraper": "false"
+                        }, 
+                        "StringEquals": {
+                            "ec2:CreateAction": "CreateNetworkInterface"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "TagManagement"
+                }, 
                 {
-                    "Sid": "ENIUpdating",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DeleteNetworkInterface",
+                        "ec2:DeleteNetworkInterface", 
                         "ec2:ModifyNetworkInterfaceAttribute"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "ec2:ResourceTag/AMPAgentlessScraper": "false"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "ENIUpdating"
+                }, 
                 {
-                    "Sid": "EKSAccess",
-                    "Effect": "Allow",
-                    "Action": "eks:DescribeCluster",
-                    "Resource": "arn:aws:eks:*:*:cluster/*"
-                },
+                    "Action": "eks:DescribeCluster", 
+                    "Resource": "arn:aws:eks:*:*:cluster/*", 
+                    "Effect": "Allow", 
+                    "Sid": "EKSAccess"
+                }, 
                 {
-                    "Sid": "DeleteEKSAccessEntry",
-                    "Effect": "Allow",
-                    "Action": "eks:DeleteAccessEntry",
-                    "Resource": "arn:aws:eks:*:*:access-entry/*/role/*",
+                    "Action": "eks:DeleteAccessEntry", 
+                    "Resource": "arn:aws:eks:*:*:access-entry/*/role/*", 
+                    "Effect": "Allow", 
                     "Condition": {
-                        "StringEquals": {
-                            "aws:PrincipalAccount": "${aws:ResourceAccount}"
-                        },
                         "ArnLike": {
                             "eks:principalArn": "arn:aws:iam::*:role/aws-service-role/scraper.aps.amazonaws.com/AWSServiceRoleForAmazonPrometheusScraper*"
+                        }, 
+                        "StringEquals": {
+                            "aws:PrincipalAccount": "${aws:ResourceAccount}"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "DeleteEKSAccessEntry"
+                }, 
                 {
-                    "Sid": "APSWriting",
-                    "Effect": "Allow",
-                    "Action": "aps:RemoteWrite",
-                    "Resource": "arn:aws:aps:*:*:workspace/*",
+                    "Action": "aps:RemoteWrite", 
+                    "Resource": "arn:aws:aps:*:*:workspace/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:PrincipalAccount": "${aws:ResourceAccount}"
                         }
-                    }
+                    }, 
+                    "Sid": "APSWriting"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-04-26T20:25:54+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

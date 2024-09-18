@@ -1,14 +1,16 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-09-07T09:32:32Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "pi:GetResourceMetrics"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
@@ -16,9 +18,7 @@
                     }
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-09-07T09:32:32+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

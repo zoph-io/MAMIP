@@ -1,25 +1,25 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-10-07T19:27:06Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
-                    "Action": "logs:CreateLogGroup",
-                    "Resource": "*"
-                },
+                    "Action": "logs:CreateLogGroup", 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:CreateLogStream",
+                        "logs:CreateLogStream", 
                         "logs:PutLogEvents"
-                    ],
-                    "Resource": "arn:aws:logs:*:*:log-group:/aws/lambda-insights:*"
+                    ], 
+                    "Resource": "arn:aws:logs:*:*:log-group:/aws/lambda-insights:*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-10-07T19:27:06+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

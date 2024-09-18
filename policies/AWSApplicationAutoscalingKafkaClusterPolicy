@@ -1,26 +1,26 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-08-24T18:36:01Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "kafka:DescribeCluster",
-                        "kafka:DescribeClusterOperation",
-                        "kafka:UpdateBrokerStorage",
-                        "cloudwatch:PutMetricAlarm",
-                        "cloudwatch:DescribeAlarms",
+                        "kafka:DescribeCluster", 
+                        "kafka:DescribeClusterOperation", 
+                        "kafka:UpdateBrokerStorage", 
+                        "cloudwatch:PutMetricAlarm", 
+                        "cloudwatch:DescribeAlarms", 
                         "cloudwatch:DeleteAlarms"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
+                    ], 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-08-24T18:36:01+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

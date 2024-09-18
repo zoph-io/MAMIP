@@ -1,30 +1,32 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-09-20T11:21:24Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "mgn:GetAgentInstallationAssetsForMgn",
-                        "mgn:SendClientMetricsForMgn",
-                        "mgn:SendClientLogsForMgn",
-                        "mgn:RegisterAgentForMgn",
+                        "mgn:GetAgentInstallationAssetsForMgn", 
+                        "mgn:SendClientMetricsForMgn", 
+                        "mgn:SendClientLogsForMgn", 
+                        "mgn:RegisterAgentForMgn", 
                         "mgn:VerifyClientRoleForMgn"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "mgn:IssueClientCertificateForMgn"
-                    ],
-                    "Resource": "arn:aws:mgn:*:*:source-server/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:mgn:*:*:source-server/*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "mgn:TagResource",
-                    "Resource": "arn:aws:mgn:*:*:source-server/*",
+                    "Action": "mgn:TagResource", 
+                    "Resource": "arn:aws:mgn:*:*:source-server/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "mgn:CreateAction": "RegisterAgentForMgn"
@@ -32,9 +34,7 @@
                     }
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-09-20T11:21:24+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

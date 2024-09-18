@@ -1,78 +1,78 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-10-23T21:17:06Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AmazonRDSDescribeDBInstances",
-                    "Effect": "Allow",
-                    "Action": "rds:DescribeDBInstances",
-                    "Resource": "*"
-                },
+                    "Action": "rds:DescribeDBInstances", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonRDSDescribeDBInstances"
+                }, 
                 {
-                    "Sid": "AmazonRDSDescribeDBClusters",
-                    "Effect": "Allow",
-                    "Action": "rds:DescribeDBClusters",
-                    "Resource": "*"
-                },
+                    "Action": "rds:DescribeDBClusters", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonRDSDescribeDBClusters"
+                }, 
                 {
-                    "Sid": "AmazonRDSPerformanceInsightsDescribeDimensionKeys",
-                    "Effect": "Allow",
-                    "Action": "pi:DescribeDimensionKeys",
-                    "Resource": "arn:aws:pi:*:*:metrics/rds/*"
-                },
+                    "Action": "pi:DescribeDimensionKeys", 
+                    "Resource": "arn:aws:pi:*:*:metrics/rds/*", 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonRDSPerformanceInsightsDescribeDimensionKeys"
+                }, 
                 {
-                    "Sid": "AmazonRDSPerformanceInsightsGetDimensionKeyDetails",
-                    "Effect": "Allow",
-                    "Action": "pi:GetDimensionKeyDetails",
-                    "Resource": "arn:aws:pi:*:*:metrics/rds/*"
-                },
+                    "Action": "pi:GetDimensionKeyDetails", 
+                    "Resource": "arn:aws:pi:*:*:metrics/rds/*", 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonRDSPerformanceInsightsGetDimensionKeyDetails"
+                }, 
                 {
-                    "Sid": "AmazonRDSPerformanceInsightsGetResourceMetadata",
-                    "Effect": "Allow",
-                    "Action": "pi:GetResourceMetadata",
-                    "Resource": "arn:aws:pi:*:*:metrics/rds/*"
-                },
+                    "Action": "pi:GetResourceMetadata", 
+                    "Resource": "arn:aws:pi:*:*:metrics/rds/*", 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonRDSPerformanceInsightsGetResourceMetadata"
+                }, 
                 {
-                    "Sid": "AmazonRDSPerformanceInsightsGetResourceMetrics",
-                    "Effect": "Allow",
-                    "Action": "pi:GetResourceMetrics",
-                    "Resource": "arn:aws:pi:*:*:metrics/rds/*"
-                },
+                    "Action": "pi:GetResourceMetrics", 
+                    "Resource": "arn:aws:pi:*:*:metrics/rds/*", 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonRDSPerformanceInsightsGetResourceMetrics"
+                }, 
                 {
-                    "Sid": "AmazonRDSPerformanceInsightsListAvailableResourceDimensions",
-                    "Effect": "Allow",
-                    "Action": "pi:ListAvailableResourceDimensions",
-                    "Resource": "arn:aws:pi:*:*:metrics/rds/*"
-                },
+                    "Action": "pi:ListAvailableResourceDimensions", 
+                    "Resource": "arn:aws:pi:*:*:metrics/rds/*", 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonRDSPerformanceInsightsListAvailableResourceDimensions"
+                }, 
                 {
-                    "Sid": "AmazonRDSPerformanceInsightsListAvailableResourceMetrics",
-                    "Effect": "Allow",
-                    "Action": "pi:ListAvailableResourceMetrics",
-                    "Resource": "arn:aws:pi:*:*:metrics/rds/*"
-                },
+                    "Action": "pi:ListAvailableResourceMetrics", 
+                    "Resource": "arn:aws:pi:*:*:metrics/rds/*", 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonRDSPerformanceInsightsListAvailableResourceMetrics"
+                }, 
                 {
-                    "Sid": "AmazonRDSPerformanceInsightsGetPerformanceAnalysisReport",
-                    "Effect": "Allow",
-                    "Action": "pi:GetPerformanceAnalysisReport",
-                    "Resource": "arn:aws:pi:*:*:perf-reports/rds/*/*"
-                },
+                    "Action": "pi:GetPerformanceAnalysisReport", 
+                    "Resource": "arn:aws:pi:*:*:perf-reports/rds/*/*", 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonRDSPerformanceInsightsGetPerformanceAnalysisReport"
+                }, 
                 {
-                    "Sid": "AmazonRDSPerformanceInsightsListPerformanceAnalysisReports",
-                    "Effect": "Allow",
-                    "Action": "pi:ListPerformanceAnalysisReports",
-                    "Resource": "arn:aws:pi:*:*:perf-reports/rds/*/*"
-                },
+                    "Action": "pi:ListPerformanceAnalysisReports", 
+                    "Resource": "arn:aws:pi:*:*:perf-reports/rds/*/*", 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonRDSPerformanceInsightsListPerformanceAnalysisReports"
+                }, 
                 {
-                    "Sid": "AmazonRDSPerformanceInsightsListTagsForResource",
-                    "Effect": "Allow",
-                    "Action": "pi:ListTagsForResource",
-                    "Resource": "arn:aws:pi:*:*:*/rds/*"
+                    "Action": "pi:ListTagsForResource", 
+                    "Resource": "arn:aws:pi:*:*:*/rds/*", 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonRDSPerformanceInsightsListTagsForResource"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-10-23T21:17:06+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

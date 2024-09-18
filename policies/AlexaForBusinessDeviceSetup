@@ -1,32 +1,32 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2019-05-20T21:05:39Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "a4b:RegisterDevice",
-                        "a4b:CompleteRegistration",
-                        "a4b:SearchDevices",
-                        "a4b:SearchNetworkProfiles",
-                        "a4b:GetNetworkProfile",
+                        "a4b:RegisterDevice", 
+                        "a4b:CompleteRegistration", 
+                        "a4b:SearchDevices", 
+                        "a4b:SearchNetworkProfiles", 
+                        "a4b:GetNetworkProfile", 
                         "a4b:PutDeviceSetupEvents"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Sid": "A4bDeviceSetupAccess",
-                    "Effect": "Allow",
                     "Action": [
                         "secretsmanager:GetSecretValue"
-                    ],
-                    "Resource": "arn:aws:secretsmanager:*:*:secret:A4BNetworkProfile*"
+                    ], 
+                    "Resource": "arn:aws:secretsmanager:*:*:secret:A4BNetworkProfile*", 
+                    "Effect": "Allow", 
+                    "Sid": "A4bDeviceSetupAccess"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2019-05-20T21:05:39+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

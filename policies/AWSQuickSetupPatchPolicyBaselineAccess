@@ -1,38 +1,38 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-06-26T09:38:00Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "QuickSetupPatchingBaselineOverridesS3SameAccountReadOnlyAccess",
-                    "Effect": "Allow",
-                    "Action": "s3:GetObject",
-                    "Resource": "arn:aws:s3:::aws-quicksetup-patchpolicy-*",
+                    "Action": "s3:GetObject", 
+                    "Resource": "arn:aws:s3:::aws-quicksetup-patchpolicy-*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:PrincipalAccount": [
                                 "${aws:ResourceAccount}"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "QuickSetupPatchingBaselineOverridesS3SameAccountReadOnlyAccess"
+                }, 
                 {
-                    "Sid": "QuickSetupPatchingBaselineOverridesS3OrganizationReadOnlyAccess",
-                    "Effect": "Allow",
-                    "Action": "s3:GetObject",
-                    "Resource": "arn:aws:s3:::aws-quicksetup-patchpolicy-*",
+                    "Action": "s3:GetObject", 
+                    "Resource": "arn:aws:s3:::aws-quicksetup-patchpolicy-*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:PrincipalOrgID": [
                                 "${aws:ResourceOrgID}"
                             ]
                         }
-                    }
+                    }, 
+                    "Sid": "QuickSetupPatchingBaselineOverridesS3OrganizationReadOnlyAccess"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-06-26T09:38:00+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

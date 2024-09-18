@@ -1,687 +1,687 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-09-20T17:48:39Z", 
+        "VersionId": "v6", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "ecc1",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeInstances",
-                        "ec2:DescribeInstanceAttribute",
-                        "ec2:DescribeRegions",
-                        "ec2:DescribeSnapshots",
-                        "ec2:DescribeNetworkInterfaces",
-                        "ec2:DescribeVolumes",
-                        "ec2:DescribeInstanceStatus",
-                        "ec2:DescribeIamInstanceProfileAssociations",
-                        "ec2:DescribeImages",
-                        "ec2:DescribeVpcs",
-                        "ec2:RegisterImage",
-                        "ec2:DeregisterImage",
-                        "ec2:DescribeTags",
-                        "ec2:DescribeSecurityGroups",
-                        "ec2:DescribeVolumesModifications",
-                        "ec2:DescribeSubnets",
-                        "ec2:DescribeVpcAttribute",
-                        "ec2:SearchTransitGatewayMulticastGroups",
-                        "ec2:GetTransitGatewayMulticastDomainAssociations",
-                        "ec2:DescribeTransitGatewayMulticastDomains",
-                        "ec2:DescribeTransitGateways",
-                        "ec2:DescribeTransitGatewayVpcAttachments",
-                        "ec2:DescribePlacementGroups",
+                        "ec2:DescribeInstances", 
+                        "ec2:DescribeInstanceAttribute", 
+                        "ec2:DescribeRegions", 
+                        "ec2:DescribeSnapshots", 
+                        "ec2:DescribeNetworkInterfaces", 
+                        "ec2:DescribeVolumes", 
+                        "ec2:DescribeInstanceStatus", 
+                        "ec2:DescribeIamInstanceProfileAssociations", 
+                        "ec2:DescribeImages", 
+                        "ec2:DescribeVpcs", 
+                        "ec2:RegisterImage", 
+                        "ec2:DeregisterImage", 
+                        "ec2:DescribeTags", 
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:DescribeVolumesModifications", 
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeVpcAttribute", 
+                        "ec2:SearchTransitGatewayMulticastGroups", 
+                        "ec2:GetTransitGatewayMulticastDomainAssociations", 
+                        "ec2:DescribeTransitGatewayMulticastDomains", 
+                        "ec2:DescribeTransitGateways", 
+                        "ec2:DescribeTransitGatewayVpcAttachments", 
+                        "ec2:DescribePlacementGroups", 
                         "ec2:DescribeRouteTables"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "ecc1"
+                }, 
                 {
-                    "Sid": "ecc2",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DisassociateIamInstanceProfile",
-                        "ec2:AssociateIamInstanceProfile",
-                        "ec2:ReplaceIamInstanceProfileAssociation",
-                        "ec2:TerminateInstances",
-                        "ec2:StartInstances",
-                        "ec2:StopInstances",
+                        "ec2:DisassociateIamInstanceProfile", 
+                        "ec2:AssociateIamInstanceProfile", 
+                        "ec2:ReplaceIamInstanceProfileAssociation", 
+                        "ec2:TerminateInstances", 
+                        "ec2:StartInstances", 
+                        "ec2:StopInstances", 
                         "ec2:RebootInstances"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:instance/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:instance/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:ResourceTag/AWSRDSCustom": [
-                                "custom-oracle",
-                                "custom-sqlserver",
+                                "custom-oracle", 
+                                "custom-sqlserver", 
                                 "custom-oracle-rac"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "ecc2"
+                }, 
                 {
-                    "Sid": "ecc1scoping",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:AllocateAddress"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:RequestTag/AWSRDSCustom": [
-                                "custom-oracle",
-                                "custom-sqlserver",
+                                "custom-oracle", 
+                                "custom-sqlserver", 
                                 "custom-oracle-rac"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "ecc1scoping"
+                }, 
                 {
-                    "Sid": "ecc1scoping2",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:AssociateAddress",
-                        "ec2:DisassociateAddress",
+                        "ec2:AssociateAddress", 
+                        "ec2:DisassociateAddress", 
                         "ec2:ReleaseAddress"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:ResourceTag/AWSRDSCustom": [
-                                "custom-oracle",
-                                "custom-sqlserver",
+                                "custom-oracle", 
+                                "custom-sqlserver", 
                                 "custom-oracle-rac"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "ecc1scoping2"
+                }, 
                 {
-                    "Sid": "ecc1scoping3",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:AssignPrivateIpAddresses"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:network-interface/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:network-interface/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:ResourceTag/AWSRDSCustom": [
                                 "custom-oracle-rac"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "ecc1scoping3"
+                }, 
                 {
-                    "Sid": "eccRunInstances1",
-                    "Effect": "Allow",
-                    "Action": "ec2:RunInstances",
+                    "Action": "ec2:RunInstances", 
                     "Resource": [
-                        "arn:aws:ec2:*:*:instance/*",
-                        "arn:aws:ec2:*:*:volume/*",
+                        "arn:aws:ec2:*:*:instance/*", 
+                        "arn:aws:ec2:*:*:volume/*", 
                         "arn:aws:ec2:*:*:network-interface/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:RequestTag/AWSRDSCustom": [
-                                "custom-oracle",
-                                "custom-sqlserver",
+                                "custom-oracle", 
+                                "custom-sqlserver", 
                                 "custom-oracle-rac"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "eccRunInstances1"
+                }, 
                 {
-                    "Sid": "eccRunInstances2",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:RunInstances"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:ec2:*:*:subnet/*",
-                        "arn:aws:ec2:*:*:security-group/*",
-                        "arn:aws:ec2:*::image/*",
-                        "arn:aws:ec2:*:*:key-pair/do-not-delete-rds-custom-*",
+                        "arn:aws:ec2:*:*:subnet/*", 
+                        "arn:aws:ec2:*:*:security-group/*", 
+                        "arn:aws:ec2:*::image/*", 
+                        "arn:aws:ec2:*:*:key-pair/do-not-delete-rds-custom-*", 
                         "arn:aws:ec2:*:*:placement-group/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "eccRunInstances2"
+                }, 
                 {
-                    "Sid": "eccRunInstances3",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:RunInstances"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:ec2:*:*:network-interface/*",
+                        "arn:aws:ec2:*:*:network-interface/*", 
                         "arn:aws:ec2:*::snapshot/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:ResourceTag/AWSRDSCustom": [
-                                "custom-oracle-rac",
+                                "custom-oracle-rac", 
                                 "custom-oracle"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "eccRunInstances3"
+                }, 
                 {
-                    "Sid": "RequireImdsV2",
-                    "Effect": "Deny",
-                    "Action": "ec2:RunInstances",
-                    "Resource": "arn:aws:ec2:*:*:instance/*",
+                    "Action": "ec2:RunInstances", 
+                    "Resource": "arn:aws:ec2:*:*:instance/*", 
+                    "Effect": "Deny", 
                     "Condition": {
+                        "StringLike": {
+                            "aws:RequestTag/AWSRDSCustom": [
+                                "custom-oracle-rac"
+                            ]
+                        }, 
                         "StringNotEquals": {
                             "ec2:MetadataHttpTokens": "required"
-                        },
-                        "StringLike": {
-                            "aws:RequestTag/AWSRDSCustom": [
-                                "custom-oracle-rac"
-                            ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "RequireImdsV2"
+                }, 
                 {
-                    "Sid": "eccRunInstances3keyPair1",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:RunInstances",
+                        "ec2:RunInstances", 
                         "ec2:DeleteKeyPair"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ec2:*:*:key-pair/do-not-delete-rds-custom-*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:ResourceTag/AWSRDSCustom": [
-                                "custom-oracle",
-                                "custom-sqlserver",
+                                "custom-oracle", 
+                                "custom-sqlserver", 
                                 "custom-oracle-rac"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "eccRunInstances3keyPair1"
+                }, 
                 {
-                    "Sid": "eccKeyPair2",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateKeyPair"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ec2:*:*:key-pair/do-not-delete-rds-custom-*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:RequestTag/AWSRDSCustom": [
-                                "custom-oracle",
-                                "custom-sqlserver",
+                                "custom-oracle", 
+                                "custom-sqlserver", 
                                 "custom-oracle-rac"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "eccKeyPair2"
+                }, 
                 {
-                    "Sid": "eccNetworkInterface1",
-                    "Effect": "Allow",
-                    "Action": "ec2:CreateNetworkInterface",
-                    "Resource": "arn:aws:ec2:*:*:network-interface/*",
+                    "Action": "ec2:CreateNetworkInterface", 
+                    "Resource": "arn:aws:ec2:*:*:network-interface/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:RequestTag/AWSRDSCustom": [
                                 "custom-oracle-rac"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "eccNetworkInterface1"
+                }, 
                 {
-                    "Sid": "eccNetworkInterface2",
-                    "Effect": "Allow",
-                    "Action": "ec2:CreateNetworkInterface",
+                    "Action": "ec2:CreateNetworkInterface", 
                     "Resource": [
-                        "arn:aws:ec2:*:*:subnet/*",
+                        "arn:aws:ec2:*:*:subnet/*", 
                         "arn:aws:ec2:*:*:security-group/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "eccNetworkInterface2"
+                }, 
                 {
-                    "Sid": "eccNetworkInterface3",
-                    "Effect": "Allow",
-                    "Action": "ec2:DeleteNetworkInterface",
-                    "Resource": "arn:aws:ec2:*:*:network-interface/*",
+                    "Action": "ec2:DeleteNetworkInterface", 
+                    "Resource": "arn:aws:ec2:*:*:network-interface/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:ResourceTag/AWSRDSCustom": [
                                 "custom-oracle-rac"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "eccNetworkInterface3"
+                }, 
                 {
-                    "Sid": "eccCreateTag1",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateTags"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:ResourceTag/AWSRDSCustom": [
-                                "custom-oracle",
-                                "custom-sqlserver",
+                                "custom-oracle", 
+                                "custom-sqlserver", 
                                 "custom-oracle-rac"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "eccCreateTag1"
+                }, 
                 {
-                    "Sid": "eccCreateTag2",
-                    "Effect": "Allow",
-                    "Action": "ec2:CreateTags",
-                    "Resource": "*",
+                    "Action": "ec2:CreateTags", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
-                            "aws:RequestTag/AWSRDSCustom": [
-                                "custom-oracle",
-                                "custom-sqlserver",
-                                "custom-oracle-rac"
-                            ],
                             "ec2:CreateAction": [
-                                "CreateKeyPair",
-                                "RunInstances",
-                                "CreateNetworkInterface",
-                                "CreateVolume",
-                                "CreateSnapshots",
-                                "CopySnapshot",
+                                "CreateKeyPair", 
+                                "RunInstances", 
+                                "CreateNetworkInterface", 
+                                "CreateVolume", 
+                                "CreateSnapshots", 
+                                "CopySnapshot", 
                                 "AllocateAddress"
+                            ], 
+                            "aws:RequestTag/AWSRDSCustom": [
+                                "custom-oracle", 
+                                "custom-sqlserver", 
+                                "custom-oracle-rac"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "eccCreateTag2"
+                }, 
                 {
-                    "Sid": "eccVolume1",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DetachVolume",
+                        "ec2:DetachVolume", 
                         "ec2:AttachVolume"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:ec2:*:*:instance/*",
+                        "arn:aws:ec2:*:*:instance/*", 
                         "arn:aws:ec2:*:*:volume/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:ResourceTag/AWSRDSCustom": [
-                                "custom-oracle",
-                                "custom-sqlserver",
+                                "custom-oracle", 
+                                "custom-sqlserver", 
                                 "custom-oracle-rac"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "eccVolume1"
+                }, 
                 {
-                    "Sid": "eccVolume2",
-                    "Effect": "Allow",
-                    "Action": "ec2:CreateVolume",
-                    "Resource": "arn:aws:ec2:*:*:volume/*",
+                    "Action": "ec2:CreateVolume", 
+                    "Resource": "arn:aws:ec2:*:*:volume/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:RequestTag/AWSRDSCustom": [
-                                "custom-oracle",
-                                "custom-sqlserver",
+                                "custom-oracle", 
+                                "custom-sqlserver", 
                                 "custom-oracle-rac"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "eccVolume2"
+                }, 
                 {
-                    "Sid": "eccVolume3",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:ModifyVolumeAttribute",
-                        "ec2:DeleteVolume",
+                        "ec2:ModifyVolumeAttribute", 
+                        "ec2:DeleteVolume", 
                         "ec2:ModifyVolume"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:volume/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:volume/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:ResourceTag/AWSRDSCustom": [
-                                "custom-oracle",
-                                "custom-sqlserver",
+                                "custom-oracle", 
+                                "custom-sqlserver", 
                                 "custom-oracle-rac"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "eccVolume3"
+                }, 
                 {
-                    "Sid": "eccVolume4snapshot1",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:CreateVolume",
+                        "ec2:CreateVolume", 
                         "ec2:DeleteSnapshot"
-                    ],
-                    "Resource": "arn:aws:ec2:*::snapshot/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*::snapshot/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:ResourceTag/AWSRDSCustom": [
-                                "custom-oracle",
-                                "custom-sqlserver",
+                                "custom-oracle", 
+                                "custom-sqlserver", 
                                 "custom-oracle-rac"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "eccVolume4snapshot1"
+                }, 
                 {
-                    "Sid": "eccSnapshot2",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:CopySnapshot",
+                        "ec2:CopySnapshot", 
                         "ec2:CreateSnapshots"
-                    ],
-                    "Resource": "arn:aws:ec2:*::snapshot/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*::snapshot/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:RequestTag/AWSRDSCustom": [
-                                "custom-oracle",
-                                "custom-sqlserver",
+                                "custom-oracle", 
+                                "custom-sqlserver", 
                                 "custom-oracle-rac"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "eccSnapshot2"
+                }, 
                 {
-                    "Sid": "eccSnapshot3",
-                    "Effect": "Allow",
-                    "Action": "ec2:CreateSnapshots",
+                    "Action": "ec2:CreateSnapshots", 
                     "Resource": [
-                        "arn:aws:ec2:*:*:instance/*",
+                        "arn:aws:ec2:*:*:instance/*", 
                         "arn:aws:ec2:*:*:volume/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:ResourceTag/AWSRDSCustom": [
-                                "custom-oracle",
-                                "custom-sqlserver",
+                                "custom-oracle", 
+                                "custom-sqlserver", 
                                 "custom-oracle-rac"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "eccSnapshot3"
+                }, 
                 {
-                    "Sid": "iam1",
-                    "Effect": "Allow",
                     "Action": [
-                        "iam:ListInstanceProfiles",
-                        "iam:GetInstanceProfile",
-                        "iam:GetRole",
-                        "iam:ListRolePolicies",
-                        "iam:GetRolePolicy",
-                        "iam:ListAttachedRolePolicies",
-                        "iam:GetPolicy",
+                        "iam:ListInstanceProfiles", 
+                        "iam:GetInstanceProfile", 
+                        "iam:GetRole", 
+                        "iam:ListRolePolicies", 
+                        "iam:GetRolePolicy", 
+                        "iam:ListAttachedRolePolicies", 
+                        "iam:GetPolicy", 
                         "iam:GetPolicyVersion"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "iam1"
+                }, 
                 {
-                    "Sid": "iam2",
-                    "Effect": "Allow",
-                    "Action": "iam:PassRole",
-                    "Resource": "arn:aws:iam::*:role/AWSRDSCustom*",
+                    "Action": "iam:PassRole", 
+                    "Resource": "arn:aws:iam::*:role/AWSRDSCustom*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "iam:PassedToService": "ec2.amazonaws.com"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "iam2"
+                }, 
                 {
-                    "Sid": "cloudtrail1",
-                    "Effect": "Allow",
                     "Action": [
                         "cloudtrail:GetTrailStatus"
-                    ],
-                    "Resource": "arn:aws:cloudtrail:*:*:trail/do-not-delete-rds-custom-*"
-                },
+                    ], 
+                    "Resource": "arn:aws:cloudtrail:*:*:trail/do-not-delete-rds-custom-*", 
+                    "Effect": "Allow", 
+                    "Sid": "cloudtrail1"
+                }, 
                 {
-                    "Sid": "cw1",
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudwatch:EnableAlarmActions",
+                        "cloudwatch:EnableAlarmActions", 
                         "cloudwatch:DeleteAlarms"
-                    ],
-                    "Resource": "arn:aws:cloudwatch:*:*:alarm:do-not-delete-rds-custom-*",
+                    ], 
+                    "Resource": "arn:aws:cloudwatch:*:*:alarm:do-not-delete-rds-custom-*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:ResourceTag/AWSRDSCustom": [
-                                "custom-oracle",
-                                "custom-sqlserver",
+                                "custom-oracle", 
+                                "custom-sqlserver", 
                                 "custom-oracle-rac"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "cw1"
+                }, 
                 {
-                    "Sid": "cw2",
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudwatch:PutMetricAlarm",
+                        "cloudwatch:PutMetricAlarm", 
                         "cloudwatch:TagResource"
-                    ],
-                    "Resource": "arn:aws:cloudwatch:*:*:alarm:do-not-delete-rds-custom-*",
+                    ], 
+                    "Resource": "arn:aws:cloudwatch:*:*:alarm:do-not-delete-rds-custom-*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:RequestTag/AWSRDSCustom": [
-                                "custom-oracle",
-                                "custom-sqlserver",
+                                "custom-oracle", 
+                                "custom-sqlserver", 
                                 "custom-oracle-rac"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "cw2"
+                }, 
                 {
-                    "Sid": "cw3",
-                    "Effect": "Allow",
                     "Action": [
                         "cloudwatch:DescribeAlarms"
-                    ],
-                    "Resource": "arn:aws:cloudwatch:*:*:alarm:*"
-                },
+                    ], 
+                    "Resource": "arn:aws:cloudwatch:*:*:alarm:*", 
+                    "Effect": "Allow", 
+                    "Sid": "cw3"
+                }, 
                 {
-                    "Sid": "ssm1",
-                    "Effect": "Allow",
-                    "Action": "ssm:SendCommand",
-                    "Resource": "arn:aws:ssm:*:*:document/*"
-                },
+                    "Action": "ssm:SendCommand", 
+                    "Resource": "arn:aws:ssm:*:*:document/*", 
+                    "Effect": "Allow", 
+                    "Sid": "ssm1"
+                }, 
                 {
-                    "Sid": "ssm2",
-                    "Effect": "Allow",
-                    "Action": "ssm:SendCommand",
-                    "Resource": "arn:aws:ec2:*:*:instance/*",
+                    "Action": "ssm:SendCommand", 
+                    "Resource": "arn:aws:ec2:*:*:instance/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:ResourceTag/AWSRDSCustom": [
-                                "custom-oracle",
-                                "custom-sqlserver",
+                                "custom-oracle", 
+                                "custom-sqlserver", 
                                 "custom-oracle-rac"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "ssm2"
+                }, 
                 {
-                    "Sid": "ssm3",
-                    "Effect": "Allow",
                     "Action": [
-                        "ssm:GetCommandInvocation",
-                        "ssm:GetConnectionStatus",
+                        "ssm:GetCommandInvocation", 
+                        "ssm:GetConnectionStatus", 
                         "ssm:DescribeInstanceInformation"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ssm3"
+                }, 
                 {
-                    "Sid": "ssm4",
-                    "Effect": "Allow",
                     "Action": [
-                        "ssm:PutParameter",
+                        "ssm:PutParameter", 
                         "ssm:AddTagsToResource"
-                    ],
-                    "Resource": "arn:aws:ssm:*:*:parameter/rds/custom-oracle-rac/*",
+                    ], 
+                    "Resource": "arn:aws:ssm:*:*:parameter/rds/custom-oracle-rac/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:RequestTag/AWSRDSCustom": [
                                 "custom-oracle-rac"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "ssm4"
+                }, 
                 {
-                    "Sid": "ssm5",
-                    "Effect": "Allow",
                     "Action": [
                         "ssm:DeleteParameter"
-                    ],
-                    "Resource": "arn:aws:ssm:*:*:parameter/rds/custom-oracle-rac/*",
+                    ], 
+                    "Resource": "arn:aws:ssm:*:*:parameter/rds/custom-oracle-rac/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:ResourceTag/AWSRDSCustom": [
                                 "custom-oracle-rac"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "ssm5"
+                }, 
                 {
-                    "Sid": "eb1",
-                    "Effect": "Allow",
                     "Action": [
-                        "events:PutRule",
+                        "events:PutRule", 
                         "events:TagResource"
-                    ],
-                    "Resource": "arn:aws:events:*:*:rule/do-not-delete-rds-custom-*",
+                    ], 
+                    "Resource": "arn:aws:events:*:*:rule/do-not-delete-rds-custom-*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:RequestTag/AWSRDSCustom": [
-                                "custom-oracle",
-                                "custom-sqlserver",
+                                "custom-oracle", 
+                                "custom-sqlserver", 
                                 "custom-oracle-rac"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "eb1"
+                }, 
                 {
-                    "Sid": "eb2",
-                    "Effect": "Allow",
                     "Action": [
-                        "events:PutTargets",
-                        "events:DescribeRule",
-                        "events:EnableRule",
-                        "events:ListTargetsByRule",
-                        "events:DeleteRule",
-                        "events:RemoveTargets",
+                        "events:PutTargets", 
+                        "events:DescribeRule", 
+                        "events:EnableRule", 
+                        "events:ListTargetsByRule", 
+                        "events:DeleteRule", 
+                        "events:RemoveTargets", 
                         "events:DisableRule"
-                    ],
-                    "Resource": "arn:aws:events:*:*:rule/do-not-delete-rds-custom-*",
+                    ], 
+                    "Resource": "arn:aws:events:*:*:rule/do-not-delete-rds-custom-*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:ResourceTag/AWSRDSCustom": [
-                                "custom-oracle",
-                                "custom-sqlserver",
+                                "custom-oracle", 
+                                "custom-sqlserver", 
                                 "custom-oracle-rac"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "eb2"
+                }, 
                 {
-                    "Sid": "eb3",
-                    "Effect": "Allow",
                     "Action": [
                         "events:PutRule"
-                    ],
-                    "Resource": "arn:aws:events:*:*:rule/do-not-delete-rds-custom-*",
+                    ], 
+                    "Resource": "arn:aws:events:*:*:rule/do-not-delete-rds-custom-*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "events:ManagedBy": [
                                 "custom.rds-preview.amazonaws.com"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "eb3"
+                }, 
                 {
-                    "Sid": "eb4",
-                    "Effect": "Allow",
                     "Action": [
-                        "events:PutTargets",
-                        "events:EnableRule",
-                        "events:DeleteRule",
-                        "events:RemoveTargets",
+                        "events:PutTargets", 
+                        "events:EnableRule", 
+                        "events:DeleteRule", 
+                        "events:RemoveTargets", 
                         "events:DisableRule"
-                    ],
-                    "Resource": "arn:aws:events:*:*:rule/do-not-delete-rds-custom-*",
+                    ], 
+                    "Resource": "arn:aws:events:*:*:rule/do-not-delete-rds-custom-*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "events:ManagedBy": [
                                 "custom.rds-preview.amazonaws.com"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "eb4"
+                }, 
                 {
-                    "Sid": "eb5",
-                    "Effect": "Allow",
                     "Action": [
-                        "events:DescribeRule",
+                        "events:DescribeRule", 
                         "events:ListTargetsByRule"
-                    ],
-                    "Resource": "arn:aws:events:*:*:rule/do-not-delete-rds-custom-*"
-                },
+                    ], 
+                    "Resource": "arn:aws:events:*:*:rule/do-not-delete-rds-custom-*", 
+                    "Effect": "Allow", 
+                    "Sid": "eb5"
+                }, 
                 {
-                    "Sid": "secretmanager1",
-                    "Effect": "Allow",
                     "Action": [
-                        "secretsmanager:TagResource",
+                        "secretsmanager:TagResource", 
                         "secretsmanager:CreateSecret"
-                    ],
-                    "Resource": "arn:aws:secretsmanager:*:*:secret:do-not-delete-rds-custom-*",
+                    ], 
+                    "Resource": "arn:aws:secretsmanager:*:*:secret:do-not-delete-rds-custom-*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:RequestTag/AWSRDSCustom": [
-                                "custom-oracle",
-                                "custom-sqlserver",
+                                "custom-oracle", 
+                                "custom-sqlserver", 
                                 "custom-oracle-rac"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "secretmanager1"
+                }, 
                 {
-                    "Sid": "secretmanager2",
-                    "Effect": "Allow",
                     "Action": [
-                        "secretsmanager:TagResource",
-                        "secretsmanager:DescribeSecret",
-                        "secretsmanager:DeleteSecret",
+                        "secretsmanager:TagResource", 
+                        "secretsmanager:DescribeSecret", 
+                        "secretsmanager:DeleteSecret", 
                         "secretsmanager:PutSecretValue"
-                    ],
-                    "Resource": "arn:aws:secretsmanager:*:*:secret:do-not-delete-rds-custom-*",
+                    ], 
+                    "Resource": "arn:aws:secretsmanager:*:*:secret:do-not-delete-rds-custom-*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:ResourceTag/AWSRDSCustom": [
-                                "custom-oracle",
-                                "custom-sqlserver",
+                                "custom-oracle", 
+                                "custom-sqlserver", 
                                 "custom-oracle-rac"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "secretmanager2"
+                }, 
                 {
-                    "Sid": "servicequota1",
-                    "Effect": "Allow",
                     "Action": [
                         "servicequotas:GetServiceQuota"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "servicequota1"
                 }
             ]
-        },
-        "VersionId": "v6",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-09-20T17:48:39+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

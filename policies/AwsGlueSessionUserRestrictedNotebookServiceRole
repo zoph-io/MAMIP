@@ -1,100 +1,102 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-08-15T20:51:58Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
-                    "Action": "glue:*",
+                    "Action": "glue:*", 
                     "Resource": [
-                        "arn:aws:glue:*:*:catalog/*",
-                        "arn:aws:glue:*:*:database/*",
-                        "arn:aws:glue:*:*:table/*",
-                        "arn:aws:glue:*:*:tableVersion/*",
-                        "arn:aws:glue:*:*:connection/*",
-                        "arn:aws:glue:*:*:userDefinedFunction/*",
-                        "arn:aws:glue:*:*:devEndpoint/*",
-                        "arn:aws:glue:*:*:job/*",
-                        "arn:aws:glue:*:*:trigger/*",
-                        "arn:aws:glue:*:*:crawler/*",
-                        "arn:aws:glue:*:*:workflow/*",
-                        "arn:aws:glue:*:*:mlTransform/*",
-                        "arn:aws:glue:*:*:registry/*",
+                        "arn:aws:glue:*:*:catalog/*", 
+                        "arn:aws:glue:*:*:database/*", 
+                        "arn:aws:glue:*:*:table/*", 
+                        "arn:aws:glue:*:*:tableVersion/*", 
+                        "arn:aws:glue:*:*:connection/*", 
+                        "arn:aws:glue:*:*:userDefinedFunction/*", 
+                        "arn:aws:glue:*:*:devEndpoint/*", 
+                        "arn:aws:glue:*:*:job/*", 
+                        "arn:aws:glue:*:*:trigger/*", 
+                        "arn:aws:glue:*:*:crawler/*", 
+                        "arn:aws:glue:*:*:workflow/*", 
+                        "arn:aws:glue:*:*:mlTransform/*", 
+                        "arn:aws:glue:*:*:registry/*", 
                         "arn:aws:glue:*:*:schema/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "glue:CreateSession"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:glue:*:*:session/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
-                        "StringEquals": {
-                            "aws:RequestTag/owner": "${aws:PrincipalTag/owner}"
-                        },
                         "ForAnyValue:StringEquals": {
                             "aws:TagKeys": [
                                 "owner"
                             ]
-                        }
-                    }
-                },
-                {
-                    "Sid": "AllowGlueTaggingAction",
-                    "Effect": "Allow",
-                    "Action": [
-                        "glue:TagResource"
-                    ],
-                    "Resource": "arn:aws:glue:*:*:session/*",
-                    "Condition": {
+                        }, 
                         "StringEquals": {
-                            "aws:ResourceTag/owner": "${aws:PrincipalTag/owner}",
                             "aws:RequestTag/owner": "${aws:PrincipalTag/owner}"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "glue:RunStatement",
-                        "glue:GetStatement",
-                        "glue:ListStatements",
-                        "glue:CancelStatement",
-                        "glue:StopSession",
-                        "glue:DeleteSession",
+                        "glue:TagResource"
+                    ], 
+                    "Resource": "arn:aws:glue:*:*:session/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:RequestTag/owner": "${aws:PrincipalTag/owner}", 
+                            "aws:ResourceTag/owner": "${aws:PrincipalTag/owner}"
+                        }
+                    }, 
+                    "Sid": "AllowGlueTaggingAction"
+                }, 
+                {
+                    "Action": [
+                        "glue:RunStatement", 
+                        "glue:GetStatement", 
+                        "glue:ListStatements", 
+                        "glue:CancelStatement", 
+                        "glue:StopSession", 
+                        "glue:DeleteSession", 
                         "glue:GetSession"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:glue:*:*:session/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceTag/owner": "${aws:PrincipalTag/owner}"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "glue:ListSessions"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Deny",
                     "Action": [
-                        "glue:UntagResource",
-                        "tag:TagResources",
+                        "glue:UntagResource", 
+                        "tag:TagResources", 
                         "tag:UntagResources"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:glue:*:*:session/*"
-                    ],
+                    ], 
+                    "Effect": "Deny", 
                     "Condition": {
                         "ForAnyValue:StringEquals": {
                             "aws:TagKeys": [
@@ -102,71 +104,69 @@
                             ]
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "s3:CreateBucket"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:s3:::aws-glue-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:GetObject",
-                        "s3:PutObject",
+                        "s3:GetObject", 
+                        "s3:PutObject", 
                         "s3:DeleteObject"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:s3:::aws-glue-*/*",
+                        "arn:aws:s3:::aws-glue-*/*", 
                         "arn:aws:s3:::*/*aws-glue-*/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "s3:GetObject"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:s3:::crawler-public*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:CreateLogGroup",
-                        "logs:CreateLogStream",
+                        "logs:CreateLogGroup", 
+                        "logs:CreateLogStream", 
                         "logs:PutLogEvents"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:logs:*:*:/aws-glue/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:CreateTags",
+                        "ec2:CreateTags", 
                         "ec2:DeleteTags"
-                    ],
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:network-interface/*", 
+                        "arn:aws:ec2:*:*:security-group/*", 
+                        "arn:aws:ec2:*:*:instance/*"
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAllValues:StringEquals": {
                             "aws:TagKeys": [
                                 "aws-glue-service-resource"
                             ]
                         }
-                    },
-                    "Resource": [
-                        "arn:aws:ec2:*:*:network-interface/*",
-                        "arn:aws:ec2:*:*:security-group/*",
-                        "arn:aws:ec2:*:*:instance/*"
-                    ]
+                    }
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-08-15T20:51:58+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

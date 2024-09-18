@@ -1,66 +1,66 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-05-18T20:28:05Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "id0",
-                    "Effect": "Allow",
                     "Action": [
-                        "dms:CreateReplicationInstance",
+                        "dms:CreateReplicationInstance", 
                         "dms:CreateReplicationTask"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "dms:req-tag/ResourceCreatedBy": "DMSServerless"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "id0"
+                }, 
                 {
-                    "Sid": "id1",
-                    "Effect": "Allow",
                     "Action": [
-                        "dms:DescribeReplicationInstances",
+                        "dms:DescribeReplicationInstances", 
                         "dms:DescribeReplicationTasks"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "id1"
+                }, 
                 {
-                    "Sid": "id2",
-                    "Effect": "Allow",
                     "Action": [
-                        "dms:StartReplicationTask",
-                        "dms:StopReplicationTask",
-                        "dms:DeleteReplicationTask",
+                        "dms:StartReplicationTask", 
+                        "dms:StopReplicationTask", 
+                        "dms:DeleteReplicationTask", 
                         "dms:DeleteReplicationInstance"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:dms:*:*:rep:*",
+                        "arn:aws:dms:*:*:rep:*", 
                         "arn:aws:dms:*:*:task:*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEqualsIgnoreCase": {
                             "aws:ResourceTag/ResourceCreatedBy": "DMSServerless"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "id2"
+                }, 
                 {
-                    "Sid": "id3",
-                    "Effect": "Allow",
                     "Action": [
-                        "dms:TestConnection",
+                        "dms:TestConnection", 
                         "dms:DeleteConnection"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:dms:*:*:rep:*",
+                        "arn:aws:dms:*:*:rep:*", 
                         "arn:aws:dms:*:*:endpoint:*"
-                    ]
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "id3"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-05-18T20:28:05+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

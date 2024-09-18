@@ -1,22 +1,22 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2019-01-14T15:32:50Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:CreateLogStream",
-                        "logs:DescribeLogStreams",
-                        "logs:CreateLogGroup",
+                        "logs:CreateLogStream", 
+                        "logs:DescribeLogStreams", 
+                        "logs:CreateLogGroup", 
                         "logs:PutLogEvents"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2019-01-14T15:32:50+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

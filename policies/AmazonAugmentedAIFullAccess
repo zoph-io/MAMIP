@@ -1,34 +1,36 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2019-12-03T16:21:56Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "sagemaker:*HumanLoop",
-                        "sagemaker:*HumanLoops",
-                        "sagemaker:*FlowDefinition",
-                        "sagemaker:*FlowDefinitions",
-                        "sagemaker:*HumanTaskUi",
+                        "sagemaker:*HumanLoop", 
+                        "sagemaker:*HumanLoops", 
+                        "sagemaker:*FlowDefinition", 
+                        "sagemaker:*FlowDefinitions", 
+                        "sagemaker:*HumanTaskUi", 
                         "sagemaker:*HumanTaskUis"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEqualsIfExists": {
                             "sagemaker:WorkteamType": [
-                                "private-crowd",
+                                "private-crowd", 
                                 "vendor-crowd"
                             ]
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "iam:PassRole"
-                    ],
-                    "Resource": "arn:aws:iam::*:role/*",
+                    ], 
+                    "Resource": "arn:aws:iam::*:role/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:PassedToService": [
@@ -38,9 +40,7 @@
                     }
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2019-12-03T16:21:56+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

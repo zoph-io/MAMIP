@@ -1,21 +1,21 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-03-23T23:29:52Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "identity-sync:GetSyncProfile",
-                        "identity-sync:ListSyncFilters",
+                        "identity-sync:GetSyncProfile", 
+                        "identity-sync:ListSyncFilters", 
                         "identity-sync:GetSyncTarget"
-                    ],
-                    "Resource": "arn:*:identity-sync:*:*:*/*"
+                    ], 
+                    "Resource": "arn:*:identity-sync:*:*:*/*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-03-23T23:29:52+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

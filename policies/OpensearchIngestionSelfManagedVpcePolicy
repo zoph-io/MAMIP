@@ -1,33 +1,33 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-06-10T19:59:40Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "DescribeEc2Resources",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeSubnets",
-                        "ec2:DescribeSecurityGroups",
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeSecurityGroups", 
                         "ec2:DescribeVpcEndpoints"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DescribeEc2Resources"
+                }, 
                 {
-                    "Sid": "CwPermissionsForOsiNamespace",
-                    "Effect": "Allow",
-                    "Action": "cloudwatch:PutMetricData",
-                    "Resource": "*",
+                    "Action": "cloudwatch:PutMetricData", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "cloudwatch:namespace": "AWS/OSIS"
                         }
-                    }
+                    }, 
+                    "Sid": "CwPermissionsForOsiNamespace"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-06-10T19:59:40+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

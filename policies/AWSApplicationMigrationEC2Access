@@ -1,43 +1,45 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-02-06T16:07:02Z", 
+        "VersionId": "v4", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
-                    "Action": "iam:PassRole",
+                    "Action": "iam:PassRole", 
                     "Resource": [
                         "arn:aws:iam::*:role/service-role/AWSApplicationMigrationConversionServerRole"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:PassedToService": "ec2.amazonaws.com"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:DeleteSnapshot"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:snapshot/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:snapshot/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "aws:ResourceTag/AWSApplicationMigrationServiceManaged": "false"
-                        },
+                        }, 
                         "Bool": {
                             "aws:ViaAWSService": "true"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeSnapshots",
-                        "ec2:DescribeImages",
+                        "ec2:DescribeSnapshots", 
+                        "ec2:DescribeImages", 
                         "ec2:DescribeVolumes"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAnyValue:StringEquals": {
                             "aws:CalledVia": [
@@ -45,296 +47,294 @@
                             ]
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:CreateLaunchTemplateVersion",
-                        "ec2:ModifyLaunchTemplate",
+                        "ec2:CreateLaunchTemplateVersion", 
+                        "ec2:ModifyLaunchTemplate", 
                         "ec2:DeleteLaunchTemplateVersions"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:launch-template/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:launch-template/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "aws:ResourceTag/AWSApplicationMigrationServiceManaged": "false"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateLaunchTemplate"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:launch-template/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:launch-template/*", 
+                    "Effect": "Allow", 
                     "Condition": {
-                        "Null": {
-                            "aws:RequestTag/AWSApplicationMigrationServiceManaged": "false"
-                        },
                         "ForAnyValue:StringEquals": {
                             "aws:CalledVia": [
                                 "mgn.amazonaws.com"
                             ]
+                        }, 
+                        "Null": {
+                            "aws:RequestTag/AWSApplicationMigrationServiceManaged": "false"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:DeleteLaunchTemplate"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:launch-template/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:launch-template/*", 
+                    "Effect": "Allow", 
                     "Condition": {
-                        "Null": {
-                            "aws:ResourceTag/AWSApplicationMigrationServiceManaged": "false"
-                        },
                         "ForAnyValue:StringEquals": {
                             "aws:CalledVia": [
                                 "mgn.amazonaws.com"
                             ]
+                        }, 
+                        "Null": {
+                            "aws:ResourceTag/AWSApplicationMigrationServiceManaged": "false"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:DeleteVolume"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:volume/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:volume/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "aws:ResourceTag/AWSApplicationMigrationServiceManaged": "false"
-                        },
+                        }, 
                         "Bool": {
                             "aws:ViaAWSService": "true"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:StartInstances",
-                        "ec2:StopInstances",
-                        "ec2:TerminateInstances",
-                        "ec2:ModifyInstanceAttribute",
-                        "ec2:GetConsoleOutput",
+                        "ec2:StartInstances", 
+                        "ec2:StopInstances", 
+                        "ec2:TerminateInstances", 
+                        "ec2:ModifyInstanceAttribute", 
+                        "ec2:GetConsoleOutput", 
                         "ec2:GetConsoleScreenshot"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:instance/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:instance/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "aws:ResourceTag/AWSApplicationMigrationServiceManaged": "false"
-                        },
+                        }, 
                         "Bool": {
                             "aws:ViaAWSService": "true"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:RevokeSecurityGroupEgress",
-                        "ec2:AuthorizeSecurityGroupIngress",
+                        "ec2:RevokeSecurityGroupEgress", 
+                        "ec2:AuthorizeSecurityGroupIngress", 
                         "ec2:AuthorizeSecurityGroupEgress"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:security-group/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:security-group/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "aws:ResourceTag/AWSApplicationMigrationServiceManaged": "false"
-                        },
+                        }, 
                         "Bool": {
                             "aws:ViaAWSService": "true"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateVolume"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:volume/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:volume/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "aws:RequestTag/AWSApplicationMigrationServiceManaged": "false"
-                        },
+                        }, 
                         "Bool": {
                             "aws:ViaAWSService": "true"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "ec2:CreateSecurityGroup",
-                    "Resource": "arn:aws:ec2:*:*:vpc/*"
-                },
+                    "Action": "ec2:CreateSecurityGroup", 
+                    "Resource": "arn:aws:ec2:*:*:vpc/*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateSecurityGroup"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:security-group/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:security-group/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "aws:RequestTag/AWSApplicationMigrationServiceManaged": "false"
-                        },
+                        }, 
                         "Bool": {
                             "aws:ViaAWSService": "true"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateSnapshot"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:volume/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:volume/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "ec2:ResourceTag/AWSApplicationMigrationServiceManaged": "false"
-                        },
+                        }, 
                         "Bool": {
                             "aws:ViaAWSService": "true"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateSnapshot"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:snapshot/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:snapshot/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "aws:RequestTag/AWSApplicationMigrationServiceManaged": "false"
-                        },
+                        }, 
                         "Bool": {
                             "aws:ViaAWSService": "true"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DetachVolume",
+                        "ec2:DetachVolume", 
                         "ec2:AttachVolume"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:instance/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:instance/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "ec2:ResourceTag/AWSApplicationMigrationServiceManaged": "false"
-                        },
+                        }, 
                         "Bool": {
                             "aws:ViaAWSService": "true"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:AttachVolume"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:volume/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:volume/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "ec2:ResourceTag/AWSApplicationMigrationServiceManaged": "false"
-                        },
+                        }, 
                         "Bool": {
                             "aws:ViaAWSService": "true"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:DetachVolume"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:volume/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:volume/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Bool": {
                             "aws:ViaAWSService": "true"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:RunInstances"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:instance/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:instance/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "aws:RequestTag/AWSApplicationMigrationServiceManaged": "false"
-                        },
+                        }, 
                         "Bool": {
                             "aws:ViaAWSService": "true"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:RunInstances"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:ec2:*:*:security-group/*",
-                        "arn:aws:ec2:*:*:volume/*",
-                        "arn:aws:ec2:*:*:subnet/*",
-                        "arn:aws:ec2:*:*:image/*",
-                        "arn:aws:ec2:*:*:network-interface/*",
+                        "arn:aws:ec2:*:*:security-group/*", 
+                        "arn:aws:ec2:*:*:volume/*", 
+                        "arn:aws:ec2:*:*:subnet/*", 
+                        "arn:aws:ec2:*:*:image/*", 
+                        "arn:aws:ec2:*:*:network-interface/*", 
                         "arn:aws:ec2:*:*:launch-template/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Bool": {
                             "aws:ViaAWSService": "true"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "ec2:CreateTags",
+                    "Action": "ec2:CreateTags", 
                     "Resource": [
-                        "arn:aws:ec2:*:*:security-group/*",
-                        "arn:aws:ec2:*:*:volume/*",
-                        "arn:aws:ec2:*:*:snapshot/*",
-                        "arn:aws:ec2:*:*:instance/*",
+                        "arn:aws:ec2:*:*:security-group/*", 
+                        "arn:aws:ec2:*:*:volume/*", 
+                        "arn:aws:ec2:*:*:snapshot/*", 
+                        "arn:aws:ec2:*:*:instance/*", 
                         "arn:aws:ec2:*:*:launch-template/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
+                        "Bool": {
+                            "aws:ViaAWSService": "true"
+                        }, 
                         "StringEquals": {
                             "ec2:CreateAction": [
-                                "CreateSecurityGroup",
-                                "CreateVolume",
-                                "CreateSnapshot",
-                                "RunInstances",
+                                "CreateSecurityGroup", 
+                                "CreateVolume", 
+                                "CreateSnapshot", 
+                                "RunInstances", 
                                 "CreateLaunchTemplate"
                             ]
-                        },
-                        "Bool": {
-                            "aws:ViaAWSService": "true"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:CreateTags",
+                        "ec2:CreateTags", 
                         "ec2:ModifyVolume"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ec2:*:*:volume/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "ec2:ResourceTag/AWSApplicationMigrationServiceManaged": "false"
-                        },
+                        }, 
                         "Bool": {
                             "aws:ViaAWSService": "true"
                         }
                     }
                 }
             ]
-        },
-        "VersionId": "v4",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-02-06T16:07:02+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

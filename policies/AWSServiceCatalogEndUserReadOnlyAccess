@@ -1,61 +1,63 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2019-10-25T18:49:34Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudformation:DescribeStackEvents",
-                        "cloudformation:DescribeStacks",
-                        "cloudformation:DescribeChangeSet",
-                        "cloudformation:ListChangeSets",
-                        "cloudformation:DescribeStackSet",
-                        "cloudformation:DescribeStackInstance",
-                        "cloudformation:DescribeStackSetOperation",
-                        "cloudformation:ListStackInstances",
-                        "cloudformation:ListStackResources",
-                        "cloudformation:ListStackSetOperations",
+                        "cloudformation:DescribeStackEvents", 
+                        "cloudformation:DescribeStacks", 
+                        "cloudformation:DescribeChangeSet", 
+                        "cloudformation:ListChangeSets", 
+                        "cloudformation:DescribeStackSet", 
+                        "cloudformation:DescribeStackInstance", 
+                        "cloudformation:DescribeStackSetOperation", 
+                        "cloudformation:ListStackInstances", 
+                        "cloudformation:ListStackResources", 
+                        "cloudformation:ListStackSetOperations", 
                         "cloudformation:ListStackSetOperationResults"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:cloudformation:*:*:stack/SC-*",
-                        "arn:aws:cloudformation:*:*:stack/StackSet-SC-*",
-                        "arn:aws:cloudformation:*:*:changeSet/SC-*",
+                        "arn:aws:cloudformation:*:*:stack/SC-*", 
+                        "arn:aws:cloudformation:*:*:stack/StackSet-SC-*", 
+                        "arn:aws:cloudformation:*:*:changeSet/SC-*", 
                         "arn:aws:cloudformation:*:*:stackset/SC-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudformation:GetTemplateSummary",
-                        "servicecatalog:DescribeProduct",
-                        "servicecatalog:DescribeProductView",
-                        "servicecatalog:DescribeProvisioningParameters",
-                        "servicecatalog:ListLaunchPaths",
-                        "servicecatalog:SearchProducts",
-                        "ssm:DescribeDocument",
-                        "ssm:GetAutomationExecution",
-                        "config:DescribeConfigurationRecorders",
+                        "cloudformation:GetTemplateSummary", 
+                        "servicecatalog:DescribeProduct", 
+                        "servicecatalog:DescribeProductView", 
+                        "servicecatalog:DescribeProvisioningParameters", 
+                        "servicecatalog:ListLaunchPaths", 
+                        "servicecatalog:SearchProducts", 
+                        "ssm:DescribeDocument", 
+                        "ssm:GetAutomationExecution", 
+                        "config:DescribeConfigurationRecorders", 
                         "config:DescribeConfigurationRecorderStatus"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "servicecatalog:DescribeProvisionedProduct",
-                        "servicecatalog:DescribeRecord",
-                        "servicecatalog:ListRecordHistory",
-                        "servicecatalog:ListStackInstancesForProvisionedProduct",
-                        "servicecatalog:ScanProvisionedProducts",
-                        "servicecatalog:SearchProvisionedProducts",
-                        "servicecatalog:DescribeProvisionedProductPlan",
-                        "servicecatalog:ListProvisionedProductPlans",
-                        "servicecatalog:ListServiceActionsForProvisioningArtifact",
+                        "servicecatalog:DescribeProvisionedProduct", 
+                        "servicecatalog:DescribeRecord", 
+                        "servicecatalog:ListRecordHistory", 
+                        "servicecatalog:ListStackInstancesForProvisionedProduct", 
+                        "servicecatalog:ScanProvisionedProducts", 
+                        "servicecatalog:SearchProvisionedProducts", 
+                        "servicecatalog:DescribeProvisionedProductPlan", 
+                        "servicecatalog:ListProvisionedProductPlans", 
+                        "servicecatalog:ListServiceActionsForProvisioningArtifact", 
                         "servicecatalog:DescribeServiceActionExecutionParameters"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "servicecatalog:userLevel": "self"
@@ -63,9 +65,7 @@
                     }
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2019-10-25T18:49:34+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,48 +1,48 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-10-02T18:55:58Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "s3-outposts:Get*",
+                        "s3-outposts:Get*", 
                         "s3-outposts:List*"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "datasync:ListTasks",
-                        "datasync:ListLocations",
-                        "datasync:DescribeTask",
+                        "datasync:ListTasks", 
+                        "datasync:ListLocations", 
+                        "datasync:DescribeTask", 
                         "datasync:DescribeLocation*"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeVpcs",
-                        "ec2:DescribeSubnets",
-                        "ec2:DescribeSecurityGroups",
+                        "ec2:DescribeVpcs", 
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeSecurityGroups", 
                         "ec2:DescribeNetworkInterfaces"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "outposts:ListOutposts",
+                        "outposts:ListOutposts", 
                         "outposts:GetOutpost"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-10-02T18:55:58+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

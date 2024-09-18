@@ -1,20 +1,20 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-02-24T21:24:15Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "apprunner:List*",
+                        "apprunner:List*", 
                         "apprunner:Describe*"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-02-24T21:24:15+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,27 +1,27 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-01-08T21:22:27Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": [
-                        "translate:*",
-                        "comprehend:DetectDominantLanguage",
-                        "cloudwatch:GetMetricStatistics",
-                        "cloudwatch:ListMetrics",
-                        "s3:ListAllMyBuckets",
-                        "s3:ListBucket",
-                        "s3:GetBucketLocation",
-                        "iam:ListRoles",
+                        "translate:*", 
+                        "comprehend:DetectDominantLanguage", 
+                        "cloudwatch:GetMetricStatistics", 
+                        "cloudwatch:ListMetrics", 
+                        "s3:ListAllMyBuckets", 
+                        "s3:ListBucket", 
+                        "s3:GetBucketLocation", 
+                        "iam:ListRoles", 
                         "iam:GetRole"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-01-08T21:22:27+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

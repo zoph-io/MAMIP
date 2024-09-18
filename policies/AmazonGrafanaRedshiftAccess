@@ -1,47 +1,49 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2021-11-26T23:15:15Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "redshift:DescribeClusters",
-                        "redshift-data:GetStatementResult",
-                        "redshift-data:DescribeStatement",
+                        "redshift:DescribeClusters", 
+                        "redshift-data:GetStatementResult", 
+                        "redshift-data:DescribeStatement", 
                         "secretsmanager:ListSecrets"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "redshift-data:DescribeTable",
-                        "redshift-data:ExecuteStatement",
-                        "redshift-data:ListTables",
+                        "redshift-data:DescribeTable", 
+                        "redshift-data:ExecuteStatement", 
+                        "redshift-data:ListTables", 
                         "redshift-data:ListSchemas"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "aws:ResourceTag/GrafanaDataSource": "false"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "redshift:GetClusterCredentials",
+                    "Action": "redshift:GetClusterCredentials", 
                     "Resource": [
-                        "arn:aws:redshift:*:*:dbname:*/*",
+                        "arn:aws:redshift:*:*:dbname:*/*", 
                         "arn:aws:redshift:*:*:dbuser:*/redshift_data_api_user"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "secretsmanager:GetSecretValue"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "secretsmanager:ResourceTag/RedshiftQueryOwner": "false"
@@ -49,9 +51,7 @@
                     }
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2021-11-26T23:15:15+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

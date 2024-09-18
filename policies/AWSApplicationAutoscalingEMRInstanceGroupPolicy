@@ -1,23 +1,23 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2017-10-26T00:57:39Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": [
-                        "elasticmapreduce:ListInstanceGroups",
-                        "elasticmapreduce:ModifyInstanceGroups",
-                        "cloudwatch:PutMetricAlarm",
-                        "cloudwatch:DescribeAlarms",
+                        "elasticmapreduce:ListInstanceGroups", 
+                        "elasticmapreduce:ModifyInstanceGroups", 
+                        "cloudwatch:PutMetricAlarm", 
+                        "cloudwatch:DescribeAlarms", 
                         "cloudwatch:DeleteAlarms"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2017-10-26T00:57:39+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,30 +1,30 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-09-22T20:56:53Z", 
+        "VersionId": "v5", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "organizations:ListDelegatedAdministrators",
-                        "organizations:ListAWSServiceAccessForOrganization",
-                        "organizations:DescribeOrganizationalUnit",
-                        "organizations:DescribeAccount",
-                        "organizations:DescribeOrganization",
-                        "inspector2:BatchGet*",
-                        "inspector2:List*",
-                        "inspector2:Describe*",
-                        "inspector2:Get*",
-                        "inspector2:Search*",
-                        "codeguru-security:BatchGetFindings",
+                        "organizations:ListDelegatedAdministrators", 
+                        "organizations:ListAWSServiceAccessForOrganization", 
+                        "organizations:DescribeOrganizationalUnit", 
+                        "organizations:DescribeAccount", 
+                        "organizations:DescribeOrganization", 
+                        "inspector2:BatchGet*", 
+                        "inspector2:List*", 
+                        "inspector2:Describe*", 
+                        "inspector2:Get*", 
+                        "inspector2:Search*", 
+                        "codeguru-security:BatchGetFindings", 
                         "codeguru-security:GetAccountConfiguration"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v5",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-09-22T20:56:53+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

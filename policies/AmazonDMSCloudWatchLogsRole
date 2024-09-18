@@ -1,66 +1,66 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-05-23T21:32:57Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AllowDescribeOnAllLogGroups",
-                    "Effect": "Allow",
                     "Action": [
                         "logs:DescribeLogGroups"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowDescribeOnAllLogGroups"
+                }, 
                 {
-                    "Sid": "AllowDescribeOfAllLogStreamsOnDmsTasksLogGroup",
-                    "Effect": "Allow",
                     "Action": [
                         "logs:DescribeLogStreams"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:logs:*:*:log-group:dms-tasks-*",
+                        "arn:aws:logs:*:*:log-group:dms-tasks-*", 
                         "arn:aws:logs:*:*:log-group:dms-serverless-replication-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowDescribeOfAllLogStreamsOnDmsTasksLogGroup"
+                }, 
                 {
-                    "Sid": "AllowCreationOfDmsLogGroups",
-                    "Effect": "Allow",
                     "Action": [
                         "logs:CreateLogGroup"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:logs:*:*:log-group:dms-tasks-*",
+                        "arn:aws:logs:*:*:log-group:dms-tasks-*", 
                         "arn:aws:logs:*:*:log-group:dms-serverless-replication-*:log-stream:"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowCreationOfDmsLogGroups"
+                }, 
                 {
-                    "Sid": "AllowCreationOfDmsLogStream",
-                    "Effect": "Allow",
                     "Action": [
                         "logs:CreateLogStream"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:logs:*:*:log-group:dms-tasks-*:log-stream:dms-task-*",
+                        "arn:aws:logs:*:*:log-group:dms-tasks-*:log-stream:dms-task-*", 
                         "arn:aws:logs:*:*:log-group:dms-serverless-replication-*:log-stream:dms-serverless-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowCreationOfDmsLogStream"
+                }, 
                 {
-                    "Sid": "AllowUploadOfLogEventsToDmsLogStream",
-                    "Effect": "Allow",
                     "Action": [
                         "logs:PutLogEvents"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:logs:*:*:log-group:dms-tasks-*:log-stream:dms-task-*",
+                        "arn:aws:logs:*:*:log-group:dms-tasks-*:log-stream:dms-task-*", 
                         "arn:aws:logs:*:*:log-group:dms-serverless-replication-*:log-stream:dms-serverless-*"
-                    ]
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowUploadOfLogEventsToDmsLogStream"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-05-23T21:32:57+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

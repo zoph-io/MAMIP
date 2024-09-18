@@ -1,134 +1,134 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-11-29T14:47:09Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "Textract",
-                    "Effect": "Allow",
                     "Action": [
-                        "textract:AnalyzeDocument",
-                        "textract:AnalyzeExpense",
-                        "textract:AnalyzeID",
-                        "textract:StartDocumentAnalysis",
-                        "textract:StartExpenseAnalysis",
-                        "textract:GetDocumentAnalysis",
+                        "textract:AnalyzeDocument", 
+                        "textract:AnalyzeExpense", 
+                        "textract:AnalyzeID", 
+                        "textract:StartDocumentAnalysis", 
+                        "textract:StartExpenseAnalysis", 
+                        "textract:GetDocumentAnalysis", 
                         "textract:GetExpenseAnalysis"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "Textract"
+                }, 
                 {
-                    "Sid": "Rekognition",
-                    "Effect": "Allow",
                     "Action": [
-                        "rekognition:DetectLabels",
+                        "rekognition:DetectLabels", 
                         "rekognition:DetectText"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "Rekognition"
+                }, 
                 {
-                    "Sid": "Comprehend",
-                    "Effect": "Allow",
                     "Action": [
-                        "comprehend:BatchDetectDominantLanguage",
-                        "comprehend:BatchDetectEntities",
-                        "comprehend:BatchDetectSentiment",
-                        "comprehend:DetectPiiEntities",
-                        "comprehend:DetectEntities",
-                        "comprehend:DetectSentiment",
+                        "comprehend:BatchDetectDominantLanguage", 
+                        "comprehend:BatchDetectEntities", 
+                        "comprehend:BatchDetectSentiment", 
+                        "comprehend:DetectPiiEntities", 
+                        "comprehend:DetectEntities", 
+                        "comprehend:DetectSentiment", 
                         "comprehend:DetectDominantLanguage"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "Comprehend"
+                }, 
                 {
-                    "Sid": "Bedrock",
-                    "Effect": "Allow",
                     "Action": [
-                        "bedrock:InvokeModel",
-                        "bedrock:ListFoundationModels",
+                        "bedrock:InvokeModel", 
+                        "bedrock:ListFoundationModels", 
                         "bedrock:InvokeModelWithResponseStream"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "Bedrock"
+                }, 
                 {
-                    "Sid": "CreateBedrockResourcesPermission",
-                    "Effect": "Allow",
                     "Action": [
-                        "bedrock:CreateModelCustomizationJob",
-                        "bedrock:CreateProvisionedModelThroughput",
+                        "bedrock:CreateModelCustomizationJob", 
+                        "bedrock:CreateProvisionedModelThroughput", 
                         "bedrock:TagResource"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:bedrock:*:*:model-customization-job/*",
-                        "arn:aws:bedrock:*:*:custom-model/*",
+                        "arn:aws:bedrock:*:*:model-customization-job/*", 
+                        "arn:aws:bedrock:*:*:custom-model/*", 
                         "arn:aws:bedrock:*:*:provisioned-model/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAnyValue:StringEquals": {
                             "aws:TagKeys": [
-                                "SageMaker",
+                                "SageMaker", 
                                 "Canvas"
                             ]
-                        },
+                        }, 
                         "StringEquals": {
-                            "aws:RequestTag/SageMaker": "true",
-                            "aws:RequestTag/Canvas": "true",
-                            "aws:ResourceTag/SageMaker": "true",
-                            "aws:ResourceTag/Canvas": "true"
+                            "aws:RequestTag/Canvas": "true", 
+                            "aws:ResourceTag/SageMaker": "true", 
+                            "aws:ResourceTag/Canvas": "true", 
+                            "aws:RequestTag/SageMaker": "true"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "CreateBedrockResourcesPermission"
+                }, 
                 {
-                    "Sid": "GetStopAndDeleteBedrockResourcesPermission",
-                    "Effect": "Allow",
                     "Action": [
-                        "bedrock:GetModelCustomizationJob",
-                        "bedrock:GetCustomModel",
-                        "bedrock:GetProvisionedModelThroughput",
-                        "bedrock:StopModelCustomizationJob",
+                        "bedrock:GetModelCustomizationJob", 
+                        "bedrock:GetCustomModel", 
+                        "bedrock:GetProvisionedModelThroughput", 
+                        "bedrock:StopModelCustomizationJob", 
                         "bedrock:DeleteProvisionedModelThroughput"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:bedrock:*:*:model-customization-job/*",
-                        "arn:aws:bedrock:*:*:custom-model/*",
+                        "arn:aws:bedrock:*:*:model-customization-job/*", 
+                        "arn:aws:bedrock:*:*:custom-model/*", 
                         "arn:aws:bedrock:*:*:provisioned-model/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
-                            "aws:ResourceTag/SageMaker": "true",
+                            "aws:ResourceTag/SageMaker": "true", 
                             "aws:ResourceTag/Canvas": "true"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "GetStopAndDeleteBedrockResourcesPermission"
+                }, 
                 {
-                    "Sid": "FoundationModelPermission",
-                    "Effect": "Allow",
                     "Action": [
                         "bedrock:CreateModelCustomizationJob"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:bedrock:*::foundation-model/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "FoundationModelPermission"
+                }, 
                 {
-                    "Sid": "BedrockFineTuningPassRole",
-                    "Effect": "Allow",
                     "Action": [
                         "iam:PassRole"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:iam::*:role/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:PassedToService": "bedrock.amazonaws.com"
                         }
-                    }
+                    }, 
+                    "Sid": "BedrockFineTuningPassRole"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-11-29T14:47:09+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

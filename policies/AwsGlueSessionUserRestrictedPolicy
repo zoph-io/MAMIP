@@ -1,124 +1,124 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-08-05T23:06:45Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AllowSessionActions",
-                    "Effect": "Allow",
                     "Action": [
                         "glue:CreateSession"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:glue:*:*:session/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
-                        "StringEquals": {
-                            "aws:RequestTag/owner": "${aws:userid}"
-                        },
                         "ForAnyValue:StringEquals": {
                             "aws:TagKeys": [
                                 "owner"
                             ]
-                        }
-                    }
-                },
-                {
-                    "Sid": "AllowGlueTaggingAction",
-                    "Effect": "Allow",
-                    "Action": [
-                        "glue:TagResource"
-                    ],
-                    "Resource": "arn:aws:glue:*:*:session/*",
-                    "Condition": {
+                        }, 
                         "StringEquals": {
-                            "aws:ResourceTag/owner": "${aws:userid}",
                             "aws:RequestTag/owner": "${aws:userid}"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "AllowSessionActions"
+                }, 
                 {
-                    "Sid": "AllowCompletionActions",
-                    "Effect": "Allow",
                     "Action": [
-                        "glue:StartCompletion",
+                        "glue:TagResource"
+                    ], 
+                    "Resource": "arn:aws:glue:*:*:session/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:RequestTag/owner": "${aws:userid}", 
+                            "aws:ResourceTag/owner": "${aws:userid}"
+                        }
+                    }, 
+                    "Sid": "AllowGlueTaggingAction"
+                }, 
+                {
+                    "Action": [
+                        "glue:StartCompletion", 
                         "glue:GetCompletion"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:glue:*:*:completion/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowCompletionActions"
+                }, 
                 {
-                    "Sid": "AllowGlueActions",
-                    "Effect": "Allow",
                     "Action": [
-                        "glue:RunStatement",
-                        "glue:GetStatement",
-                        "glue:ListStatements",
-                        "glue:CancelStatement",
-                        "glue:StopSession",
-                        "glue:DeleteSession",
+                        "glue:RunStatement", 
+                        "glue:GetStatement", 
+                        "glue:ListStatements", 
+                        "glue:CancelStatement", 
+                        "glue:StopSession", 
+                        "glue:DeleteSession", 
                         "glue:GetSession"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:glue:*:*:session/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceTag/owner": "${aws:userid}"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "AllowGlueActions"
+                }, 
                 {
-                    "Sid": "AllowListSessions",
-                    "Effect": "Allow",
                     "Action": [
                         "glue:ListSessions"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowListSessions"
+                }, 
                 {
-                    "Sid": "DenyTagActions",
-                    "Effect": "Deny",
                     "Action": [
-                        "glue:UntagResource",
-                        "tag:TagResources",
+                        "glue:UntagResource", 
+                        "tag:TagResources", 
                         "tag:UntagResources"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:glue:*:*:session/*"
-                    ],
+                    ], 
+                    "Effect": "Deny", 
                     "Condition": {
                         "ForAnyValue:StringEquals": {
                             "aws:TagKeys": [
                                 "owner"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "DenyTagActions"
+                }, 
                 {
-                    "Sid": "AllowPassRoleActions",
-                    "Effect": "Allow",
                     "Action": [
                         "iam:PassRole"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:iam::*:role/service-role/AwsGlueSessionServiceRoleUserRestricted*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "iam:PassedToService": [
                                 "glue.amazonaws.com"
                             ]
                         }
-                    }
+                    }, 
+                    "Sid": "AllowPassRoleActions"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-08-05T23:06:45+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

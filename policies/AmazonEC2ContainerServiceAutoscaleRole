@@ -1,32 +1,32 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2018-02-05T19:15:15Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ecs:DescribeServices",
+                        "ecs:DescribeServices", 
                         "ecs:UpdateService"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudwatch:DescribeAlarms",
+                        "cloudwatch:DescribeAlarms", 
                         "cloudwatch:PutMetricAlarm"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
+                    ], 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2018-02-05T19:15:15+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

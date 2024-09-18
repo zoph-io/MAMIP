@@ -1,71 +1,71 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-11-17T21:03:13Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "VerifiedAccessRoleModifyTaggedNetworkInterfaceActions",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:ModifyNetworkInterfaceAttribute",
+                        "ec2:ModifyNetworkInterfaceAttribute", 
                         "ec2:DeleteNetworkInterface"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:network-interface/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:network-interface/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceTag/VerifiedAccessManaged": "true"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "VerifiedAccessRoleModifyTaggedNetworkInterfaceActions"
+                }, 
                 {
-                    "Sid": "VerifiedAccessRoleModifyNetworkInterfaceActions",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:ModifyNetworkInterfaceAttribute"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:security-group/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:security-group/*", 
+                    "Effect": "Allow", 
+                    "Sid": "VerifiedAccessRoleModifyNetworkInterfaceActions"
+                }, 
                 {
-                    "Sid": "VerifiedAccessRoleNetworkInterfaceActions",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateNetworkInterface"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:ec2:*:*:subnet/*",
+                        "arn:aws:ec2:*:*:subnet/*", 
                         "arn:aws:ec2:*:*:security-group/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "VerifiedAccessRoleNetworkInterfaceActions"
+                }, 
                 {
-                    "Sid": "VerifiedAccessRoleTaggedNetworkInterfaceActions",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateNetworkInterface"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:network-interface/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:network-interface/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:RequestTag/VerifiedAccessManaged": "true"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "VerifiedAccessRoleTaggedNetworkInterfaceActions"
+                }, 
                 {
-                    "Sid": "VerifiedAccessRoleTaggingActions",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateTags"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:network-interface/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:network-interface/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "ec2:CreateAction": "CreateNetworkInterface"
                         }
-                    }
+                    }, 
+                    "Sid": "VerifiedAccessRoleTaggingActions"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-11-17T21:03:13+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

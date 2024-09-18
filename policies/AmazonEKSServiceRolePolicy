@@ -1,50 +1,52 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-05-27T19:30:19Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:CreateNetworkInterface",
-                        "ec2:DeleteNetworkInterface",
-                        "ec2:DetachNetworkInterface",
-                        "ec2:ModifyNetworkInterfaceAttribute",
-                        "ec2:DescribeInstances",
-                        "ec2:DescribeNetworkInterfaces",
-                        "ec2:DescribeSecurityGroups",
-                        "ec2:DescribeSubnets",
-                        "ec2:DescribeVpcs",
-                        "ec2:CreateNetworkInterfacePermission",
-                        "iam:ListAttachedRolePolicies",
+                        "ec2:CreateNetworkInterface", 
+                        "ec2:DeleteNetworkInterface", 
+                        "ec2:DetachNetworkInterface", 
+                        "ec2:ModifyNetworkInterfaceAttribute", 
+                        "ec2:DescribeInstances", 
+                        "ec2:DescribeNetworkInterfaces", 
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeVpcs", 
+                        "ec2:CreateNetworkInterfacePermission", 
+                        "iam:ListAttachedRolePolicies", 
                         "ec2:CreateSecurityGroup"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DeleteSecurityGroup",
-                        "ec2:RevokeSecurityGroupIngress",
+                        "ec2:DeleteSecurityGroup", 
+                        "ec2:RevokeSecurityGroupIngress", 
                         "ec2:AuthorizeSecurityGroupIngress"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:security-group/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:security-group/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAnyValue:StringLike": {
                             "ec2:ResourceTag/Name": "eks-cluster-sg*"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:CreateTags",
+                        "ec2:CreateTags", 
                         "ec2:DeleteTags"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:ec2:*:*:vpc/*",
+                        "arn:aws:ec2:*:*:vpc/*", 
                         "arn:aws:ec2:*:*:subnet/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAnyValue:StringLike": {
                             "aws:TagKeys": [
@@ -52,52 +54,50 @@
                             ]
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:CreateTags",
+                        "ec2:CreateTags", 
                         "ec2:DeleteTags"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ec2:*:*:security-group/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAnyValue:StringLike": {
                             "aws:TagKeys": [
                                 "kubernetes.io/cluster/*"
-                            ],
+                            ], 
                             "aws:RequestTag/Name": "eks-cluster-sg*"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "route53:AssociateVPCWithHostedZone",
-                    "Resource": "arn:aws:route53:::hostedzone/*"
-                },
+                    "Action": "route53:AssociateVPCWithHostedZone", 
+                    "Resource": "arn:aws:route53:::hostedzone/*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "logs:CreateLogGroup",
-                    "Resource": "arn:aws:logs:*:*:log-group:/aws/eks/*"
-                },
+                    "Action": "logs:CreateLogGroup", 
+                    "Resource": "arn:aws:logs:*:*:log-group:/aws/eks/*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:CreateLogStream",
+                        "logs:CreateLogStream", 
                         "logs:DescribeLogStreams"
-                    ],
-                    "Resource": "arn:aws:logs:*:*:log-group:/aws/eks/*:*"
-                },
+                    ], 
+                    "Resource": "arn:aws:logs:*:*:log-group:/aws/eks/*:*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "logs:PutLogEvents",
-                    "Resource": "arn:aws:logs:*:*:log-group:/aws/eks/*:*:*"
+                    "Action": "logs:PutLogEvents", 
+                    "Resource": "arn:aws:logs:*:*:log-group:/aws/eks/*:*:*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-05-27T19:30:19+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

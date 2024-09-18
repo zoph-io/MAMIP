@@ -1,24 +1,24 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2017-02-28T23:42:06Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "clouddirectory:List*",
-                        "clouddirectory:Get*",
-                        "clouddirectory:LookupPolicy",
+                        "clouddirectory:List*", 
+                        "clouddirectory:Get*", 
+                        "clouddirectory:LookupPolicy", 
                         "clouddirectory:BatchRead"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
+                    ], 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2017-02-28T23:42:06+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

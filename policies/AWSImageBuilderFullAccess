@@ -1,117 +1,117 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2021-04-13T17:33:42Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "imagebuilder:*"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "sns:ListTopics"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "sns:Publish"
-                    ],
-                    "Resource": "arn:aws:sns:*:*:*imagebuilder*"
-                },
+                    ], 
+                    "Resource": "arn:aws:sns:*:*:*imagebuilder*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "license-manager:ListLicenseConfigurations",
+                        "license-manager:ListLicenseConfigurations", 
                         "license-manager:ListLicenseSpecificationsForResource"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "iam:GetRole"
-                    ],
-                    "Resource": "arn:aws:iam::*:role/aws-service-role/imagebuilder.amazonaws.com/AWSServiceRoleForImageBuilder"
-                },
+                    ], 
+                    "Resource": "arn:aws:iam::*:role/aws-service-role/imagebuilder.amazonaws.com/AWSServiceRoleForImageBuilder", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "iam:GetInstanceProfile"
-                    ],
-                    "Resource": "arn:aws:iam::*:instance-profile/*imagebuilder*"
-                },
+                    ], 
+                    "Resource": "arn:aws:iam::*:instance-profile/*imagebuilder*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "iam:ListInstanceProfiles",
+                        "iam:ListInstanceProfiles", 
                         "iam:ListRoles"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "iam:PassRole",
+                    "Action": "iam:PassRole", 
                     "Resource": [
-                        "arn:aws:iam::*:instance-profile/*imagebuilder*",
+                        "arn:aws:iam::*:instance-profile/*imagebuilder*", 
                         "arn:aws:iam::*:role/*imagebuilder*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:PassedToService": "ec2.amazonaws.com"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:ListAllMyBuckets",
+                        "s3:ListAllMyBuckets", 
                         "s3:GetBucketLocation"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "s3:ListBucket"
-                    ],
-                    "Resource": "arn:aws:s3::*:*imagebuilder*"
-                },
+                    ], 
+                    "Resource": "arn:aws:s3::*:*imagebuilder*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "iam:CreateServiceLinkedRole",
-                    "Resource": "arn:aws:iam::*:role/aws-service-role/imagebuilder.amazonaws.com/AWSServiceRoleForImageBuilder",
+                    "Action": "iam:CreateServiceLinkedRole", 
+                    "Resource": "arn:aws:iam::*:role/aws-service-role/imagebuilder.amazonaws.com/AWSServiceRoleForImageBuilder", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "iam:AWSServiceName": "imagebuilder.amazonaws.com"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeImages",
-                        "ec2:DescribeSnapshots",
-                        "ec2:DescribeVpcs",
-                        "ec2:DescribeRegions",
-                        "ec2:DescribeVolumes",
-                        "ec2:DescribeSubnets",
-                        "ec2:DescribeKeyPairs",
-                        "ec2:DescribeSecurityGroups",
-                        "ec2:DescribeInstanceTypeOfferings",
+                        "ec2:DescribeImages", 
+                        "ec2:DescribeSnapshots", 
+                        "ec2:DescribeVpcs", 
+                        "ec2:DescribeRegions", 
+                        "ec2:DescribeVolumes", 
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeKeyPairs", 
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:DescribeInstanceTypeOfferings", 
                         "ec2:DescribeLaunchTemplates"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2021-04-13T17:33:42+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

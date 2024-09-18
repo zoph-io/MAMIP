@@ -1,293 +1,293 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-03-23T23:15:54Z", 
+        "VersionId": "v6", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "ElasticBeanstalkPermissions",
-                    "Effect": "Allow",
                     "Action": [
                         "elasticbeanstalk:*"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ElasticBeanstalkPermissions"
+                }, 
                 {
-                    "Sid": "AllowPassRoleToElasticBeanstalkAndDownstreamServices",
-                    "Effect": "Allow",
-                    "Action": "iam:PassRole",
-                    "Resource": "arn:aws:iam::*:role/*",
+                    "Action": "iam:PassRole", 
+                    "Resource": "arn:aws:iam::*:role/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:PassedToService": [
-                                "elasticbeanstalk.amazonaws.com",
-                                "ec2.amazonaws.com",
-                                "ec2.amazonaws.com.cn",
-                                "autoscaling.amazonaws.com",
-                                "elasticloadbalancing.amazonaws.com",
-                                "ecs.amazonaws.com",
+                                "elasticbeanstalk.amazonaws.com", 
+                                "ec2.amazonaws.com", 
+                                "ec2.amazonaws.com.cn", 
+                                "autoscaling.amazonaws.com", 
+                                "elasticloadbalancing.amazonaws.com", 
+                                "ecs.amazonaws.com", 
                                 "cloudformation.amazonaws.com"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "AllowPassRoleToElasticBeanstalkAndDownstreamServices"
+                }, 
                 {
-                    "Sid": "ReadOnlyPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "autoscaling:DescribeAccountLimits",
-                        "autoscaling:DescribeAutoScalingGroups",
-                        "autoscaling:DescribeAutoScalingInstances",
-                        "autoscaling:DescribeLaunchConfigurations",
-                        "autoscaling:DescribeLoadBalancers",
-                        "autoscaling:DescribeNotificationConfigurations",
-                        "autoscaling:DescribeScalingActivities",
-                        "autoscaling:DescribeScheduledActions",
-                        "ec2:DescribeAccountAttributes",
-                        "ec2:DescribeAddresses",
-                        "ec2:DescribeAvailabilityZones",
-                        "ec2:DescribeImages",
-                        "ec2:DescribeInstanceAttribute",
-                        "ec2:DescribeInstances",
-                        "ec2:DescribeKeyPairs",
-                        "ec2:DescribeLaunchTemplates",
-                        "ec2:DescribeLaunchTemplateVersions",
-                        "ec2:DescribeSecurityGroups",
-                        "ec2:DescribeSnapshots",
-                        "ec2:DescribeSpotInstanceRequests",
-                        "ec2:DescribeSubnets",
-                        "ec2:DescribeVpcClassicLink",
-                        "ec2:DescribeVpcs",
-                        "elasticloadbalancing:DescribeInstanceHealth",
-                        "elasticloadbalancing:DescribeLoadBalancers",
-                        "elasticloadbalancing:DescribeTargetGroups",
-                        "elasticloadbalancing:DescribeTargetHealth",
-                        "logs:DescribeLogGroups",
-                        "rds:DescribeDBEngineVersions",
-                        "rds:DescribeDBInstances",
-                        "rds:DescribeOrderableDBInstanceOptions",
+                        "autoscaling:DescribeAccountLimits", 
+                        "autoscaling:DescribeAutoScalingGroups", 
+                        "autoscaling:DescribeAutoScalingInstances", 
+                        "autoscaling:DescribeLaunchConfigurations", 
+                        "autoscaling:DescribeLoadBalancers", 
+                        "autoscaling:DescribeNotificationConfigurations", 
+                        "autoscaling:DescribeScalingActivities", 
+                        "autoscaling:DescribeScheduledActions", 
+                        "ec2:DescribeAccountAttributes", 
+                        "ec2:DescribeAddresses", 
+                        "ec2:DescribeAvailabilityZones", 
+                        "ec2:DescribeImages", 
+                        "ec2:DescribeInstanceAttribute", 
+                        "ec2:DescribeInstances", 
+                        "ec2:DescribeKeyPairs", 
+                        "ec2:DescribeLaunchTemplates", 
+                        "ec2:DescribeLaunchTemplateVersions", 
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:DescribeSnapshots", 
+                        "ec2:DescribeSpotInstanceRequests", 
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeVpcClassicLink", 
+                        "ec2:DescribeVpcs", 
+                        "elasticloadbalancing:DescribeInstanceHealth", 
+                        "elasticloadbalancing:DescribeLoadBalancers", 
+                        "elasticloadbalancing:DescribeTargetGroups", 
+                        "elasticloadbalancing:DescribeTargetHealth", 
+                        "logs:DescribeLogGroups", 
+                        "rds:DescribeDBEngineVersions", 
+                        "rds:DescribeDBInstances", 
+                        "rds:DescribeOrderableDBInstanceOptions", 
                         "sns:ListSubscriptionsByTopic"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "ReadOnlyPermissions"
+                }, 
                 {
-                    "Sid": "EC2BroadOperationPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:AllocateAddress",
-                        "ec2:AssociateAddress",
-                        "ec2:AuthorizeSecurityGroupEgress",
-                        "ec2:AuthorizeSecurityGroupIngress",
-                        "ec2:CreateLaunchTemplate",
-                        "ec2:CreateLaunchTemplateVersion",
-                        "ec2:CreateSecurityGroup",
-                        "ec2:DeleteLaunchTemplate",
-                        "ec2:DeleteLaunchTemplateVersions",
-                        "ec2:DeleteSecurityGroup",
-                        "ec2:DisassociateAddress",
-                        "ec2:ReleaseAddress",
-                        "ec2:RevokeSecurityGroupEgress",
+                        "ec2:AllocateAddress", 
+                        "ec2:AssociateAddress", 
+                        "ec2:AuthorizeSecurityGroupEgress", 
+                        "ec2:AuthorizeSecurityGroupIngress", 
+                        "ec2:CreateLaunchTemplate", 
+                        "ec2:CreateLaunchTemplateVersion", 
+                        "ec2:CreateSecurityGroup", 
+                        "ec2:DeleteLaunchTemplate", 
+                        "ec2:DeleteLaunchTemplateVersions", 
+                        "ec2:DeleteSecurityGroup", 
+                        "ec2:DisassociateAddress", 
+                        "ec2:ReleaseAddress", 
+                        "ec2:RevokeSecurityGroupEgress", 
                         "ec2:RevokeSecurityGroupIngress"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "EC2BroadOperationPermissions"
+                }, 
                 {
-                    "Sid": "EC2RunInstancesOperationPermissions",
-                    "Effect": "Allow",
-                    "Action": "ec2:RunInstances",
-                    "Resource": "*",
+                    "Action": "ec2:RunInstances", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ArnLike": {
                             "ec2:LaunchTemplate": "arn:aws:ec2:*:*:launch-template/*"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "EC2RunInstancesOperationPermissions"
+                }, 
                 {
-                    "Sid": "EC2TerminateInstancesOperationPermissions",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:TerminateInstances"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:instance/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:instance/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "ec2:ResourceTag/aws:cloudformation:stack-id": [
-                                "arn:aws:cloudformation:*:*:stack/awseb-e-*",
+                                "arn:aws:cloudformation:*:*:stack/awseb-e-*", 
                                 "arn:aws:cloudformation:*:*:stack/eb-*"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "EC2TerminateInstancesOperationPermissions"
+                }, 
                 {
-                    "Sid": "ECSBroadOperationPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "ecs:CreateCluster",
-                        "ecs:DescribeClusters",
+                        "ecs:CreateCluster", 
+                        "ecs:DescribeClusters", 
                         "ecs:RegisterTaskDefinition"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ECSBroadOperationPermissions"
+                }, 
                 {
-                    "Sid": "ECSDeleteClusterOperationPermissions",
-                    "Effect": "Allow",
-                    "Action": "ecs:DeleteCluster",
-                    "Resource": "arn:aws:ecs:*:*:cluster/awseb-*"
-                },
+                    "Action": "ecs:DeleteCluster", 
+                    "Resource": "arn:aws:ecs:*:*:cluster/awseb-*", 
+                    "Effect": "Allow", 
+                    "Sid": "ECSDeleteClusterOperationPermissions"
+                }, 
                 {
-                    "Sid": "ASGOperationPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "autoscaling:AttachInstances",
-                        "autoscaling:CreateAutoScalingGroup",
-                        "autoscaling:CreateLaunchConfiguration",
-                        "autoscaling:CreateOrUpdateTags",
-                        "autoscaling:DeleteLaunchConfiguration",
-                        "autoscaling:DeleteAutoScalingGroup",
-                        "autoscaling:DeleteScheduledAction",
-                        "autoscaling:DetachInstances",
-                        "autoscaling:DeletePolicy",
-                        "autoscaling:PutScalingPolicy",
-                        "autoscaling:PutScheduledUpdateGroupAction",
-                        "autoscaling:PutNotificationConfiguration",
-                        "autoscaling:ResumeProcesses",
-                        "autoscaling:SetDesiredCapacity",
-                        "autoscaling:SuspendProcesses",
-                        "autoscaling:TerminateInstanceInAutoScalingGroup",
+                        "autoscaling:AttachInstances", 
+                        "autoscaling:CreateAutoScalingGroup", 
+                        "autoscaling:CreateLaunchConfiguration", 
+                        "autoscaling:CreateOrUpdateTags", 
+                        "autoscaling:DeleteLaunchConfiguration", 
+                        "autoscaling:DeleteAutoScalingGroup", 
+                        "autoscaling:DeleteScheduledAction", 
+                        "autoscaling:DetachInstances", 
+                        "autoscaling:DeletePolicy", 
+                        "autoscaling:PutScalingPolicy", 
+                        "autoscaling:PutScheduledUpdateGroupAction", 
+                        "autoscaling:PutNotificationConfiguration", 
+                        "autoscaling:ResumeProcesses", 
+                        "autoscaling:SetDesiredCapacity", 
+                        "autoscaling:SuspendProcesses", 
+                        "autoscaling:TerminateInstanceInAutoScalingGroup", 
                         "autoscaling:UpdateAutoScalingGroup"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:autoscaling:*:*:launchConfiguration:*:launchConfigurationName/awseb-e-*",
-                        "arn:aws:autoscaling:*:*:launchConfiguration:*:launchConfigurationName/eb-*",
-                        "arn:aws:autoscaling:*:*:autoScalingGroup:*:autoScalingGroupName/awseb-e-*",
+                        "arn:aws:autoscaling:*:*:launchConfiguration:*:launchConfigurationName/awseb-e-*", 
+                        "arn:aws:autoscaling:*:*:launchConfiguration:*:launchConfigurationName/eb-*", 
+                        "arn:aws:autoscaling:*:*:autoScalingGroup:*:autoScalingGroupName/awseb-e-*", 
                         "arn:aws:autoscaling:*:*:autoScalingGroup:*:autoScalingGroupName/eb-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "ASGOperationPermissions"
+                }, 
                 {
-                    "Sid": "CFNOperationPermissions",
-                    "Effect": "Allow",
                     "Action": [
                         "cloudformation:*"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:cloudformation:*:*:stack/awseb-*",
+                        "arn:aws:cloudformation:*:*:stack/awseb-*", 
                         "arn:aws:cloudformation:*:*:stack/eb-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "CFNOperationPermissions"
+                }, 
                 {
-                    "Sid": "ELBOperationPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "elasticloadbalancing:AddTags",
-                        "elasticloadbalancing:ApplySecurityGroupsToLoadBalancer",
-                        "elasticloadbalancing:ConfigureHealthCheck",
-                        "elasticloadbalancing:CreateLoadBalancer",
-                        "elasticloadbalancing:DeleteLoadBalancer",
-                        "elasticloadbalancing:DeregisterInstancesFromLoadBalancer",
-                        "elasticloadbalancing:DeregisterTargets",
-                        "elasticloadbalancing:RegisterInstancesWithLoadBalancer",
+                        "elasticloadbalancing:AddTags", 
+                        "elasticloadbalancing:ApplySecurityGroupsToLoadBalancer", 
+                        "elasticloadbalancing:ConfigureHealthCheck", 
+                        "elasticloadbalancing:CreateLoadBalancer", 
+                        "elasticloadbalancing:DeleteLoadBalancer", 
+                        "elasticloadbalancing:DeregisterInstancesFromLoadBalancer", 
+                        "elasticloadbalancing:DeregisterTargets", 
+                        "elasticloadbalancing:RegisterInstancesWithLoadBalancer", 
                         "elasticloadbalancing:RegisterTargets"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:elasticloadbalancing:*:*:targetgroup/awseb-*",
-                        "arn:aws:elasticloadbalancing:*:*:targetgroup/eb-*",
-                        "arn:aws:elasticloadbalancing:*:*:loadbalancer/awseb-*",
-                        "arn:aws:elasticloadbalancing:*:*:loadbalancer/eb-*",
-                        "arn:aws:elasticloadbalancing:*:*:loadbalancer/*/awseb-*/*",
+                        "arn:aws:elasticloadbalancing:*:*:targetgroup/awseb-*", 
+                        "arn:aws:elasticloadbalancing:*:*:targetgroup/eb-*", 
+                        "arn:aws:elasticloadbalancing:*:*:loadbalancer/awseb-*", 
+                        "arn:aws:elasticloadbalancing:*:*:loadbalancer/eb-*", 
+                        "arn:aws:elasticloadbalancing:*:*:loadbalancer/*/awseb-*/*", 
                         "arn:aws:elasticloadbalancing:*:*:loadbalancer/*/eb-*/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "ELBOperationPermissions"
+                }, 
                 {
-                    "Sid": "CWLogsOperationPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:CreateLogGroup",
-                        "logs:DeleteLogGroup",
+                        "logs:CreateLogGroup", 
+                        "logs:DeleteLogGroup", 
                         "logs:PutRetentionPolicy"
-                    ],
-                    "Resource": "arn:aws:logs:*:*:log-group:/aws/elasticbeanstalk/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:logs:*:*:log-group:/aws/elasticbeanstalk/*", 
+                    "Effect": "Allow", 
+                    "Sid": "CWLogsOperationPermissions"
+                }, 
                 {
-                    "Sid": "S3ObjectOperationPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:DeleteObject",
-                        "s3:GetObject",
-                        "s3:GetObjectAcl",
-                        "s3:GetObjectVersion",
-                        "s3:GetObjectVersionAcl",
-                        "s3:PutObject",
-                        "s3:PutObjectAcl",
+                        "s3:DeleteObject", 
+                        "s3:GetObject", 
+                        "s3:GetObjectAcl", 
+                        "s3:GetObjectVersion", 
+                        "s3:GetObjectVersionAcl", 
+                        "s3:PutObject", 
+                        "s3:PutObjectAcl", 
                         "s3:PutObjectVersionAcl"
-                    ],
-                    "Resource": "arn:aws:s3:::elasticbeanstalk-*/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:s3:::elasticbeanstalk-*/*", 
+                    "Effect": "Allow", 
+                    "Sid": "S3ObjectOperationPermissions"
+                }, 
                 {
-                    "Sid": "S3BucketOperationPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:GetBucketLocation",
-                        "s3:GetBucketPolicy",
-                        "s3:ListBucket",
+                        "s3:GetBucketLocation", 
+                        "s3:GetBucketPolicy", 
+                        "s3:ListBucket", 
                         "s3:PutBucketPolicy"
-                    ],
-                    "Resource": "arn:aws:s3:::elasticbeanstalk-*"
-                },
+                    ], 
+                    "Resource": "arn:aws:s3:::elasticbeanstalk-*", 
+                    "Effect": "Allow", 
+                    "Sid": "S3BucketOperationPermissions"
+                }, 
                 {
-                    "Sid": "SNSOperationPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "sns:CreateTopic",
-                        "sns:GetTopicAttributes",
-                        "sns:SetTopicAttributes",
+                        "sns:CreateTopic", 
+                        "sns:GetTopicAttributes", 
+                        "sns:SetTopicAttributes", 
                         "sns:Subscribe"
-                    ],
-                    "Resource": "arn:aws:sns:*:*:ElasticBeanstalkNotifications-*"
-                },
+                    ], 
+                    "Resource": "arn:aws:sns:*:*:ElasticBeanstalkNotifications-*", 
+                    "Effect": "Allow", 
+                    "Sid": "SNSOperationPermissions"
+                }, 
                 {
-                    "Sid": "SQSOperationPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "sqs:GetQueueAttributes",
+                        "sqs:GetQueueAttributes", 
                         "sqs:GetQueueUrl"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:sqs:*:*:awseb-e-*",
+                        "arn:aws:sqs:*:*:awseb-e-*", 
                         "arn:aws:sqs:*:*:eb-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "SQSOperationPermissions"
+                }, 
                 {
-                    "Sid": "CWPutMetricAlarmOperationPermissions",
-                    "Effect": "Allow",
                     "Action": [
                         "cloudwatch:PutMetricAlarm"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:cloudwatch:*:*:alarm:awseb-*",
+                        "arn:aws:cloudwatch:*:*:alarm:awseb-*", 
                         "arn:aws:cloudwatch:*:*:alarm:eb-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "CWPutMetricAlarmOperationPermissions"
+                }, 
                 {
-                    "Sid": "AllowECSTagResource",
-                    "Effect": "Allow",
                     "Action": [
                         "ecs:TagResource"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "ecs:CreateAction": [
-                                "CreateCluster",
+                                "CreateCluster", 
                                 "RegisterTaskDefinition"
                             ]
                         }
-                    }
+                    }, 
+                    "Sid": "AllowECSTagResource"
                 }
             ]
-        },
-        "VersionId": "v6",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-03-23T23:15:54+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

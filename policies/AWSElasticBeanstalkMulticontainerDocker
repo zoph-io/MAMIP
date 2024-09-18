@@ -1,45 +1,45 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-03-23T22:04:20Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "ECSAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "ecs:Poll",
-                        "ecs:StartTask",
-                        "ecs:StopTask",
-                        "ecs:DiscoverPollEndpoint",
-                        "ecs:StartTelemetrySession",
-                        "ecs:RegisterContainerInstance",
-                        "ecs:DeregisterContainerInstance",
-                        "ecs:DescribeContainerInstances",
-                        "ecs:Submit*",
+                        "ecs:Poll", 
+                        "ecs:StartTask", 
+                        "ecs:StopTask", 
+                        "ecs:DiscoverPollEndpoint", 
+                        "ecs:StartTelemetrySession", 
+                        "ecs:RegisterContainerInstance", 
+                        "ecs:DeregisterContainerInstance", 
+                        "ecs:DescribeContainerInstances", 
+                        "ecs:Submit*", 
                         "ecs:DescribeTasks"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ECSAccess"
+                }, 
                 {
-                    "Sid": "AllowECSTagResource",
-                    "Effect": "Allow",
                     "Action": [
                         "ecs:TagResource"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "ecs:CreateAction": [
-                                "RegisterContainerInstance",
+                                "RegisterContainerInstance", 
                                 "StartTask"
                             ]
                         }
-                    }
+                    }, 
+                    "Sid": "AllowECSTagResource"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-03-23T22:04:20+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

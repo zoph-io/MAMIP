@@ -1,51 +1,51 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-06-26T21:07:45Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "CloudWatchEmitMetric",
-                    "Effect": "Allow",
                     "Action": [
                         "cloudwatch:PutMetricData"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "cloudwatch:namespace": "AWS/AppFabric"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "CloudWatchEmitMetric"
+                }, 
                 {
-                    "Sid": "S3PutObject",
-                    "Effect": "Allow",
                     "Action": [
                         "s3:PutObject"
-                    ],
-                    "Resource": "arn:aws:s3:::*/AWSAppFabric/*",
+                    ], 
+                    "Resource": "arn:aws:s3:::*/AWSAppFabric/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "s3:ResourceAccount": "${aws:PrincipalAccount}"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "S3PutObject"
+                }, 
                 {
-                    "Sid": "FirehosePutRecord",
-                    "Effect": "Allow",
                     "Action": [
                         "firehose:PutRecordBatch"
-                    ],
-                    "Resource": "arn:aws:firehose:*:*:deliverystream/*",
+                    ], 
+                    "Resource": "arn:aws:firehose:*:*:deliverystream/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEqualsIgnoreCase": {
                             "aws:ResourceTag/AWSAppFabricManaged": "true"
                         }
-                    }
+                    }, 
+                    "Sid": "FirehosePutRecord"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-06-26T21:07:45+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,40 +1,40 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2019-11-28T23:12:53Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AmazonEventBridgeSchemasFullAccess",
-                    "Effect": "Allow",
                     "Action": [
                         "schemas:*"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonEventBridgeSchemasFullAccess"
+                }, 
                 {
-                    "Sid": "AmazonEventBridgeManageRule",
-                    "Effect": "Allow",
                     "Action": [
-                        "events:PutRule",
-                        "events:PutTargets",
-                        "events:EnableRule",
-                        "events:DisableRule",
-                        "events:DeleteRule",
-                        "events:RemoveTargets",
+                        "events:PutRule", 
+                        "events:PutTargets", 
+                        "events:EnableRule", 
+                        "events:DisableRule", 
+                        "events:DeleteRule", 
+                        "events:RemoveTargets", 
                         "events:ListTargetsByRule"
-                    ],
-                    "Resource": "arn:aws:events:*:*:rule/*Schemas*"
-                },
+                    ], 
+                    "Resource": "arn:aws:events:*:*:rule/*Schemas*", 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonEventBridgeManageRule"
+                }, 
                 {
-                    "Sid": "IAMCreateServiceLinkedRoleForAmazonEventBridgeSchemas",
-                    "Effect": "Allow",
-                    "Action": "iam:CreateServiceLinkedRole",
-                    "Resource": "arn:aws:iam::*:role/aws-service-role/schemas.amazonaws.com/AWSServiceRoleForSchemas"
+                    "Action": "iam:CreateServiceLinkedRole", 
+                    "Resource": "arn:aws:iam::*:role/aws-service-role/schemas.amazonaws.com/AWSServiceRoleForSchemas", 
+                    "Effect": "Allow", 
+                    "Sid": "IAMCreateServiceLinkedRoleForAmazonEventBridgeSchemas"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2019-11-28T23:12:53+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

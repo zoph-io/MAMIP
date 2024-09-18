@@ -1,112 +1,112 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-03-14T18:53:21Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "DescribeNetworkStatement",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeSubnets",
-                        "ec2:DescribeVpcs",
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeVpcs", 
                         "ec2:DescribeNetworkInterfaces"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DescribeNetworkStatement"
+                }, 
                 {
-                    "Sid": "CreateEniInSubnetStatement",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateNetworkInterface"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:ec2:*:*:subnet/*",
+                        "arn:aws:ec2:*:*:subnet/*", 
                         "arn:aws:ec2:*:*:security-group/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "CreateEniInSubnetStatement"
+                }, 
                 {
-                    "Sid": "CreateEniStatement",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateNetworkInterface"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:network-interface/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:network-interface/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "aws:RequestTag/AmazonTimestreamInfluxDBManaged": "false"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "CreateEniStatement"
+                }, 
                 {
-                    "Sid": "CreateTagWithEniStatement",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateTags"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:network-interface/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:network-interface/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "aws:RequestTag/AmazonTimestreamInfluxDBManaged": "false"
-                        },
+                        }, 
                         "StringEquals": {
                             "ec2:CreateAction": [
                                 "CreateNetworkInterface"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "CreateTagWithEniStatement"
+                }, 
                 {
-                    "Sid": "ManageEniStatement",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:CreateNetworkInterfacePermission",
+                        "ec2:CreateNetworkInterfacePermission", 
                         "ec2:DeleteNetworkInterface"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:network-interface/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:network-interface/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "aws:ResourceTag/AmazonTimestreamInfluxDBManaged": "false"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "ManageEniStatement"
+                }, 
                 {
-                    "Sid": "PutCloudWatchMetricsStatement",
-                    "Effect": "Allow",
                     "Action": [
                         "cloudwatch:PutMetricData"
-                    ],
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "cloudwatch:namespace": [
-                                "AWS/Timestream/InfluxDB",
+                                "AWS/Timestream/InfluxDB", 
                                 "AWS/Usage"
                             ]
                         }
-                    },
-                    "Resource": [
-                        "*"
-                    ]
-                },
+                    }, 
+                    "Sid": "PutCloudWatchMetricsStatement"
+                }, 
                 {
-                    "Sid": "ManageSecretStatement",
-                    "Effect": "Allow",
                     "Action": [
-                        "secretsmanager:CreateSecret",
+                        "secretsmanager:CreateSecret", 
                         "secretsmanager:DeleteSecret"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:secretsmanager:*:*:secret:READONLY-InfluxDB-auth-parameters-*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
-                    }
+                    }, 
+                    "Sid": "ManageSecretStatement"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-03-14T18:53:21+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

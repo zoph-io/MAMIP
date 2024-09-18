@@ -1,20 +1,20 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-12-18T16:42:05Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "DenyAll",
-                    "Effect": "Deny",
                     "Action": [
                         "*"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Deny", 
+                    "Sid": "DenyAll"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-12-18T16:42:05+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

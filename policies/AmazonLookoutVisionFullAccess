@@ -1,20 +1,20 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2021-05-11T19:24:54Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "LookoutVisionFullAccess",
-                    "Effect": "Allow",
                     "Action": [
                         "lookoutvision:*"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "LookoutVisionFullAccess"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2021-05-11T19:24:54+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

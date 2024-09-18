@@ -1,22 +1,22 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2015-03-24T17:22:23Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "cognito-identity:GetOpenIdTokenForDeveloperIdentity",
-                        "cognito-identity:LookupDeveloperIdentity",
-                        "cognito-identity:MergeDeveloperIdentities",
+                        "cognito-identity:GetOpenIdTokenForDeveloperIdentity", 
+                        "cognito-identity:LookupDeveloperIdentity", 
+                        "cognito-identity:MergeDeveloperIdentities", 
                         "cognito-identity:UnlinkDeveloperIdentity"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2015-03-24T17:22:23+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

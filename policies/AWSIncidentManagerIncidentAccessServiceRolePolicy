@@ -1,25 +1,25 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-02-20T23:02:11Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "IncidentAccessPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudformation:DescribeStackEvents",
-                        "cloudformation:DescribeStackResources",
-                        "codedeploy:BatchGetDeployments",
-                        "codedeploy:ListDeployments",
-                        "codedeploy:ListDeploymentTargets",
+                        "cloudformation:DescribeStackEvents", 
+                        "cloudformation:DescribeStackResources", 
+                        "codedeploy:BatchGetDeployments", 
+                        "codedeploy:ListDeployments", 
+                        "codedeploy:ListDeploymentTargets", 
                         "autoscaling:DescribeAutoScalingInstances"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "IncidentAccessPermissions"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-02-20T23:02:11+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

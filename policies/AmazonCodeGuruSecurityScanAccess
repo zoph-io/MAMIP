@@ -1,23 +1,23 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-05-09T20:54:32Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AmazonCodeGuruSecurityScanAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "codeguru-security:CreateScan",
-                        "codeguru-security:CreateUploadUrl",
-                        "codeguru-security:GetScan",
+                        "codeguru-security:CreateScan", 
+                        "codeguru-security:CreateUploadUrl", 
+                        "codeguru-security:GetScan", 
                         "codeguru-security:GetFindings"
-                    ],
-                    "Resource": "arn:aws:codeguru-security:*:*:scans/*"
+                    ], 
+                    "Resource": "arn:aws:codeguru-security:*:*:scans/*", 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonCodeGuruSecurityScanAccess"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-05-09T20:54:32+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

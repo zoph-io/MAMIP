@@ -1,46 +1,46 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-03-06T22:19:04Z", 
+        "VersionId": "v7", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeTags",
-                        "ecs:CreateCluster",
-                        "ecs:DeregisterContainerInstance",
-                        "ecs:DiscoverPollEndpoint",
-                        "ecs:Poll",
-                        "ecs:RegisterContainerInstance",
-                        "ecs:StartTelemetrySession",
-                        "ecs:UpdateContainerInstancesState",
-                        "ecs:Submit*",
-                        "ecr:GetAuthorizationToken",
-                        "ecr:BatchCheckLayerAvailability",
-                        "ecr:GetDownloadUrlForLayer",
-                        "ecr:BatchGetImage",
-                        "logs:CreateLogStream",
+                        "ec2:DescribeTags", 
+                        "ecs:CreateCluster", 
+                        "ecs:DeregisterContainerInstance", 
+                        "ecs:DiscoverPollEndpoint", 
+                        "ecs:Poll", 
+                        "ecs:RegisterContainerInstance", 
+                        "ecs:StartTelemetrySession", 
+                        "ecs:UpdateContainerInstancesState", 
+                        "ecs:Submit*", 
+                        "ecr:GetAuthorizationToken", 
+                        "ecr:BatchCheckLayerAvailability", 
+                        "ecr:GetDownloadUrlForLayer", 
+                        "ecr:BatchGetImage", 
+                        "logs:CreateLogStream", 
                         "logs:PutLogEvents"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "ecs:TagResource",
-                    "Resource": "*",
+                    "Action": "ecs:TagResource", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "ecs:CreateAction": [
-                                "CreateCluster",
+                                "CreateCluster", 
                                 "RegisterContainerInstance"
                             ]
                         }
                     }
                 }
             ]
-        },
-        "VersionId": "v7",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-03-06T22:19:04+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

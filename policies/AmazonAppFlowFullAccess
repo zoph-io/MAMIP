@@ -1,123 +1,123 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-02-28T23:11:23Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
-                    "Action": "appflow:*",
-                    "Resource": "*"
-                },
+                    "Action": "appflow:*", 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Sid": "ListRolesForRedshift",
-                    "Effect": "Allow",
-                    "Action": "iam:ListRoles",
-                    "Resource": "*"
-                },
+                    "Action": "iam:ListRoles", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ListRolesForRedshift"
+                }, 
                 {
-                    "Sid": "KMSListAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "kms:ListKeys",
-                        "kms:DescribeKey",
+                        "kms:ListKeys", 
+                        "kms:DescribeKey", 
                         "kms:ListAliases"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "KMSListAccess"
+                }, 
                 {
-                    "Sid": "KMSGrantAccess",
-                    "Effect": "Allow",
                     "Action": [
                         "kms:CreateGrant"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
-                        "StringLike": {
-                            "kms:ViaService": "appflow.*.amazonaws.com"
-                        },
                         "Bool": {
                             "kms:GrantIsForAWSResource": "true"
+                        }, 
+                        "StringLike": {
+                            "kms:ViaService": "appflow.*.amazonaws.com"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "KMSGrantAccess"
+                }, 
                 {
-                    "Sid": "KMSListGrantAccess",
-                    "Effect": "Allow",
                     "Action": [
                         "kms:ListGrants"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "kms:ViaService": "appflow.*.amazonaws.com"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "KMSListGrantAccess"
+                }, 
                 {
-                    "Sid": "S3ReadAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:ListAllMyBuckets",
-                        "s3:ListBucket",
-                        "s3:GetBucketLocation",
+                        "s3:ListAllMyBuckets", 
+                        "s3:ListBucket", 
+                        "s3:GetBucketLocation", 
                         "s3:GetBucketPolicy"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "S3ReadAccess"
+                }, 
                 {
-                    "Sid": "S3PutBucketPolicyAccess",
-                    "Effect": "Allow",
                     "Action": [
                         "s3:PutBucketPolicy"
-                    ],
-                    "Resource": "arn:aws:s3:::appflow-*"
-                },
+                    ], 
+                    "Resource": "arn:aws:s3:::appflow-*", 
+                    "Effect": "Allow", 
+                    "Sid": "S3PutBucketPolicyAccess"
+                }, 
                 {
-                    "Sid": "SecretsManagerCreateSecretAccess",
-                    "Effect": "Allow",
-                    "Action": "secretsmanager:CreateSecret",
-                    "Resource": "*",
+                    "Action": "secretsmanager:CreateSecret", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "aws:CalledVia": [
+                                "appflow.amazonaws.com"
+                            ]
+                        }, 
                         "StringLike": {
                             "secretsmanager:Name": "appflow!*"
-                        },
-                        "ForAnyValue:StringEquals": {
-                            "aws:CalledVia": [
-                                "appflow.amazonaws.com"
-                            ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "SecretsManagerCreateSecretAccess"
+                }, 
                 {
-                    "Sid": "SecretsManagerPutResourcePolicyAccess",
-                    "Effect": "Allow",
                     "Action": [
                         "secretsmanager:PutResourcePolicy"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAnyValue:StringEquals": {
                             "aws:CalledVia": [
                                 "appflow.amazonaws.com"
                             ]
-                        },
+                        }, 
                         "StringEqualsIgnoreCase": {
                             "secretsmanager:ResourceTag/aws:secretsmanager:owningService": "appflow"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "SecretsManagerPutResourcePolicyAccess"
+                }, 
                 {
-                    "Sid": "LambdaListFunctions",
-                    "Effect": "Allow",
                     "Action": [
                         "lambda:ListFunctions"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "LambdaListFunctions"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-02-28T23:11:23+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

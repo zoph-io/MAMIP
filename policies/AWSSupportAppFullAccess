@@ -1,29 +1,31 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-08-22T16:53:41Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "servicequotas:GetRequestedServiceQuotaChange",
-                        "servicequotas:GetServiceQuota",
-                        "servicequotas:RequestServiceQuotaIncrease",
-                        "support:AddAttachmentsToSet",
-                        "support:AddCommunicationToCase",
-                        "support:CreateCase",
-                        "support:DescribeCases",
-                        "support:DescribeCommunications",
-                        "support:DescribeSeverityLevels",
-                        "support:InitiateChatForCase",
+                        "servicequotas:GetRequestedServiceQuotaChange", 
+                        "servicequotas:GetServiceQuota", 
+                        "servicequotas:RequestServiceQuotaIncrease", 
+                        "support:AddAttachmentsToSet", 
+                        "support:AddCommunicationToCase", 
+                        "support:CreateCase", 
+                        "support:DescribeCases", 
+                        "support:DescribeCommunications", 
+                        "support:DescribeSeverityLevels", 
+                        "support:InitiateChatForCase", 
                         "support:ResolveCase"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "iam:CreateServiceLinkedRole",
-                    "Resource": "*",
+                    "Action": "iam:CreateServiceLinkedRole", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:AWSServiceName": "servicequotas.amazonaws.com"
@@ -31,9 +33,7 @@
                     }
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-08-22T16:53:41+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

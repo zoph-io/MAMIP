@@ -1,36 +1,36 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-11-27T13:43:08Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "DRSFailbackInstallationPolicy1",
-                    "Effect": "Allow",
                     "Action": [
-                        "drs:SendClientLogsForDrs",
-                        "drs:SendClientMetricsForDrs",
-                        "drs:DescribeRecoveryInstances",
+                        "drs:SendClientLogsForDrs", 
+                        "drs:SendClientMetricsForDrs", 
+                        "drs:DescribeRecoveryInstances", 
                         "drs:DescribeSourceServers"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DRSFailbackInstallationPolicy1"
+                }, 
                 {
-                    "Sid": "DRSFailbackInstallationPolicy2",
-                    "Effect": "Allow",
                     "Action": [
-                        "drs:TagResource",
-                        "drs:IssueAgentCertificateForDrs",
-                        "drs:AssociateFailbackClientToRecoveryInstanceForDrs",
-                        "drs:GetSuggestedFailbackClientDeviceMappingForDrs",
-                        "drs:UpdateAgentReplicationInfoForDrs",
+                        "drs:TagResource", 
+                        "drs:IssueAgentCertificateForDrs", 
+                        "drs:AssociateFailbackClientToRecoveryInstanceForDrs", 
+                        "drs:GetSuggestedFailbackClientDeviceMappingForDrs", 
+                        "drs:UpdateAgentReplicationInfoForDrs", 
                         "drs:UpdateFailbackClientDeviceMappingForDrs"
-                    ],
-                    "Resource": "arn:aws:drs:*:*:recovery-instance/*"
+                    ], 
+                    "Resource": "arn:aws:drs:*:*:recovery-instance/*", 
+                    "Effect": "Allow", 
+                    "Sid": "DRSFailbackInstallationPolicy2"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-11-27T13:43:08+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

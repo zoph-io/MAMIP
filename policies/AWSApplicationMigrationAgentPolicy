@@ -1,43 +1,43 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-09-20T11:13:40Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "mgn:SendAgentMetricsForMgn",
-                        "mgn:SendAgentLogsForMgn",
-                        "mgn:SendClientMetricsForMgn",
+                        "mgn:SendAgentMetricsForMgn", 
+                        "mgn:SendAgentLogsForMgn", 
+                        "mgn:SendClientMetricsForMgn", 
                         "mgn:SendClientLogsForMgn"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "mgn:RegisterAgentForMgn",
-                        "mgn:UpdateAgentSourcePropertiesForMgn",
-                        "mgn:UpdateAgentReplicationInfoForMgn",
-                        "mgn:UpdateAgentConversionInfoForMgn",
-                        "mgn:GetAgentInstallationAssetsForMgn",
-                        "mgn:GetAgentCommandForMgn",
-                        "mgn:GetAgentConfirmedResumeInfoForMgn",
-                        "mgn:GetAgentRuntimeConfigurationForMgn",
-                        "mgn:UpdateAgentBacklogForMgn",
+                        "mgn:RegisterAgentForMgn", 
+                        "mgn:UpdateAgentSourcePropertiesForMgn", 
+                        "mgn:UpdateAgentReplicationInfoForMgn", 
+                        "mgn:UpdateAgentConversionInfoForMgn", 
+                        "mgn:GetAgentInstallationAssetsForMgn", 
+                        "mgn:GetAgentCommandForMgn", 
+                        "mgn:GetAgentConfirmedResumeInfoForMgn", 
+                        "mgn:GetAgentRuntimeConfigurationForMgn", 
+                        "mgn:UpdateAgentBacklogForMgn", 
                         "mgn:GetAgentReplicationInfoForMgn"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "mgn:TagResource",
-                    "Resource": "arn:aws:mgn:*:*:source-server/*"
+                    "Action": "mgn:TagResource", 
+                    "Resource": "arn:aws:mgn:*:*:source-server/*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-09-20T11:13:40+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,23 +1,23 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2021-10-27T15:12:37Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AllowPurchaseOrderActions",
-                    "Effect": "Allow",
                     "Action": [
-                        "purchase-orders:ViewPurchaseOrders",
+                        "purchase-orders:ViewPurchaseOrders", 
                         "purchase-orders:ModifyPurchaseOrders"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowPurchaseOrderActions"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2021-10-27T15:12:37+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

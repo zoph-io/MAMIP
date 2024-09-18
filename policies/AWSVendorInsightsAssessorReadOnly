@@ -1,31 +1,31 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-12-01T00:55:16Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "vendor-insights:ListEntitledSecurityProfiles",
-                        "vendor-insights:GetEntitledSecurityProfileSnapshot",
+                        "vendor-insights:ListEntitledSecurityProfiles", 
+                        "vendor-insights:GetEntitledSecurityProfileSnapshot", 
                         "vendor-insights:ListEntitledSecurityProfileSnapshots"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "artifact:GetReport",
-                        "artifact:GetReportMetadata",
-                        "artifact:GetTermForReport",
+                        "artifact:GetReport", 
+                        "artifact:GetReportMetadata", 
+                        "artifact:GetTermForReport", 
                         "artifact:ListReports"
-                    ],
-                    "Resource": "arn:aws:artifact:*::report/*"
+                    ], 
+                    "Resource": "arn:aws:artifact:*::report/*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-12-01T00:55:16+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

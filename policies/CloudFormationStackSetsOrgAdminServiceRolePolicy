@@ -1,27 +1,27 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2019-12-10T00:20:05Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AllowsAWSOrganizationsReadAPIs",
-                    "Effect": "Allow",
                     "Action": [
-                        "organizations:List*",
+                        "organizations:List*", 
                         "organizations:Describe*"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowsAWSOrganizationsReadAPIs"
+                }, 
                 {
-                    "Sid": "AllowAssumeRoleInMemberAccounts",
-                    "Effect": "Allow",
-                    "Action": "sts:AssumeRole",
-                    "Resource": "arn:aws:iam::*:role/stacksets-exec-*"
+                    "Action": "sts:AssumeRole", 
+                    "Resource": "arn:aws:iam::*:role/stacksets-exec-*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowAssumeRoleInMemberAccounts"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2019-12-10T00:20:05+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,23 +1,23 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-05-02T19:22:03Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:CreateLogGroup",
-                        "logs:CreateLogStream",
+                        "logs:CreateLogGroup", 
+                        "logs:CreateLogStream", 
                         "logs:PutLogEvents"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:logs:*:*:log-group:/aws/monitron/*"
-                    ]
+                    ], 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-05-02T19:22:03+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

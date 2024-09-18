@@ -1,29 +1,29 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-06-03T17:29:04Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "FirehoseAPIStatement",
-                    "Effect": "Allow",
                     "Action": [
-                        "firehose:PutRecord",
+                        "firehose:PutRecord", 
                         "firehose:PutRecordBatch"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:firehose:*:*:deliverystream/aws-waf-logs-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "FirehoseAPIStatement"
+                }, 
                 {
-                    "Sid": "DescribeOrganizationAPIStatement",
-                    "Effect": "Allow",
-                    "Action": "organizations:DescribeOrganization",
-                    "Resource": "*"
+                    "Action": "organizations:DescribeOrganization", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DescribeOrganizationAPIStatement"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-06-03T17:29:04+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

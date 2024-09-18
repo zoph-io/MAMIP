@@ -1,19 +1,21 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-05-25T19:03:30Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeInstanceStatus",
-                        "ec2:StartInstances",
-                        "ec2:StopInstances",
-                        "rds:DescribeDBInstances",
-                        "rds:StartDBInstance",
+                        "ec2:DescribeInstanceStatus", 
+                        "ec2:StartInstances", 
+                        "ec2:StopInstances", 
+                        "rds:DescribeDBInstances", 
+                        "rds:StartDBInstance", 
                         "rds:StopDBInstance"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAnyValue:StringEquals": {
                             "aws:CalledVia": [
@@ -21,23 +23,21 @@
                             ]
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ssm:StartAutomationExecution"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:ssm:*:*:automation-definition/AWS-StartEC2Instance:*",
-                        "arn:aws:ssm:*:*:automation-definition/AWS-StopEC2Instance:*",
-                        "arn:aws:ssm:*:*:automation-definition/AWS-StartRdsInstance:*",
+                        "arn:aws:ssm:*:*:automation-definition/AWS-StartEC2Instance:*", 
+                        "arn:aws:ssm:*:*:automation-definition/AWS-StopEC2Instance:*", 
+                        "arn:aws:ssm:*:*:automation-definition/AWS-StartRdsInstance:*", 
                         "arn:aws:ssm:*:*:automation-definition/AWS-StopRdsInstance:*"
-                    ]
+                    ], 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-05-25T19:03:30+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

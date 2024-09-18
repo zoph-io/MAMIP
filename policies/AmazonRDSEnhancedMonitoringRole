@@ -1,36 +1,36 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2015-11-11T19:58:29Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "EnableCreationAndManagementOfRDSCloudwatchLogGroups",
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:CreateLogGroup",
+                        "logs:CreateLogGroup", 
                         "logs:PutRetentionPolicy"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:logs:*:*:log-group:RDS*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "EnableCreationAndManagementOfRDSCloudwatchLogGroups"
+                }, 
                 {
-                    "Sid": "EnableCreationAndManagementOfRDSCloudwatchLogStreams",
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:CreateLogStream",
-                        "logs:PutLogEvents",
-                        "logs:DescribeLogStreams",
+                        "logs:CreateLogStream", 
+                        "logs:PutLogEvents", 
+                        "logs:DescribeLogStreams", 
                         "logs:GetLogEvents"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:logs:*:*:log-group:RDS*:log-stream:*"
-                    ]
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "EnableCreationAndManagementOfRDSCloudwatchLogStreams"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2015-11-11T19:58:29+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

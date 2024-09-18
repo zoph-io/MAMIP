@@ -1,60 +1,60 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2021-01-06T19:30:35Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "PanoramaS3Access",
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:ListBucket",
-                        "s3:GetBucket*",
-                        "s3:GetObject",
+                        "s3:ListBucket", 
+                        "s3:GetBucket*", 
+                        "s3:GetObject", 
                         "s3:PutObject"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:s3:::*aws-panorama*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "PanoramaS3Access"
+                }, 
                 {
-                    "Sid": "PanoramaCLoudWatchPutDashboard",
-                    "Effect": "Allow",
-                    "Action": "cloudwatch:PutDashboard",
+                    "Action": "cloudwatch:PutDashboard", 
                     "Resource": [
                         "arn:aws:cloudwatch::*:dashboard/panorama*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "PanoramaCLoudWatchPutDashboard"
+                }, 
                 {
-                    "Sid": "PanoramaCloudWatchPutMetricData",
-                    "Effect": "Allow",
-                    "Action": "cloudwatch:PutMetricData",
-                    "Resource": "*"
-                },
+                    "Action": "cloudwatch:PutMetricData", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "PanoramaCloudWatchPutMetricData"
+                }, 
                 {
-                    "Sid": "PanoramaGreenGrassCloudWatchAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:CreateLogStream",
-                        "logs:DescribeLogStreams",
-                        "logs:PutLogEvents",
+                        "logs:CreateLogStream", 
+                        "logs:DescribeLogStreams", 
+                        "logs:PutLogEvents", 
                         "logs:CreateLogGroup"
-                    ],
-                    "Resource": "arn:aws:logs:*:*:log-group:/aws/greengrass/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:logs:*:*:log-group:/aws/greengrass/*", 
+                    "Effect": "Allow", 
+                    "Sid": "PanoramaGreenGrassCloudWatchAccess"
+                }, 
                 {
-                    "Sid": "PanoramaAccess",
-                    "Effect": "Allow",
                     "Action": [
                         "panorama:*"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "PanoramaAccess"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2021-01-06T19:30:35+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

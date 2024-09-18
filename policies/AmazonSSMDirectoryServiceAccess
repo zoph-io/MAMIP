@@ -1,20 +1,20 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2019-03-15T17:44:38Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ds:CreateComputer",
+                        "ds:CreateComputer", 
                         "ds:DescribeDirectories"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2019-03-15T17:44:38+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

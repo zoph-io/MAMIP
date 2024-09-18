@@ -1,82 +1,82 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-06-08T16:27:42Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
-                    "Action": "iam:CreateServiceLinkedRole",
-                    "Resource": "*",
+                    "Action": "iam:CreateServiceLinkedRole", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:AWSServiceName": "monitron.amazonaws.com"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "monitron:*"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "kms:ListKeys",
-                        "kms:DescribeKey",
+                        "kms:ListKeys", 
+                        "kms:DescribeKey", 
                         "kms:ListAliases"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "kms:CreateGrant",
-                    "Resource": "*",
+                    "Action": "kms:CreateGrant", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
+                        "Bool": {
+                            "kms:GrantIsForAWSResource": true
+                        }, 
                         "StringLike": {
                             "kms:ViaService": [
                                 "monitron.*.amazonaws.com"
                             ]
-                        },
-                        "Bool": {
-                            "kms:GrantIsForAWSResource": true
                         }
                     }
-                },
+                }, 
                 {
-                    "Sid": "AWSSSOPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "organizations:DescribeAccount",
-                        "organizations:DescribeOrganization",
-                        "ds:DescribeDirectories",
+                        "organizations:DescribeAccount", 
+                        "organizations:DescribeOrganization", 
+                        "ds:DescribeDirectories", 
                         "ds:DescribeTrusts"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AWSSSOPermissions"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "kinesis:DescribeStream",
+                        "kinesis:DescribeStream", 
                         "kinesis:ListStreams"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:DescribeLogGroups",
-                        "logs:DescribeLogStreams",
-                        "logs:GetLogEvents",
+                        "logs:DescribeLogGroups", 
+                        "logs:DescribeLogStreams", 
+                        "logs:GetLogEvents", 
                         "logs:CreateLogGroup"
-                    ],
-                    "Resource": "arn:aws:logs:*:*:log-group:/aws/monitron/*"
+                    ], 
+                    "Resource": "arn:aws:logs:*:*:log-group:/aws/monitron/*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-06-08T16:27:42+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

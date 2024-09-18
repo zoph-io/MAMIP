@@ -1,27 +1,27 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2019-11-15T21:13:58Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": [
-                        "cloudwatch:DeleteInsightRules",
+                        "cloudwatch:DeleteInsightRules", 
                         "cloudwatch:PutInsightRule"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "arn:aws:cloudwatch:*:*:insight-rule/DynamoDBContributorInsights*"
-                },
+                    ], 
+                    "Resource": "arn:aws:cloudwatch:*:*:insight-rule/DynamoDBContributorInsights*", 
+                    "Effect": "Allow"
+                }, 
                 {
                     "Action": [
                         "cloudwatch:DescribeInsightRules"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2019-11-15T21:13:58+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

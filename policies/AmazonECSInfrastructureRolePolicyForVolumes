@@ -1,87 +1,87 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-01-10T22:56:41Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "CreateEBSManagedVolume",
-                    "Effect": "Allow",
-                    "Action": "ec2:CreateVolume",
-                    "Resource": "arn:aws:ec2:*:*:volume/*",
+                    "Action": "ec2:CreateVolume", 
+                    "Resource": "arn:aws:ec2:*:*:volume/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ArnLike": {
                             "aws:RequestTag/AmazonECSCreated": "arn:aws:ecs:*:*:task/*"
-                        },
+                        }, 
                         "StringEquals": {
                             "aws:RequestTag/AmazonECSManaged": "true"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "CreateEBSManagedVolume"
+                }, 
                 {
-                    "Sid": "TagOnCreateVolume",
-                    "Effect": "Allow",
-                    "Action": "ec2:CreateTags",
-                    "Resource": "arn:aws:ec2:*:*:volume/*",
+                    "Action": "ec2:CreateTags", 
+                    "Resource": "arn:aws:ec2:*:*:volume/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ArnLike": {
                             "aws:RequestTag/AmazonECSCreated": "arn:aws:ecs:*:*:task/*"
-                        },
+                        }, 
                         "StringEquals": {
-                            "ec2:CreateAction": "CreateVolume",
+                            "ec2:CreateAction": "CreateVolume", 
                             "aws:RequestTag/AmazonECSManaged": "true"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "TagOnCreateVolume"
+                }, 
                 {
-                    "Sid": "DescribeVolumesForLifecycle",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeVolumes",
+                        "ec2:DescribeVolumes", 
                         "ec2:DescribeAvailabilityZones"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DescribeVolumesForLifecycle"
+                }, 
                 {
-                    "Sid": "ManageEBSVolumeLifecycle",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:AttachVolume",
+                        "ec2:AttachVolume", 
                         "ec2:DetachVolume"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:volume/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:volume/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceTag/AmazonECSManaged": "true"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "ManageEBSVolumeLifecycle"
+                }, 
                 {
-                    "Sid": "ManageVolumeAttachmentsForEC2",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:AttachVolume",
+                        "ec2:AttachVolume", 
                         "ec2:DetachVolume"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:instance/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:instance/*", 
+                    "Effect": "Allow", 
+                    "Sid": "ManageVolumeAttachmentsForEC2"
+                }, 
                 {
-                    "Sid": "DeleteEBSManagedVolume",
-                    "Effect": "Allow",
-                    "Action": "ec2:DeleteVolume",
-                    "Resource": "arn:aws:ec2:*:*:volume/*",
+                    "Action": "ec2:DeleteVolume", 
+                    "Resource": "arn:aws:ec2:*:*:volume/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ArnLike": {
                             "aws:ResourceTag/AmazonECSCreated": "arn:aws:ecs:*:*:task/*"
-                        },
+                        }, 
                         "StringEquals": {
                             "aws:ResourceTag/AmazonECSManaged": "true"
                         }
-                    }
+                    }, 
+                    "Sid": "DeleteEBSManagedVolume"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-01-10T22:56:41+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

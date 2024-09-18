@@ -1,180 +1,180 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-08-01T00:24:40Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AccessS3Buckets",
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:ListBucket",
-                        "s3:ListBucketVersions",
-                        "s3:GetObject",
-                        "s3:PutObject",
-                        "s3:DeleteObject",
-                        "s3:GetObjectVersion",
+                        "s3:ListBucket", 
+                        "s3:ListBucketVersions", 
+                        "s3:GetObject", 
+                        "s3:PutObject", 
+                        "s3:DeleteObject", 
+                        "s3:GetObjectVersion", 
                         "s3:DeleteObjectVersion"
-                    ],
-                    "Resource": "arn:aws:s3:::br-studio-${aws:PrincipalAccount}-*",
+                    ], 
+                    "Resource": "arn:aws:s3:::br-studio-${aws:PrincipalAccount}-*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "AccessS3Buckets"
+                }, 
                 {
-                    "Sid": "AccessOpenSearchCollections",
-                    "Effect": "Allow",
-                    "Action": "aoss:APIAccessAll",
-                    "Resource": "*",
+                    "Action": "aoss:APIAccessAll", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "AccessOpenSearchCollections"
+                }, 
                 {
-                    "Sid": "InvokeBedrockModels",
-                    "Effect": "Allow",
                     "Action": [
-                        "bedrock:InvokeModel",
+                        "bedrock:InvokeModel", 
                         "bedrock:InvokeModelWithResponseStream"
-                    ],
-                    "Resource": "arn:aws:bedrock:*::foundation-model/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:bedrock:*::foundation-model/*", 
+                    "Effect": "Allow", 
+                    "Sid": "InvokeBedrockModels"
+                }, 
                 {
-                    "Sid": "AccessBedrockResources",
-                    "Effect": "Allow",
                     "Action": [
-                        "bedrock:InvokeAgent",
-                        "bedrock:Retrieve",
-                        "bedrock:StartIngestionJob",
-                        "bedrock:GetIngestionJob",
-                        "bedrock:ListIngestionJobs",
-                        "bedrock:ApplyGuardrail",
-                        "bedrock:ListPrompts",
-                        "bedrock:GetPrompt",
-                        "bedrock:CreatePrompt",
-                        "bedrock:DeletePrompt",
-                        "bedrock:CreatePromptVersion",
-                        "bedrock:InvokeFlow",
-                        "bedrock:ListTagsForResource",
-                        "bedrock:TagResource",
+                        "bedrock:InvokeAgent", 
+                        "bedrock:Retrieve", 
+                        "bedrock:StartIngestionJob", 
+                        "bedrock:GetIngestionJob", 
+                        "bedrock:ListIngestionJobs", 
+                        "bedrock:ApplyGuardrail", 
+                        "bedrock:ListPrompts", 
+                        "bedrock:GetPrompt", 
+                        "bedrock:CreatePrompt", 
+                        "bedrock:DeletePrompt", 
+                        "bedrock:CreatePromptVersion", 
+                        "bedrock:InvokeFlow", 
+                        "bedrock:ListTagsForResource", 
+                        "bedrock:TagResource", 
                         "bedrock:UntagResource"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
-                        "StringEquals": {
-                            "aws:ResourceAccount": "${aws:PrincipalAccount}",
-                            "aws:ResourceTag/AmazonBedrockManaged": "true"
-                        },
                         "Null": {
                             "aws:ResourceTag/AmazonDataZoneProject": "false"
+                        }, 
+                        "StringEquals": {
+                            "aws:ResourceTag/AmazonBedrockManaged": "true", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "AccessBedrockResources"
+                }, 
                 {
-                    "Sid": "RetrieveAndGenerate",
-                    "Effect": "Allow",
-                    "Action": "bedrock:RetrieveAndGenerate",
-                    "Resource": "*"
-                },
+                    "Action": "bedrock:RetrieveAndGenerate", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "RetrieveAndGenerate"
+                }, 
                 {
-                    "Sid": "WriteLogs",
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:CreateLogGroup",
-                        "logs:CreateLogStream",
+                        "logs:CreateLogGroup", 
+                        "logs:CreateLogStream", 
                         "logs:PutLogEvents"
-                    ],
-                    "Resource": "arn:aws:logs:*:*:log-group:/aws/lambda/br-studio-*",
+                    ], 
+                    "Resource": "arn:aws:logs:*:*:log-group:/aws/lambda/br-studio-*", 
+                    "Effect": "Allow", 
                     "Condition": {
-                        "StringEquals": {
-                            "aws:ResourceAccount": "${aws:PrincipalAccount}",
-                            "aws:ResourceTag/AmazonBedrockManaged": "true"
-                        },
                         "Null": {
                             "aws:ResourceTag/AmazonDataZoneProject": "false"
-                        }
-                    }
-                },
-                {
-                    "Sid": "InvokeLambdaFunctions",
-                    "Effect": "Allow",
-                    "Action": "lambda:InvokeFunction",
-                    "Resource": "arn:aws:lambda:*:*:function:br-studio-*",
-                    "Condition": {
+                        }, 
                         "StringEquals": {
-                            "aws:ResourceAccount": "${aws:PrincipalAccount}",
-                            "aws:ResourceTag/AmazonBedrockManaged": "true"
-                        },
+                            "aws:ResourceTag/AmazonBedrockManaged": "true", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "WriteLogs"
+                }, 
+                {
+                    "Action": "lambda:InvokeFunction", 
+                    "Resource": "arn:aws:lambda:*:*:function:br-studio-*", 
+                    "Effect": "Allow", 
+                    "Condition": {
                         "Null": {
                             "aws:ResourceTag/AmazonDataZoneProject": "false"
+                        }, 
+                        "StringEquals": {
+                            "aws:ResourceTag/AmazonBedrockManaged": "true", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "InvokeLambdaFunctions"
+                }, 
                 {
-                    "Sid": "AccessSecretsManagerSecrets",
-                    "Effect": "Allow",
                     "Action": [
-                        "secretsmanager:DescribeSecret",
-                        "secretsmanager:GetSecretValue",
+                        "secretsmanager:DescribeSecret", 
+                        "secretsmanager:GetSecretValue", 
                         "secretsmanager:PutSecretValue"
-                    ],
-                    "Resource": "arn:aws:secretsmanager:*:*:secret:br-studio/*",
+                    ], 
+                    "Resource": "arn:aws:secretsmanager:*:*:secret:br-studio/*", 
+                    "Effect": "Allow", 
                     "Condition": {
-                        "StringEquals": {
-                            "aws:ResourceAccount": "${aws:PrincipalAccount}",
-                            "aws:ResourceTag/AmazonBedrockManaged": "true"
-                        },
                         "Null": {
                             "aws:ResourceTag/AmazonDataZoneProject": "false"
-                        }
-                    }
-                },
-                {
-                    "Sid": "UseKmsKeyWithBedrock",
-                    "Effect": "Allow",
-                    "Action": [
-                        "kms:Decrypt",
-                        "kms:GenerateDataKey"
-                    ],
-                    "Resource": "*",
-                    "Condition": {
+                        }, 
                         "StringEquals": {
-                            "aws:ResourceAccount": "${aws:PrincipalAccount}",
-                            "aws:ResourceTag/EnableBedrock": "true"
-                        },
+                            "aws:ResourceTag/AmazonBedrockManaged": "true", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "AccessSecretsManagerSecrets"
+                }, 
+                {
+                    "Action": [
+                        "kms:Decrypt", 
+                        "kms:GenerateDataKey"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
                         "Null": {
                             "kms:EncryptionContext:aws:bedrock:arn": "false"
-                        }
-                    }
-                },
-                {
-                    "Sid": "UseKmsKeyWithAwsServices",
-                    "Effect": "Allow",
-                    "Action": [
-                        "kms:Decrypt",
-                        "kms:GenerateDataKey"
-                    ],
-                    "Resource": "*",
-                    "Condition": {
+                        }, 
                         "StringEquals": {
-                            "aws:ResourceAccount": "${aws:PrincipalAccount}",
-                            "aws:ResourceTag/EnableBedrock": "true"
-                        },
+                            "aws:ResourceTag/EnableBedrock": "true", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "UseKmsKeyWithBedrock"
+                }, 
+                {
+                    "Action": [
+                        "kms:Decrypt", 
+                        "kms:GenerateDataKey"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
                         "StringLike": {
                             "kms:ViaService": [
-                                "s3.*.amazonaws.com",
+                                "s3.*.amazonaws.com", 
                                 "secretsmanager.*.amazonaws.com"
                             ]
+                        }, 
+                        "StringEquals": {
+                            "aws:ResourceTag/EnableBedrock": "true", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
-                    }
+                    }, 
+                    "Sid": "UseKmsKeyWithAwsServices"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-08-01T00:24:40+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

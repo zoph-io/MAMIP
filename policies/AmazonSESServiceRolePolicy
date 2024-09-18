@@ -1,27 +1,27 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-05-21T16:02:20Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AllowPutMetricDataToSESCloudWatchNamespaces",
-                    "Effect": "Allow",
-                    "Action": "cloudwatch:PutMetricData",
-                    "Resource": "*",
+                    "Action": "cloudwatch:PutMetricData", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "cloudwatch:namespace": [
-                                "AWS/SES",
-                                "AWS/SES/MailManager",
+                                "AWS/SES", 
+                                "AWS/SES/MailManager", 
                                 "AWS/SES/Addons"
                             ]
                         }
-                    }
+                    }, 
+                    "Sid": "AllowPutMetricDataToSESCloudWatchNamespaces"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-05-21T16:02:20+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

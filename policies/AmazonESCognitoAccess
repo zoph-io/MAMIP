@@ -1,43 +1,43 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2021-12-20T14:04:44Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "cognito-idp:DescribeUserPool",
-                        "cognito-idp:CreateUserPoolClient",
-                        "cognito-idp:DeleteUserPoolClient",
-                        "cognito-idp:UpdateUserPoolClient",
-                        "cognito-idp:DescribeUserPoolClient",
-                        "cognito-idp:AdminInitiateAuth",
-                        "cognito-idp:AdminUserGlobalSignOut",
-                        "cognito-idp:ListUserPoolClients",
-                        "cognito-identity:DescribeIdentityPool",
-                        "cognito-identity:UpdateIdentityPool",
-                        "cognito-identity:SetIdentityPoolRoles",
+                        "cognito-idp:DescribeUserPool", 
+                        "cognito-idp:CreateUserPoolClient", 
+                        "cognito-idp:DeleteUserPoolClient", 
+                        "cognito-idp:UpdateUserPoolClient", 
+                        "cognito-idp:DescribeUserPoolClient", 
+                        "cognito-idp:AdminInitiateAuth", 
+                        "cognito-idp:AdminUserGlobalSignOut", 
+                        "cognito-idp:ListUserPoolClients", 
+                        "cognito-identity:DescribeIdentityPool", 
+                        "cognito-identity:UpdateIdentityPool", 
+                        "cognito-identity:SetIdentityPoolRoles", 
                         "cognito-identity:GetIdentityPoolRoles"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "iam:PassRole",
-                    "Resource": "*",
+                    "Action": "iam:PassRole", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "iam:PassedToService": [
-                                "cognito-identity.amazonaws.com",
+                                "cognito-identity.amazonaws.com", 
                                 "cognito-identity-us-gov.amazonaws.com"
                             ]
                         }
                     }
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2021-12-20T14:04:44+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

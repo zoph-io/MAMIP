@@ -1,112 +1,114 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-05-27T19:38:34Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:CancelSpotFleetRequests",
-                        "ec2:DescribeSpotFleetInstances",
-                        "ec2:DescribeSpotFleetRequests",
-                        "ec2:ModifySpotFleetRequest",
+                        "ec2:CancelSpotFleetRequests", 
+                        "ec2:DescribeSpotFleetInstances", 
+                        "ec2:DescribeSpotFleetRequests", 
+                        "ec2:ModifySpotFleetRequest", 
                         "ec2:RequestSpotFleet"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateTags"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ec2:*:*:instance/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "ec2:CreateAction": "RunInstances"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:RunInstances"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:TerminateInstances"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ec2:*:*:instance/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "ec2:ResourceTag/aws:ec2spot:fleet-request-id": "*"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "iam:CreateServiceLinkedRole"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:iam::*:role/aws-service-role/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:AWSServiceName": [
-                                "spot.amazonaws.com",
+                                "spot.amazonaws.com", 
                                 "spotfleet.amazonaws.com"
                             ]
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "iam:GetInstanceProfile"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:iam::*:instance-profile/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "iam:GetRole"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:iam::*:role/aws-ec2-spot-fleet-tagging-role",
+                        "arn:aws:iam::*:role/aws-ec2-spot-fleet-tagging-role", 
                         "arn:aws:iam::*:role/DeadlineSpot*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "iam:GetUser"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "iam:PassRole"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:iam::*:role/aws-ec2-spot-fleet-tagging-role",
+                        "arn:aws:iam::*:role/aws-ec2-spot-fleet-tagging-role", 
                         "arn:aws:iam::*:role/DeadlineSpot*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "iam:PassedToService": "ec2.amazonaws.com"
@@ -114,9 +116,7 @@
                     }
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-05-27T19:38:34+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

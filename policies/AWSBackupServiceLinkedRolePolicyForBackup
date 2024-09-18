@@ -1,351 +1,351 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-05-17T17:12:59Z", 
+        "VersionId": "v16", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "EFSResourcePermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "elasticfilesystem:Backup",
+                        "elasticfilesystem:Backup", 
                         "elasticfilesystem:DescribeTags"
-                    ],
-                    "Resource": "arn:aws:elasticfilesystem:*:*:file-system/*",
+                    ], 
+                    "Resource": "arn:aws:elasticfilesystem:*:*:file-system/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "aws:ResourceTag/aws:elasticfilesystem:default-backup": "enabled"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "EFSResourcePermissions"
+                }, 
                 {
-                    "Sid": "DescribePermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "tag:GetResources",
-                        "elasticfilesystem:DescribeFileSystems",
-                        "dynamodb:ListTables",
-                        "storagegateway:ListVolumes",
-                        "ec2:DescribeVolumes",
-                        "ec2:DescribeInstances",
-                        "rds:DescribeDBInstances",
-                        "rds:DescribeDBClusters",
-                        "fsx:DescribeFileSystems",
-                        "fsx:DescribeVolumes",
-                        "s3:ListAllMyBuckets",
+                        "tag:GetResources", 
+                        "elasticfilesystem:DescribeFileSystems", 
+                        "dynamodb:ListTables", 
+                        "storagegateway:ListVolumes", 
+                        "ec2:DescribeVolumes", 
+                        "ec2:DescribeInstances", 
+                        "rds:DescribeDBInstances", 
+                        "rds:DescribeDBClusters", 
+                        "fsx:DescribeFileSystems", 
+                        "fsx:DescribeVolumes", 
+                        "s3:ListAllMyBuckets", 
                         "s3:GetBucketTagging"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DescribePermissions"
+                }, 
                 {
-                    "Sid": "SnapshotCopyTagPermissions",
-                    "Effect": "Allow",
-                    "Action": "ec2:CreateTags",
-                    "Resource": "arn:aws:ec2:*::snapshot/*",
+                    "Action": "ec2:CreateTags", 
+                    "Resource": "arn:aws:ec2:*::snapshot/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "ec2:CreateAction": "CopySnapshot"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "SnapshotCopyTagPermissions"
+                }, 
                 {
-                    "Sid": "EC2CreateBackupTagPermissions",
-                    "Effect": "Allow",
-                    "Action": "ec2:CreateTags",
+                    "Action": "ec2:CreateTags", 
                     "Resource": [
-                        "arn:aws:ec2:*::image/*",
+                        "arn:aws:ec2:*::image/*", 
                         "arn:aws:ec2:*::snapshot/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAllValues:StringEquals": {
                             "aws:TagKeys": [
                                 "AWSBackupManagedResource"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "EC2CreateBackupTagPermissions"
+                }, 
                 {
-                    "Sid": "EC2CreateTagsPermissions",
-                    "Effect": "Allow",
-                    "Action": "ec2:CreateTags",
+                    "Action": "ec2:CreateTags", 
                     "Resource": [
-                        "arn:aws:ec2:*::image/*",
+                        "arn:aws:ec2:*::image/*", 
                         "arn:aws:ec2:*::snapshot/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "ec2:ResourceTag/AWSBackupManagedResource": "false"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "EC2CreateTagsPermissions"
+                }, 
                 {
-                    "Sid": "EC2RDSDescribePermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeSnapshots",
-                        "ec2:DescribeSnapshotTierStatus",
-                        "ec2:DescribeImages",
-                        "rds:DescribeDBSnapshots",
+                        "ec2:DescribeSnapshots", 
+                        "ec2:DescribeSnapshotTierStatus", 
+                        "ec2:DescribeImages", 
+                        "rds:DescribeDBSnapshots", 
                         "rds:DescribeDBClusterSnapshots"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "EC2RDSDescribePermissions"
+                }, 
                 {
-                    "Sid": "EBSCopyPermissions",
-                    "Effect": "Allow",
-                    "Action": "ec2:CopySnapshot",
-                    "Resource": "arn:aws:ec2:*::snapshot/*"
-                },
+                    "Action": "ec2:CopySnapshot", 
+                    "Resource": "arn:aws:ec2:*::snapshot/*", 
+                    "Effect": "Allow", 
+                    "Sid": "EBSCopyPermissions"
+                }, 
                 {
-                    "Sid": "EC2CopyPermissions",
-                    "Effect": "Allow",
-                    "Action": "ec2:CopyImage",
-                    "Resource": "*"
-                },
+                    "Action": "ec2:CopyImage", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "EC2CopyPermissions"
+                }, 
                 {
-                    "Sid": "EC2ModifyPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DeregisterImage",
-                        "ec2:DeleteSnapshot",
+                        "ec2:DeregisterImage", 
+                        "ec2:DeleteSnapshot", 
                         "ec2:ModifySnapshotTier"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "ec2:ResourceTag/AWSBackupManagedResource": "false"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "EC2ModifyPermissions"
+                }, 
                 {
-                    "Sid": "RDSInstanceAndSnashotPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "rds:AddTagsToResource",
-                        "rds:CopyDBSnapshot",
-                        "rds:DeleteDBSnapshot",
+                        "rds:AddTagsToResource", 
+                        "rds:CopyDBSnapshot", 
+                        "rds:DeleteDBSnapshot", 
                         "rds:DeleteDBInstanceAutomatedBackup"
-                    ],
-                    "Resource": "arn:aws:rds:*:*:snapshot:awsbackup:*"
-                },
+                    ], 
+                    "Resource": "arn:aws:rds:*:*:snapshot:awsbackup:*", 
+                    "Effect": "Allow", 
+                    "Sid": "RDSInstanceAndSnashotPermissions"
+                }, 
                 {
-                    "Sid": "RDSClusterPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "rds:AddTagsToResource",
-                        "rds:CopyDBClusterSnapshot",
+                        "rds:AddTagsToResource", 
+                        "rds:CopyDBClusterSnapshot", 
                         "rds:DeleteDBClusterSnapshot"
-                    ],
-                    "Resource": "arn:aws:rds:*:*:cluster-snapshot:awsbackup:*"
-                },
+                    ], 
+                    "Resource": "arn:aws:rds:*:*:cluster-snapshot:awsbackup:*", 
+                    "Effect": "Allow", 
+                    "Sid": "RDSClusterPermissions"
+                }, 
                 {
-                    "Sid": "KMSDescribePermissions",
-                    "Effect": "Allow",
-                    "Action": "kms:DescribeKey",
-                    "Resource": "*"
-                },
+                    "Action": "kms:DescribeKey", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "KMSDescribePermissions"
+                }, 
                 {
-                    "Sid": "KMSGrantPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "kms:ListGrants",
-                        "kms:ReEncryptFrom",
+                        "kms:ListGrants", 
+                        "kms:ReEncryptFrom", 
                         "kms:GenerateDataKeyWithoutPlaintext"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "kms:ViaService": [
-                                "ec2.*.amazonaws.com",
-                                "rds.*.amazonaws.com",
+                                "ec2.*.amazonaws.com", 
+                                "rds.*.amazonaws.com", 
                                 "fsx.*.amazonaws.com"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "KMSGrantPermissions"
+                }, 
                 {
-                    "Sid": "KMSCreateGrantPermissions",
-                    "Effect": "Allow",
-                    "Action": "kms:CreateGrant",
-                    "Resource": "*",
+                    "Action": "kms:CreateGrant", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
+                        "StringLike": {
+                            "kms:ViaService": [
+                                "ec2.*.amazonaws.com", 
+                                "rds.*.amazonaws.com", 
+                                "fsx.*.amazonaws.com"
+                            ]
+                        }, 
                         "Bool": {
                             "kms:GrantIsForAWSResource": "true"
-                        },
-                        "StringLike": {
-                            "kms:ViaService": [
-                                "ec2.*.amazonaws.com",
-                                "rds.*.amazonaws.com",
-                                "fsx.*.amazonaws.com"
-                            ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "KMSCreateGrantPermissions"
+                }, 
                 {
-                    "Sid": "FsxPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "fsx:CopyBackup",
-                        "fsx:TagResource",
-                        "fsx:DescribeBackups",
+                        "fsx:CopyBackup", 
+                        "fsx:TagResource", 
+                        "fsx:DescribeBackups", 
                         "fsx:DeleteBackup"
-                    ],
-                    "Resource": "arn:aws:fsx:*:*:backup/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:fsx:*:*:backup/*", 
+                    "Effect": "Allow", 
+                    "Sid": "FsxPermissions"
+                }, 
                 {
-                    "Sid": "DynamoDBDeletePermissions",
-                    "Effect": "Allow",
-                    "Action": "dynamodb:DeleteBackup",
-                    "Resource": "arn:aws:dynamodb:*:*:table/*/backup/*"
-                },
+                    "Action": "dynamodb:DeleteBackup", 
+                    "Resource": "arn:aws:dynamodb:*:*:table/*/backup/*", 
+                    "Effect": "Allow", 
+                    "Sid": "DynamoDBDeletePermissions"
+                }, 
                 {
-                    "Sid": "BackupGateway",
-                    "Effect": "Allow",
                     "Action": [
                         "backup-gateway:ListVirtualMachines"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "BackupGateway"
+                }, 
                 {
-                    "Sid": "ListTagsForBackupGateway",
-                    "Effect": "Allow",
                     "Action": [
                         "backup-gateway:ListTagsForResource"
-                    ],
-                    "Resource": "arn:aws:backup-gateway:*:*:vm/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:backup-gateway:*:*:vm/*", 
+                    "Effect": "Allow", 
+                    "Sid": "ListTagsForBackupGateway"
+                }, 
                 {
-                    "Sid": "DynamoDBPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "dynamodb:ListTagsOfResource",
+                        "dynamodb:ListTagsOfResource", 
                         "dynamodb:DescribeTable"
-                    ],
-                    "Resource": "arn:aws:dynamodb:*:*:table/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:dynamodb:*:*:table/*", 
+                    "Effect": "Allow", 
+                    "Sid": "DynamoDBPermissions"
+                }, 
                 {
-                    "Sid": "StorageGatewayPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "storagegateway:DescribeCachediSCSIVolumes",
+                        "storagegateway:DescribeCachediSCSIVolumes", 
                         "storagegateway:DescribeStorediSCSIVolumes"
-                    ],
-                    "Resource": "arn:aws:storagegateway:*:*:gateway/*/volume/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:storagegateway:*:*:gateway/*/volume/*", 
+                    "Effect": "Allow", 
+                    "Sid": "StorageGatewayPermissions"
+                }, 
                 {
-                    "Sid": "EventBridgePermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "events:DeleteRule",
-                        "events:PutTargets",
-                        "events:DescribeRule",
-                        "events:EnableRule",
-                        "events:PutRule",
-                        "events:RemoveTargets",
-                        "events:ListTargetsByRule",
+                        "events:DeleteRule", 
+                        "events:PutTargets", 
+                        "events:DescribeRule", 
+                        "events:EnableRule", 
+                        "events:PutRule", 
+                        "events:RemoveTargets", 
+                        "events:ListTargetsByRule", 
                         "events:DisableRule"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:events:*:*:rule/AwsBackupManagedRule*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "EventBridgePermissions"
+                }, 
                 {
-                    "Sid": "EventBridgeRulesPermissions",
-                    "Effect": "Allow",
-                    "Action": "events:ListRules",
-                    "Resource": "*"
-                },
+                    "Action": "events:ListRules", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "EventBridgeRulesPermissions"
+                }, 
                 {
-                    "Sid": "SSMSAPPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "ssm-sap:GetOperation",
+                        "ssm-sap:GetOperation", 
                         "ssm-sap:UpdateHANABackupSettings"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "SSMSAPPermissions"
+                }, 
                 {
-                    "Sid": "TimestreamResourcePermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "timestream:ListDatabases",
-                        "timestream:ListTables",
-                        "timestream:ListTagsForResource",
-                        "timestream:DescribeDatabase",
-                        "timestream:DescribeTable",
-                        "timestream:GetAwsBackupStatus",
+                        "timestream:ListDatabases", 
+                        "timestream:ListTables", 
+                        "timestream:ListTagsForResource", 
+                        "timestream:DescribeDatabase", 
+                        "timestream:DescribeTable", 
+                        "timestream:GetAwsBackupStatus", 
                         "timestream:GetAwsRestoreStatus"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:timestream:*:*:database/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "TimestreamResourcePermissions"
+                }, 
                 {
-                    "Sid": "TimestreamPermissions",
-                    "Effect": "Allow",
                     "Action": [
                         "timestream:DescribeEndpoints"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "TimestreamPermissions"
+                }, 
                 {
-                    "Sid": "RedshiftDescribePermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "redshift:DescribeClusterSnapshots",
+                        "redshift:DescribeClusterSnapshots", 
                         "redshift:DescribeTags"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:redshift:*:*:snapshot:*/*",
+                        "arn:aws:redshift:*:*:snapshot:*/*", 
                         "arn:aws:redshift:*:*:cluster:*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "RedshiftDescribePermissions"
+                }, 
                 {
-                    "Sid": "RedshiftClusterSnapshotPermissions",
-                    "Effect": "Allow",
                     "Action": [
                         "redshift:DeleteClusterSnapshot"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:redshift:*:*:snapshot:*/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "RedshiftClusterSnapshotPermissions"
+                }, 
                 {
-                    "Sid": "RedshiftClusterPermissions",
-                    "Effect": "Allow",
                     "Action": [
                         "redshift:DescribeClusters"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:redshift:*:*:cluster:*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "RedshiftClusterPermissions"
+                }, 
                 {
-                    "Sid": "CloudformationStackPermissions",
-                    "Effect": "Allow",
                     "Action": [
                         "cloudformation:ListStacks"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:cloudformation:*:*:stack/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "CloudformationStackPermissions"
+                }, 
                 {
-                    "Sid": "RecoveryPointTaggingPermissions",
-                    "Effect": "Allow",
                     "Action": [
                         "backup:TagResource"
-                    ],
-                    "Resource": "arn:aws:backup:*:*:recovery-point:*",
+                    ], 
+                    "Resource": "arn:aws:backup:*:*:recovery-point:*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:PrincipalAccount": "${aws:ResourceAccount}"
                         }
-                    }
+                    }, 
+                    "Sid": "RecoveryPointTaggingPermissions"
                 }
             ]
-        },
-        "VersionId": "v16",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-05-17T17:12:59+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

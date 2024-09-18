@@ -1,23 +1,23 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2018-08-23T22:46:59Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudwatch:GetMetricData",
-                        "autoscaling:DescribeAutoScalingGroups",
-                        "autoscaling:DescribeScheduledActions",
-                        "autoscaling:BatchPutScheduledUpdateGroupAction",
+                        "cloudwatch:GetMetricData", 
+                        "autoscaling:DescribeAutoScalingGroups", 
+                        "autoscaling:DescribeScheduledActions", 
+                        "autoscaling:BatchPutScheduledUpdateGroupAction", 
                         "autoscaling:BatchDeleteScheduledAction"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2018-08-23T22:46:59+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

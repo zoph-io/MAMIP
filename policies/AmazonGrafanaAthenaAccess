@@ -1,77 +1,77 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2021-11-22T17:11:11Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "athena:GetDatabase",
-                        "athena:GetDataCatalog",
-                        "athena:GetTableMetadata",
-                        "athena:ListDatabases",
-                        "athena:ListDataCatalogs",
-                        "athena:ListTableMetadata",
+                        "athena:GetDatabase", 
+                        "athena:GetDataCatalog", 
+                        "athena:GetTableMetadata", 
+                        "athena:ListDatabases", 
+                        "athena:ListDataCatalogs", 
+                        "athena:ListTableMetadata", 
                         "athena:ListWorkGroups"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "athena:GetQueryExecution",
-                        "athena:GetQueryResults",
-                        "athena:GetWorkGroup",
-                        "athena:StartQueryExecution",
+                        "athena:GetQueryExecution", 
+                        "athena:GetQueryResults", 
+                        "athena:GetWorkGroup", 
+                        "athena:StartQueryExecution", 
                         "athena:StopQueryExecution"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "aws:ResourceTag/GrafanaDataSource": "false"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "glue:GetDatabase",
-                        "glue:GetDatabases",
-                        "glue:GetTable",
-                        "glue:GetTables",
-                        "glue:GetPartition",
-                        "glue:GetPartitions",
+                        "glue:GetDatabase", 
+                        "glue:GetDatabases", 
+                        "glue:GetTable", 
+                        "glue:GetTables", 
+                        "glue:GetPartition", 
+                        "glue:GetPartitions", 
                         "glue:BatchGetPartition"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:GetBucketLocation",
-                        "s3:GetObject",
-                        "s3:ListBucket",
-                        "s3:ListBucketMultipartUploads",
-                        "s3:ListMultipartUploadParts",
-                        "s3:AbortMultipartUpload",
-                        "s3:CreateBucket",
-                        "s3:PutObject",
+                        "s3:GetBucketLocation", 
+                        "s3:GetObject", 
+                        "s3:ListBucket", 
+                        "s3:ListBucketMultipartUploads", 
+                        "s3:ListMultipartUploadParts", 
+                        "s3:AbortMultipartUpload", 
+                        "s3:CreateBucket", 
+                        "s3:PutObject", 
                         "s3:PutBucketPublicAccessBlock"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:s3:::grafana-athena-query-results-*"
-                    ]
+                    ], 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2021-11-22T17:11:11+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

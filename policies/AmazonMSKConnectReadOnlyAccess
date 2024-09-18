@@ -1,48 +1,48 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2021-10-18T09:16:26Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "kafkaconnect:ListConnectors",
-                        "kafkaconnect:ListCustomPlugins",
+                        "kafkaconnect:ListConnectors", 
+                        "kafkaconnect:ListCustomPlugins", 
                         "kafkaconnect:ListWorkerConfigurations"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "kafkaconnect:DescribeConnector"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:kafkaconnect:*:*:connector/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "kafkaconnect:DescribeCustomPlugin"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:kafkaconnect:*:*:custom-plugin/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "kafkaconnect:DescribeWorkerConfiguration"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:kafkaconnect:*:*:worker-configuration/*"
-                    ]
+                    ], 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2021-10-18T09:16:26+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

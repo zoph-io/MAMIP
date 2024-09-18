@@ -1,25 +1,25 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-11-26T21:52:15Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "RepostSpaceSupportOperations",
-                    "Effect": "Allow",
                     "Action": [
-                        "support:AddAttachmentsToSet",
-                        "support:AddCommunicationToCase",
-                        "support:CreateCase",
-                        "support:DescribeCases",
-                        "support:DescribeCommunications",
+                        "support:AddAttachmentsToSet", 
+                        "support:AddCommunicationToCase", 
+                        "support:CreateCase", 
+                        "support:DescribeCases", 
+                        "support:DescribeCommunications", 
                         "support:ResolveCase"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "RepostSpaceSupportOperations"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-11-26T21:52:15+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

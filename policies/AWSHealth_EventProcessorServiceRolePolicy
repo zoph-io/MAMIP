@@ -1,35 +1,35 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-01-13T19:24:56Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "events:DeleteRule",
-                        "events:PutTargets",
-                        "events:PutRule",
+                        "events:DeleteRule", 
+                        "events:PutTargets", 
+                        "events:PutRule", 
                         "events:RemoveTargets"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "events:ManagedBy": "event-processor.health.amazonaws.com"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "events:DescribeRule",
+                        "events:DescribeRule", 
                         "events:ListTargetsByRule"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-01-13T19:24:56+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

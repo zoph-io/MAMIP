@@ -1,38 +1,38 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-01-17T13:19:58Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "CrossAccountPolicy1",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeVolumes",
-                        "ec2:DescribeVolumeAttribute",
-                        "ec2:DescribeInstances",
-                        "drs:DescribeSourceServers",
-                        "drs:DescribeReplicationConfigurationTemplates",
+                        "ec2:DescribeVolumes", 
+                        "ec2:DescribeVolumeAttribute", 
+                        "ec2:DescribeInstances", 
+                        "drs:DescribeSourceServers", 
+                        "drs:DescribeReplicationConfigurationTemplates", 
                         "drs:CreateSourceServerForDrs"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "CrossAccountPolicy1"
+                }, 
                 {
-                    "Sid": "CrossAccountPolicy2",
-                    "Effect": "Allow",
                     "Action": [
                         "drs:TagResource"
-                    ],
-                    "Resource": "arn:aws:drs:*:*:source-server/*",
+                    ], 
+                    "Resource": "arn:aws:drs:*:*:source-server/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "drs:CreateAction": "CreateSourceServerForDrs"
                         }
-                    }
+                    }, 
+                    "Sid": "CrossAccountPolicy2"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-01-17T13:19:58+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

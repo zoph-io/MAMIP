@@ -1,57 +1,57 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-04-14T12:32:09Z", 
+        "VersionId": "v7", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "rds:Describe*",
-                        "rds:ListTagsForResource",
-                        "ec2:DescribeAccountAttributes",
-                        "ec2:DescribeAvailabilityZones",
-                        "ec2:DescribeInternetGateways",
-                        "ec2:DescribeSecurityGroups",
-                        "ec2:DescribeSubnets",
-                        "ec2:DescribeVpcAttribute",
+                        "rds:Describe*", 
+                        "rds:ListTagsForResource", 
+                        "ec2:DescribeAccountAttributes", 
+                        "ec2:DescribeAvailabilityZones", 
+                        "ec2:DescribeInternetGateways", 
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeVpcAttribute", 
                         "ec2:DescribeVpcs"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudwatch:GetMetricStatistics",
-                        "cloudwatch:ListMetrics",
-                        "cloudwatch:GetMetricData",
-                        "logs:DescribeLogStreams",
-                        "logs:GetLogEvents",
+                        "cloudwatch:GetMetricStatistics", 
+                        "cloudwatch:ListMetrics", 
+                        "cloudwatch:GetMetricData", 
+                        "logs:DescribeLogStreams", 
+                        "logs:GetLogEvents", 
                         "devops-guru:GetResourceCollection"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
                     "Action": [
-                        "devops-guru:SearchInsights",
+                        "devops-guru:SearchInsights", 
                         "devops-guru:ListAnomaliesForInsight"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
+                        "Null": {
+                            "devops-guru:ServiceNames": "false"
+                        }, 
                         "ForAllValues:StringEquals": {
                             "devops-guru:ServiceNames": [
                                 "RDS"
                             ]
-                        },
-                        "Null": {
-                            "devops-guru:ServiceNames": "false"
                         }
                     }
                 }
             ]
-        },
-        "VersionId": "v7",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-04-14T12:32:09+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

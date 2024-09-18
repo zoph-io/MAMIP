@@ -1,86 +1,86 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-11-21T19:51:42Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "DSReadPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "ds:DescribeDirectories",
+                        "ds:DescribeDirectories", 
                         "ds:GetAuthorizedApplicationDetails"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DSReadPermissions"
+                }, 
                 {
-                    "Sid": "SSMReadPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "ssm:GetInventory",
-                        "ssm:GetCommandInvocation",
-                        "ssm:ListCommandInvocations",
+                        "ssm:GetInventory", 
+                        "ssm:GetCommandInvocation", 
+                        "ssm:ListCommandInvocations", 
                         "ssm:DescribeInstanceInformation"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "SSMReadPermissions"
+                }, 
                 {
-                    "Sid": "EC2ReadPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeInstances",
+                        "ec2:DescribeInstances", 
                         "ec2:DescribeVpcPeeringConnections"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "EC2ReadPermissions"
+                }, 
                 {
-                    "Sid": "EC2WritePermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:TerminateInstances",
+                        "ec2:TerminateInstances", 
                         "ec2:CreateTags"
-                    ],
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:instance/*"
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "ec2:productCode": [
-                                "bz0vcy31ooqlzk5tsash4r1ik",
-                                "d44g89hc0gp9jdzm99rznthpw",
+                                "bz0vcy31ooqlzk5tsash4r1ik", 
+                                "d44g89hc0gp9jdzm99rznthpw", 
                                 "77yzkpa7kvee1y1tt7wnsdwoc"
                             ]
                         }
-                    },
-                    "Resource": [
-                        "arn:aws:ec2:*:*:instance/*"
-                    ]
-                },
+                    }, 
+                    "Sid": "EC2WritePermissions"
+                }, 
                 {
-                    "Sid": "SSMDocumentExecutionPermissions",
-                    "Effect": "Allow",
                     "Action": [
                         "ssm:SendCommand"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ssm:*::document/AWS-RunPowerShellScript"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "SSMDocumentExecutionPermissions"
+                }, 
                 {
-                    "Sid": "SSMInstanceExecutionPermissions",
-                    "Effect": "Allow",
                     "Action": [
                         "ssm:SendCommand"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:ec2:*:*:instance/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceTag/AWSLicenseManager": "UserSubscriptions"
                         }
-                    }
+                    }, 
+                    "Sid": "SSMInstanceExecutionPermissions"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-11-21T19:51:42+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

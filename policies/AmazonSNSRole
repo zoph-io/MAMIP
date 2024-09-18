@@ -1,25 +1,25 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2015-02-06T18:41:30Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:CreateLogGroup",
-                        "logs:CreateLogStream",
-                        "logs:PutLogEvents",
-                        "logs:PutMetricFilter",
+                        "logs:CreateLogGroup", 
+                        "logs:CreateLogStream", 
+                        "logs:PutLogEvents", 
+                        "logs:PutMetricFilter", 
                         "logs:PutRetentionPolicy"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
+                    ], 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2015-02-06T18:41:30+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

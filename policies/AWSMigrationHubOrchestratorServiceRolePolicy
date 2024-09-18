@@ -1,154 +1,154 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-03-04T18:25:12Z", 
+        "VersionId": "v4", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "ApplicationDiscoveryService",
-                    "Effect": "Allow",
                     "Action": [
-                        "discovery:DescribeConfigurations",
+                        "discovery:DescribeConfigurations", 
                         "discovery:ListConfigurations"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ApplicationDiscoveryService"
+                }, 
                 {
-                    "Sid": "LaunchWizard",
-                    "Effect": "Allow",
                     "Action": [
-                        "launchwizard:ListProvisionedApps",
-                        "launchwizard:DescribeProvisionedApp",
-                        "launchwizard:ListDeployments",
+                        "launchwizard:ListProvisionedApps", 
+                        "launchwizard:DescribeProvisionedApp", 
+                        "launchwizard:ListDeployments", 
                         "launchwizard:GetDeployment"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "LaunchWizard"
+                }, 
                 {
-                    "Sid": "EC2instances",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:DescribeInstances"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "EC2instances"
+                }, 
                 {
-                    "Sid": "ec2MGNLaunchTemplate",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:CreateLaunchTemplateVersion",
+                        "ec2:CreateLaunchTemplateVersion", 
                         "ec2:ModifyLaunchTemplate"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceTag/AWSApplicationMigrationServiceManaged": "mgn.amazonaws.com"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "ec2MGNLaunchTemplate"
+                }, 
                 {
-                    "Sid": "ec2LaunchTemplates",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:DescribeLaunchTemplates"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ec2LaunchTemplates"
+                }, 
                 {
-                    "Sid": "getHomeRegion",
                     "Action": [
                         "mgh:GetHomeRegion"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "getHomeRegion"
+                }, 
                 {
-                    "Sid": "SSMcommand",
-                    "Effect": "Allow",
                     "Action": [
-                        "ssm:SendCommand",
-                        "ssm:GetCommandInvocation",
+                        "ssm:SendCommand", 
+                        "ssm:GetCommandInvocation", 
                         "ssm:CancelCommand"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:ssm:*::document/AWS-RunRemoteScript",
-                        "arn:aws:ec2:*:*:instance/*",
-                        "arn:aws:s3:::aws-migrationhub-orchestrator-*",
+                        "arn:aws:ssm:*::document/AWS-RunRemoteScript", 
+                        "arn:aws:ec2:*:*:instance/*", 
+                        "arn:aws:s3:::aws-migrationhub-orchestrator-*", 
                         "arn:aws:s3:::migrationhub-orchestrator-*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "SSMcommand"
+                }, 
                 {
-                    "Sid": "SSM",
-                    "Effect": "Allow",
                     "Action": [
-                        "ssm:DescribeInstanceInformation",
+                        "ssm:DescribeInstanceInformation", 
                         "ssm:GetCommandInvocation"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "SSM"
+                }, 
                 {
-                    "Sid": "s3GetObject",
-                    "Effect": "Allow",
                     "Action": [
                         "s3:GetObject"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:s3:::migrationhub-orchestrator-*",
+                        "arn:aws:s3:::migrationhub-orchestrator-*", 
                         "arn:aws:s3:::migrationhub-orchestrator-*/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "s3GetObject"
+                }, 
                 {
-                    "Sid": "EventBridge",
-                    "Effect": "Allow",
                     "Action": [
-                        "events:PutTargets",
-                        "events:DescribeRule",
-                        "events:DeleteRule",
-                        "events:PutRule",
+                        "events:PutTargets", 
+                        "events:DescribeRule", 
+                        "events:DeleteRule", 
+                        "events:PutRule", 
                         "events:RemoveTargets"
-                    ],
-                    "Resource": "arn:aws:events:*:*:rule/MigrationHubOrchestratorManagedRule*"
-                },
+                    ], 
+                    "Resource": "arn:aws:events:*:*:rule/MigrationHubOrchestratorManagedRule*", 
+                    "Effect": "Allow", 
+                    "Sid": "EventBridge"
+                }, 
                 {
-                    "Sid": "MGN",
-                    "Effect": "Allow",
                     "Action": [
-                        "mgn:GetReplicationConfiguration",
-                        "mgn:GetLaunchConfiguration",
-                        "mgn:StartCutover",
-                        "mgn:FinalizeCutover",
-                        "mgn:StartTest",
-                        "mgn:UpdateReplicationConfiguration",
-                        "mgn:DescribeSourceServers",
-                        "mgn:MarkAsArchived",
+                        "mgn:GetReplicationConfiguration", 
+                        "mgn:GetLaunchConfiguration", 
+                        "mgn:StartCutover", 
+                        "mgn:FinalizeCutover", 
+                        "mgn:StartTest", 
+                        "mgn:UpdateReplicationConfiguration", 
+                        "mgn:DescribeSourceServers", 
+                        "mgn:MarkAsArchived", 
                         "mgn:ChangeServerLifeCycleState"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "MGN"
+                }, 
                 {
-                    "Sid": "ec2DescribeImportImage",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:DescribeImportImageTasks"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ec2DescribeImportImage"
+                }, 
                 {
-                    "Sid": "s3ListBucket",
-                    "Effect": "Allow",
-                    "Action": "s3:ListBucket",
-                    "Resource": "arn:aws:s3:::*",
+                    "Action": "s3:ListBucket", 
+                    "Resource": "arn:aws:s3:::*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "s3:prefix": "migrationhub-orchestrator-vmie-*"
                         }
-                    }
+                    }, 
+                    "Sid": "s3ListBucket"
                 }
             ]
-        },
-        "VersionId": "v4",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-03-04T18:25:12+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

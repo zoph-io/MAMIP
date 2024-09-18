@@ -1,49 +1,49 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-02-09T22:39:29Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:AuthorizeSecurityGroupEgress",
-                        "ec2:AuthorizeSecurityGroupIngress",
-                        "ec2:CreateSecurityGroup",
-                        "ec2:DescribeSecurityGroups",
-                        "ec2:RevokeSecurityGroupEgress",
-                        "ec2:CreateNetworkInterface",
-                        "ec2:CreateNetworkInterfacePermission",
-                        "ec2:DeleteNetworkInterface",
-                        "ec2:DeleteNetworkInterfacePermission",
-                        "ec2:DescribeNetworkInterfaces",
-                        "ec2:ModifyNetworkInterfaceAttribute",
-                        "ec2:DescribeTags",
-                        "ec2:DescribeInstances",
-                        "ec2:DescribeSubnets",
-                        "ec2:DescribeVpcs",
-                        "elasticmapreduce:ListInstances",
-                        "elasticmapreduce:DescribeCluster",
+                        "ec2:AuthorizeSecurityGroupEgress", 
+                        "ec2:AuthorizeSecurityGroupIngress", 
+                        "ec2:CreateSecurityGroup", 
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:RevokeSecurityGroupEgress", 
+                        "ec2:CreateNetworkInterface", 
+                        "ec2:CreateNetworkInterfacePermission", 
+                        "ec2:DeleteNetworkInterface", 
+                        "ec2:DeleteNetworkInterfacePermission", 
+                        "ec2:DescribeNetworkInterfaces", 
+                        "ec2:ModifyNetworkInterfaceAttribute", 
+                        "ec2:DescribeTags", 
+                        "ec2:DescribeInstances", 
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeVpcs", 
+                        "elasticmapreduce:ListInstances", 
+                        "elasticmapreduce:DescribeCluster", 
                         "elasticmapreduce:ListSteps"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "ec2:CreateTags",
-                    "Resource": "arn:aws:ec2:*:*:network-interface/*",
+                    "Action": "ec2:CreateTags", 
+                    "Resource": "arn:aws:ec2:*:*:network-interface/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAllValues:StringEquals": {
                             "aws:TagKeys": [
-                                "aws:elasticmapreduce:editor-id",
+                                "aws:elasticmapreduce:editor-id", 
                                 "aws:elasticmapreduce:job-flow-id"
                             ]
                         }
                     }
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-02-09T22:39:29+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

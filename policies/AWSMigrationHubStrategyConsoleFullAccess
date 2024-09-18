@@ -1,75 +1,75 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-11-09T00:00:06Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "migrationhub-strategy:*"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "s3:ListAllMyBuckets"
-                    ],
-                    "Resource": "arn:aws:s3:::*"
-                },
+                    ], 
+                    "Resource": "arn:aws:s3:::*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:GetObject",
-                        "s3:CreateBucket",
-                        "s3:PutEncryptionConfiguration",
-                        "s3:PutBucketPublicAccessBlock",
-                        "s3:PutBucketPolicy",
-                        "s3:PutBucketVersioning",
+                        "s3:GetObject", 
+                        "s3:CreateBucket", 
+                        "s3:PutEncryptionConfiguration", 
+                        "s3:PutBucketPublicAccessBlock", 
+                        "s3:PutBucketPolicy", 
+                        "s3:PutBucketVersioning", 
                         "s3:PutLifecycleConfiguration"
-                    ],
-                    "Resource": "arn:aws:s3:::migrationhub-strategy-*"
-                },
+                    ], 
+                    "Resource": "arn:aws:s3:::migrationhub-strategy-*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "secretsmanager:ListSecrets"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "discovery:GetDiscoverySummary",
-                        "discovery:DescribeTags",
-                        "discovery:DescribeConfigurations",
+                        "discovery:GetDiscoverySummary", 
+                        "discovery:DescribeTags", 
+                        "discovery:DescribeConfigurations", 
                         "discovery:ListConfigurations"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "iam:CreateServiceLinkedRole"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:AWSServiceName": "migrationhub-strategy.amazonaws.com"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "iam:GetRole"
-                    ],
-                    "Resource": "arn:aws:iam::*:role/aws-service-role/migrationhub-strategy.amazonaws.com/AWSMigrationHubStrategyServiceRolePolicy*"
+                    ], 
+                    "Resource": "arn:aws:iam::*:role/aws-service-role/migrationhub-strategy.amazonaws.com/AWSMigrationHubStrategyServiceRolePolicy*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-11-09T00:00:06+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

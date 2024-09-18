@@ -1,37 +1,39 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-03-02T15:20:50Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "detective:DisableOrganizationAdminAccount",
-                        "detective:EnableOrganizationAdminAccount",
+                        "detective:DisableOrganizationAdminAccount", 
+                        "detective:EnableOrganizationAdminAccount", 
                         "detective:ListOrganizationAdminAccount"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "iam:CreateServiceLinkedRole"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:AWSServiceName": "detective.amazonaws.com"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "organizations:EnableAWSServiceAccess",
-                        "organizations:RegisterDelegatedAdministrator",
+                        "organizations:EnableAWSServiceAccess", 
+                        "organizations:RegisterDelegatedAdministrator", 
                         "organizations:DeregisterDelegatedAdministrator"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "organizations:ServicePrincipal": [
@@ -39,37 +41,35 @@
                             ]
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "organizations:DescribeAccount",
-                        "organizations:DescribeOrganization",
+                        "organizations:DescribeAccount", 
+                        "organizations:DescribeOrganization", 
                         "organizations:ListAccounts"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "organizations:ListDelegatedAdministrators"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "organizations:ServicePrincipal": [
-                                "detective.amazonaws.com",
-                                "guardduty.amazonaws.com",
-                                "macie.amazonaws.com",
+                                "detective.amazonaws.com", 
+                                "guardduty.amazonaws.com", 
+                                "macie.amazonaws.com", 
                                 "securityhub.amazonaws.com"
                             ]
                         }
                     }
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-03-02T15:20:50+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

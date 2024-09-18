@@ -1,57 +1,57 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-08-06T17:34:42Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "discovery:ListConfigurations",
+                        "discovery:ListConfigurations", 
                         "discovery:DescribeConfigurations"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "ec2:CreateTags",
+                    "Action": "ec2:CreateTags", 
                     "Resource": [
-                        "arn:aws:ec2:*:*:instance/*",
-                        "arn:aws:ec2:*:*:image/*",
+                        "arn:aws:ec2:*:*:instance/*", 
+                        "arn:aws:ec2:*:*:image/*", 
                         "arn:aws:ec2:*:*:volume/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAllValues:StringEquals": {
                             "aws:TagKeys": "aws:migrationhub:source-id"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "dms:AddTagsToResource",
+                    "Action": "dms:AddTagsToResource", 
                     "Resource": [
                         "arn:aws:dms:*:*:endpoint:*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAllValues:StringEquals": {
                             "aws:TagKeys": "aws:migrationhub:source-id"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:DescribeInstanceAttribute"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
+                    ], 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-08-06T17:34:42+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

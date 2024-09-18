@@ -1,50 +1,50 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-12-01T00:51:44Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "vendor-insights:GetProfileAccessTerms",
-                        "vendor-insights:ListEntitledSecurityProfiles",
-                        "vendor-insights:GetEntitledSecurityProfileSnapshot",
+                        "vendor-insights:GetProfileAccessTerms", 
+                        "vendor-insights:ListEntitledSecurityProfiles", 
+                        "vendor-insights:GetEntitledSecurityProfileSnapshot", 
                         "vendor-insights:ListEntitledSecurityProfileSnapshots"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "aws-marketplace:CreateAgreementRequest",
-                        "aws-marketplace:GetAgreementRequest",
-                        "aws-marketplace:AcceptAgreementRequest",
-                        "aws-marketplace:CancelAgreementRequest",
-                        "aws-marketplace:ListAgreementRequests",
-                        "aws-marketplace:SearchAgreements",
+                        "aws-marketplace:CreateAgreementRequest", 
+                        "aws-marketplace:GetAgreementRequest", 
+                        "aws-marketplace:AcceptAgreementRequest", 
+                        "aws-marketplace:CancelAgreementRequest", 
+                        "aws-marketplace:ListAgreementRequests", 
+                        "aws-marketplace:SearchAgreements", 
                         "aws-marketplace:CancelAgreement"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAnyValue:StringEquals": {
                             "aws-marketplace:AgreementType": "VendorInsightsAgreement"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "artifact:GetReport",
-                        "artifact:GetReportMetadata",
-                        "artifact:GetTermForReport",
+                        "artifact:GetReport", 
+                        "artifact:GetReportMetadata", 
+                        "artifact:GetTermForReport", 
                         "artifact:ListReports"
-                    ],
-                    "Resource": "arn:aws:artifact:*::report/*"
+                    ], 
+                    "Resource": "arn:aws:artifact:*::report/*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-12-01T00:51:44+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

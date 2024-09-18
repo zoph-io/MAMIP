@@ -1,24 +1,24 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-01-02T22:42:58Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "ArtifactReportActions",
-                    "Effect": "Allow",
                     "Action": [
-                        "artifact:Get",
-                        "artifact:GetReport",
-                        "artifact:GetReportMetadata",
-                        "artifact:GetTermForReport",
+                        "artifact:Get", 
+                        "artifact:GetReport", 
+                        "artifact:GetReportMetadata", 
+                        "artifact:GetTermForReport", 
                         "artifact:ListReports"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ArtifactReportActions"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-01-02T22:42:58+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,38 +1,38 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-08-28T01:58:53Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AmazonBedrockReadOnly",
-                    "Effect": "Allow",
                     "Action": [
-                        "bedrock:GetFoundationModel",
-                        "bedrock:ListFoundationModels",
-                        "bedrock:GetModelInvocationLoggingConfiguration",
-                        "bedrock:GetProvisionedModelThroughput",
-                        "bedrock:ListProvisionedModelThroughputs",
-                        "bedrock:GetModelCustomizationJob",
-                        "bedrock:ListModelCustomizationJobs",
-                        "bedrock:ListCustomModels",
-                        "bedrock:GetCustomModel",
-                        "bedrock:ListTagsForResource",
-                        "bedrock:GetFoundationModelAvailability",
-                        "bedrock:GetGuardrail",
-                        "bedrock:ListGuardrails",
-                        "bedrock:GetEvaluationJob",
-                        "bedrock:ListEvaluationJobs",
-                        "bedrock:GetModelInvocationJob",
-                        "bedrock:ListModelInvocationJobs",
-                        "bedrock:GetInferenceProfile",
+                        "bedrock:GetFoundationModel", 
+                        "bedrock:ListFoundationModels", 
+                        "bedrock:GetModelInvocationLoggingConfiguration", 
+                        "bedrock:GetProvisionedModelThroughput", 
+                        "bedrock:ListProvisionedModelThroughputs", 
+                        "bedrock:GetModelCustomizationJob", 
+                        "bedrock:ListModelCustomizationJobs", 
+                        "bedrock:ListCustomModels", 
+                        "bedrock:GetCustomModel", 
+                        "bedrock:ListTagsForResource", 
+                        "bedrock:GetFoundationModelAvailability", 
+                        "bedrock:GetGuardrail", 
+                        "bedrock:ListGuardrails", 
+                        "bedrock:GetEvaluationJob", 
+                        "bedrock:ListEvaluationJobs", 
+                        "bedrock:GetModelInvocationJob", 
+                        "bedrock:ListModelInvocationJobs", 
+                        "bedrock:GetInferenceProfile", 
                         "bedrock:ListInferenceProfiles"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonBedrockReadOnly"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-08-28T01:58:53+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

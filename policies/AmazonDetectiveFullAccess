@@ -1,43 +1,43 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-05-17T19:39:57Z", 
+        "VersionId": "v4", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "detective:*",
-                        "organizations:DescribeOrganization",
+                        "detective:*", 
+                        "organizations:DescribeOrganization", 
                         "organizations:ListAccounts"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "guardduty:ArchiveFindings"
-                    ],
-                    "Resource": "arn:aws:guardduty:*:*:detector/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:guardduty:*:*:detector/*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "guardduty:GetFindings",
+                        "guardduty:GetFindings", 
                         "guardduty:ListDetectors"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "securityHub:GetFindings"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v4",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-05-17T19:39:57+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

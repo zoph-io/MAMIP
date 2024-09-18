@@ -1,67 +1,67 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-05-17T22:20:49Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "CloudWatchFullAccessPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "application-autoscaling:DescribeScalingPolicies",
-                        "application-signals:*",
-                        "autoscaling:DescribeAutoScalingGroups",
-                        "autoscaling:DescribePolicies",
-                        "cloudwatch:*",
-                        "logs:*",
-                        "sns:CreateTopic",
-                        "sns:ListSubscriptions",
-                        "sns:ListSubscriptionsByTopic",
-                        "sns:ListTopics",
-                        "sns:Subscribe",
-                        "iam:GetPolicy",
-                        "iam:GetPolicyVersion",
-                        "iam:GetRole",
-                        "oam:ListSinks",
-                        "rum:*",
-                        "synthetics:*",
+                        "application-autoscaling:DescribeScalingPolicies", 
+                        "application-signals:*", 
+                        "autoscaling:DescribeAutoScalingGroups", 
+                        "autoscaling:DescribePolicies", 
+                        "cloudwatch:*", 
+                        "logs:*", 
+                        "sns:CreateTopic", 
+                        "sns:ListSubscriptions", 
+                        "sns:ListSubscriptionsByTopic", 
+                        "sns:ListTopics", 
+                        "sns:Subscribe", 
+                        "iam:GetPolicy", 
+                        "iam:GetPolicyVersion", 
+                        "iam:GetRole", 
+                        "oam:ListSinks", 
+                        "rum:*", 
+                        "synthetics:*", 
                         "xray:*"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "CloudWatchFullAccessPermissions"
+                }, 
                 {
-                    "Sid": "CloudWatchApplicationSignalsServiceLinkedRolePermissions",
-                    "Effect": "Allow",
-                    "Action": "iam:CreateServiceLinkedRole",
-                    "Resource": "arn:aws:iam::*:role/aws-service-role/application-signals.cloudwatch.amazonaws.com/AWSServiceRoleForCloudWatchApplicationSignals",
+                    "Action": "iam:CreateServiceLinkedRole", 
+                    "Resource": "arn:aws:iam::*:role/aws-service-role/application-signals.cloudwatch.amazonaws.com/AWSServiceRoleForCloudWatchApplicationSignals", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "iam:AWSServiceName": "application-signals.cloudwatch.amazonaws.com"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "CloudWatchApplicationSignalsServiceLinkedRolePermissions"
+                }, 
                 {
-                    "Sid": "EventsServicePermissions",
-                    "Effect": "Allow",
-                    "Action": "iam:CreateServiceLinkedRole",
-                    "Resource": "arn:aws:iam::*:role/aws-service-role/events.amazonaws.com/AWSServiceRoleForCloudWatchEvents*",
+                    "Action": "iam:CreateServiceLinkedRole", 
+                    "Resource": "arn:aws:iam::*:role/aws-service-role/events.amazonaws.com/AWSServiceRoleForCloudWatchEvents*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "iam:AWSServiceName": "events.amazonaws.com"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "EventsServicePermissions"
+                }, 
                 {
-                    "Sid": "OAMReadPermissions",
-                    "Effect": "Allow",
                     "Action": [
                         "oam:ListAttachedLinks"
-                    ],
-                    "Resource": "arn:aws:oam:*:*:sink/*"
+                    ], 
+                    "Resource": "arn:aws:oam:*:*:sink/*", 
+                    "Effect": "Allow", 
+                    "Sid": "OAMReadPermissions"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-05-17T22:20:49+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

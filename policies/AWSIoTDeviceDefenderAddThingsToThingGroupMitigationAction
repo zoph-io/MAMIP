@@ -1,22 +1,22 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2019-08-07T17:55:37Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "iot:ListPrincipalThings",
+                        "iot:ListPrincipalThings", 
                         "iot:AddThingToThingGroup"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
+                    ], 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2019-08-07T17:55:37+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

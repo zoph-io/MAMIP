@@ -1,24 +1,24 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2016-01-14T18:35:49Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "CloudWatchEventsBuiltInTargetExecutionAccess",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:Describe*",
-                        "ec2:RebootInstances",
-                        "ec2:StopInstances",
-                        "ec2:TerminateInstances",
+                        "ec2:Describe*", 
+                        "ec2:RebootInstances", 
+                        "ec2:StopInstances", 
+                        "ec2:TerminateInstances", 
                         "ec2:CreateSnapshot"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "CloudWatchEventsBuiltInTargetExecutionAccess"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2016-01-14T18:35:49+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

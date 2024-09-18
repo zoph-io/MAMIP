@@ -1,43 +1,43 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-11-27T13:23:49Z", 
+        "VersionId": "v4", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "autoscaling:Describe*",
-                        "cloudwatch:*",
-                        "logs:*",
-                        "sns:*",
-                        "iam:GetPolicy",
-                        "iam:GetPolicyVersion",
-                        "iam:GetRole",
+                        "autoscaling:Describe*", 
+                        "cloudwatch:*", 
+                        "logs:*", 
+                        "sns:*", 
+                        "iam:GetPolicy", 
+                        "iam:GetPolicyVersion", 
+                        "iam:GetRole", 
                         "oam:ListSinks"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "iam:CreateServiceLinkedRole",
-                    "Resource": "arn:aws:iam::*:role/aws-service-role/events.amazonaws.com/AWSServiceRoleForCloudWatchEvents*",
+                    "Action": "iam:CreateServiceLinkedRole", 
+                    "Resource": "arn:aws:iam::*:role/aws-service-role/events.amazonaws.com/AWSServiceRoleForCloudWatchEvents*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "iam:AWSServiceName": "events.amazonaws.com"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "oam:ListAttachedLinks"
-                    ],
-                    "Resource": "arn:aws:oam:*:*:sink/*"
+                    ], 
+                    "Resource": "arn:aws:oam:*:*:sink/*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v4",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-11-27T13:23:49+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

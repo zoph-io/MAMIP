@@ -1,23 +1,23 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-08-10T21:31:39Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:Get*",
-                        "s3:List*",
-                        "s3:Describe*",
-                        "s3-object-lambda:Get*",
+                        "s3:Get*", 
+                        "s3:List*", 
+                        "s3:Describe*", 
+                        "s3-object-lambda:Get*", 
                         "s3-object-lambda:List*"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-08-10T21:31:39+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

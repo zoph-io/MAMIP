@@ -1,24 +1,26 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2022-01-20T21:37:31Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:GetObject",
-                        "s3:GetObjectVersion",
+                        "s3:GetObject", 
+                        "s3:GetObjectVersion", 
                         "s3:ListBucket"
-                    ],
-                    "Resource": "arn:aws:s3:::*/CodeDeploy/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:s3:::*/CodeDeploy/*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:GetObject",
+                        "s3:GetObject", 
                         "s3:GetObjectVersion"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "s3:ExistingObjectTag/UseWithCodeDeploy": "true"
@@ -26,9 +28,7 @@
                     }
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2022-01-20T21:37:31+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

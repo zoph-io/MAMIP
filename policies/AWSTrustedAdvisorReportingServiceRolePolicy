@@ -1,28 +1,28 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-02-28T23:23:45Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "organizations:DescribeOrganization",
-                        "organizations:ListAWSServiceAccessForOrganization",
-                        "organizations:ListAccounts",
-                        "organizations:ListAccountsForParent",
-                        "organizations:ListDelegatedAdministrators",
-                        "organizations:ListOrganizationalUnitsForParent",
-                        "organizations:ListChildren",
-                        "organizations:ListParents",
-                        "organizations:DescribeOrganizationalUnit",
+                        "organizations:DescribeOrganization", 
+                        "organizations:ListAWSServiceAccessForOrganization", 
+                        "organizations:ListAccounts", 
+                        "organizations:ListAccountsForParent", 
+                        "organizations:ListDelegatedAdministrators", 
+                        "organizations:ListOrganizationalUnitsForParent", 
+                        "organizations:ListChildren", 
+                        "organizations:ListParents", 
+                        "organizations:DescribeOrganizationalUnit", 
                         "organizations:DescribeAccount"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-02-28T23:23:45+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

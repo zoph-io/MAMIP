@@ -1,14 +1,16 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2019-06-20T17:42:37Z", 
+        "VersionId": "v4", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "acm-pca:IssueCertificate"
-                    ],
-                    "Resource": "arn:aws:acm-pca:*:*:certificate-authority/*",
+                    ], 
+                    "Resource": "arn:aws:acm-pca:*:*:certificate-authority/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
                             "acm-pca:TemplateArn": [
@@ -16,13 +18,13 @@
                             ]
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Deny",
                     "Action": [
                         "acm-pca:IssueCertificate"
-                    ],
-                    "Resource": "arn:aws:acm-pca:*:*:certificate-authority/*",
+                    ], 
+                    "Resource": "arn:aws:acm-pca:*:*:certificate-authority/*", 
+                    "Effect": "Deny", 
                     "Condition": {
                         "StringNotLike": {
                             "acm-pca:TemplateArn": [
@@ -30,27 +32,25 @@
                             ]
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "acm-pca:RevokeCertificate",
-                        "acm-pca:GetCertificate",
+                        "acm-pca:RevokeCertificate", 
+                        "acm-pca:GetCertificate", 
                         "acm-pca:ListPermissions"
-                    ],
-                    "Resource": "arn:aws:acm-pca:*:*:certificate-authority/*"
-                },
+                    ], 
+                    "Resource": "arn:aws:acm-pca:*:*:certificate-authority/*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "acm-pca:ListCertificateAuthorities"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v4",
-        "IsDefaultVersion": true,
-        "CreateDate": "2019-06-20T17:42:37+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

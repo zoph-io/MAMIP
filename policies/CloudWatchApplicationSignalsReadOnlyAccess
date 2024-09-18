@@ -1,97 +1,97 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-06-06T22:48:30Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "CloudWatchApplicationSignalsReadOnlyAccessPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "application-signals:BatchGetServiceLevelObjectiveBudgetReport",
-                        "application-signals:GetService",
-                        "application-signals:GetServiceLevelObjective",
-                        "application-signals:ListServiceLevelObjectives",
-                        "application-signals:ListServiceDependencies",
-                        "application-signals:ListServiceDependents",
-                        "application-signals:ListServiceOperations",
-                        "application-signals:ListServices",
+                        "application-signals:BatchGetServiceLevelObjectiveBudgetReport", 
+                        "application-signals:GetService", 
+                        "application-signals:GetServiceLevelObjective", 
+                        "application-signals:ListServiceLevelObjectives", 
+                        "application-signals:ListServiceDependencies", 
+                        "application-signals:ListServiceDependents", 
+                        "application-signals:ListServiceOperations", 
+                        "application-signals:ListServices", 
                         "application-signals:ListTagsForResource"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "CloudWatchApplicationSignalsReadOnlyAccessPermissions"
+                }, 
                 {
-                    "Sid": "CloudWatchApplicationSignalsGetRolePermissions",
-                    "Effect": "Allow",
-                    "Action": "iam:GetRole",
-                    "Resource": "arn:aws:iam::*:role/aws-service-role/application-signals.cloudwatch.amazonaws.com/AWSServiceRoleForCloudWatchApplicationSignals"
-                },
+                    "Action": "iam:GetRole", 
+                    "Resource": "arn:aws:iam::*:role/aws-service-role/application-signals.cloudwatch.amazonaws.com/AWSServiceRoleForCloudWatchApplicationSignals", 
+                    "Effect": "Allow", 
+                    "Sid": "CloudWatchApplicationSignalsGetRolePermissions"
+                }, 
                 {
-                    "Sid": "CloudWatchApplicationSignalsLogGroupPermissions",
-                    "Effect": "Allow",
                     "Action": [
                         "logs:StartQuery"
-                    ],
-                    "Resource": "arn:aws:logs:*:*:log-group:/aws/application-signals/data:*"
-                },
+                    ], 
+                    "Resource": "arn:aws:logs:*:*:log-group:/aws/application-signals/data:*", 
+                    "Effect": "Allow", 
+                    "Sid": "CloudWatchApplicationSignalsLogGroupPermissions"
+                }, 
                 {
-                    "Sid": "CloudWatchApplicationSignalsLogsPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:StopQuery",
+                        "logs:StopQuery", 
                         "logs:GetQueryResults"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "CloudWatchApplicationSignalsLogsPermissions"
+                }, 
                 {
-                    "Sid": "CloudWatchApplicationSignalsAlarmsReadPermissions",
-                    "Effect": "Allow",
                     "Action": [
                         "cloudwatch:DescribeAlarms"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "CloudWatchApplicationSignalsAlarmsReadPermissions"
+                }, 
                 {
-                    "Sid": "CloudWatchApplicationSignalsMetricsReadPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "cloudwatch:GetMetricData",
+                        "cloudwatch:GetMetricData", 
                         "cloudwatch:ListMetrics"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "CloudWatchApplicationSignalsMetricsReadPermissions"
+                }, 
                 {
-                    "Sid": "CloudWatchApplicationSignalsSyntheticsReadPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "synthetics:DescribeCanaries",
-                        "synthetics:DescribeCanariesLastRun",
+                        "synthetics:DescribeCanaries", 
+                        "synthetics:DescribeCanariesLastRun", 
                         "synthetics:GetCanaryRuns"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "CloudWatchApplicationSignalsSyntheticsReadPermissions"
+                }, 
                 {
-                    "Sid": "CloudWatchApplicationSignalsRumReadPermissions",
-                    "Effect": "Allow",
                     "Action": [
-                        "rum:BatchGetRumMetricDefinitions",
-                        "rum:GetAppMonitor",
-                        "rum:GetAppMonitorData",
+                        "rum:BatchGetRumMetricDefinitions", 
+                        "rum:GetAppMonitor", 
+                        "rum:GetAppMonitorData", 
                         "rum:ListAppMonitors"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "CloudWatchApplicationSignalsRumReadPermissions"
+                }, 
                 {
-                    "Sid": "CloudWatchApplicationSignalsXrayReadPermissions",
-                    "Effect": "Allow",
                     "Action": [
                         "xray:GetTraceSummaries"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "CloudWatchApplicationSignalsXrayReadPermissions"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-06-06T22:48:30+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

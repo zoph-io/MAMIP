@@ -1,29 +1,29 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2021-07-02T02:17:25Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "qldb:ListLedgers",
-                        "qldb:DescribeLedger",
-                        "qldb:ListJournalS3Exports",
-                        "qldb:ListJournalS3ExportsForLedger",
-                        "qldb:DescribeJournalS3Export",
-                        "qldb:DescribeJournalKinesisStream",
-                        "qldb:ListJournalKinesisStreamsForLedger",
-                        "qldb:GetBlock",
-                        "qldb:GetDigest",
-                        "qldb:GetRevision",
+                        "qldb:ListLedgers", 
+                        "qldb:DescribeLedger", 
+                        "qldb:ListJournalS3Exports", 
+                        "qldb:ListJournalS3ExportsForLedger", 
+                        "qldb:DescribeJournalS3Export", 
+                        "qldb:DescribeJournalKinesisStream", 
+                        "qldb:ListJournalKinesisStreamsForLedger", 
+                        "qldb:GetBlock", 
+                        "qldb:GetDigest", 
+                        "qldb:GetRevision", 
                         "qldb:ListTagsForResource"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2021-07-02T02:17:25+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

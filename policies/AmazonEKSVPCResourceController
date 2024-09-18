@@ -1,35 +1,35 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-08-12T00:55:34Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
-                    "Action": "ec2:CreateNetworkInterfacePermission",
-                    "Resource": "*",
+                    "Action": "ec2:CreateNetworkInterfacePermission", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAnyValue:StringEquals": {
                             "ec2:ResourceTag/eks:eni:owner": "eks-vpc-resource-controller"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:CreateNetworkInterface",
-                        "ec2:DetachNetworkInterface",
-                        "ec2:ModifyNetworkInterfaceAttribute",
-                        "ec2:DeleteNetworkInterface",
-                        "ec2:AttachNetworkInterface",
-                        "ec2:UnassignPrivateIpAddresses",
+                        "ec2:CreateNetworkInterface", 
+                        "ec2:DetachNetworkInterface", 
+                        "ec2:ModifyNetworkInterfaceAttribute", 
+                        "ec2:DeleteNetworkInterface", 
+                        "ec2:AttachNetworkInterface", 
+                        "ec2:UnassignPrivateIpAddresses", 
                         "ec2:AssignPrivateIpAddresses"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-08-12T00:55:34+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

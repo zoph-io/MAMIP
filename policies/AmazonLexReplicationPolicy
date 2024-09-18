@@ -1,97 +1,97 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-03-08T17:11:32Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "ReplicationServicePolicyStatement1",
-                    "Effect": "Allow",
                     "Action": [
-                        "lex:BuildBotLocale",
-                        "lex:ListBotLocales",
-                        "lex:CreateBotAlias",
-                        "lex:UpdateBotAlias",
-                        "lex:DeleteBotAlias",
-                        "lex:DescribeBotAlias",
-                        "lex:CreateBotVersion",
-                        "lex:DeleteBotVersion",
-                        "lex:DescribeBotVersion",
-                        "lex:CreateExport",
-                        "lex:DescribeBot",
-                        "lex:UpdateExport",
-                        "lex:DescribeExport",
-                        "lex:DescribeBotLocale",
-                        "lex:DescribeIntent",
-                        "lex:ListIntents",
-                        "lex:DescribeSlotType",
-                        "lex:ListSlotTypes",
-                        "lex:DescribeSlot",
-                        "lex:ListSlots",
-                        "lex:DescribeCustomVocabulary",
-                        "lex:StartImport",
-                        "lex:DescribeImport",
-                        "lex:CreateBot",
-                        "lex:UpdateBot",
-                        "lex:DeleteBot",
-                        "lex:CreateBotLocale",
-                        "lex:UpdateBotLocale",
-                        "lex:DeleteBotLocale",
-                        "lex:CreateIntent",
-                        "lex:UpdateIntent",
-                        "lex:DeleteIntent",
-                        "lex:CreateSlotType",
-                        "lex:UpdateSlotType",
-                        "lex:DeleteSlotType",
-                        "lex:CreateSlot",
-                        "lex:UpdateSlot",
-                        "lex:DeleteSlot",
-                        "lex:CreateCustomVocabulary",
-                        "lex:UpdateCustomVocabulary",
-                        "lex:DeleteCustomVocabulary",
-                        "lex:DeleteBotChannel",
+                        "lex:BuildBotLocale", 
+                        "lex:ListBotLocales", 
+                        "lex:CreateBotAlias", 
+                        "lex:UpdateBotAlias", 
+                        "lex:DeleteBotAlias", 
+                        "lex:DescribeBotAlias", 
+                        "lex:CreateBotVersion", 
+                        "lex:DeleteBotVersion", 
+                        "lex:DescribeBotVersion", 
+                        "lex:CreateExport", 
+                        "lex:DescribeBot", 
+                        "lex:UpdateExport", 
+                        "lex:DescribeExport", 
+                        "lex:DescribeBotLocale", 
+                        "lex:DescribeIntent", 
+                        "lex:ListIntents", 
+                        "lex:DescribeSlotType", 
+                        "lex:ListSlotTypes", 
+                        "lex:DescribeSlot", 
+                        "lex:ListSlots", 
+                        "lex:DescribeCustomVocabulary", 
+                        "lex:StartImport", 
+                        "lex:DescribeImport", 
+                        "lex:CreateBot", 
+                        "lex:UpdateBot", 
+                        "lex:DeleteBot", 
+                        "lex:CreateBotLocale", 
+                        "lex:UpdateBotLocale", 
+                        "lex:DeleteBotLocale", 
+                        "lex:CreateIntent", 
+                        "lex:UpdateIntent", 
+                        "lex:DeleteIntent", 
+                        "lex:CreateSlotType", 
+                        "lex:UpdateSlotType", 
+                        "lex:DeleteSlotType", 
+                        "lex:CreateSlot", 
+                        "lex:UpdateSlot", 
+                        "lex:DeleteSlot", 
+                        "lex:CreateCustomVocabulary", 
+                        "lex:UpdateCustomVocabulary", 
+                        "lex:DeleteCustomVocabulary", 
+                        "lex:DeleteBotChannel", 
                         "lex:DeleteResourcePolicy"
-                    ],
+                    ], 
                     "Resource": [
-                        "arn:aws:lex:*:*:bot/*",
+                        "arn:aws:lex:*:*:bot/*", 
                         "arn:aws:lex:*:*:bot-alias/*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "ReplicationServicePolicyStatement1"
+                }, 
                 {
-                    "Sid": "ReplicationServicePolicyStatement2",
-                    "Effect": "Allow",
                     "Action": [
-                        "lex:CreateUploadUrl",
+                        "lex:CreateUploadUrl", 
                         "lex:ListBots"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "ReplicationServicePolicyStatement2"
+                }, 
                 {
-                    "Sid": "ReplicationServicePolicyStatement3",
-                    "Effect": "Allow",
                     "Action": [
                         "iam:PassRole"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:PassedToService": "lexv2.amazonaws.com"
                         }
-                    }
+                    }, 
+                    "Sid": "ReplicationServicePolicyStatement3"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-03-08T17:11:32+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

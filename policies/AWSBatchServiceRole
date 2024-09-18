@@ -1,138 +1,138 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-12-05T18:49:44Z", 
+        "VersionId": "v13", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "AWSBatchPolicyStatement1",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeAccountAttributes",
-                        "ec2:DescribeInstances",
-                        "ec2:DescribeInstanceStatus",
-                        "ec2:DescribeInstanceAttribute",
-                        "ec2:DescribeSubnets",
-                        "ec2:DescribeSecurityGroups",
-                        "ec2:DescribeKeyPairs",
-                        "ec2:DescribeImages",
-                        "ec2:DescribeImageAttribute",
-                        "ec2:DescribeSpotInstanceRequests",
-                        "ec2:DescribeSpotFleetInstances",
-                        "ec2:DescribeSpotFleetRequests",
-                        "ec2:DescribeSpotPriceHistory",
-                        "ec2:DescribeSpotFleetRequestHistory",
-                        "ec2:DescribeVpcClassicLink",
-                        "ec2:DescribeLaunchTemplateVersions",
-                        "ec2:CreateLaunchTemplate",
-                        "ec2:DeleteLaunchTemplate",
-                        "ec2:RequestSpotFleet",
-                        "ec2:CancelSpotFleetRequests",
-                        "ec2:ModifySpotFleetRequest",
-                        "ec2:TerminateInstances",
-                        "ec2:RunInstances",
-                        "autoscaling:DescribeAccountLimits",
-                        "autoscaling:DescribeAutoScalingGroups",
-                        "autoscaling:DescribeLaunchConfigurations",
-                        "autoscaling:DescribeAutoScalingInstances",
-                        "autoscaling:DescribeScalingActivities",
-                        "autoscaling:CreateLaunchConfiguration",
-                        "autoscaling:CreateAutoScalingGroup",
-                        "autoscaling:UpdateAutoScalingGroup",
-                        "autoscaling:SetDesiredCapacity",
-                        "autoscaling:DeleteLaunchConfiguration",
-                        "autoscaling:DeleteAutoScalingGroup",
-                        "autoscaling:CreateOrUpdateTags",
-                        "autoscaling:SuspendProcesses",
-                        "autoscaling:PutNotificationConfiguration",
-                        "autoscaling:TerminateInstanceInAutoScalingGroup",
-                        "ecs:DescribeClusters",
-                        "ecs:DescribeContainerInstances",
-                        "ecs:DescribeTaskDefinition",
-                        "ecs:DescribeTasks",
-                        "ecs:ListAccountSettings",
-                        "ecs:ListClusters",
-                        "ecs:ListContainerInstances",
-                        "ecs:ListTaskDefinitionFamilies",
-                        "ecs:ListTaskDefinitions",
-                        "ecs:ListTasks",
-                        "ecs:CreateCluster",
-                        "ecs:DeleteCluster",
-                        "ecs:RegisterTaskDefinition",
-                        "ecs:DeregisterTaskDefinition",
-                        "ecs:RunTask",
-                        "ecs:StartTask",
-                        "ecs:StopTask",
-                        "ecs:UpdateContainerAgent",
-                        "ecs:DeregisterContainerInstance",
-                        "logs:CreateLogGroup",
-                        "logs:CreateLogStream",
-                        "logs:PutLogEvents",
-                        "logs:DescribeLogGroups",
-                        "iam:GetInstanceProfile",
+                        "ec2:DescribeAccountAttributes", 
+                        "ec2:DescribeInstances", 
+                        "ec2:DescribeInstanceStatus", 
+                        "ec2:DescribeInstanceAttribute", 
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:DescribeKeyPairs", 
+                        "ec2:DescribeImages", 
+                        "ec2:DescribeImageAttribute", 
+                        "ec2:DescribeSpotInstanceRequests", 
+                        "ec2:DescribeSpotFleetInstances", 
+                        "ec2:DescribeSpotFleetRequests", 
+                        "ec2:DescribeSpotPriceHistory", 
+                        "ec2:DescribeSpotFleetRequestHistory", 
+                        "ec2:DescribeVpcClassicLink", 
+                        "ec2:DescribeLaunchTemplateVersions", 
+                        "ec2:CreateLaunchTemplate", 
+                        "ec2:DeleteLaunchTemplate", 
+                        "ec2:RequestSpotFleet", 
+                        "ec2:CancelSpotFleetRequests", 
+                        "ec2:ModifySpotFleetRequest", 
+                        "ec2:TerminateInstances", 
+                        "ec2:RunInstances", 
+                        "autoscaling:DescribeAccountLimits", 
+                        "autoscaling:DescribeAutoScalingGroups", 
+                        "autoscaling:DescribeLaunchConfigurations", 
+                        "autoscaling:DescribeAutoScalingInstances", 
+                        "autoscaling:DescribeScalingActivities", 
+                        "autoscaling:CreateLaunchConfiguration", 
+                        "autoscaling:CreateAutoScalingGroup", 
+                        "autoscaling:UpdateAutoScalingGroup", 
+                        "autoscaling:SetDesiredCapacity", 
+                        "autoscaling:DeleteLaunchConfiguration", 
+                        "autoscaling:DeleteAutoScalingGroup", 
+                        "autoscaling:CreateOrUpdateTags", 
+                        "autoscaling:SuspendProcesses", 
+                        "autoscaling:PutNotificationConfiguration", 
+                        "autoscaling:TerminateInstanceInAutoScalingGroup", 
+                        "ecs:DescribeClusters", 
+                        "ecs:DescribeContainerInstances", 
+                        "ecs:DescribeTaskDefinition", 
+                        "ecs:DescribeTasks", 
+                        "ecs:ListAccountSettings", 
+                        "ecs:ListClusters", 
+                        "ecs:ListContainerInstances", 
+                        "ecs:ListTaskDefinitionFamilies", 
+                        "ecs:ListTaskDefinitions", 
+                        "ecs:ListTasks", 
+                        "ecs:CreateCluster", 
+                        "ecs:DeleteCluster", 
+                        "ecs:RegisterTaskDefinition", 
+                        "ecs:DeregisterTaskDefinition", 
+                        "ecs:RunTask", 
+                        "ecs:StartTask", 
+                        "ecs:StopTask", 
+                        "ecs:UpdateContainerAgent", 
+                        "ecs:DeregisterContainerInstance", 
+                        "logs:CreateLogGroup", 
+                        "logs:CreateLogStream", 
+                        "logs:PutLogEvents", 
+                        "logs:DescribeLogGroups", 
+                        "iam:GetInstanceProfile", 
                         "iam:GetRole"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AWSBatchPolicyStatement1"
+                }, 
                 {
-                    "Sid": "AWSBatchPolicyStatement2",
-                    "Effect": "Allow",
-                    "Action": "ecs:TagResource",
+                    "Action": "ecs:TagResource", 
                     "Resource": [
                         "arn:aws:ecs:*:*:task/*_Batch_*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AWSBatchPolicyStatement2"
+                }, 
                 {
-                    "Sid": "AWSBatchPolicyStatement3",
-                    "Effect": "Allow",
-                    "Action": "iam:PassRole",
+                    "Action": "iam:PassRole", 
                     "Resource": [
                         "*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:PassedToService": [
-                                "ec2.amazonaws.com",
-                                "ec2.amazonaws.com.cn",
+                                "ec2.amazonaws.com", 
+                                "ec2.amazonaws.com.cn", 
                                 "ecs-tasks.amazonaws.com"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "AWSBatchPolicyStatement3"
+                }, 
                 {
-                    "Sid": "AWSBatchPolicyStatement4",
-                    "Effect": "Allow",
-                    "Action": "iam:CreateServiceLinkedRole",
-                    "Resource": "*",
+                    "Action": "iam:CreateServiceLinkedRole", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "iam:AWSServiceName": [
-                                "spot.amazonaws.com",
-                                "spotfleet.amazonaws.com",
-                                "autoscaling.amazonaws.com",
+                                "spot.amazonaws.com", 
+                                "spotfleet.amazonaws.com", 
+                                "autoscaling.amazonaws.com", 
                                 "ecs.amazonaws.com"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "AWSBatchPolicyStatement4"
+                }, 
                 {
-                    "Sid": "AWSBatchPolicyStatement5",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateTags"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ],
+                    ], 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "ec2:CreateAction": "RunInstances"
                         }
-                    }
+                    }, 
+                    "Sid": "AWSBatchPolicyStatement5"
                 }
             ]
-        },
-        "VersionId": "v13",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-12-05T18:49:44+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,79 +1,79 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-06-30T16:02:07Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "logs:PutLogEvents",
-                        "logs:DescribeLogStreams",
-                        "logs:DescribeLogGroups",
+                        "logs:PutLogEvents", 
+                        "logs:DescribeLogStreams", 
+                        "logs:DescribeLogGroups", 
                         "logs:CreateLogStream"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:logs:*:*:log-group:/thinkbox*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "logs:CreateLogGroup"
-                    ],
+                    ], 
                     "Resource": [
                         "*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:GetObject",
-                        "s3:PutObject",
+                        "s3:GetObject", 
+                        "s3:PutObject", 
                         "s3:ListBucket"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:s3:::aws-portal-cache*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "dynamodb:Scan",
+                    "Action": "dynamodb:Scan", 
                     "Resource": [
                         "arn:aws:dynamodb:*:*:table/DeadlineFleetHealth*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:ListBucket",
+                        "s3:ListBucket", 
                         "s3:GetObject"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:s3:::stack*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "s3:PutObject"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:s3:::stack*/gateway_certs/*"
-                    ]
-                },
+                    ], 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "secretsmanager:GetSecretValue"
-                    ],
+                    ], 
                     "Resource": [
                         "arn:aws:secretsmanager:*:*:secret:rcs-tls-pw-stack*"
-                    ]
+                    ], 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-06-30T16:02:07+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

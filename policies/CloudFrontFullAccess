@@ -1,52 +1,52 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-01-04T16:56:08Z", 
+        "VersionId": "v7", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "cfflistbuckets",
                     "Action": [
                         "s3:ListAllMyBuckets"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "arn:aws:s3:::*"
-                },
+                    ], 
+                    "Resource": "arn:aws:s3:::*", 
+                    "Effect": "Allow", 
+                    "Sid": "cfflistbuckets"
+                }, 
                 {
-                    "Sid": "cffullaccess",
                     "Action": [
-                        "acm:ListCertificates",
-                        "cloudfront:*",
-                        "cloudfront-keyvaluestore:*",
-                        "iam:ListServerCertificates",
-                        "waf:ListWebACLs",
-                        "waf:GetWebACL",
-                        "wafv2:ListWebACLs",
-                        "wafv2:GetWebACL",
+                        "acm:ListCertificates", 
+                        "cloudfront:*", 
+                        "cloudfront-keyvaluestore:*", 
+                        "iam:ListServerCertificates", 
+                        "waf:ListWebACLs", 
+                        "waf:GetWebACL", 
+                        "wafv2:ListWebACLs", 
+                        "wafv2:GetWebACL", 
                         "kinesis:ListStreams"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "cffullaccess"
+                }, 
                 {
-                    "Sid": "cffdescribestream",
                     "Action": [
                         "kinesis:DescribeStream"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "arn:aws:kinesis:*:*:*"
-                },
+                    ], 
+                    "Resource": "arn:aws:kinesis:*:*:*", 
+                    "Effect": "Allow", 
+                    "Sid": "cffdescribestream"
+                }, 
                 {
-                    "Sid": "cfflistroles",
                     "Action": [
                         "iam:ListRoles"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "arn:aws:iam::*:*"
+                    ], 
+                    "Resource": "arn:aws:iam::*:*", 
+                    "Effect": "Allow", 
+                    "Sid": "cfflistroles"
                 }
             ]
-        },
-        "VersionId": "v7",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-01-04T16:56:08+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

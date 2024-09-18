@@ -1,45 +1,45 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2021-11-01T21:27:29Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "organizations:DescribeOrganization"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:GetBucketTagging",
-                        "s3:PutBucketTagging",
-                        "s3:GetBucketPolicy",
-                        "s3:PutBucketPolicy",
-                        "s3:ListBucket",
+                        "s3:GetBucketTagging", 
+                        "s3:PutBucketTagging", 
+                        "s3:GetBucketPolicy", 
+                        "s3:PutBucketPolicy", 
+                        "s3:ListBucket", 
                         "s3:CreateBucket"
-                    ],
-                    "Resource": "arn:aws:s3:::aws-map-cur-bucket-*"
-                },
+                    ], 
+                    "Resource": "arn:aws:s3:::aws-map-cur-bucket-*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "cur:PutReportDefinition",
-                        "cur:DeleteReportDefinition",
+                        "cur:PutReportDefinition", 
+                        "cur:DeleteReportDefinition", 
                         "cur:DescribeReportDefinitions"
-                    ],
-                    "Resource": "arn:aws:cur:*:*:definition/map-migrated-report"
-                },
+                    ], 
+                    "Resource": "arn:aws:cur:*:*:definition/map-migrated-report", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
-                    "Action": "cur:DescribeReportDefinitions",
-                    "Resource": "*"
+                    "Action": "cur:DescribeReportDefinitions", 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2021-11-01T21:27:29+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

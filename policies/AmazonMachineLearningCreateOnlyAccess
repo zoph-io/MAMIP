@@ -1,23 +1,23 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2016-06-29T20:55:03Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "machinelearning:Add*",
-                        "machinelearning:Create*",
-                        "machinelearning:Delete*",
-                        "machinelearning:Describe*",
+                        "machinelearning:Add*", 
+                        "machinelearning:Create*", 
+                        "machinelearning:Delete*", 
+                        "machinelearning:Describe*", 
                         "machinelearning:Get*"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2016-06-29T20:55:03+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

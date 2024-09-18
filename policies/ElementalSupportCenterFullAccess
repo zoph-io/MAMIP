@@ -1,21 +1,21 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2021-02-05T21:02:54Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "elemental-support-cases:*",
-                        "elemental-support-content:*",
+                        "elemental-support-cases:*", 
+                        "elemental-support-content:*", 
                         "elemental-activations:CompleteAccountRegistration"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2021-02-05T21:02:54+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

@@ -1,153 +1,153 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2024-06-24T19:54:18Z", 
+        "VersionId": "v8", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "DataExchangeActions",
-                    "Effect": "Allow",
                     "Action": [
                         "dataexchange:*"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DataExchangeActions"
+                }, 
                 {
-                    "Sid": "S3GetActionConditionalResourceAndADX",
-                    "Effect": "Allow",
-                    "Action": "s3:GetObject",
-                    "Resource": "arn:aws:s3:::*aws-data-exchange*",
+                    "Action": "s3:GetObject", 
+                    "Resource": "arn:aws:s3:::*aws-data-exchange*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAnyValue:StringEquals": {
                             "aws:CalledVia": [
                                 "dataexchange.amazonaws.com"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "S3GetActionConditionalResourceAndADX"
+                }, 
                 {
-                    "Sid": "S3GetActionConditionalTagAndADX",
-                    "Effect": "Allow",
-                    "Action": "s3:GetObject",
-                    "Resource": "*",
+                    "Action": "s3:GetObject", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "aws:CalledVia": [
+                                "dataexchange.amazonaws.com"
+                            ]
+                        }, 
                         "StringEqualsIgnoreCase": {
                             "s3:ExistingObjectTag/AWSDataExchange": "true"
-                        },
-                        "ForAnyValue:StringEquals": {
-                            "aws:CalledVia": [
-                                "dataexchange.amazonaws.com"
-                            ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "S3GetActionConditionalTagAndADX"
+                }, 
                 {
-                    "Sid": "S3WriteActions",
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:PutObject",
+                        "s3:PutObject", 
                         "s3:PutObjectAcl"
-                    ],
-                    "Resource": "arn:aws:s3:::*aws-data-exchange*",
+                    ], 
+                    "Resource": "arn:aws:s3:::*aws-data-exchange*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "ForAnyValue:StringEquals": {
                             "aws:CalledVia": [
                                 "dataexchange.amazonaws.com"
                             ]
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "S3WriteActions"
+                }, 
                 {
-                    "Sid": "S3ReadActions",
-                    "Effect": "Allow",
                     "Action": [
-                        "s3:GetBucketLocation",
-                        "s3:ListBucket",
+                        "s3:GetBucketLocation", 
+                        "s3:ListBucket", 
                         "s3:ListAllMyBuckets"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "S3ReadActions"
+                }, 
                 {
-                    "Sid": "AWSMarketplaceProviderActions",
-                    "Effect": "Allow",
                     "Action": [
-                        "aws-marketplace:DescribeEntity",
-                        "aws-marketplace:ListEntities",
-                        "aws-marketplace:StartChangeSet",
-                        "aws-marketplace:ListChangeSets",
-                        "aws-marketplace:DescribeChangeSet",
-                        "aws-marketplace:CancelChangeSet",
-                        "aws-marketplace:GetAgreementApprovalRequest",
-                        "aws-marketplace:ListAgreementApprovalRequests",
-                        "aws-marketplace:AcceptAgreementApprovalRequest",
-                        "aws-marketplace:RejectAgreementApprovalRequest",
-                        "aws-marketplace:UpdateAgreementApprovalRequest",
-                        "aws-marketplace:SearchAgreements",
-                        "aws-marketplace:GetAgreementTerms",
-                        "aws-marketplace:TagResource",
-                        "aws-marketplace:UntagResource",
+                        "aws-marketplace:DescribeEntity", 
+                        "aws-marketplace:ListEntities", 
+                        "aws-marketplace:StartChangeSet", 
+                        "aws-marketplace:ListChangeSets", 
+                        "aws-marketplace:DescribeChangeSet", 
+                        "aws-marketplace:CancelChangeSet", 
+                        "aws-marketplace:GetAgreementApprovalRequest", 
+                        "aws-marketplace:ListAgreementApprovalRequests", 
+                        "aws-marketplace:AcceptAgreementApprovalRequest", 
+                        "aws-marketplace:RejectAgreementApprovalRequest", 
+                        "aws-marketplace:UpdateAgreementApprovalRequest", 
+                        "aws-marketplace:SearchAgreements", 
+                        "aws-marketplace:GetAgreementTerms", 
+                        "aws-marketplace:TagResource", 
+                        "aws-marketplace:UntagResource", 
                         "aws-marketplace:ListTagsForResource"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AWSMarketplaceProviderActions"
+                }, 
                 {
-                    "Sid": "AWSMarketplaceSubscriberActions",
-                    "Effect": "Allow",
                     "Action": [
-                        "aws-marketplace:Subscribe",
-                        "aws-marketplace:Unsubscribe",
-                        "aws-marketplace:ViewSubscriptions",
-                        "aws-marketplace:GetAgreementRequest",
-                        "aws-marketplace:ListAgreementRequests",
-                        "aws-marketplace:CancelAgreementRequest",
-                        "aws-marketplace:ListPrivateListings",
+                        "aws-marketplace:Subscribe", 
+                        "aws-marketplace:Unsubscribe", 
+                        "aws-marketplace:ViewSubscriptions", 
+                        "aws-marketplace:GetAgreementRequest", 
+                        "aws-marketplace:ListAgreementRequests", 
+                        "aws-marketplace:CancelAgreementRequest", 
+                        "aws-marketplace:ListPrivateListings", 
                         "aws-marketplace:DescribeAgreement"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AWSMarketplaceSubscriberActions"
+                }, 
                 {
-                    "Sid": "KMSActions",
-                    "Effect": "Allow",
                     "Action": [
-                        "kms:DescribeKey",
-                        "kms:ListAliases",
+                        "kms:DescribeKey", 
+                        "kms:ListAliases", 
                         "kms:ListKeys"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "KMSActions"
+                }, 
                 {
-                    "Sid": "RedshiftConditionalActions",
-                    "Effect": "Allow",
                     "Action": [
                         "redshift:AuthorizeDataShare"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEqualsIgnoreCase": {
                             "redshift:ConsumerIdentifier": "ADX"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "RedshiftConditionalActions"
+                }, 
                 {
-                    "Sid": "RedshiftActions",
-                    "Effect": "Allow",
                     "Action": [
-                        "redshift:DescribeDataSharesForProducer",
+                        "redshift:DescribeDataSharesForProducer", 
                         "redshift:DescribeDataShares"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "RedshiftActions"
+                }, 
                 {
-                    "Sid": "APIGatewayActions",
-                    "Effect": "Allow",
                     "Action": [
                         "apigateway:GET"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "APIGatewayActions"
                 }
             ]
-        },
-        "VersionId": "v8",
-        "IsDefaultVersion": true,
-        "CreateDate": "2024-06-24T19:54:18+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

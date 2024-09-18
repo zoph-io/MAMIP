@@ -1,22 +1,22 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2020-12-19T01:02:58Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": [
-                        "aps:GetLabels",
-                        "aps:GetMetricMetadata",
-                        "aps:GetSeries",
+                        "aps:GetLabels", 
+                        "aps:GetMetricMetadata", 
+                        "aps:GetSeries", 
                         "aps:QueryMetrics"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2020-12-19T01:02:58+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

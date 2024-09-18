@@ -1,38 +1,38 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-11-13T15:23:16Z", 
+        "VersionId": "v2", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "ECR",
-                    "Effect": "Allow",
                     "Action": [
-                        "ecr:GetAuthorizationToken",
-                        "ecr:BatchCheckLayerAvailability",
-                        "ecr:InitiateLayerUpload",
-                        "ecr:UploadLayerPart",
-                        "ecr:CompleteLayerUpload",
+                        "ecr:GetAuthorizationToken", 
+                        "ecr:BatchCheckLayerAvailability", 
+                        "ecr:InitiateLayerUpload", 
+                        "ecr:UploadLayerPart", 
+                        "ecr:CompleteLayerUpload", 
                         "ecr:PutImage"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ECR"
+                }, 
                 {
-                    "Sid": "SecretsManager",
-                    "Effect": "Allow",
                     "Action": [
                         "secretsmanager:GetSecretValue"
-                    ],
-                    "Resource": "arn:aws:secretsmanager:*:*:secret:ecr-pullthroughcache/*",
+                    ], 
+                    "Resource": "arn:aws:secretsmanager:*:*:secret:ecr-pullthroughcache/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
-                    }
+                    }, 
+                    "Sid": "SecretsManager"
                 }
             ]
-        },
-        "VersionId": "v2",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-11-13T15:23:16+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

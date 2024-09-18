@@ -1,95 +1,95 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-11-27T13:28:14Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Sid": "DRSReplicationServerPolicy1",
-                    "Effect": "Allow",
                     "Action": [
-                        "drs:SendClientMetricsForDrs",
+                        "drs:SendClientMetricsForDrs", 
                         "drs:SendClientLogsForDrs"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DRSReplicationServerPolicy1"
+                }, 
                 {
-                    "Sid": "DRSReplicationServerPolicy2",
-                    "Effect": "Allow",
                     "Action": [
-                        "drs:GetChannelCommandsForDrs",
+                        "drs:GetChannelCommandsForDrs", 
                         "drs:SendChannelCommandResultForDrs"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DRSReplicationServerPolicy2"
+                }, 
                 {
-                    "Sid": "DRSReplicationServerPolicy3",
-                    "Effect": "Allow",
                     "Action": [
-                        "drs:GetAgentSnapshotCreditsForDrs",
-                        "drs:DescribeReplicationServerAssociationsForDrs",
-                        "drs:DescribeSnapshotRequestsForDrs",
-                        "drs:BatchDeleteSnapshotRequestForDrs",
-                        "drs:NotifyAgentAuthenticationForDrs",
-                        "drs:BatchCreateVolumeSnapshotGroupForDrs",
-                        "drs:UpdateAgentReplicationProcessStateForDrs",
-                        "drs:NotifyAgentReplicationProgressForDrs",
-                        "drs:NotifyAgentConnectedForDrs",
-                        "drs:NotifyAgentDisconnectedForDrs",
-                        "drs:NotifyVolumeEventForDrs",
+                        "drs:GetAgentSnapshotCreditsForDrs", 
+                        "drs:DescribeReplicationServerAssociationsForDrs", 
+                        "drs:DescribeSnapshotRequestsForDrs", 
+                        "drs:BatchDeleteSnapshotRequestForDrs", 
+                        "drs:NotifyAgentAuthenticationForDrs", 
+                        "drs:BatchCreateVolumeSnapshotGroupForDrs", 
+                        "drs:UpdateAgentReplicationProcessStateForDrs", 
+                        "drs:NotifyAgentReplicationProgressForDrs", 
+                        "drs:NotifyAgentConnectedForDrs", 
+                        "drs:NotifyAgentDisconnectedForDrs", 
+                        "drs:NotifyVolumeEventForDrs", 
                         "drs:SendVolumeStatsForDrs"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DRSReplicationServerPolicy3"
+                }, 
                 {
-                    "Sid": "DRSReplicationServerPolicy4",
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:DescribeInstances",
+                        "ec2:DescribeInstances", 
                         "ec2:DescribeSnapshots"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DRSReplicationServerPolicy4"
+                }, 
                 {
-                    "Sid": "DRSReplicationServerPolicy5",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateSnapshot"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:volume/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:volume/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "aws:ResourceTag/AWSElasticDisasterRecoveryManaged": "false"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "DRSReplicationServerPolicy5"
+                }, 
                 {
-                    "Sid": "DRSReplicationServerPolicy6",
-                    "Effect": "Allow",
                     "Action": [
                         "ec2:CreateSnapshot"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:snapshot/*",
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:snapshot/*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "Null": {
                             "aws:RequestTag/AWSElasticDisasterRecoveryManaged": "false"
                         }
-                    }
-                },
+                    }, 
+                    "Sid": "DRSReplicationServerPolicy6"
+                }, 
                 {
-                    "Sid": "DRSReplicationServerPolicy7",
-                    "Effect": "Allow",
-                    "Action": "ec2:CreateTags",
-                    "Resource": "*",
+                    "Action": "ec2:CreateTags", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "ec2:CreateAction": "CreateSnapshot"
                         }
-                    }
+                    }, 
+                    "Sid": "DRSReplicationServerPolicy7"
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-11-27T13:28:14+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

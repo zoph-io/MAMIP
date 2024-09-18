@@ -1,31 +1,31 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2015-09-02T00:09:20Z", 
+        "VersionId": "v1", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "ec2:AuthorizeSecurityGroupIngress",
-                        "ec2:CreateNetworkInterface",
-                        "ec2:CreateSecurityGroup",
-                        "ec2:DescribeAvailabilityZones",
-                        "ec2:DescribeInternetGateways",
-                        "ec2:DescribeSecurityGroups",
-                        "ec2:DescribeSubnets",
-                        "ec2:DescribeVpcAttribute",
-                        "ec2:DescribeVpcs",
-                        "ec2:DeleteNetworkInterface",
-                        "ec2:DeleteSecurityGroup",
-                        "ec2:ModifyNetworkInterfaceAttribute",
+                        "ec2:AuthorizeSecurityGroupIngress", 
+                        "ec2:CreateNetworkInterface", 
+                        "ec2:CreateSecurityGroup", 
+                        "ec2:DescribeAvailabilityZones", 
+                        "ec2:DescribeInternetGateways", 
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeVpcAttribute", 
+                        "ec2:DescribeVpcs", 
+                        "ec2:DeleteNetworkInterface", 
+                        "ec2:DeleteSecurityGroup", 
+                        "ec2:ModifyNetworkInterfaceAttribute", 
                         "ec2:RevokeSecurityGroupIngress"
-                    ],
-                    "Resource": "*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
-        },
-        "VersionId": "v1",
-        "IsDefaultVersion": true,
-        "CreateDate": "2015-09-02T00:09:20+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }

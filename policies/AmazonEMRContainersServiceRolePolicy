@@ -1,43 +1,45 @@
 {
     "PolicyVersion": {
+        "CreateDate": "2023-03-10T22:58:13Z", 
+        "VersionId": "v3", 
         "Document": {
-            "Version": "2012-10-17",
+            "Version": "2012-10-17", 
             "Statement": [
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "eks:DescribeCluster",
-                        "eks:ListNodeGroups",
-                        "eks:DescribeNodeGroup",
-                        "ec2:DescribeRouteTables",
-                        "ec2:DescribeSubnets",
-                        "ec2:DescribeSecurityGroups",
-                        "elasticloadbalancing:DescribeInstanceHealth",
-                        "elasticloadbalancing:DescribeLoadBalancers",
-                        "elasticloadbalancing:DescribeTargetGroups",
+                        "eks:DescribeCluster", 
+                        "eks:ListNodeGroups", 
+                        "eks:DescribeNodeGroup", 
+                        "ec2:DescribeRouteTables", 
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeSecurityGroups", 
+                        "elasticloadbalancing:DescribeInstanceHealth", 
+                        "elasticloadbalancing:DescribeLoadBalancers", 
+                        "elasticloadbalancing:DescribeTargetGroups", 
                         "elasticloadbalancing:DescribeTargetHealth"
-                    ],
-                    "Resource": "*"
-                },
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
-                        "acm:ImportCertificate",
+                        "acm:ImportCertificate", 
                         "acm:AddTagsToCertificate"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:RequestTag/emr-container:endpoint:managed-certificate": "true"
                         }
                     }
-                },
+                }, 
                 {
-                    "Effect": "Allow",
                     "Action": [
                         "acm:DeleteCertificate"
-                    ],
-                    "Resource": "*",
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceTag/emr-container:endpoint:managed-certificate": "true"
@@ -45,9 +47,7 @@
                     }
                 }
             ]
-        },
-        "VersionId": "v3",
-        "IsDefaultVersion": true,
-        "CreateDate": "2023-03-10T22:58:13+00:00"
+        }, 
+        "IsDefaultVersion": true
     }
 }
