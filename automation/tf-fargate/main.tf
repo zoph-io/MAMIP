@@ -1,6 +1,6 @@
 provider "aws" {
-  region  = var.aws_region
-  version = "4.64.0"
+  region = var.aws_region
+  
   default_tags {
     tags = {
       aws_region    = "eu-west-1"
@@ -11,6 +11,13 @@ provider "aws" {
 }
 
 terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "4.64.0"
+    }
+  }
+
   backend "s3" {
     region = "eu-west-1"
   }
