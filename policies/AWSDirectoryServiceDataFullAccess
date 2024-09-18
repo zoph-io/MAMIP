@@ -1,0 +1,39 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-09-18T21:45:17Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "ds:AccessDSData", 
+                        "ds-data:AddGroupMember", 
+                        "ds-data:CreateGroup", 
+                        "ds-data:CreateUser", 
+                        "ds-data:DeleteGroup", 
+                        "ds-data:DeleteUser", 
+                        "ds-data:DescribeGroup", 
+                        "ds-data:DescribeUser", 
+                        "ds-data:DisableUser", 
+                        "ds-data:ListGroupMembers", 
+                        "ds-data:ListGroups", 
+                        "ds-data:ListGroupsForMember", 
+                        "ds-data:ListUsers", 
+                        "ds-data:RemoveGroupMember", 
+                        "ds-data:SearchGroups", 
+                        "ds-data:SearchUsers", 
+                        "ds-data:UpdateGroup", 
+                        "ds-data:UpdateUser"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ds:*:*:directory/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "DSDataFullAccess"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
