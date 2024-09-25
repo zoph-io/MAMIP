@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-07-24T17:45:43Z", 
-        "VersionId": "v2", 
+        "CreateDate": "2024-09-25T16:49:38Z", 
+        "VersionId": "v3", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -76,7 +76,12 @@
                         "connect:CreateAuthenticationProfile", 
                         "connect:UpdateAuthenticationProfile", 
                         "connect:DescribeAuthenticationProfile", 
-                        "connect:ListAuthenticationProfiles"
+                        "connect:ListAuthenticationProfiles", 
+                        "connect:CreateHoursOfOperationOverride", 
+                        "connect:UpdateHoursOfOperationOverride", 
+                        "connect:DeleteHoursOfOperationOverride", 
+                        "connect:DescribeHoursOfOperationOverride", 
+                        "connect:ListHoursOfOperationOverrides"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
