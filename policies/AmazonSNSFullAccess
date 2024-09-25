@@ -1,16 +1,39 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2015-02-06T18:41:05Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2024-09-24T22:32:05Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
                 {
+                    "Action": "sns:*", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "SNSFullAccess"
+                }, 
+                {
                     "Action": [
-                        "sns:*"
+                        "sms-voice:DescribeVerifiedDestinationNumbers", 
+                        "sms-voice:CreateVerifiedDestinationNumber", 
+                        "sms-voice:SendDestinationNumberVerificationCode", 
+                        "sms-voice:SendTextMessage", 
+                        "sms-voice:DeleteVerifiedDestinationNumber", 
+                        "sms-voice:VerifyDestinationNumber", 
+                        "sms-voice:DescribeAccountAttributes", 
+                        "sms-voice:DescribeSpendLimits", 
+                        "sms-voice:DescribePhoneNumbers", 
+                        "sms-voice:SetTextMessageSpendLimitOverride", 
+                        "sms-voice:DescribeOptedOutNumbers", 
+                        "sms-voice:DeleteOptedOutNumber"
                     ], 
                     "Resource": "*", 
-                    "Effect": "Allow"
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:CalledViaLast": "sns.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "SMSAccessViaSNS"
                 }
             ]
         }, 
