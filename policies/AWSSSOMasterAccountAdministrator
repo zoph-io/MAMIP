@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-04-26T00:38:45Z", 
-        "VersionId": "v9", 
+        "CreateDate": "2024-09-26T17:13:59Z", 
+        "VersionId": "v10", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -70,6 +70,16 @@
                         }
                     }, 
                     "Sid": "AWSSSOManageDelegatedAdministrator"
+                }, 
+                {
+                    "Action": [
+                        "identity-sync:DeleteSyncProfile"
+                    ], 
+                    "Resource": [
+                        "arn:aws:identity-sync:*:*:profile/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowDeleteSyncProfile"
                 }
             ]
         }, 
