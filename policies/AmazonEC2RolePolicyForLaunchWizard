@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2022-05-16T21:16:38Z", 
-        "VersionId": "v10", 
+        "CreateDate": "2024-09-25T22:40:50Z", 
+        "VersionId": "v11", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -147,7 +147,8 @@
                         "ssm:GetDocument"
                     ], 
                     "Resource": [
-                        "arn:aws:ssm:*:*:document/AWSSAP-InstallBackint"
+                        "arn:aws:ssm:*:*:document/AWSSAP-InstallBackint", 
+                        "arn:aws:ssm:*:*:document/AWSSAP-InstallBackintForAWSBackup"
                     ], 
                     "Effect": "Allow"
                 }, 
