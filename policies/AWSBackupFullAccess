@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2023-11-27T17:33:10Z", 
-        "VersionId": "v17", 
+        "CreateDate": "2024-09-26T19:18:54Z", 
+        "VersionId": "v18", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -151,12 +151,19 @@
                 {
                     "Action": [
                         "storagegateway:DescribeGatewayInformation", 
-                        "storagegateway:ListVolumes", 
                         "storagegateway:ListLocalDisks"
                     ], 
                     "Resource": "arn:aws:storagegateway:*:*:gateway/*", 
                     "Effect": "Allow", 
                     "Sid": "StorageGatewayGatewayPermissions"
+                }, 
+                {
+                    "Action": [
+                        "storagegateway:ListVolumes"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "StorageGatewayGatewayStarPermissions"
                 }, 
                 {
                     "Action": [

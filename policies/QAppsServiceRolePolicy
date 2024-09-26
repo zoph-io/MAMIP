@@ -1,0 +1,25 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-09-26T19:22:22Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "cloudwatch:PutMetricData"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "cloudwatch:namespace": "AWS/QApps"
+                        }
+                    }, 
+                    "Sid": "QAppsPutMetricDataPermission"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
