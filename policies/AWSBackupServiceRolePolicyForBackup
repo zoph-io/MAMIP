@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-05-17T17:12:58Z", 
-        "VersionId": "v19", 
+        "CreateDate": "2024-09-27T20:02:34Z", 
+        "VersionId": "v20", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -42,14 +42,10 @@
                     "Sid": "DynamoDBBackupPermissions"
                 }, 
                 {
-                    "Action": [
-                        "rds:ModifyDBInstance"
-                    ], 
-                    "Resource": [
-                        "arn:aws:rds:*:*:db:*"
-                    ], 
+                    "Action": "rds:DeleteDBInstanceAutomatedBackup", 
+                    "Resource": "arn:aws:rds:*:*:auto-backup:*", 
                     "Effect": "Allow", 
-                    "Sid": "RDSModifyPermissions"
+                    "Sid": "RDSInstanceAutomatedBackupPermissions"
                 }, 
                 {
                     "Action": [
@@ -62,12 +58,20 @@
                     "Sid": "RDSClusterPermissions"
                 }, 
                 {
-                    "Action": [
-                        "rds:DeleteDBClusterAutomatedBackup"
-                    ], 
+                    "Action": "rds:DeleteDBClusterAutomatedBackup", 
                     "Resource": "arn:aws:rds:*:*:cluster-auto-backup:*", 
                     "Effect": "Allow", 
                     "Sid": "RDSClusterBackupPermissions"
+                }, 
+                {
+                    "Action": [
+                        "rds:ModifyDBInstance"
+                    ], 
+                    "Resource": [
+                        "arn:aws:rds:*:*:db:*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "RDSModifyPermissions"
                 }, 
                 {
                     "Action": [
@@ -478,6 +482,6 @@
                 }
             ]
         }, 
-        "IsDefaultVersion": false
+        "IsDefaultVersion": true
     }
 }
