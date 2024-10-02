@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-08-21T17:36:49Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2024-10-02T16:52:27Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -66,7 +66,36 @@
                         "ec2:PurchaseReservedInstancesOffering", 
                         "ec2:AcceptReservedInstancesExchangeQuote", 
                         "ec2:CreateReservedInstancesListing", 
-                        "savingsplans:CreateSavingsPlan"
+                        "savingsplans:CreateSavingsPlan", 
+                        "ecs:CreateService", 
+                        "ecs:CreateCluster", 
+                        "ecs:RegisterTaskDefinition", 
+                        "ecr:GetAuthorizationToken", 
+                        "bedrock:CreateModelInvocationJob", 
+                        "bedrock:InvokeModelWithResponseStream", 
+                        "bedrock:CreateFoundationModelAgreement", 
+                        "bedrock:PutFoundationModelEntitlement", 
+                        "bedrock:InvokeModel", 
+                        "s3:CreateBucket", 
+                        "s3:PutBucketCors", 
+                        "s3:GetObject", 
+                        "s3:ListBucket", 
+                        "sagemaker:CreateEndpointConfig", 
+                        "sagemaker:CreateProcessingJob", 
+                        "ses:GetSendQuota", 
+                        "ses:ListIdentities", 
+                        "sts:GetSessionToken", 
+                        "sts:GetFederationToken", 
+                        "amplify:CreateDeployment", 
+                        "amplify:CreateBackendEnvironment", 
+                        "codebuild:CreateProject", 
+                        "glue:CreateJob", 
+                        "iam:DeleteRole", 
+                        "iam:DeleteAccessKey", 
+                        "iam:ListUsers", 
+                        "lambda:GetEventSourceMapping", 
+                        "sns:GetSMSAttributes", 
+                        "mediapackagev2:CreateChannel"
                     ], 
                     "Resource": [
                         "*"
