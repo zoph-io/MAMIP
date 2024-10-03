@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2023-11-08T16:16:16Z", 
-        "VersionId": "v2", 
+        "CreateDate": "2024-10-03T20:20:01Z", 
+        "VersionId": "v3", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -10,15 +10,76 @@
                         "connect-campaigns:ListCampaigns"
                     ], 
                     "Resource": "*", 
-                    "Effect": "Allow"
+                    "Effect": "Allow", 
+                    "Sid": "ConnectCampaignAccess"
                 }, 
                 {
                     "Action": [
                         "connect:BatchPutContact", 
-                        "connect:StopContact"
+                        "connect:StopContact", 
+                        "connect:DescribeContactFlow", 
+                        "connect:SendOutboundEmail"
                     ], 
                     "Resource": "arn:aws:connect:*:*:instance/*", 
-                    "Effect": "Allow"
+                    "Effect": "Allow", 
+                    "Sid": "ConnectAccess"
+                }, 
+                {
+                    "Action": [
+                        "events:ListRules"
+                    ], 
+                    "Resource": "arn:aws:events:*:*:rule/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "EventBridgeListRuleAccess"
+                }, 
+                {
+                    "Action": [
+                        "events:DeleteRule", 
+                        "events:PutRule", 
+                        "events:PutTargets", 
+                        "events:RemoveTargets"
+                    ], 
+                    "Resource": "arn:aws:events:*:*:rule/ConnectCampaignsRule*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "events:ManagedBy": "connect-campaigns.amazonaws.com", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "EventBridgeManagedResourceAccess"
+                }, 
+                {
+                    "Action": [
+                        "events:ListTargetsByRule"
+                    ], 
+                    "Resource": "arn:aws:events:*:*:rule/ConnectCampaignsRule*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "EventBridgeListTargetsByRuleAccess"
+                }, 
+                {
+                    "Action": [
+                        "wisdom:GetMessageTemplate", 
+                        "wisdom:RenderMessageTemplate"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/AmazonConnectCampaignsEnabled": "True"
+                        }
+                    }, 
+                    "Sid": "AllowWisdomForConnectCampaignsEnabledTaggedResources"
                 }
             ]
         }, 
