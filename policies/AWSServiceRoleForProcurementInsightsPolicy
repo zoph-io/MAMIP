@@ -1,0 +1,24 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-10-03T14:26:03Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "organizations:DescribeAccount", 
+                        "organizations:DescribeOrganization", 
+                        "organizations:ListAccounts"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "ProcurementInsightsPermissions"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
