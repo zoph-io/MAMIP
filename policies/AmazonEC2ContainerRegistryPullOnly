@@ -1,0 +1,22 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-10-04T16:58:49Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "ecr:GetAuthorizationToken", 
+                        "ecr:BatchGetImage", 
+                        "ecr:GetDownloadUrlForLayer", 
+                        "ecr:BatchImportUpstreamImage"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
