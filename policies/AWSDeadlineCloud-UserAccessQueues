@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-04-01T17:10:03Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2024-10-07T18:25:13Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -144,6 +144,7 @@
                     "Action": [
                         "deadline:AssumeQueueRoleForRead", 
                         "deadline:GetJob", 
+                        "deadline:GetJobTemplate", 
                         "deadline:GetQueue", 
                         "deadline:GetQueueEnvironment", 
                         "deadline:GetQueueFleetAssociation", 
@@ -152,6 +153,7 @@
                         "deadline:GetStep", 
                         "deadline:GetStorageProfileForQueue", 
                         "deadline:GetTask", 
+                        "deadline:ListJobParameterDefinitions", 
                         "deadline:ListQueueEnvironments", 
                         "deadline:ListQueueFleetAssociations", 
                         "deadline:ListSessionActions", 

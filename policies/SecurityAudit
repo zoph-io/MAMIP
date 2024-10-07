@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-04-05T17:32:58Z", 
-        "VersionId": "v42", 
+        "CreateDate": "2024-10-07T18:27:28Z", 
+        "VersionId": "v43", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -18,6 +18,7 @@
                         "access-analyzer:ListFindings", 
                         "access-analyzer:ListTagsForResource", 
                         "account:GetAlternateContact", 
+                        "account:GetPrimaryEmail", 
                         "account:GetRegionOptStatus", 
                         "acm-pca:DescribeCertificateAuthority", 
                         "acm-pca:DescribeCertificateAuthorityAuditReport", 
@@ -478,6 +479,17 @@
                         "profile:GetDomain", 
                         "profile:ListDomains", 
                         "profile:ListIntegrations", 
+                        "qbusiness:ListApplications", 
+                        "qbusiness:ListDataSourceSyncJobs", 
+                        "qbusiness:ListDataSources", 
+                        "qbusiness:ListDocuments", 
+                        "qbusiness:ListGroups", 
+                        "qbusiness:ListIndices", 
+                        "qbusiness:ListPlugins", 
+                        "qbusiness:ListRetrievers", 
+                        "qbusiness:ListSubscriptions", 
+                        "qbusiness:ListTagsForResource", 
+                        "qbusiness:ListWebExperiences", 
                         "qldb:DescribeJournalS3Export", 
                         "qldb:DescribeLedger", 
                         "qldb:ListJournalS3Exports", 
