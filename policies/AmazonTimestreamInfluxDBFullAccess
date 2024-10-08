@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-03-14T22:53:22Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2024-10-08T20:31:28Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -40,7 +40,8 @@
                     "Action": [
                         "ec2:DescribeSubnets", 
                         "ec2:DescribeVpcs", 
-                        "ec2:DescribeSecurityGroups"
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:DescribeRouteTables"
                     ], 
                     "Resource": [
                         "*"
