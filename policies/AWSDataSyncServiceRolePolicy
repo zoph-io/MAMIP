@@ -1,0 +1,33 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-10-09T17:45:40Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "logs:CreateLogGroup", 
+                        "logs:CreateLogStream"
+                    ], 
+                    "Resource": [
+                        "arn:*:logs:*:*:log-group:/aws/datasync*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "DataSyncCloudWatchLogCreateAccess"
+                }, 
+                {
+                    "Action": [
+                        "logs:PutLogEvents"
+                    ], 
+                    "Resource": [
+                        "arn:*:logs:*:*:log-group:/aws/datasync*:log-stream:*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "DataSyncCloudWatchLogStreamUpdateAccess"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
