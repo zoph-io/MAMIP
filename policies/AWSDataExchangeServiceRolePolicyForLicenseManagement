@@ -1,0 +1,26 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-10-10T14:54:27Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "organizations:DescribeOrganization", 
+                        "license-manager:ListDistributedGrants", 
+                        "license-manager:GetGrant", 
+                        "license-manager:CreateGrantVersion", 
+                        "license-manager:DeleteGrant"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowLicenseManagerActions"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
