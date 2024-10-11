@@ -1,0 +1,39 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-10-11T18:25:51Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "verifiedpermissions:ListPolicyStores"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AccountLevelPermissions"
+                }, 
+                {
+                    "Action": [
+                        "verifiedpermissions:GetIdentitySource", 
+                        "verifiedpermissions:GetPolicy", 
+                        "verifiedpermissions:GetPolicyStore", 
+                        "verifiedpermissions:GetPolicyTemplate", 
+                        "verifiedpermissions:GetSchema", 
+                        "verifiedpermissions:IsAuthorized", 
+                        "verifiedpermissions:IsAuthorizedWithToken", 
+                        "verifiedpermissions:ListIdentitySources", 
+                        "verifiedpermissions:ListPolicies", 
+                        "verifiedpermissions:ListPolicyTemplates"
+                    ], 
+                    "Resource": [
+                        "arn:aws:verifiedpermissions::*:policy-store/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "PolicyStoreLevelPermissions"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}

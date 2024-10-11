@@ -1,0 +1,31 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-10-11T18:19:31Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "verifiedpermissions:CreatePolicyStore", 
+                        "verifiedpermissions:ListPolicyStores"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AccountLevelPermissions"
+                }, 
+                {
+                    "Action": [
+                        "verifiedpermissions:*"
+                    ], 
+                    "Resource": [
+                        "arn:aws:verifiedpermissions::*:policy-store/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "PolicyStoreLevelPermissions"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
