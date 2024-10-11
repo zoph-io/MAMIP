@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2022-05-06T18:14:01Z", 
-        "VersionId": "v9", 
+        "CreateDate": "2024-10-11T17:07:13Z", 
+        "VersionId": "v10", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -117,7 +117,10 @@
                         "lambda:UpdateFunctionCode", 
                         "lambda:UpdateFunctionConfiguration", 
                         "lambda:GetFunctionConfiguration", 
-                        "lambda:DeleteFunction"
+                        "lambda:DeleteFunction", 
+                        "lambda:ListTags", 
+                        "lambda:TagResource", 
+                        "lambda:UntagResource"
                     ], 
                     "Resource": [
                         "arn:aws:lambda:*:*:function:cwsyn-*"
@@ -132,7 +135,8 @@
                     ], 
                     "Resource": [
                         "arn:aws:lambda:*:*:layer:cwsyn-*", 
-                        "arn:aws:lambda:*:*:layer:Synthetics:*"
+                        "arn:aws:lambda:*:*:layer:Synthetics:*", 
+                        "arn:aws:lambda:*:*:layer:Synthetics_Selenium:*"
                     ], 
                     "Effect": "Allow"
                 }, 
