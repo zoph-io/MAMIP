@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2020-05-27T19:27:03Z", 
-        "VersionId": "v6", 
+        "CreateDate": "2024-10-14T21:12:40Z", 
+        "VersionId": "v7", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -18,7 +18,8 @@
                         "ec2:DescribeVpcs", 
                         "ec2:ModifyNetworkInterfaceAttribute", 
                         "iam:ListAttachedRolePolicies", 
-                        "eks:UpdateClusterVersion"
+                        "eks:UpdateClusterVersion", 
+                        "ec2:GetSecurityGroupsForVpc"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow"
@@ -33,6 +34,20 @@
                         "arn:aws:ec2:*:*:subnet/*"
                     ], 
                     "Effect": "Allow"
+                }, 
+                {
+                    "Action": [
+                        "ec2:CreateTags"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:network-interface/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "aws:RequestTag/Name": "eks-cluster-*"
+                        }
+                    }
                 }, 
                 {
                     "Action": "route53:AssociateVPCWithHostedZone", 
@@ -59,7 +74,7 @@
                 }, 
                 {
                     "Action": "iam:CreateServiceLinkedRole", 
-                    "Resource": "*", 
+                    "Resource": "arn:aws:iam::*:role/aws-service-role/eks.amazonaws.com/AWSServiceRoleForAmazonEKS", 
                     "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
