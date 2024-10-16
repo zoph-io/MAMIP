@@ -1,0 +1,42 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-10-16T19:09:17Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "xray:PutTraceSegments"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "CloudWatchApplicationSignalsXrayWritePermissions"
+                }, 
+                {
+                    "Action": [
+                        "logs:CreateLogGroup", 
+                        "logs:CreateLogStream", 
+                        "logs:PutLogEvents"
+                    ], 
+                    "Resource": "arn:aws:logs:*:*:log-group:/aws/application-signals/data:*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "CloudWatchApplicationSignalsLogGroupWritePermissions"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
