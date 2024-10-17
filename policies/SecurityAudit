@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-10-07T18:27:28Z", 
-        "VersionId": "v43", 
+        "CreateDate": "2024-10-17T21:16:58Z", 
+        "VersionId": "v44", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -428,6 +428,8 @@
                         "lightsail:GetInstances", 
                         "lightsail:GetLoadBalancers", 
                         "logs:Describe*", 
+                        "logs:GetLogDelivery", 
+                        "logs:ListLogDeliveries", 
                         "logs:ListTagsForResource", 
                         "logs:ListTagsLogGroup", 
                         "lookoutequipment:ListDatasets", 
