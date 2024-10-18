@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-07-22T16:13:41Z", 
-        "VersionId": "v6", 
+        "CreateDate": "2024-10-18T20:07:03Z", 
+        "VersionId": "v7", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -53,6 +53,17 @@
                         }
                     }, 
                     "Sid": "DataSyncPassRolePermissions"
+                }, 
+                {
+                    "Action": "iam:CreateServiceLinkedRole", 
+                    "Resource": "arn:aws:iam::*:role/aws-service-role/datasync.amazonaws.com/AWSServiceRoleForDataSync", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:AWSServiceName": "datasync.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "DataSyncCreateSLRPermissions"
                 }
             ]
         }, 
