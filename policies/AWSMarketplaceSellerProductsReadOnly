@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2022-11-19T00:08:42Z", 
-        "VersionId": "v3", 
+        "CreateDate": "2024-10-21T19:52:20Z", 
+        "VersionId": "v4", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -13,6 +13,8 @@
                         "aws-marketplace:DescribeEntity", 
                         "aws-marketplace:ListTasks", 
                         "aws-marketplace:DescribeTask", 
+                        "aws-marketplace:ListAssessments", 
+                        "aws-marketplace:DescribeAssessment", 
                         "ec2:DescribeImages", 
                         "ec2:DescribeSnapshots"
                     ], 
@@ -22,6 +24,13 @@
                 {
                     "Action": [
                         "aws-marketplace:ListTagsForResource"
+                    ], 
+                    "Resource": "arn:aws:aws-marketplace:*:*:AWSMarketplace/*", 
+                    "Effect": "Allow"
+                }, 
+                {
+                    "Action": [
+                        "aws-marketplace:GetResourcePolicy"
                     ], 
                     "Resource": "arn:aws:aws-marketplace:*:*:AWSMarketplace/*", 
                     "Effect": "Allow"
