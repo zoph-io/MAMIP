@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2020-05-27T19:30:19Z", 
-        "VersionId": "v2", 
+        "CreateDate": "2024-10-21T21:23:26Z", 
+        "VersionId": "v3", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -18,7 +18,8 @@
                         "ec2:DescribeVpcs", 
                         "ec2:CreateNetworkInterfacePermission", 
                         "iam:ListAttachedRolePolicies", 
-                        "ec2:CreateSecurityGroup"
+                        "ec2:CreateSecurityGroup", 
+                        "ec2:GetSecurityGroupsForVpc"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow"
@@ -32,7 +33,7 @@
                     "Resource": "arn:aws:ec2:*:*:security-group/*", 
                     "Effect": "Allow", 
                     "Condition": {
-                        "ForAnyValue:StringLike": {
+                        "StringLike": {
                             "ec2:ResourceTag/Name": "eks-cluster-sg*"
                         }
                     }
@@ -44,7 +45,9 @@
                     ], 
                     "Resource": [
                         "arn:aws:ec2:*:*:vpc/*", 
-                        "arn:aws:ec2:*:*:subnet/*"
+                        "arn:aws:ec2:*:*:subnet/*", 
+                        "arn:aws:ec2:*:*:network-interface/*", 
+                        "arn:aws:ec2:*:*:security-group/*"
                     ], 
                     "Effect": "Allow", 
                     "Condition": {
@@ -61,15 +64,13 @@
                         "ec2:DeleteTags"
                     ], 
                     "Resource": [
-                        "arn:aws:ec2:*:*:security-group/*"
+                        "arn:aws:ec2:*:*:security-group/*", 
+                        "arn:aws:ec2:*:*:network-interface/*"
                     ], 
                     "Effect": "Allow", 
                     "Condition": {
-                        "ForAnyValue:StringLike": {
-                            "aws:TagKeys": [
-                                "kubernetes.io/cluster/*"
-                            ], 
-                            "aws:RequestTag/Name": "eks-cluster-sg*"
+                        "StringLike": {
+                            "aws:RequestTag/Name": "eks-cluster-*"
                         }
                     }
                 }, 
