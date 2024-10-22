@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2023-07-18T22:19:58Z", 
-        "VersionId": "v7", 
+        "CreateDate": "2024-10-21T22:52:44Z", 
+        "VersionId": "v8", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -17,6 +17,8 @@
                         "aws-marketplace:DescribeTask", 
                         "aws-marketplace:UpdateTask", 
                         "aws-marketplace:CompleteTask", 
+                        "aws-marketplace:ListAssessments", 
+                        "aws-marketplace:DescribeAssessment", 
                         "ec2:DescribeImages", 
                         "ec2:DescribeSnapshots", 
                         "ec2:ModifyImageAttribute", 
