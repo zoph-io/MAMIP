@@ -1,0 +1,77 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-10-22T21:02:59Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "internetmonitor:CreateMonitor", 
+                        "internetmonitor:DeleteMonitor", 
+                        "internetmonitor:GetHealthEvent", 
+                        "internetmonitor:GetInternetEvent", 
+                        "internetmonitor:GetMonitor", 
+                        "internetmonitor:GetQueryResults", 
+                        "internetmonitor:GetQueryStatus", 
+                        "internetmonitor:Link", 
+                        "internetmonitor:ListHealthEvents", 
+                        "internetmonitor:ListInternetEvents", 
+                        "internetmonitor:ListMonitors", 
+                        "internetmonitor:ListTagsForResource", 
+                        "internetmonitor:StartQuery", 
+                        "internetmonitor:StopQuery", 
+                        "internetmonitor:TagResource", 
+                        "internetmonitor:UntagResource", 
+                        "internetmonitor:UpdateMonitor"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "FullAccessActions"
+                }, 
+                {
+                    "Action": "iam:CreateServiceLinkedRole", 
+                    "Resource": "arn:aws:iam::*:role/aws-service-role/internetmonitor.amazonaws.com/AWSServiceRoleForInternetMonitor", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:AWSServiceName": "internetmonitor.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "ServiceLinkedRoleActions"
+                }, 
+                {
+                    "Action": [
+                        "iam:AttachRolePolicy"
+                    ], 
+                    "Resource": "arn:aws:iam::*:role/aws-service-role/internetmonitor.amazonaws.com/AWSServiceRoleForInternetMonitor", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ArnEquals": {
+                            "iam:PolicyARN": "arn:aws:iam::aws:policy/aws-service-role/CloudWatchInternetMonitorServiceRolePolicy"
+                        }
+                    }, 
+                    "Sid": "RolePolicyActions"
+                }, 
+                {
+                    "Action": [
+                        "cloudwatch:GetMetricData", 
+                        "cloudfront:GetDistribution", 
+                        "cloudfront:ListDistributions", 
+                        "ec2:DescribeVpcs", 
+                        "elasticloadbalancing:DescribeLoadBalancers", 
+                        "logs:DescribeLogGroups", 
+                        "logs:GetQueryResults", 
+                        "logs:StartQuery", 
+                        "logs:StopQuery", 
+                        "workspaces:DescribeWorkspaceDirectories"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ReadOnlyActions"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
