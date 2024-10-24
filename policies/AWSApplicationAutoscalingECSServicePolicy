@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2017-10-25T23:53:08Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2024-10-24T20:05:50Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -11,6 +11,7 @@
                         "ecs:UpdateService", 
                         "cloudwatch:PutMetricAlarm", 
                         "cloudwatch:DescribeAlarms", 
+                        "cloudwatch:GetMetricData", 
                         "cloudwatch:DeleteAlarms"
                     ], 
                     "Resource": [
