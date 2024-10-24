@@ -1,0 +1,67 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-10-24T14:45:58Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "dataexchange:GetDataSet", 
+                        "dataexchange:ListDataSets", 
+                        "dataexchange:GetRevision", 
+                        "dataexchange:ListDataSetRevisions", 
+                        "dataexchange:GetAsset", 
+                        "dataexchange:ListRevisionAssets", 
+                        "dataexchange:SendApiAsset"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DataExchangeReadOnlyActions"
+                }, 
+                {
+                    "Action": [
+                        "dataexchange:CreateJob", 
+                        "dataexchange:StartJob", 
+                        "dataexchange:CancelJob"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "dataexchange:JobType": [
+                                "EXPORT_ASSETS_TO_S3", 
+                                "EXPORT_ASSET_TO_SIGNED_URL", 
+                                "EXPORT_REVISIONS_TO_S3"
+                            ]
+                        }
+                    }, 
+                    "Sid": "DataExchangeExportActions"
+                }, 
+                {
+                    "Action": [
+                        "dataexchange:CreateEventAction", 
+                        "dataexchange:UpdateEventAction", 
+                        "dataexchange:DeleteEventAction", 
+                        "dataexchange:GetEventAction", 
+                        "dataexchange:ListEventActions"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DataExchangeEventActionActions"
+                }, 
+                {
+                    "Action": [
+                        "dataexchange:AcceptDataGrant", 
+                        "dataexchange:ListReceivedDataGrants", 
+                        "dataexchange:GetReceivedDataGrant"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DataExchangeDataGrantActions"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}

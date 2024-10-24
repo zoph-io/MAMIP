@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-07-22T13:36:03Z", 
-        "VersionId": "v3", 
+        "CreateDate": "2024-10-24T14:40:40Z", 
+        "VersionId": "v4", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -12,6 +12,10 @@
                         "dataexchange:GetEventAction", 
                         "dataexchange:GetJob", 
                         "dataexchange:GetRevision", 
+                        "dataexchange:GetDataGrant", 
+                        "dataexchange:GetReceivedDataGrant", 
+                        "dataexchange:ListDataGrants", 
+                        "dataexchange:ListReceivedDataGrants", 
                         "dataexchange:ListDataSetRevisions", 
                         "dataexchange:ListDataSets", 
                         "dataexchange:ListEventActions", 
