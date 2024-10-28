@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-09-11T20:44:09Z", 
-        "VersionId": "v17", 
+        "CreateDate": "2024-10-25T22:33:28Z", 
+        "VersionId": "v18", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -258,6 +258,33 @@
                     ], 
                     "Effect": "Allow", 
                     "Sid": "AllowWritePermissionForCustomerProfileObjects"
+                }, 
+                {
+                    "Action": [
+                        "chime:GetVoiceConnector"
+                    ], 
+                    "Resource": "arn:aws:chime:*:*:vc/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/AmazonConnectEnabled": "True", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "AllowChimeSDKVoiceConnectorGetOperationForConnect"
+                }, 
+                {
+                    "Action": [
+                        "chime:ListVoiceConnectors"
+                    ], 
+                    "Resource": "arn:aws:chime:*:*:vc/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "AllowChimeSDKVoiceConnectorListOperationForConnect"
                 }
             ]
         }, 
