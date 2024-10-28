@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-07-09T08:35:15Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2024-10-28T20:02:12Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -16,7 +16,8 @@
                         "q:StartTroubleshootingResolutionExplanation", 
                         "q:GetTroubleshootingResults", 
                         "q:UpdateTroubleshootingCommandResult", 
-                        "q:GetIdentityMetaData"
+                        "q:GetIdentityMetaData", 
+                        "q:GenerateCodeFromCommands"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
@@ -41,6 +42,6 @@
                 }
             ]
         }, 
-        "IsDefaultVersion": false
+        "IsDefaultVersion": true
     }
 }

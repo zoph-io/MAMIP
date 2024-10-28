@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-07-09T08:35:50Z", 
-        "VersionId": "v3", 
+        "CreateDate": "2024-10-28T20:01:31Z", 
+        "VersionId": "v4", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -18,7 +18,8 @@
                         "q:UpdateTroubleshootingCommandResult", 
                         "q:GetIdentityMetadata", 
                         "q:CreateAssignment", 
-                        "q:DeleteAssignment"
+                        "q:DeleteAssignment", 
+                        "q:GenerateCodeFromCommands"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
@@ -43,6 +44,6 @@
                 }
             ]
         }, 
-        "IsDefaultVersion": false
+        "IsDefaultVersion": true
     }
 }
