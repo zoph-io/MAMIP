@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-10-25T22:33:28Z", 
-        "VersionId": "v18", 
+        "CreateDate": "2024-10-29T20:36:31Z", 
+        "VersionId": "v19", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -285,6 +285,61 @@
                         }
                     }, 
                     "Sid": "AllowChimeSDKVoiceConnectorListOperationForConnect"
+                }, 
+                {
+                    "Action": [
+                        "ses:DescribeReceiptRule", 
+                        "ses:UpdateReceiptRule"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "SESPermissionsForManagingReceiptRules"
+                }, 
+                {
+                    "Action": [
+                        "ses:DeleteEmailIdentity"
+                    ], 
+                    "Resource": "arn:aws:ses:*:*:identity/*.email.connect.aws*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "SESPermissionForManagingConnectProvidedSESIdentity"
+                }, 
+                {
+                    "Action": [
+                        "ses:SendRawEmail"
+                    ], 
+                    "Resource": "arn:aws:ses:*:*:configuration-set/configuration-set-for-connect-DO-NOT-DELETE", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "SESConfigurationSetPermissionsForSendingEmail"
+                }, 
+                {
+                    "Action": [
+                        "iam:PassRole"
+                    ], 
+                    "Resource": [
+                        "arn:aws:iam::*:role/service-role/AmazonConnectEmailSESAccessRole"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "iam:PassedToService": "ses.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "PassRoleToSESForReceiptRuleManagement"
                 }
             ]
         }, 
