@@ -1,0 +1,66 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-10-28T22:34:33Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": "ec2:CreateNetworkInterface", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "aws:RequestTag/eks:kubernetes-cni-node-name": "*"
+                        }, 
+                        "StringEquals": {
+                            "aws:RequestTag/eks:eks-cluster-name": "${aws:PrincipalTag/eks:eks-cluster-name}"
+                        }, 
+                        "ForAllValues:StringEquals": {
+                            "aws:TagKeys": [
+                                "eks:eks-cluster-name", 
+                                "eks:kubernetes-cni-node-name"
+                            ]
+                        }
+                    }
+                }, 
+                {
+                    "Action": "ec2:CreateNetworkInterface", 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:security-group/*", 
+                        "arn:aws:ec2:*:*:subnet/*"
+                    ], 
+                    "Effect": "Allow"
+                }, 
+                {
+                    "Action": "ec2:CreateTags", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "ec2:CreateAction": "CreateNetworkInterface"
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "ec2:AttachNetworkInterface", 
+                        "ec2:DetachNetworkInterface", 
+                        "ec2:UnassignPrivateIpAddresses", 
+                        "ec2:UnassignIpv6Addresses", 
+                        "ec2:AssignPrivateIpAddresses", 
+                        "ec2:AssignIpv6Addresses"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/eks:eks-cluster-name": "${aws:PrincipalTag/eks:eks-cluster-name}"
+                        }
+                    }
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
