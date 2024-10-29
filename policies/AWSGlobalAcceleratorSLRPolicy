@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2023-09-12T16:45:28Z", 
-        "VersionId": "v8", 
+        "CreateDate": "2024-10-29T18:23:36Z", 
+        "VersionId": "v9", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -39,7 +39,8 @@
                 {
                     "Action": [
                         "ec2:CreateSecurityGroup", 
-                        "ec2:DescribeSecurityGroups"
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:GetSecurityGroupsForVpc"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
