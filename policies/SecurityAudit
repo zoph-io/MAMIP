@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-10-17T21:16:58Z", 
-        "VersionId": "v44", 
+        "CreateDate": "2024-10-30T18:36:49Z", 
+        "VersionId": "v45", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -435,6 +435,11 @@
                         "lookoutequipment:ListDatasets", 
                         "lookoutmetrics:ListAnomalyDetectors", 
                         "lookoutvision:ListProjects", 
+                        "m2:ListEnvironments", 
+                        "m2:ListApplications", 
+                        "m2:GetEnvironment", 
+                        "m2:GetApplication", 
+                        "m2:ListTagsForResource", 
                         "machinelearning:DescribeMLModels", 
                         "macie2:ListFindings", 
                         "managedblockchain:ListNetworks", 
