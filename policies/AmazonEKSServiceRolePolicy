@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-10-21T21:23:26Z", 
-        "VersionId": "v3", 
+        "CreateDate": "2024-10-29T22:39:46Z", 
+        "VersionId": "v4", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -96,6 +96,16 @@
                     "Action": "logs:PutLogEvents", 
                     "Resource": "arn:aws:logs:*:*:log-group:/aws/eks/*:*:*", 
                     "Effect": "Allow"
+                }, 
+                {
+                    "Action": "cloudwatch:PutMetricData", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "cloudwatch:namespace": "AWS/EKS"
+                        }
+                    }
                 }
             ]
         }, 
