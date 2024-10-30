@@ -1,0 +1,98 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-10-30T20:18:13Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "ec2:AttachVolume", 
+                        "ec2:DetachVolume", 
+                        "ec2:ModifyVolume", 
+                        "ec2:EnableFastSnapshotRestores"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/eks:eks-cluster-name": "${aws:PrincipalTag/eks:eks-cluster-name}"
+                        }
+                    }
+                }, 
+                {
+                    "Action": "ec2:CreateTags", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "ec2:CreateAction": [
+                                "CreateVolume", 
+                                "CreateSnapshot"
+                            ]
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "ec2:CreateVolume"
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:volume/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ForAllValues:StringLike": {
+                            "aws:TagKeys": [
+                                "eks:eks-cluster-name", 
+                                "CSIVolumeName", 
+                                "ebs.csi.eks.amazonaws.com/cluster", 
+                                "kubernetes.io/cluster/*", 
+                                "kubernetes.io/created-for/*", 
+                                "Name", 
+                                "KubernetesCluster"
+                            ]
+                        }, 
+                        "StringEquals": {
+                            "aws:RequestTag/eks:eks-cluster-name": "${aws:PrincipalTag/eks:eks-cluster-name}"
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "ec2:CreateVolume"
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:snapshot/*", 
+                    "Effect": "Allow"
+                }, 
+                {
+                    "Action": [
+                        "ec2:CreateSnapshot"
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:volume/*", 
+                    "Effect": "Allow"
+                }, 
+                {
+                    "Action": [
+                        "ec2:CreateSnapshot"
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:snapshot/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ForAllValues:StringLike": {
+                            "aws:TagKeys": [
+                                "eks:eks-cluster-name", 
+                                "CSIVolumeSnapshotName", 
+                                "ebs.csi.eks.amazonaws.com/cluster", 
+                                "kubernetes.io/cluster/*", 
+                                "Name"
+                            ]
+                        }, 
+                        "StringEquals": {
+                            "aws:RequestTag/eks:eks-cluster-name": "${aws:PrincipalTag/eks:eks-cluster-name}"
+                        }
+                    }
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
