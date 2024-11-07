@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2023-11-28T16:53:28Z", 
-        "VersionId": "v9", 
+        "CreateDate": "2024-11-07T19:34:20Z", 
+        "VersionId": "v10", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -52,6 +52,8 @@
                         "elasticfilesystem:ListTagsForResource", 
                         "elasticfilesystem:Backup", 
                         "elasticfilesystem:Restore", 
+                        "elasticfilesystem:ReplicationRead", 
+                        "elasticfilesystem:ReplicationWrite", 
                         "kms:DescribeKey", 
                         "kms:ListAliases"
                     ], 
@@ -71,6 +73,17 @@
                         }
                     }, 
                     "Sid": "CreateServiceLinkedRoleForEFS"
+                }, 
+                {
+                    "Action": "iam:PassRole", 
+                    "Resource": "arn:aws:iam::*:role/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "iam:PassedToService": "elasticfilesystem.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "IAMPassRoleAccessForEFS"
                 }
             ]
         }, 

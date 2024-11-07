@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2022-01-10T19:27:33Z", 
-        "VersionId": "v4", 
+        "CreateDate": "2024-11-07T19:19:50Z", 
+        "VersionId": "v5", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -79,7 +79,9 @@
                         "elasticfilesystem:DescribeFileSystems", 
                         "elasticfilesystem:CreateReplicationConfiguration", 
                         "elasticfilesystem:DescribeReplicationConfigurations", 
-                        "elasticfilesystem:DeleteReplicationConfiguration"
+                        "elasticfilesystem:DeleteReplicationConfiguration", 
+                        "elasticfilesystem:ReplicationRead", 
+                        "elasticfilesystem:ReplicationWrite"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow"

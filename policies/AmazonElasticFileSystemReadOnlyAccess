@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-08-07T16:59:47Z", 
-        "VersionId": "v8", 
+        "CreateDate": "2024-11-07T19:39:56Z", 
+        "VersionId": "v9", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -27,6 +27,7 @@
                         "elasticfilesystem:DescribeAccessPoints", 
                         "elasticfilesystem:DescribeReplicationConfigurations", 
                         "elasticfilesystem:ListTagsForResource", 
+                        "elasticfilesystem:ReplicationRead", 
                         "kms:ListAliases"
                     ], 
                     "Resource": "*", 
