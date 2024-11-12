@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-04-12T20:07:12Z", 
-        "VersionId": "v8", 
+        "CreateDate": "2024-11-12T19:22:36Z", 
+        "VersionId": "v9", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -97,7 +97,7 @@
                     "Resource": "arn:aws:ec2:*:*:instance/*", 
                     "Effect": "Allow", 
                     "Condition": {
-                        "StringLike": {
+                        "ArnLike": {
                             "ec2:InstanceProfile": "arn:aws:iam::*:instance-profile/AWSPortal*"
                         }
                     }, 
@@ -119,8 +119,8 @@
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Condition": {
-                        "StringLike": {
-                            "ec2:ResourceTag/aws:ec2spot:fleet-request-id": "*"
+                        "Null": {
+                            "ec2:ResourceTag/aws:ec2spot:fleet-request-id": false
                         }
                     }, 
                     "Sid": "AWSThinkboxAWSPortal5"
@@ -130,8 +130,8 @@
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Condition": {
-                        "StringLike": {
-                            "ec2:PlacementGroup": "*DeadlinePlacementGroup*"
+                        "ArnLike": {
+                            "ec2:PlacementGroup": "arn:aws:ec2:*:*:placement-group/*DeadlinePlacementGroup*"
                         }
                     }, 
                     "Sid": "AWSThinkboxAWSPortal6"
@@ -143,8 +143,8 @@
                     "Resource": "arn:aws:ec2:*:*:instance/*", 
                     "Effect": "Allow", 
                     "Condition": {
-                        "StringLike": {
-                            "ec2:PlacementGroup": "*DeadlinePlacementGroup*"
+                        "ArnLike": {
+                            "ec2:PlacementGroup": "arn:aws:ec2:*:*:placement-group/*DeadlinePlacementGroup*"
                         }
                     }, 
                     "Sid": "AWSThinkboxAWSPortal7"

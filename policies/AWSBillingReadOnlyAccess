@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-05-23T23:23:30Z", 
-        "VersionId": "v7", 
+        "CreateDate": "2024-11-12T18:16:52Z", 
+        "VersionId": "v8", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -42,11 +42,20 @@
                         "invoicing:GetInvoiceEmailDeliveryPreferences", 
                         "invoicing:GetInvoicePDF", 
                         "invoicing:ListInvoiceSummaries", 
+                        "payments:GetFinancingApplication", 
+                        "payments:GetFinancingLine", 
+                        "payments:GetFinancingLineWithdrawal", 
+                        "payments:GetFinancingOption", 
                         "payments:GetPaymentInstrument", 
                         "payments:GetPaymentStatus", 
-                        "payments:ListPaymentPreferences", 
-                        "payments:ListTagsForResource", 
+                        "payments:ListFinancingApplications", 
+                        "payments:ListFinancingLines", 
+                        "payments:ListFinancingLineWithdrawals", 
                         "payments:ListPaymentInstruments", 
+                        "payments:ListPaymentPreferences", 
+                        "payments:ListPaymentProgramOptions", 
+                        "payments:ListPaymentProgramStatus", 
+                        "payments:ListTagsForResource", 
                         "purchase-orders:GetPurchaseOrder", 
                         "purchase-orders:ViewPurchaseOrders", 
                         "purchase-orders:ListPurchaseOrderInvoices", 

@@ -1,0 +1,53 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-11-12T19:28:49Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "logs:CreateLogStream", 
+                        "logs:PutLogEvents", 
+                        "logs:PutRetentionPolicy"
+                    ], 
+                    "Resource": "arn:aws:logs:*:*:log-group:gamelift-*:log-stream:*", 
+                    "Effect": "Allow", 
+                    "Sid": "WriteGameSessionLogsToLogStream"
+                }, 
+                {
+                    "Action": "logs:CreateLogGroup", 
+                    "Resource": "arn:aws:logs:*:*:log-group:gamelift-*", 
+                    "Effect": "Allow", 
+                    "Sid": "CreateLogGroupToStoreGameSessionLogs"
+                }, 
+                {
+                    "Action": [
+                        "s3:PutObject"
+                    ], 
+                    "Resource": [
+                        "arn:aws:s3:::gamelift-*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "s3:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "WriteGameSessionLogsToS3Bucket"
+                }, 
+                {
+                    "Action": [
+                        "gamelift:GetComputeAuthToken"
+                    ], 
+                    "Resource": [
+                        "arn:aws:gamelift:*:*:containerfleet/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "RetrieveComputeAuthToken"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}

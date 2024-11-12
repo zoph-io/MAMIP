@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-04-12T20:55:58Z", 
-        "VersionId": "v7", 
+        "CreateDate": "2024-11-12T19:29:09Z", 
+        "VersionId": "v8", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -180,7 +180,7 @@
                     ], 
                     "Effect": "Allow", 
                     "Condition": {
-                        "StringLike": {
+                        "ArnLike": {
                             "lambda:FunctionArn": [
                                 "arn:aws:lambda:*:*:function:DeadlineResourceTracker*"
                             ]
