@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-10-28T20:01:31Z", 
-        "VersionId": "v4", 
+        "CreateDate": "2024-11-13T21:51:39Z", 
+        "VersionId": "v5", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -19,7 +19,16 @@
                         "q:GetIdentityMetadata", 
                         "q:CreateAssignment", 
                         "q:DeleteAssignment", 
-                        "q:GenerateCodeFromCommands"
+                        "q:GenerateCodeFromCommands", 
+                        "q:CreatePlugin", 
+                        "q:DeletePlugin", 
+                        "q:GetPlugin", 
+                        "q:UsePlugin", 
+                        "q:ListPlugins", 
+                        "q:ListPluginProviders", 
+                        "q:ListTagsForResource", 
+                        "q:UntagResource", 
+                        "q:TagResource"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
@@ -41,6 +50,21 @@
                     "Resource": "arn:aws:sts::*:self", 
                     "Effect": "Allow", 
                     "Sid": "AllowSetTrustedIdentity"
+                }, 
+                {
+                    "Action": [
+                        "iam:PassRole"
+                    ], 
+                    "Resource": "arn:aws:iam::*:role/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:PassedToService": [
+                                "q.amazonaws.com"
+                            ]
+                        }
+                    }, 
+                    "Sid": "AllowPassRoleToAmazonQ"
                 }
             ]
         }, 

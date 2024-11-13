@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-10-28T20:02:12Z", 
-        "VersionId": "v2", 
+        "CreateDate": "2024-11-13T21:30:27Z", 
+        "VersionId": "v3", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -17,7 +17,8 @@
                         "q:GetTroubleshootingResults", 
                         "q:UpdateTroubleshootingCommandResult", 
                         "q:GetIdentityMetaData", 
-                        "q:GenerateCodeFromCommands"
+                        "q:GenerateCodeFromCommands", 
+                        "q:UsePlugin"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
