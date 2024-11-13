@@ -1,0 +1,80 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-11-12T22:14:20Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "bedrock:CreateInferenceProfile", 
+                        "bedrock:TagResource"
+                    ], 
+                    "Resource": [
+                        "arn:aws:bedrock:*:*:application-inference-profile/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "aws:TagKeys": [
+                                "AmazonDataZoneProject"
+                            ]
+                        }, 
+                        "Null": {
+                            "aws:ResourceTag/AmazonDataZoneProject": "false", 
+                            "aws:RequestTag/AmazonDataZoneProject": "false"
+                        }, 
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "ManageApplicationInferenceProfile"
+                }, 
+                {
+                    "Action": [
+                        "bedrock:DeleteInferenceProfile"
+                    ], 
+                    "Resource": [
+                        "arn:aws:bedrock:*:*:application-inference-profile/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "Null": {
+                            "aws:ResourceTag/AmazonDataZoneProject": "false"
+                        }, 
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "DeleteApplicationInferenceProfile"
+                }, 
+                {
+                    "Action": [
+                        "bedrock:CreateInferenceProfile"
+                    ], 
+                    "Resource": [
+                        "arn:aws:bedrock:*::foundation-model/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "CreateApplicationInferenceProfileUsingFoundationModels"
+                }, 
+                {
+                    "Action": [
+                        "bedrock:CreateInferenceProfile"
+                    ], 
+                    "Resource": [
+                        "arn:aws:bedrock:*:*:inference-profile/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "CreateApplicationInferenceProfileUsingBedrockModels"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}

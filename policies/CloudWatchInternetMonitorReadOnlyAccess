@@ -1,0 +1,35 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-11-12T23:11:17Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "cloudwatch:GetMetricData", 
+                        "internetmonitor:GetHealthEvent", 
+                        "internetmonitor:GetInternetEvent", 
+                        "internetmonitor:GetMonitor", 
+                        "internetmonitor:GetQueryResults", 
+                        "internetmonitor:GetQueryStatus", 
+                        "internetmonitor:ListHealthEvents", 
+                        "internetmonitor:ListInternetEvents", 
+                        "internetmonitor:ListMonitors", 
+                        "internetmonitor:ListTagsForResource", 
+                        "internetmonitor:StartQuery", 
+                        "internetmonitor:StopQuery", 
+                        "logs:DescribeLogGroups", 
+                        "logs:GetQueryResults", 
+                        "logs:StartQuery", 
+                        "logs:StopQuery"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ReadOnlyActions"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}

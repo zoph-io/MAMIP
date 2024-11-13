@@ -1,0 +1,30 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-11-12T22:15:08Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "bedrock:InvokeModel", 
+                        "bedrock:InvokeModelWithResponseStream"
+                    ], 
+                    "Resource": "arn:aws:bedrock:*:*:application-inference-profile/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "Null": {
+                            "aws:ResourceTag/AmazonDataZoneProject": "true"
+                        }, 
+                        "StringEquals": {
+                            "aws:ResourceTag/AmazonDataZoneDomain": "${datazone:domainId}", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "InvokeDomainInferenceProfiles"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
