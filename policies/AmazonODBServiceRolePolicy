@@ -1,0 +1,35 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-11-13T18:21:41Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "cloudwatch:PutMetricData"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "cloudwatch:namespace": [
+                                "AWS/ODB"
+                            ]
+                        }
+                    }, 
+                    "Sid": "CloudWatch"
+                }, 
+                {
+                    "Action": [
+                        "ec2:DescribeAvailabilityZones"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "EC2"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
