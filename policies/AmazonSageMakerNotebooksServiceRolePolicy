@@ -1,10 +1,23 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-07-24T18:05:40Z", 
-        "VersionId": "v9", 
+        "CreateDate": "2024-11-14T20:33:45Z", 
+        "VersionId": "v10", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
+                {
+                    "Action": [
+                        "fsx:DescribeFileSystems"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "AllowFSxDescribe"
+                }, 
                 {
                     "Action": [
                         "sagemaker:DeleteApp"
