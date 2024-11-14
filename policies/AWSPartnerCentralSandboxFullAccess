@@ -1,0 +1,25 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-11-14T19:10:37Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "partnercentral:*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "partnercentral:Catalog": "Sandbox"
+                        }
+                    }, 
+                    "Sid": "AWSPartnerCentralSandboxAccess"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}

@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-10-29T20:36:31Z", 
-        "VersionId": "v19", 
+        "CreateDate": "2024-11-14T18:06:40Z", 
+        "VersionId": "v20", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -340,6 +340,23 @@
                         }
                     }, 
                     "Sid": "PassRoleToSESForReceiptRuleManagement"
+                }, 
+                {
+                    "Action": [
+                        "social-messaging:SendWhatsAppMessage", 
+                        "social-messaging:PostWhatsAppMessageMedia", 
+                        "social-messaging:GetWhatsAppMessageMedia", 
+                        "social-messaging:GetLinkedWhatsAppBusinessAccountPhoneNumber"
+                    ], 
+                    "Resource": "arn:aws:social-messaging:*:*:phone-number-id/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/AmazonConnectEnabled": "True", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "AllowSocialMessagingOperations"
                 }
             ]
         }, 

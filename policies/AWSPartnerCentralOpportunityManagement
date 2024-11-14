@@ -1,0 +1,53 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-11-14T19:09:05Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "partnercentral:AcceptEngagementInvitation", 
+                        "partnercentral:AssignOpportunity", 
+                        "partnercentral:AssociateOpportunity", 
+                        "partnercentral:CreateOpportunity", 
+                        "partnercentral:DisassociateOpportunity", 
+                        "partnercentral:GetAwsOpportunitySummary", 
+                        "partnercentral:GetEngagementInvitation", 
+                        "partnercentral:GetOpportunity", 
+                        "partnercentral:ListEngagementInvitations", 
+                        "partnercentral:ListOpportunities", 
+                        "partnercentral:ListSolutions", 
+                        "partnercentral:RejectEngagementInvitation", 
+                        "partnercentral:StartEngagementByAcceptingInvitationTask", 
+                        "partnercentral:StartEngagementFromOpportunityTask", 
+                        "partnercentral:SubmitOpportunity", 
+                        "partnercentral:UpdateOpportunity"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "OpportunityManagement"
+                }, 
+                {
+                    "Action": [
+                        "aws-marketplace:ListEntities"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ListingAWSMarketplaceEntities"
+                }, 
+                {
+                    "Action": [
+                        "aws-marketplace:DescribeEntity"
+                    ], 
+                    "Resource": [
+                        "arn:aws:aws-marketplace:*:*:AWSMarketplace/Offer/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AWSMarketplaceOffersAccess"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}

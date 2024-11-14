@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-07-18T17:05:12Z", 
-        "VersionId": "v8", 
+        "CreateDate": "2024-11-14T19:09:39Z", 
+        "VersionId": "v9", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -88,7 +88,8 @@
                         "logs:FilterLogEvents"
                     ], 
                     "Resource": [
-                        "arn:aws:logs:*:*:log-group:/aws/lambda/amplify-*:*"
+                        "arn:aws:logs:*:*:log-group:/aws/lambda/amplify-*:*", 
+                        "arn:aws:logs:*:*:log-group:amplify-*:*"
                     ], 
                     "Effect": "Allow", 
                     "Sid": "AmplifySandboxLambdaLogsStreamingFilterLogEvents"
