@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2021-06-16T15:37:37Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2024-11-13T22:53:54Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -10,7 +10,8 @@
                         "kms:SynchronizeMultiRegionKey"
                     ], 
                     "Resource": "*", 
-                    "Effect": "Allow"
+                    "Effect": "Allow", 
+                    "Sid": "KMSSynchronizeMultiRegionKey"
                 }
             ]
         }, 
