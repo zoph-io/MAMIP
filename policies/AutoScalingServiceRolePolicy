@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-02-29T17:48:58Z", 
-        "VersionId": "v8", 
+        "CreateDate": "2024-11-15T17:10:25Z", 
+        "VersionId": "v9", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -118,6 +118,14 @@
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Sid": "VpcLatticeManagement"
+                }, 
+                {
+                    "Action": [
+                        "resource-groups:ListGroupResources"
+                    ], 
+                    "Resource": "arn:*:resource-groups:*:*:group/*", 
+                    "Effect": "Allow", 
+                    "Sid": "ResourceGroupsManagement"
                 }
             ]
         }, 
