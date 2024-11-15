@@ -1,0 +1,39 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-11-06T21:55:56Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "NotAction": [
+                        "s3:DeleteBucketPolicy", 
+                        "s3:PutBucketPolicy", 
+                        "s3:GetBucketPolicy", 
+                        "s3:ListAllMyBuckets"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Deny", 
+                    "Sid": "DenyAllOtherActionsOnAnyResource"
+                }, 
+                {
+                    "Action": [
+                        "s3:DeleteBucketPolicy", 
+                        "s3:PutBucketPolicy", 
+                        "s3:GetBucketPolicy", 
+                        "s3:ListAllMyBuckets"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Deny", 
+                    "Condition": {
+                        "StringNotLike": {
+                            "aws:PrincipalArn": "arn:aws:iam::*:root"
+                        }
+                    }, 
+                    "Sid": "DenyManagingBucketPolicyForNonRootCallers"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}

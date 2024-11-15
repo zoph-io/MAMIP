@@ -1,0 +1,54 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-11-06T21:51:02Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "NotAction": [
+                        "sqs:SetQueueAttributes", 
+                        "sqs:GetQueueAttributes", 
+                        "sqs:ListQueues", 
+                        "sqs:GetQueueUrl"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Deny", 
+                    "Sid": "DenyAllOtherActionsOnAnyResource"
+                }, 
+                {
+                    "Action": [
+                        "sqs:GetQueueAttributes"
+                    ], 
+                    "Resource": "arn:aws:sqs:*:*:*", 
+                    "Effect": "Deny", 
+                    "Condition": {
+                        "StringNotEqualsIfExists": {
+                            "aws:ResourceAccount": [
+                                "${aws:PrincipalAccount}"
+                            ]
+                        }
+                    }, 
+                    "Sid": "DenyGettingQueueAttributesOnNonOwnQueue"
+                }, 
+                {
+                    "Action": [
+                        "sqs:SetQueueAttributes", 
+                        "sqs:GetQueueAttributes", 
+                        "sqs:ListQueues", 
+                        "sqs:GetQueueUrl"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Deny", 
+                    "Condition": {
+                        "StringNotLike": {
+                            "aws:PrincipalArn": "arn:aws:iam::*:root"
+                        }
+                    }, 
+                    "Sid": "DenyActionsForNonRootUser"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
