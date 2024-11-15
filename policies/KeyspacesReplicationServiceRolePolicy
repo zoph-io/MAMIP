@@ -1,19 +1,58 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2023-05-02T16:15:49Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2024-11-15T20:55:16Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": [
                         "cassandra:Select", 
-                        "cassandra:SelectMultiRegionResource", 
                         "cassandra:Modify", 
-                        "cassandra:ModifyMultiRegionResource"
+                        "cassandra:Alter", 
+                        "cassandra:ModifyMultiRegionResource", 
+                        "cassandra:SelectMultiRegionResource", 
+                        "cassandra:AlterMultiRegionResource", 
+                        "application-autoscaling:RegisterScalableTarget", 
+                        "application-autoscaling:DeregisterScalableTarget", 
+                        "application-autoscaling:DescribeScalableTargets", 
+                        "application-autoscaling:DescribeScalingPolicies", 
+                        "application-autoscaling:PutScalingPolicy"
                     ], 
                     "Resource": "*", 
-                    "Effect": "Allow"
+                    "Effect": "Allow", 
+                    "Sid": "KeyspacesActionsNeededForSteadyStateReplication"
+                }, 
+                {
+                    "Action": [
+                        "cloudwatch:DeleteAlarms"
+                    ], 
+                    "Resource": "arn:aws:cloudwatch:*:*:alarm:TargetTracking-*", 
+                    "Effect": "Allow", 
+                    "Sid": "CWDeleteAlarmPolicy"
+                }, 
+                {
+                    "Action": [
+                        "cloudwatch:DescribeAlarms"
+                    ], 
+                    "Resource": "arn:aws:cloudwatch:*:*:alarm:*", 
+                    "Effect": "Allow", 
+                    "Sid": "CWDescribeAlarmPolicy"
+                }, 
+                {
+                    "Action": [
+                        "cloudwatch:PutMetricAlarm"
+                    ], 
+                    "Resource": "arn:aws:cloudwatch:*:*:alarm:TargetTracking-*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ForAllValues:StringLike": {
+                            "cloudwatch:AlarmActions": [
+                                "arn:aws:autoscaling:*:*:scalingPolicy:*:resource/cassandra/keyspace/*/table/*:policyName/*:createdBy/*"
+                            ]
+                        }
+                    }, 
+                    "Sid": "CWPutMetricAlarmPolicy"
                 }
             ]
         }, 

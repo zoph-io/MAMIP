@@ -1,0 +1,56 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-11-15T21:55:57Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "ssm:GetAutomationExecution"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/QuickSetupDocument": "AWSQuickSetupType-SSM"
+                        }
+                    }
+                }, 
+                {
+                    "Action": "iam:PassRole", 
+                    "Resource": "arn:aws:iam::*:role/AWS-QuickSetup-SSM-ManageResources*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:ResourceTag/QuickSetupDocument": [
+                                "AWSQuickSetupType-SSM"
+                            ], 
+                            "iam:PassedToService": [
+                                "ssm.amazonaws.com"
+                            ]
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "ssm:StartAutomationExecution", 
+                        "ssm:AddTagsToResource"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ssm:*:*:automation-definition/AWSQuickSetupType-SSM-ManageResources*", 
+                        "arn:aws:ssm:*:*:automation-execution/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/QuickSetupDocument": "AWSQuickSetupType-SSM", 
+                            "aws:RequestTag/QuickSetupDocument": "AWSQuickSetupType-SSM"
+                        }
+                    }
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
