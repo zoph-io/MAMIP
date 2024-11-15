@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2022-09-14T19:46:49Z", 
-        "VersionId": "v14", 
+        "CreateDate": "2024-11-15T14:08:27Z", 
+        "VersionId": "v15", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -216,6 +216,11 @@
                 {
                     "Action": "securityhub:DescribeHub", 
                     "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
+                {
+                    "Action": "resource-explorer-2:CreateManagedView", 
+                    "Resource": "arn:aws:resource-explorer-2:*:*:managed-view/AWSManagedViewForSSM*", 
                     "Effect": "Allow"
                 }
             ]
