@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-08-12T14:32:20Z", 
-        "VersionId": "v2", 
+        "CreateDate": "2024-11-18T13:06:59Z", 
+        "VersionId": "v3", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -20,6 +20,19 @@
                     "Resource": "arn:aws:ssm:*:*:resource-data-sync/AWS-QuickSetup-*", 
                     "Effect": "Allow", 
                     "Sid": "SSMResourceDataSyncGetOpsSummaryPermissions"
+                }, 
+                {
+                    "Action": [
+                        "ssm:DeleteResourceDataSync"
+                    ], 
+                    "Resource": "arn:aws:ssm:*:*:resource-data-sync/AWS-QuickSetup-*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "ssm:SyncType": "SyncFromSource"
+                        }
+                    }, 
+                    "Sid": "SSMResourceDataSyncManagePermissions"
                 }, 
                 {
                     "Action": [
@@ -44,11 +57,13 @@
                 }, 
                 {
                     "Action": [
+                        "organizations:ListAccounts", 
                         "organizations:ListRoots", 
                         "organizations:ListAWSServiceAccessForOrganization", 
                         "organizations:ListDelegatedAdministrators", 
                         "organizations:ListAccountsForParent", 
-                        "organizations:ListOrganizationalUnitsForParent"
+                        "organizations:ListOrganizationalUnitsForParent", 
+                        "organizations:ListDelegatedServicesForAccount"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
@@ -56,11 +71,13 @@
                 }, 
                 {
                     "Action": [
+                        "cloudformation:DescribeStackInstance", 
                         "cloudformation:DescribeStackSet", 
                         "cloudformation:DescribeStackSetOperation", 
                         "cloudformation:ListStackInstances", 
                         "cloudformation:ListStackSetOperations", 
-                        "cloudformation:ListStackSetOperationResults"
+                        "cloudformation:ListStackSetOperationResults", 
+                        "cloudformation:GetTemplate"
                     ], 
                     "Resource": [
                         "arn:aws:cloudformation:*:*:stackset/AWS-QuickSetup-*", 
@@ -92,6 +109,17 @@
                         }
                     }, 
                     "Sid": "QuickSetupStackSetDeletePermissions"
+                }, 
+                {
+                    "Action": [
+                        "cloudformation:DescribeStacks", 
+                        "cloudformation:ListStacks"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "QuickSetupCfnStacksDescribePermissions"
                 }
             ]
         }, 
