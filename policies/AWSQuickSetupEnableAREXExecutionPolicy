@@ -1,0 +1,69 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-11-15T22:45:53Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "resource-explorer-2:GetDefaultView", 
+                        "resource-explorer-2:GetIndex", 
+                        "resource-explorer-2:ListIndexes", 
+                        "resource-explorer-2:ListViews"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowReadActions"
+                }, 
+                {
+                    "Action": [
+                        "resource-explorer-2:UpdateIndexType", 
+                        "resource-explorer-2:AssociateDefaultView"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowUpdateExistingIndexAndAssociateDefaultView"
+                }, 
+                {
+                    "Action": [
+                        "resource-explorer-2:CreateView", 
+                        "resource-explorer-2:CreateIndex", 
+                        "resource-explorer-2:TagResource"
+                    ], 
+                    "Resource": [
+                        "arn:aws:resource-explorer-2:*:*:view/all-resources/*", 
+                        "arn:aws:resource-explorer-2:*:*:index/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/Type": "QuickSetup", 
+                            "aws:RequestTag/Type": "QuickSetup"
+                        }, 
+                        "ForAllValues:StringEquals": {
+                            "aws:TagKeys": "Type"
+                        }
+                    }, 
+                    "Sid": "AllowCreateViewAndIndex"
+                }, 
+                {
+                    "Action": [
+                        "iam:CreateServiceLinkedRole"
+                    ], 
+                    "Resource": "arn:aws:iam::*:role/aws-service-role/resource-explorer-2.amazonaws.com/AWSServiceRoleForResourceExplorer", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:AWSServiceName": [
+                                "resource-explorer-2.amazonaws.com"
+                            ]
+                        }
+                    }, 
+                    "Sid": "AllowCreateServiceLinkedRole"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}

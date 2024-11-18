@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-10-29T22:39:46Z", 
-        "VersionId": "v4", 
+        "CreateDate": "2024-11-16T17:42:18Z", 
+        "VersionId": "v5", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -11,15 +11,52 @@
                         "ec2:DeleteNetworkInterface", 
                         "ec2:DetachNetworkInterface", 
                         "ec2:ModifyNetworkInterfaceAttribute", 
+                        "ec2:CreateSecurityGroup", 
+                        "ec2:CreateNetworkInterfacePermission"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
+                {
+                    "Action": [
+                        "ec2:DescribeAccountAttributes", 
+                        "ec2:DescribeAddresses", 
+                        "ec2:DescribeAvailabilityZones", 
+                        "ec2:DescribeCoipPools", 
                         "ec2:DescribeInstances", 
+                        "ec2:DescribeInstanceTypeOfferings", 
+                        "ec2:DescribeInstanceTypes", 
+                        "ec2:DescribeInternetGateways", 
+                        "ec2:DescribeLaunchTemplates", 
                         "ec2:DescribeNetworkInterfaces", 
                         "ec2:DescribeSecurityGroups", 
+                        "ec2:DescribeSnapshots", 
+                        "ec2:DescribeSpotPriceHistory", 
                         "ec2:DescribeSubnets", 
+                        "ec2:DescribeTags", 
+                        "ec2:DescribeVolumes", 
+                        "ec2:DescribeVolumesModifications", 
+                        "ec2:DescribeVpcPeeringConnections", 
                         "ec2:DescribeVpcs", 
-                        "ec2:CreateNetworkInterfacePermission", 
+                        "ec2:GetCoipPoolUsage", 
+                        "ec2:GetSecurityGroupsForVpc", 
+                        "eks:DescribeCluster", 
+                        "elasticloadbalancing:DescribeListenerAttributes", 
+                        "elasticloadbalancing:DescribeListenerCertificates", 
+                        "elasticloadbalancing:DescribeListeners", 
+                        "elasticloadbalancing:DescribeLoadBalancerAttributes", 
+                        "elasticloadbalancing:DescribeLoadBalancers", 
+                        "elasticloadbalancing:DescribeRules", 
+                        "elasticloadbalancing:DescribeSSLPolicies", 
+                        "elasticloadbalancing:DescribeTags", 
+                        "elasticloadbalancing:DescribeTargetGroupAttributes", 
+                        "elasticloadbalancing:DescribeTargetGroups", 
+                        "elasticloadbalancing:DescribeTargetHealth", 
+                        "elasticloadbalancing:DescribeTrustStores", 
                         "iam:ListAttachedRolePolicies", 
-                        "ec2:CreateSecurityGroup", 
-                        "ec2:GetSecurityGroupsForVpc"
+                        "pricing:GetProducts", 
+                        "shield:GetSubscriptionState", 
+                        "tag:GetResources"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow"
@@ -104,6 +141,162 @@
                     "Condition": {
                         "StringLike": {
                             "cloudwatch:namespace": "AWS/EKS"
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "eks:CreateAccessEntry", 
+                        "eks:DeleteAccessEntry"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ArnLike": {
+                            "eks:principalArn": "arn:aws:iam::*:role/aws-service-role/eks.amazonaws.com/AWSServiceRoleForAmazonEKS"
+                        }, 
+                        "StringEquals": {
+                            "eks:accessEntryType": "STANDARD"
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "eks:ListAssociatedAccessPolicies"
+                    ], 
+                    "Resource": "arn:aws:eks:*:*:access-entry/*/role/${aws:PrincipalAccount}/AWSServiceRoleForAmazonEKS/*", 
+                    "Effect": "Allow"
+                }, 
+                {
+                    "Action": [
+                        "eks:AssociateAccessPolicy", 
+                        "eks:DisassociateAccessPolicy"
+                    ], 
+                    "Resource": "arn:aws:eks:*:*:access-entry/*/role/${aws:PrincipalAccount}/AWSServiceRoleForAmazonEKS/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "eks:policyArn": [
+                                "arn:aws:eks::aws:cluster-access-policy/AmazonEKSComputePolicy", 
+                                "arn:aws:eks::aws:cluster-access-policy/AmazonEKSComputeClusterPolicy", 
+                                "arn:aws:eks::aws:cluster-access-policy/AmazonEKSNetworkingPolicy", 
+                                "arn:aws:eks::aws:cluster-access-policy/AmazonEKSNetworkingClusterPolicy", 
+                                "arn:aws:eks::aws:cluster-access-policy/AmazonEKSLoadBalancingPolicy", 
+                                "arn:aws:eks::aws:cluster-access-policy/AmazonEKSLoadBalancingClusterPolicy", 
+                                "arn:aws:eks::aws:cluster-access-policy/AmazonEKSBlockStoragePolicy", 
+                                "arn:aws:eks::aws:cluster-access-policy/AmazonEKSBlockStorageClusterPolicy", 
+                                "arn:aws:eks::aws:cluster-access-policy/AmazonEKSHybridPolicy"
+                            ]
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "ec2:DeleteNetworkInterface"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "aws:ResourceTag/eks:eks-cluster-name": "*"
+                        }
+                    }
+                }, 
+                {
+                    "Action": "eks:DescribeAccessEntry", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "eks:accessEntryType": "EC2"
+                        }
+                    }
+                }, 
+                {
+                    "Action": "events:PutRule", 
+                    "Resource": "arn:aws:events:*:*:rule/EKS*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "events:ManagedBy": [
+                                "eks.amazonaws.com"
+                            ]
+                        }, 
+                        "ForAllValues:StringEquals": {
+                            "events:source": [
+                                "aws.ec2", 
+                                "aws.health"
+                            ]
+                        }
+                    }
+                }, 
+                {
+                    "Action": "events:PutTargets", 
+                    "Resource": "arn:aws:events:*:*:rule/EKS*", 
+                    "Effect": "Allow"
+                }, 
+                {
+                    "Action": [
+                        "iam:GetInstanceProfile", 
+                        "iam:CreateInstanceProfile", 
+                        "iam:DeleteInstanceProfile", 
+                        "iam:RemoveRoleFromInstanceProfile"
+                    ], 
+                    "Resource": "arn:aws:iam::*:instance-profile/eks*", 
+                    "Effect": "Allow"
+                }, 
+                {
+                    "Action": [
+                        "ec2:DeleteLaunchTemplate", 
+                        "ec2:TerminateInstances"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "aws:ResourceTag/eks:eks-cluster-name": "*"
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "ec2:DeleteVolume"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "aws:ResourceTag/eks:eks-cluster-name": "*"
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "ec2:DeleteSnapshot"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "aws:ResourceTag/eks:eks-cluster-name": "*"
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "elasticloadbalancing:DeleteListener", 
+                        "elasticloadbalancing:DeleteRule", 
+                        "elasticloadbalancing:DeregisterTargets", 
+                        "elasticloadbalancing:DeleteLoadBalancer", 
+                        "elasticloadbalancing:DeleteTargetGroup", 
+                        "ec2:DeleteSecurityGroup", 
+                        "shield:DescribeProtection"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "aws:ResourceTag/eks:eks-cluster-name": "*"
                         }
                     }
                 }

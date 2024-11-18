@@ -1,0 +1,106 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-11-16T00:14:44Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "ssm:DescribeAutomationExecutions", 
+                        "ssm:DescribeAutomationStepExecutions", 
+                        "ssm:GetAutomationExecution"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowReadOnlyAccessSSMResource"
+                }, 
+                {
+                    "Action": [
+                        "ssm:StartAutomationExecution"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ssm:*:*:automation-definition/AWS-OrchestrateUnmanagedEC2Actions:*", 
+                        "arn:aws:ssm:*:*:automation-definition/AWS-RemediateSSMAgent*:*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowExecuteSSMAutomation"
+                }, 
+                {
+                    "Action": [
+                        "kms:Decrypt", 
+                        "kms:GenerateDataKey"
+                    ], 
+                    "Resource": "arn:aws:kms:*:*:key/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "kms:ViaService": "s3.*.amazonaws.com"
+                        }, 
+                        "ArnLike": {
+                            "kms:EncryptionContext:aws:s3:arn": "arn:aws:s3:::do-not-delete-ssm-diagnosis-*"
+                        }, 
+                        "StringEquals": {
+                            "aws:ResourceTag/SystemsManagerManaged": "true"
+                        }, 
+                        "Bool": {
+                            "aws:ViaAWSService": "true"
+                        }
+                    }, 
+                    "Sid": "AllowKMSOperations"
+                }, 
+                {
+                    "Action": "sts:AssumeRole", 
+                    "Resource": "arn:aws:iam::*:role/AWS-SSM-RemediationExecutionRole*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "AllowAssumeRemediationExecutionRoleWithinAccount"
+                }, 
+                {
+                    "Action": "iam:PassRole", 
+                    "Resource": "arn:aws:iam::*:role/AWS-SSM-RemediationAdminRole*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:PassedToService": "ssm.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "AllowPassRoleOnSelfToSsm"
+                }, 
+                {
+                    "Action": [
+                        "s3:PutObject", 
+                        "s3:GetObject", 
+                        "s3:DeleteObject"
+                    ], 
+                    "Resource": "arn:aws:s3:::do-not-delete-ssm-diagnosis-*/actions/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "AllowReadWriteToSsmDiagnosisBucketInSameAccount"
+                }, 
+                {
+                    "Action": [
+                        "s3:ListBucket"
+                    ], 
+                    "Resource": "arn:aws:s3:::do-not-delete-ssm-diagnosis-*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "AllowListBucketOnSsmDiagnosisBucketInSameAccount"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}

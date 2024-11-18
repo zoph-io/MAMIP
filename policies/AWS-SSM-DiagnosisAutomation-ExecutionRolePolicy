@@ -1,0 +1,81 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-11-16T00:08:07Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "ec2:DescribeVpcs", 
+                        "ec2:DescribeVpcAttribute", 
+                        "ec2:DescribeVpcEndpoints", 
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:DescribeInstances", 
+                        "ec2:DescribeInternetGateways"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowReadOnlyAccessEC2Resource"
+                }, 
+                {
+                    "Action": [
+                        "ssm:DescribeAutomationStepExecutions", 
+                        "ssm:DescribeInstanceInformation", 
+                        "ssm:DescribeAutomationExecutions", 
+                        "ssm:GetAutomationExecution"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowReadOnlyAccessSSMResource"
+                }, 
+                {
+                    "Action": [
+                        "ssm:StartAutomationExecution"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ssm:*:*:automation-definition/AWS-*UnmanagedEC2*:*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowExecuteSSMAutomation"
+                }, 
+                {
+                    "Action": [
+                        "kms:Decrypt", 
+                        "kms:GenerateDataKey"
+                    ], 
+                    "Resource": "arn:aws:kms:*:*:key/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "kms:ViaService": "s3.*.amazonaws.com"
+                        }, 
+                        "ArnLike": {
+                            "kms:EncryptionContext:aws:s3:arn": "arn:aws:s3:::do-not-delete-ssm-diagnosis-*"
+                        }, 
+                        "StringEquals": {
+                            "aws:ResourceTag/SystemsManagerManaged": "true"
+                        }, 
+                        "Bool": {
+                            "aws:ViaAWSService": "true"
+                        }
+                    }, 
+                    "Sid": "AllowKMSOperations"
+                }, 
+                {
+                    "Action": "iam:PassRole", 
+                    "Resource": "arn:aws:iam::*:role/AWS-SSM-DiagnosisExecutionRole*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:PassedToService": "ssm.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "AllowPassRoleOnSelfToSsm"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}

@@ -1,0 +1,100 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-11-15T23:31:17Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "s3:PutObject", 
+                        "s3:GetObject", 
+                        "s3:DeleteObject"
+                    ], 
+                    "Resource": "arn:aws:s3:::do-not-delete-ssm-diagnosis-*/actions/*/${aws:PrincipalAccount}/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "AllowReadWriteToSsmDiagnosisBucketInSameAccount"
+                }, 
+                {
+                    "Action": [
+                        "s3:PutObject", 
+                        "s3:GetObject", 
+                        "s3:DeleteObject"
+                    ], 
+                    "Resource": "arn:aws:s3:::do-not-delete-ssm-diagnosis-*/actions/*/${aws:PrincipalAccount}/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceOrgId": "${aws:PrincipalOrgId}"
+                        }
+                    }, 
+                    "Sid": "AllowReadWriteToSsmDiagnosisBucketWithinOrg"
+                }, 
+                {
+                    "Action": [
+                        "s3:ListBucket"
+                    ], 
+                    "Resource": "arn:aws:s3:::do-not-delete-ssm-diagnosis-*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "s3:prefix": "*/${aws:PrincipalAccount}/*"
+                        }, 
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "AllowReadOnlyAccessListBucketOnSsmDiagnosisBucketInSameAccount"
+                }, 
+                {
+                    "Action": [
+                        "s3:ListBucket"
+                    ], 
+                    "Resource": "arn:aws:s3:::do-not-delete-ssm-diagnosis-*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "s3:prefix": "*/${aws:PrincipalAccount}/*"
+                        }, 
+                        "StringEquals": {
+                            "aws:ResourceOrgId": "${aws:PrincipalOrgId}"
+                        }
+                    }, 
+                    "Sid": "AllowReadOnlyAccessListBucketOnSsmDiagnosisBucketWithinOrg"
+                }, 
+                {
+                    "Action": [
+                        "s3:GetEncryptionConfiguration"
+                    ], 
+                    "Resource": "arn:aws:s3:::do-not-delete-ssm-diagnosis-*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "AllowGetEncryptionConfigurationOnSsmDiagnosisBucketInSameAccount"
+                }, 
+                {
+                    "Action": [
+                        "s3:GetEncryptionConfiguration"
+                    ], 
+                    "Resource": "arn:aws:s3:::do-not-delete-ssm-diagnosis-*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceOrgId": "${aws:PrincipalOrgId}"
+                        }
+                    }, 
+                    "Sid": "AllowGetEncryptionConfigurationOnSsmDiagnosisBucketWithinOrg"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}

@@ -1,0 +1,32 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-11-16T00:11:14Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "organizations:ListRoots", 
+                        "organizations:ListChildren"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowReadOnlyAccessOrganization"
+                }, 
+                {
+                    "Action": "sts:AssumeRole", 
+                    "Resource": "arn:aws:iam::*:role/AWS-SSM-DiagnosisExecutionRole*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceOrgId": "${aws:PrincipalOrgId}"
+                        }
+                    }, 
+                    "Sid": "AllowAssumeDiagnosisExecutionRoleWithinOrg"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
