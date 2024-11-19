@@ -1,0 +1,51 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-11-18T23:33:28Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "iam:PassRole"
+                    ], 
+                    "Resource": "arn:aws:iam::*:role/PartnerCentralRoleFor*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:PassedToService": "partnercentral-account-management.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "PassAWSPartnerCentralRole"
+                }, 
+                {
+                    "Action": [
+                        "iam:ListRoles", 
+                        "Partnercentral-account-management:AssociatePartnerUser", 
+                        "Partnercentral-account-management:DisassociatePartnerUser"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "PartnerUserRoleAssociation"
+                }, 
+                {
+                    "Action": [
+                        "partnercentral:*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "partnercentral:Catalog": [
+                                "AWS", 
+                                "Sandbox"
+                            ]
+                        }
+                    }, 
+                    "Sid": "AWSPartnerCentralAccess"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
