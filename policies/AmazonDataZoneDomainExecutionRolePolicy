@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-08-01T18:25:12Z", 
-        "VersionId": "v8", 
+        "CreateDate": "2024-11-19T18:51:47Z", 
+        "VersionId": "v9", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -30,6 +30,7 @@
                         "datazone:CreateListingChangeSet", 
                         "datazone:CreateProject", 
                         "datazone:CreateProjectMembership", 
+                        "datazone:CreateRule", 
                         "datazone:CreateSubscriptionGrant", 
                         "datazone:CreateSubscriptionRequest", 
                         "datazone:DeleteAsset", 
@@ -47,6 +48,7 @@
                         "datazone:DeleteListing", 
                         "datazone:DeleteProject", 
                         "datazone:DeleteProjectMembership", 
+                        "datazone:DeleteRule", 
                         "datazone:DeleteSubscriptionGrant", 
                         "datazone:DeleteSubscriptionRequest", 
                         "datazone:DeleteSubscriptionTarget", 
@@ -73,6 +75,7 @@
                         "datazone:GetListing", 
                         "datazone:GetMetadataGenerationRun", 
                         "datazone:GetProject", 
+                        "datazone:GetRule", 
                         "datazone:GetSubscription", 
                         "datazone:GetSubscriptionEligibility", 
                         "datazone:GetSubscriptionGrant", 
@@ -102,6 +105,7 @@
                         "datazone:ListPolicyGrants", 
                         "datazone:ListProjectMemberships", 
                         "datazone:ListProjects", 
+                        "datazone:ListRules", 
                         "datazone:ListSubscriptionGrants", 
                         "datazone:ListSubscriptionRequests", 
                         "datazone:ListSubscriptionTargets", 
@@ -116,6 +120,7 @@
                         "datazone:Search", 
                         "datazone:SearchGroupProfiles", 
                         "datazone:SearchListings", 
+                        "datazone:SearchRules", 
                         "datazone:SearchTypes", 
                         "datazone:SearchUserProfiles", 
                         "datazone:StartDataSourceRun", 
@@ -130,6 +135,7 @@
                         "datazone:UpdateGlossary", 
                         "datazone:UpdateGlossaryTerm", 
                         "datazone:UpdateProject", 
+                        "datazone:UpdateRule", 
                         "datazone:UpdateSubscriptionGrantStatus", 
                         "datazone:UpdateSubscriptionRequest"
                     ], 
