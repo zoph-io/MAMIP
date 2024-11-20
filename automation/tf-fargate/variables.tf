@@ -29,6 +29,10 @@ variable "qtweeter_sqs_name" {
   default = "qtweet-mamip-sqs-queue"
 }
 
+variable "qbsky_sqs_name" {
+  default = "qbsky-mamip-prod-sqs-queue"
+}
+
 variable "qmasto_sqs_name" {
   default = "qmasto-development-sqs-queue"
 }

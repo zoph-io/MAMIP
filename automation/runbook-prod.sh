@@ -79,9 +79,17 @@ push_changes() {
         MESSAGE="{\"UpdatedPolicies\": \"$RAW_DIFF\", \"CommitUrl\": \"https://github.com/zoph-io/MAMIP/commit/$COMMIT_ID\", \"Date\": \"$DATE\", \"CommitId\": \"$COMMIT_ID\"}"
         MESSAGE_BODY="$TWEET_DIFF https://github.com/z0ph/MAMIP/commit/$COMMIT_ID"
 
+        # X/Twitter
         aws sqs send-message --queue-url "https://sqs.eu-west-1.amazonaws.com/567589703415/qtweet-mamip-sqs-queue.fifo" --message-body "$MESSAGE_BODY" --message-group-id 1
-        aws sqs send-message --queue-url "https://sqs.eu-west-1.amazonaws.com/567589703415/qmasto-development-sqs-queue.fifo" --message-body "$MESSAGE_BODY" --message-group-id 1
+
+        # Bluesky - arn:aws:sqs:eu-west-1:567589703415:qbsky-mamip-prod-sqs-queue.fifo
+        aws sqs send-message --queue-url "https://sqs.eu-west-1.amazonaws.com/567589703415/qbsky-mamip-prod-sqs-queue.fifo" --message-body "$MESSAGE_BODY" --message-group-id 1
+
+        # SNS
         aws sns publish --topic-arn "$SNS_TOPIC_ARN" --message "$MESSAGE" --region "$REGION"
+
+        # Mastodon (deprecated soon)
+        aws sqs send-message --queue-url "https://sqs.eu-west-1.amazonaws.com/567589703415/qmasto-development-sqs-queue.fifo" --message-body "$MESSAGE_BODY" --message-group-id 1
 
         log "Pushing changes to master"
         git push origin master --tags
