@@ -1,0 +1,42 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-11-20T21:56:22Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "ssm:GetParameter"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ssm:*:*:parameter/amazon/datazone/profiles/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "SSMGetParameterStatement"
+                }, 
+                {
+                    "Action": [
+                        "kms:Decrypt"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "kms:EncryptionContext:PARAMETER_ARN": "arn:aws:ssm:*:*:parameter/amazon/datazone/profiles*", 
+                            "kms:ViaService": "ssm.*.amazonaws.com"
+                        }, 
+                        "Null": {
+                            "aws:ResourceTag/EnableKeyForAmazonDataZone": "false"
+                        }, 
+                        "StringEquals": {
+                            "aws:ResourceTag/EnableKeyForAmazonDataZone": "true"
+                        }
+                    }, 
+                    "Sid": "UseKMSKeyPermissionsStatement"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
