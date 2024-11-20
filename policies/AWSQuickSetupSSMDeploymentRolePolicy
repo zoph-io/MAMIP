@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-11-15T22:53:20Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2024-11-20T12:43:56Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -27,7 +27,8 @@
                         "cloudformation:DescribeChangeSet", 
                         "cloudformation:DescribeStackResourceDrifts", 
                         "cloudformation:DetectStackDrift", 
-                        "cloudformation:DetectStackResourceDrift"
+                        "cloudformation:DetectStackResourceDrift", 
+                        "cloudformation:DescribeStackEvents"
                     ], 
                     "Resource": [
                         "arn:aws:cloudformation:*:*:stack/StackSet-AWS-QuickSetup-SSM-*"
