@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-03-15T20:00:47Z", 
-        "VersionId": "v13", 
+        "CreateDate": "2024-11-20T18:06:07Z", 
+        "VersionId": "v14", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -229,6 +229,23 @@
                     ], 
                     "Effect": "Allow", 
                     "Sid": "ServiceQuotasToCheckCustomerLimits"
+                }, 
+                {
+                    "Action": [
+                        "glue:GetCatalog", 
+                        "glue:GetCatalogs"
+                    ], 
+                    "Resource": [
+                        "arn:aws:glue:*:*:catalog", 
+                        "arn:aws:glue:*:*:catalog/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "Bool": {
+                            "glue:EnabledForRedshiftAutoDiscovery": "true"
+                        }
+                    }, 
+                    "Sid": "DiscoverRedshiftCatalogs"
                 }
             ]
         }, 

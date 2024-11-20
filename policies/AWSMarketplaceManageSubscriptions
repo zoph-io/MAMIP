@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2023-01-19T23:45:29Z", 
-        "VersionId": "v3", 
+        "CreateDate": "2024-11-20T19:22:33Z", 
+        "VersionId": "v4", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -29,6 +29,24 @@
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow"
+                }, 
+                {
+                    "Action": [
+                        "aws-marketplace:UpdatePurchaseOrders", 
+                        "aws-marketplace:ListAgreementCharges"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "Null": {
+                            "aws-marketplace:AgreementType": "false"
+                        }, 
+                        "ForAllValues:StringEquals": {
+                            "aws-marketplace:AgreementType": [
+                                "PurchaseAgreement"
+                            ]
+                        }
+                    }
                 }
             ]
         }, 
