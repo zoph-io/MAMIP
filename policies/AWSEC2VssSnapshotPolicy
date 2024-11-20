@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-03-27T16:32:53Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2024-11-20T17:44:08Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -14,8 +14,8 @@
                     ], 
                     "Effect": "Allow", 
                     "Condition": {
-                        "StringLike": {
-                            "ec2:SourceInstanceARN": "*${ec2:InstanceId}"
+                        "ArnLike": {
+                            "ec2:SourceInstanceARN": "arn:aws:ec2:*:*:instance/${ec2:InstanceId}"
                         }
                     }, 
                     "Sid": "DescribeInstanceInfo"
@@ -44,8 +44,8 @@
                     ], 
                     "Effect": "Allow", 
                     "Condition": {
-                        "StringLike": {
-                            "ec2:SourceInstanceARN": "*${ec2:InstanceId}"
+                        "ArnLike": {
+                            "ec2:SourceInstanceARN": "arn:aws:ec2:*:*:instance/${ec2:InstanceId}"
                         }
                     }, 
                     "Sid": "CreateSnapshotsAccessInstance"
@@ -85,8 +85,8 @@
                     ], 
                     "Effect": "Allow", 
                     "Condition": {
-                        "StringLike": {
-                            "ec2:SourceInstanceARN": "*${ec2:InstanceId}"
+                        "ArnLike": {
+                            "ec2:SourceInstanceARN": "arn:aws:ec2:*:*:instance/${ec2:InstanceId}"
                         }
                     }, 
                     "Sid": "CreateImageAccessInstance"
