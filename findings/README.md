@@ -1,6 +1,6 @@
 ## AWS Access Analyzer - Findings - 2024-11-20
 
-- Policies analyzed: `1281`
+- Policies analyzed: `1287`
 - Errors: `1`
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
 - Sec_Warnings: `11`
@@ -13,7 +13,7 @@
   - [`AmazonDynamoDBFullAccesswithDataPipeline`](./AmazonDynamoDBFullAccesswithDataPipeline.json)
   - [`AdministratorAccess`](./AdministratorAccess.json)
   - [`AWSProtonCodeBuildProvisioningServiceRolePolicy`](./AWSProtonCodeBuildProvisioningServiceRolePolicy.json)
-- Suggestions: `40`
+- Suggestions: `42`
   - [`SupportUser`](./SupportUser.json)
   - [`AmazonElasticMapReduceFullAccess`](./AmazonElasticMapReduceFullAccess.json)
   - [`AmazonLaunchWizardFullAccessV2`](./AmazonLaunchWizardFullAccessV2.json)
@@ -37,10 +37,11 @@
   - [`NeptuneConsoleFullAccess`](./NeptuneConsoleFullAccess.json)
   - [`AWSElasticBeanstalkWebTier`](./AWSElasticBeanstalkWebTier.json)
   - [`AmazonDataZoneEnvironmentRolePermissionsBoundary`](./AmazonDataZoneEnvironmentRolePermissionsBoundary.json)
+  - [`SageMakerStudioProjectRoleMachineLearningPolicy`](./SageMakerStudioProjectRoleMachineLearningPolicy.json)
   - [`AmazonSecurityLakeMetastoreManager`](./AmazonSecurityLakeMetastoreManager.json)
   - [`AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy.json)
   - [`AmazonCodeGuruReviewerServiceRolePolicy`](./AmazonCodeGuruReviewerServiceRolePolicy.json)
-- Warnings: `20`
+- Warnings: `21`
   - [`AmazonSageMakerFullAccess`](./AmazonSageMakerFullAccess.json)
   - [`IAMFullAccess`](./IAMFullAccess.json)
   - [`AdministratorAccess-Amplify`](./AdministratorAccess-Amplify.json)
@@ -56,15 +57,19 @@
   - [`AmazonDataZoneEnvironmentRolePermissionsBoundary`](./AmazonDataZoneEnvironmentRolePermissionsBoundary.json)
   - [`AWSOrganizationsServiceTrustPolicy`](./AWSOrganizationsServiceTrustPolicy.json)
   - [`PowerUserAccess`](./PowerUserAccess.json)
+  - [`SageMakerStudioProjectRoleMachineLearningPolicy`](./SageMakerStudioProjectRoleMachineLearningPolicy.json)
   - [`AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy.json)
   - [`AdministratorAccess`](./AdministratorAccess.json)
   - [`AmazonRDSCustomPreviewServiceRolePolicy`](./AmazonRDSCustomPreviewServiceRolePolicy.json)
   - [`AmazonDataZoneSageMakerEnvironmentRolePermissionsBoundary`](./AmazonDataZoneSageMakerEnvironmentRolePermissionsBoundary.json)
-- Fails: `4`
+- Fails: `7`
+  - [`SageMakerStudioProjectProvisioningRolePolicy`](./fails.txt)
+  - [`SageMakerStudioProjectUserRolePolicy`](./fails.txt)
   - [`AWS_ConfigRole`](./fails.txt)
   - [`AWSSupportServiceRolePolicy`](./fails.txt)
   - [`AWSConfigServiceRolePolicy`](./fails.txt)
   - [`ReadOnlyAccess`](./fails.txt)
+  - [`SageMakerStudioProjectUserRolePermissionsBoundary`](./fails.txt)
 - Deprecated: `60`
   - [`AWSIotRoboRunnerServiceRolePolicy`](../policies/AWSIotRoboRunnerServiceRolePolicy)
   - [`AWSIotRoboRunnerFullAccess`](../policies/AWSIotRoboRunnerFullAccess)
