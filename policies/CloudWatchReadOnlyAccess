@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-05-17T22:17:51Z", 
-        "VersionId": "v9", 
+        "CreateDate": "2024-11-21T17:51:05Z", 
+        "VersionId": "v10", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -36,7 +36,10 @@
                         "synthetics:Get*", 
                         "synthetics:List*", 
                         "xray:BatchGet*", 
-                        "xray:Get*"
+                        "xray:Get*", 
+                        "xray:List*", 
+                        "xray:StartTraceRetrieval", 
+                        "xray:CancelTraceRetrieval"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
