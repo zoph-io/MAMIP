@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-04-23T23:34:52Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2024-11-21T20:21:06Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -125,7 +125,8 @@
                         "arn:aws:s3:::SageMaker-DataZone*", 
                         "arn:aws:s3:::datazone-sagemaker*", 
                         "arn:aws:s3:::DataZone-SageMaker*", 
-                        "arn:aws:s3:::amazon-datazone*"
+                        "arn:aws:s3:::amazon-datazone*", 
+                        "arn:aws:s3:::amazon-sagemaker*"
                     ], 
                     "Effect": "Allow", 
                     "Sid": "AmazonSageMakerS3BucketPolicyPermission"
@@ -140,7 +141,8 @@
                         "arn:aws:s3:::SageMaker-DataZone*", 
                         "arn:aws:s3:::datazone-sagemaker*", 
                         "arn:aws:s3:::DataZone-SageMaker*", 
-                        "arn:aws:s3:::amazon-datazone*"
+                        "arn:aws:s3:::amazon-datazone*", 
+                        "arn:aws:s3:::amazon-sagemaker*"
                     ], 
                     "Effect": "Allow", 
                     "Sid": "AmazonSageMakerS3Permission"

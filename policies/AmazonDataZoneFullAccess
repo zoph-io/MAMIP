@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-06-13T19:02:55Z", 
-        "VersionId": "v4", 
+        "CreateDate": "2024-11-21T20:36:06Z", 
+        "VersionId": "v5", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -27,7 +27,16 @@
                         "ec2:DescribeSecurityGroups", 
                         "ec2:DescribeSubnets", 
                         "ec2:DescribeVpcs", 
-                        "secretsmanager:ListSecrets"
+                        "secretsmanager:ListSecrets", 
+                        "iam:ListUsers", 
+                        "glue:GetDatabases", 
+                        "codeconnections:ListConnections", 
+                        "codeconnections:ListTagsForResource", 
+                        "codewhisperer:ListProfiles", 
+                        "bedrock:ListInferenceProfiles", 
+                        "bedrock:ListFoundationModels", 
+                        "bedrock:ListTagsForResource", 
+                        "aoss:ListSecurityPolicies"
                     ], 
                     "Resource": [
                         "*"
@@ -45,10 +54,32 @@
                     "Sid": "BucketReadOnlyStatement"
                 }, 
                 {
-                    "Action": "s3:CreateBucket", 
-                    "Resource": "arn:aws:s3:::amazon-datazone*", 
+                    "Action": [
+                        "s3:CreateBucket"
+                    ], 
+                    "Resource": [
+                        "arn:aws:s3:::amazon-datazone*", 
+                        "arn:aws:s3:::amazon-sagemaker*"
+                    ], 
                     "Effect": "Allow", 
                     "Sid": "CreateBucketStatement"
+                }, 
+                {
+                    "Action": [
+                        "s3:PutBucketCORS", 
+                        "s3:PutBucketPolicy", 
+                        "s3:PutBucketVersioning"
+                    ], 
+                    "Resource": [
+                        "arn:aws:s3:::amazon-sagemaker*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "ConfigureBucketStatement"
                 }, 
                 {
                     "Action": [
@@ -96,7 +127,8 @@
                     "Action": "iam:PassRole", 
                     "Resource": [
                         "arn:aws:iam::*:role/AmazonDataZone*", 
-                        "arn:aws:iam::*:role/service-role/AmazonDataZone*"
+                        "arn:aws:iam::*:role/service-role/AmazonDataZone*", 
+                        "arn:aws:iam::*:role/service-role/AmazonSageMaker*"
                     ], 
                     "Effect": "Allow", 
                     "Condition": {
@@ -165,6 +197,175 @@
                         }
                     }, 
                     "Sid": "CreateSecretStatement"
+                }, 
+                {
+                    "Action": [
+                        "codeconnections:GetConnection"
+                    ], 
+                    "Resource": [
+                        "arn:aws:codeconnections:*:*:connection/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "ConnectionStatement"
+                }, 
+                {
+                    "Action": [
+                        "codeconnections:TagResource"
+                    ], 
+                    "Resource": [
+                        "arn:aws:codeconnections:*:*:connection/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:RequestTag/for-use-with-all-datazone-projects": "true"
+                        }, 
+                        "ForAllValues:StringEquals": {
+                            "aws:TagKeys": [
+                                "for-use-with-all-datazone-projects"
+                            ]
+                        }
+                    }, 
+                    "Sid": "TagCodeConnectionsStatement"
+                }, 
+                {
+                    "Action": [
+                        "codeconnections:UntagResource"
+                    ], 
+                    "Resource": [
+                        "arn:aws:codeconnections:*:*:connection/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ForAllValues:StringEquals": {
+                            "aws:TagKeys": "for-use-with-all-datazone-projects"
+                        }
+                    }, 
+                    "Sid": "UntagCodeConnectionsStatement"
+                }, 
+                {
+                    "Action": [
+                        "ssm:GetParameter", 
+                        "ssm:GetParametersByPath", 
+                        "ssm:PutParameter", 
+                        "ssm:DeleteParameter"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ssm:*:*:parameter/amazon/datazone/q*", 
+                        "arn:aws:ssm:*:*:parameter/amazon/datazone/genAI*", 
+                        "arn:aws:ssm:*:*:parameter/amazon/datazone/profiles*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "SSMParameterStatement"
+                }, 
+                {
+                    "Action": [
+                        "kms:Decrypt"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "kms:ViaService": "ssm.*.amazonaws.com"
+                        }, 
+                        "Null": {
+                            "aws:ResourceTag/EnableKeyForAmazonDataZone": "false"
+                        }, 
+                        "StringEquals": {
+                            "aws:ResourceTag/EnableKeyForAmazonDataZone": "true"
+                        }
+                    }, 
+                    "Sid": "UseKMSKeyPermissionsStatement"
+                }, 
+                {
+                    "Action": [
+                        "aoss:GetSecurityPolicy", 
+                        "aoss:CreateSecurityPolicy"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "aoss:collection": "genai-studio-*"
+                        }
+                    }, 
+                    "Sid": "SecurityPolicyStatement"
+                }, 
+                {
+                    "Action": [
+                        "bedrock:GetFoundationModel", 
+                        "bedrock:GetFoundationModelAvailability"
+                    ], 
+                    "Resource": [
+                        "arn:aws:bedrock:*::foundation-model/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "GetFoundationModelStatement"
+                }, 
+                {
+                    "Action": [
+                        "bedrock:GetInferenceProfile"
+                    ], 
+                    "Resource": [
+                        "arn:aws:bedrock:*:*:inference-profile/*", 
+                        "arn:aws:bedrock:*:*:application-inference-profile/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "GetInferenceProfileStatement"
+                }, 
+                {
+                    "Action": [
+                        "bedrock:CreateInferenceProfile"
+                    ], 
+                    "Resource": [
+                        "arn:aws:bedrock:*:*:application-inference-profile/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "Null": {
+                            "aws:RequestTag/AmazonDataZoneProject": "true", 
+                            "aws:RequestTag/AmazonDataZoneDomain": "false"
+                        }
+                    }, 
+                    "Sid": "ApplicationInferenceProfileStatement"
+                }, 
+                {
+                    "Action": [
+                        "bedrock:TagResource"
+                    ], 
+                    "Resource": [
+                        "arn:aws:bedrock:*:*:application-inference-profile/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "Null": {
+                            "aws:ResourceTag/AmazonDataZoneProject": "true", 
+                            "aws:RequestTag/AmazonDataZoneProject": "true", 
+                            "aws:RequestTag/AmazonDataZoneDomain": "false", 
+                            "aws:ResourceTag/AmazonDataZoneDomain": "false"
+                        }
+                    }, 
+                    "Sid": "TagApplicationInferenceProfileStatement"
+                }, 
+                {
+                    "Action": [
+                        "bedrock:DeleteInferenceProfile"
+                    ], 
+                    "Resource": [
+                        "arn:aws:bedrock:*:*:application-inference-profile/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "Null": {
+                            "aws:ResourceTag/AmazonDataZoneProject": "true", 
+                            "aws:ResourceTag/AmazonDataZoneDomain": "false"
+                        }
+                    }, 
+                    "Sid": "DeleteApplicationInferenceProfileStatement"
                 }
             ]
         }, 
