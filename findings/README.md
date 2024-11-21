@@ -1,6 +1,6 @@
-## AWS Access Analyzer - Findings - 2024-11-20
+## AWS Access Analyzer - Findings - 2024-11-21
 
-- Policies analyzed: `1287`
+- Policies analyzed: `1286`
 - Errors: `1`
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
 - Sec_Warnings: `11`
@@ -70,7 +70,7 @@
   - [`AWSConfigServiceRolePolicy`](./fails.txt)
   - [`ReadOnlyAccess`](./fails.txt)
   - [`SageMakerStudioProjectUserRolePermissionsBoundary`](./fails.txt)
-- Deprecated: `60`
+- Deprecated: `61`
   - [`AWSIotRoboRunnerServiceRolePolicy`](../policies/AWSIotRoboRunnerServiceRolePolicy)
   - [`AWSIotRoboRunnerFullAccess`](../policies/AWSIotRoboRunnerFullAccess)
   - [`AWSLambdaReadOnlyAccess`](../policies/AWSLambdaReadOnlyAccess)
@@ -88,6 +88,7 @@
   - [`AWSLambdaFullAccess`](../policies/AWSLambdaFullAccess)
   - [`TagPoliciesServiceRolePolicy`](../policies/TagPoliciesServiceRolePolicy)
   - [`AmazonMacieSetupRole`](../policies/AmazonMacieSetupRole)
+  - [`ServerMigration_ServiceRole`](../policies/ServerMigration_ServiceRole)
   - [`AWS_Config_Role`](../policies/AWS_Config_Role)
   - [`AmazonDataZonePreviewConsoleFullAccess`](../policies/AmazonDataZonePreviewConsoleFullAccess)
   - [`AWSCloudTrailReadOnlyAccess`](../policies/AWSCloudTrailReadOnlyAccess)
