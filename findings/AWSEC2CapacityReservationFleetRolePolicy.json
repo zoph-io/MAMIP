@@ -1,0 +1,41 @@
+[
+    {
+        "findingDetails": "Use the operator type ARN instead of operator string for the condition key ec2:CapacityReservationFleet.",
+        "findingType": "SECURITY_WARNING",
+        "issueCode": "STRING_LIKE_OPERATOR_WITH_ARN_CONDITION_KEYS",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-security-warning-string-like-operator-with-arn-condition-keys",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 1
+                    },
+                    {
+                        "value": "Condition"
+                    },
+                    {
+                        "value": "StringLike"
+                    },
+                    {
+                        "key": "ec2:CapacityReservationFleet"
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 397,
+                        "line": 1,
+                        "offset": 397
+                    },
+                    "start": {
+                        "column": 367,
+                        "line": 1,
+                        "offset": 367
+                    }
+                }
+            }
+        ]
+    }
+]

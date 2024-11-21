@@ -23,6 +23,45 @@
         ]
     },
     {
+        "findingDetails": "Use the operator type ARN instead of operator string for the condition key ec2:Vpc.",
+        "findingType": "SECURITY_WARNING",
+        "issueCode": "STRING_LIKE_OPERATOR_WITH_ARN_CONDITION_KEYS",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-security-warning-string-like-operator-with-arn-condition-keys",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Condition"
+                    },
+                    {
+                        "value": "StringLike"
+                    },
+                    {
+                        "key": "ec2:Vpc"
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 579,
+                        "line": 1,
+                        "offset": 579
+                    },
+                    "start": {
+                        "column": 570,
+                        "line": 1,
+                        "offset": 570
+                    }
+                }
+            }
+        ]
+    },
+    {
         "findingDetails": "Using the effect Allow with the condition key aws:ResourceTag/AmazonDataZoneProject and actions for services with the following prefixes does not affect the policy: sagemaker-mlflow. The actions for the listed service are not allowed by this statement. We recommend that you move these actions to a different statement without this condition key.",
         "findingType": "SUGGESTION",
         "issueCode": "ALLOW_WITH_UNSUPPORTED_TAG_CONDITION_KEY_FOR_SERVICE",

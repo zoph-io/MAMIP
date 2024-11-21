@@ -1,0 +1,314 @@
+[
+    {
+        "findingDetails": "Use the operator type ARN instead of operator string for the condition key ram:ResourceArn.",
+        "findingType": "SECURITY_WARNING",
+        "issueCode": "STRING_LIKE_OPERATOR_WITH_ARN_CONDITION_KEYS",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-security-warning-string-like-operator-with-arn-condition-keys",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 9
+                    },
+                    {
+                        "value": "Condition"
+                    },
+                    {
+                        "value": "StringLikeIfExists"
+                    },
+                    {
+                        "key": "ram:ResourceArn"
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 4232,
+                        "line": 1,
+                        "offset": 4232
+                    },
+                    "start": {
+                        "column": 4215,
+                        "line": 1,
+                        "offset": 4215
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "Use the operator type ARN instead of operator string for the condition key iam:AssociatedResourceARN.",
+        "findingType": "SECURITY_WARNING",
+        "issueCode": "STRING_LIKE_OPERATOR_WITH_ARN_CONDITION_KEYS",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-security-warning-string-like-operator-with-arn-condition-keys",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 12
+                    },
+                    {
+                        "value": "Condition"
+                    },
+                    {
+                        "value": "StringLike"
+                    },
+                    {
+                        "key": "iam:AssociatedResourceARN"
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 5423,
+                        "line": 1,
+                        "offset": 5423
+                    },
+                    "start": {
+                        "column": 5396,
+                        "line": 1,
+                        "offset": 5396
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "Use the operator type ARN instead of operator string for the condition key iam:AssociatedResourceARN.",
+        "findingType": "SECURITY_WARNING",
+        "issueCode": "STRING_LIKE_OPERATOR_WITH_ARN_CONDITION_KEYS",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-security-warning-string-like-operator-with-arn-condition-keys",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 13
+                    },
+                    {
+                        "value": "Condition"
+                    },
+                    {
+                        "value": "StringLike"
+                    },
+                    {
+                        "key": "iam:AssociatedResourceARN"
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 5858,
+                        "line": 1,
+                        "offset": 5858
+                    },
+                    "start": {
+                        "column": 5831,
+                        "line": 1,
+                        "offset": 5831
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "Use the operator type ARN instead of operator string for the condition key iam:AssociatedResourceARN.",
+        "findingType": "SECURITY_WARNING",
+        "issueCode": "STRING_LIKE_OPERATOR_WITH_ARN_CONDITION_KEYS",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-security-warning-string-like-operator-with-arn-condition-keys",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 14
+                    },
+                    {
+                        "value": "Condition"
+                    },
+                    {
+                        "value": "StringLike"
+                    },
+                    {
+                        "key": "iam:AssociatedResourceARN"
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 6377,
+                        "line": 1,
+                        "offset": 6377
+                    },
+                    "start": {
+                        "column": 6350,
+                        "line": 1,
+                        "offset": 6350
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "Use the operator type ARN instead of operator string for the condition key iam:AssociatedResourceARN.",
+        "findingType": "SECURITY_WARNING",
+        "issueCode": "STRING_LIKE_OPERATOR_WITH_ARN_CONDITION_KEYS",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-security-warning-string-like-operator-with-arn-condition-keys",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 15
+                    },
+                    {
+                        "value": "Condition"
+                    },
+                    {
+                        "value": "StringLike"
+                    },
+                    {
+                        "key": "iam:AssociatedResourceARN"
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 6734,
+                        "line": 1,
+                        "offset": 6734
+                    },
+                    "start": {
+                        "column": 6707,
+                        "line": 1,
+                        "offset": 6707
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "Use the operator type ARN instead of operator string for the condition key iam:AssociatedResourceARN.",
+        "findingType": "SECURITY_WARNING",
+        "issueCode": "STRING_LIKE_OPERATOR_WITH_ARN_CONDITION_KEYS",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-security-warning-string-like-operator-with-arn-condition-keys",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 16
+                    },
+                    {
+                        "value": "Condition"
+                    },
+                    {
+                        "value": "StringLike"
+                    },
+                    {
+                        "key": "iam:AssociatedResourceARN"
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 7162,
+                        "line": 1,
+                        "offset": 7162
+                    },
+                    "start": {
+                        "column": 7135,
+                        "line": 1,
+                        "offset": 7135
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "Use the operator type ARN instead of operator string for the condition key iam:AssociatedResourceARN.",
+        "findingType": "SECURITY_WARNING",
+        "issueCode": "STRING_LIKE_OPERATOR_WITH_ARN_CONDITION_KEYS",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-security-warning-string-like-operator-with-arn-condition-keys",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 18
+                    },
+                    {
+                        "value": "Condition"
+                    },
+                    {
+                        "value": "StringLike"
+                    },
+                    {
+                        "key": "iam:AssociatedResourceARN"
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 7866,
+                        "line": 1,
+                        "offset": 7866
+                    },
+                    "start": {
+                        "column": 7839,
+                        "line": 1,
+                        "offset": 7839
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "Use the operator type ARN instead of operator string for the condition key iam:AssociatedResourceARN.",
+        "findingType": "SECURITY_WARNING",
+        "issueCode": "STRING_LIKE_OPERATOR_WITH_ARN_CONDITION_KEYS",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-security-warning-string-like-operator-with-arn-condition-keys",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 19
+                    },
+                    {
+                        "value": "Condition"
+                    },
+                    {
+                        "value": "StringLike"
+                    },
+                    {
+                        "key": "iam:AssociatedResourceARN"
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 8226,
+                        "line": 1,
+                        "offset": 8226
+                    },
+                    "start": {
+                        "column": 8199,
+                        "line": 1,
+                        "offset": 8199
+                    }
+                }
+            }
+        ]
+    }
+]
