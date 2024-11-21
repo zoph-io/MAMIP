@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-08-21T15:51:37Z", 
-        "VersionId": "v9", 
+        "CreateDate": "2024-11-21T00:07:12Z", 
+        "VersionId": "v10", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -159,7 +159,6 @@
                 }, 
                 {
                     "Action": [
-                        "ec2:CreateTags", 
                         "ec2:DeleteTags"
                     ], 
                     "Resource": "*", 
@@ -174,7 +173,68 @@
                             ]
                         }
                     }, 
-                    "Sid": "PermissionsToManageEKSAndKubernetesTags"
+                    "Sid": "PermissionsToDeleteEKSAndKubernetesTags"
+                }, 
+                {
+                    "Action": [
+                        "ec2:RebootInstances"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "ec2:ResourceTag/eks:nodegroup-name": "*"
+                        }
+                    }, 
+                    "Sid": "PermissionsForManagedNodegroupsAutoRepair"
+                }, 
+                {
+                    "Action": [
+                        "ec2:CreateTags"
+                    ], 
+                    "Resource": [
+                        "arn:*:ec2:*:*:security-group/*", 
+                        "arn:*:ec2:*:*:launch-template/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ForAnyValue:StringLike": {
+                            "aws:TagKeys": [
+                                "eks", 
+                                "eks:cluster-name", 
+                                "eks:nodegroup-name", 
+                                "kubernetes.io/cluster/*"
+                            ]
+                        }
+                    }, 
+                    "Sid": "PermissionsToCreateEKSAndKubernetesTags"
+                }, 
+                {
+                    "Action": [
+                        "ec2:CreateTags"
+                    ], 
+                    "Resource": [
+                        "arn:*:ec2:*:*:instance/*", 
+                        "arn:*:ec2:*:*:volume/*", 
+                        "arn:*:ec2:*:*:network-interface/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "ec2:CreateAction": [
+                                "RunInstances"
+                            ]
+                        }, 
+                        "ForAnyValue:StringLike": {
+                            "aws:TagKeys": [
+                                "eks", 
+                                "eks:cluster-name", 
+                                "eks:nodegroup-name", 
+                                "kubernetes.io/cluster/*"
+                            ]
+                        }
+                    }, 
+                    "Sid": "AllowTaggingEC2ResourcesOnlyDuringInstanceCreation"
                 }
             ]
         }, 
