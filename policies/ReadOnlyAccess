@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-11-19T16:06:06Z", 
-        "VersionId": "v122", 
+        "CreateDate": "2024-11-22T19:51:06Z", 
+        "VersionId": "v123", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -752,6 +752,7 @@
                         "dynamodb:PartiQLSelect", 
                         "dynamodb:Query", 
                         "dynamodb:Scan", 
+                        "ec2:DescribeInstanceImageMetadata", 
                         "ec2:Describe*", 
                         "ec2:Get*", 
                         "ec2:ListImagesInRecycleBin", 
@@ -1767,6 +1768,8 @@
                         "payments:GetPaymentStatus", 
                         "payments:ListPaymentInstruments", 
                         "payments:ListPaymentPreferences", 
+                        "payments:ListPaymentProgramOptions", 
+                        "payments:ListPaymentProgramStatus", 
                         "payments:ListTagsForResource", 
                         "pca-connector-ad:GetConnector", 
                         "pca-connector-ad:GetDirectoryRegistration", 

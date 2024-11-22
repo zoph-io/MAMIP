@@ -1,0 +1,46 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-11-22T19:36:07Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "artifact:ListAgreements", 
+                        "artifact:ListCustomerAgreements"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ListAgreementsActions"
+                }, 
+                {
+                    "Action": [
+                        "artifact:GetCustomerAgreement"
+                    ], 
+                    "Resource": "arn:aws:artifact::*:customer-agreement/*", 
+                    "Effect": "Allow", 
+                    "Sid": "GetCustomerAgreementActions"
+                }, 
+                {
+                    "Action": [
+                        "organizations:ListAWSServiceAccessForOrganization", 
+                        "organizations:DescribeOrganization"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AWSOrganizationActions"
+                }, 
+                {
+                    "Action": [
+                        "iam:GetRole"
+                    ], 
+                    "Resource": "arn:aws:iam::*:role/aws-service-role/artifact.amazonaws.com/AWSServiceRoleForArtifact", 
+                    "Effect": "Allow", 
+                    "Sid": "GetRole"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
