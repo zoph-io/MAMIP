@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-10-11T17:07:13Z", 
-        "VersionId": "v10", 
+        "CreateDate": "2024-11-21T22:21:05Z", 
+        "VersionId": "v11", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -111,12 +111,32 @@
                 }, 
                 {
                     "Action": [
+                        "logs:GetLogRecord", 
+                        "logs:DescribeLogStreams", 
+                        "logs:StartQuery", 
+                        "logs:GetLogEvents", 
+                        "logs:FilterLogEvents", 
+                        "logs:GetLogGroupFields"
+                    ], 
+                    "Resource": [
+                        "arn:aws:logs:*:*:log-group:/aws/lambda/cwsyn-*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
                         "lambda:CreateFunction", 
                         "lambda:AddPermission", 
                         "lambda:PublishVersion", 
                         "lambda:UpdateFunctionCode", 
                         "lambda:UpdateFunctionConfiguration", 
                         "lambda:GetFunctionConfiguration", 
+                        "lambda:GetFunction", 
                         "lambda:DeleteFunction", 
                         "lambda:ListTags", 
                         "lambda:TagResource", 
@@ -136,7 +156,8 @@
                     "Resource": [
                         "arn:aws:lambda:*:*:layer:cwsyn-*", 
                         "arn:aws:lambda:*:*:layer:Synthetics:*", 
-                        "arn:aws:lambda:*:*:layer:Synthetics_Selenium:*"
+                        "arn:aws:lambda:*:*:layer:Synthetics_Selenium:*", 
+                        "arn:aws:lambda:*:*:layer:AWS-CW-Synthetics*:*"
                     ], 
                     "Effect": "Allow"
                 }, 

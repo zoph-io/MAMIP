@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-11-14T18:06:40Z", 
-        "VersionId": "v20", 
+        "CreateDate": "2024-11-21T23:06:06Z", 
+        "VersionId": "v21", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -357,6 +357,17 @@
                         }
                     }, 
                     "Sid": "AllowSocialMessagingOperations"
+                }, 
+                {
+                    "Action": "mobiletargeting:SendMessages", 
+                    "Resource": "arn:aws:mobiletargeting:*:*:apps/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "AllowMobileTargetingOperationsForConnect"
                 }
             ]
         }, 

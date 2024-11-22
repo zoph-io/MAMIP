@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-11-20T21:58:39Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2024-11-21T22:36:06Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -212,7 +212,8 @@
                         "arn:aws:iam::*:role/AmazonBedrockExecution*", 
                         "arn:aws:iam::*:role/BedrockStudio*", 
                         "arn:aws:iam::*:role/AmazonBedrockConsumptionRole*", 
-                        "arn:aws:iam::*:role/AmazonBedrockEvaluation*"
+                        "arn:aws:iam::*:role/AmazonBedrockEvaluation*", 
+                        "arn:aws:iam::*:role/SageMakerStudioQueryExecutionRole"
                     ], 
                     "Effect": "Allow", 
                     "Condition": {
@@ -256,7 +257,8 @@
                         "arn:aws:iam::*:role/AmazonBedrockExecution*", 
                         "arn:aws:iam::*:role/BedrockStudio*", 
                         "arn:aws:iam::*:role/AmazonBedrockConsumptionRole*", 
-                        "arn:aws:iam::*:role/AmazonBedrockEvaluation*"
+                        "arn:aws:iam::*:role/AmazonBedrockEvaluation*", 
+                        "arn:aws:iam::*:role/SageMakerStudioQueryExecutionRole"
                     ], 
                     "Effect": "Allow", 
                     "Condition": {
@@ -279,7 +281,9 @@
                                 "DomainBucketName", 
                                 "KmsKeyId", 
                                 "LogGroupName", 
-                                "RoleName"
+                                "RoleName", 
+                                "vpcArn", 
+                                "CreatedForUseWithSageMakerStudio"
                             ]
                         }
                     }, 
@@ -406,7 +410,11 @@
                         "iam:ListPolicyVersions", 
                         "iam:DeletePolicyVersion"
                     ], 
-                    "Resource": "arn:aws:iam::*:policy/datazone*", 
+                    "Resource": [
+                        "arn:aws:iam::*:policy/datazone*", 
+                        "arn:aws:iam::*:policy/connector*", 
+                        "arn:aws:iam::*:policy/SageMakerStudioQueryExecutionRolePolicy"
+                    ], 
                     "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
@@ -453,7 +461,8 @@
                 {
                     "Action": "iam:PassRole", 
                     "Resource": [
-                        "arn:aws:iam::*:role/datazone_usr_role_*"
+                        "arn:aws:iam::*:role/datazone_usr_role_*", 
+                        "arn:aws:iam::*:role/SageMakerStudioQueryExecutionRole"
                     ], 
                     "Effect": "Allow", 
                     "Condition": {
@@ -1070,7 +1079,8 @@
                         "redshift-serverless:CreateNamespace", 
                         "redshift-serverless:CreateWorkgroup", 
                         "redshift-serverless:DeleteNamespace", 
-                        "redshift-serverless:DeleteWorkgroup"
+                        "redshift-serverless:DeleteWorkgroup", 
+                        "redshift-serverless:ListTagsForResource"
                     ], 
                     "Resource": [
                         "arn:aws:redshift-serverless:*:*:namespace/*", 
@@ -1431,7 +1441,8 @@
                     "Action": [
                         "secretsmanager:CreateSecret", 
                         "secretsmanager:DeleteSecret", 
-                        "secretsmanager:UpdateSecret"
+                        "secretsmanager:UpdateSecret", 
+                        "secretsmanager:DescribeSecret"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
@@ -1713,6 +1724,9 @@
                     ], 
                     "Effect": "Allow", 
                     "Condition": {
+                        "Null": {
+                            "aws:ResourceTag/AmazonDataZoneProject": "false"
+                        }, 
                         "StringEquals": {
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
@@ -1724,6 +1738,9 @@
                     "Resource": "arn:aws:sagemaker:*:*:space/*", 
                     "Effect": "Allow", 
                     "Condition": {
+                        "Null": {
+                            "aws:ResourceTag/AmazonDataZoneProject": "false"
+                        }, 
                         "StringEquals": {
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
@@ -1735,6 +1752,9 @@
                     "Resource": "arn:aws:sagemaker:*:*:user-profile/*", 
                     "Effect": "Allow", 
                     "Condition": {
+                        "Null": {
+                            "aws:ResourceTag/AmazonDataZoneProject": "false"
+                        }, 
                         "StringEquals": {
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
@@ -2226,6 +2246,19 @@
                         }
                     }, 
                     "Sid": "AirflowKmsDescribeKey"
+                }, 
+                {
+                    "Action": [
+                        "iam:GetRole"
+                    ], 
+                    "Resource": "arn:aws:iam::*:role/SageMakerStudioQueryExecutionRole", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "GetRolePermissionsForSageMakerStudioQueryExecutionRole"
                 }
             ]
         }, 
