@@ -1,7 +1,8 @@
 ## AWS Access Analyzer - Findings - 2024-11-22
 
-- Policies analyzed: `1286`
-- Errors: `1`
+- Policies analyzed: `1288`
+- Errors: `7`
+  - [`AWSArtifactAgreementsFullAccess`](./AWSArtifactAgreementsFullAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
 - Sec_Warnings: `51`
   - [`IAMFullAccess`](./IAMFullAccess.json)
