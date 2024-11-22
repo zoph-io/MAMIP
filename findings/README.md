@@ -1,8 +1,7 @@
 ## AWS Access Analyzer - Findings - 2024-11-22
 
-- Policies analyzed: `1288`
-- Errors: `7`
-  - [`AWSArtifactAgreementsFullAccess`](./AWSArtifactAgreementsFullAccess.json)
+- Policies analyzed: `1289`
+- Errors: `1`
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
 - Sec_Warnings: `51`
   - [`IAMFullAccess`](./IAMFullAccess.json)
@@ -92,7 +91,7 @@
   - [`AdministratorAccess`](./AdministratorAccess.json)
   - [`AmazonRDSCustomPreviewServiceRolePolicy`](./AmazonRDSCustomPreviewServiceRolePolicy.json)
   - [`AmazonDataZoneSageMakerEnvironmentRolePermissionsBoundary`](./AmazonDataZoneSageMakerEnvironmentRolePermissionsBoundary.json)
-- Fails: `7`
+- Fails: `8`
   - [`SageMakerStudioProjectProvisioningRolePolicy`](./fails.txt)
   - [`SageMakerStudioProjectUserRolePolicy`](./fails.txt)
   - [`AWS_ConfigRole`](./fails.txt)
@@ -100,6 +99,7 @@
   - [`AWSConfigServiceRolePolicy`](./fails.txt)
   - [`ReadOnlyAccess`](./fails.txt)
   - [`SageMakerStudioProjectUserRolePermissionsBoundary`](./fails.txt)
+  - [`AWSPartnerLedSupportReadOnlyAccess`](./fails.txt)
 - Deprecated: `61`
   - [`AWSIotRoboRunnerServiceRolePolicy`](../policies/AWSIotRoboRunnerServiceRolePolicy)
   - [`AWSIotRoboRunnerFullAccess`](../policies/AWSIotRoboRunnerFullAccess)
