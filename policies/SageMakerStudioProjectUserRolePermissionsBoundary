@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-11-20T21:57:42Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2024-11-22T04:51:06Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -14,7 +14,9 @@
                     "Effect": "Deny", 
                     "Condition": {
                         "Null": {
-                            "aws:ResourceTag/AmazonDataZoneProject": "false"
+                            "aws:ResourceTag/AmazonDataZoneProject": "false", 
+                            "aws:PrincipalTag/SageMakerStudioQueryExecutionRole": "true", 
+                            "aws:PrincipalTag/AmazonDataZoneProject": "false"
                         }, 
                         "StringNotEquals": {
                             "aws:ResourceTag/AmazonDataZoneProject": "${aws:PrincipalTag/AmazonDataZoneProject}"
@@ -678,7 +680,13 @@
                         "redshift-serverless:ListTagsForResource", 
                         "redshift-serverless:GetCredentials", 
                         "redshift:DescribeTags", 
-                        "redshift:GetClusterCredentialsWithIAM"
+                        "redshift:GetClusterCredentialsWithIAM", 
+                        "redshift-data:BatchExecuteStatement", 
+                        "redshift-data:ExecuteStatement", 
+                        "redshift-data:DescribeTable", 
+                        "redshift-data:ListDatabases", 
+                        "redshift-data:ListSchemas", 
+                        "redshift-data:ListTables"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
@@ -692,15 +700,16 @@
                 {
                     "Action": [
                         "redshift-data:BatchExecuteStatement", 
-                        "redshift-data:ExecuteStatement"
+                        "redshift-data:ExecuteStatement", 
+                        "redshift-data:DescribeStatement", 
+                        "redshift-data:GetStatementResult", 
+                        "redshift-data:CancelStatement"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Condition": {
-                        "ForAnyValue:StringLike": {
-                            "aws:CalledVia": [
-                                "glue.amazonaws.com"
-                            ]
+                        "StringLike": {
+                            "redshift-data:glue-catalog-arn": "arn:aws:glue:*:*:catalog/*"
                         }
                     }, 
                     "Sid": "RedshiftDataActionsForManagedWorkgroup"
@@ -712,6 +721,9 @@
                     "Resource": "arn:aws:redshift-serverless:*:*:workgroup/*", 
                     "Effect": "Allow", 
                     "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "aws:CalledVia": "redshift-data.amazonaws.com"
+                        }, 
                         "Bool": {
                             "aws:ViaAWSService": "true"
                         }
@@ -785,6 +797,7 @@
                         "ec2:DescribeRouteTables", 
                         "ec2:DescribeSecurityGroups", 
                         "ec2:DeleteNetworkInterface", 
+                        "ec2:DetachNetworkInterface", 
                         "ec2:DeleteNetworkInterfacePermission", 
                         "ec2:DeleteTags"
                     ], 
@@ -998,6 +1011,7 @@
                         "cloudwatch:GetMetricStatistics", 
                         "cloudwatch:GetMetricData", 
                         "sts:GetCallerIdentity", 
+                        "sts:TagSession", 
                         "emr-serverless:GetApplication", 
                         "emr-serverless:GetDashboardForJobRun", 
                         "emr-serverless:GetJobRun", 
@@ -1012,6 +1026,9 @@
                         "elasticmapreduce:ListReleaseLabels", 
                         "elasticmapreduce:ListSupportedInstanceTypes", 
                         "elasticmapreduce:ListClusters", 
+                        "elasticmapreduce:CreatePersistentAppUI", 
+                        "elasticmapreduce:DescribePersistentAppUI", 
+                        "elasticmapreduce:GetPersistentAppUIPresignedURL", 
                         "pricing:GetProducts"
                     ], 
                     "Resource": "*", 
@@ -1068,7 +1085,6 @@
                         "elasticmapreduce:GetClusterSessionCredentials", 
                         "elasticmapreduce:GetManagedScalingPolicy", 
                         "elasticmapreduce:GetOnClusterAppUIPresignedURL", 
-                        "elasticmapreduce:GetPersistentAppUIPresignedURL", 
                         "elasticmapreduce:DescribeCluster", 
                         "elasticmapreduce:ListInstances", 
                         "elasticmapreduce:ListInstanceFleets", 
@@ -1461,6 +1477,39 @@
                     "Sid": "GlueEntitiesAccessForFederatedDatabase"
                 }, 
                 {
+                    "Action": [
+                        "secretsmanager:GetSecretValue"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/for-use-with-all-datazone-projects": "true"
+                        }
+                    }, 
+                    "Sid": "SecretAccessForForUseWithAllDataZoneProjectsSecrets"
+                }, 
+                {
+                    "Action": [
+                        "dynamodb:ListTables"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AccessForDynamoDbConnections"
+                }, 
+                {
+                    "Action": "lambda:InvokeFunction", 
+                    "Resource": "arn:aws:lambda:*:*:function:*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/AmazonDataZoneProject": "${aws:PrincipalTag/AmazonDataZoneProject}", 
+                            "aws:ResourceTag/federated_athena_datacatalog": "true"
+                        }
+                    }, 
+                    "Sid": "InvokeFunctionPermissionsForAthenaCatalogLambda"
+                }, 
+                {
                     "NotAction": [
                         "airflow:CreateWebLoginToken", 
                         "airflow:GetEnvironment", 
@@ -1647,6 +1696,7 @@
                         "datazone:ListEnvironments", 
                         "datazone:ListProjects", 
                         "datazone:UpdateConnection", 
+                        "dynamodb:ListTables", 
                         "ec2:AttachNetworkInterface", 
                         "ec2:AuthorizeSecurityGroupEgress", 
                         "ec2:AuthorizeSecurityGroupIngress", 
@@ -1683,6 +1733,7 @@
                         "ec2:DescribeVpcAttribute", 
                         "ec2:DescribeVpcEndpoints", 
                         "ec2:DescribeVpcs", 
+                        "ec2:DetachNetworkInterface", 
                         "ec2:ModifyInstanceAttribute", 
                         "ec2:RevokeSecurityGroupEgress", 
                         "ec2:RevokeSecurityGroupIngress", 
@@ -1693,7 +1744,9 @@
                         "ecr:GetAuthorizationToken", 
                         "ecr:GetDownloadUrlForLayer", 
                         "elasticfilesystem:DescribeMountTargets", 
+                        "elasticmapreduce:CreatePersistentAppUI", 
                         "elasticmapreduce:DescribeCluster", 
+                        "elasticmapreduce:DescribePersistentAppUI", 
                         "elasticmapreduce:GetClusterSessionCredentials", 
                         "elasticmapreduce:GetManagedScalingPolicy", 
                         "elasticmapreduce:GetOnClusterAppUIPresignedURL", 
@@ -2100,6 +2153,7 @@
                         "sts:AssumeRole", 
                         "sts:GetCallerIdentity", 
                         "sts:SetSourceIdentity", 
+                        "sts:TagSession", 
                         "tag:GetResources"
                     ], 
                     "Resource": "*", 

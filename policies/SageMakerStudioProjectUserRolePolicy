@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-11-20T21:59:23Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2024-11-22T04:51:06Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -1137,7 +1137,13 @@
                         "redshift-serverless:ListTagsForResource", 
                         "redshift-serverless:GetCredentials", 
                         "redshift:DescribeTags", 
-                        "redshift:GetClusterCredentialsWithIAM"
+                        "redshift:GetClusterCredentialsWithIAM", 
+                        "redshift-data:BatchExecuteStatement", 
+                        "redshift-data:ExecuteStatement", 
+                        "redshift-data:DescribeTable", 
+                        "redshift-data:ListDatabases", 
+                        "redshift-data:ListSchemas", 
+                        "redshift-data:ListTables"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
@@ -1217,15 +1223,16 @@
                 {
                     "Action": [
                         "redshift-data:BatchExecuteStatement", 
-                        "redshift-data:ExecuteStatement"
+                        "redshift-data:ExecuteStatement", 
+                        "redshift-data:DescribeStatement", 
+                        "redshift-data:GetStatementResult", 
+                        "redshift-data:CancelStatement"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Condition": {
-                        "ForAnyValue:StringLike": {
-                            "aws:CalledVia": [
-                                "glue.amazonaws.com"
-                            ]
+                        "StringLike": {
+                            "redshift-data:glue-catalog-arn": "arn:aws:glue:*:*:catalog/*"
                         }
                     }, 
                     "Sid": "RedshiftDataActionsForManagedWorkgroup"
@@ -1237,6 +1244,9 @@
                     "Resource": "arn:aws:redshift-serverless:*:*:workgroup/*", 
                     "Effect": "Allow", 
                     "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "aws:CalledVia": "redshift-data.amazonaws.com"
+                        }, 
                         "Bool": {
                             "aws:ViaAWSService": "true"
                         }

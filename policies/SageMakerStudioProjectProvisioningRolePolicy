@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-11-21T22:36:06Z", 
-        "VersionId": "v2", 
+        "CreateDate": "2024-11-22T04:51:06Z", 
+        "VersionId": "v3", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -283,7 +283,8 @@
                                 "LogGroupName", 
                                 "RoleName", 
                                 "vpcArn", 
-                                "CreatedForUseWithSageMakerStudio"
+                                "CreatedForUseWithSageMakerStudio", 
+                                "SageMakerStudioQueryExecutionRole"
                             ]
                         }
                     }, 
@@ -412,7 +413,7 @@
                     ], 
                     "Resource": [
                         "arn:aws:iam::*:policy/datazone*", 
-                        "arn:aws:iam::*:policy/connector*", 
+                        "arn:aws:iam::*:policy/connector-manage-access-policy*", 
                         "arn:aws:iam::*:policy/SageMakerStudioQueryExecutionRolePolicy"
                     ], 
                     "Effect": "Allow", 
@@ -1453,6 +1454,19 @@
                         }
                     }, 
                     "Sid": "AllowSecretManagement"
+                }, 
+                {
+                    "Action": [
+                        "secretsmanager:DescribeSecret"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/for-use-with-all-datazone-projects": "true"
+                        }
+                    }, 
+                    "Sid": "AllowDescribeSecretTaggedForAllProjects"
                 }, 
                 {
                     "Action": [
