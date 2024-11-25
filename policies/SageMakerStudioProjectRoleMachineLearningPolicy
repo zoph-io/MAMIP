@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-11-20T21:55:27Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2024-11-24T19:51:06Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -22,15 +22,40 @@
                     ], 
                     "Effect": "Allow", 
                     "Condition": {
-                        "StringEqualsIfExists": {
-                            "aws:CalledViaLast": "sagemaker.amazonaws.com", 
-                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
-                        }, 
-                        "StringLike": {
+                        "ArnLike": {
                             "ec2:Vpc": "arn:aws:ec2:*:*:vpc/${aws:PrincipalTag/VpcId}"
+                        }, 
+                        "StringEquals": {
+                            "aws:CalledViaLast": [
+                                "sagemaker.amazonaws.com", 
+                                "airflow.amazonaws.com"
+                            ], 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
                     }, 
                     "Sid": "AllowManageSageMakerEniOnVpc"
+                }, 
+                {
+                    "Action": [
+                        "ec2:CreateNetworkInterfacePermission", 
+                        "ec2:DeleteNetworkInterfacePermission"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:network-interface/*", 
+                        "arn:aws:ec2:*:*:subnet/*", 
+                        "arn:aws:ec2:*:*:route-table/*", 
+                        "arn:aws:ec2:*:*:security-group/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ArnLike": {
+                            "ec2:Vpc": "arn:aws:ec2:*:*:vpc/${aws:PrincipalTag/VpcId}"
+                        }, 
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "AllowManageSageMakerTrainingEniOnVpc"
                 }, 
                 {
                     "Action": [
@@ -527,11 +552,6 @@
                         "arn:aws:sagemaker:*:*:app/*/*/JupyterLab/*"
                     ], 
                     "Effect": "Allow", 
-                    "Condition": {
-                        "StringEquals": {
-                            "aws:ResourceTag/AmazonDataZoneProject": "${aws:PrincipalTag/AmazonDataZoneProject}"
-                        }
-                    }, 
                     "Sid": "SageMakerStudioAppDescribeJupyterLabAppActionPermissions"
                 }, 
                 {
@@ -669,7 +689,8 @@
                 }, 
                 {
                     "Action": [
-                        "cloudwatch:PutMetricAlarm"
+                        "cloudwatch:PutMetricAlarm", 
+                        "cloudwatch:DeleteAlarms"
                     ], 
                     "Resource": "arn:aws:cloudwatch:*:*:alarm:TargetTracking*", 
                     "Effect": "Allow", 
@@ -678,7 +699,7 @@
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
                     }, 
-                    "Sid": "CreateSageMakerEndpointsAutoscalingAlarms"
+                    "Sid": "MutateSageMakerEndpointsAutoscalingAlarms"
                 }, 
                 {
                     "Action": [
