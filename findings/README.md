@@ -1,9 +1,9 @@
-## AWS Access Analyzer - Findings - 2024-11-22
+## AWS Access Analyzer - Findings - 2024-11-25
 
 - Policies analyzed: `1289`
 - Errors: `1`
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
-- Sec_Warnings: `51`
+- Sec_Warnings: `50`
   - [`IAMFullAccess`](./IAMFullAccess.json)
   - [`AWSCodeBuildDeveloperAccess`](./AWSCodeBuildDeveloperAccess.json)
   - [`AdministratorAccess-Amplify`](./AdministratorAccess-Amplify.json)
@@ -36,7 +36,6 @@
   - [`AWSServiceRoleForSMS`](./AWSServiceRoleForSMS.json)
   - [`AWSCodePipeline_FullAccess`](./AWSCodePipeline_FullAccess.json)
   - [`AWSCertificateManagerPrivateCAPrivilegedUser`](./AWSCertificateManagerPrivateCAPrivilegedUser.json)
-  - [`SageMakerStudioProjectRoleMachineLearningPolicy`](./SageMakerStudioProjectRoleMachineLearningPolicy.json)
   - [`AdministratorAccess`](./AdministratorAccess.json)
   - [`AWSPrivateCAUser`](./AWSPrivateCAUser.json)
   - [`AWSProtonCodeBuildProvisioningServiceRolePolicy`](./AWSProtonCodeBuildProvisioningServiceRolePolicy.json)
