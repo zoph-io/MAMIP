@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-11-24T20:21:06Z", 
-        "VersionId": "v3", 
+        "CreateDate": "2024-11-26T17:36:07Z", 
+        "VersionId": "v4", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -193,6 +193,43 @@
                 }, 
                 {
                     "Action": [
+                        "kms:CreateGrant", 
+                        "kms:Decrypt", 
+                        "kms:GenerateDataKey"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "Null": {
+                            "kms:EncryptionContextKeys": "false"
+                        }, 
+                        "StringLike": {
+                            "kms:ViaService": [
+                                "datazone.*.amazonaws.com"
+                            ]
+                        }
+                    }, 
+                    "Sid": "DataZoneKMSPermissions"
+                }, 
+                {
+                    "Action": [
+                        "kms:DescribeKey"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "kms:ViaService": [
+                                "datazone.*.amazonaws.com"
+                            ]
+                        }
+                    }, 
+                    "Sid": "DataZoneDescribeKMSPermissions"
+                }, 
+                {
+                    "Action": [
                         "s3:ListBucket", 
                         "s3:ListBucketVersions"
                     ], 
@@ -215,6 +252,40 @@
                         }
                     }, 
                     "Sid": "ListDomainS3BucketPermissions"
+                }, 
+                {
+                    "Action": [
+                        "s3:ListBucket"
+                    ], 
+                    "Resource": "arn:aws:s3:::${aws:PrincipalTag/DomainBucketName}", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
+                        "StringNotEquals": {
+                            "aws:PrincipalTag/DomainBucketName": ""
+                        }
+                    }, 
+                    "Sid": "AirflowListDomainS3BucketPermissions"
+                }, 
+                {
+                    "Action": [
+                        "s3:ListBucket"
+                    ], 
+                    "Resource": [
+                        "arn:aws:s3:::${aws:PrincipalTag/DomainBucketName}"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
+                        "ArnEquals": {
+                            "lambda:SourceFunctionArn": "arn:aws:lambda:*:*:function:athenafederatedcatalog_*"
+                        }
+                    }, 
+                    "Sid": "ListDomainBucketFromAthenaFederatedCatalog"
                 }, 
                 {
                     "Action": [
@@ -513,7 +584,8 @@
                         "glue:ListSessions", 
                         "glue:StartCompletion", 
                         "glue:GetCompletion", 
-                        "glue:GetGeneratedCode"
+                        "glue:GetGeneratedCode", 
+                        "glue:GetTags"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
@@ -723,7 +795,9 @@
                         "redshift-data:ExecuteStatement", 
                         "redshift-data:DescribeStatement", 
                         "redshift-data:GetStatementResult", 
-                        "redshift-data:CancelStatement"
+                        "redshift-data:CancelStatement", 
+                        "redshift-data:GetStagingBucketLocation", 
+                        "redshift-serverless:GetManagedWorkgroup"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
@@ -1471,22 +1545,6 @@
                 }, 
                 {
                     "Action": [
-                        "glue:GetConnection", 
-                        "glue:GetConnections", 
-                        "glue:GetTags"
-                    ], 
-                    "Resource": "*", 
-                    "Effect": "Allow", 
-                    "Condition": {
-                        "StringEquals": {
-                            "aws:ResourceTag/AmazonDataZoneProject": "${aws:PrincipalTag/AmazonDataZoneProject}", 
-                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
-                        }
-                    }, 
-                    "Sid": "AccessForFederatedDataConnection"
-                }, 
-                {
-                    "Action": [
                         "glue:ListConnectionTypes", 
                         "glue:DescribeConnectionType"
                     ], 
@@ -1531,11 +1589,58 @@
                     "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
-                            "aws:ResourceTag/AmazonDataZoneProject": "${aws:PrincipalTag/AmazonDataZoneProject}", 
+                            "aws:PrincipalTag/SageMakerStudioQueryExecutionRole": "true", 
                             "aws:ResourceTag/federated_athena_datacatalog": "true"
                         }
                     }, 
                     "Sid": "InvokeFunctionPermissionsForAthenaCatalogLambda"
+                }, 
+                {
+                    "Action": "s3:ListBucket", 
+                    "Resource": "arn:aws:s3:::*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:PrincipalTag/SageMakerStudioQueryExecutionRole": "true", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "ListDomainS3BucketForQueryExecutionRolePermissions"
+                }, 
+                {
+                    "Action": [
+                        "glue:GetUserDefinedFunction", 
+                        "glue:GetUserDefinedFunctions"
+                    ], 
+                    "Resource": [
+                        "arn:aws:glue:*:*:catalog", 
+                        "arn:aws:glue:*:*:catalog/*", 
+                        "arn:aws:glue:*:*:database/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "glue:LakeFormationPermissions": "Enabled", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "GetGlueUserDefinedFuncLakeFormationPermissions"
+                }, 
+                {
+                    "Action": [
+                        "glue:GetUserDefinedFunction", 
+                        "glue:GetUserDefinedFunctions"
+                    ], 
+                    "Resource": [
+                        "arn:aws:glue:*:*:userDefinedFunction/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "GetGlueUserDefinedFuncPermissions"
                 }, 
                 {
                     "NotAction": [
@@ -1866,6 +1971,8 @@
                         "glue:GetTableVersion", 
                         "glue:GetTableVersions", 
                         "glue:GetTags", 
+                        "glue:GetUserDefinedFunction", 
+                        "glue:GetUserDefinedFunctions", 
                         "glue:ListConnectionTypes", 
                         "glue:ListCrawls", 
                         "glue:ListDataQualityResults", 
@@ -1943,12 +2050,14 @@
                         "redshift-data:DescribeStatement", 
                         "redshift-data:DescribeTable", 
                         "redshift-data:ExecuteStatement", 
+                        "redshift-data:GetStagingBucketLocation", 
                         "redshift-data:GetStatementResult", 
                         "redshift-data:ListDatabases", 
                         "redshift-data:ListSchemas", 
                         "redshift-data:ListStatements", 
                         "redshift-data:ListTables", 
                         "redshift-serverless:GetCredentials", 
+                        "redshift-serverless:GetManagedWorkgroup", 
                         "redshift-serverless:GetNamespace", 
                         "redshift-serverless:GetWorkgroup", 
                         "redshift-serverless:ListNamespaces", 
