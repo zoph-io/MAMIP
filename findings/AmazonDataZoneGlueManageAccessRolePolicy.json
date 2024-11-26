@@ -1,9 +1,9 @@
 [
     {
-        "findingDetails": "Use the operator type ARN instead of operator string for the condition key ram:PermissionArn.",
-        "findingType": "SECURITY_WARNING",
-        "issueCode": "STRING_LIKE_OPERATOR_WITH_ARN_CONDITION_KEYS",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-security-warning-string-like-operator-with-arn-condition-keys",
+        "findingDetails": "The condition key lakeformation:GlueARN does not exist in the service lakeformation. Use a valid condition key.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_SERVICE_CONDITION_KEY",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-condition-key",
         "locations": [
             {
                 "path": [
@@ -11,28 +11,28 @@
                         "value": "Statement"
                     },
                     {
-                        "index": 8
+                        "index": 6
                     },
                     {
                         "value": "Condition"
                     },
                     {
-                        "value": "StringLike"
+                        "value": "Null"
                     },
                     {
-                        "key": "ram:PermissionArn"
+                        "key": "lakeformation:GlueARN"
                     }
                 ],
                 "span": {
                     "end": {
-                        "column": 3261,
+                        "column": 2500,
                         "line": 1,
-                        "offset": 3261
+                        "offset": 2500
                     },
                     "start": {
-                        "column": 3242,
+                        "column": 2477,
                         "line": 1,
-                        "offset": 3242
+                        "offset": 2477
                     }
                 }
             }

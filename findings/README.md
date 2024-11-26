@@ -1,9 +1,10 @@
 ## AWS Access Analyzer - Findings - 2024-11-26
 
 - Policies analyzed: `1289`
-- Errors: `1`
+- Errors: `2`
+  - [`AmazonDataZoneGlueManageAccessRolePolicy`](./AmazonDataZoneGlueManageAccessRolePolicy.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
-- Sec_Warnings: `50`
+- Sec_Warnings: `49`
   - [`IAMFullAccess`](./IAMFullAccess.json)
   - [`AWSCodeBuildDeveloperAccess`](./AWSCodeBuildDeveloperAccess.json)
   - [`AdministratorAccess-Amplify`](./AdministratorAccess-Amplify.json)
@@ -19,7 +20,6 @@
   - [`AWSServiceRoleForAmazonEKSNodegroup`](./AWSServiceRoleForAmazonEKSNodegroup.json)
   - [`AWSPrivateCAPrivilegedUser`](./AWSPrivateCAPrivilegedUser.json)
   - [`AWSCodeDeployDeployerAccess`](./AWSCodeDeployDeployerAccess.json)
-  - [`AmazonDataZoneGlueManageAccessRolePolicy`](./AmazonDataZoneGlueManageAccessRolePolicy.json)
   - [`AWSLakeFormationCrossAccountManager`](./AWSLakeFormationCrossAccountManager.json)
   - [`AWSCodeDeployReadOnlyAccess`](./AWSCodeDeployReadOnlyAccess.json)
   - [`S3UnlockBucketPolicy`](./S3UnlockBucketPolicy.json)
