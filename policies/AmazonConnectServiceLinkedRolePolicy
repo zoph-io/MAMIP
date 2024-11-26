@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-11-21T23:06:06Z", 
-        "VersionId": "v21", 
+        "CreateDate": "2024-11-25T22:06:07Z", 
+        "VersionId": "v22", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -80,6 +80,10 @@
                         "profile:ListCalculatedAttributesForProfile", 
                         "profile:GetDomain", 
                         "profile:ListIntegrations", 
+                        "profile:GetIntegration", 
+                        "profile:PutIntegration", 
+                        "profile:DeleteIntegration", 
+                        "profile:ListEventTriggers", 
                         "profile:ListSegmentDefinitions", 
                         "profile:ListProfileAttributeValues", 
                         "profile:CreateSegmentEstimate", 
@@ -91,6 +95,19 @@
                     "Resource": "arn:aws:profile:*:*:domains/amazon-connect-*", 
                     "Effect": "Allow", 
                     "Sid": "AllowCustomerProfilesForConnectDomain"
+                }, 
+                {
+                    "Action": [
+                        "profile:CreateEventTrigger", 
+                        "profile:GetEventTrigger", 
+                        "profile:UpdateEventTrigger", 
+                        "profile:DeleteEventTrigger"
+                    ], 
+                    "Resource": [
+                        "arn:aws:profile:*:*:domains/amazon-connect-*/event-triggers/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowCustomerProfilesEventTriggerForConnectDomain"
                 }, 
                 {
                     "Action": [
