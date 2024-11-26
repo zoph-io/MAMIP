@@ -1,15 +1,14 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-06-28T16:41:41Z", 
-        "VersionId": "v6", 
+        "CreateDate": "2024-11-26T15:51:06Z", 
+        "VersionId": "v7", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": [
                         "glue:TagResource", 
-                        "glue:UntagResource", 
-                        "glue:GetTags"
+                        "glue:UntagResource"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
@@ -38,14 +37,27 @@
                     "Sid": "GlueDataQualityPermissions"
                 }, 
                 {
+                    "Action": "glue:ListCrawls", 
+                    "Resource": "arn:aws:glue:*:*:crawler/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "GlueCrawlerPermissions"
+                }, 
+                {
                     "Action": [
                         "glue:CreateTable", 
                         "glue:DeleteTable", 
                         "glue:GetDatabases", 
-                        "glue:GetTables"
+                        "glue:GetTables", 
+                        "glue:SearchTables"
                     ], 
                     "Resource": [
                         "arn:aws:glue:*:*:catalog", 
+                        "arn:aws:glue:*:*:catalog/*", 
                         "arn:aws:glue:*:*:database/*", 
                         "arn:aws:glue:*:*:table/*"
                     ], 
@@ -56,6 +68,24 @@
                         }
                     }, 
                     "Sid": "GlueTableDatabasePermissions"
+                }, 
+                {
+                    "Action": [
+                        "glue:GetTags", 
+                        "glue:GetCatalog"
+                    ], 
+                    "Resource": [
+                        "arn:aws:glue:*:*:catalog", 
+                        "arn:aws:glue:*:*:catalog/*", 
+                        "arn:aws:glue:*:*:database/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "GlueGetTagsPermissions"
                 }, 
                 {
                     "Action": [
@@ -86,11 +116,31 @@
                 }, 
                 {
                     "Action": [
+                        "lakeformation:GetDataAccess"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "aws:CalledVia": [
+                                "glue.amazonaws.com", 
+                                "lakeformation.amazonaws.com"
+                            ]
+                        }, 
+                        "Null": {
+                            "lakeformation:GlueARN": "true"
+                        }
+                    }, 
+                    "Sid": "LakeformationResourceFederatedSharingPermissions"
+                }, 
+                {
+                    "Action": [
                         "glue:DeleteResourcePolicy", 
                         "glue:PutResourcePolicy"
                     ], 
                     "Resource": [
                         "arn:aws:glue:*:*:catalog", 
+                        "arn:aws:glue:*:*:catalog/*", 
                         "arn:aws:glue:*:*:database/*", 
                         "arn:aws:glue:*:*:table/*"
                     ], 
@@ -169,7 +219,7 @@
                                 "lakeformation.amazonaws.com"
                             ]
                         }, 
-                        "StringLike": {
+                        "ArnLike": {
                             "ram:PermissionArn": "arn:aws:ram::aws:permission/AWSRAMLFEnabled*"
                         }
                     }, 
