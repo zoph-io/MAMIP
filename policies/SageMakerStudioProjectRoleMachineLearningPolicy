@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-11-24T19:51:06Z", 
-        "VersionId": "v2", 
+        "CreateDate": "2024-11-26T05:21:05Z", 
+        "VersionId": "v3", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -277,6 +277,7 @@
                         "sagemaker:DeleteEndpoint", 
                         "sagemaker:UpdateEndpoint", 
                         "sagemaker:UpdateEndpointWeightsAndCapacities", 
+                        "sagemaker:UpdateInferenceComponentRuntimeConfig", 
                         "sagemaker:BatchDescribeModelPackage", 
                         "sagemaker:UpdateModelPackage", 
                         "sagemaker:DeleteModel", 
@@ -290,8 +291,7 @@
                         "sagemaker:DescribeEndpointConfig", 
                         "sagemaker:DescribeModel", 
                         "sagemaker:DescribeOptimizationJob", 
-                        "sagemaker:DescribeEndpoint", 
-                        "sagemaker:UpdateInferenceComponentRuntimeConfig"
+                        "sagemaker:DescribeEndpoint"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
@@ -302,6 +302,20 @@
                         }
                     }, 
                     "Sid": "SageMakerInferencePermissions"
+                }, 
+                {
+                    "Action": [
+                        "sagemaker:UpdateInferenceComponentRuntimeConfig"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:PrincipalTag/EnableSageMakerMLWorkloadsPermissions": "true", 
+                            "aws:CalledViaLast": "application-autoscaling.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "SageMakerUpdateInferenceComponentRuntimeConfigAutoscalingPermissions"
                 }, 
                 {
                     "Action": [
@@ -696,6 +710,7 @@
                     "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
+                            "aws:CalledViaLast": "application-autoscaling.amazonaws.com", 
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
                     }, 

@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-11-24T20:21:06Z", 
-        "VersionId": "v3", 
+        "CreateDate": "2024-11-26T05:21:06Z", 
+        "VersionId": "v4", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -569,6 +569,40 @@
                         }
                     }, 
                     "Sid": "ListDomainS3BucketPermissions"
+                }, 
+                {
+                    "Action": [
+                        "s3:ListBucket"
+                    ], 
+                    "Resource": "arn:aws:s3:::${aws:PrincipalTag/DomainBucketName}", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
+                        "StringNotEquals": {
+                            "aws:PrincipalTag/DomainBucketName": ""
+                        }
+                    }, 
+                    "Sid": "AirflowListDomainS3BucketPermissions"
+                }, 
+                {
+                    "Action": [
+                        "s3:ListBucket"
+                    ], 
+                    "Resource": [
+                        "arn:aws:s3:::${aws:PrincipalTag/DomainBucketName}"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
+                        "ArnEquals": {
+                            "lambda:SourceFunctionArn": "arn:aws:lambda:*:*:function:athenafederatedcatalog_*"
+                        }
+                    }, 
+                    "Sid": "ListDomainBucketFromAthenaFederatedCatalog"
                 }, 
                 {
                     "Action": [
@@ -1226,7 +1260,9 @@
                         "redshift-data:ExecuteStatement", 
                         "redshift-data:DescribeStatement", 
                         "redshift-data:GetStatementResult", 
-                        "redshift-data:CancelStatement"
+                        "redshift-data:CancelStatement", 
+                        "redshift-data:GetStagingBucketLocation", 
+                        "redshift-serverless:GetManagedWorkgroup"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
@@ -1727,6 +1763,41 @@
                         }
                     }, 
                     "Sid": "GetDataZoneEnvironmentCloudFormationStackPermissions"
+                }, 
+                {
+                    "Action": [
+                        "glue:GetUserDefinedFunction", 
+                        "glue:GetUserDefinedFunctions"
+                    ], 
+                    "Resource": [
+                        "arn:aws:glue:*:*:catalog", 
+                        "arn:aws:glue:*:*:catalog/*", 
+                        "arn:aws:glue:*:*:database/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "glue:LakeFormationPermissions": "Enabled", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "GetGlueUserDefinedFuncLakeFormationPermissions"
+                }, 
+                {
+                    "Action": [
+                        "glue:GetUserDefinedFunction", 
+                        "glue:GetUserDefinedFunctions"
+                    ], 
+                    "Resource": [
+                        "arn:aws:glue:*:*:userDefinedFunction/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "GetGlueUserDefinedFuncPermissions"
                 }
             ]
         }, 
