@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-11-24T19:51:07Z", 
-        "VersionId": "v4", 
+        "CreateDate": "2024-11-27T06:21:08Z", 
+        "VersionId": "v5", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -386,8 +386,7 @@
                 }, 
                 {
                     "Action": [
-                        "iam:AttachRolePolicy", 
-                        "iam:DetachRolePolicy"
+                        "iam:AttachRolePolicy"
                     ], 
                     "Resource": [
                         "arn:aws:iam::*:role/datazone*"
@@ -400,6 +399,21 @@
                         }
                     }, 
                     "Sid": "IamAttachPolicyFromService"
+                }, 
+                {
+                    "Action": [
+                        "iam:DetachRolePolicy"
+                    ], 
+                    "Resource": [
+                        "arn:aws:iam::*:role/datazone*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "IamDetachPolicyFromService"
                 }, 
                 {
                     "Action": [
@@ -1446,8 +1460,7 @@
                     "Action": [
                         "secretsmanager:CreateSecret", 
                         "secretsmanager:DeleteSecret", 
-                        "secretsmanager:UpdateSecret", 
-                        "secretsmanager:DescribeSecret"
+                        "secretsmanager:UpdateSecret"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
@@ -1458,6 +1471,19 @@
                         }
                     }, 
                     "Sid": "AllowSecretManagement"
+                }, 
+                {
+                    "Action": [
+                        "secretsmanager:DescribeSecret"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "Null": {
+                            "aws:ResourceTag/AmazonDataZoneProject": "false"
+                        }
+                    }, 
+                    "Sid": "AllowDescribeSecretPerProject"
                 }, 
                 {
                     "Action": [
