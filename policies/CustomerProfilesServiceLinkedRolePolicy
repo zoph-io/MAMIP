@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2023-03-07T22:56:52Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2024-11-26T22:21:06Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -22,6 +22,22 @@
                         "iam:DeleteRole"
                     ], 
                     "Resource": "arn:aws:iam::*:role/aws-service-role/profile.amazonaws.com/AWSServiceRoleForProfile_*", 
+                    "Effect": "Allow"
+                }, 
+                {
+                    "Action": [
+                        "connect-campaigns:PutProfileOutboundRequestBatch"
+                    ], 
+                    "Resource": [
+                        "arn:aws:connect-campaigns:*:*:campaign/*"
+                    ], 
+                    "Effect": "Allow"
+                }, 
+                {
+                    "Action": [
+                        "profile:BatchGetProfile"
+                    ], 
+                    "Resource": "*", 
                     "Effect": "Allow"
                 }
             ]
