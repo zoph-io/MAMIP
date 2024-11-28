@@ -1,10 +1,9 @@
-## AWS Access Analyzer - Findings - 2024-11-27
+## AWS Access Analyzer - Findings - 2024-11-28
 
-- Policies analyzed: `1290`
-- Errors: `4`
+- Policies analyzed: `1291`
+- Errors: `2`
   - [`AmazonDataZoneGlueManageAccessRolePolicy`](./AmazonDataZoneGlueManageAccessRolePolicy.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
-  - [`AWSObservabilityAdminServiceRolePolicy`](./AWSObservabilityAdminServiceRolePolicy.json)
 - Sec_Warnings: `49`
   - [`IAMFullAccess`](./IAMFullAccess.json)
   - [`AWSCodeBuildDeveloperAccess`](./AWSCodeBuildDeveloperAccess.json)
