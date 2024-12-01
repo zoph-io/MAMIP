@@ -1,7 +1,8 @@
-## AWS Access Analyzer - Findings - 2024-11-28
+## AWS Access Analyzer - Findings - 2024-12-01
 
-- Policies analyzed: `1291`
-- Errors: `2`
+- Policies analyzed: `1292`
+- Errors: `4`
+  - [`DeclarativePoliciesEC2Report`](./DeclarativePoliciesEC2Report.json)
   - [`AmazonDataZoneGlueManageAccessRolePolicy`](./AmazonDataZoneGlueManageAccessRolePolicy.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
 - Sec_Warnings: `49`
