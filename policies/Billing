@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-11-12T18:12:19Z", 
-        "VersionId": "v12", 
+        "CreateDate": "2024-12-01T17:51:07Z", 
+        "VersionId": "v13", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -70,10 +70,19 @@
                         "freetier:GetFreeTierAlertPreference", 
                         "freetier:GetFreeTierUsage", 
                         "freetier:PutFreeTierAlertPreference", 
+                        "invoicing:BatchGetInvoiceProfile", 
+                        "invoicing:CreateInvoiceUnit", 
+                        "invoicing:DeleteInvoiceUnit", 
                         "invoicing:GetInvoiceEmailDeliveryPreferences", 
                         "invoicing:GetInvoicePDF", 
+                        "invoicing:GetInvoiceUnit", 
                         "invoicing:ListInvoiceSummaries", 
+                        "invoicing:ListInvoiceUnits", 
+                        "invoicing:ListTagsForResource", 
                         "invoicing:PutInvoiceEmailDeliveryPreferences", 
+                        "invoicing:TagResource", 
+                        "invoicing:UntagResource", 
+                        "invoicing:UpdateInvoiceUnit", 
                         "payments:CreateFinancingApplication", 
                         "payments:CreatePaymentInstrument", 
                         "payments:DeletePaymentInstrument", 
