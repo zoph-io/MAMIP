@@ -1,0 +1,75 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-12-01T16:36:07Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "events:DeleteRule", 
+                        "events:PutRule", 
+                        "events:PutTargets", 
+                        "events:RemoveTargets"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "events:ManagedBy": "triage.security-ir.amazonaws.com"
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "events:DescribeRule", 
+                        "events:ListTargetsByRule"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
+                {
+                    "Action": [
+                        "guardduty:ArchiveFindings", 
+                        "guardduty:CreateFilter", 
+                        "guardduty:DescribeMalwareScans", 
+                        "guardduty:GetDetector", 
+                        "guardduty:GetFilter", 
+                        "guardduty:GetFindings", 
+                        "guardduty:ListDetectors", 
+                        "guardduty:StartMalwareScan", 
+                        "guardduty:UpdateFindingsFeedback"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
+                {
+                    "Action": [
+                        "securityhub:BatchUpdateFindings", 
+                        "securityhub:DescribeHub", 
+                        "securityhub:GetEnabledStandards", 
+                        "securityhub:GetFindings", 
+                        "securityhub:ListEnabledProductsForImport", 
+                        "securityhub:UpdateFindings"
+                    ], 
+                    "Resource": "arn:aws:securityhub:*:*:hub/default", 
+                    "Effect": "Allow"
+                }, 
+                {
+                    "Action": [
+                        "security-ir:CreateCase", 
+                        "security-ir:TagResource"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:RequestTag/SecurityIncidentResponseManaged": "true"
+                        }
+                    }
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}

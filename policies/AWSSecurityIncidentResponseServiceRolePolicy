@@ -1,0 +1,41 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-12-01T16:36:06Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "organizations:ListAccounts", 
+                        "organizations:ListChildren"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "SecurityIncidentResponseOrganizationsPolicy"
+                }, 
+                {
+                    "Action": [
+                        "security-ir:TagResource", 
+                        "security-ir:CreateCase"
+                    ], 
+                    "Resource": "arn:aws:security-ir:*:*:case/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:RequestTag/SecurityIncidentResponseManaged": "true", 
+                            "aws:ResourceTag/SecurityIncidentResponseManaged": "true"
+                        }, 
+                        "ForAllValues:StringEquals": {
+                            "aws:TagKeys": [
+                                "SecurityIncidentResponseManaged"
+                            ]
+                        }
+                    }, 
+                    "Sid": "SecurityIncidentResponseCreateCasePolicyTagOnCreate"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}

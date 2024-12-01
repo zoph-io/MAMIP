@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2021-08-18T23:48:16Z", 
-        "VersionId": "v2", 
+        "CreateDate": "2024-12-01T16:21:07Z", 
+        "VersionId": "v3", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -20,7 +20,8 @@
                                 "AmazonMemoryDBManaged"
                             ]
                         }
-                    }
+                    }, 
+                    "Sid": "CreateMemoryDBTagsOnNetworkInterfaces"
                 }, 
                 {
                     "Action": [
@@ -31,7 +32,8 @@
                         "arn:aws:ec2:*:*:subnet/*", 
                         "arn:aws:ec2:*:*:security-group/*"
                     ], 
-                    "Effect": "Allow"
+                    "Effect": "Allow", 
+                    "Sid": "CreateNetworkInterfaces"
                 }, 
                 {
                     "Action": [
@@ -44,7 +46,8 @@
                         "StringEquals": {
                             "ec2:ResourceTag/AmazonMemoryDBManaged": "true"
                         }
-                    }
+                    }, 
+                    "Sid": "DeleteMemoryDBTaggedNetworkInterfaces"
                 }, 
                 {
                     "Action": [
@@ -52,7 +55,8 @@
                         "ec2:ModifyNetworkInterfaceAttribute"
                     ], 
                     "Resource": "arn:aws:ec2:*:*:security-group/*", 
-                    "Effect": "Allow"
+                    "Effect": "Allow", 
+                    "Sid": "DeleteNetworkInterfaces"
                 }, 
                 {
                     "Action": [
@@ -63,7 +67,8 @@
                         "ec2:DescribeVpcs"
                     ], 
                     "Resource": "*", 
-                    "Effect": "Allow"
+                    "Effect": "Allow", 
+                    "Sid": "DescribeEC2Resources"
                 }, 
                 {
                     "Action": [
@@ -75,7 +80,16 @@
                         "StringEquals": {
                             "cloudwatch:namespace": "AWS/MemoryDB"
                         }
-                    }
+                    }, 
+                    "Sid": "PutCloudWatchMetricData"
+                }, 
+                {
+                    "Action": [
+                        "memorydb:ReplicateMultiRegionClusterData"
+                    ], 
+                    "Resource": "arn:aws:memorydb:*:*:cluster/*", 
+                    "Effect": "Allow", 
+                    "Sid": "ReplicateMemoryDBMultiRegionClusterData"
                 }
             ]
         }, 
