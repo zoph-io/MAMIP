@@ -1,0 +1,38 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-12-01T22:36:07Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "cloudwatch:PutMetricData"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "cloudwatch:namespace": "AWS/NetworkFlowMonitor"
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "organizations:ListDelegatedAdministrators", 
+                        "organizations:DescribeOrganization", 
+                        "organizations:ListAWSServiceAccessForOrganization", 
+                        "organizations:DescribeAccount", 
+                        "organizations:ListAccounts"
+                    ], 
+                    "Resource": [
+                        "arn:aws:organizations::*:account/*", 
+                        "arn:aws:organizations::*:organization/*"
+                    ], 
+                    "Effect": "Allow"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
