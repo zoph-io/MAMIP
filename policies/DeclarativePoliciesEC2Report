@@ -1,0 +1,28 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-11-30T13:21:06Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "ec2:DescribeRegions", 
+                        "ec2:GetSerialConsoleAccessStatus", 
+                        "ec2:GetInstanceMetadataDefaults", 
+                        "ec2:GetImageBlockPublicAccessState", 
+                        "ec2:GetSnapshotBlockPublicAccessState", 
+                        "ec2:GetAllowedImagesSettings", 
+                        "ec2:DescribeVpcBlockPublicAccessOptions"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "DeclarativePoliciesEC2Report"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
