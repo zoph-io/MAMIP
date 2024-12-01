@@ -1,0 +1,108 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-12-01T21:06:07Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "logs:ListIntegrations", 
+                        "logs:GetIntegration", 
+                        "logs:DescribeLogGroups", 
+                        "opensearch:ApplicationAccessAll", 
+                        "iam:ListRoles", 
+                        "iam:ListUsers"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "CloudWatchOpenSearchDashboardsIntegration"
+                }, 
+                {
+                    "Action": [
+                        "aoss:BatchGetCollection", 
+                        "aoss:BatchGetLifecyclePolicy", 
+                        "es:ListApplications"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:CalledViaFirst": "logs.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "CloudWatchLogsOpensearchReadAPIs"
+                }, 
+                {
+                    "Action": [
+                        "aoss:APIAccessAll"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "aoss:collection": "cloudwatch-logs-*"
+                        }
+                    }, 
+                    "Sid": "CloudWatchLogsAPIAccessAll"
+                }, 
+                {
+                    "Action": [
+                        "aoss:GetAccessPolicy", 
+                        "aoss:GetSecurityPolicy"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "aws:CalledViaFirst": "logs.amazonaws.com", 
+                            "aoss:collection": "cloudwatch-logs-*"
+                        }
+                    }, 
+                    "Sid": "CloudWatchLogsDQSCollectionPolicyAccess"
+                }, 
+                {
+                    "Action": [
+                        "es:GetApplication"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:CalledViaFirst": "logs.amazonaws.com", 
+                            "aws:ResourceTag/OpenSearchIntegration": [
+                                "Dashboards"
+                            ]
+                        }
+                    }, 
+                    "Sid": "CloudWatchLogsApplicationResourceAccess"
+                }, 
+                {
+                    "Action": [
+                        "es:GetDirectQueryDataSource"
+                    ], 
+                    "Resource": "arn:aws:opensearch:*:*:datasource/cloudwatch_logs_*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:CalledViaFirst": "logs.amazonaws.com", 
+                            "aws:ResourceTag/CloudWatchOpenSearchIntegration": [
+                                "Dashboards"
+                            ]
+                        }
+                    }, 
+                    "Sid": "CloudWatchLogsDQSResourceQueryAccess"
+                }, 
+                {
+                    "Action": [
+                        "opensearch:GetDirectQuery"
+                    ], 
+                    "Resource": "arn:aws:opensearch:*:*:datasource/cloudwatch_logs_*", 
+                    "Effect": "Allow", 
+                    "Sid": "CloudWatchLogsDirectQueryStatusAccess"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
