@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2023-03-30T02:49:02Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2024-12-01T14:21:06Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -25,7 +25,9 @@
                         "s3:ListAllMyBuckets", 
                         "lambda:ListAliases", 
                         "lambda:ListFunctions", 
-                        "lambda:ListVersionsByFunction"
+                        "lambda:ListVersionsByFunction", 
+                        "rds:DescribeDBInstances", 
+                        "rds:DescribeDBClusters"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow"

@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2023-03-30T02:47:25Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2024-12-01T14:21:06Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -26,7 +26,9 @@
                         "logs:DescribeLogGroups", 
                         "logs:GetLogDelivery", 
                         "logs:ListLogDeliveries", 
-                        "s3:ListAllMyBuckets"
+                        "s3:ListAllMyBuckets", 
+                        "rds:DescribeDBInstances", 
+                        "rds:DescribeDBClusters"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow"
