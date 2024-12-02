@@ -1,0 +1,28 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-12-01T23:06:06Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "security-ir:BatchGetMemberAccountDetails", 
+                        "security-ir:GetMembership", 
+                        "security-ir:ListMemberships", 
+                        "security-ir:GetCase", 
+                        "security-ir:ListCases", 
+                        "security-ir:GetCaseAttachmentDownloadUrl", 
+                        "security-ir:ListComments", 
+                        "security-ir:ListCaseEdits", 
+                        "security-ir:ListTagsForResource"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "SecurityIRReadAccess"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
