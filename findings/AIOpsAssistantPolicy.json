@@ -1,0 +1,472 @@
+[
+    {
+        "findingDetails": "The 23353 characters in the identity policy, excluding whitespace, exceed the 10240 character maximum for inline and managed policies. We recommend that you use multiple granular policies.",
+        "findingType": "WARNING",
+        "issueCode": "POLICY_SIZE_EXCEEDS_IDENTITY_POLICY_QUOTA",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-general-warning-policy-size-exceeds-identity-policy-quota",
+        "locations": [
+            {
+                "path": [],
+                "span": {
+                    "end": {
+                        "column": 24221,
+                        "line": 1,
+                        "offset": 24221
+                    },
+                    "start": {
+                        "column": 0,
+                        "line": 1,
+                        "offset": 0
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "Use the operator type Boolean instead of operator string for the condition key aws:ViaAWSService.",
+        "findingType": "WARNING",
+        "issueCode": "TYPE_MISMATCH",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-general-warning-type-mismatch",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 1
+                    },
+                    {
+                        "value": "Condition"
+                    },
+                    {
+                        "value": "StringEquals"
+                    },
+                    {
+                        "key": "aws:ViaAWSService"
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 23266,
+                        "line": 1,
+                        "offset": 23266
+                    },
+                    "start": {
+                        "column": 23247,
+                        "line": 1,
+                        "offset": 23247
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The 7 resource ARN(s) are redundant because they reference the same resource. Review the use of wildcards (*), or remove the resource arn:aws:apigateway:*::/restapis/*/resources/*/methods/*/integrations/* to remove the redundancy.",
+        "findingType": "SUGGESTION",
+        "issueCode": "REDUNDANT_RESOURCE",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-resource",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 2
+                    },
+                    {
+                        "value": "Resource"
+                    },
+                    {
+                        "index": 1
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 23498,
+                        "line": 1,
+                        "offset": 23498
+                    },
+                    "start": {
+                        "column": 23463,
+                        "line": 1,
+                        "offset": 23463
+                    }
+                }
+            },
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 2
+                    },
+                    {
+                        "value": "Resource"
+                    },
+                    {
+                        "index": 2
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 23547,
+                        "line": 1,
+                        "offset": 23547
+                    },
+                    "start": {
+                        "column": 23500,
+                        "line": 1,
+                        "offset": 23500
+                    }
+                }
+            },
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 2
+                    },
+                    {
+                        "value": "Resource"
+                    },
+                    {
+                        "index": 3
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 23598,
+                        "line": 1,
+                        "offset": 23598
+                    },
+                    "start": {
+                        "column": 23549,
+                        "line": 1,
+                        "offset": 23549
+                    }
+                }
+            },
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 2
+                    },
+                    {
+                        "value": "Resource"
+                    },
+                    {
+                        "index": 4
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 23670,
+                        "line": 1,
+                        "offset": 23670
+                    },
+                    "start": {
+                        "column": 23600,
+                        "line": 1,
+                        "offset": 23600
+                    }
+                }
+            },
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 2
+                    },
+                    {
+                        "value": "Resource"
+                    },
+                    {
+                        "index": 5
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 23744,
+                        "line": 1,
+                        "offset": 23744
+                    },
+                    "start": {
+                        "column": 23672,
+                        "line": 1,
+                        "offset": 23672
+                    }
+                }
+            },
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 2
+                    },
+                    {
+                        "value": "Resource"
+                    },
+                    {
+                        "index": 6
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 23788,
+                        "line": 1,
+                        "offset": 23788
+                    },
+                    "start": {
+                        "column": 23746,
+                        "line": 1,
+                        "offset": 23746
+                    }
+                }
+            },
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 2
+                    },
+                    {
+                        "value": "Resource"
+                    },
+                    {
+                        "index": 7
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 23834,
+                        "line": 1,
+                        "offset": 23834
+                    },
+                    "start": {
+                        "column": 23790,
+                        "line": 1,
+                        "offset": 23790
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The 7 resource ARN(s) are redundant because they reference the same resource. Review the use of wildcards (*), or remove the resource arn:aws:apigateway:*::/apis/*/integrations/* to remove the redundancy.",
+        "findingType": "SUGGESTION",
+        "issueCode": "REDUNDANT_RESOURCE",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-resource",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 2
+                    },
+                    {
+                        "value": "Resource"
+                    },
+                    {
+                        "index": 9
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 23898,
+                        "line": 1,
+                        "offset": 23898
+                    },
+                    "start": {
+                        "column": 23867,
+                        "line": 1,
+                        "offset": 23867
+                    }
+                }
+            },
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 2
+                    },
+                    {
+                        "value": "Resource"
+                    },
+                    {
+                        "index": 10
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 23943,
+                        "line": 1,
+                        "offset": 23943
+                    },
+                    "start": {
+                        "column": 23900,
+                        "line": 1,
+                        "offset": 23900
+                    }
+                }
+            },
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 2
+                    },
+                    {
+                        "value": "Resource"
+                    },
+                    {
+                        "index": 11
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 23990,
+                        "line": 1,
+                        "offset": 23990
+                    },
+                    "start": {
+                        "column": 23945,
+                        "line": 1,
+                        "offset": 23945
+                    }
+                }
+            },
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 2
+                    },
+                    {
+                        "value": "Resource"
+                    },
+                    {
+                        "index": 12
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 24036,
+                        "line": 1,
+                        "offset": 24036
+                    },
+                    "start": {
+                        "column": 23992,
+                        "line": 1,
+                        "offset": 23992
+                    }
+                }
+            },
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 2
+                    },
+                    {
+                        "value": "Resource"
+                    },
+                    {
+                        "index": 13
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 24084,
+                        "line": 1,
+                        "offset": 24084
+                    },
+                    "start": {
+                        "column": 24038,
+                        "line": 1,
+                        "offset": 24038
+                    }
+                }
+            },
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 2
+                    },
+                    {
+                        "value": "Resource"
+                    },
+                    {
+                        "index": 14
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 24124,
+                        "line": 1,
+                        "offset": 24124
+                    },
+                    "start": {
+                        "column": 24086,
+                        "line": 1,
+                        "offset": 24086
+                    }
+                }
+            },
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 2
+                    },
+                    {
+                        "value": "Resource"
+                    },
+                    {
+                        "index": 15
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 24166,
+                        "line": 1,
+                        "offset": 24166
+                    },
+                    "start": {
+                        "column": 24126,
+                        "line": 1,
+                        "offset": 24126
+                    }
+                }
+            }
+        ]
+    }
+]

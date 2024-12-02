@@ -1,10 +1,9 @@
 ## AWS Access Analyzer - Findings - 2024-12-02
 
-- Policies analyzed: `1302`
-- Errors: `6`
+- Policies analyzed: `1303`
+- Errors: `5`
   - [`MemoryDBServiceRolePolicy`](./MemoryDBServiceRolePolicy.json)
   - [`DeclarativePoliciesEC2Report`](./DeclarativePoliciesEC2Report.json)
-  - [`EC2InstanceProfileForImageBuilder`](./EC2InstanceProfileForImageBuilder.json)
   - [`AmazonDataZoneGlueManageAccessRolePolicy`](./AmazonDataZoneGlueManageAccessRolePolicy.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
 - Sec_Warnings: `49`
@@ -44,7 +43,7 @@
   - [`AWSProtonCodeBuildProvisioningServiceRolePolicy`](./AWSProtonCodeBuildProvisioningServiceRolePolicy.json)
   - [`AWSCodeCommitPowerUser`](./AWSCodeCommitPowerUser.json)
   - [`AdministratorAccess-AWSElasticBeanstalk`](./AdministratorAccess-AWSElasticBeanstalk.json)
-- Suggestions: `42`
+- Suggestions: `44`
   - [`SupportUser`](./SupportUser.json)
   - [`AmazonElasticMapReduceFullAccess`](./AmazonElasticMapReduceFullAccess.json)
   - [`AmazonLaunchWizardFullAccessV2`](./AmazonLaunchWizardFullAccessV2.json)
@@ -64,6 +63,7 @@
   - [`AWSMigrationHubOrchestratorServiceRolePolicy`](./AWSMigrationHubOrchestratorServiceRolePolicy.json)
   - [`AmazonSageMakerServiceCatalogProductsLambdaServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsLambdaServiceRolePolicy.json)
   - [`AWSMigrationHubOrchestratorConsoleFullAccess`](./AWSMigrationHubOrchestratorConsoleFullAccess.json)
+  - [`AIOpsAssistantPolicy`](./AIOpsAssistantPolicy.json)
   - [`AWSDeepLensLambdaFunctionAccessPolicy`](./AWSDeepLensLambdaFunctionAccessPolicy.json)
   - [`NeptuneConsoleFullAccess`](./NeptuneConsoleFullAccess.json)
   - [`AWSElasticBeanstalkWebTier`](./AWSElasticBeanstalkWebTier.json)
@@ -72,7 +72,7 @@
   - [`AmazonSecurityLakeMetastoreManager`](./AmazonSecurityLakeMetastoreManager.json)
   - [`AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsCodeBuildServiceRolePolicy.json)
   - [`AmazonCodeGuruReviewerServiceRolePolicy`](./AmazonCodeGuruReviewerServiceRolePolicy.json)
-- Warnings: `21`
+- Warnings: `23`
   - [`AmazonSageMakerFullAccess`](./AmazonSageMakerFullAccess.json)
   - [`IAMFullAccess`](./IAMFullAccess.json)
   - [`AdministratorAccess-Amplify`](./AdministratorAccess-Amplify.json)
@@ -85,6 +85,7 @@
   - [`AmazonSageMakerServiceCatalogProductsLambdaServiceRolePolicy`](./AmazonSageMakerServiceCatalogProductsLambdaServiceRolePolicy.json)
   - [`FMSServiceRolePolicy`](./FMSServiceRolePolicy.json)
   - [`AmazonRDSCustomServiceRolePolicy`](./AmazonRDSCustomServiceRolePolicy.json)
+  - [`AIOpsAssistantPolicy`](./AIOpsAssistantPolicy.json)
   - [`AmazonDataZoneEnvironmentRolePermissionsBoundary`](./AmazonDataZoneEnvironmentRolePermissionsBoundary.json)
   - [`AWSOrganizationsServiceTrustPolicy`](./AWSOrganizationsServiceTrustPolicy.json)
   - [`PowerUserAccess`](./PowerUserAccess.json)
