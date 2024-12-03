@@ -1,0 +1,114 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-12-02T23:51:07Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "aiops:CreateInvestigation", 
+                        "aiops:CreateInvestigationEvent", 
+                        "aiops:CreateInvestigationResource", 
+                        "aiops:DeleteInvestigation", 
+                        "aiops:Get*", 
+                        "aiops:List*", 
+                        "aiops:UpdateInvestigation", 
+                        "aiops:UpdateInvestigationEvent"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AIOpsOperatorAccess"
+                }, 
+                {
+                    "Action": [
+                        "identitystore:DescribeUser", 
+                        "sso:DescribeInstance", 
+                        "sso-directory:DescribeUsers"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "SSOManagementAccess"
+                }, 
+                {
+                    "Action": [
+                        "sts:SetContext"
+                    ], 
+                    "Resource": "arn:aws:sts::*:self", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowSTSContextSetting"
+                }, 
+                {
+                    "Action": [
+                        "ssm:GetServiceSetting"
+                    ], 
+                    "Resource": "arn:aws:ssm:*:*:servicesetting/integrations/*", 
+                    "Effect": "Allow", 
+                    "Sid": "SSMSettingServiceIntegration"
+                }, 
+                {
+                    "Action": [
+                        "ssm:AddTagsToResource", 
+                        "ssm:CreateOpsItem"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:RequestTag/Integration": [
+                                "CloudWatch"
+                            ]
+                        }, 
+                        "ForAllValues:StringEquals": {
+                            "aws:TagKeys": "Integration"
+                        }
+                    }, 
+                    "Sid": "SSMIntegrationTagAccess"
+                }, 
+                {
+                    "Action": [
+                        "ssm:DeleteOpsItem", 
+                        "ssm:UpdateOpsItem"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/Integration": [
+                                "CloudWatch"
+                            ]
+                        }
+                    }, 
+                    "Sid": "SSMOpsItemIntegration"
+                }, 
+                {
+                    "Action": [
+                        "ssm:AddTagsToResource"
+                    ], 
+                    "Resource": "arn:aws:ssm:*:*:opsitem/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/Integration": [
+                                "CloudWatch"
+                            ]
+                        }, 
+                        "ForAllValues:StringEquals": {
+                            "aws:TagKeys": "Integration"
+                        }
+                    }, 
+                    "Sid": "SSMTagOperation"
+                }, 
+                {
+                    "Action": [
+                        "ssm:GetOpsSummary"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "SSMOpsSummaryIntegration"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}

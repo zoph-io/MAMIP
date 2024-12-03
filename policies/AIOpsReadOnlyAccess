@@ -1,0 +1,31 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-12-02T23:51:07Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "aiops:Get*", 
+                        "aiops:List*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AIOpsReadOnlyAccess"
+                }, 
+                {
+                    "Action": [
+                        "identitystore:DescribeUser", 
+                        "sso:DescribeInstance", 
+                        "sso-directory:DescribeUsers"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "SSOManagementAccess"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
