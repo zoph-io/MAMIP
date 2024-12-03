@@ -1,0 +1,23 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-12-03T15:36:06Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "quicksight:PredictQAResults"
+                    ], 
+                    "Resource": [
+                        "arn:aws:quicksight:*:*:topic/*", 
+                        "arn:aws:quicksight:*:*:dashboard/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "QBusinessToQuickSightPredictQAResultsInvocation"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}

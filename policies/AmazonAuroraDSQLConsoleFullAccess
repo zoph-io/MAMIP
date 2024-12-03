@@ -1,0 +1,52 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-12-03T15:36:07Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "dsql:CreateCluster", 
+                        "dsql:GetCluster", 
+                        "dsql:UpdateCluster", 
+                        "dsql:DeleteCluster", 
+                        "dsql:ListClusters", 
+                        "dsql:CreateMultiRegionClusters", 
+                        "dsql:DeleteMultiRegionClusters", 
+                        "dsql:TagResource", 
+                        "dsql:UntagResource", 
+                        "dsql:ListTagsForResource", 
+                        "dsql:DbConnectAdmin", 
+                        "dsql:DbConnect"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DsqlAllPermissions"
+                }, 
+                {
+                    "Action": [
+                        "tag:GetTagKeys", 
+                        "tag:GetTagValues", 
+                        "cloudwatch:GetMetricData"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DsqlConsolePermissions"
+                }, 
+                {
+                    "Action": "iam:CreateServiceLinkedRole", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:AWSServiceName": "dsql.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "CreateDsqlServiceLinkedRole"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}

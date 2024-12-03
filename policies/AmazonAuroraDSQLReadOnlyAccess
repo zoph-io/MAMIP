@@ -1,0 +1,30 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-12-03T15:21:07Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "dsql:GetCluster", 
+                        "dsql:ListClusters", 
+                        "dsql:ListTagsForResource"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DsqlReadOnlyPermissions"
+                }, 
+                {
+                    "Action": [
+                        "cloudwatch:GetMetricData"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "RelatedServicesPermissions"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
