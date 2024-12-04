@@ -1,12 +1,11 @@
-## AWS Access Analyzer - Findings - 2024-12-03
+## AWS Access Analyzer - Findings - 2024-12-04
 
-- Policies analyzed: `1313`
-- Errors: `6`
+- Policies analyzed: `1314`
+- Errors: `5`
   - [`MemoryDBServiceRolePolicy`](./MemoryDBServiceRolePolicy.json)
   - [`DeclarativePoliciesEC2Report`](./DeclarativePoliciesEC2Report.json)
   - [`AmazonDataZoneGlueManageAccessRolePolicy`](./AmazonDataZoneGlueManageAccessRolePolicy.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
-  - [`QBusinessQuicksightPluginPolicy`](./QBusinessQuicksightPluginPolicy.json)
 - Sec_Warnings: `49`
   - [`IAMFullAccess`](./IAMFullAccess.json)
   - [`AWSCodeBuildDeveloperAccess`](./AWSCodeBuildDeveloperAccess.json)
