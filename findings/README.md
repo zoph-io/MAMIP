@@ -1,6 +1,6 @@
 ## AWS Access Analyzer - Findings - 2024-12-04
 
-- Policies analyzed: `1314`
+- Policies analyzed: `1315`
 - Errors: `5`
   - [`MemoryDBServiceRolePolicy`](./MemoryDBServiceRolePolicy.json)
   - [`DeclarativePoliciesEC2Report`](./DeclarativePoliciesEC2Report.json)
