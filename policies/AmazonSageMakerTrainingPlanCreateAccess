@@ -1,0 +1,60 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-12-04T13:21:07Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "sagemaker:CreateTrainingPlan", 
+                        "sagemaker:CreateReservedCapacity"
+                    ], 
+                    "Resource": [
+                        "arn:aws:sagemaker:*:*:training-plan/*", 
+                        "arn:aws:sagemaker:*:*:reserved-capacity/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "CreateTrainingPlanPermissions"
+                }, 
+                {
+                    "Action": [
+                        "sagemaker:AddTags"
+                    ], 
+                    "Resource": [
+                        "arn:aws:sagemaker:*:*:training-plan/*", 
+                        "arn:aws:sagemaker:*:*:reserved-capacity/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "sagemaker:TaggingAction": [
+                                "CreateTrainingPlan", 
+                                "CreateReservedCapacity"
+                            ]
+                        }
+                    }, 
+                    "Sid": "AggTagsToTrainingPlanPermissions"
+                }, 
+                {
+                    "Action": "sagemaker:DescribeTrainingPlan", 
+                    "Resource": [
+                        "arn:aws:sagemaker:*:*:training-plan/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "DescribeTrainingPlanPermissions"
+                }, 
+                {
+                    "Action": [
+                        "sagemaker:SearchTrainingPlanOfferings", 
+                        "sagemaker:ListTrainingPlans"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "NonResourceLevelTrainingPlanPermissions"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}

@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-03-29T17:35:49Z", 
-        "VersionId": "v26", 
+        "CreateDate": "2024-12-04T13:21:06Z", 
+        "VersionId": "v27", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -15,7 +15,10 @@
                         "arn:aws:sagemaker:*:*:user-profile/*", 
                         "arn:aws:sagemaker:*:*:app/*", 
                         "arn:aws:sagemaker:*:*:space/*", 
-                        "arn:aws:sagemaker:*:*:flow-definition/*"
+                        "arn:aws:sagemaker:*:*:partner-app/*", 
+                        "arn:aws:sagemaker:*:*:flow-definition/*", 
+                        "arn:aws:sagemaker:*:*:training-plan/*", 
+                        "arn:aws:sagemaker:*:*:reserved-capacity/*"
                     ], 
                     "Effect": "Allow", 
                     "Sid": "AllowAllNonAdminSageMakerActions"
@@ -44,6 +47,20 @@
                     ], 
                     "Effect": "Allow", 
                     "Sid": "AllowAddTagsForApp"
+                }, 
+                {
+                    "Action": [
+                        "sagemaker:CreateTrainingJob", 
+                        "sagemaker:CreateCluster", 
+                        "sagemaker:UpdateCluster", 
+                        "sagemaker:DescribeTrainingPlan"
+                    ], 
+                    "Resource": [
+                        "arn:aws:sagemaker:*:*:training-plan/*", 
+                        "arn:aws:sagemaker:*:*:reserved-capacity/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowUseOfTrainingPlanResources"
                 }, 
                 {
                     "Action": [
