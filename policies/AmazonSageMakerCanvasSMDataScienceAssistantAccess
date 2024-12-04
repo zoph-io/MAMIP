@@ -1,0 +1,38 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-12-04T14:06:07Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "sagemaker-data-science-assistant:SendConversation"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "SageMakerDataScienceAssistantAccess"
+                }, 
+                {
+                    "Action": [
+                        "q:SendMessage"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "AmazonQDeveloperAccess"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
