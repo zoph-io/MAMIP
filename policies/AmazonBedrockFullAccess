@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2023-12-06T15:47:17Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2024-12-04T19:51:07Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -31,6 +31,154 @@
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Sid": "APIsWithAllResourceAccess"
+                }, 
+                {
+                    "Action": [
+                        "sagemaker:CreateEndpoint", 
+                        "sagemaker:CreateEndpointConfig", 
+                        "sagemaker:CreateModel", 
+                        "sagemaker:DeleteEndpoint", 
+                        "sagemaker:UpdateEndpoint"
+                    ], 
+                    "Resource": [
+                        "arn:aws:sagemaker:*:*:endpoint/*", 
+                        "arn:aws:sagemaker:*:*:endpoint-config/*", 
+                        "arn:aws:sagemaker:*:*:model/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:CalledViaLast": "bedrock.amazonaws.com", 
+                            "aws:ResourceTag/sagemaker-sdk:bedrock": "compatible"
+                        }
+                    }, 
+                    "Sid": "MarketplaceModelEndpointMutatingAPIs"
+                }, 
+                {
+                    "Action": [
+                        "sagemaker:AddTags"
+                    ], 
+                    "Resource": [
+                        "arn:aws:sagemaker:*:*:endpoint/*", 
+                        "arn:aws:sagemaker:*:*:endpoint-config/*", 
+                        "arn:aws:sagemaker:*:*:model/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "aws:RequestTag/sagemaker-studio:hub-content-arn": "arn:aws:sagemaker:*:aws:hub-content/SageMakerPublicHub/Model/*", 
+                            "aws:RequestTag/sagemaker-sdk:bedrock": "compatible", 
+                            "aws:RequestTag/bedrock:marketplace-registration-status": "registered"
+                        }, 
+                        "ForAllValues:StringEquals": {
+                            "aws:TagKeys": [
+                                "sagemaker-sdk:bedrock", 
+                                "bedrock:marketplace-registration-status", 
+                                "sagemaker-studio:hub-content-arn"
+                            ]
+                        }
+                    }, 
+                    "Sid": "MarketplaceModelEndpointAddTagsOperations"
+                }, 
+                {
+                    "Action": [
+                        "sagemaker:DeleteTags"
+                    ], 
+                    "Resource": [
+                        "arn:aws:sagemaker:*:*:endpoint/*", 
+                        "arn:aws:sagemaker:*:*:endpoint-config/*", 
+                        "arn:aws:sagemaker:*:*:model/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "aws:ResourceTag/sagemaker-sdk:bedrock": "compatible", 
+                            "aws:ResourceTag/bedrock:marketplace-registration-status": "registered", 
+                            "aws:ResourceTag/sagemaker-studio:hub-content-arn": "arn:aws:sagemaker:*:aws:hub-content/SageMakerPublicHub/Model/*"
+                        }, 
+                        "ForAllValues:StringEquals": {
+                            "aws:TagKeys": [
+                                "sagemaker-sdk:bedrock", 
+                                "bedrock:marketplace-registration-status", 
+                                "sagemaker-studio:hub-content-arn"
+                            ]
+                        }
+                    }, 
+                    "Sid": "MarketplaceModelEndpointDeleteTagsOperations"
+                }, 
+                {
+                    "Action": [
+                        "sagemaker:DescribeEndpoint", 
+                        "sagemaker:DescribeEndpointConfig", 
+                        "sagemaker:DescribeModel", 
+                        "sagemaker:ListTags"
+                    ], 
+                    "Resource": [
+                        "arn:aws:sagemaker:*:*:endpoint/*", 
+                        "arn:aws:sagemaker:*:*:endpoint-config/*", 
+                        "arn:aws:sagemaker:*:*:model/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:CalledViaLast": "bedrock.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "MarketplaceModelEndpointNonMutatingAPIs"
+                }, 
+                {
+                    "Action": [
+                        "sagemaker:InvokeEndpoint", 
+                        "sagemaker:InvokeEndpointWithResponseStream"
+                    ], 
+                    "Resource": [
+                        "arn:aws:sagemaker:*:*:endpoint/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:CalledViaLast": "bedrock.amazonaws.com", 
+                            "aws:ResourceTag/sagemaker-sdk:bedrock": "compatible"
+                        }
+                    }, 
+                    "Sid": "MarketplaceModelEndpointInvokingOperations"
+                }, 
+                {
+                    "Action": [
+                        "sagemaker:DescribeHubContent"
+                    ], 
+                    "Resource": [
+                        "arn:aws:sagemaker:*:aws:hub-content/SageMakerPublicHub/Model/*", 
+                        "arn:aws:sagemaker:*:aws:hub/SageMakerPublicHub"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "DiscoveringMarketplaceModel"
+                }, 
+                {
+                    "Action": [
+                        "sagemaker:ListHubContents"
+                    ], 
+                    "Resource": "arn:aws:sagemaker:*:aws:hub/SageMakerPublicHub", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowMarketplaceModelsListing"
+                }, 
+                {
+                    "Action": [
+                        "iam:PassRole"
+                    ], 
+                    "Resource": [
+                        "arn:aws:iam::*:role/*SageMaker*ForBedrock*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:PassedToService": [
+                                "sagemaker.amazonaws.com", 
+                                "bedrock.amazonaws.com"
+                            ]
+                        }
+                    }, 
+                    "Sid": "PassRoleToSageMaker"
                 }, 
                 {
                     "Action": [

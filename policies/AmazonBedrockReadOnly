@@ -1,39 +1,59 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-10-18T18:16:43Z", 
-        "VersionId": "v4", 
+        "CreateDate": "2024-12-04T19:36:07Z", 
+        "VersionId": "v5", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": [
-                        "bedrock:GetFoundationModel", 
-                        "bedrock:ListFoundationModels", 
-                        "bedrock:GetModelInvocationLoggingConfiguration", 
-                        "bedrock:GetProvisionedModelThroughput", 
-                        "bedrock:ListProvisionedModelThroughputs", 
-                        "bedrock:GetModelCustomizationJob", 
-                        "bedrock:ListModelCustomizationJobs", 
-                        "bedrock:ListCustomModels", 
-                        "bedrock:GetCustomModel", 
-                        "bedrock:ListTagsForResource", 
-                        "bedrock:GetFoundationModelAvailability", 
-                        "bedrock:GetGuardrail", 
-                        "bedrock:ListGuardrails", 
-                        "bedrock:GetEvaluationJob", 
-                        "bedrock:ListEvaluationJobs", 
-                        "bedrock:GetModelInvocationJob", 
-                        "bedrock:ListModelInvocationJobs", 
-                        "bedrock:GetInferenceProfile", 
-                        "bedrock:ListInferenceProfiles", 
-                        "bedrock:ListImportedModels", 
-                        "bedrock:GetImportedModel", 
-                        "bedrock:ListModelImportJobs", 
-                        "bedrock:GetModelImportJob"
+                        "bedrock:Get*", 
+                        "bedrock:List*"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Sid": "AmazonBedrockReadOnly"
+                }, 
+                {
+                    "Action": [
+                        "sagemaker:DescribeEndpoint", 
+                        "sagemaker:DescribeEndpointConfig", 
+                        "sagemaker:DescribeModel", 
+                        "sagemaker:DescribeInferenceComponent", 
+                        "sagemaker:ListEndpoints", 
+                        "sagemaker:ListTags"
+                    ], 
+                    "Resource": [
+                        "arn:aws:sagemaker:*:*:endpoint/*", 
+                        "arn:aws:sagemaker:*:*:endpoint-config/*", 
+                        "arn:aws:sagemaker:*:*:model/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:CalledViaLast": "bedrock.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "MarketplaceModelEndpointNonMutatingAPIs"
+                }, 
+                {
+                    "Action": [
+                        "sagemaker:DescribeHubContent"
+                    ], 
+                    "Resource": [
+                        "arn:aws:sagemaker:*:aws:hub-content/SageMakerPublicHub/Model/*", 
+                        "arn:aws:sagemaker:*:aws:hub/SageMakerPublicHub"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "DiscoveringMarketplaceModel"
+                }, 
+                {
+                    "Action": [
+                        "sagemaker:ListHubContents"
+                    ], 
+                    "Resource": "arn:aws:sagemaker:*:aws:hub/SageMakerPublicHub", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowMarketplaceModelsListing"
                 }
             ]
         }, 
