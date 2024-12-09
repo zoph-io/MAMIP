@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2022-11-30T15:23:27Z", 
-        "VersionId": "v4", 
+        "CreateDate": "2024-12-09T16:51:06Z", 
+        "VersionId": "v5", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -20,6 +20,9 @@
                         "docdb-elastic:TagResource", 
                         "docdb-elastic:UntagResource", 
                         "docdb-elastic:ListTagsForResource", 
+                        "docdb-elastic:CopyClusterSnapshot", 
+                        "docdb-elastic:StartCluster", 
+                        "docdb-elastic:StopCluster", 
                         "rds:AddRoleToDBCluster", 
                         "rds:AddSourceIdentifierToSubscription", 
                         "rds:AddTagsToResource", 
@@ -92,7 +95,8 @@
                     "Resource": [
                         "*"
                     ], 
-                    "Effect": "Allow"
+                    "Effect": "Allow", 
+                    "Sid": "DocdbSids"
                 }, 
                 {
                     "Action": [
@@ -154,7 +158,8 @@
                     "Resource": [
                         "*"
                     ], 
-                    "Effect": "Allow"
+                    "Effect": "Allow", 
+                    "Sid": "DependencySids"
                 }, 
                 {
                     "Action": "iam:CreateServiceLinkedRole", 
@@ -164,7 +169,8 @@
                         "StringLike": {
                             "iam:AWSServiceName": "rds.amazonaws.com"
                         }
-                    }
+                    }, 
+                    "Sid": "DocdbSLRSid"
                 }, 
                 {
                     "Action": "iam:CreateServiceLinkedRole", 
@@ -174,7 +180,8 @@
                         "StringLike": {
                             "iam:AWSServiceName": "docdb-elastic.amazonaws.com"
                         }
-                    }
+                    }, 
+                    "Sid": "DocdbElasticSLRSid"
                 }
             ]
         }, 

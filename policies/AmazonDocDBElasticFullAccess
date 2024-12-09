@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2023-06-21T18:05:47Z", 
-        "VersionId": "v2", 
+        "CreateDate": "2024-12-09T16:51:07Z", 
+        "VersionId": "v3", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -19,12 +19,16 @@
                         "docdb-elastic:RestoreClusterFromSnapshot", 
                         "docdb-elastic:TagResource", 
                         "docdb-elastic:UntagResource", 
-                        "docdb-elastic:ListTagsForResource"
+                        "docdb-elastic:ListTagsForResource", 
+                        "docdb-elastic:CopyClusterSnapshot", 
+                        "docdb-elastic:StartCluster", 
+                        "docdb-elastic:StopCluster"
                     ], 
                     "Resource": [
                         "*"
                     ], 
-                    "Effect": "Allow"
+                    "Effect": "Allow", 
+                    "Sid": "DocdbElasticSid"
                 }, 
                 {
                     "Action": [
@@ -47,7 +51,8 @@
                         "StringEquals": {
                             "aws:CalledViaFirst": "docdb-elastic.amazonaws.com"
                         }
-                    }
+                    }, 
+                    "Sid": "EC2Sid"
                 }, 
                 {
                     "Action": [
@@ -64,7 +69,8 @@
                             ], 
                             "aws:ResourceTag/DocDBElasticFullAccess": "*"
                         }
-                    }
+                    }, 
+                    "Sid": "KMSSid"
                 }, 
                 {
                     "Action": [
@@ -82,7 +88,8 @@
                             ], 
                             "aws:ResourceTag/DocDBElasticFullAccess": "*"
                         }
-                    }
+                    }, 
+                    "Sid": "KMSGrantSid"
                 }, 
                 {
                     "Action": [
@@ -100,7 +107,8 @@
                         "StringLike": {
                             "secretsmanager:ResourceTag/DocDBElasticFullAccess": "*"
                         }
-                    }
+                    }, 
+                    "Sid": "SecretManagerSid"
                 }, 
                 {
                     "Action": [
@@ -111,7 +119,8 @@
                     "Resource": [
                         "*"
                     ], 
-                    "Effect": "Allow"
+                    "Effect": "Allow", 
+                    "Sid": "CloudwatchSid"
                 }, 
                 {
                     "Action": "iam:CreateServiceLinkedRole", 
@@ -121,7 +130,8 @@
                         "StringLike": {
                             "iam:AWSServiceName": "docdb-elastic.amazonaws.com"
                         }
-                    }
+                    }, 
+                    "Sid": "SLRSid"
                 }
             ]
         }, 
