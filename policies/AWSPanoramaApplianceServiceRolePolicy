@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2023-01-17T21:32:36Z", 
-        "VersionId": "v2", 
+        "CreateDate": "2024-12-10T20:06:11Z", 
+        "VersionId": "v3", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -51,7 +51,7 @@
                     ], 
                     "Effect": "Allow", 
                     "Condition": {
-                        "StringLike": {
+                        "ArnLike": {
                             "s3:DataAccessPointArn": "arn:aws:s3:*:*:accesspoint/panorama*"
                         }
                     }, 
