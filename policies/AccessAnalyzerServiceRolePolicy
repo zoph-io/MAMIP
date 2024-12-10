@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-10-29T16:35:07Z", 
-        "VersionId": "v14", 
+        "CreateDate": "2024-12-10T16:51:09Z", 
+        "VersionId": "v15", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -18,6 +18,8 @@
                         "ec2:DescribeVpcs", 
                         "ec2:GetSnapshotBlockPublicAccessState", 
                         "ecr:DescribeRepositories", 
+                        "ecr:GetAccountSetting", 
+                        "ecr:GetRegistryPolicy", 
                         "ecr:GetRepositoryPolicy", 
                         "elasticfilesystem:DescribeFileSystemPolicy", 
                         "elasticfilesystem:DescribeFileSystems", 
