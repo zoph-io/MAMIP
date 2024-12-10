@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-11-18T23:33:28Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2024-12-10T18:21:17Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -43,6 +43,21 @@
                         }
                     }, 
                     "Sid": "AWSPartnerCentralAccess"
+                }, 
+                {
+                    "Action": [
+                        "iam:PassRole"
+                    ], 
+                    "Resource": [
+                        "arn:aws:iam::*:role/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:PassedToService": "resource-snapshot-job.partnercentral-selling.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "PassAWSPartnerCentralSnapshotJobRole"
                 }
             ]
         }, 

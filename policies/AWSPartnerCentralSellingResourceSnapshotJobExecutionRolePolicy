@@ -1,0 +1,32 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-12-10T18:21:15Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "partnercentral:CreateResourceSnapshot"
+                    ], 
+                    "Resource": [
+                        "arn:aws:partnercentral:*::catalog/AWS/engagement/*", 
+                        "arn:aws:partnercentral:*::catalog/Sandbox/engagement/*"
+                    ], 
+                    "Effect": "Allow"
+                }, 
+                {
+                    "Action": [
+                        "partnercentral:GetOpportunity"
+                    ], 
+                    "Resource": [
+                        "arn:aws:partnercentral:*:*:catalog/AWS/opportunity/*", 
+                        "arn:aws:partnercentral:*:*:catalog/Sandbox/opportunity/*"
+                    ], 
+                    "Effect": "Allow"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
