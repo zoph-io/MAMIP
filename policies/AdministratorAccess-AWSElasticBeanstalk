@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2023-03-23T23:45:23Z", 
-        "VersionId": "v3", 
+        "CreateDate": "2024-12-11T14:36:06Z", 
+        "VersionId": "v4", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -208,7 +208,7 @@
                     "Resource": "arn:aws:iam::*:role/aws-elasticbeanstalk*", 
                     "Effect": "Allow", 
                     "Condition": {
-                        "StringLike": {
+                        "ArnLike": {
                             "iam:PolicyArn": [
                                 "arn:aws:iam::aws:policy/AWSElasticBeanstalk*", 
                                 "arn:aws:iam::aws:policy/service-role/AWSElasticBeanstalk*"
