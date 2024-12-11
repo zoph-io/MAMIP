@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2023-11-01T18:50:13Z", 
-        "VersionId": "v3", 
+        "CreateDate": "2024-12-11T21:36:24Z", 
+        "VersionId": "v4", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -74,7 +74,11 @@
                         "sso:DisassociateProfile", 
                         "sso:ListProfiles", 
                         "sso:GetProfile", 
-                        "sso:ListProfileAssociations"
+                        "sso:ListProfileAssociations", 
+                        "sso:ListApplicationAssignments", 
+                        "sso:DescribeApplication", 
+                        "sso:DescribeInstance", 
+                        "sso:GetApplicationAssignmentConfiguration"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
