@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2022-09-19T17:34:08Z", 
-        "VersionId": "v7", 
+        "CreateDate": "2024-12-16T17:37:06Z", 
+        "VersionId": "v8", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -20,7 +20,8 @@
                         "ec2:ModifySnapshotAttribute", 
                         "ec2:DescribeSnapshotAttribute", 
                         "ec2:DescribeSnapshotTierStatus", 
-                        "ec2:ModifySnapshotTier"
+                        "ec2:ModifySnapshotTier", 
+                        "ec2:DescribeAvailabilityZones"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow"
