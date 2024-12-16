@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-05-02T01:36:55Z", 
-        "VersionId": "v15", 
+        "CreateDate": "2024-12-16T20:07:06Z", 
+        "VersionId": "v16", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -73,8 +73,8 @@
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Condition": {
-                        "StringLike": {
-                            "codestar-notifications:NotificationsForResource": "arn:aws:codebuild:*"
+                        "ArnLike": {
+                            "codestar-notifications:NotificationsForResource": "arn:aws:codebuild:*:*:project/*"
                         }
                     }, 
                     "Sid": "CodeStarNotificationsReadWriteAccess"
