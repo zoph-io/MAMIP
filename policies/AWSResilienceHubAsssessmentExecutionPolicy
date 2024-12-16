@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-09-17T13:08:36Z", 
-        "VersionId": "v6", 
+        "CreateDate": "2024-12-16T14:40:07Z", 
+        "VersionId": "v7", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -80,9 +80,11 @@
                         "elasticloadbalancing:DescribeLoadBalancers", 
                         "elasticloadbalancing:DescribeTargetGroups", 
                         "elasticloadbalancing:DescribeTargetHealth", 
+                        "fis:GetExperiment", 
                         "fis:GetExperimentTemplate", 
                         "fis:ListExperimentTemplates", 
                         "fis:ListExperiments", 
+                        "fis:ListExperimentResolvedTargets", 
                         "fsx:DescribeFileSystems", 
                         "lambda:GetFunctionConcurrency", 
                         "lambda:GetFunctionConfiguration", 
