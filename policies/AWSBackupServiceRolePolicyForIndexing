@@ -1,0 +1,50 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-12-17T18:37:06Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "ec2:DescribeSnapshots"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "EBSReadOnlyPermissions"
+                }, 
+                {
+                    "Action": "kms:DescribeKey", 
+                    "Resource": "arn:aws:kms:*:*:key/*", 
+                    "Effect": "Allow", 
+                    "Sid": "KMSReadOnlyPermissions"
+                }, 
+                {
+                    "Action": [
+                        "ebs:ListSnapshotBlocks", 
+                        "ebs:GetSnapshotBlock"
+                    ], 
+                    "Resource": "arn:aws:ec2:*::snapshot/*", 
+                    "Effect": "Allow", 
+                    "Sid": "EBSDirectReadAPIPermissions"
+                }, 
+                {
+                    "Action": [
+                        "kms:Decrypt"
+                    ], 
+                    "Resource": "arn:aws:kms:*:*:key/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "kms:ViaService": [
+                                "ec2.*.amazonaws.com"
+                            ]
+                        }
+                    }, 
+                    "Sid": "KMSDataKeyForEC2Permissions"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}

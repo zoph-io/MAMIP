@@ -1,0 +1,81 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2024-12-17T18:37:06Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "ec2:DescribeSnapshots"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "EBSReadOnlyPermissions"
+                }, 
+                {
+                    "Action": "kms:DescribeKey", 
+                    "Resource": "arn:aws:kms:*:*:key/*", 
+                    "Effect": "Allow", 
+                    "Sid": "KMSReadOnlyPermissions"
+                }, 
+                {
+                    "Action": [
+                        "ebs:ListSnapshotBlocks", 
+                        "ebs:GetSnapshotBlock"
+                    ], 
+                    "Resource": "arn:aws:ec2:*::snapshot/*", 
+                    "Effect": "Allow", 
+                    "Sid": "EBSDirectReadAPIPermissions"
+                }, 
+                {
+                    "Action": [
+                        "s3:GetBucketLocation", 
+                        "s3:ListBucket"
+                    ], 
+                    "Resource": "arn:aws:s3:::*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "S3ReadonlyPermissions"
+                }, 
+                {
+                    "Action": [
+                        "s3:PutObject", 
+                        "s3:AbortMultipartUpload", 
+                        "s3:ListMultipartUploadParts"
+                    ], 
+                    "Resource": "arn:aws:s3:::*/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "S3PermissionsForFileLevelRestore"
+                }, 
+                {
+                    "Action": [
+                        "kms:Decrypt", 
+                        "kms:GenerateDataKey"
+                    ], 
+                    "Resource": "arn:aws:kms:*:*:key/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "kms:ViaService": [
+                                "ec2.*.amazonaws.com", 
+                                "s3.*.amazonaws.com"
+                            ]
+                        }
+                    }, 
+                    "Sid": "KMSDataKeyForS3AndEC2Permissions"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
