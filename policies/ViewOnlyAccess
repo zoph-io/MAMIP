@@ -1,13 +1,18 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-11-19T17:36:54Z", 
-        "VersionId": "v22", 
+        "CreateDate": "2024-12-19T22:52:06Z", 
+        "VersionId": "v23", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": [
                         "acm:ListCertificates", 
+                        "aiops:GetInvestigation", 
+                        "aiops:GetInvestigationGroup", 
+                        "aiops:ListInvestigationEvents", 
+                        "aiops:ListInvestigationGroups", 
+                        "aiops:ListInvestigations", 
                         "athena:List*", 
                         "autoscaling:Describe*", 
                         "aws-marketplace:ViewSubscriptions", 
@@ -233,8 +238,10 @@
                         "lightsail:GetStaticIps", 
                         "lightsail:IsVpcPeered", 
                         "logs:Describe*", 
+                        "logs:GetTransformer", 
                         "logs:ListEntitiesForLogGroup", 
                         "logs:ListLogGroupsForEntity", 
+                        "logs:ListLogGroupsForQuery", 
                         "logs:ListTagsForResource", 
                         "lookoutvision:ListModelPackagingJobs", 
                         "lookoutvision:ListModels", 
