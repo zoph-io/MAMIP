@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-12-11T18:36:25Z", 
-        "VersionId": "v124", 
+        "CreateDate": "2024-12-31T03:07:07Z", 
+        "VersionId": "v125", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -185,9 +185,12 @@
                         "arc-zonal-shift:ListAutoshifts", 
                         "arc-zonal-shift:ListManagedResources", 
                         "arc-zonal-shift:ListZonalShifts", 
+                        "artifact:GetCustomerAgreement", 
                         "artifact:GetReport", 
                         "artifact:GetReportMetadata", 
                         "artifact:GetTermForReport", 
+                        "artifact:ListAgreements", 
+                        "artifact:ListCustomerAgreements", 
                         "artifact:ListReports", 
                         "athena:Batch*", 
                         "athena:Get*", 
@@ -1839,6 +1842,13 @@
                         "pca-connector-scep:ListChallengeMetadata", 
                         "pca-connector-scep:ListConnectors", 
                         "pca-connector-scep:ListTagsForResource", 
+                        "pcs:GetCluster", 
+                        "pcs:GetComputeNodeGroup", 
+                        "pcs:GetQueue", 
+                        "pcs:ListClusters", 
+                        "pcs:ListComputeNodeGroups", 
+                        "pcs:ListQueues", 
+                        "pcs:ListTagsForResource", 
                         "personalize:Describe*", 
                         "personalize:Get*", 
                         "personalize:List*", 
