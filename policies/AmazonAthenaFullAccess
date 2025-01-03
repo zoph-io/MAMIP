@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-06-20T16:10:44Z", 
-        "VersionId": "v12", 
+        "CreateDate": "2025-01-03T00:37:06Z", 
+        "VersionId": "v13", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -19,6 +19,8 @@
                     "Action": [
                         "glue:CreateDatabase", 
                         "glue:DeleteDatabase", 
+                        "glue:GetCatalog", 
+                        "glue:GetCatalogs", 
                         "glue:GetDatabase", 
                         "glue:GetDatabases", 
                         "glue:UpdateDatabase", 

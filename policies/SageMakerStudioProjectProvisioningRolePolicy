@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-11-27T06:21:08Z", 
-        "VersionId": "v5", 
+        "CreateDate": "2025-01-03T00:52:07Z", 
+        "VersionId": "v6", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -141,7 +141,11 @@
                     "Sid": "CodeCommitCreationAndTagging"
                 }, 
                 {
-                    "Action": "codecommit:DeleteRepository", 
+                    "Action": [
+                        "codecommit:DeleteRepository", 
+                        "codecommit:UpdateRepositoryEncryptionKey", 
+                        "codecommit:PutRepositoryTriggers"
+                    ], 
                     "Resource": "arn:aws:codecommit:*:*:datazone*", 
                     "Effect": "Allow", 
                     "Condition": {
@@ -178,6 +182,30 @@
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Sid": "CodeCommitListRepositories"
+                }, 
+                {
+                    "Action": [
+                        "kms:Decrypt", 
+                        "kms:ReEncryptTo", 
+                        "kms:ReEncryptFrom", 
+                        "kms:GenerateDataKey"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "kms:ViaService": [
+                                "codecommit.*.amazonaws.com"
+                            ]
+                        }, 
+                        "Null": {
+                            "kms:EncryptionContext:aws:codecommit:id": "false"
+                        }, 
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "CodeCommitKmsPermissions"
                 }, 
                 {
                     "Action": [
@@ -333,7 +361,8 @@
                                 "AmazonDataZone*", 
                                 "DataZone*", 
                                 "for-use-with-amazon-emr-managed-policies", 
-                                "DomainBucketName"
+                                "DomainBucketName", 
+                                "KmsKeyId"
                             ]
                         }
                     }, 
@@ -847,6 +876,25 @@
                         }
                     }, 
                     "Sid": "FederatedDataConnectionGlueManageConnectionOnCatalog"
+                }, 
+                {
+                    "Action": [
+                        "kms:Decrypt"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "kms:ViaService": [
+                                "glue.*.amazonaws.com"
+                            ]
+                        }, 
+                        "StringEquals": {
+                            "kms:EncryptionContext:glue_catalog_id": "${aws:PrincipalAccount}", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "GlueKmsPermissions"
                 }, 
                 {
                     "Action": [
@@ -1520,6 +1568,28 @@
                     "Sid": "AllowSecretTagging"
                 }, 
                 {
+                    "Action": [
+                        "kms:GenerateDataKey", 
+                        "kms:Decrypt"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
+                        "Null": {
+                            "kms:EncryptionContext:SecretARN": "false"
+                        }, 
+                        "StringLike": {
+                            "kms:ViaService": [
+                                "secretsmanager.*.amazonaws.com"
+                            ]
+                        }
+                    }, 
+                    "Sid": "SecretsManagerKmsPermissions"
+                }, 
+                {
                     "Action": "iam:CreateServiceLinkedRole", 
                     "Resource": [
                         "arn:aws:iam::*:role/aws-service-role/redshift.amazonaws.com/AWSServiceRoleForRedshift", 
@@ -1632,6 +1702,29 @@
                         }
                     }, 
                     "Sid": "RedshiftServerlessManagement"
+                }, 
+                {
+                    "Action": [
+                        "kms:Decrypt", 
+                        "kms:Encrypt", 
+                        "kms:GenerateDataKey"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
+                        "Null": {
+                            "kms:EncryptionContext:aws:redshift-serverless:arn": "false"
+                        }, 
+                        "StringLike": {
+                            "kms:ViaService": [
+                                "redshift-serverless.*.amazonaws.com"
+                            ]
+                        }
+                    }, 
+                    "Sid": "RedshiftKmsPermissions"
                 }, 
                 {
                     "Action": "secretsmanager:GetRandomPassword", 
@@ -2289,7 +2382,7 @@
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
                     }, 
-                    "Sid": "AirflowKmsDescribeKey"
+                    "Sid": "KmsDescribeKey"
                 }, 
                 {
                     "Action": [

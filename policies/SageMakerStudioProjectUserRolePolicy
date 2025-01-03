@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-11-28T04:51:07Z", 
-        "VersionId": "v5", 
+        "CreateDate": "2025-01-03T00:37:07Z", 
+        "VersionId": "v6", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -77,6 +77,32 @@
                         }
                     }, 
                     "Sid": "CommonUserCodeCommitPermissions"
+                }, 
+                {
+                    "Action": [
+                        "kms:ReEncryptFrom", 
+                        "kms:ReEncryptTo", 
+                        "kms:Decrypt", 
+                        "kms:Encrypt", 
+                        "kms:GenerateDataKey", 
+                        "kms:GenerateDataKeyWithoutPlaintext"
+                    ], 
+                    "Resource": "arn:aws:kms:*:*:key/${aws:PrincipalTag/KmsKeyId}", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
+                        "Null": {
+                            "kms:EncryptionContext:aws:codecommit:id": "false"
+                        }, 
+                        "StringLike": {
+                            "kms:ViaService": [
+                                "codecommit.*.amazonaws.com"
+                            ]
+                        }
+                    }, 
+                    "Sid": "CodeCommitKmsPermissions"
                 }, 
                 {
                     "Action": [
@@ -378,6 +404,27 @@
                         }
                     }, 
                     "Sid": "EC2TagsPermissionsForGlue"
+                }, 
+                {
+                    "Action": [
+                        "kms:Decrypt", 
+                        "kms:Encrypt", 
+                        "kms:GenerateDataKey"
+                    ], 
+                    "Resource": "arn:aws:kms:*:*:key/${aws:PrincipalTag/KmsKeyId}", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "kms:EncryptionContext:glue_catalog_id": "${aws:PrincipalAccount}", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
+                        "StringLike": {
+                            "kms:ViaService": [
+                                "glue.*.amazonaws.com"
+                            ]
+                        }
+                    }, 
+                    "Sid": "GlueKmsPermissions"
                 }, 
                 {
                     "Action": [
@@ -1458,7 +1505,8 @@
                                 "sagemaker.*.amazonaws.com", 
                                 "emr-serverless.*.amazonaws.com", 
                                 "s3.*.amazonaws.com", 
-                                "redshift.*.amazonaws.com"
+                                "redshift.*.amazonaws.com", 
+                                "codecommit.*.amazonaws.com"
                             ]
                         }
                     }, 
