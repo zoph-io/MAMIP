@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2022-06-13T19:05:04Z", 
-        "VersionId": "v3", 
+        "CreateDate": "2025-01-03T21:37:06Z", 
+        "VersionId": "v4", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -28,7 +28,8 @@
                 }, 
                 {
                     "Action": [
-                        "cloudwatch:GetMetricData"
+                        "cloudwatch:GetMetricData", 
+                        "cloudwatch:DescribeAlarms"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
@@ -37,7 +38,9 @@
                 {
                     "Action": [
                         "autoscaling:DescribeAutoScalingInstances", 
-                        "autoscaling:DescribeAutoScalingGroups"
+                        "autoscaling:DescribeAutoScalingGroups", 
+                        "autoscaling:DescribePolicies", 
+                        "autoscaling:DescribeScheduledActions"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
