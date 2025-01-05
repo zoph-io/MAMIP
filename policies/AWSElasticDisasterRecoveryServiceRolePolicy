@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-01-17T13:49:07Z", 
-        "VersionId": "v7", 
+        "CreateDate": "2025-01-05T14:07:06Z", 
+        "VersionId": "v8", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -68,7 +68,8 @@
                         "ec2:DescribeDhcpOptions", 
                         "ec2:DescribeManagedPrefixLists", 
                         "ec2:GetManagedPrefixListEntries", 
-                        "ec2:GetManagedPrefixListAssociations"
+                        "ec2:GetManagedPrefixListAssociations", 
+                        "ec2:DescribeNetworkInterfaces"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
@@ -329,7 +330,8 @@
                         "arn:aws:ec2:*:*:security-group/*", 
                         "arn:aws:ec2:*:*:volume/*", 
                         "arn:aws:ec2:*:*:snapshot/*", 
-                        "arn:aws:ec2:*:*:instance/*"
+                        "arn:aws:ec2:*:*:instance/*", 
+                        "arn:aws:ec2:*:*:network-interface/*"
                     ], 
                     "Effect": "Allow", 
                     "Condition": {
@@ -339,7 +341,8 @@
                                 "CreateSecurityGroup", 
                                 "CreateVolume", 
                                 "CreateSnapshot", 
-                                "RunInstances"
+                                "RunInstances", 
+                                "CreateNetworkInterface"
                             ]
                         }
                     }, 
@@ -363,6 +366,68 @@
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Sid": "DRSServiceRolePolicy28"
+                }, 
+                {
+                    "Action": [
+                        "ec2:CreateVolume"
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:snapshot/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "Null": {
+                            "aws:ResourceTag/AWSElasticDisasterRecoveryManaged": "false"
+                        }
+                    }, 
+                    "Sid": "DRSServiceRolePolicy29"
+                }, 
+                {
+                    "Action": [
+                        "ec2:CreateNetworkInterface"
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:network-interface/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "Null": {
+                            "aws:RequestTag/AWSElasticDisasterRecoveryManaged": "false"
+                        }
+                    }, 
+                    "Sid": "DRSServiceRolePolicy30"
+                }, 
+                {
+                    "Action": [
+                        "ec2:CreateNetworkInterface"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:subnet/*", 
+                        "arn:aws:ec2:*:*:security-group/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "DRSServiceRolePolicy31"
+                }, 
+                {
+                    "Action": [
+                        "ec2:CreateNetworkInterfacePermission", 
+                        "ec2:DeleteNetworkInterface", 
+                        "ec2:ModifyNetworkInterfaceAttribute"
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:network-interface/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "Null": {
+                            "aws:ResourceTag/AWSElasticDisasterRecoveryManaged": "false"
+                        }
+                    }, 
+                    "Sid": "DRSServiceRolePolicy32"
+                }, 
+                {
+                    "Action": [
+                        "ec2:ModifyNetworkInterfaceAttribute"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:instance/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "DRSServiceRolePolicy33"
                 }
             ]
         }, 
