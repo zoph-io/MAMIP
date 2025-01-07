@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-05-17T17:12:59Z", 
-        "VersionId": "v16", 
+        "CreateDate": "2025-01-07T18:22:07Z", 
+        "VersionId": "v17", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -138,6 +138,16 @@
                     "Resource": "arn:aws:rds:*:*:cluster-snapshot:awsbackup:*", 
                     "Effect": "Allow", 
                     "Sid": "RDSClusterPermissions"
+                }, 
+                {
+                    "Action": [
+                        "rds:AddTagsToResource"
+                    ], 
+                    "Resource": [
+                        "arn:aws:rds:*:*:snapshot-tenant-database:awsbackup:*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "RDSSnapshotTenantDatabasePermissions"
                 }, 
                 {
                     "Action": "kms:DescribeKey", 

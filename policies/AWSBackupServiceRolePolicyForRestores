@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2023-12-15T22:05:32Z", 
-        "VersionId": "v20", 
+        "CreateDate": "2025-01-07T18:22:06Z", 
+        "VersionId": "v21", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -101,7 +101,9 @@
                         "rds:DeleteDBCluster", 
                         "rds:RestoreDBInstanceToPointInTime", 
                         "rds:DescribeDBClusterSnapshots", 
-                        "rds:RestoreDBClusterToPointInTime"
+                        "rds:RestoreDBClusterToPointInTime", 
+                        "rds:CreateTenantDatabase", 
+                        "rds:DeleteTenantDatabase"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
