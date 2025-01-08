@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2023-06-20T09:12:04Z", 
-        "VersionId": "v2", 
+        "CreateDate": "2025-01-08T09:22:07Z", 
+        "VersionId": "v3", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -301,6 +301,18 @@
                                 "CreateSnapshot", 
                                 "RunInstances"
                             ]
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "ec2:CreateVolume"
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:snapshot/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "Null": {
+                            "aws:ResourceTag/AWSApplicationMigrationServiceManaged": "false"
                         }
                     }
                 }

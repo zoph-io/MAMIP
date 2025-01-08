@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2023-02-06T16:07:02Z", 
-        "VersionId": "v4", 
+        "CreateDate": "2025-01-08T09:22:06Z", 
+        "VersionId": "v5", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -327,6 +327,21 @@
                     "Condition": {
                         "Null": {
                             "ec2:ResourceTag/AWSApplicationMigrationServiceManaged": "false"
+                        }, 
+                        "Bool": {
+                            "aws:ViaAWSService": "true"
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "ec2:CreateVolume"
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:snapshot/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "Null": {
+                            "aws:ResourceTag/AWSApplicationMigrationServiceManaged": "false"
                         }, 
                         "Bool": {
                             "aws:ViaAWSService": "true"
