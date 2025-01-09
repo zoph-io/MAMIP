@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-04-23T23:32:28Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-01-09T20:52:06Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -179,7 +179,8 @@
                 {
                     "Action": [
                         "glue:CreateConnection", 
-                        "glue:DeleteConnection"
+                        "glue:DeleteConnection", 
+                        "glue:GetConnection"
                     ], 
                     "Resource": [
                         "arn:aws:glue:*:*:connection/dz-sm-athena-glue-connection-*", 
