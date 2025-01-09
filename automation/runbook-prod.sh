@@ -88,9 +88,6 @@ push_changes() {
         # SNS
         aws sns publish --topic-arn "$SNS_TOPIC_ARN" --message "$MESSAGE" --region "$REGION"
 
-        # Mastodon (deprecated soon)
-        aws sqs send-message --queue-url "https://sqs.eu-west-1.amazonaws.com/567589703415/qmasto-development-sqs-queue.fifo" --message-body "$MESSAGE_BODY" --message-group-id 1
-
         log "Pushing changes to master"
         git push origin master --tags
     else

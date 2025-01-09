@@ -22,8 +22,8 @@ DESCRIPTION ?= Monitor AWS Managed IAM Policies Changes
 S3_BUCKET ?= zoph-lab-terraform-tfstate
 ARTIFACTS_BUCKET ?= mamip-artifacts
 AWS_REGION ?= eu-west-1
-ENV ?= dev
-ECR ?= 567589703415.dkr.ecr.eu-west-1.amazonaws.com/mamip-ecr-dev
+ENV ?= prod
+ECR ?= 567589703415.dkr.ecr.eu-west-1.amazonaws.com/mamip-ecr-$(ENV)
 ################################################
 
 # Automation is done by Github Actions
