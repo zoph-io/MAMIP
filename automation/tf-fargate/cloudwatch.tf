@@ -2,7 +2,6 @@ resource "aws_cloudwatch_event_rule" "cw_run_task" {
   name                = "${var.project}_run_task_${var.env}"
   description         = "Run ${var.project} on ${var.schedule}"
   schedule_expression = var.schedule
-  state              = (var.env != "dev" ? "ENABLED" : "DISABLED")
 }
 
 resource "aws_cloudwatch_event_target" "cw_event_target" {
