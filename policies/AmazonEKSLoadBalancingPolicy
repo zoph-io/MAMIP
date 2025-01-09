@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-10-30T20:18:06Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-01-09T22:37:06Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -215,6 +215,27 @@
                         "wafv2:GetWebACLForResource", 
                         "elasticloadbalancing:SetWebAcl", 
                         "elasticloadbalancing:DescribeTargetGroups"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
+                {
+                    "Action": [
+                        "ec2:DescribeAccountAttributes", 
+                        "ec2:DescribeAddresses", 
+                        "ec2:DescribeInternetGateways", 
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeVpcs", 
+                        "ec2:DescribeVpcClassicLink", 
+                        "ec2:DescribeInstances", 
+                        "ec2:DescribeNetworkInterfaces", 
+                        "ec2:DescribeClassicLinkInstances", 
+                        "ec2:DescribeRouteTables", 
+                        "ec2:DescribeCoipPools", 
+                        "ec2:GetCoipPoolUsage", 
+                        "ec2:GetSecurityGroupsForVpc", 
+                        "ec2:DescribeVpcPeeringConnections"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow"
