@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-08-09T07:25:24Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-01-09T16:52:06Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -15,6 +15,7 @@
                 }, 
                 {
                     "Action": [
+                        "workspaces:DescribeConnectionAliases", 
                         "workspaces:DescribeWorkspaceDirectories"
                     ], 
                     "Resource": "*", 
@@ -29,7 +30,7 @@
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
-                    "Sid": "AllowWorkSpacesWebAccess"
+                    "Sid": "AllowWorkSpacesSecureBrowserAccess"
                 }, 
                 {
                     "Action": [
