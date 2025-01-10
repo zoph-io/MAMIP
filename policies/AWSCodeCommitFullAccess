@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2023-07-17T21:50:11Z", 
-        "VersionId": "v10", 
+        "CreateDate": "2025-01-10T20:07:06Z", 
+        "VersionId": "v11", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -110,8 +110,8 @@
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Condition": {
-                        "StringLike": {
-                            "codestar-notifications:NotificationsForResource": "arn:aws:codecommit:*"
+                        "ArnLike": {
+                            "codestar-notifications:NotificationsForResource": "arn:aws:codecommit:*:*:*"
                         }
                     }, 
                     "Sid": "CodeStarNotificationsReadWriteAccess"
