@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2023-04-12T19:15:51Z", 
-        "VersionId": "v10", 
+        "CreateDate": "2025-01-13T18:22:06Z", 
+        "VersionId": "v11", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -188,6 +188,16 @@
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow"
+                }, 
+                {
+                    "Action": [
+                        "cloudformation:SetTypeConfiguration", 
+                        "cloudformation:DeactivateType", 
+                        "cloudformation:ActivateType"
+                    ], 
+                    "Resource": "arn:aws:cloudformation:*:*:type/hook/AWS-ControlTower*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowActionsForCloudFormationHooksIntegration"
                 }
             ]
         }, 
