@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-12-04T14:06:07Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-01-13T22:52:07Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -20,7 +20,8 @@
                 }, 
                 {
                     "Action": [
-                        "q:SendMessage"
+                        "q:SendMessage", 
+                        "q:StartConversation"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
