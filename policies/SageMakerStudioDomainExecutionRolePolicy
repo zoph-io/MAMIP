@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-11-20T21:56:55Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-01-14T21:22:06Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -186,6 +186,25 @@
                         }
                     }, 
                     "Sid": "SSMGetParameterStatement"
+                }, 
+                {
+                    "Action": [
+                        "codeconnections:GetConnection", 
+                        "codeconnections:GetHost", 
+                        "codestar-connections:GetConnection", 
+                        "codestar-connections:GetHost"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "Null": {
+                            "aws:ResourceTag/for-use-with-all-datazone-projects": "false"
+                        }, 
+                        "StringEquals": {
+                            "aws:ResourceTag/for-use-with-all-datazone-projects": "true"
+                        }
+                    }, 
+                    "Sid": "GetCodeConnectionsPermissionsStatement"
                 }, 
                 {
                     "Action": [
