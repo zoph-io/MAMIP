@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2023-05-18T20:28:05Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-01-17T08:37:06Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -32,7 +32,9 @@
                     "Action": [
                         "dms:StartReplicationTask", 
                         "dms:StopReplicationTask", 
+                        "dms:ModifyReplicationTask", 
                         "dms:DeleteReplicationTask", 
+                        "dms:ModifyReplicationInstance", 
                         "dms:DeleteReplicationInstance"
                     ], 
                     "Resource": [
