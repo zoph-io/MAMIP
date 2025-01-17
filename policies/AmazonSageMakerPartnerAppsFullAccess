@@ -1,0 +1,33 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-01-17T18:37:06Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": "sagemaker:ListPartnerApps", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonSageMakerPartnerListAppsPermission"
+                }, 
+                {
+                    "Action": [
+                        "sagemaker:CreatePartnerAppPresignedUrl", 
+                        "sagemaker:DescribePartnerApp", 
+                        "sagemaker:CallPartnerAppApi"
+                    ], 
+                    "Resource": "arn:aws:sagemaker:*:*:partner-app/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "AmazonSageMakerPartnerAppsPermission"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
