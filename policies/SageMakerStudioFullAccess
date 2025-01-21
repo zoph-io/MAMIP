@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-11-28T00:06:07Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-01-21T22:52:06Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -213,7 +213,8 @@
                         "codeconnections:TagResource"
                     ], 
                     "Resource": [
-                        "arn:aws:codeconnections:*:*:connection/*"
+                        "arn:aws:codeconnections:*:*:connection/*", 
+                        "arn:aws:codeconnections:*:*:host/*"
                     ], 
                     "Effect": "Allow", 
                     "Condition": {
@@ -233,7 +234,8 @@
                         "codeconnections:UntagResource"
                     ], 
                     "Resource": [
-                        "arn:aws:codeconnections:*:*:connection/*"
+                        "arn:aws:codeconnections:*:*:connection/*", 
+                        "arn:aws:codeconnections:*:*:host/*"
                     ], 
                     "Effect": "Allow", 
                     "Condition": {
