@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2023-04-20T22:36:00Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-01-22T00:52:12Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -60,6 +60,16 @@
                             "aws:RequestTag/red-hat-managed": "true"
                         }
                     }
+                }, 
+                {
+                    "Action": [
+                        "ec2:CreateVolume"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:snapshot/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "CreateVolumeFromSnapshot"
                 }, 
                 {
                     "Action": [
