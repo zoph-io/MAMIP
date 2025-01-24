@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-12-31T03:22:06Z", 
-        "VersionId": "v48", 
+        "CreateDate": "2025-01-24T21:52:06Z", 
+        "VersionId": "v49", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -523,6 +523,13 @@
                         "opsworks:DescribeStacks", 
                         "organizations:Describe*", 
                         "organizations:List*", 
+                        "pcs:GetCluster", 
+                        "pcs:GetComputeNodeGroup", 
+                        "pcs:GetQueue", 
+                        "pcs:ListClusters", 
+                        "pcs:ListComputeNodeGroups", 
+                        "pcs:ListQueues", 
+                        "pcs:ListTagsForResource", 
                         "personalize:DescribeDatasetGroup", 
                         "personalize:ListDatasetGroups", 
                         "private-networks:ListNetworks", 
