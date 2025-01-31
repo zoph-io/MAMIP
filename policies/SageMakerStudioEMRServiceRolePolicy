@@ -1,0 +1,101 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-01-31T19:52:07Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": "iam:PassRole", 
+                    "Resource": "arn:aws:iam::*:role/datazone_emr_ec2_instance_role_${aws:PrincipalTag/AmazonDataZoneProject}_${aws:PrincipalTag/AmazonDataZoneEnvironment}", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
+                        "Null": {
+                            "aws:PrincipalTag/AmazonDataZoneProject": "false"
+                        }, 
+                        "StringLike": {
+                            "iam:PassedToService": "ec2.amazonaws.com"
+                        }, 
+                        "StringNotEquals": {
+                            "aws:PrincipalTag/AmazonDataZoneEnvironment": "", 
+                            "aws:PrincipalTag/AmazonDataZoneProject": ""
+                        }
+                    }, 
+                    "Sid": "PassRoleToEMREC2InstanceRole"
+                }, 
+                {
+                    "Action": [
+                        "kms:CreateGrant", 
+                        "kms:ReEncryptFrom", 
+                        "kms:ReEncryptTo", 
+                        "kms:Decrypt", 
+                        "kms:Encrypt", 
+                        "kms:GenerateDataKeyWithoutPlaintext"
+                    ], 
+                    "Resource": "arn:aws:kms:*:*:key/${aws:PrincipalTag/KmsKeyId}", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
+                        "Null": {
+                            "kms:EncryptionContextKeys": "false"
+                        }, 
+                        "StringLike": {
+                            "kms:ViaService": [
+                                "ec2.*.amazonaws.com"
+                            ]
+                        }
+                    }, 
+                    "Sid": "EMRKMSPermissions"
+                }, 
+                {
+                    "Action": "kms:GenerateDataKey", 
+                    "Resource": "arn:aws:kms:*:*:key/${aws:PrincipalTag/KmsKeyId}", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "AllowGenerateDataKeyForEbsEncryption"
+                }, 
+                {
+                    "Action": [
+                        "kms:ListGrants", 
+                        "kms:RevokeGrant", 
+                        "kms:DescribeKey"
+                    ], 
+                    "Resource": "arn:aws:kms:*:*:key/${aws:PrincipalTag/KmsKeyId}", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
+                        "StringLike": {
+                            "kms:ViaService": [
+                                "ec2.*.amazonaws.com"
+                            ]
+                        }
+                    }, 
+                    "Sid": "AllowEMRForKMSManagement"
+                }, 
+                {
+                    "Action": "kms:ListAliases", 
+                    "Resource": "arn:aws:kms:*:*:key/${aws:PrincipalTag/KmsKeyId}", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "AllowEMRToListKmsAliases"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
