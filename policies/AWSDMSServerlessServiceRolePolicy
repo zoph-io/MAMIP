@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-01-17T08:37:06Z", 
-        "VersionId": "v2", 
+        "CreateDate": "2025-02-07T17:52:06Z", 
+        "VersionId": "v3", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -60,6 +60,57 @@
                     ], 
                     "Effect": "Allow", 
                     "Sid": "id3"
+                }, 
+                {
+                    "Action": [
+                        "s3:PutObject", 
+                        "s3:DeleteObject", 
+                        "s3:GetObject", 
+                        "s3:PutObjectTagging"
+                    ], 
+                    "Resource": [
+                        "arn:aws:s3:::dms-serverless-premigration-results-*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "s3:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "id4"
+                }, 
+                {
+                    "Action": [
+                        "s3:PutBucketPolicy", 
+                        "s3:ListBucket", 
+                        "s3:GetBucketLocation", 
+                        "s3:CreateBucket"
+                    ], 
+                    "Resource": [
+                        "arn:aws:s3:::dms-serverless-premigration-results-*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "s3:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "id5"
+                }, 
+                {
+                    "Action": [
+                        "dms:StartReplicationTaskAssessmentRun"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEqualsIgnoreCase": {
+                            "aws:ResourceTag/ResourceCreatedBy": "DMSServerless"
+                        }
+                    }, 
+                    "Sid": "id6"
                 }
             ]
         }, 
