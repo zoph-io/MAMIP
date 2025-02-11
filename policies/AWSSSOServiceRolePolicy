@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2022-10-20T20:05:47Z", 
-        "VersionId": "v17", 
+        "CreateDate": "2025-02-11T18:37:06Z", 
+        "VersionId": "v18", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -147,6 +147,16 @@
                     ], 
                     "Effect": "Allow", 
                     "Sid": "AllowDescribeAndListOperationsOnIdentitySource"
+                }, 
+                {
+                    "Action": [
+                        "identity-sync:DeleteSyncProfile"
+                    ], 
+                    "Resource": [
+                        "arn:aws:identity-sync:*:*:profile/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowDeleteSyncProfile"
                 }
             ]
         }, 

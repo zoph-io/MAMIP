@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-12-09T16:51:06Z", 
-        "VersionId": "v5", 
+        "CreateDate": "2025-02-11T18:22:07Z", 
+        "VersionId": "v6", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -23,6 +23,9 @@
                         "docdb-elastic:CopyClusterSnapshot", 
                         "docdb-elastic:StartCluster", 
                         "docdb-elastic:StopCluster", 
+                        "docdb-elastic:GetPendingMaintenanceAction", 
+                        "docdb-elastic:ListPendingMaintenanceActions", 
+                        "docdb-elastic:ApplyPendingMaintenanceAction", 
                         "rds:AddRoleToDBCluster", 
                         "rds:AddSourceIdentifierToSubscription", 
                         "rds:AddTagsToResource", 

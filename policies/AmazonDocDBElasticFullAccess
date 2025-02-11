@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-12-09T16:51:07Z", 
-        "VersionId": "v3", 
+        "CreateDate": "2025-02-11T18:22:06Z", 
+        "VersionId": "v4", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -22,7 +22,10 @@
                         "docdb-elastic:ListTagsForResource", 
                         "docdb-elastic:CopyClusterSnapshot", 
                         "docdb-elastic:StartCluster", 
-                        "docdb-elastic:StopCluster"
+                        "docdb-elastic:StopCluster", 
+                        "docdb-elastic:GetPendingMaintenanceAction", 
+                        "docdb-elastic:ListPendingMaintenanceActions", 
+                        "docdb-elastic:ApplyPendingMaintenanceAction"
                     ], 
                     "Resource": [
                         "*"
