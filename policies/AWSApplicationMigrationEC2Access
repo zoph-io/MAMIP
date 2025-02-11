@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-01-08T09:22:06Z", 
-        "VersionId": "v5", 
+        "CreateDate": "2025-02-11T13:07:07Z", 
+        "VersionId": "v6", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -297,7 +297,8 @@
                         "arn:aws:ec2:*:*:volume/*", 
                         "arn:aws:ec2:*:*:snapshot/*", 
                         "arn:aws:ec2:*:*:instance/*", 
-                        "arn:aws:ec2:*:*:launch-template/*"
+                        "arn:aws:ec2:*:*:launch-template/*", 
+                        "arn:aws:ec2:*:*:network-interface/*"
                     ], 
                     "Effect": "Allow", 
                     "Condition": {
