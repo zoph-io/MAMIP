@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-07-22T20:08:34Z", 
-        "VersionId": "v30", 
+        "CreateDate": "2025-02-11T21:37:06Z", 
+        "VersionId": "v31", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -132,7 +132,8 @@
                         "config:GetComplianceSummaryByConfigRule", 
                         "config:GetDiscoveredResourceCounts", 
                         "config:PutEvaluations", 
-                        "config:SelectResourceConfig"
+                        "config:SelectResourceConfig", 
+                        "config:BatchGetResourceConfig"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
@@ -555,7 +556,6 @@
                         "network-firewall:ListFirewallPolicies", 
                         "network-firewall:ListFirewalls", 
                         "network-firewall:ListRuleGroups", 
-                        "network-firewall:PutResourcePolicy", 
                         "network-firewall:DescribeResourcePolicy", 
                         "network-firewall:DeleteResourcePolicy", 
                         "network-firewall:DescribeLoggingConfiguration", 
@@ -566,6 +566,18 @@
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Sid": "NetworkFirewallGeneral"
+                }, 
+                {
+                    "Action": [
+                        "network-firewall:PutResourcePolicy"
+                    ], 
+                    "Resource": [
+                        "arn:aws:network-firewall:*:*:firewall-policy/*", 
+                        "arn:aws:network-firewall:*:*:stateful-rulegroup/*", 
+                        "arn:aws:network-firewall:*:*:stateless-rulegroup/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "NetworkFirewallResourcePolicy"
                 }, 
                 {
                     "Action": [
