@@ -1,0 +1,34 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-02-12T20:07:07Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "mediaconnect:ListBridges", 
+                        "mediaconnect:ListEntitlements", 
+                        "mediaconnect:ListFlows", 
+                        "mediaconnect:ListGatewayInstances", 
+                        "mediaconnect:ListGateways", 
+                        "mediaconnect:ListOfferings", 
+                        "mediaconnect:ListReservations", 
+                        "mediaconnect:DescribeBridge", 
+                        "mediaconnect:DescribeFlow", 
+                        "mediaconnect:DescribeFlowSourceMetadata", 
+                        "mediaconnect:DescribeFlowSourceThumbnail", 
+                        "mediaconnect:DescribeGateway", 
+                        "mediaconnect:DescribeGatewayInstance", 
+                        "mediaconnect:DescribeOffering", 
+                        "mediaconnect:DescribeReservation", 
+                        "mediaconnect:ListTagsForResource"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
