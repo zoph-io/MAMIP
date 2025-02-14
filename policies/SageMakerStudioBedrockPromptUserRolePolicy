@@ -1,0 +1,100 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-02-14T00:22:06Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": "bedrock:GetPrompt", 
+                    "Resource": "arn:aws:bedrock:*:*:prompt/${aws:PrincipalTag/PromptId}:${aws:PrincipalTag/PromptVersion}", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/AmazonDataZoneProject": "${aws:PrincipalTag/AmazonDataZoneProject}", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "BedrockPromptReadOnlyPermissions"
+                }, 
+                {
+                    "Action": "s3:ListBucket", 
+                    "Resource": "arn:aws:s3:::${aws:PrincipalTag/DomainBucketName}", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "s3:prefix": "${aws:PrincipalTag/AmazonDataZoneDomain}/${aws:PrincipalTag/AmazonDataZoneProject}/${aws:PrincipalTag/PromptDefinitionPath}", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
+                        "StringNotEquals": {
+                            "aws:PrincipalTag/DomainBucketName": "", 
+                            "aws:PrincipalTag/AmazonDataZoneProject": "", 
+                            "aws:PrincipalTag/PromptDefinitionPath": "", 
+                            "aws:PrincipalTag/AmazonDataZoneDomain": ""
+                        }
+                    }, 
+                    "Sid": "S3ListPromptDefinitionPermissions"
+                }, 
+                {
+                    "Action": [
+                        "s3:GetObject", 
+                        "s3:GetObjectVersion"
+                    ], 
+                    "Resource": "arn:aws:s3:::${aws:PrincipalTag/DomainBucketName}/${aws:PrincipalTag/AmazonDataZoneDomain}/${aws:PrincipalTag/AmazonDataZoneProject}/${aws:PrincipalTag/PromptDefinitionPath}", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
+                        "StringNotEquals": {
+                            "aws:PrincipalTag/DomainBucketName": "", 
+                            "aws:PrincipalTag/AmazonDataZoneProject": "", 
+                            "aws:PrincipalTag/PromptDefinitionPath": "", 
+                            "aws:PrincipalTag/AmazonDataZoneDomain": ""
+                        }
+                    }, 
+                    "Sid": "S3GetPromptDefinitionPermissions"
+                }, 
+                {
+                    "Action": [
+                        "kms:Decrypt", 
+                        "kms:GenerateDataKey"
+                    ], 
+                    "Resource": "arn:aws:kms:*:*:key/${aws:PrincipalTag/KmsKeyId}", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
+                        "StringLike": {
+                            "kms:EncryptionContext:aws:bedrock-prompts:arn": "arn:aws:bedrock:*:${aws:PrincipalAccount}:prompt/${aws:PrincipalTag/PromptId}", 
+                            "kms:ViaService": "bedrock.*.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "BedrockPromptKmsPermissions"
+                }, 
+                {
+                    "Action": "kms:Decrypt", 
+                    "Resource": "arn:aws:kms:*:*:key/${aws:PrincipalTag/KmsKeyId}", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
+                        "ArnLike": {
+                            "kms:EncryptionContext:aws:s3:arn": [
+                                "arn:aws:s3:::${aws:PrincipalTag/DomainBucketName}", 
+                                "arn:aws:s3:::${aws:PrincipalTag/DomainBucketName}/*"
+                            ]
+                        }, 
+                        "StringLike": {
+                            "kms:ViaService": "s3.*.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "S3KmsPermissions"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
