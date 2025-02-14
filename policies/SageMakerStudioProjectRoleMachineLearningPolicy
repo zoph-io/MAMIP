@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-02-12T18:07:07Z", 
-        "VersionId": "v5", 
+        "CreateDate": "2025-02-13T23:07:06Z", 
+        "VersionId": "v6", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -122,6 +122,15 @@
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Sid": "AllowSageMakerDescribeVPCResources"
+                }, 
+                {
+                    "Action": [
+                        "logs:DescribeLogStreams", 
+                        "logs:GetLogEvents"
+                    ], 
+                    "Resource": "arn:aws:logs:*:*:log-group:/aws/sagemaker/*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowSageMakerLogAccess"
                 }, 
                 {
                     "Action": [

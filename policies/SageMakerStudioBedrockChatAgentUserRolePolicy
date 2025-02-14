@@ -1,0 +1,171 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-02-13T23:52:06Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": "bedrock:GetAgentAlias", 
+                    "Resource": "arn:aws:bedrock:*:*:agent-alias/${aws:PrincipalTag/AgentId}/${aws:PrincipalTag/AgentAliasId}", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/AmazonDataZoneProject": "${aws:PrincipalTag/AmazonDataZoneProject}", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "BedrockGetAgentAliasPermissions"
+                }, 
+                {
+                    "Action": "bedrock:InvokeAgent", 
+                    "Resource": "arn:aws:bedrock:*:*:agent-alias/${aws:PrincipalTag/AgentId}/${aws:PrincipalTag/AgentAliasId}", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/AmazonDataZoneProject": "${aws:PrincipalTag/AmazonDataZoneProject}", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "BedrockInvokeAgentPermissions"
+                }, 
+                {
+                    "Action": [
+                        "bedrock:GetAgent", 
+                        "bedrock:GetAgentActionGroup", 
+                        "bedrock:GetAgentKnowledgeBase", 
+                        "bedrock:GetAgentVersion", 
+                        "bedrock:ListAgentActionGroups", 
+                        "bedrock:ListAgentAliases", 
+                        "bedrock:ListAgentKnowledgeBases", 
+                        "bedrock:ListAgentVersions"
+                    ], 
+                    "Resource": "arn:aws:bedrock:*:*:agent/${aws:PrincipalTag/AgentId}", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/AmazonDataZoneProject": "${aws:PrincipalTag/AmazonDataZoneProject}", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "BedrockGetAndListAgentMetadataPermissions"
+                }, 
+                {
+                    "Action": "s3:ListBucket", 
+                    "Resource": "arn:aws:s3:::${aws:PrincipalTag/DomainBucketName}", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "s3:prefix": "${aws:PrincipalTag/AmazonDataZoneDomain}/${aws:PrincipalTag/AmazonDataZoneProject}/${aws:PrincipalTag/AppDefinitionPath}", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
+                        "StringNotEquals": {
+                            "aws:PrincipalTag/DomainBucketName": "", 
+                            "aws:PrincipalTag/AmazonDataZoneProject": "", 
+                            "aws:PrincipalTag/AppDefinitionPath": "", 
+                            "aws:PrincipalTag/AmazonDataZoneDomain": ""
+                        }
+                    }, 
+                    "Sid": "S3ListAppDefinitionPermissions"
+                }, 
+                {
+                    "Action": [
+                        "s3:GetObject", 
+                        "s3:GetObjectVersion"
+                    ], 
+                    "Resource": "arn:aws:s3:::${aws:PrincipalTag/DomainBucketName}/${aws:PrincipalTag/AmazonDataZoneDomain}/${aws:PrincipalTag/AmazonDataZoneProject}/${aws:PrincipalTag/AppDefinitionPath}", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
+                        "StringNotEquals": {
+                            "aws:PrincipalTag/DomainBucketName": "", 
+                            "aws:PrincipalTag/AmazonDataZoneProject": "", 
+                            "aws:PrincipalTag/AppDefinitionPath": "", 
+                            "aws:PrincipalTag/AmazonDataZoneDomain": ""
+                        }
+                    }, 
+                    "Sid": "S3GetAppDefinitionPermissions"
+                }, 
+                {
+                    "Action": "s3:ListBucket", 
+                    "Resource": "arn:aws:s3:::${aws:PrincipalTag/DomainBucketName}", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "s3:prefix": "${aws:PrincipalTag/AmazonDataZoneDomain}/${aws:PrincipalTag/AmazonDataZoneProject}/${aws:PrincipalTag/DataSourcePath}", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
+                        "StringNotEquals": {
+                            "aws:PrincipalTag/DomainBucketName": "", 
+                            "aws:PrincipalTag/AmazonDataZoneProject": "", 
+                            "aws:PrincipalTag/DataSourcePath": "", 
+                            "aws:PrincipalTag/AmazonDataZoneDomain": ""
+                        }
+                    }, 
+                    "Sid": "S3ListDataSourcePermissions"
+                }, 
+                {
+                    "Action": [
+                        "s3:GetObject", 
+                        "s3:GetObjectVersion"
+                    ], 
+                    "Resource": "arn:aws:s3:::${aws:PrincipalTag/DomainBucketName}/${aws:PrincipalTag/AmazonDataZoneDomain}/${aws:PrincipalTag/AmazonDataZoneProject}/${aws:PrincipalTag/DataSourcePath}", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
+                        "StringNotEquals": {
+                            "aws:PrincipalTag/DomainBucketName": "", 
+                            "aws:PrincipalTag/AmazonDataZoneProject": "", 
+                            "aws:PrincipalTag/DataSourcePath": "", 
+                            "aws:PrincipalTag/AmazonDataZoneDomain": ""
+                        }
+                    }, 
+                    "Sid": "S3GetDataSourcePermissions"
+                }, 
+                {
+                    "Action": [
+                        "kms:Decrypt", 
+                        "kms:GenerateDataKey"
+                    ], 
+                    "Resource": "arn:aws:kms:*:*:key/${aws:PrincipalTag/KmsKeyId}", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
+                        "StringLike": {
+                            "kms:ViaService": "bedrock.*.amazonaws.com", 
+                            "kms:EncryptionContext:aws:bedrock:arn": "arn:aws:bedrock:*:${aws:PrincipalAccount}:agent/${aws:PrincipalTag/AgentId}"
+                        }
+                    }, 
+                    "Sid": "BedrockAgentKmsPermissions"
+                }, 
+                {
+                    "Action": "kms:Decrypt", 
+                    "Resource": "arn:aws:kms:*:*:key/${aws:PrincipalTag/KmsKeyId}", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
+                        "ArnLike": {
+                            "kms:EncryptionContext:aws:s3:arn": [
+                                "arn:aws:s3:::${aws:PrincipalTag/DomainBucketName}", 
+                                "arn:aws:s3:::${aws:PrincipalTag/DomainBucketName}/*"
+                            ]
+                        }, 
+                        "StringLike": {
+                            "kms:ViaService": "s3.*.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "S3KmsPermissions"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
