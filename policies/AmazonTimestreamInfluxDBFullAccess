@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-10-08T20:31:28Z", 
-        "VersionId": "v2", 
+        "CreateDate": "2025-02-17T20:37:06Z", 
+        "VersionId": "v3", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -17,7 +17,13 @@
                         "timestream-influxdb:TagResource", 
                         "timestream-influxdb:UntagResource", 
                         "timestream-influxdb:ListTagsForResource", 
-                        "timestream-influxdb:UpdateDbInstance"
+                        "timestream-influxdb:UpdateDbInstance", 
+                        "timestream-influxdb:CreateDbCluster", 
+                        "timestream-influxdb:GetDbCluster", 
+                        "timestream-influxdb:UpdateDbCluster", 
+                        "timestream-influxdb:DeleteDbCluster", 
+                        "timestream-influxdb:ListDbClusters", 
+                        "timestream-influxdb:ListDbInstancesForCluster"
                     ], 
                     "Resource": [
                         "arn:aws:timestream-influxdb:*:*:*"
