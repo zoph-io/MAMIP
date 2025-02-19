@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-11-20T18:06:07Z", 
-        "VersionId": "v14", 
+        "CreateDate": "2025-02-19T17:22:07Z", 
+        "VersionId": "v15", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -241,11 +241,35 @@
                     ], 
                     "Effect": "Allow", 
                     "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
                         "Bool": {
                             "glue:EnabledForRedshiftAutoDiscovery": "true"
                         }
                     }, 
                     "Sid": "DiscoverRedshiftCatalogs"
+                }, 
+                {
+                    "Action": [
+                        "lakeformation:GetDataAccess"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
+                        "ForAnyValue:StringEquals": {
+                            "aws:CalledVia": "glue.amazonaws.com"
+                        }, 
+                        "Bool": {
+                            "lakeformation:EnabledOnlyForMetaDataAccess": "true"
+                        }
+                    }, 
+                    "Sid": "LakeFormationGetMetadataAccessForFederatedCatalogs"
                 }
             ]
         }, 
