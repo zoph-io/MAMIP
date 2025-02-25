@@ -1,0 +1,42 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-02-25T03:37:06Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": "aoss:APIAccessAll", 
+                    "Resource": "arn:aws:aoss:*:*:collection/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "aoss:collection": "bedrock*"
+                        }, 
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "OpenSearchServerlessPermissions"
+                }, 
+                {
+                    "Action": [
+                        "bedrock:GetIngestionJob", 
+                        "bedrock:ListIngestionJobs", 
+                        "bedrock:StartIngestionJob"
+                    ], 
+                    "Resource": "arn:aws:bedrock:*:*:knowledge-base/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/AmazonDataZoneProject": "${aws:PrincipalTag/AmazonDataZoneProject}", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "BedrockKnowledgeBasePermissions"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
