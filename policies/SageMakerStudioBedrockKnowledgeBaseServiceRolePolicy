@@ -1,0 +1,137 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-02-25T02:52:07Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "bedrock:GetInferenceProfile", 
+                        "bedrock:InvokeModel", 
+                        "bedrock:InvokeModelWithResponseStream"
+                    ], 
+                    "Resource": "arn:aws:bedrock:*:*:application-inference-profile/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/AmazonDataZoneProject": "${aws:PrincipalTag/AmazonDataZoneProject}"
+                        }
+                    }, 
+                    "Sid": "BedrockAppInferenceProfileInvocationPermissions"
+                }, 
+                {
+                    "Action": [
+                        "bedrock:InvokeModel", 
+                        "bedrock:InvokeModelWithResponseStream"
+                    ], 
+                    "Resource": [
+                        "arn:aws:bedrock:*::foundation-model/*", 
+                        "arn:aws:bedrock:*:*:custom-model/*", 
+                        "arn:aws:bedrock:*:*:provisioned-model/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "Null": {
+                            "bedrock:InferenceProfileArn": "false"
+                        }
+                    }, 
+                    "Sid": "BedrockModelInvocationPermission"
+                }, 
+                {
+                    "Action": "aoss:APIAccessAll", 
+                    "Resource": "arn:aws:aoss:*:*:collection/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "aoss:collection": "bedrock*"
+                        }, 
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "OpenSearchServerlessPermissions"
+                }, 
+                {
+                    "Action": "s3:ListBucket", 
+                    "Resource": "arn:aws:s3:::${aws:PrincipalTag/DomainBucketName}", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "s3:prefix": [
+                                "${aws:PrincipalTag/AmazonDataZoneDomain}/${aws:PrincipalTag/AmazonDataZoneProject}", 
+                                "${aws:PrincipalTag/AmazonDataZoneDomain}/${aws:PrincipalTag/AmazonDataZoneProject}/*"
+                            ]
+                        }, 
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
+                        "StringNotEquals": {
+                            "aws:PrincipalTag/DomainBucketName": "", 
+                            "aws:PrincipalTag/AmazonDataZoneProject": "", 
+                            "aws:PrincipalTag/AmazonDataZoneDomain": ""
+                        }
+                    }, 
+                    "Sid": "ListDomainS3BucketPermissions"
+                }, 
+                {
+                    "Action": [
+                        "s3:GetObject", 
+                        "s3:GetObjectVersion"
+                    ], 
+                    "Resource": "arn:aws:s3:::${aws:PrincipalTag/DomainBucketName}/${aws:PrincipalTag/AmazonDataZoneDomain}/${aws:PrincipalTag/AmazonDataZoneProject}/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
+                        "StringNotEquals": {
+                            "aws:PrincipalTag/DomainBucketName": "", 
+                            "aws:PrincipalTag/AmazonDataZoneProject": "", 
+                            "aws:PrincipalTag/AmazonDataZoneDomain": ""
+                        }
+                    }, 
+                    "Sid": "AccessDomainS3BucketPermissions"
+                }, 
+                {
+                    "Action": [
+                        "kms:Decrypt", 
+                        "kms:GenerateDataKey"
+                    ], 
+                    "Resource": "arn:aws:kms:*:*:key/${aws:PrincipalTag/KmsKeyId}", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "kms:EncryptionContext:aws:bedrock:arn": "arn:aws:bedrock:*:${aws:PrincipalAccount}:knowledge-base/*"
+                        }, 
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "BedrockKnowledgeBaseKmsPermissions"
+                }, 
+                {
+                    "Action": "kms:Decrypt", 
+                    "Resource": "arn:aws:kms:*:*:key/${aws:PrincipalTag/KmsKeyId}", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
+                        "ArnLike": {
+                            "kms:EncryptionContext:aws:s3:arn": [
+                                "arn:aws:s3:::${aws:PrincipalTag/DomainBucketName}", 
+                                "arn:aws:s3:::${aws:PrincipalTag/DomainBucketName}/*"
+                            ]
+                        }, 
+                        "StringLike": {
+                            "kms:ViaService": "s3.*.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "S3KmsPermissions"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
