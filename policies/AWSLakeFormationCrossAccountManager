@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-03-22T18:51:56Z", 
-        "VersionId": "v6", 
+        "CreateDate": "2025-02-25T00:37:06Z", 
+        "VersionId": "v7", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -48,7 +48,7 @@
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Condition": {
-                        "StringLike": {
+                        "ArnLike": {
                             "ram:PermissionArn": [
                                 "arn:aws:ram::aws:permission/AWSRAMLFEnabled*"
                             ]
