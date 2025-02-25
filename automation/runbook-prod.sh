@@ -2,17 +2,33 @@
 
 set -euo pipefail
 
-# Set variables
+###################
+# Global Variables #
+###################
+
+# Date format for tagging
 DATE=$(date +%Y-%m-%d-%H-%M)
-WORD_TO_REMOVE="policies/"
-REGION="eu-west-1"
+
+# Repository settings
 REPO_URL="git@github.com:z0ph/MAMIP.git"
 REPO_PATH="/tmp/MAMIP"
-S3_KEY_PATH="s3://mamip-artifacts/mamip"
-SSH_KEY_PATH="/tmp/mamip.key"
 GIT_USER_NAME="MAMIP Bot"
 GIT_USER_EMAIL="mamip_bot@github.com"
+
+# AWS settings
+REGION="eu-west-1"
+S3_KEY_PATH="s3://mamip-artifacts/mamip"
+SSH_KEY_PATH="/tmp/mamip.key"
 SNS_TOPIC_ARN="arn:aws:sns:eu-west-1:567589703415:mamip-sns-topic"
+SQS_TWITTER_URL="https://sqs.eu-west-1.amazonaws.com/567589703415/qtweet-mamip-sqs-queue.fifo"
+SQS_BLUESKY_URL="https://sqs.eu-west-1.amazonaws.com/567589703415/qbsky-mamip-prod-sqs-queue.fifo"
+
+# File processing
+WORD_TO_REMOVE="policies/"
+
+######################
+# Utility Functions  #
+######################
 
 # Function to log messages
 log() {
@@ -29,18 +45,23 @@ error_handler() {
 # Trap errors
 trap error_handler ERR
 
-# Job preparation (SSH + Git)
-prepare_job() {
-    log "Starting job preparation"
+########################
+# Repository Functions #
+########################
+
+# Set up SSH and Git configuration
+setup_git_ssh() {
+    log "Setting up SSH and Git configuration"
     aws s3 cp "$S3_KEY_PATH" "$SSH_KEY_PATH" --region "$REGION"
     chmod 600 "$SSH_KEY_PATH"
     eval "$(ssh-agent -s)"
     ssh-add "$SSH_KEY_PATH"
+
     git config --global user.name "$GIT_USER_NAME"
     git config --global user.email "$GIT_USER_EMAIL"
+
     mkdir -p /home/mamip/.ssh/
     ssh-keyscan github.com >>/home/mamip/.ssh/known_hosts
-    log "Job preparation completed"
 }
 
 # Clone the repository
@@ -48,46 +69,74 @@ clone_repo() {
     log "Cloning the repository"
     cd /tmp/
     git clone "$REPO_URL" -q
-    if [ -d "$REPO_PATH" ]; then
-        log "Repository cloned successfully"
-    else
+    if [ ! -d "$REPO_PATH" ]; then
         log "Failed to clone repository"
         exit 1
     fi
+    log "Repository cloned successfully"
 }
 
-# Process the repository
-process_repo() {
-    log "Processing the repository"
+#########################
+# Processing Functions  #
+#########################
+
+# Process IAM policies
+process_policies() {
+    log "Processing IAM policies"
     cd "$REPO_PATH"
-    aws iam list-policies --output json | jq -cr '.Policies[] | select(.Arn | contains("iam::aws")) | .Arn + " " + .DefaultVersionId + " " + .PolicyName' |
+    aws iam list-policies --output json |
+        jq -cr '.Policies[] | select(.Arn | contains("iam::aws")) | .Arn + " " + .DefaultVersionId + " " + .PolicyName' |
         xargs -P 4 -n3 sh -c 'mkdir -p policies && aws iam get-policy-version --policy-arn $1 --version-id $2 > "policies/$3"' sh
 }
 
-# Push changes to the repository
-push_changes() {
-    log "Checking for changes"
+# Send notifications to various platforms
+send_notifications() {
+    local message_body="$1"
+    local sns_message="$2"
+
+    # X/Twitter
+    aws sqs send-message \
+        --queue-url "$SQS_TWITTER_URL" \
+        --message-body "$message_body" \
+        --message-group-id 1
+
+    # Bluesky
+    aws sqs send-message \
+        --queue-url "$SQS_BLUESKY_URL" \
+        --message-body "$message_body" \
+        --message-group-id 1
+
+    # SNS
+    aws sns publish \
+        --topic-arn "$SNS_TOPIC_ARN" \
+        --message "$sns_message" \
+        --region "$REGION"
+}
+
+# Handle git changes and notifications
+process_changes() {
+    log "Processing changes"
     if [[ -n $(git status -s) ]]; then
+        # Get changes
         DIFF="$(git diff --name-only) $(git ls-files --others --exclude-standard)"
         RAW_DIFF=${DIFF//$WORD_TO_REMOVE/}
         TWEET_DIFF="${RAW_DIFF:0:200}..."
+
+        # Commit changes
         git add ./policies
         git commit -am "Update detected"
         git tag "$DATE"
         COMMIT_ID=$(git log --format="%h" -n 1)
 
-        MESSAGE="{\"UpdatedPolicies\": \"$RAW_DIFF\", \"CommitUrl\": \"https://github.com/zoph-io/MAMIP/commit/$COMMIT_ID\", \"Date\": \"$DATE\", \"CommitId\": \"$COMMIT_ID\"}"
+        # Format messages
+        FORMATTED_DIFF=$(echo "$RAW_DIFF" | tr '\n' ',' | sed 's/,$//' | sed 's/,/, /g')
+        MESSAGE="{\"UpdatedPolicies\": \"$FORMATTED_DIFF\", \"CommitUrl\": \"https://github.com/zoph-io/MAMIP/commit/$COMMIT_ID\", \"Date\": \"$DATE\", \"CommitId\": \"$COMMIT_ID\"}"
         MESSAGE_BODY="$TWEET_DIFF https://github.com/z0ph/MAMIP/commit/$COMMIT_ID"
 
-        # X/Twitter
-        aws sqs send-message --queue-url "https://sqs.eu-west-1.amazonaws.com/567589703415/qtweet-mamip-sqs-queue.fifo" --message-body "$MESSAGE_BODY" --message-group-id 1
+        # Send notifications
+        send_notifications "$MESSAGE_BODY" "$MESSAGE"
 
-        # Bluesky - arn:aws:sqs:eu-west-1:567589703415:qbsky-mamip-prod-sqs-queue.fifo
-        aws sqs send-message --queue-url "https://sqs.eu-west-1.amazonaws.com/567589703415/qbsky-mamip-prod-sqs-queue.fifo" --message-body "$MESSAGE_BODY" --message-group-id 1
-
-        # SNS
-        aws sns publish --topic-arn "$SNS_TOPIC_ARN" --message "$MESSAGE" --region "$REGION"
-
+        # Push changes
         log "Pushing changes to master"
         git push origin master --tags
     else
@@ -95,12 +144,16 @@ push_changes() {
     fi
 }
 
-# Main script execution
+####################
+# Main Execution   #
+####################
+
 main() {
-    prepare_job
+    log "Starting MAMIP update process"
+    setup_git_ssh
     clone_repo
-    process_repo
-    push_changes
+    process_policies
+    process_changes
     log "Job completed successfully"
 }
 
