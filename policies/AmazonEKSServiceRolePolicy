@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-11-16T17:42:18Z", 
-        "VersionId": "v5", 
+        "CreateDate": "2025-02-26T21:37:06Z", 
+        "VersionId": "v6", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -255,6 +255,21 @@
                     "Condition": {
                         "StringLike": {
                             "aws:ResourceTag/eks:eks-cluster-name": "*"
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "ec2:DeleteLaunchTemplate", 
+                        "ec2:TerminateInstances"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "ec2:ManagedResourceOperator": [
+                                "eks.amazonaws.com"
+                            ]
                         }
                     }
                 }, 
