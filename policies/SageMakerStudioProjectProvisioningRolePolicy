@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-02-22T00:07:07Z", 
-        "VersionId": "v8", 
+        "CreateDate": "2025-02-27T00:22:05Z", 
+        "VersionId": "v9", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -380,6 +380,7 @@
                                 "AmazonDataZone*", 
                                 "AmazonBedrockManaged", 
                                 "RedshiftDb*", 
+                                "EnableAmazonBedrockPermissions", 
                                 "EnableAmazonBedrockIDEPermissions", 
                                 "EnableGlueWorkloadsPermissions", 
                                 "EnableSageMakerMLWorkloadsPermissions", 
@@ -477,6 +478,24 @@
                         }
                     }, 
                     "Sid": "IAMRoleTaggingForEmr"
+                }, 
+                {
+                    "Action": "iam:UntagRole", 
+                    "Resource": "arn:aws:iam::*:role/datazone_usr_role_*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "Null": {
+                            "aws:ResourceTag/AmazonDataZoneProject": "false"
+                        }, 
+                        "StringEquals": {
+                            "aws:CalledViaFirst": "cloudformation.amazonaws.com", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
+                        "ForAllValues:StringLike": {
+                            "aws:TagKeys": "EnableAmazonBedrockIDEPermissions"
+                        }
+                    }, 
+                    "Sid": "IAMRoleUntagging"
                 }, 
                 {
                     "Action": [

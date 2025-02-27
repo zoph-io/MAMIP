@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-01-31T19:52:07Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-02-27T00:22:06Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -25,6 +25,23 @@
                         }
                     }, 
                     "Sid": "PassRoleToEMREC2InstanceRole"
+                }, 
+                {
+                    "Action": [
+                        "ec2:CreateNetworkInterface", 
+                        "ec2:RunInstances", 
+                        "ec2:CreateFleet"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ArnLike": {
+                            "ec2:Vpc": "arn:aws:ec2:*:*:vpc/${aws:PrincipalTag/VpcId}"
+                        }
+                    }, 
+                    "Sid": "CreateInNetworkForSharedSubnet"
                 }, 
                 {
                     "Action": [

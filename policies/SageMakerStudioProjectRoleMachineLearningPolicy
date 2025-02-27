@@ -1,17 +1,12 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-02-13T23:07:06Z", 
-        "VersionId": "v6", 
+        "CreateDate": "2025-02-27T00:22:05Z", 
+        "VersionId": "v7", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": [
-                        "ec2:CreateNetworkInterface", 
-                        "ec2:DeleteNetworkInterface", 
-                        "ec2:AttachNetworkInterface", 
-                        "ec2:CreateNetworkInterfacePermission", 
-                        "ec2:DeleteNetworkInterfacePermission", 
                         "ec2:CreateVpcEndpoint"
                     ], 
                     "Resource": [
@@ -29,14 +24,16 @@
                             "aws:CalledViaLast": [
                                 "sagemaker.amazonaws.com", 
                                 "airflow.amazonaws.com"
-                            ], 
-                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                            ]
                         }
                     }, 
                     "Sid": "AllowManageSageMakerEniOnVpc"
                 }, 
                 {
                     "Action": [
+                        "ec2:CreateNetworkInterface", 
+                        "ec2:DeleteNetworkInterface", 
+                        "ec2:AttachNetworkInterface", 
                         "ec2:CreateNetworkInterfacePermission", 
                         "ec2:DeleteNetworkInterfacePermission"
                     ], 
@@ -50,9 +47,6 @@
                     "Condition": {
                         "ArnLike": {
                             "ec2:Vpc": "arn:aws:ec2:*:*:vpc/${aws:PrincipalTag/VpcId}"
-                        }, 
-                        "StringEquals": {
-                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
                     }, 
                     "Sid": "AllowManageSageMakerTrainingEniOnVpc"
@@ -385,7 +379,6 @@
                 }, 
                 {
                     "Action": [
-                        "sagemaker:Search", 
                         "sagemaker:GetSearchSuggestions", 
                         "sagemaker:ListTrainingJobs", 
                         "sagemaker:ListTransformJobs", 
@@ -413,6 +406,20 @@
                         }
                     }, 
                     "Sid": "SageMakerListPermissions"
+                }, 
+                {
+                    "Action": [
+                        "sagemaker:Search"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:PrincipalTag/EnableSageMakerMLWorkloadsPermissions": "true", 
+                            "sagemaker:SearchVisibilityCondition/Tags.AmazonDataZoneProject/EqualsIfExists": "${aws:PrincipalTag/AmazonDataZoneProject}"
+                        }
+                    }, 
+                    "Sid": "SageMakerSearchPermissions"
                 }, 
                 {
                     "Action": [
