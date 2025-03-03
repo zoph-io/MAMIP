@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-02-27T00:22:05Z", 
-        "VersionId": "v9", 
+        "CreateDate": "2025-03-03T19:37:06Z", 
+        "VersionId": "v10", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -2073,7 +2073,6 @@
                 }, 
                 {
                     "Action": [
-                        "emr-serverless:GetApplication", 
                         "emr-serverless:UpdateApplication", 
                         "emr-serverless:DeleteApplication"
                     ], 
@@ -2091,6 +2090,22 @@
                         }
                     }, 
                     "Sid": "EMRServerlessApplicationManagement"
+                }, 
+                {
+                    "Action": "emr-serverless:GetApplication", 
+                    "Resource": [
+                        "arn:aws:emr-serverless:*:*:/applications/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "Null": {
+                            "aws:ResourceTag/AmazonDataZoneProject": "false"
+                        }, 
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "EMRServerlessGetApplication"
                 }, 
                 {
                     "Action": "ec2:CreateNetworkInterface", 
