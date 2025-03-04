@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2021-09-29T14:43:09Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-03-03T23:22:06Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -24,7 +24,7 @@
                     ], 
                     "Effect": "Allow", 
                     "Condition": {
-                        "StringLike": {
+                        "ArnLike": {
                             "ec2:CapacityReservationFleet": "arn:aws:ec2:*:*:capacity-reservation-fleet/crf-*"
                         }
                     }
