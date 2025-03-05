@@ -1,0 +1,59 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-03-05T21:22:06Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "logs:CreateLogGroup"
+                    ], 
+                    "Resource": [
+                        "arn:aws:logs:*:*:log-group:/aws/iotmanagedintegrations/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:PrincipalAccount": "${aws:ResourceAccount}"
+                        }
+                    }, 
+                    "Sid": "CloudWatchLogs"
+                }, 
+                {
+                    "Action": [
+                        "logs:CreateLogStream", 
+                        "logs:PutLogEvents"
+                    ], 
+                    "Resource": [
+                        "arn:aws:logs:*:*:log-group:/aws/iotmanagedintegrations/*:log-stream:*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:PrincipalAccount": "${aws:ResourceAccount}"
+                        }
+                    }, 
+                    "Sid": "CloudWatchStreams"
+                }, 
+                {
+                    "Action": [
+                        "cloudwatch:PutMetricData"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "cloudwatch:namespace": [
+                                "AWS/IoTManagedIntegrations", 
+                                "AWS/Usage"
+                            ]
+                        }
+                    }, 
+                    "Sid": "CloudWatchMetrics"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
