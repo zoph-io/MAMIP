@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2023-11-13T15:23:16Z", 
-        "VersionId": "v2", 
+        "CreateDate": "2025-03-06T21:22:07Z", 
+        "VersionId": "v3", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -12,7 +12,11 @@
                         "ecr:InitiateLayerUpload", 
                         "ecr:UploadLayerPart", 
                         "ecr:CompleteLayerUpload", 
-                        "ecr:PutImage"
+                        "ecr:PutImage", 
+                        "ecr:BatchGetImage", 
+                        "ecr:BatchImportUpstreamImage", 
+                        "ecr:GetDownloadUrlForLayer", 
+                        "ecr:GetImageCopyStatus"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
