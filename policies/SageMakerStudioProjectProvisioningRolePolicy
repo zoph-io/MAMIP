@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-03-03T19:37:06Z", 
-        "VersionId": "v10", 
+        "CreateDate": "2025-03-05T23:07:07Z", 
+        "VersionId": "v11", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -318,7 +318,8 @@
                                 "arn:aws:iam::aws:policy/SageMakerStudioProjectRoleMachineLearningPolicy", 
                                 "arn:aws:iam::aws:policy/service-role/SageMakerStudioEMRServiceRolePolicy", 
                                 "arn:aws:iam::aws:policy/service-role/SageMakerStudioEMRInstanceRolePolicy", 
-                                "arn:aws:iam::aws:policy/service-role/AmazonEMRServicePolicy_v2"
+                                "arn:aws:iam::aws:policy/service-role/AmazonEMRServicePolicy_v2", 
+                                "arn:aws:iam::aws:policy/AmazonSageMakerPartnerAppsFullAccess"
                             ]
                         }
                     }, 
@@ -527,7 +528,10 @@
                         "iam:UpdateAssumeRolePolicy"
                     ], 
                     "Resource": [
-                        "arn:aws:iam::*:role/datazone_usr_role_*"
+                        "arn:aws:iam::*:role/datazone_usr_role_*", 
+                        "arn:aws:iam::*:role/datazone_emr_*", 
+                        "arn:aws:iam::*:role/datazone-partner-apps-*", 
+                        "arn:aws:iam::*:role/AmazonBedrock*"
                     ], 
                     "Effect": "Allow", 
                     "Condition": {
@@ -2682,20 +2686,6 @@
                         }
                     }, 
                     "Sid": "IAMInstanceProfileCleanUpForEMR"
-                }, 
-                {
-                    "Action": "iam:GetRole", 
-                    "Resource": "arn:aws:iam::*:role/datazone_emr_*", 
-                    "Effect": "Allow", 
-                    "Condition": {
-                        "Null": {
-                            "aws:ResourceTag/AmazonDataZoneProject": "false"
-                        }, 
-                        "StringEquals": {
-                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
-                        }
-                    }, 
-                    "Sid": "IamGetEmrRoleFromDataZone"
                 }
             ]
         }, 
