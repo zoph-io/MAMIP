@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2023-11-16T22:04:02Z", 
-        "VersionId": "v2", 
+        "CreateDate": "2025-03-07T00:07:06Z", 
+        "VersionId": "v3", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -46,6 +46,28 @@
                     "Sid": "getWorkgroupPermission"
                 }, 
                 {
+                    "Action": [
+                        "redshift-serverless:CreateWorkgroup", 
+                        "redshift-serverless:DeleteWorkgroup"
+                    ], 
+                    "Resource": [
+                        "arn:aws:redshift-serverless:*:*:workgroup/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "aws:CalledVia": [
+                                "glue.amazonaws.com", 
+                                "lakeformation.amazonaws.com"
+                            ]
+                        }, 
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "createAndDeleteWorkgroupPermissions"
+                }, 
+                {
                     "Action": "redshift-serverless:GetNamespace", 
                     "Resource": [
                         "arn:aws:redshift-serverless:*:*:namespace/*"
@@ -57,6 +79,28 @@
                         }
                     }, 
                     "Sid": "getNamespacePermission"
+                }, 
+                {
+                    "Action": [
+                        "redshift-serverless:CreateNamespace", 
+                        "redshift-serverless:DeleteNamespace"
+                    ], 
+                    "Resource": [
+                        "arn:aws:redshift-serverless:*:*:namespace/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "aws:CalledVia": [
+                                "glue.amazonaws.com", 
+                                "lakeformation.amazonaws.com"
+                            ]
+                        }, 
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "createAndDeleteNamespacePermissions"
                 }, 
                 {
                     "Action": [
