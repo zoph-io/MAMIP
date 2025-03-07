@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2023-09-20T17:48:39Z", 
-        "VersionId": "v6", 
+        "CreateDate": "2025-03-06T23:37:06Z", 
+        "VersionId": "v7", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -639,7 +639,10 @@
                         "secretsmanager:TagResource", 
                         "secretsmanager:CreateSecret"
                     ], 
-                    "Resource": "arn:aws:secretsmanager:*:*:secret:do-not-delete-rds-custom-*", 
+                    "Resource": [
+                        "arn:aws:secretsmanager:*:*:secret:do-not-delete-rds-custom-*", 
+                        "arn:aws:secretsmanager:*:*:secret:preview-rds-custom!*"
+                    ], 
                     "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
@@ -657,9 +660,13 @@
                         "secretsmanager:TagResource", 
                         "secretsmanager:DescribeSecret", 
                         "secretsmanager:DeleteSecret", 
-                        "secretsmanager:PutSecretValue"
+                        "secretsmanager:PutSecretValue", 
+                        "secretsmanager:RestoreSecret"
                     ], 
-                    "Resource": "arn:aws:secretsmanager:*:*:secret:do-not-delete-rds-custom-*", 
+                    "Resource": [
+                        "arn:aws:secretsmanager:*:*:secret:do-not-delete-rds-custom-*", 
+                        "arn:aws:secretsmanager:*:*:secret:preview-rds-custom!*"
+                    ], 
                     "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
@@ -671,6 +678,21 @@
                         }
                     }, 
                     "Sid": "secretmanager2"
+                }, 
+                {
+                    "Action": [
+                        "secretsmanager:ListSecrets"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "secretmanager3"
                 }, 
                 {
                     "Action": [
