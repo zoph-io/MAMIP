@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-02-14T00:07:06Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-03-12T18:37:06Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -105,6 +105,23 @@
                         }
                     }, 
                     "Sid": "BedrockPromptKmsPermissions"
+                }, 
+                {
+                    "Action": "kms:Decrypt", 
+                    "Resource": "arn:aws:kms:*:*:key/${aws:PrincipalTag/KmsKeyId}", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
+                        "Null": {
+                            "kms:EncryptionContext:aws:bedrock:guardrail-id": "false"
+                        }, 
+                        "StringLike": {
+                            "kms:ViaService": "bedrock.*.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "BedrockGuardrailKmsPermissions"
                 }
             ]
         }, 

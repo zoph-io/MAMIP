@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-01-18T00:07:06Z", 
-        "VersionId": "v14", 
+        "CreateDate": "2025-03-12T18:07:07Z", 
+        "VersionId": "v15", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -92,6 +92,9 @@
                         "invoicing:TagResource", 
                         "invoicing:UntagResource", 
                         "invoicing:UpdateInvoiceUnit", 
+                        "mapcredits:ListQuarterSpend", 
+                        "mapcredits:ListAssociatedPrograms", 
+                        "mapcredits:ListQuarterCredits", 
                         "payments:CreateFinancingApplication", 
                         "payments:CreatePaymentInstrument", 
                         "payments:DeletePaymentInstrument", 
