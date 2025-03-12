@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-01-16T21:52:06Z", 
-        "VersionId": "v23", 
+        "CreateDate": "2025-03-12T20:22:06Z", 
+        "VersionId": "v24", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -207,7 +207,10 @@
                         "wisdom:ListAIGuardrails", 
                         "wisdom:ListAIGuardrailVersions", 
                         "wisdom:CreateAssistant", 
-                        "wisdom:ListTagsForResource"
+                        "wisdom:ListTagsForResource", 
+                        "wisdom:SendMessage", 
+                        "wisdom:GetNextMessage", 
+                        "wisdom:ListMessages"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
