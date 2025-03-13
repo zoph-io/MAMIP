@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-07-10T05:01:15Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-03-13T20:37:07Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -46,6 +46,37 @@
                         }
                     }, 
                     "Sid": "AppStudioResourcePermissionsForSecretsManager"
+                }, 
+                {
+                    "Action": [
+                        "secretsmanager:DeleteSecret", 
+                        "secretsmanager:DescribeSecret", 
+                        "secretsmanager:GetSecretValue", 
+                        "secretsmanager:PutSecretValue", 
+                        "secretsmanager:UpdateSecret"
+                    ], 
+                    "Resource": "arn:aws:secretsmanager:*:*:secret:appstudio!*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "secretsmanager:ResourceTag/aws:secretsmanager:owningService": "appstudio", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "AppStudioResourcePermissionsForManagedSecrets"
+                }, 
+                {
+                    "Action": [
+                        "secretsmanager:CreateSecret"
+                    ], 
+                    "Resource": "arn:aws:secretsmanager:*:*:secret:appstudio!*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "AppStudioResourceWritePermissionsForManagedSecrets"
                 }, 
                 {
                     "Action": [
