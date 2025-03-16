@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-01-08T09:22:07Z", 
-        "VersionId": "v3", 
+        "CreateDate": "2025-03-16T10:37:07Z", 
+        "VersionId": "v4", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -289,6 +289,7 @@
                         "arn:aws:ec2:*:*:security-group/*", 
                         "arn:aws:ec2:*:*:volume/*", 
                         "arn:aws:ec2:*:*:snapshot/*", 
+                        "arn:aws:ec2:*:*:network-interface/*", 
                         "arn:aws:ec2:*:*:instance/*"
                     ], 
                     "Effect": "Allow", 
