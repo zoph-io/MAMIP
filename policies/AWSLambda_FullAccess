@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2020-11-17T21:14:08Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-03-17T21:37:06Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -47,7 +47,9 @@
                     "Action": [
                         "logs:DescribeLogStreams", 
                         "logs:GetLogEvents", 
-                        "logs:FilterLogEvents"
+                        "logs:FilterLogEvents", 
+                        "logs:StartLiveTail", 
+                        "logs:StopLiveTail"
                     ], 
                     "Resource": "arn:aws:logs:*:*:log-group:/aws/lambda/*", 
                     "Effect": "Allow"
