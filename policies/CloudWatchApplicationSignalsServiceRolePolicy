@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-04-26T21:29:34Z", 
-        "VersionId": "v5", 
+        "CreateDate": "2025-03-17T15:07:06Z", 
+        "VersionId": "v6", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -76,6 +76,22 @@
                         }
                     }, 
                     "Sid": "TagsPermission"
+                }, 
+                {
+                    "Action": [
+                        "application-signals:ListServiceLevelObjectiveExclusionWindows", 
+                        "application-signals:GetServiceLevelObjective"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "ApplicationSignalsPermission"
                 }, 
                 {
                     "Action": [
