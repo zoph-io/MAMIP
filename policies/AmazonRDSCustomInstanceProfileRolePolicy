@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-02-27T17:42:02Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-03-20T16:22:05Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -179,7 +179,8 @@
                         "secretsmanager:DescribeSecret"
                     ], 
                     "Resource": [
-                        "arn:aws:secretsmanager:*:*:secret:do-not-delete-rds-custom-*"
+                        "arn:aws:secretsmanager:*:*:secret:do-not-delete-rds-custom-*", 
+                        "arn:aws:secretsmanager:*:*:secret:rds-custom!*"
                     ], 
                     "Effect": "Allow", 
                     "Condition": {
@@ -282,7 +283,10 @@
                     "Effect": "Allow", 
                     "Condition": {
                         "ArnLike": {
-                            "kms:EncryptionContext:SecretARN": "arn:aws:secretsmanager:*:*:secret:do-not-delete-rds-custom-*"
+                            "kms:EncryptionContext:SecretARN": [
+                                "arn:aws:secretsmanager:*:*:secret:do-not-delete-rds-custom-*", 
+                                "arn:aws:secretsmanager:*:*:secret:rds-custom!*"
+                            ]
                         }, 
                         "StringLike": {
                             "kms:ViaService": "secretsmanager.*.amazonaws.com"
