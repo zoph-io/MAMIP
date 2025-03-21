@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-02-27T22:37:06Z", 
-        "VersionId": "v7", 
+        "CreateDate": "2025-03-21T20:07:06Z", 
+        "VersionId": "v8", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -934,6 +934,17 @@
                     "Sid": "GlueGetDefaultDatabase"
                 }, 
                 {
+                    "Action": "glue:GetDatabases", 
+                    "NotResource": "arn:aws:glue:*:*:database/default", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "glue:LakeFormationPermissions": "Enabled"
+                        }
+                    }, 
+                    "Sid": "AllowGlueGetDatabasesExceptDefault"
+                }, 
+                {
                     "Action": [
                         "glue:GetDatabases"
                     ], 
@@ -994,7 +1005,6 @@
                         "glue:GetColumnStatisticsTaskRun", 
                         "glue:GetColumnStatisticsTaskRuns", 
                         "glue:GetDatabase", 
-                        "glue:GetDatabases", 
                         "glue:GetPartition", 
                         "glue:GetPartitionIndexes", 
                         "glue:GetPartitions", 
@@ -1890,7 +1900,10 @@
                     "Action": [
                         "iam:PassRole"
                     ], 
-                    "Resource": "arn:aws:iam::*:role/AmazonBedrockEvaluationRole-${aws:PrincipalTag/AmazonDataZoneProject}-*", 
+                    "Resource": [
+                        "arn:aws:iam::*:role/AmazonBedrockEvaluationRole-${aws:PrincipalTag/AmazonDataZoneProject}-*", 
+                        "arn:aws:iam::*:role/AmazonBedrockServiceRole-${aws:PrincipalTag/AmazonDataZoneProject}-*"
+                    ], 
                     "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
@@ -1904,7 +1917,10 @@
                 }, 
                 {
                     "Action": "iam:PassRole", 
-                    "Resource": "arn:aws:iam::*:role/AmazonBedrockEvaluationRole-${aws:PrincipalTag/AmazonDataZoneProject}-*", 
+                    "Resource": [
+                        "arn:aws:iam::*:role/AmazonBedrockEvaluationRole-${aws:PrincipalTag/AmazonDataZoneProject}-*", 
+                        "arn:aws:iam::*:role/AmazonBedrockServiceRole-${aws:PrincipalTag/AmazonDataZoneProject}-*"
+                    ], 
                     "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {

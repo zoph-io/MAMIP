@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-03-05T23:07:07Z", 
-        "VersionId": "v11", 
+        "CreateDate": "2025-03-21T20:07:07Z", 
+        "VersionId": "v12", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -1202,7 +1202,8 @@
                     "Action": [
                         "cloudformation:CreateStack", 
                         "cloudformation:DeleteStack", 
-                        "cloudformation:DescribeStacks"
+                        "cloudformation:DescribeStacks", 
+                        "cloudformation:DescribeStackEvents"
                     ], 
                     "Resource": "arn:aws:cloudformation:*:*:stack/athenafederatedcatalog*", 
                     "Effect": "Allow", 
