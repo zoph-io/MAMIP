@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2023-04-20T22:35:32Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-03-20T23:07:06Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -12,7 +12,35 @@
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
-                    "Sid": "Ec2ReadOnly"
+                    "Sid": "EC2DescribeInstancesRegions"
+                }, 
+                {
+                    "Action": [
+                        "ecr:GetAuthorizationToken"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ECRGetAuthorizationToken"
+                }, 
+                {
+                    "Action": [
+                        "ecr:BatchCheckLayerAvailability", 
+                        "ecr:GetDownloadUrlForLayer", 
+                        "ecr:GetRepositoryPolicy", 
+                        "ecr:DescribeRepositories", 
+                        "ecr:ListImages", 
+                        "ecr:DescribeImages", 
+                        "ecr:BatchGetImage", 
+                        "ecr:ListTagsForResource"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/red-hat-managed": "true"
+                        }
+                    }, 
+                    "Sid": "ECRReadOnlyAccessRedHatManaged"
                 }
             ]
         }, 
