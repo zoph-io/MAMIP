@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-01-07T18:22:07Z", 
-        "VersionId": "v17", 
+        "CreateDate": "2025-03-21T23:22:06Z", 
+        "VersionId": "v18", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -330,6 +330,48 @@
                     ], 
                     "Effect": "Allow", 
                     "Sid": "RedshiftClusterPermissions"
+                }, 
+                {
+                    "Action": [
+                        "redshift-serverless:GetNamespace", 
+                        "redshift-serverless:GetSnapshot", 
+                        "redshift-serverless:GetWorkgroup"
+                    ], 
+                    "Resource": [
+                        "arn:aws:redshift-serverless:*:*:namespace/*", 
+                        "arn:aws:redshift-serverless:*:*:workgroup/*", 
+                        "arn:aws:redshift-serverless:*:*:snapshot/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "RedshiftServerlessGetPermissions"
+                }, 
+                {
+                    "Action": [
+                        "redshift-serverless:DeleteSnapshot"
+                    ], 
+                    "Resource": [
+                        "arn:aws:redshift-serverless:*:*:snapshot/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "Null": {
+                            "aws:ResourceTag/aws:backup:source-resource": "false"
+                        }
+                    }, 
+                    "Sid": "RedshiftServerlessDeleteSnapshotPermissions"
+                }, 
+                {
+                    "Action": [
+                        "redshift-serverless:ListNamespaces", 
+                        "redshift-serverless:ListSnapshots", 
+                        "redshift-serverless:ListTagsForResource", 
+                        "redshift-serverless:ListWorkgroups"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "RedshiftServerlessListPermissions"
                 }, 
                 {
                     "Action": [
