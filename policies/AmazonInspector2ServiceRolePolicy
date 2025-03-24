@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-08-14T16:03:32Z", 
-        "VersionId": "v13", 
+        "CreateDate": "2025-03-24T17:37:07Z", 
+        "VersionId": "v14", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -274,6 +274,36 @@
                         }
                     }, 
                     "Sid": "AllowToPutCloudwatchMetricData"
+                }, 
+                {
+                    "Action": [
+                        "ecs:ListClusters", 
+                        "ecs:ListTasks", 
+                        "eks:ListClusters"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "AllowListAccessToECSAndEKS"
+                }, 
+                {
+                    "Action": [
+                        "ecs:DescribeTasks"
+                    ], 
+                    "Resource": "arn:aws:ecs:*:*:cluster/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "AllowAccessToECSTasks"
                 }
             ]
         }, 

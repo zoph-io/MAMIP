@@ -1,0 +1,66 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-03-24T17:37:06Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "ec2:DescribeInstances", 
+                        "ec2:DescribeInstanceStatus", 
+                        "ec2:DescribeNetworkInterfaces"
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:*/*", 
+                    "Effect": "Allow", 
+                    "Sid": "ReadOnlyPermissionsForInstanceManagement"
+                }, 
+                {
+                    "Action": [
+                        "ec2:DescribeInstanceEventWindows"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ReadOnlyPermissionsForInstanceEventWindows"
+                }, 
+                {
+                    "Action": [
+                        "ec2:DescribeLaunchTemplates", 
+                        "ec2:DescribeLaunchTemplateVersions"
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:launch-template/*", 
+                    "Effect": "Allow", 
+                    "Sid": "ReadOnlyPermissionsForLaunchTemplates"
+                }, 
+                {
+                    "Action": [
+                        "ec2:DeleteLaunchTemplate", 
+                        "ec2:DeleteLaunchTemplateVersions"
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:launch-template/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "ec2:ManagedResourceOperator": "ecs.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "DeleteManagedLaunchTemplate"
+                }, 
+                {
+                    "Action": [
+                        "ec2:TerminateInstances"
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:instance/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "ec2:ManagedResourceOperator": "ecs.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "TerminateManagedInstances"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
