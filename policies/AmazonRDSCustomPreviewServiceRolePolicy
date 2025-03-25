@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-03-06T23:37:06Z", 
-        "VersionId": "v7", 
+        "CreateDate": "2025-03-25T22:22:06Z", 
+        "VersionId": "v8", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -190,7 +190,8 @@
                         "ec2:DeleteKeyPair"
                     ], 
                     "Resource": [
-                        "arn:aws:ec2:*:*:key-pair/do-not-delete-rds-custom-*"
+                        "arn:aws:ec2:*:*:key-pair/do-not-delete-rds-custom-*", 
+                        "arn:aws:ec2:*:*:key-pair/preview-rds-custom!*"
                     ], 
                     "Effect": "Allow", 
                     "Condition": {
@@ -209,7 +210,8 @@
                         "ec2:CreateKeyPair"
                     ], 
                     "Resource": [
-                        "arn:aws:ec2:*:*:key-pair/do-not-delete-rds-custom-*"
+                        "arn:aws:ec2:*:*:key-pair/do-not-delete-rds-custom-*", 
+                        "arn:aws:ec2:*:*:key-pair/preview-rds-custom!*"
                     ], 
                     "Effect": "Allow", 
                     "Condition": {
@@ -701,6 +703,41 @@
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Sid": "servicequota1"
+                }, 
+                {
+                    "Action": [
+                        "sqs:CreateQueue", 
+                        "sqs:TagQueue"
+                    ], 
+                    "Resource": "arn:aws:sqs:*:*:do-not-delete-rds-custom-*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "aws:RequestTag/AWSRDSCustom": [
+                                "custom-oracle"
+                            ]
+                        }
+                    }, 
+                    "Sid": "sqs1"
+                }, 
+                {
+                    "Action": [
+                        "sqs:GetQueueAttributes", 
+                        "sqs:SendMessage", 
+                        "sqs:ReceiveMessage", 
+                        "sqs:DeleteMessage", 
+                        "sqs:DeleteQueue"
+                    ], 
+                    "Resource": "arn:aws:sqs:*:*:do-not-delete-rds-custom-*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "aws:ResourceTag/AWSRDSCustom": [
+                                "custom-oracle"
+                            ]
+                        }
+                    }, 
+                    "Sid": "sqs2"
                 }
             ]
         }, 
