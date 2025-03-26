@@ -1,24 +1,35 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2021-08-17T23:41:42Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-03-26T17:37:06Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": [
                         "elasticache:DescribeReplicationGroups", 
+                        "elasticache:ModifyCacheCluster", 
                         "elasticache:ModifyReplicationGroupShardConfiguration", 
                         "elasticache:IncreaseReplicaCount", 
                         "elasticache:DecreaseReplicaCount", 
                         "elasticache:DescribeCacheClusters", 
-                        "elasticache:DescribeCacheParameters", 
-                        "cloudwatch:DescribeAlarms"
+                        "elasticache:DescribeCacheParameters"
                     ], 
                     "Resource": [
                         "*"
                     ], 
-                    "Effect": "Allow"
+                    "Effect": "Allow", 
+                    "Sid": "ElastiCacheActionsOnAllClusters"
+                }, 
+                {
+                    "Action": [
+                        "cloudwatch:DescribeAlarms"
+                    ], 
+                    "Resource": [
+                        "arn:aws:cloudwatch:*:*:alarm:*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "CloudWatchActionsOnAllAlarms"
                 }, 
                 {
                     "Action": [
@@ -28,7 +39,8 @@
                     "Resource": [
                         "arn:aws:cloudwatch:*:*:alarm:TargetTracking*"
                     ], 
-                    "Effect": "Allow"
+                    "Effect": "Allow", 
+                    "Sid": "CloudWatchActionsOnTargetTrackingAlarms"
                 }
             ]
         }, 
