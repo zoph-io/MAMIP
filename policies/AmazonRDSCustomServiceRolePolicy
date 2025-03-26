@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-03-06T23:52:07Z", 
-        "VersionId": "v11", 
+        "CreateDate": "2025-03-25T23:22:06Z", 
+        "VersionId": "v12", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -217,7 +217,8 @@
                         "ec2:DeleteKeyPair"
                     ], 
                     "Resource": [
-                        "arn:aws:ec2:*:*:key-pair/do-not-delete-rds-custom-*"
+                        "arn:aws:ec2:*:*:key-pair/do-not-delete-rds-custom-*", 
+                        "arn:aws:ec2:*:*:key-pair/rds-custom!*"
                     ], 
                     "Effect": "Allow", 
                     "Condition": {
@@ -236,7 +237,8 @@
                         "ec2:CreateKeyPair"
                     ], 
                     "Resource": [
-                        "arn:aws:ec2:*:*:key-pair/do-not-delete-rds-custom-*"
+                        "arn:aws:ec2:*:*:key-pair/do-not-delete-rds-custom-*", 
+                        "arn:aws:ec2:*:*:key-pair/rds-custom!*"
                     ], 
                     "Effect": "Allow", 
                     "Condition": {
@@ -763,7 +765,8 @@
                     "Condition": {
                         "StringLike": {
                             "aws:RequestTag/AWSRDSCustom": [
-                                "custom-sqlserver"
+                                "custom-sqlserver", 
+                                "custom-oracle"
                             ]
                         }
                     }, 
@@ -782,7 +785,8 @@
                     "Condition": {
                         "StringLike": {
                             "aws:ResourceTag/AWSRDSCustom": [
-                                "custom-sqlserver"
+                                "custom-sqlserver", 
+                                "custom-oracle"
                             ]
                         }
                     }, 
