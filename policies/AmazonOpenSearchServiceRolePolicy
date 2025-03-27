@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-08-20T22:57:07Z", 
-        "VersionId": "v8", 
+        "CreateDate": "2025-03-27T22:52:06Z", 
+        "VersionId": "v9", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -196,6 +196,16 @@
                         }
                     }, 
                     "Sid": "Stmt1480452973202"
+                }, 
+                {
+                    "Action": "sso:PutApplicationAccessScope", 
+                    "Resource": "arn:aws:sso::*:application/*/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceOrgID": "${aws:PrincipalOrgID}"
+                        }
+                    }
                 }
             ]
         }, 
