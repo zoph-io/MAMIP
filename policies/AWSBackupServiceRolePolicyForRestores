@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-01-07T18:22:06Z", 
-        "VersionId": "v21", 
+        "CreateDate": "2025-03-27T21:52:06Z", 
+        "VersionId": "v22", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -145,7 +145,8 @@
                                 "ec2.*.amazonaws.com", 
                                 "elasticfilesystem.*.amazonaws.com", 
                                 "rds.*.amazonaws.com", 
-                                "redshift.*.amazonaws.com"
+                                "redshift.*.amazonaws.com", 
+                                "redshift-serverless.*.amazonaws.com"
                             ]
                         }
                     }, 
@@ -237,7 +238,7 @@
                     ], 
                     "Effect": "Allow", 
                     "Condition": {
-                        "ForAnyValue:StringLike": {
+                        "StringLike": {
                             "ec2:CreateAction": [
                                 "RunInstances", 
                                 "CreateVolume"
@@ -378,7 +379,8 @@
                     ], 
                     "Resource": [
                         "arn:aws:redshift:*:*:snapshot:*/*", 
-                        "arn:aws:redshift:*:*:cluster:*"
+                        "arn:aws:redshift:*:*:cluster:*", 
+                        "arn:aws:redshift-serverless:*:*:snapshot/*"
                     ], 
                     "Effect": "Allow", 
                     "Sid": "RedshiftClusterSnapshotPermissions"
@@ -400,6 +402,38 @@
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Sid": "RedshiftTablePermissions"
+                }, 
+                {
+                    "Action": [
+                        "redshift-serverless:RestoreTableFromSnapshot"
+                    ], 
+                    "Resource": [
+                        "arn:aws:redshift-serverless:*:*:namespace/*", 
+                        "arn:aws:redshift-serverless:*:*:workgroup/*", 
+                        "arn:aws:redshift-serverless:*:*:snapshot/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "RedshiftServerlessSnapshotPermissions"
+                }, 
+                {
+                    "Action": [
+                        "redshift-serverless:GetNamespace"
+                    ], 
+                    "Resource": [
+                        "arn:aws:redshift-serverless:*:*:namespace/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "RedshiftServerlessNamespacePermissions"
+                }, 
+                {
+                    "Action": [
+                        "redshift-serverless:GetTableRestoreStatus"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "RedshiftServerlessTablePermissions"
                 }, 
                 {
                     "Action": [

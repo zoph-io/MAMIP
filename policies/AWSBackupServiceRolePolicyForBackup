@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-09-27T20:02:34Z", 
-        "VersionId": "v20", 
+        "CreateDate": "2025-03-27T21:52:06Z", 
+        "VersionId": "v21", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -422,6 +422,65 @@
                     ], 
                     "Effect": "Allow", 
                     "Sid": "RedshiftResourcePermissions"
+                }, 
+                {
+                    "Action": [
+                        "redshift-serverless:CreateSnapshot"
+                    ], 
+                    "Resource": [
+                        "arn:aws:redshift-serverless:*:*:snapshot/*", 
+                        "arn:aws:redshift-serverless:*:*:namespace/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "RedshiftServerlessCreatePermissions"
+                }, 
+                {
+                    "Action": [
+                        "redshift-serverless:DeleteSnapshot"
+                    ], 
+                    "Resource": [
+                        "arn:aws:redshift-serverless:*:*:snapshot/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "Null": {
+                            "aws:ResourceTag/aws:backup:source-resource": "false"
+                        }
+                    }, 
+                    "Sid": "RedshiftServerlessSnapshotPermissions"
+                }, 
+                {
+                    "Action": [
+                        "redshift-serverless:GetNamespace"
+                    ], 
+                    "Resource": [
+                        "arn:aws:redshift-serverless:*:*:namespace/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "RedshiftServerlessGetPermissions"
+                }, 
+                {
+                    "Action": [
+                        "redshift-serverless:GetSnapshot", 
+                        "redshift-serverless:TagResource"
+                    ], 
+                    "Resource": [
+                        "arn:aws:redshift-serverless:*:*:snapshot/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "RedshiftServerlessResourcePermissions"
+                }, 
+                {
+                    "Action": [
+                        "redshift-serverless:ListNamespaces", 
+                        "redshift-serverless:ListSnapshots", 
+                        "redshift-serverless:ListTagsForResource"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "RedshiftServerlessListPermissions"
                 }, 
                 {
                     "Action": [
