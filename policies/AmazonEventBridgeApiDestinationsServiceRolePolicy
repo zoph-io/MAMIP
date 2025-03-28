@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2021-02-11T20:52:05Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-03-28T20:07:07Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -16,6 +16,26 @@
                     ], 
                     "Resource": "arn:aws:secretsmanager:*:*:secret:events!connection/*", 
                     "Effect": "Allow"
+                }, 
+                {
+                    "Action": [
+                        "kms:Decrypt", 
+                        "kms:Encrypt", 
+                        "kms:GenerateDataKey"
+                    ], 
+                    "Resource": "arn:aws:kms:*:*:key/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/EventBridgeApiDestinations": "true"
+                        }, 
+                        "StringLike": {
+                            "kms:EncryptionContext:SecretARN": [
+                                "arn:aws:secretsmanager:*:*:secret:events!connection/*"
+                            ], 
+                            "kms:ViaService": "secretsmanager.*.amazonaws.com"
+                        }
+                    }
                 }
             ]
         }, 

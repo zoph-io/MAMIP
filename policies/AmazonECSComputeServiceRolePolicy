@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-03-24T17:37:06Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-03-28T20:07:06Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -9,9 +9,10 @@
                     "Action": [
                         "ec2:DescribeInstances", 
                         "ec2:DescribeInstanceStatus", 
-                        "ec2:DescribeNetworkInterfaces"
+                        "ec2:DescribeNetworkInterfaces", 
+                        "ec2:DescribeFleets"
                     ], 
-                    "Resource": "arn:aws:ec2:*:*:*/*", 
+                    "Resource": "*", 
                     "Effect": "Allow", 
                     "Sid": "ReadOnlyPermissionsForInstanceManagement"
                 }, 
@@ -28,7 +29,7 @@
                         "ec2:DescribeLaunchTemplates", 
                         "ec2:DescribeLaunchTemplateVersions"
                     ], 
-                    "Resource": "arn:aws:ec2:*:*:launch-template/*", 
+                    "Resource": "*", 
                     "Effect": "Allow", 
                     "Sid": "ReadOnlyPermissionsForLaunchTemplates"
                 }, 
