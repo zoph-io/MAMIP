@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-12-10T16:51:09Z", 
-        "VersionId": "v15", 
+        "CreateDate": "2025-04-01T15:52:07Z", 
+        "VersionId": "v16", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -89,8 +89,11 @@
                         "s3:ListAccessPoints", 
                         "s3:ListAllMyBuckets", 
                         "s3:ListMultiRegionAccessPoints", 
+                        "s3express:GetAccessPoint", 
+                        "s3express:GetAccessPointPolicy", 
                         "s3express:GetBucketPolicy", 
                         "s3express:ListAllMyDirectoryBuckets", 
+                        "s3express:ListAccessPointsForDirectoryBuckets", 
                         "sns:GetTopicAttributes", 
                         "sns:ListTopics", 
                         "secretsmanager:DescribeSecret", 
