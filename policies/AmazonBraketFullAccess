@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2023-04-19T16:25:29Z", 
-        "VersionId": "v6", 
+        "CreateDate": "2025-04-01T22:52:06Z", 
+        "VersionId": "v7", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -15,7 +15,12 @@
                         "s3:PutBucketPolicy"
                     ], 
                     "Resource": "arn:aws:s3:::amazon-braket-*", 
-                    "Effect": "Allow"
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
                 }, 
                 {
                     "Action": [
