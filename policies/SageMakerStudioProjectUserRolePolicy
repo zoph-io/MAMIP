@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-03-21T20:07:06Z", 
-        "VersionId": "v8", 
+        "CreateDate": "2025-04-08T17:52:05Z", 
+        "VersionId": "v9", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -1223,7 +1223,8 @@
                                 "sagemaker.amazonaws.com", 
                                 "glue.amazonaws.com", 
                                 "airflow.amazonaws.com", 
-                                "emr-serverless.amazonaws.com"
+                                "emr-serverless.amazonaws.com", 
+                                "scheduler.amazonaws.com"
                             ], 
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
@@ -1306,6 +1307,9 @@
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Condition": {
+                        "Null": {
+                            "aws:ResourceTag/AmazonDataZoneEnvironment": "true"
+                        }, 
                         "StringEquals": {
                             "aws:ResourceTag/for-use-with-all-datazone-projects": "true"
                         }
@@ -1546,7 +1550,8 @@
                                 "sqs.*.amazonaws.com", 
                                 "sagemaker.*.amazonaws.com", 
                                 "bedrock.*.amazonaws.com", 
-                                "s3.*.amazonaws.com"
+                                "s3.*.amazonaws.com", 
+                                "scheduler.*.amazonaws.com"
                             ]
                         }
                     }, 
@@ -1598,7 +1603,8 @@
                                 "emr-serverless.*.amazonaws.com", 
                                 "s3.*.amazonaws.com", 
                                 "redshift.*.amazonaws.com", 
-                                "codecommit.*.amazonaws.com"
+                                "codecommit.*.amazonaws.com", 
+                                "scheduler.*.amazonaws.com"
                             ]
                         }
                     }, 
@@ -2445,6 +2451,39 @@
                         }
                     }, 
                     "Sid": "CrossAccountRAMResourceSharingViaLakeFormationHybrid"
+                }, 
+                {
+                    "Action": [
+                        "scheduler:CreateSchedule", 
+                        "scheduler:GetSchedule", 
+                        "scheduler:UpdateSchedule", 
+                        "scheduler:DeleteSchedule"
+                    ], 
+                    "Resource": [
+                        "arn:aws:scheduler:*:*:schedule/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/AmazonDataZoneProject": "${aws:PrincipalTag/AmazonDataZoneProject}"
+                        }
+                    }, 
+                    "Sid": "EventBridgeScheduleActions"
+                }, 
+                {
+                    "Action": [
+                        "scheduler:GetScheduleGroup"
+                    ], 
+                    "Resource": [
+                        "arn:aws:scheduler:*:*:schedule-group/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/AmazonDataZoneProject": "${aws:PrincipalTag/AmazonDataZoneProject}"
+                        }
+                    }, 
+                    "Sid": "EventBridgeScheduleGroupActions"
                 }
             ]
         }, 
