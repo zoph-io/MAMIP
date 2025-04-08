@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-03-07T00:22:06Z", 
-        "VersionId": "v8", 
+        "CreateDate": "2025-04-08T21:22:06Z", 
+        "VersionId": "v9", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -276,7 +276,8 @@
                         "arn:aws:iam::*:role/AmazonDataZone*", 
                         "arn:aws:iam::*:role/service-role/AmazonDataZone*", 
                         "arn:aws:iam::*:role/AmazonSageMakerManageAccess*", 
-                        "arn:aws:iam::*:role/service-role/AmazonSageMakerManageAccess*"
+                        "arn:aws:iam::*:role/service-role/AmazonSageMakerManageAccess*", 
+                        "arn:aws:iam::*:role/datazone_usr_role*"
                     ], 
                     "Effect": "Allow", 
                     "Condition": {
