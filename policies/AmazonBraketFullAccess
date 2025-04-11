@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-04-01T22:52:06Z", 
-        "VersionId": "v7", 
+        "CreateDate": "2025-04-11T22:22:06Z", 
+        "VersionId": "v8", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -26,7 +26,8 @@
                     "Action": [
                         "s3:ListAllMyBuckets", 
                         "servicequotas:GetServiceQuota", 
-                        "cloudwatch:GetMetricData"
+                        "cloudwatch:GetMetricData", 
+                        "pricing:GetProducts"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow"
