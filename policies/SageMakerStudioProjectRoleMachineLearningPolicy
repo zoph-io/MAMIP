@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-02-27T00:22:05Z", 
-        "VersionId": "v7", 
+        "CreateDate": "2025-04-14T21:52:06Z", 
+        "VersionId": "v8", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -555,6 +555,21 @@
                 }, 
                 {
                     "Action": [
+                        "sagemaker:CreatePresignedDomainUrl"
+                    ], 
+                    "Resource": "arn:aws:sagemaker:*:*:user-profile/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/AmazonDataZoneProject": "${aws:PrincipalTag/AmazonDataZoneProject}", 
+                            "aws:ResourceTag/AmazonDataZoneUser": "${aws:PrincipalTag/datazone:userId}", 
+                            "aws:PrincipalTag/EnableSageMakerMLWorkloadsPermissions": "true"
+                        }
+                    }, 
+                    "Sid": "SageMakerStudioCreatePresignedDomainUrlForTaggedUserProfile"
+                }, 
+                {
+                    "Action": [
                         "sagemaker:ListApps", 
                         "sagemaker:ListDomains", 
                         "sagemaker:ListUserProfiles", 
@@ -582,6 +597,8 @@
                         "sagemaker:DescribeApp"
                     ], 
                     "Resource": [
+                        "arn:aws:sagemaker:*:*:app/*/*/codeeditor/*", 
+                        "arn:aws:sagemaker:*:*:app/*/*/CodeEditor/*", 
                         "arn:aws:sagemaker:*:*:app/*/*/jupyterlab/*", 
                         "arn:aws:sagemaker:*:*:app/*/*/JupyterLab/*"
                     ], 
@@ -600,6 +617,20 @@
                         }
                     }, 
                     "Sid": "SageMakerStudioAppDescribeUserProfileActionPermissions"
+                }, 
+                {
+                    "Action": [
+                        "sagemaker:DescribeUserProfile"
+                    ], 
+                    "Resource": "arn:aws:sagemaker:*:*:user-profile/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/AmazonDataZoneProject": "${aws:PrincipalTag/AmazonDataZoneProject}", 
+                            "aws:ResourceTag/AmazonDataZoneUser": "${aws:PrincipalTag/datazone:userId}"
+                        }
+                    }, 
+                    "Sid": "SageMakerStudioAppDescribeTaggedUserProfilePermissions"
                 }, 
                 {
                     "Action": [
@@ -653,6 +684,21 @@
                 }, 
                 {
                     "Action": [
+                        "sagemaker:CreateUserProfile", 
+                        "sagemaker:DeleteUserProfile"
+                    ], 
+                    "Resource": "arn:aws:sagemaker:*:*:user-profile/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/AmazonDataZoneProject": "${aws:PrincipalTag/AmazonDataZoneProject}", 
+                            "aws:ResourceTag/AmazonDataZoneUser": "${aws:PrincipalTag/datazone:userId}"
+                        }
+                    }, 
+                    "Sid": "SageMakerStudioAllowCreatingDeletingTaggedOwnerUserProfile"
+                }, 
+                {
+                    "Action": [
                         "sagemaker:CreateSpace", 
                         "sagemaker:UpdateSpace", 
                         "sagemaker:DeleteSpace"
@@ -674,10 +720,31 @@
                 }, 
                 {
                     "Action": [
+                        "sagemaker:CreateSpace", 
+                        "sagemaker:UpdateSpace", 
+                        "sagemaker:DeleteSpace"
+                    ], 
+                    "Resource": "arn:aws:sagemaker:*:*:space/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/AmazonDataZoneProject": "${aws:PrincipalTag/AmazonDataZoneProject}", 
+                            "aws:ResourceTag/AmazonDataZoneUser": "${aws:PrincipalTag/datazone:userId}", 
+                            "sagemaker:SpaceSharingType": [
+                                "Private"
+                            ]
+                        }
+                    }, 
+                    "Sid": "SageMakerStudioRestrictPrivateSpaceToOwnerUser"
+                }, 
+                {
+                    "Action": [
                         "sagemaker:CreateApp", 
                         "sagemaker:DeleteApp"
                     ], 
                     "Resource": [
+                        "arn:aws:sagemaker:*:*:app/*/*/codeeditor/*", 
+                        "arn:aws:sagemaker:*:*:app/*/*/CodeEditor/*", 
                         "arn:aws:sagemaker:*:*:app/*/*/jupyterlab/*", 
                         "arn:aws:sagemaker:*:*:app/*/*/JupyterLab/*"
                     ], 
@@ -694,6 +761,29 @@
                         }
                     }, 
                     "Sid": "SageMakerStudioRestrictPrivateSpaceAppsToOwnerUserProfile"
+                }, 
+                {
+                    "Action": [
+                        "sagemaker:CreateApp", 
+                        "sagemaker:DeleteApp"
+                    ], 
+                    "Resource": [
+                        "arn:aws:sagemaker:*:*:app/*/*/CodeEditor/*", 
+                        "arn:aws:sagemaker:*:*:app/*/*/codeeditor/*", 
+                        "arn:aws:sagemaker:*:*:app/*/*/jupyterlab/*", 
+                        "arn:aws:sagemaker:*:*:app/*/*/JupyterLab/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/AmazonDataZoneProject": "${aws:PrincipalTag/AmazonDataZoneProject}", 
+                            "aws:ResourceTag/AmazonDataZoneUser": "${aws:PrincipalTag/datazone:userId}", 
+                            "sagemaker:SpaceSharingType": [
+                                "Private"
+                            ]
+                        }
+                    }, 
+                    "Sid": "SageMakerStudioRestrictPrivateSpaceAppsToOwnerUser"
                 }, 
                 {
                     "Action": [
