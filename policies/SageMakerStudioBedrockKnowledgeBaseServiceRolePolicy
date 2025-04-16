@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-02-25T02:52:07Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-04-16T20:37:07Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -129,6 +129,25 @@
                         }
                     }, 
                     "Sid": "S3KmsPermissions"
+                }, 
+                {
+                    "Action": [
+                        "sqlworkbench:GetSqlRecommendations", 
+                        "sqlworkbench:PutSqlGenerationContext", 
+                        "sqlworkbench:GetSqlGenerationContext", 
+                        "sqlworkbench:DeleteSqlGenerationContext"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "SqlWorkbenchAccessPermissions"
+                }, 
+                {
+                    "Action": [
+                        "bedrock:GenerateQuery"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "BedrockGenerateQueryPermissions"
                 }
             ]
         }, 
