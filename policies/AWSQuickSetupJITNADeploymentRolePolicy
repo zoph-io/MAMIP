@@ -1,0 +1,152 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-04-17T09:07:06Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "cloudformation:DescribeStacks", 
+                        "cloudformation:DescribeStackDriftDetectionStatus", 
+                        "cloudformation:ListStacks"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow"
+                }, 
+                {
+                    "Action": [
+                        "cloudformation:CreateStack", 
+                        "cloudformation:UpdateStack", 
+                        "cloudformation:DeleteStack", 
+                        "cloudformation:CreateChangeSet", 
+                        "cloudformation:DeleteChangeSet", 
+                        "cloudformation:ExecuteChangeSet", 
+                        "cloudformation:DescribeChangeSet", 
+                        "cloudformation:DescribeStackResourceDrifts", 
+                        "cloudformation:DetectStackDrift", 
+                        "cloudformation:DetectStackResourceDrift", 
+                        "cloudformation:DescribeStackEvents"
+                    ], 
+                    "Resource": [
+                        "arn:aws:cloudformation:*:*:stack/StackSet-AWS-QuickSetup-JITNA-*"
+                    ], 
+                    "Effect": "Allow"
+                }, 
+                {
+                    "Action": [
+                        "ssm:CreateAssociation", 
+                        "ssm:UpdateAssociation", 
+                        "ssm:DeleteAssociation", 
+                        "ssm:DescribeAssociation", 
+                        "ssm:GetDocument", 
+                        "ssm:DescribeDocument"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ssm:*::document/AWSQuickSetupType-SetupJITNAResources", 
+                        "arn:aws:ssm:*::document/AWSQuickSetupType-PropagateJustInTimeNodeAccessPolicies", 
+                        "arn:aws:ssm:*:*:association/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "aws:CalledVia": [
+                                "cloudformation.amazonaws.com"
+                            ]
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "iam:CreateRole", 
+                        "iam:TagRole"
+                    ], 
+                    "Resource": [
+                        "arn:aws:iam::*:role/AWS-QuickSetup-EnableJITNA-*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:CalledViaLast": [
+                                "cloudformation.amazonaws.com"
+                            ], 
+                            "aws:ResourceTag/QuickSetupDocument": [
+                                "AWSQuickSetupType-JITNA"
+                            ], 
+                            "aws:RequestTag/QuickSetupDocument": [
+                                "AWSQuickSetupType-JITNA"
+                            ]
+                        }, 
+                        "ForAnyValue:StringLike": {
+                            "aws:TagKeys": [
+                                "QuickSetup*"
+                            ]
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "iam:GetRole", 
+                        "iam:DeleteRole", 
+                        "iam:GetRolePolicy", 
+                        "iam:ListAttachedRolePolicies", 
+                        "iam:ListRolePolicies", 
+                        "iam:ListRoleTags"
+                    ], 
+                    "Resource": [
+                        "arn:aws:iam::*:role/AWS-QuickSetup-EnableJITNA-*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "aws:CalledVia": [
+                                "cloudformation.amazonaws.com"
+                            ]
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "iam:AttachRolePolicy", 
+                        "iam:DetachRolePolicy"
+                    ], 
+                    "Resource": [
+                        "arn:aws:iam::*:role/AWS-QuickSetup-EnableJITNA-*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ArnEquals": {
+                            "iam:PolicyARN": [
+                                "arn:aws:iam::*:policy/AWSQuickSetupManageJITNAResourcesExecutionPolicy"
+                            ]
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "iam:PassRole"
+                    ], 
+                    "Resource": [
+                        "arn:aws:iam::*:role/AWS-QuickSetup-EnableJITNA-*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ArnLike": {
+                            "iam:AssociatedResourceARN": [
+                                "arn:aws:ssm:*::document/AWSQuickSetupType-SetupJITNAResources", 
+                                "arn:aws:ssm:*:*:association/*"
+                            ]
+                        }, 
+                        "StringEquals": {
+                            "iam:ResourceTag/QuickSetupDocument": "AWSQuickSetupType-JITNA", 
+                            "iam:PassedToService": "ssm.amazonaws.com"
+                        }
+                    }
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
