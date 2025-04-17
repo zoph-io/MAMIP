@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2020-11-09T22:55:56Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-04-17T17:37:07Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -9,11 +9,68 @@
                     "Action": [
                         "ec2:DescribeNetworkInterfaces", 
                         "ec2:DescribeSecurityGroups", 
-                        "ec2:CreateNetworkInterface", 
-                        "ec2:CreateSecurityGroup"
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeVpcEndpoints"
                     ], 
                     "Resource": "*", 
-                    "Effect": "Allow"
+                    "Effect": "Allow", 
+                    "Sid": "PrivateConnectivityServiceRolePolicy"
+                }, 
+                {
+                    "Action": [
+                        "ec2:CreateNetworkInterface"
+                    ], 
+                    "Resource": [
+                        "arn:*:ec2:*:*:vpc/*", 
+                        "arn:*:ec2:*:*:subnet/*", 
+                        "arn:*:ec2:*:*:security-group/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "PrivateConnectivityCreateNetworkInterfacePolicy"
+                }, 
+                {
+                    "Action": [
+                        "ec2:CreateNetworkInterface"
+                    ], 
+                    "Resource": [
+                        "arn:*:ec2:*:*:network-interface/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "aws:TagKeys": [
+                                "outposts:private-connectivity-resourceId"
+                            ]
+                        }
+                    }, 
+                    "Sid": "PrivateConnectivityCreateNetworkInterfaceTaggingPolicy"
+                }, 
+                {
+                    "Action": [
+                        "ec2:CreateSecurityGroup"
+                    ], 
+                    "Resource": [
+                        "arn:*:ec2:*:*:vpc/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "PrivateConnectivityCreateSecurityGroupPolicy"
+                }, 
+                {
+                    "Action": [
+                        "ec2:CreateSecurityGroup"
+                    ], 
+                    "Resource": [
+                        "arn:*:ec2:*:*:security-group/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "aws:TagKeys": [
+                                "outposts:private-connectivity-resourceId"
+                            ]
+                        }
+                    }, 
+                    "Sid": "PrivateConnectivityCreateSecurityGroupTaggingPolicy"
                 }
             ]
         }, 
