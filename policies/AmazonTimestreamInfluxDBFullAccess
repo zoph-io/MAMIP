@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-02-17T20:37:06Z", 
-        "VersionId": "v3", 
+        "CreateDate": "2025-04-17T18:22:07Z", 
+        "VersionId": "v4", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -82,6 +82,33 @@
                     ], 
                     "Effect": "Allow", 
                     "Sid": "BucketValidationStatement"
+                }, 
+                {
+                    "Action": [
+                        "aws-marketplace:ViewSubscriptions"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "MPViewAccessStatement"
+                }, 
+                {
+                    "Action": [
+                        "aws-marketplace:Subscribe"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "aws-marketplace:ProductId": [
+                                "prod-xcc5llpq4vlbc"
+                            ]
+                        }
+                    }, 
+                    "Sid": "MPSubscriptionAccessStatement"
                 }
             ]
         }, 
