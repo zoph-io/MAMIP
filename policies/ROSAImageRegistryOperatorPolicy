@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2023-12-12T19:53:12Z", 
-        "VersionId": "v2", 
+        "CreateDate": "2025-04-17T20:22:07Z", 
+        "VersionId": "v3", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -45,6 +45,7 @@
                     ], 
                     "Resource": [
                         "arn:aws:s3:::*-image-registry-${aws:RequestedRegion}-*/*", 
+                        "arn:aws:s3:::*-image-registry-${aws:RequestedRegion}?/*", 
                         "arn:aws:s3:::*-image-registry-${aws:RequestedRegion}/*"
                     ], 
                     "Effect": "Allow", 

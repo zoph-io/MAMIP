@@ -1,0 +1,57 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-04-17T20:52:07Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "identitystore:ListGroupMembershipsForMember", 
+                        "identitystore:ListGroupMemberships", 
+                        "identitystore:DescribeUser"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowIdentityStoreActions"
+                }, 
+                {
+                    "Action": [
+                        "sso:ListInstances", 
+                        "sso:DescribeRegisteredRegions", 
+                        "sso:ListDirectoryAssociations"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowSSOActions"
+                }, 
+                {
+                    "Action": [
+                        "sso-directory:DescribeUser", 
+                        "sso-directory:ListMembersInGroup"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowSSODirectoryActions"
+                }, 
+                {
+                    "Action": [
+                        "iam:GetRole"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowIamActions"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
