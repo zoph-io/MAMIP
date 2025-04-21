@@ -1,0 +1,164 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-04-21T20:52:05Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "ssm-quicksetup:ListConfigurationManagers", 
+                        "ssm-quicksetup:GetConfigurationManager", 
+                        "cloudformation:ListStackSets"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "QuickSetupPermissions"
+                }, 
+                {
+                    "Action": [
+                        "organizations:ListDelegatedAdministrators"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "organizations:ServicePrincipal": "ssm-quicksetup.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "QuickSetupOrganizationsPermissions"
+                }, 
+                {
+                    "Action": [
+                        "iam:GetRole"
+                    ], 
+                    "Resource": [
+                        "arn:aws:iam::*:role/aws-service-role/ssm-quicksetup.amazonaws.com/AWSServiceRoleForSSMQuickSetup"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "QuickSetupSLRPermissions"
+                }, 
+                {
+                    "Action": [
+                        "organizations:DescribeOrganization", 
+                        "organizations:DescribeOrganizationalUnit"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "OrganizationsPermissions"
+                }, 
+                {
+                    "Action": [
+                        "ssm:GetDocument", 
+                        "ssm:DescribeDocument", 
+                        "ssm:ListTagsForResource", 
+                        "ssm:PutResourcePolicy", 
+                        "ssm:DeleteResourcePolicy", 
+                        "ssm:GetResourcePolicies"
+                    ], 
+                    "Resource": "arn:aws:ssm:*:*:document/SSM-JustInTimeAccessDenyAccessOrgPolicy", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "ssm:DocumentType": "AutoApprovalPolicy"
+                        }
+                    }, 
+                    "Sid": "SSMDocumentPermissions"
+                }, 
+                {
+                    "Action": [
+                        "ssm:CreateDocument"
+                    ], 
+                    "Resource": "arn:aws:ssm:*:*:document/SSM-JustInTimeAccessDenyAccessOrgPolicy", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "ssm:DocumentType": "AutoApprovalPolicy", 
+                            "aws:RequestTag/SystemsManagerJustInTimeNodeAccessManaged": "true"
+                        }, 
+                        "ForAllValues:StringEquals": {
+                            "aws:TagKeys": [
+                                "SystemsManagerJustInTimeNodeAccessManaged"
+                            ]
+                        }
+                    }, 
+                    "Sid": "SSMDocumentCreateReplicaPermissions"
+                }, 
+                {
+                    "Action": [
+                        "ssm:UpdateDocument", 
+                        "ssm:UpdateDocumentDefaultVersion", 
+                        "ssm:UpdateDocumentMetadata", 
+                        "ssm:DeleteDocument", 
+                        "ssm:AddTagsToResource", 
+                        "ssm:RemoveTagsFromResource"
+                    ], 
+                    "Resource": "arn:aws:ssm:*:*:document/SSM-JustInTimeAccessDenyAccessOrgPolicy", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "ssm:DocumentType": "AutoApprovalPolicy", 
+                            "aws:ResourceTag/SystemsManagerJustInTimeNodeAccessManaged": "true"
+                        }
+                    }, 
+                    "Sid": "SSMDocumentUpdateReplicaPermissions"
+                }, 
+                {
+                    "Action": [
+                        "ram:GetResourceShares", 
+                        "ram:GetResourceShareAssociations"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "RAMReadPermissions"
+                }, 
+                {
+                    "Action": [
+                        "ram:CreateResourceShare"
+                    ], 
+                    "Resource": "arn:aws:ram:*:*:resource-share/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEqualsIfExists": {
+                            "ram:RequestedResourceType": "ssm:Document"
+                        }, 
+                        "StringEquals": {
+                            "aws:RequestTag/SystemsManagerJustInTimeNodeAccessManaged": "true"
+                        }, 
+                        "ArnLikeIfExists": {
+                            "ram:ResourceArn": "arn:aws:ssm:*:*:document/SSM-JustInTimeAccessDenyAccessOrgPolicy"
+                        }, 
+                        "ForAllValues:StringEquals": {
+                            "aws:TagKeys": [
+                                "SystemsManagerJustInTimeNodeAccessManaged"
+                            ]
+                        }
+                    }, 
+                    "Sid": "RAMCreatePermissions"
+                }, 
+                {
+                    "Action": [
+                        "ram:AssociateResourceShare", 
+                        "ram:DisassociateResourceShare"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEqualsIfExists": {
+                            "ram:RequestedResourceType": "ssm:Document"
+                        }, 
+                        "StringEquals": {
+                            "aws:ResourceTag/SystemsManagerJustInTimeNodeAccessManaged": "true", 
+                            "ram:ResourceShareName": "SSMJustInTimeNodeAccessManagedResourceShare"
+                        }, 
+                        "ArnLikeIfExists": {
+                            "ram:ResourceArn": "arn:aws:ssm:*:*:document/SSM-JustInTimeAccessDenyAccessOrgPolicy"
+                        }
+                    }, 
+                    "Sid": "RAMModificationPermissions"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
