@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-04-17T21:37:05Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-04-23T15:37:06Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -50,7 +50,8 @@
                 {
                     "Action": [
                         "iam:CreateRole", 
-                        "iam:GetRole"
+                        "iam:GetRole", 
+                        "iam:TagRole"
                     ], 
                     "Resource": [
                         "arn:aws:iam::*:role/SSM-JustInTimeAccessTokenRole"
