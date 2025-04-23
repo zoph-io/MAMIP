@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-04-09T21:22:07Z", 
-        "VersionId": "v13", 
+        "CreateDate": "2025-04-23T20:07:07Z", 
+        "VersionId": "v14", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -684,7 +684,8 @@
                     "Action": "iam:PassRole", 
                     "Resource": [
                         "arn:aws:iam::*:role/datazone_usr_role_*", 
-                        "arn:aws:iam::*:role/SageMakerStudioQueryExecutionRole"
+                        "arn:aws:iam::*:role/SageMakerStudioQueryExecutionRole", 
+                        "arn:aws:iam::*:role/service-role/AmazonSageMakerQueryExecution"
                     ], 
                     "Effect": "Allow", 
                     "Condition": {
@@ -1252,7 +1253,10 @@
                     "Action": [
                         "iam:GetRole"
                     ], 
-                    "Resource": "arn:aws:iam::*:role/SageMakerStudioQueryExecutionRole", 
+                    "Resource": [
+                        "arn:aws:iam::*:role/SageMakerStudioQueryExecutionRole", 
+                        "arn:aws:iam::*:role/service-role/AmazonSageMakerQueryExecution"
+                    ], 
                     "Effect": "Allow", 
                     "Sid": "IamGetRoleProvisioningRoleForFederatedDataConnection"
                 }, 
@@ -2761,6 +2765,25 @@
                         }
                     }, 
                     "Sid": "EventBridgeTagScheduleGroupActions"
+                }, 
+                {
+                    "Action": [
+                        "scheduler:DeleteSchedule"
+                    ], 
+                    "Resource": [
+                        "arn:aws:scheduler:*:*:schedule/SageMakerUnifiedStudio-*-*/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "Null": {
+                            "aws:ResourceTag/AmazonDataZoneProject": "false"
+                        }, 
+                        "StringEquals": {
+                            "aws:CalledViaFirst": "cloudformation.amazonaws.com", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "EventBridgeScheduleDeleteAction"
                 }
             ]
         }, 

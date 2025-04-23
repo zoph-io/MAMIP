@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-10-18T20:07:03Z", 
-        "VersionId": "v7", 
+        "CreateDate": "2025-04-23T20:07:06Z", 
+        "VersionId": "v8", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -33,7 +33,10 @@
                         "s3:ListBucket", 
                         "s3:ListBucketVersions", 
                         "s3-outposts:ListAccessPoints", 
-                        "s3-outposts:ListRegionalBuckets"
+                        "s3-outposts:ListRegionalBuckets", 
+                        "secretsmanager:ListSecrets", 
+                        "kms:ListAliases", 
+                        "kms:DescribeKey"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
