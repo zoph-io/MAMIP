@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-04-21T20:52:05Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-04-23T21:07:06Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -135,6 +135,22 @@
                         }
                     }, 
                     "Sid": "RAMCreatePermissions"
+                }, 
+                {
+                    "Action": "ram:TagResource", 
+                    "Resource": "arn:aws:ram:*:*:resource-share/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:RequestTag/SystemsManagerJustInTimeNodeAccessManaged": "true"
+                        }, 
+                        "ForAllValues:StringEquals": {
+                            "aws:TagKeys": [
+                                "SystemsManagerJustInTimeNodeAccessManaged"
+                            ]
+                        }
+                    }, 
+                    "Sid": "RAMTaggingPermissions"
                 }, 
                 {
                     "Action": [
