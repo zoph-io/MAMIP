@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-11-20T18:39:41Z", 
-        "VersionId": "v8", 
+        "CreateDate": "2025-04-28T16:52:07Z", 
+        "VersionId": "v9", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -15,6 +15,7 @@
                 }, 
                 {
                     "Action": [
+                        "acm:DescribeCertificate", 
                         "acm:ListCertificates", 
                         "cloudfront:*", 
                         "cloudfront-keyvaluestore:*", 
@@ -31,6 +32,19 @@
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Sid": "cffullaccess"
+                }, 
+                {
+                    "Action": [
+                        "acm:RequestCertificate"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:CalledViaLast": "cloudfront.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "cfrequestcertificate"
                 }, 
                 {
                     "Action": [
