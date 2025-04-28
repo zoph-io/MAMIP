@@ -1,12 +1,13 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-01-04T16:55:27Z", 
-        "VersionId": "v6", 
+        "CreateDate": "2025-04-28T17:07:06Z", 
+        "VersionId": "v7", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": [
+                        "acm:DescribeCertificate", 
                         "acm:ListCertificates", 
                         "cloudfront:Describe*", 
                         "cloudfront:Get*", 
