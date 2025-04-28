@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-04-08T17:52:05Z", 
-        "VersionId": "v9", 
+        "CreateDate": "2025-04-28T18:37:07Z", 
+        "VersionId": "v10", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -1179,6 +1179,23 @@
                 }, 
                 {
                     "Action": [
+                        "sts:SetContext"
+                    ], 
+                    "Resource": [
+                        "arn:aws:sts::*:self"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "aws:CalledVia": [
+                                "sqlworkbench.amazonaws.com"
+                            ]
+                        }
+                    }, 
+                    "Sid": "SetContextForTrustedIdentityPropagation"
+                }, 
+                {
+                    "Action": [
                         "glue:GetConnection", 
                         "glue:GetConnections", 
                         "glue:GetTags"
@@ -1798,18 +1815,27 @@
                         "bedrock:ApplyGuardrail", 
                         "bedrock:BatchDeleteEvaluationJob", 
                         "bedrock:CreateAgentAlias", 
+                        "bedrock:CreateBlueprint", 
+                        "bedrock:CreateBlueprintVersion", 
+                        "bedrock:CreateDataAutomationProject", 
                         "bedrock:CreateEvaluationJob", 
                         "bedrock:CreatePrompt", 
                         "bedrock:CreatePromptVersion", 
                         "bedrock:DeleteAgentAlias", 
                         "bedrock:DeleteAgentVersion", 
+                        "bedrock:DeleteBlueprint", 
+                        "bedrock:DeleteDataAutomationProject", 
                         "bedrock:DeletePrompt", 
                         "bedrock:GetAgentAlias", 
                         "bedrock:GetAgentVersion", 
+                        "bedrock:GetBlueprint", 
+                        "bedrock:GetDataAutomationProject", 
+                        "bedrock:GetDataAutomationStatus", 
                         "bedrock:GetEvaluationJob", 
                         "bedrock:GetIngestionJob", 
                         "bedrock:GetPrompt", 
                         "bedrock:InvokeAgent", 
+                        "bedrock:InvokeDataAutomationAsync", 
                         "bedrock:InvokeFlow", 
                         "bedrock:ListAgentAliases", 
                         "bedrock:ListAgentVersions", 
@@ -1819,7 +1845,11 @@
                         "bedrock:Retrieve", 
                         "bedrock:StartIngestionJob", 
                         "bedrock:StopEvaluationJob", 
-                        "bedrock:UpdateAgentAlias"
+                        "bedrock:UpdateAgentAlias", 
+                        "bedrock:UpdateBlueprint", 
+                        "bedrock:UpdateDataAutomationProject", 
+                        "bedrock:ListAgentActionGroups", 
+                        "bedrock:ListAgentKnowledgeBases"
                     ], 
                     "Resource": "arn:aws:bedrock:*:*:*", 
                     "Effect": "Allow", 
@@ -1855,15 +1885,49 @@
                     "Sid": "BedrockCreateEvaluationJobPermissions"
                 }, 
                 {
+                    "Action": [
+                        "bedrock:InvokeDataAutomationAsync"
+                    ], 
+                    "Resource": [
+                        "arn:aws:bedrock:*:*:data-automation-profile/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:PrincipalTag/EnableAmazonBedrockPermissions": "true"
+                        }
+                    }, 
+                    "Sid": "InvokeDataAutomationAsyncPermissions"
+                }, 
+                {
                     "Action": "bedrock:InvokeInlineAgent", 
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
+                            "bedrock:InlineAgentName": "${datazone:userId}", 
                             "aws:PrincipalTag/EnableAmazonBedrockIDEPermissions": "true"
+                        }, 
+                        "StringNotEquals": {
+                            "bedrock:InlineAgentName": ""
                         }
                     }, 
                     "Sid": "InvokeBedrockInlineAgentPermissions"
+                }, 
+                {
+                    "Action": "bedrock:InvokeInlineAgent", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:PrincipalTag/EnableAmazonBedrockPermissions": "true", 
+                            "bedrock:InlineAgentName": "${datazone:userId}"
+                        }, 
+                        "StringNotEquals": {
+                            "bedrock:InlineAgentName": ""
+                        }
+                    }, 
+                    "Sid": "BedrockInvokeInlineAgentPermissions"
                 }, 
                 {
                     "Action": "bedrock:RetrieveAndGenerate", 
@@ -1889,7 +1953,6 @@
                 }, 
                 {
                     "Action": [
-                        "bedrock:InvokeInlineAgent", 
                         "bedrock:ListEvaluationJobs", 
                         "bedrock:RetrieveAndGenerate"
                     ], 
