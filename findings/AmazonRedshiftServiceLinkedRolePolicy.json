@@ -1,6 +1,6 @@
 [
     {
-        "findingDetails": "The condition key lakeformation:GlueARN does not exist in the service lakeformation. Use a valid condition key.",
+        "findingDetails": "The condition key lakeformation:EnabledOnlyForMetaDataAccess does not exist in the service lakeformation. Use a valid condition key.",
         "findingType": "ERROR",
         "issueCode": "INVALID_SERVICE_CONDITION_KEY",
         "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-condition-key",
@@ -11,28 +11,28 @@
                         "value": "Statement"
                     },
                     {
-                        "index": 6
+                        "index": 16
                     },
                     {
                         "value": "Condition"
                     },
                     {
-                        "value": "Null"
+                        "value": "Bool"
                     },
                     {
-                        "key": "lakeformation:GlueARN"
+                        "key": "lakeformation:EnabledOnlyForMetaDataAccess"
                     }
                 ],
                 "span": {
                     "end": {
-                        "column": 2573,
+                        "column": 4622,
                         "line": 1,
-                        "offset": 2573
+                        "offset": 4622
                     },
                     "start": {
-                        "column": 2550,
+                        "column": 4578,
                         "line": 1,
-                        "offset": 2550
+                        "offset": 4578
                     }
                 }
             }

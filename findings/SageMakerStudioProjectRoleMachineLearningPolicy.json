@@ -1,6 +1,6 @@
 [
     {
-        "findingDetails": "The 18376 characters in the identity policy, excluding whitespace, exceed the 10240 character maximum for inline and managed policies. We recommend that you use multiple granular policies.",
+        "findingDetails": "The 21434 characters in the identity policy, excluding whitespace, exceed the 10240 character maximum for inline and managed policies. We recommend that you use multiple granular policies.",
         "findingType": "WARNING",
         "issueCode": "POLICY_SIZE_EXCEEDS_IDENTITY_POLICY_QUOTA",
         "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-general-warning-policy-size-exceeds-identity-policy-quota",
@@ -9,9 +9,9 @@
                 "path": [],
                 "span": {
                     "end": {
-                        "column": 19147,
+                        "column": 22327,
                         "line": 1,
-                        "offset": 19147
+                        "offset": 22327
                     },
                     "start": {
                         "column": 0,
@@ -45,14 +45,14 @@
                 ],
                 "span": {
                     "end": {
-                        "column": 2885,
+                        "column": 2687,
                         "line": 1,
-                        "offset": 2885
+                        "offset": 2687
                     },
                     "start": {
-                        "column": 2858,
+                        "column": 2660,
                         "line": 1,
-                        "offset": 2858
+                        "offset": 2660
                     }
                 }
             },
@@ -76,14 +76,14 @@
                 ],
                 "span": {
                     "end": {
-                        "column": 4647,
+                        "column": 4449,
                         "line": 1,
-                        "offset": 4647
+                        "offset": 4449
                     },
                     "start": {
-                        "column": 4608,
+                        "column": 4410,
                         "line": 1,
-                        "offset": 4608
+                        "offset": 4410
                     }
                 }
             }
@@ -112,14 +112,14 @@
                 ],
                 "span": {
                     "end": {
-                        "column": 8006,
+                        "column": 7760,
                         "line": 1,
-                        "offset": 8006
+                        "offset": 7760
                     },
                     "start": {
-                        "column": 7969,
+                        "column": 7723,
                         "line": 1,
-                        "offset": 7969
+                        "offset": 7723
                     }
                 }
             },
@@ -140,14 +140,14 @@
                 ],
                 "span": {
                     "end": {
-                        "column": 8058,
+                        "column": 7812,
                         "line": 1,
-                        "offset": 8058
+                        "offset": 7812
                     },
                     "start": {
-                        "column": 8008,
+                        "column": 7762,
                         "line": 1,
-                        "offset": 8008
+                        "offset": 7762
                     }
                 }
             },
@@ -168,14 +168,14 @@
                 ],
                 "span": {
                     "end": {
-                        "column": 8123,
+                        "column": 7877,
                         "line": 1,
-                        "offset": 8123
+                        "offset": 7877
                     },
                     "start": {
-                        "column": 8088,
+                        "column": 7842,
                         "line": 1,
-                        "offset": 8088
+                        "offset": 7842
                     }
                 }
             },
@@ -196,14 +196,14 @@
                 ],
                 "span": {
                     "end": {
-                        "column": 8194,
+                        "column": 7948,
                         "line": 1,
-                        "offset": 8194
+                        "offset": 7948
                     },
                     "start": {
-                        "column": 8161,
+                        "column": 7915,
                         "line": 1,
-                        "offset": 8161
+                        "offset": 7915
                     }
                 }
             },
@@ -224,14 +224,14 @@
                 ],
                 "span": {
                     "end": {
-                        "column": 8294,
+                        "column": 8048,
                         "line": 1,
-                        "offset": 8294
+                        "offset": 8048
                     },
                     "start": {
-                        "column": 8260,
+                        "column": 8014,
                         "line": 1,
-                        "offset": 8260
+                        "offset": 8014
                     }
                 }
             },
@@ -252,14 +252,14 @@
                 ],
                 "span": {
                     "end": {
-                        "column": 8340,
+                        "column": 8094,
                         "line": 1,
-                        "offset": 8340
+                        "offset": 8094
                     },
                     "start": {
-                        "column": 8296,
+                        "column": 8050,
                         "line": 1,
-                        "offset": 8296
+                        "offset": 8050
                     }
                 }
             },
@@ -280,14 +280,14 @@
                 ],
                 "span": {
                     "end": {
-                        "column": 8386,
+                        "column": 8140,
                         "line": 1,
-                        "offset": 8386
+                        "offset": 8140
                     },
                     "start": {
-                        "column": 8342,
+                        "column": 8096,
                         "line": 1,
-                        "offset": 8342
+                        "offset": 8096
                     }
                 }
             },
@@ -311,14 +311,165 @@
                 ],
                 "span": {
                     "end": {
-                        "column": 8639,
+                        "column": 8426,
                         "line": 1,
-                        "offset": 8639
+                        "offset": 8426
                     },
                     "start": {
-                        "column": 8600,
+                        "column": 8387,
                         "line": 1,
-                        "offset": 8600
+                        "offset": 8387
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "Using the effect Allow with the condition key aws:ResourceTag/AmazonDataZoneProject and actions for services with the following prefixes does not affect the policy: sagemaker. The actions for the listed service are not allowed by this statement. We recommend that you move these actions to a different statement without this condition key.",
+        "findingType": "SUGGESTION",
+        "issueCode": "ALLOW_WITH_UNSUPPORTED_TAG_CONDITION_KEY_FOR_SERVICE",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-allow-with-unsupported-tag-condition-key-for-service",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 21
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 0
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 10474,
+                        "line": 1,
+                        "offset": 10474
+                    },
+                    "start": {
+                        "column": 10436,
+                        "line": 1,
+                        "offset": 10436
+                    }
+                }
+            },
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 21
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 2
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 10560,
+                        "line": 1,
+                        "offset": 10560
+                    },
+                    "start": {
+                        "column": 10532,
+                        "line": 1,
+                        "offset": 10532
+                    }
+                }
+            },
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 21
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 4
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 10629,
+                        "line": 1,
+                        "offset": 10629
+                    },
+                    "start": {
+                        "column": 10591,
+                        "line": 1,
+                        "offset": 10591
+                    }
+                }
+            },
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 21
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 6
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 10713,
+                        "line": 1,
+                        "offset": 10713
+                    },
+                    "start": {
+                        "column": 10667,
+                        "line": 1,
+                        "offset": 10667
+                    }
+                }
+            },
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 21
+                    },
+                    {
+                        "value": "Condition"
+                    },
+                    {
+                        "value": "StringEquals"
+                    },
+                    {
+                        "key": "aws:ResourceTag/AmazonDataZoneProject"
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 10822,
+                        "line": 1,
+                        "offset": 10822
+                    },
+                    "start": {
+                        "column": 10783,
+                        "line": 1,
+                        "offset": 10783
                     }
                 }
             }
