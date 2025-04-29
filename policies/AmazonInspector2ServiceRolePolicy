@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-03-28T20:07:06Z", 
-        "VersionId": "v15", 
+        "CreateDate": "2025-04-29T17:37:06Z", 
+        "VersionId": "v16", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -13,8 +13,10 @@
                         "directconnect:DescribeDirectConnectGateways", 
                         "directconnect:DescribeVirtualGateways", 
                         "directconnect:DescribeVirtualInterfaces", 
+                        "ec2:DescribeAddresses", 
                         "ec2:DescribeAvailabilityZones", 
                         "ec2:DescribeCustomerGateways", 
+                        "ec2:DescribeEgressOnlyInternetGateways", 
                         "ec2:DescribeInstances", 
                         "ec2:DescribeInternetGateways", 
                         "ec2:DescribeManagedPrefixLists", 
@@ -106,7 +108,6 @@
                     "Action": [
                         "ssm:CreateAssociation", 
                         "ssm:StartAssociationsOnce", 
-                        "ssm:DeleteAssociation", 
                         "ssm:UpdateAssociation"
                     ], 
                     "Resource": [
@@ -118,6 +119,16 @@
                     ], 
                     "Effect": "Allow", 
                     "Sid": "GatherInventory"
+                }, 
+                {
+                    "Action": [
+                        "ssm:DeleteAssociation"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ssm:*:*:association/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "GatherInventoryDeleteAssociation"
                 }, 
                 {
                     "Action": [
