@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-12-01T22:36:07Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-04-29T10:52:07Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -20,14 +20,19 @@
                 {
                     "Action": [
                         "organizations:ListDelegatedAdministrators", 
-                        "organizations:DescribeOrganization", 
                         "organizations:ListAWSServiceAccessForOrganization", 
-                        "organizations:DescribeAccount", 
-                        "organizations:ListAccounts"
+                        "organizations:ListAccounts", 
+                        "organizations:DescribeOrganization"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
+                {
+                    "Action": [
+                        "organizations:DescribeAccount"
                     ], 
                     "Resource": [
-                        "arn:aws:organizations::*:account/*", 
-                        "arn:aws:organizations::*:organization/*"
+                        "arn:aws:organizations::*:account/*"
                     ], 
                     "Effect": "Allow"
                 }
