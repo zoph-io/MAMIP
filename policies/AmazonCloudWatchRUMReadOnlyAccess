@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2022-10-28T18:12:58Z", 
-        "VersionId": "v2", 
+        "CreateDate": "2025-04-30T19:22:06Z", 
+        "VersionId": "v3", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -11,7 +11,8 @@
                         "rum:GetAppMonitorData", 
                         "rum:ListAppMonitors", 
                         "rum:ListRumMetricsDestinations", 
-                        "rum:BatchGetRumMetricDefinitions"
+                        "rum:BatchGetRumMetricDefinitions", 
+                        "rum:GetResourcePolicy"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow"
