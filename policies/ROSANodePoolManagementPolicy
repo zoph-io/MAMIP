@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-05-02T14:01:47Z", 
-        "VersionId": "v2", 
+        "CreateDate": "2025-05-05T16:37:06Z", 
+        "VersionId": "v3", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -120,7 +120,8 @@
                     ], 
                     "Resource": [
                         "arn:aws:ec2:*:*:instance/*", 
-                        "arn:aws:ec2:*:*:volume/*"
+                        "arn:aws:ec2:*:*:volume/*", 
+                        "arn:aws:ec2:*:*:network-interface/*"
                     ], 
                     "Effect": "Allow", 
                     "Condition": {
@@ -131,6 +132,21 @@
                         }
                     }, 
                     "Sid": "CreateTags"
+                }, 
+                {
+                    "Action": [
+                        "ec2:CreateTags"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:network-interface/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:RequestTag/red-hat-managed": "true"
+                        }
+                    }, 
+                    "Sid": "CreateTagsCAPAControllerReconcileNetworkInterface"
                 }, 
                 {
                     "Action": [
