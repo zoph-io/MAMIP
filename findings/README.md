@@ -7,7 +7,7 @@
   - [`AmazonRedshiftServiceLinkedRolePolicy`](./AmazonRedshiftServiceLinkedRolePolicy.json)
   - [`AmazonDataZoneGlueManageAccessRolePolicy`](./AmazonDataZoneGlueManageAccessRolePolicy.json)
   - [`MemoryDBServiceRolePolicy`](./MemoryDBServiceRolePolicy.json)
-- Sec_Warnings: `27`
+- Sec_Warnings: `26`
   - [`AWSServiceRoleForAmazonEKSNodegroup`](./AWSServiceRoleForAmazonEKSNodegroup.json)
   - [`AmazonSecurityLakeAdministrator`](./AmazonSecurityLakeAdministrator.json)
   - [`AmazonElasticMapReduceFullAccess`](./AmazonElasticMapReduceFullAccess.json)
@@ -23,7 +23,6 @@
   - [`AWSElasticBeanstalkService`](./AWSElasticBeanstalkService.json)
   - [`AWSServiceRoleForSMS`](./AWSServiceRoleForSMS.json)
   - [`SQSUnlockQueuePolicy`](./SQSUnlockQueuePolicy.json)
-  - [`AWSMarketplaceFullAccess`](./AWSMarketplaceFullAccess.json)
   - [`S3UnlockBucketPolicy`](./S3UnlockBucketPolicy.json)
   - [`IAMFullAccess`](./IAMFullAccess.json)
 - Suggestions: `46`
