@@ -1,0 +1,26 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-05-08T19:07:07Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "organizations:ListAccounts", 
+                        "organizations:ListRoots", 
+                        "organizations:ListChildren", 
+                        "organizations:ListDelegatedAdministrators", 
+                        "organizations:ListAWSServiceAccessForOrganization", 
+                        "organizations:DescribeOrganization", 
+                        "organizations:DescribeAccount"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowOrganizationsReadActions"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
