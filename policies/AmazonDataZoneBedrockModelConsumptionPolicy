@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-11-12T22:15:08Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-05-13T21:37:06Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -22,6 +22,74 @@
                         }
                     }, 
                     "Sid": "InvokeDomainInferenceProfiles"
+                }, 
+                {
+                    "Action": [
+                        "bedrock:CreateSession", 
+                        "bedrock:TagResource"
+                    ], 
+                    "Resource": "arn:aws:bedrock:*:*:session/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ForAllValues:StringLike": {
+                            "aws:TagKeys": "AmazonDataZone*"
+                        }, 
+                        "StringEquals": {
+                            "aws:ResourceTag/AmazonDataZoneUser": "${datazone:userId}", 
+                            "aws:ResourceTag/AmazonDataZoneDomain": "${datazone:domainId}", 
+                            "aws:RequestTag/AmazonDataZoneUser": "${datazone:userId}", 
+                            "aws:RequestTag/AmazonDataZoneDomain": "${datazone:domainId}", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
+                        "StringNotEquals": {
+                            "aws:ResourceTag/AmazonDataZoneUser": "", 
+                            "aws:ResourceTag/AmazonDataZoneDomain": "", 
+                            "aws:RequestTag/AmazonDataZoneUser": "", 
+                            "aws:RequestTag/AmazonDataZoneDomain": ""
+                        }, 
+                        "Null": {
+                            "aws:ResourceTag/AmazonDataZoneProject": "true", 
+                            "aws:RequestTag/AmazonDataZoneProject": "true"
+                        }
+                    }, 
+                    "Sid": "BedrockCreateSessionWithTagsPermissions"
+                }, 
+                {
+                    "Action": [
+                        "bedrock:GetSession", 
+                        "bedrock:UpdateSession", 
+                        "bedrock:DeleteSession", 
+                        "bedrock:EndSession", 
+                        "bedrock:CreateInvocation", 
+                        "bedrock:ListInvocations", 
+                        "bedrock:PutInvocationStep", 
+                        "bedrock:GetInvocationStep", 
+                        "bedrock:ListInvocationSteps", 
+                        "bedrock:ListTagsForResource"
+                    ], 
+                    "Resource": "arn:aws:bedrock:*:*:session/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "Null": {
+                            "aws:ResourceTag/AmazonDataZoneProject": "true"
+                        }, 
+                        "StringEquals": {
+                            "aws:ResourceTag/AmazonDataZoneUser": "${datazone:userId}", 
+                            "aws:ResourceTag/AmazonDataZoneDomain": "${datazone:domainId}", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
+                        "StringNotEquals": {
+                            "aws:ResourceTag/AmazonDataZoneUser": "", 
+                            "aws:ResourceTag/AmazonDataZoneDomain": ""
+                        }
+                    }, 
+                    "Sid": "BedrockSessionPermissions"
+                }, 
+                {
+                    "Action": "bedrock:ListSessions", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "BedrockListSessionsPermissions"
                 }
             ]
         }, 
