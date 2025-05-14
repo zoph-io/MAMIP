@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-05-13T22:45:26Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-05-14T16:37:05Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -27,11 +27,184 @@
                         "ec2:DescribeVpcs", 
                         "ec2:DescribeInstances", 
                         "ec2:DescribeLaunchTemplates", 
-                        "ec2:DescribeTags"
+                        "ec2:DescribeTags", 
+                        "ec2:DescribeAvailabilityZones", 
+                        "ec2:DescribeAccountAttributes"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Sid": "EC2ReadOnly"
+                }, 
+                {
+                    "Action": [
+                        "ec2:CreateVpc"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:vpc/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:RequestTag/CreatedBy": "EC2 Fast Launch"
+                        }, 
+                        "ForAnyValue:StringLike": {
+                            "aws:CalledVia": "ec2fastlaunch.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "EC2CreateVPC"
+                }, 
+                {
+                    "Action": [
+                        "ec2:DeleteVpc", 
+                        "ec2:CreateSubnet", 
+                        "ec2:ModifyVpcAttribute", 
+                        "ec2:CreateSecurityGroup"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:vpc/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "ec2:ResourceTag/CreatedBy": "EC2 Fast Launch"
+                        }, 
+                        "ForAnyValue:StringLike": {
+                            "aws:CalledVia": "ec2fastlaunch.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "EC2ModifyDeleteVPC"
+                }, 
+                {
+                    "Action": [
+                        "ec2:CreateSubnet"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:subnet/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:RequestTag/CreatedBy": "EC2 Fast Launch"
+                        }, 
+                        "ForAnyValue:StringLike": {
+                            "aws:CalledVia": "ec2fastlaunch.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "EC2CreateSubnet"
+                }, 
+                {
+                    "Action": [
+                        "ec2:DeleteSubnet"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:subnet/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "ec2:ResourceTag/CreatedBy": "EC2 Fast Launch"
+                        }, 
+                        "ForAnyValue:StringLike": {
+                            "aws:CalledVia": "ec2fastlaunch.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "EC2DeleteSubnet"
+                }, 
+                {
+                    "Action": [
+                        "ec2:CreateSecurityGroup"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:security-group/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:RequestTag/CreatedBy": "EC2 Fast Launch"
+                        }, 
+                        "ForAnyValue:StringLike": {
+                            "aws:CalledVia": "ec2fastlaunch.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "EC2CreateSecurityGroup"
+                }, 
+                {
+                    "Action": [
+                        "ec2:AuthorizeSecurityGroupEgress", 
+                        "ec2:RevokeSecurityGroupEgress"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:security-group/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "ec2:ResourceTag/CreatedBy": "EC2 Fast Launch"
+                        }, 
+                        "ForAnyValue:StringLike": {
+                            "aws:CalledVia": "ec2fastlaunch.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "EC2ManageSecurityGroupEgress"
+                }, 
+                {
+                    "Action": [
+                        "ec2:DeleteSecurityGroup"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:security-group/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "ec2:ResourceTag/CreatedBy": "EC2 Fast Launch"
+                        }, 
+                        "ForAnyValue:StringLike": {
+                            "aws:CalledVia": "ec2fastlaunch.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "EC2DeleteSecurityGroup"
+                }, 
+                {
+                    "Action": [
+                        "cloudformation:DescribeStacks", 
+                        "cloudformation:CreateStack", 
+                        "cloudformation:UpdateStack", 
+                        "cloudformation:RollbackStack", 
+                        "cloudformation:DeleteStack", 
+                        "cloudformation:UpdateTerminationProtection", 
+                        "cloudformation:DescribeStackEvents", 
+                        "cloudformation:DescribeStackResource", 
+                        "cloudformation:DescribeStackResources"
+                    ], 
+                    "Resource": [
+                        "arn:aws:cloudformation:*:*:stack/EC2FastLaunch*/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ForAnyValue:StringLike": {
+                            "aws:CalledVia": "ec2fastlaunch.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "CloudFormation"
+                }, 
+                {
+                    "Action": [
+                        "ec2:ModifyLaunchTemplate", 
+                        "ec2:CreateLaunchTemplate", 
+                        "ec2:CreateLaunchTemplateVersion"
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:launch-template/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:RequestTag/CreatedBy": "EC2 Fast Launch"
+                        }, 
+                        "ForAnyValue:StringLike": {
+                            "aws:CalledVia": "ec2fastlaunch.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "EC2LaunchTemplateModify"
                 }, 
                 {
                     "Action": [
@@ -43,7 +216,8 @@
                         "arn:aws:ec2:*::image/*", 
                         "arn:aws:ec2:*:*:key-pair/*", 
                         "arn:aws:ec2:*:*:security-group/*", 
-                        "arn:aws:ec2:*:*:launch-template/*"
+                        "arn:aws:ec2:*:*:launch-template/*", 
+                        "arn:aws:license-manager:*:*:license-configuration:*"
                     ], 
                     "Effect": "Allow", 
                     "Sid": "EC2LaunchInstance"
@@ -69,10 +243,7 @@
                     "Resource": [
                         "arn:aws:ec2:*:*:volume/*", 
                         "arn:aws:ec2:*:*:instance/*", 
-                        "arn:aws:ec2:*:*:snapshot/*", 
-                        "arn:aws:ec2:*:*:launch-template/*", 
-                        "arn:aws:ec2:*:*:vpc/*", 
-                        "arn:aws:ec2:*:*:subnet/*"
+                        "arn:aws:ec2:*:*:snapshot/*"
                     ], 
                     "Effect": "Allow", 
                     "Condition": {
@@ -81,6 +252,25 @@
                         }
                     }, 
                     "Sid": "EC2Tags"
+                }, 
+                {
+                    "Action": "ec2:CreateTags", 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:security-group/*", 
+                        "arn:aws:ec2:*:*:launch-template/*", 
+                        "arn:aws:ec2:*:*:vpc/*", 
+                        "arn:aws:ec2:*:*:subnet/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:RequestTag/CreatedBy": "EC2 Fast Launch"
+                        }, 
+                        "ForAnyValue:StringLike": {
+                            "aws:CalledVia": "ec2fastlaunch.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "EC2ManageTags"
                 }, 
                 {
                     "Action": "iam:CreateServiceLinkedRole", 
