@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-12-03T15:36:07Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-05-14T19:37:06Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -18,7 +18,12 @@
                         "dsql:UntagResource", 
                         "dsql:ListTagsForResource", 
                         "dsql:DbConnectAdmin", 
-                        "dsql:DbConnect"
+                        "dsql:DbConnect", 
+                        "dsql:PutMultiRegionProperties", 
+                        "dsql:PutWitnessRegion", 
+                        "dsql:AddPeerCluster", 
+                        "dsql:RemovePeerCluster", 
+                        "dsql:GetVpcEndpointServiceName"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
