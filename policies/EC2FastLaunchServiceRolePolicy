@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2022-01-10T13:08:21Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-05-14T17:07:07Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -15,9 +15,11 @@
                         "arn:aws:ec2:*::image/*", 
                         "arn:aws:ec2:*:*:key-pair/*", 
                         "arn:aws:ec2:*:*:security-group/*", 
-                        "arn:aws:ec2:*:*:launch-template/*"
+                        "arn:aws:ec2:*:*:launch-template/*", 
+                        "arn:aws:license-manager:*:*:license-configuration:*"
                     ], 
-                    "Effect": "Allow"
+                    "Effect": "Allow", 
+                    "Sid": "AllowRunInstances"
                 }, 
                 {
                     "Action": [
@@ -32,7 +34,8 @@
                         "StringEquals": {
                             "aws:RequestTag/CreatedBy": "EC2 Fast Launch"
                         }
-                    }
+                    }, 
+                    "Sid": "AllowRunInstancesOnFastLaunchCreatedResources"
                 }, 
                 {
                     "Action": "iam:PassRole", 
@@ -45,7 +48,8 @@
                                 "ec2.amazonaws.com.cn"
                             ]
                         }
-                    }
+                    }, 
+                    "Sid": "AllowPassRole"
                 }, 
                 {
                     "Action": [
@@ -60,7 +64,8 @@
                         "StringEquals": {
                             "aws:ResourceTag/CreatedBy": "EC2 Fast Launch"
                         }
-                    }
+                    }, 
+                    "Sid": "AllowStopAndTerminateInstances"
                 }, 
                 {
                     "Action": "ec2:CreateSnapshot", 
@@ -72,7 +77,8 @@
                         "StringEquals": {
                             "aws:ResourceTag/CreatedBy": "EC2 Fast Launch"
                         }
-                    }
+                    }, 
+                    "Sid": "AllowCreateSnapshot"
                 }, 
                 {
                     "Action": "ec2:CreateSnapshot", 
@@ -104,7 +110,8 @@
                         "StringEquals": {
                             "aws:RequestTag/CreatedBy": "EC2 Fast Launch"
                         }
-                    }
+                    }, 
+                    "Sid": "AllowCreateLaunchTemplate"
                 }, 
                 {
                     "Action": "ec2:CreateTags", 
@@ -123,7 +130,8 @@
                                 "CreateLaunchTemplate"
                             ]
                         }
-                    }
+                    }, 
+                    "Sid": "AllowCreateTags"
                 }, 
                 {
                     "Action": [
@@ -137,7 +145,8 @@
                         "StringEquals": {
                             "aws:ResourceTag/CreatedBy": "EC2 Fast Launch"
                         }
-                    }
+                    }, 
+                    "Sid": "AllowDeleteSnapshots"
                 }, 
                 {
                     "Action": [
@@ -149,10 +158,12 @@
                         "ec2:DescribeInstances", 
                         "ec2:DescribeInstanceTypeOfferings", 
                         "ec2:DescribeLaunchTemplateVersions", 
-                        "ec2:DescribeLaunchTemplates"
+                        "ec2:DescribeLaunchTemplates", 
+                        "cloudformation:DescribeStacks"
                     ], 
                     "Resource": "*", 
-                    "Effect": "Allow"
+                    "Effect": "Allow", 
+                    "Sid": "AllowDescribeActions"
                 }, 
                 {
                     "Action": "cloudwatch:PutMetricData", 
@@ -162,7 +173,56 @@
                         "StringEquals": {
                             "cloudwatch:namespace": "AWS/EC2"
                         }
-                    }
+                    }, 
+                    "Sid": "AllowPutMetricData"
+                }, 
+                {
+                    "Action": [
+                        "events:DeleteRule", 
+                        "events:RemoveTargets", 
+                        "events:PutRule", 
+                        "events:PutTargets"
+                    ], 
+                    "Resource": [
+                        "arn:aws:events:*:*:rule/FastLaunch*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "events:ManagedBy": "ec2fastlaunch.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "AllowEventsRuleMutations"
+                }, 
+                {
+                    "Action": [
+                        "events:ListTargetsByRule", 
+                        "events:DescribeRule"
+                    ], 
+                    "Resource": [
+                        "arn:aws:events:*:*:rule/FastLaunch*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowEventsRuleNonMutations"
+                }, 
+                {
+                    "Action": "kms:ListRetirableGrants", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowKMSActions"
+                }, 
+                {
+                    "Action": [
+                        "ec2:DeleteLaunchTemplate"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/CreatedBy": "EC2 Fast Launch"
+                        }
+                    }, 
+                    "Sid": "AllowDeleteFastLaunchLaunchTemplates"
                 }
             ]
         }, 
