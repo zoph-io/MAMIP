@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2018-12-20T21:42:00Z", 
-        "VersionId": "v4", 
+        "CreateDate": "2025-05-15T18:07:06Z", 
+        "VersionId": "v5", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -10,18 +10,25 @@
                         "route53:*", 
                         "route53domains:*", 
                         "cloudfront:ListDistributions", 
-                        "elasticloadbalancing:DescribeLoadBalancers", 
-                        "elasticbeanstalk:DescribeEnvironments", 
-                        "s3:ListBucket", 
-                        "s3:GetBucketLocation", 
-                        "s3:GetBucketWebsite", 
+                        "cloudfront:GetDistributionTenantByDomain", 
+                        "cloudfront:GetConnectionGroup", 
+                        "cloudwatch:DescribeAlarms", 
+                        "cloudwatch:GetMetricStatistics", 
+                        "cloudwatch:GetMetricData", 
                         "ec2:DescribeVpcs", 
                         "ec2:DescribeVpcEndpoints", 
                         "ec2:DescribeRegions", 
+                        "elasticloadbalancing:DescribeLoadBalancers", 
+                        "elasticbeanstalk:DescribeEnvironments", 
+                        "es:ListDomainNames", 
+                        "es:DescribeDomains", 
+                        "lightsail:GetContainerServices", 
+                        "s3:ListBucket", 
+                        "s3:GetBucketLocation", 
+                        "s3:GetBucketWebsite", 
                         "sns:ListTopics", 
                         "sns:ListSubscriptionsByTopic", 
-                        "cloudwatch:DescribeAlarms", 
-                        "cloudwatch:GetMetricStatistics"
+                        "tag:GetResources"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow"
