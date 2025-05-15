@@ -1,0 +1,27 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-05-15T13:37:07Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "cloudwatch:PutMetricData"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "cloudwatch:namespace": [
+                                "AWS/Transform"
+                            ]
+                        }
+                    }, 
+                    "Sid": "PublishCloudWatchMetrics"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
