@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2019-08-06T14:13:58Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-05-15T16:52:07Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -15,6 +15,35 @@
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Sid": "0"
+                }, 
+                {
+                    "Action": [
+                        "secretsmanager:DescribeSecret", 
+                        "secretsmanager:DeleteSecret", 
+                        "secretsmanager:PutSecretValue", 
+                        "secretsmanager:UpdateSecret", 
+                        "secretsmanager:GetSecretValue"
+                    ], 
+                    "Resource": "arn:aws:secretsmanager:*:*:secret:s2svpn!*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "secretsmanager:ResourceTag/aws:secretsmanager:owningService": "s2svpn", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "VpnConnectionSecretsManagement"
+                }, 
+                {
+                    "Action": "secretsmanager:CreateSecret", 
+                    "Resource": "arn:aws:secretsmanager:*:*:secret:s2svpn!*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "secretsmanager:Name": "s2svpn!*"
+                        }
+                    }, 
+                    "Sid": "VpnConnectionSecretsCreation"
                 }
             ]
         }, 
