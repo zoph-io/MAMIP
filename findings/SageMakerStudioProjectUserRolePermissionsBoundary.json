@@ -1,9 +1,9 @@
 [
     {
-        "findingDetails": "The 2 resource ARN(s) are redundant because they reference the same resource. Review the use of wildcards (*), or remove the resource arn:aws:s3:::elasticbeanstalk-*/* to remove the redundancy.",
+        "findingDetails": "The 2 action(s) are redundant because they provide similar permissions. Update the policy to remove the redundant action such as: ec2:DescribeAccountAttributes.",
         "findingType": "SUGGESTION",
-        "issueCode": "REDUNDANT_RESOURCE",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-resource",
+        "issueCode": "REDUNDANT_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-action",
         "locations": [
             {
                 "path": [
@@ -11,25 +11,25 @@
                         "value": "Statement"
                     },
                     {
-                        "index": 3
-                    },
-                    {
-                        "value": "Resource"
-                    },
-                    {
                         "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 10
                     }
                 ],
                 "span": {
                     "end": {
-                        "column": 619,
+                        "column": 390,
                         "line": 1,
-                        "offset": 619
+                        "offset": 390
                     },
                     "start": {
-                        "column": 586,
+                        "column": 359,
                         "line": 1,
-                        "offset": 586
+                        "offset": 359
                     }
                 }
             },
@@ -39,25 +39,25 @@
                         "value": "Statement"
                     },
                     {
-                        "index": 3
+                        "index": 0
                     },
                     {
-                        "value": "Resource"
+                        "value": "Action"
                     },
                     {
-                        "index": 1
+                        "index": 13
                     }
                 ],
                 "span": {
                     "end": {
-                        "column": 656,
+                        "column": 475,
                         "line": 1,
-                        "offset": 656
+                        "offset": 475
                     },
                     "start": {
-                        "column": 621,
+                        "column": 444,
                         "line": 1,
-                        "offset": 621
+                        "offset": 444
                     }
                 }
             }
