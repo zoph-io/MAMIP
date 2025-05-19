@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-12-26T23:52:07Z", 
-        "VersionId": "v5", 
+        "CreateDate": "2025-05-19T20:37:07Z", 
+        "VersionId": "v6", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -60,7 +60,11 @@
                     "Action": [
                         "s3:GetObject"
                     ], 
-                    "Resource": "arn:aws:s3:::*/*.ISO", 
+                    "Resource": [
+                        "arn:aws:s3:::*/*.ISO", 
+                        "arn:aws:s3:::*/*.iso", 
+                        "arn:aws:s3:::*/*.Iso"
+                    ], 
                     "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
