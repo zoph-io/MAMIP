@@ -1,0 +1,21 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-05-19T19:22:05Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "acm-pca:DescribeCertificateAuthority", 
+                        "acm-pca:GetCertificate", 
+                        "acm-pca:IssueCertificate"
+                    ], 
+                    "Resource": "arn:aws:acm-pca:*:*:certificate-authority/*", 
+                    "Effect": "Allow"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
