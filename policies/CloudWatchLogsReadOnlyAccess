@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2023-11-26T18:11:33Z", 
-        "VersionId": "v6", 
+        "CreateDate": "2025-05-20T16:52:06Z", 
+        "VersionId": "v7", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -16,7 +16,8 @@
                         "logs:FilterLogEvents", 
                         "logs:StartLiveTail", 
                         "logs:StopLiveTail", 
-                        "cloudwatch:GenerateQuery"
+                        "cloudwatch:GenerateQuery", 
+                        "cloudwatch:GenerateQueryResultsSummary"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
