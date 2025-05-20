@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-05-07T19:37:06Z", 
-        "VersionId": "v9", 
+        "CreateDate": "2025-05-20T19:07:07Z", 
+        "VersionId": "v10", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -70,10 +70,24 @@
                 }, 
                 {
                     "Action": [
-                        "secretsmanager:CreateSecret", 
-                        "secretsmanager:PutSecretValue", 
+                        "secretsmanager:CreateSecret"
+                    ], 
+                    "Resource": [
+                        "arn:*:secretsmanager:*:*:secret:aws-datasync!*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "DataSyncSecretsManagerCreateAccess"
+                }, 
+                {
+                    "Action": [
                         "secretsmanager:DeleteSecret", 
-                        "secretsmanager:UpdateSecret"
+                        "secretsmanager:UpdateSecret", 
+                        "secretsmanager:PutSecretValue"
                     ], 
                     "Resource": [
                         "arn:*:secretsmanager:*:*:secret:aws-datasync!*"
@@ -85,7 +99,7 @@
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
                     }, 
-                    "Sid": "DataSyncSecretsManagerWriteAccess"
+                    "Sid": "DataSyncSecretsManagerAccess"
                 }
             ]
         }, 
