@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-05-14T19:37:06Z", 
-        "VersionId": "v2", 
+        "CreateDate": "2025-05-21T21:22:07Z", 
+        "VersionId": "v3", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -12,8 +12,6 @@
                         "dsql:UpdateCluster", 
                         "dsql:DeleteCluster", 
                         "dsql:ListClusters", 
-                        "dsql:CreateMultiRegionClusters", 
-                        "dsql:DeleteMultiRegionClusters", 
                         "dsql:TagResource", 
                         "dsql:UntagResource", 
                         "dsql:ListTagsForResource", 
@@ -23,7 +21,13 @@
                         "dsql:PutWitnessRegion", 
                         "dsql:AddPeerCluster", 
                         "dsql:RemovePeerCluster", 
-                        "dsql:GetVpcEndpointServiceName"
+                        "dsql:GetVpcEndpointServiceName", 
+                        "dsql:StartBackupJob", 
+                        "dsql:GetBackupJob", 
+                        "dsql:StopBackupJob", 
+                        "dsql:StartRestoreJob", 
+                        "dsql:GetRestoreJob", 
+                        "dsql:StopRestoreJob"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
@@ -47,6 +51,43 @@
                         }
                     }, 
                     "Sid": "CreateDsqlServiceLinkedRole"
+                }, 
+                {
+                    "Action": [
+                        "kms:DescribeKey"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "kms:ViaService": [
+                                "dsql.*.amazonaws.com"
+                            ]
+                        }
+                    }, 
+                    "Sid": "KMSDescribePermission"
+                }, 
+                {
+                    "Action": [
+                        "kms:Decrypt", 
+                        "kms:Encrypt", 
+                        "kms:GenerateDataKey", 
+                        "kms:ReEncryptTo", 
+                        "kms:ReEncryptFrom"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "kms:EncryptionContextKeys": "aws:dsql:ClusterId"
+                        }, 
+                        "StringLike": {
+                            "kms:ViaService": [
+                                "dsql.*.amazonaws.com"
+                            ]
+                        }
+                    }, 
+                    "Sid": "KMSCryptographicPermissions"
                 }
             ]
         }, 
