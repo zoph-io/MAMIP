@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-02-11T21:37:06Z", 
-        "VersionId": "v31", 
+        "CreateDate": "2025-05-21T18:22:07Z", 
+        "VersionId": "v32", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -99,7 +99,9 @@
                         "cloudfront:UpdateDistribution", 
                         "cloudfront:ListDistributionsByWebACLId", 
                         "cloudfront:ListDistributions", 
-                        "cloudfront:ListTagsForResource"
+                        "cloudfront:ListTagsForResource", 
+                        "cloudfront:AssociateDistributionWebACL", 
+                        "cloudfront:DisassociateDistributionWebACL"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
