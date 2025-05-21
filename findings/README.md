@@ -1,10 +1,12 @@
 ## AWS Access Analyzer - Findings - 2025-05-21
 
 - Policies analyzed: `1353`
-- Errors: `5`
+- Errors: `17`
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
+  - [`AmazonAuroraDSQLConsoleFullAccess`](./AmazonAuroraDSQLConsoleFullAccess.json)
   - [`AmazonRedshiftServiceLinkedRolePolicy`](./AmazonRedshiftServiceLinkedRolePolicy.json)
   - [`AWSOrganizationsFullAccess`](./AWSOrganizationsFullAccess.json)
+  - [`AmazonAuroraDSQLFullAccess`](./AmazonAuroraDSQLFullAccess.json)
   - [`AmazonDataZoneGlueManageAccessRolePolicy`](./AmazonDataZoneGlueManageAccessRolePolicy.json)
   - [`MemoryDBServiceRolePolicy`](./MemoryDBServiceRolePolicy.json)
 - Sec_Warnings: `26`
