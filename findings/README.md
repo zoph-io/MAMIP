@@ -1,8 +1,9 @@
 ## AWS Access Analyzer - Findings - 2025-05-22
 
 - Policies analyzed: `1355`
-- Errors: `23`
+- Errors: `27`
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
+  - [`AmazonPrometheusConsoleFullAccess`](./AmazonPrometheusConsoleFullAccess.json)
   - [`AmazonAuroraDSQLConsoleFullAccess`](./AmazonAuroraDSQLConsoleFullAccess.json)
   - [`AWSBackupServiceRolePolicyForRestores`](./AWSBackupServiceRolePolicyForRestores.json)
   - [`AWSBackupServiceRolePolicyForBackup`](./AWSBackupServiceRolePolicyForBackup.json)
