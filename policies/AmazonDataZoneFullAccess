@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-11-21T20:36:06Z", 
-        "VersionId": "v5", 
+        "CreateDate": "2025-05-22T18:07:07Z", 
+        "VersionId": "v6", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -122,6 +122,22 @@
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Sid": "RamResourceReadOnlyStatement"
+                }, 
+                {
+                    "Action": "ram:AssociateResourceSharePermission", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "ram:PermissionArn": [
+                                "arn:aws:ram::aws:permission/AWSRAMDefaultPermissionAmazonDataZoneDomain", 
+                                "arn:aws:ram::aws:permission/AWSRAMPermissionAmazonDataZoneDomainFullAccessWithPortalAccess", 
+                                "arn:aws:ram::aws:permission/AWSRAMPermissionsAmazonDatazoneDomainExtendedServiceAccess", 
+                                "arn:aws:ram::aws:permission/AWSRAMPermissionsAmazonDatazoneDomainExtendedServiceWithPortalAccess"
+                            ]
+                        }
+                    }, 
+                    "Sid": "RamAssociateResourceSharePermissionStatement"
                 }, 
                 {
                     "Action": "iam:PassRole", 
