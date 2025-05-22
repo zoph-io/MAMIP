@@ -1,6 +1,6 @@
 ## AWS Access Analyzer - Findings - 2025-05-22
 
-- Policies analyzed: `1354`
+- Policies analyzed: `1355`
 - Errors: `23`
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
   - [`AmazonAuroraDSQLConsoleFullAccess`](./AmazonAuroraDSQLConsoleFullAccess.json)
