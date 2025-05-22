@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-04-17T16:22:06Z", 
-        "VersionId": "v4", 
+        "CreateDate": "2025-05-22T17:07:06Z", 
+        "VersionId": "v5", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -36,7 +36,11 @@
                         "aps:DeleteLoggingConfiguration", 
                         "aps:DescribeLoggingConfiguration", 
                         "aps:UpdateWorkspaceConfiguration", 
-                        "aps:DescribeWorkspaceConfiguration"
+                        "aps:DescribeWorkspaceConfiguration", 
+                        "aps:CreateQueryLoggingConfiguration", 
+                        "aps:UpdateQueryLoggingConfiguration", 
+                        "aps:DeleteQueryLoggingConfiguration", 
+                        "aps:DescribeQueryLoggingConfiguration"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow"
