@@ -1,0 +1,110 @@
+[
+    {
+        "findingDetails": "The action dsql:StartBackupJob does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 52
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 0
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 9688,
+                        "line": 1,
+                        "offset": 9688
+                    },
+                    "start": {
+                        "column": 9667,
+                        "line": 1,
+                        "offset": 9667
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The action dsql:GetBackupJob does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 52
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 1
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 9709,
+                        "line": 1,
+                        "offset": 9709
+                    },
+                    "start": {
+                        "column": 9690,
+                        "line": 1,
+                        "offset": 9690
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The action dsql:StopBackupJob does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 52
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 2
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 9731,
+                        "line": 1,
+                        "offset": 9731
+                    },
+                    "start": {
+                        "column": 9711,
+                        "line": 1,
+                        "offset": 9711
+                    }
+                }
+            }
+        ]
+    }
+]
