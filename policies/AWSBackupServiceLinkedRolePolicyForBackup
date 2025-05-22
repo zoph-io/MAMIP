@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-03-21T23:22:06Z", 
-        "VersionId": "v18", 
+        "CreateDate": "2025-05-22T00:37:07Z", 
+        "VersionId": "v19", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -395,6 +395,15 @@
                         }
                     }, 
                     "Sid": "RecoveryPointTaggingPermissions"
+                }, 
+                {
+                    "Action": [
+                        "dsql:ListClusters", 
+                        "dsql:ListTagsForResource"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DSQLListPermissions"
                 }
             ]
         }, 

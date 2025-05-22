@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-03-27T21:52:06Z", 
-        "VersionId": "v22", 
+        "CreateDate": "2025-05-22T00:37:06Z", 
+        "VersionId": "v23", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -53,11 +53,25 @@
                         "ec2:DescribeSubnets", 
                         "ec2:DescribeVpcs", 
                         "ec2:DescribeInternetGateways", 
-                        "ec2:DescribeSnapshotTierStatus"
+                        "ec2:DescribeSnapshotTierStatus", 
+                        "ec2:DescribeRouteTables"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Sid": "EC2DescribePermissions"
+                }, 
+                {
+                    "Action": [
+                        "ec2:CreateTags"
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:route-table/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/AmazonFSx": "ManagedByAmazonFSx"
+                        }
+                    }, 
+                    "Sid": "CreateTagsPermissions"
                 }, 
                 {
                     "Action": [
@@ -129,12 +143,29 @@
                 }, 
                 {
                     "Action": [
+                        "dsql:StartRestoreJob", 
+                        "dsql:GetRestoreJob", 
+                        "dsql:StopRestoreJob", 
+                        "dsql:TagResource", 
+                        "dsql:CreateCluster", 
+                        "dsql:PutMultiRegionProperties", 
+                        "dsql:PutWitnessRegion"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "DSQLResourcePermissionsForRestore"
+                }, 
+                {
+                    "Action": [
                         "kms:Decrypt", 
                         "kms:Encrypt", 
                         "kms:GenerateDataKey", 
                         "kms:ReEncryptTo", 
                         "kms:ReEncryptFrom", 
-                        "kms:GenerateDataKeyWithoutPlaintext"
+                        "kms:GenerateDataKeyWithoutPlaintext", 
+                        "kms:DescribeKey"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
@@ -146,6 +177,7 @@
                                 "elasticfilesystem.*.amazonaws.com", 
                                 "rds.*.amazonaws.com", 
                                 "redshift.*.amazonaws.com", 
+                                "dsql.*.amazonaws.com", 
                                 "redshift-serverless.*.amazonaws.com"
                             ]
                         }

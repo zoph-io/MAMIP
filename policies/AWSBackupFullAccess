@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-03-27T21:52:06Z", 
-        "VersionId": "v19", 
+        "CreateDate": "2025-05-22T00:37:07Z", 
+        "VersionId": "v20", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -475,6 +475,16 @@
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Sid": "ResourceAccessManagerPermissions"
+                }, 
+                {
+                    "Action": [
+                        "dsql:GetCluster", 
+                        "dsql:ListClusters", 
+                        "dsql:ListTagsForResource"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DSQLDescribePermissions"
                 }
             ]
         }, 
