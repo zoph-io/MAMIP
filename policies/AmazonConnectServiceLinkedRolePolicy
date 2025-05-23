@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-03-12T20:22:06Z", 
-        "VersionId": "v24", 
+        "CreateDate": "2025-05-23T21:07:07Z", 
+        "VersionId": "v25", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -90,7 +90,9 @@
                         "profile:GetSegmentEstimate", 
                         "profile:BatchGetProfile", 
                         "profile:BatchGetCalculatedAttributeForProfile", 
-                        "profile:GetSegmentMembership"
+                        "profile:GetSegmentMembership", 
+                        "profile:ListDomainLayouts", 
+                        "profile:GetSimilarProfiles"
                     ], 
                     "Resource": "arn:aws:profile:*:*:domains/amazon-connect-*", 
                     "Effect": "Allow", 
@@ -108,6 +110,19 @@
                     ], 
                     "Effect": "Allow", 
                     "Sid": "AllowCustomerProfilesEventTriggerForConnectDomain"
+                }, 
+                {
+                    "Action": [
+                        "profile:CreateDomainLayout", 
+                        "profile:UpdateDomainLayout", 
+                        "profile:DeleteDomainLayout", 
+                        "profile:GetDomainLayout"
+                    ], 
+                    "Resource": [
+                        "arn:aws:profile:*:*:domains/amazon-connect-*/layouts/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowCustomerProfilesDomainLayoutsForConnectDomain"
                 }, 
                 {
                     "Action": [
