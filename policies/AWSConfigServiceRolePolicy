@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-04-08T21:52:06Z", 
-        "VersionId": "v57", 
+        "CreateDate": "2025-05-23T17:52:07Z", 
+        "VersionId": "v58", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -159,7 +159,14 @@
                         "batch:DescribeSchedulingPolicies", 
                         "batch:ListSchedulingPolicies", 
                         "batch:ListTagsForResource", 
+                        "bedrock:GetGuardrail", 
+                        "bedrock:GetInferenceProfile", 
+                        "bedrock:GetKnowledgeBase", 
                         "bedrock:ListAgents", 
+                        "bedrock:ListGuardrails", 
+                        "bedrock:ListInferenceProfiles", 
+                        "bedrock:ListKnowledgeBases", 
+                        "bedrock:ListTagsForResource", 
                         "billingconductor:ListAccountAssociations", 
                         "billingconductor:ListBillingGroups", 
                         "billingconductor:ListCustomLineItems", 
