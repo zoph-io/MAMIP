@@ -1,14 +1,10 @@
 ## AWS Access Analyzer - Findings - 2025-05-28
 
-- Policies analyzed: `1355`
-- Errors: `23`
+- Policies analyzed: `1353`
+- Errors: `5`
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
-  - [`AmazonAuroraDSQLConsoleFullAccess`](./AmazonAuroraDSQLConsoleFullAccess.json)
-  - [`AWSBackupServiceRolePolicyForRestores`](./AWSBackupServiceRolePolicyForRestores.json)
-  - [`AWSBackupServiceRolePolicyForBackup`](./AWSBackupServiceRolePolicyForBackup.json)
   - [`AmazonRedshiftServiceLinkedRolePolicy`](./AmazonRedshiftServiceLinkedRolePolicy.json)
   - [`AWSOrganizationsFullAccess`](./AWSOrganizationsFullAccess.json)
-  - [`AmazonAuroraDSQLFullAccess`](./AmazonAuroraDSQLFullAccess.json)
   - [`AmazonDataZoneGlueManageAccessRolePolicy`](./AmazonDataZoneGlueManageAccessRolePolicy.json)
   - [`MemoryDBServiceRolePolicy`](./MemoryDBServiceRolePolicy.json)
 - Sec_Warnings: `26`
@@ -93,11 +89,12 @@
   - [`ReadOnlyAccess`](./fails.txt)
   - [`AWSPartnerLedSupportReadOnlyAccess`](./fails.txt)
   - [`AWSConfigServiceRolePolicy`](./fails.txt)
-- Deprecated: `61`
+- Deprecated: `63`
   - [`AWSLambdaReplicatorInternal`](../policies/AWSLambdaReplicatorInternal)
   - [`AWSIotRoboRunnerReadOnly`](../policies/AWSIotRoboRunnerReadOnly)
   - [`AmazonConnectFullAccess`](../policies/AmazonConnectFullAccess)
   - [`AWSLambdaReadOnlyAccess`](../policies/AWSLambdaReadOnlyAccess)
+  - [`GroundTruthSyntheticConsoleFullAccess`](../policies/GroundTruthSyntheticConsoleFullAccess)
   - [`AmazonEverestServicePolicy`](../policies/AmazonEverestServicePolicy)
   - [`AWSCloudTrailFullAccess`](../policies/AWSCloudTrailFullAccess)
   - [`AmazonSumerianFullAccess`](../policies/AmazonSumerianFullAccess)
@@ -154,4 +151,5 @@
   - [`AmazonEC2ContainerServiceFullAccess`](../policies/AmazonEC2ContainerServiceFullAccess)
   - [`AmazonWorkLinkReadOnly`](../policies/AmazonWorkLinkReadOnly)
   - [`CheesepuffsServiceRolePolicy`](../policies/CheesepuffsServiceRolePolicy)
+  - [`GroundTruthSyntheticConsoleReadOnlyAccess`](../policies/GroundTruthSyntheticConsoleReadOnlyAccess)
   - [`AWSB9InternalServicePolicy`](../policies/AWSB9InternalServicePolicy)
