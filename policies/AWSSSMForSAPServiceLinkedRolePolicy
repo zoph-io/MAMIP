@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-12-11T22:51:34Z", 
-        "VersionId": "v10", 
+        "CreateDate": "2025-05-27T23:22:07Z", 
+        "VersionId": "v11", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -289,16 +289,12 @@
                     "Resource": "arn:aws:resource-groups:*:*:group/SystemsManagerForSAP-*", 
                     "Effect": "Allow", 
                     "Condition": {
-                        "ArnLike": {
-                            "aws:RequestTag/awsApplication": "arn:aws:resource-groups:*:*:group/*/*"
-                        }, 
                         "StringEquals": {
                             "aws:RequestTag/SSMForSAPCreated": "True"
                         }, 
                         "ForAllValues:StringEquals": {
                             "aws:TagKeys": [
-                                "SSMForSAPCreated", 
-                                "awsApplication"
+                                "SSMForSAPCreated"
                             ]
                         }
                     }, 
