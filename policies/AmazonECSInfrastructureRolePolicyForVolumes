@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-10-10T18:56:53Z", 
-        "VersionId": "v2", 
+        "CreateDate": "2025-05-28T20:52:05Z", 
+        "VersionId": "v3", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -48,6 +48,14 @@
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Sid": "DescribeVolumesForLifecycle"
+                }, 
+                {
+                    "Action": [
+                        "ec2:DescribeInstances"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DescribeInstancesForAttachingVolume"
                 }, 
                 {
                     "Action": [
