@@ -1,13 +1,13 @@
-## AWS Access Analyzer - Findings - 2025-05-28
+## AWS Access Analyzer - Findings - 2025-05-29
 
-- Policies analyzed: `1353`
+- Policies analyzed: `1352`
 - Errors: `5`
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
   - [`AmazonRedshiftServiceLinkedRolePolicy`](./AmazonRedshiftServiceLinkedRolePolicy.json)
   - [`AWSOrganizationsFullAccess`](./AWSOrganizationsFullAccess.json)
   - [`AmazonDataZoneGlueManageAccessRolePolicy`](./AmazonDataZoneGlueManageAccessRolePolicy.json)
   - [`MemoryDBServiceRolePolicy`](./MemoryDBServiceRolePolicy.json)
-- Sec_Warnings: `26`
+- Sec_Warnings: `25`
   - [`AdministratorAccess`](./AdministratorAccess.json)
   - [`AWSServiceRoleForAmazonEKSNodegroup`](./AWSServiceRoleForAmazonEKSNodegroup.json)
   - [`AWSProtonCodeBuildProvisioningServiceRolePolicy`](./AWSProtonCodeBuildProvisioningServiceRolePolicy.json)
@@ -17,7 +17,6 @@
   - [`AWSCodePipeline_FullAccess`](./AWSCodePipeline_FullAccess.json)
   - [`AdministratorAccess-Amplify`](./AdministratorAccess-Amplify.json)
   - [`AWSServiceRoleForSMS`](./AWSServiceRoleForSMS.json)
-  - [`AWSMarketplaceImageBuildFullAccess`](./AWSMarketplaceImageBuildFullAccess.json)
   - [`AmazonElasticMapReduceRole`](./AmazonElasticMapReduceRole.json)
   - [`SQSUnlockQueuePolicy`](./SQSUnlockQueuePolicy.json)
   - [`AmazonDynamoDBFullAccesswithDataPipeline`](./AmazonDynamoDBFullAccesswithDataPipeline.json)
@@ -89,7 +88,7 @@
   - [`ReadOnlyAccess`](./fails.txt)
   - [`AWSPartnerLedSupportReadOnlyAccess`](./fails.txt)
   - [`AWSConfigServiceRolePolicy`](./fails.txt)
-- Deprecated: `63`
+- Deprecated: `64`
   - [`AWSLambdaReplicatorInternal`](../policies/AWSLambdaReplicatorInternal)
   - [`AWSIotRoboRunnerReadOnly`](../policies/AWSIotRoboRunnerReadOnly)
   - [`AmazonConnectFullAccess`](../policies/AmazonConnectFullAccess)
@@ -123,6 +122,7 @@
   - [`ServiceCatalogAdminReadOnlyAccess`](../policies/ServiceCatalogAdminReadOnlyAccess)
   - [`AWS_Config_Role`](../policies/AWS_Config_Role)
   - [`AmazonMachineLearningRoleforRedshiftDataSourceV2`](../policies/AmazonMachineLearningRoleforRedshiftDataSourceV2)
+  - [`AWSMarketplaceImageBuildFullAccess`](../policies/AWSMarketplaceImageBuildFullAccess)
   - [`AWSOpsWorksRole`](../policies/AWSOpsWorksRole)
   - [`AWSMobileHub_ReadOnly`](../policies/AWSMobileHub_ReadOnly)
   - [`AmazonMacieSetupRole`](../policies/AmazonMacieSetupRole)
