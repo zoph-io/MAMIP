@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-12-01T16:36:07Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-06-02T18:22:06Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -33,10 +33,12 @@
                         "guardduty:ArchiveFindings", 
                         "guardduty:CreateFilter", 
                         "guardduty:DescribeMalwareScans", 
+                        "guardduty:GetAdministratorAccount", 
                         "guardduty:GetDetector", 
                         "guardduty:GetFilter", 
                         "guardduty:GetFindings", 
                         "guardduty:ListDetectors", 
+                        "guardduty:ListFilters", 
                         "guardduty:StartMalwareScan", 
                         "guardduty:UpdateFindingsFeedback"
                     ], 
@@ -64,9 +66,35 @@
                     "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
-                            "aws:RequestTag/SecurityIncidentResponseManaged": "true"
+                            "aws:RequestTag/SecurityIncidentResponseManaged": "true", 
+                            "aws:ResourceTag/SecurityIncidentResponseManaged": "true"
+                        }, 
+                        "ForAllValues:StringEquals": {
+                            "aws:TagKeys": [
+                                "SecurityIncidentResponseManaged"
+                            ]
                         }
                     }
+                }, 
+                {
+                    "Action": [
+                        "security-ir:UpdateCase"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/SecurityIncidentResponseManaged": "true"
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "security-ir:GetMembership", 
+                        "security-ir:ListMemberships"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
                 }
             ]
         }, 
