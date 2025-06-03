@@ -1,6 +1,6 @@
-## AWS Access Analyzer - Findings - 2025-06-02
+## AWS Access Analyzer - Findings - 2025-06-03
 
-- Policies analyzed: `1352`
+- Policies analyzed: `1353`
 - Errors: `5`
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
   - [`AmazonRedshiftServiceLinkedRolePolicy`](./AmazonRedshiftServiceLinkedRolePolicy.json)
