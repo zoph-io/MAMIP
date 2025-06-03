@@ -3,8 +3,8 @@
 - Policies analyzed: `1353`
 - Errors: `5`
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
+  - [`AWSAccountActivityAccess`](./AWSAccountActivityAccess.json)
   - [`AmazonRedshiftServiceLinkedRolePolicy`](./AmazonRedshiftServiceLinkedRolePolicy.json)
-  - [`AWSOrganizationsFullAccess`](./AWSOrganizationsFullAccess.json)
   - [`AmazonDataZoneGlueManageAccessRolePolicy`](./AmazonDataZoneGlueManageAccessRolePolicy.json)
   - [`MemoryDBServiceRolePolicy`](./MemoryDBServiceRolePolicy.json)
 - Sec_Warnings: `25`

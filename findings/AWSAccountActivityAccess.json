@@ -1,6 +1,6 @@
 [
     {
-        "findingDetails": "The action account:PutAccountName does not exist.",
+        "findingDetails": "The action account:GetChallengeQuestions does not exist.",
         "findingType": "ERROR",
         "issueCode": "INVALID_ACTION",
         "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
@@ -11,25 +11,25 @@
                         "value": "Statement"
                     },
                     {
-                        "index": 1
+                        "index": 0
                     },
                     {
                         "value": "Action"
                     },
                     {
-                        "index": 8
+                        "index": 2
                     }
                 ],
                 "span": {
                     "end": {
-                        "column": 414,
+                        "column": 147,
                         "line": 1,
-                        "offset": 414
+                        "offset": 147
                     },
                     "start": {
-                        "column": 390,
+                        "column": 116,
                         "line": 1,
-                        "offset": 390
+                        "offset": 116
                     }
                 }
             }
