@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2023-06-05T22:04:50Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-06-03T17:07:06Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -68,6 +68,43 @@
                     "Resource": "arn:aws:securityhub:*:*:hub/default", 
                     "Effect": "Allow", 
                     "Sid": "AllowActionsForSecurityHubIntegration"
+                }, 
+                {
+                    "Action": [
+                        "config:DeleteConfigRule"
+                    ], 
+                    "Resource": "arn:aws:config:*:*:config-rule/aws-service-rule/controltower.*/*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowDeleteConfigRule"
+                }, 
+                {
+                    "Action": [
+                        "config:PutConfigRule"
+                    ], 
+                    "Resource": "arn:aws:config:*:*:config-rule/aws-service-rule/controltower.*/*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowPutConfigRule"
+                }, 
+                {
+                    "Action": [
+                        "config:TagResource"
+                    ], 
+                    "Resource": "arn:aws:config:*:*:config-rule/aws-service-rule/controltower.*/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:RequestTag/aws-control-tower": "managed-by-control-tower"
+                        }
+                    }, 
+                    "Sid": "AllowConfigTagResource"
+                }, 
+                {
+                    "Action": [
+                        "config:DescribeConfigRules"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowConfigRulesDescribe"
                 }
             ]
         }, 
