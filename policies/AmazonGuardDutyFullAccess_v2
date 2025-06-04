@@ -1,0 +1,81 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-06-04T20:22:07Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": "guardduty:*", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "GuardDutyFullAccess"
+                }, 
+                {
+                    "Action": "iam:CreateServiceLinkedRole", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:AWSServiceName": [
+                                "guardduty.amazonaws.com", 
+                                "malware-protection.guardduty.amazonaws.com"
+                            ]
+                        }
+                    }, 
+                    "Sid": "CreateGuardDutyServiceLinkedRole"
+                }, 
+                {
+                    "Action": [
+                        "organizations:ListAWSServiceAccessForOrganization", 
+                        "organizations:DescribeOrganizationalUnit", 
+                        "organizations:DescribeAccount", 
+                        "organizations:DescribeOrganization", 
+                        "organizations:ListAccounts"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "GuardDutyOrganizationsReadOnly"
+                }, 
+                {
+                    "Action": [
+                        "organizations:EnableAWSServiceAccess", 
+                        "organizations:DisableAWSServiceAccess", 
+                        "organizations:RegisterDelegatedAdministrator", 
+                        "organizations:DeregisterDelegatedAdministrator", 
+                        "organizations:ListDelegatedAdministrators"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "organizations:ServicePrincipal": [
+                                "guardduty.amazonaws.com", 
+                                "malware-protection.guardduty.amazonaws.com"
+                            ]
+                        }
+                    }, 
+                    "Sid": "GuardDutyOrganizationsAdminAccess"
+                }, 
+                {
+                    "Action": "iam:GetRole", 
+                    "Resource": "arn:aws:iam::*:role/*AWSServiceRoleForAmazonGuardDutyMalwareProtection", 
+                    "Effect": "Allow", 
+                    "Sid": "GuardDutyIamRoleAccess"
+                }, 
+                {
+                    "Action": "iam:PassRole", 
+                    "Resource": "arn:aws:iam::*:role/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:PassedToService": "malware-protection-plan.guardduty.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "PassRoleToMalwareProtectionPlan"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
