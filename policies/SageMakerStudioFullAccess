@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-05-22T17:52:06Z", 
-        "VersionId": "v3", 
+        "CreateDate": "2025-06-06T19:07:07Z", 
+        "VersionId": "v4", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -36,7 +36,8 @@
                         "bedrock:ListInferenceProfiles", 
                         "bedrock:ListFoundationModels", 
                         "bedrock:ListTagsForResource", 
-                        "aoss:ListSecurityPolicies"
+                        "aoss:ListSecurityPolicies", 
+                        "quicksight:DescribeAccountSubscription"
                     ], 
                     "Resource": [
                         "*"
@@ -384,6 +385,17 @@
                         }
                     }, 
                     "Sid": "DeleteApplicationInferenceProfileStatement"
+                }, 
+                {
+                    "Action": [
+                        "bedrock:GetUseCaseForModelAccess", 
+                        "bedrock:PutUseCaseForModelAccess"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "ModelAccessUseCaseStatement"
                 }
             ]
         }, 
