@@ -1,0 +1,43 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-06-10T21:52:05Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "network-firewall:ListAnalysisReports", 
+                        "network-firewall:ListFirewallPolicies", 
+                        "network-firewall:ListFirewalls", 
+                        "network-firewall:ListFlowOperations", 
+                        "network-firewall:ListRuleGroups", 
+                        "network-firewall:ListTagsForResource", 
+                        "network-firewall:ListTLSInspectionConfigurations", 
+                        "network-firewall:DescribeFirewall", 
+                        "network-firewall:DescribeFirewallPolicy", 
+                        "network-firewall:DescribeFlowOperation", 
+                        "network-firewall:DescribeLoggingConfiguration", 
+                        "network-firewall:DescribeResourcePolicy", 
+                        "network-firewall:DescribeRuleGroup", 
+                        "network-firewall:DescribeRuleGroupMetadata", 
+                        "network-firewall:DescribeTLSInspectionConfiguration", 
+                        "network-firewall:GetAnalysisReportResults", 
+                        "network-firewall:ListFlowOperationResults"
+                    ], 
+                    "Resource": "arn:aws:network-firewall:*:*:*", 
+                    "Effect": "Allow"
+                }, 
+                {
+                    "Action": [
+                        "logs:GetLogDelivery", 
+                        "logs:ListLogDeliveries"
+                    ], 
+                    "Resource": "arn:aws:logs:*:*:*", 
+                    "Effect": "Allow"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
