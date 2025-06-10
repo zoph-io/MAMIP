@@ -1,0 +1,94 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-06-10T17:37:06Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "config:DeleteServiceLinkedConfigurationRecorder", 
+                        "config:DescribeConfigurationRecorders", 
+                        "config:DescribeConfigurationRecorderStatus", 
+                        "config:PutServiceLinkedConfigurationRecorder"
+                    ], 
+                    "Resource": "arn:aws:config:*:*:configuration-recorder/AWSConfigurationRecorderForSecurityHubAssets/*", 
+                    "Effect": "Allow", 
+                    "Sid": "SecurityHubV2ServiceRoleAssetsConfig"
+                }, 
+                {
+                    "Action": [
+                        "iam:CreateServiceLinkedRole"
+                    ], 
+                    "Resource": "arn:aws:iam::*:role/aws-service-role/config.amazonaws.com/AWSServiceRoleForConfig", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:AWSServiceName": "config.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "SecurityHubV2ServiceRoleAssetsIamPermissions"
+                }, 
+                {
+                    "Action": [
+                        "securityhub:DisableSecurityHubV2", 
+                        "securityhub:EnableSecurityHubV2", 
+                        "securityhub:DescribeSecurityHubV2"
+                    ], 
+                    "Resource": "arn:aws:securityhub:*:*:hubv2/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "SecurityHubV2ServiceRoleSecurityHubPermissions"
+                }, 
+                {
+                    "Action": [
+                        "tag:GetResources"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "SecurityHubV2ServiceRoleTagPermissions"
+                }, 
+                {
+                    "Action": [
+                        "organizations:DescribeAccount", 
+                        "organizations:DescribeOrganizationalUnit"
+                    ], 
+                    "Resource": "arn:aws:organizations::*:*", 
+                    "Effect": "Allow", 
+                    "Sid": "SecurityHubV2ServiceRoleOrganizationsPermissionsOnResources"
+                }, 
+                {
+                    "Action": [
+                        "organizations:DescribeOrganization", 
+                        "organizations:ListAccounts", 
+                        "organizations:ListAWSServiceAccessForOrganization", 
+                        "organizations:ListChildren"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "SecurityHubV2ServiceRoleOrganizationsPermissionsWithoutResources"
+                }, 
+                {
+                    "Action": [
+                        "organizations:ListDelegatedAdministrators"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "organizations:ServicePrincipal": [
+                                "securityhub.amazonaws.com"
+                            ]
+                        }
+                    }, 
+                    "Sid": "SecurityHubV2ServiceRoleDelegatedAdminPermissions"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
