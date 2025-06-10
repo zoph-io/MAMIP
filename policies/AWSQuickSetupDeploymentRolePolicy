@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-06-26T09:55:21Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-06-10T13:22:06Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -109,7 +109,8 @@
                         "arn:aws:ssm:*::document/AWS-EnableExplorer", 
                         "arn:aws:ssm:*::document/AWS-GatherSoftwareInventory", 
                         "arn:aws:ssm:*::document/AWS-RunPatchBaselineAssociation", 
-                        "arn:aws:ssm:*::document/AWS-UpdateSSMAgent"
+                        "arn:aws:ssm:*::document/AWS-UpdateSSMAgent", 
+                        "arn:aws:ssm:*::document/AWSQuickSetupType-ManageInstanceProfile"
                     ], 
                     "Effect": "Allow", 
                     "Sid": "QSDocsRead"
@@ -130,6 +131,7 @@
                         "arn:aws:ssm:*::document/AWS-GatherSoftwareInventory", 
                         "arn:aws:ssm:*::document/AWS-RunPatchBaselineAssociation", 
                         "arn:aws:ssm:*::document/AWS-UpdateSSMAgent", 
+                        "arn:aws:ssm:*::document/AWSQuickSetupType-ManageInstanceProfile", 
                         "arn:aws:ec2:*:*:instance/*", 
                         "arn:aws:ssm:*:*:managed-instance/*", 
                         "arn:aws:ssm:*:*:association/*"
@@ -326,7 +328,8 @@
                         "ArnEquals": {
                             "iam:PolicyARN": [
                                 "arn:aws:iam::aws:policy/AWSSystemsManagerEnableExplorerExecutionPolicy", 
-                                "arn:aws:iam::aws:policy/AWSSystemsManagerEnableConfigRecordingExecutionPolicy"
+                                "arn:aws:iam::aws:policy/AWSSystemsManagerEnableConfigRecordingExecutionPolicy", 
+                                "arn:aws:iam::aws:policy/AWSQuickSetupManagedInstanceProfileExecutionPolicy"
                             ]
                         }
                     }, 
