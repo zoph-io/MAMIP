@@ -1,0 +1,66 @@
+[
+    {
+        "findingDetails": "The 2 action(s) are redundant because they provide similar permissions. Update the policy to remove the redundant action such as: ec2:DescribeAccountAttributes.",
+        "findingType": "SUGGESTION",
+        "issueCode": "REDUNDANT_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 10
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 390,
+                        "line": 1,
+                        "offset": 390
+                    },
+                    "start": {
+                        "column": 359,
+                        "line": 1,
+                        "offset": 359
+                    }
+                }
+            },
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 0
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 13
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 475,
+                        "line": 1,
+                        "offset": 475
+                    },
+                    "start": {
+                        "column": 444,
+                        "line": 1,
+                        "offset": 444
+                    }
+                }
+            }
+        ]
+    }
+]

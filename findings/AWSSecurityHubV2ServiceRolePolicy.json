@@ -1,0 +1,110 @@
+[
+    {
+        "findingDetails": "The action securityhub:DisableSecurityHubV2 does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 2
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 0
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 751,
+                        "line": 1,
+                        "offset": 751
+                    },
+                    "start": {
+                        "column": 717,
+                        "line": 1,
+                        "offset": 717
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The action securityhub:EnableSecurityHubV2 does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 2
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 1
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 786,
+                        "line": 1,
+                        "offset": 786
+                    },
+                    "start": {
+                        "column": 753,
+                        "line": 1,
+                        "offset": 753
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "findingDetails": "The action securityhub:DescribeSecurityHubV2 does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 2
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 2
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 823,
+                        "line": 1,
+                        "offset": 823
+                    },
+                    "start": {
+                        "column": 788,
+                        "line": 1,
+                        "offset": 788
+                    }
+                }
+            }
+        ]
+    }
+]
