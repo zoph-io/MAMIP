@@ -1,0 +1,36 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-06-11T20:37:06Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "ec2:DescribeInstances", 
+                        "ec2:DescribeInstanceStatus", 
+                        "ec2:DescribeVolumes"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
+                {
+                    "Action": [
+                        "ec2:TerminateInstances", 
+                        "ec2:DeleteVolume", 
+                        "ec2:StopInstances", 
+                        "ec2:StartInstances"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "ec2:ManagedResourceOperator": "workspaces-instances.amazonaws.com"
+                        }
+                    }
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
