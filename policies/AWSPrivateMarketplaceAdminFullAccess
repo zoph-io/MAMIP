@@ -1,10 +1,62 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-02-14T22:05:08Z", 
-        "VersionId": "v6", 
+        "CreateDate": "2025-06-11T16:22:07Z", 
+        "VersionId": "v7", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
+                {
+                    "Action": [
+                        "iam:GetRole"
+                    ], 
+                    "Resource": [
+                        "arn:aws:iam::*:role/*AWSServiceRoleForPrivateMarketplaceAdmin"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "PrivateMarketplaceGetRolePermissions"
+                }, 
+                {
+                    "Action": [
+                        "iam:CreateServiceLinkedRole"
+                    ], 
+                    "Resource": [
+                        "arn:aws:iam::*:role/aws-service-role/private-marketplace.marketplace.amazonaws.com/AWSServiceRoleForPrivateMarketplaceAdmin"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:AWSServiceName": "private-marketplace.marketplace.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "PrivateMarketplaceCreateSLRPermissions"
+                }, 
+                {
+                    "Action": [
+                        "organizations:RegisterDelegatedAdministrator", 
+                        "organizations:DeregisterDelegatedAdministrator"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "organizations:ServicePrincipal": "private-marketplace.marketplace.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "PrivateMarketplaceManageDelegatedAdministratorPermissions"
+                }, 
+                {
+                    "Action": [
+                        "organizations:EnableAWSServiceAccess"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "organizations:ServicePrincipal": "private-marketplace.marketplace.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "PrivateMarketplaceEnableServiceAccessPermissions"
+                }, 
                 {
                     "Action": [
                         "aws-marketplace:AssociateProductsWithPrivateMarketplace", 
