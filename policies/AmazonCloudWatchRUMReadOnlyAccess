@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-04-30T19:22:06Z", 
-        "VersionId": "v3", 
+        "CreateDate": "2025-06-12T21:37:06Z", 
+        "VersionId": "v4", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -12,7 +12,44 @@
                         "rum:ListAppMonitors", 
                         "rum:ListRumMetricsDestinations", 
                         "rum:BatchGetRumMetricDefinitions", 
-                        "rum:GetResourcePolicy"
+                        "rum:GetResourcePolicy", 
+                        "rum:ListTagsForResource"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
+                {
+                    "Action": [
+                        "synthetics:describeCanariesLastRun", 
+                        "synthetics:describeCanaries"
+                    ], 
+                    "Resource": "arn:aws:synthetics:*:*:canary:*", 
+                    "Effect": "Allow"
+                }, 
+                {
+                    "Action": [
+                        "cloudwatch:GetMetricData"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
+                {
+                    "Action": [
+                        "cloudwatch:DescribeAlarms"
+                    ], 
+                    "Resource": "arn:aws:cloudwatch:*:*:alarm:*", 
+                    "Effect": "Allow"
+                }, 
+                {
+                    "Action": [
+                        "logs:DescribeLogGroups"
+                    ], 
+                    "Resource": "arn:aws:logs:*:*:log-group::log-stream:*", 
+                    "Effect": "Allow"
+                }, 
+                {
+                    "Action": [
+                        "xray:GetTraceSummaries"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow"
