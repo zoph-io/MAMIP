@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-06-04T00:07:07Z", 
-        "VersionId": "v11", 
+        "CreateDate": "2025-06-12T23:07:07Z", 
+        "VersionId": "v12", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -668,22 +668,6 @@
                     "Action": [
                         "s3:ListBucket"
                     ], 
-                    "Resource": "arn:aws:s3:::${aws:PrincipalTag/DomainBucketName}", 
-                    "Effect": "Allow", 
-                    "Condition": {
-                        "StringEquals": {
-                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
-                        }, 
-                        "StringNotEquals": {
-                            "aws:PrincipalTag/DomainBucketName": ""
-                        }
-                    }, 
-                    "Sid": "AirflowListDomainS3BucketPermissions"
-                }, 
-                {
-                    "Action": [
-                        "s3:ListBucket"
-                    ], 
                     "Resource": [
                         "arn:aws:s3:::${aws:PrincipalTag/DomainBucketName}"
                     ], 
@@ -810,22 +794,6 @@
                 }, 
                 {
                     "Action": [
-                        "ec2:AuthorizeSecurityGroupEgress", 
-                        "ec2:AuthorizeSecurityGroupIngress", 
-                        "ec2:RevokeSecurityGroupEgress", 
-                        "ec2:RevokeSecurityGroupIngress"
-                    ], 
-                    "Resource": "*", 
-                    "Effect": "Allow", 
-                    "Condition": {
-                        "StringEquals": {
-                            "aws:ResourceTag/AmazonDataZoneProject": "${aws:PrincipalTag/AmazonDataZoneProject}"
-                        }
-                    }, 
-                    "Sid": "DataLakeEC2Permissions"
-                }, 
-                {
-                    "Action": [
                         "athena:TerminateSession", 
                         "athena:CreatePreparedStatement", 
                         "athena:StopCalculationExecution", 
@@ -874,21 +842,6 @@
                         }
                     }, 
                     "Sid": "DataLakeAthenaPermissions"
-                }, 
-                {
-                    "Action": [
-                        "athena:GetDatabase", 
-                        "athena:GetDataCatalog", 
-                        "athena:GetTableMetadata", 
-                        "athena:ListDatabases", 
-                        "athena:ListTableMetadata"
-                    ], 
-                    "Resource": [
-                        "arn:aws:athena:*:*:datacatalog/AwsDataCatalog", 
-                        "arn:aws:athena:*:*:datacatalog/awsdatacatalog"
-                    ], 
-                    "Effect": "Allow", 
-                    "Sid": "DefaultAthenaDataCatalogPermissions"
                 }, 
                 {
                     "Action": [
@@ -1477,7 +1430,6 @@
                         "elasticmapreduce:ListInstanceFleets", 
                         "elasticmapreduce:ListInstanceGroups", 
                         "elasticmapreduce:ListBootstrapActions", 
-                        "elasticmapreduce:TerminateJobFlows", 
                         "elasticmapreduce:GetManagedScalingPolicy", 
                         "elasticmapreduce:GetOnClusterAppUIPresignedURL"
                     ], 
@@ -1949,7 +1901,8 @@
                 {
                     "Action": [
                         "bedrock:ListEvaluationJobs", 
-                        "bedrock:RetrieveAndGenerate"
+                        "bedrock:RetrieveAndGenerate", 
+                        "bedrock:ListFoundationModels"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
