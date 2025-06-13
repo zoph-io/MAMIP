@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-06-12T23:07:07Z", 
-        "VersionId": "v12", 
+        "CreateDate": "2025-06-13T22:22:06Z", 
+        "VersionId": "v13", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -663,6 +663,22 @@
                         }
                     }, 
                     "Sid": "ListDomainS3BucketPermissions"
+                }, 
+                {
+                    "Action": [
+                        "s3:ListBucket"
+                    ], 
+                    "Resource": "arn:aws:s3:::${aws:PrincipalTag/DomainBucketName}", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
+                        "StringNotEquals": {
+                            "aws:PrincipalTag/DomainBucketName": ""
+                        }
+                    }, 
+                    "Sid": "AirflowListDomainS3BucketPermissions"
                 }, 
                 {
                     "Action": [
