@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-04-23T18:35:45Z", 
-        "VersionId": "v3", 
+        "CreateDate": "2025-06-17T13:07:07Z", 
+        "VersionId": "v4", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -16,8 +16,11 @@
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Condition": {
-                        "StringLike": {
-                            "iam:AWSServiceName": "securityhub.amazonaws.com"
+                        "StringEquals": {
+                            "iam:AWSServiceName": [
+                                "securityhub.amazonaws.com", 
+                                "securityhubv2.amazonaws.com"
+                            ]
                         }
                     }, 
                     "Sid": "SecurityHubServiceLinkedRole"
