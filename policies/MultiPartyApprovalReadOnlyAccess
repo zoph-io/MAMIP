@@ -1,0 +1,43 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-06-18T20:07:07Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "mpa:Get*", 
+                        "mpa:List*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "MpaReadAccess"
+                }, 
+                {
+                    "Action": [
+                        "organizations:ListDelegatedAdministrators", 
+                        "organizations:DescribeOrganization"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "OrganizationsAccess"
+                }, 
+                {
+                    "Action": [
+                        "sso:DescribeInstance", 
+                        "sso:ListInstances", 
+                        "sso:DescribeRegisteredRegions", 
+                        "sso:GetSharedSsoConfiguration", 
+                        "sso-directory:DescribeUsers", 
+                        "sso-directory:SearchUsers"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "SSOManagementAccess"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}

@@ -1,0 +1,71 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-06-18T20:22:07Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "mpa:*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "MpaFullAccess"
+                }, 
+                {
+                    "Action": [
+                        "organizations:ListDelegatedAdministrators", 
+                        "organizations:DescribeOrganization"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "OrganizationsAccess"
+                }, 
+                {
+                    "Action": [
+                        "sso:CreateApplication"
+                    ], 
+                    "Resource": [
+                        "arn:aws:sso:::instance/*", 
+                        "arn:aws:sso::aws:applicationProvider/mpa"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "SSOCreateApplication"
+                }, 
+                {
+                    "Action": [
+                        "sso:DescribeApplication", 
+                        "sso:PutApplicationAssignmentConfiguration", 
+                        "sso:PutApplicationGrant", 
+                        "sso:PutApplicationAuthenticationMethod", 
+                        "sso:PutApplicationAccessScope", 
+                        "sso:DeleteApplication"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEqualsIfExists": {
+                            "aws:CalledViaLast": "mpa.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "SSOApplicationManagement"
+                }, 
+                {
+                    "Action": [
+                        "sso:DescribeInstance", 
+                        "sso:DescribeRegisteredRegions", 
+                        "sso:GetSharedSsoConfiguration", 
+                        "sso-directory:DescribeUsers", 
+                        "sso-directory:SearchUsers", 
+                        "sso:ListInstances"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "SSOManagementAccess"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
