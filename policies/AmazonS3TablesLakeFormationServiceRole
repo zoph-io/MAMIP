@@ -1,0 +1,95 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-06-19T19:07:07Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "s3tables:ListTableBuckets"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "PermissionsForS3ListTableBuckets"
+                }, 
+                {
+                    "Action": [
+                        "s3tables:CreateTableBucket", 
+                        "s3tables:GetTableBucket", 
+                        "s3tables:CreateNamespace", 
+                        "s3tables:GetNamespace", 
+                        "s3tables:ListNamespaces", 
+                        "s3tables:DeleteNamespace", 
+                        "s3tables:DeleteTableBucket", 
+                        "s3tables:CreateTable", 
+                        "s3tables:DeleteTable", 
+                        "s3tables:GetTable", 
+                        "s3tables:ListTables", 
+                        "s3tables:RenameTable", 
+                        "s3tables:UpdateTableMetadataLocation", 
+                        "s3tables:GetTableMetadataLocation", 
+                        "s3tables:GetTableData", 
+                        "s3tables:PutTableData"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "DataAccessPermissionsForS3TablesResources"
+                }, 
+                {
+                    "Action": [
+                        "kms:GenerateDataKey", 
+                        "kms:Decrypt"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
+                        "StringLike": {
+                            "kms:EncryptionContext:aws:s3:arn": "arn:aws:s3tables:*:*:bucket/*/table/*", 
+                            "kms:ViaService": [
+                                "s3.*.amazonaws.com"
+                            ]
+                        }
+                    }, 
+                    "Sid": "KMSDataAccessPermissionsForS3TablesResources"
+                }, 
+                {
+                    "Action": [
+                        "kms:DescribeKey"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
+                        "StringLike": {
+                            "kms:ViaService": [
+                                "s3tables.*.amazonaws.com"
+                            ]
+                        }
+                    }, 
+                    "Sid": "KMSDescribeKeyAccessPermissionsForS3TablesResources"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}

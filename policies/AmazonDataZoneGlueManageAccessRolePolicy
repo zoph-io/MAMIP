@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-04-08T21:22:06Z", 
-        "VersionId": "v9", 
+        "CreateDate": "2025-06-19T19:37:07Z", 
+        "VersionId": "v10", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -46,6 +46,20 @@
                         }
                     }, 
                     "Sid": "GlueCrawler"
+                }, 
+                {
+                    "Action": "glue:GetConnection", 
+                    "Resource": [
+                        "arn:aws:glue:*:*:connection/*", 
+                        "arn:aws:glue:*:*:catalog"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "GlueConnection"
                 }, 
                 {
                     "Action": [
