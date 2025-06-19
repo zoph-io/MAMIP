@@ -1,0 +1,49 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-06-19T17:22:07Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "eks:ListDashboardData", 
+                        "eks:ListDashboardResources", 
+                        "eks:DescribeClusterVersions"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonEKSDashboardReadOnly"
+                }, 
+                {
+                    "Action": [
+                        "organizations:DescribeOrganization", 
+                        "organizations:ListAWSServiceAccessForOrganization", 
+                        "organizations:ListRoots", 
+                        "organizations:ListAccountsForParent", 
+                        "organizations:ListOrganizationalUnitsForParent"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonOrganizationsReadOnly"
+                }, 
+                {
+                    "Action": [
+                        "organizations:ListDelegatedAdministrators"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "organizations:ServicePrincipal": "eks.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "AmazonOrganizationsDelegatedAdmin"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
