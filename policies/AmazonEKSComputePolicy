@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-11-07T21:21:18Z", 
-        "VersionId": "v2", 
+        "CreateDate": "2025-06-20T21:07:07Z", 
+        "VersionId": "v3", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -11,6 +11,7 @@
                         "ec2:RunInstances"
                     ], 
                     "Resource": [
+                        "arn:aws:ec2:*:*:capacity-reservation/*", 
                         "arn:aws:ec2:*::image/*", 
                         "arn:aws:ec2:*:*:security-group/*", 
                         "arn:aws:ec2:*:*:subnet/*"
@@ -85,6 +86,20 @@
                                 "ec2.amazonaws.com", 
                                 "ec2.amazonaws.com.cn"
                             ]
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "iam:CreateServiceLinkedRole"
+                    ], 
+                    "Resource": [
+                        "arn:aws:iam::*:role/aws-service-role/spot.amazonaws.com/AWSServiceRoleForEC2Spot"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:AWSServiceName": "spot.amazonaws.com"
                         }
                     }
                 }
