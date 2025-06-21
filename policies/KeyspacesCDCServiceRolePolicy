@@ -1,0 +1,25 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-06-21T00:22:07Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "cloudwatch:PutMetricData"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "cloudwatch:namespace": "AWS/Cassandra"
+                        }
+                    }, 
+                    "Sid": "KeyspacesPutMetricDataPermission"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
