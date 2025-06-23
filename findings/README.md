@@ -1,6 +1,6 @@
 ## AWS Access Analyzer - Findings - 2025-06-23
 
-- Policies analyzed: `1365`
+- Policies analyzed: `1366`
 - Errors: `5`
   - [`AmazonRedshiftServiceLinkedRolePolicy`](./AmazonRedshiftServiceLinkedRolePolicy.json)
   - [`AmazonDataZoneGlueManageAccessRolePolicy`](./AmazonDataZoneGlueManageAccessRolePolicy.json)
