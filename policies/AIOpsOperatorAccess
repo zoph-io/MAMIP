@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-12-02T23:51:07Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-06-24T00:52:06Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -14,7 +14,8 @@
                         "aiops:Get*", 
                         "aiops:List*", 
                         "aiops:UpdateInvestigation", 
-                        "aiops:UpdateInvestigationEvent"
+                        "aiops:UpdateInvestigationEvent", 
+                        "aiops:ValidateInvestigationGroup"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
