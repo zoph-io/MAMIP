@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2023-12-04T19:32:25Z", 
-        "VersionId": "v11", 
+        "CreateDate": "2025-06-24T21:22:07Z", 
+        "VersionId": "v12", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -202,6 +202,19 @@
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Sid": "CloudMapResourceDiscovery"
+                }, 
+                {
+                    "Action": [
+                        "servicediscovery:UpdateServiceAttributes"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "Null": {
+                            "aws:ResourceTag/AmazonECSManaged": "false"
+                        }
+                    }, 
+                    "Sid": "CloudMapResourceAttributeManagement"
                 }
             ]
         }, 
