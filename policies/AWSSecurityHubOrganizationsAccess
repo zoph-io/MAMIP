@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2023-11-16T21:13:44Z", 
-        "VersionId": "v2", 
+        "CreateDate": "2025-06-24T22:22:08Z", 
+        "VersionId": "v3", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -14,8 +14,12 @@
                         "organizations:ListAWSServiceAccessForOrganization", 
                         "organizations:ListOrganizationalUnitsForParent", 
                         "organizations:ListAccountsForParent", 
+                        "organizations:ListParents", 
                         "organizations:DescribeAccount", 
-                        "organizations:DescribeOrganizationalUnit"
+                        "organizations:DescribeOrganizationalUnit", 
+                        "organizations:ListPolicies", 
+                        "organizations:ListPoliciesForTarget", 
+                        "organizations:ListTargetsForPolicy"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
@@ -45,6 +49,44 @@
                         }
                     }, 
                     "Sid": "OrganizationPermissionsDelegatedAdmin"
+                }, 
+                {
+                    "Action": [
+                        "organizations:DescribePolicy", 
+                        "organizations:DescribeEffectivePolicy", 
+                        "organizations:CreatePolicy", 
+                        "organizations:UpdatePolicy", 
+                        "organizations:DeletePolicy", 
+                        "organizations:AttachPolicy", 
+                        "organizations:DetachPolicy", 
+                        "organizations:EnablePolicyType", 
+                        "organizations:DisablePolicyType"
+                    ], 
+                    "Resource": [
+                        "arn:aws:organizations::*:root/o-*/*", 
+                        "arn:aws:organizations::*:account/o-*/*", 
+                        "arn:aws:organizations::*:ou/o-*/*", 
+                        "arn:aws:organizations::*:policy/o-*/securityhub_policy/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLikeIfExists": {
+                            "organizations:PolicyType": "SECURITYHUB_POLICY"
+                        }
+                    }, 
+                    "Sid": "OrganizationPolicyPermissions"
+                }, 
+                {
+                    "Action": [
+                        "organizations:TagResource", 
+                        "organizations:UntagResource", 
+                        "organizations:ListTagsForResource"
+                    ], 
+                    "Resource": [
+                        "arn:aws:organizations::*:policy/o-*/securityhub_policy/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "OrganizationPolicyTaggingPermissions"
                 }
             ]
         }, 
