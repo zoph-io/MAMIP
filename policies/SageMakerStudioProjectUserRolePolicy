@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-06-13T22:22:06Z", 
-        "VersionId": "v13", 
+        "CreateDate": "2025-06-25T04:22:08Z", 
+        "VersionId": "v14", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -858,6 +858,21 @@
                         }
                     }, 
                     "Sid": "DataLakeAthenaPermissions"
+                }, 
+                {
+                    "Action": [
+                        "athena:GetDatabase", 
+                        "athena:GetDataCatalog", 
+                        "athena:GetTableMetadata", 
+                        "athena:ListDatabases", 
+                        "athena:ListTableMetadata"
+                    ], 
+                    "Resource": [
+                        "arn:aws:athena:*:*:datacatalog/AwsDataCatalog", 
+                        "arn:aws:athena:*:*:datacatalog/awsdatacatalog"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "DefaultAthenaDataCatalogPermissions"
                 }, 
                 {
                     "Action": [
