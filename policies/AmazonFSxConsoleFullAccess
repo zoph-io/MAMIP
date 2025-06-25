@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-02-07T19:22:06Z", 
-        "VersionId": "v12", 
+        "CreateDate": "2025-06-25T17:52:08Z", 
+        "VersionId": "v13", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -33,6 +33,7 @@
                         "fsx:CancelDataRepositoryTask", 
                         "fsx:CopyBackup", 
                         "fsx:CopySnapshotAndUpdateVolume", 
+                        "fsx:CreateAndAttachS3AccessPoint", 
                         "fsx:CreateBackup", 
                         "fsx:CreateDataRepositoryAssociation", 
                         "fsx:CreateDataRepositoryTask", 
@@ -57,10 +58,12 @@
                         "fsx:DescribeFileCaches", 
                         "fsx:DescribeFileSystemAliases", 
                         "fsx:DescribeFileSystems", 
+                        "fsx:DescribeS3AccessPointAttachments", 
                         "fsx:DescribeSharedVpcConfiguration", 
                         "fsx:DescribeSnapshots", 
                         "fsx:DescribeStorageVirtualMachines", 
                         "fsx:DescribeVolumes", 
+                        "fsx:DetachAndDeleteS3AccessPoint", 
                         "fsx:DisassociateFileGateway", 
                         "fsx:DisassociateFileSystemAliases", 
                         "fsx:ListTagsForResource", 
