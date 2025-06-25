@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-11-13T18:21:41Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-06-24T23:22:06Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -27,6 +27,23 @@
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Sid": "EC2"
+                }, 
+                {
+                    "Action": [
+                        "events:DescribeEventSource"
+                    ], 
+                    "Resource": "arn:aws:events:*:*:event-source/aws.partner/odb*", 
+                    "Effect": "Allow", 
+                    "Sid": "EB1"
+                }, 
+                {
+                    "Action": [
+                        "events:CreateEventBus", 
+                        "events:DescribeEventBus"
+                    ], 
+                    "Resource": "arn:aws:events:*:*:event-bus/aws.partner/odb*", 
+                    "Effect": "Allow", 
+                    "Sid": "EB2"
                 }
             ]
         }, 
