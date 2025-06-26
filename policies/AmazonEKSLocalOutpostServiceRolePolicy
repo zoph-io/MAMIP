@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2022-10-24T16:24:51Z", 
-        "VersionId": "v2", 
+        "CreateDate": "2025-06-26T18:22:07Z", 
+        "VersionId": "v3", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -223,6 +223,13 @@
                         "ssm:StartSession"
                     ], 
                     "Resource": "arn:aws:ssm:*::document/AmazonEKS-ControlPlaneInstanceProxy", 
+                    "Effect": "Allow"
+                }, 
+                {
+                    "Action": [
+                        "ssmmessages:OpenDataChannel"
+                    ], 
+                    "Resource": "arn:aws:ssm:*:*:session/*", 
                     "Effect": "Allow"
                 }, 
                 {
