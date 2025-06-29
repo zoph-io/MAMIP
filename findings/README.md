@@ -1,6 +1,6 @@
-## AWS Access Analyzer - Findings - 2025-06-27
+## AWS Access Analyzer - Findings - 2025-06-29
 
-- Policies analyzed: `1366`
+- Policies analyzed: `1368`
 - Errors: `5`
   - [`AWSAccountActivityAccess`](./AWSAccountActivityAccess.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
