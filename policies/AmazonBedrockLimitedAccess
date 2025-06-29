@@ -1,0 +1,83 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-06-29T22:22:06Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "bedrock:Get*", 
+                        "bedrock:List*", 
+                        "bedrock:CallWithBearerToken", 
+                        "bedrock:BatchDeleteEvaluationJob", 
+                        "bedrock:CreateEvaluationJob", 
+                        "bedrock:CreateGuardrail", 
+                        "bedrock:CreateGuardrailVersion", 
+                        "bedrock:CreateInferenceProfile", 
+                        "bedrock:CreateModelCopyJob", 
+                        "bedrock:CreateModelCustomizationJob", 
+                        "bedrock:CreateModelImportJob", 
+                        "bedrock:CreateModelInvocationJob", 
+                        "bedrock:CreatePromptRouter", 
+                        "bedrock:CreateProvisionedModelThroughput", 
+                        "bedrock:DeleteCustomModel", 
+                        "bedrock:DeleteGuardrail", 
+                        "bedrock:DeleteImportedModel", 
+                        "bedrock:DeleteInferenceProfile", 
+                        "bedrock:DeletePromptRouter", 
+                        "bedrock:DeleteProvisionedModelThroughput", 
+                        "bedrock:StopEvaluationJob", 
+                        "bedrock:StopModelCustomizationJob", 
+                        "bedrock:StopModelInvocationJob", 
+                        "bedrock:TagResource", 
+                        "bedrock:UntagResource", 
+                        "bedrock:UpdateGuardrail", 
+                        "bedrock:UpdateProvisionedModelThroughput", 
+                        "bedrock:ApplyGuardrail", 
+                        "bedrock:InvokeModel", 
+                        "bedrock:InvokeModelWithResponseStream"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "BedrockAPIs"
+                }, 
+                {
+                    "Action": [
+                        "kms:DescribeKey"
+                    ], 
+                    "Resource": "arn:*:kms:*:::*", 
+                    "Effect": "Allow", 
+                    "Sid": "DescribeKey"
+                }, 
+                {
+                    "Action": [
+                        "iam:ListRoles", 
+                        "ec2:DescribeVpcs", 
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeSecurityGroups"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "APIsWithAllResourceAccess"
+                }, 
+                {
+                    "Action": [
+                        "aws-marketplace:Subscribe", 
+                        "aws-marketplace:ViewSubscriptions", 
+                        "aws-marketplace:Unsubscribe"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:CalledViaLast": "bedrock.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "MarketplaceOperationsFromBedrockFor3pModels"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}

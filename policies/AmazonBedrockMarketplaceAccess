@@ -1,36 +1,21 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-06-29T22:22:06Z", 
-        "VersionId": "v3", 
+        "CreateDate": "2025-06-29T22:22:07Z", 
+        "VersionId": "v1", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": [
-                        "bedrock:*"
+                        "bedrock:CreateMarketplaceModelEndpoint", 
+                        "bedrock:DeleteMarketplaceModelEndpoint", 
+                        "bedrock:DeregisterMarketplaceModelEndpoint", 
+                        "bedrock:RegisterMarketplaceModelEndpoint", 
+                        "bedrock:UpdateMarketplaceModelEndpoint"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
-                    "Sid": "BedrockAll"
-                }, 
-                {
-                    "Action": [
-                        "kms:DescribeKey"
-                    ], 
-                    "Resource": "arn:*:kms:*:::*", 
-                    "Effect": "Allow", 
-                    "Sid": "DescribeKey"
-                }, 
-                {
-                    "Action": [
-                        "iam:ListRoles", 
-                        "ec2:DescribeVpcs", 
-                        "ec2:DescribeSubnets", 
-                        "ec2:DescribeSecurityGroups"
-                    ], 
-                    "Resource": "*", 
-                    "Effect": "Allow", 
-                    "Sid": "APIsWithAllResourceAccess"
+                    "Sid": "BedrockMarketplaceAPIs"
                 }, 
                 {
                     "Action": [
@@ -196,21 +181,6 @@
                         }
                     }, 
                     "Sid": "PassRoleToBedrock"
-                }, 
-                {
-                    "Action": [
-                        "aws-marketplace:Subscribe", 
-                        "aws-marketplace:ViewSubscriptions", 
-                        "aws-marketplace:Unsubscribe"
-                    ], 
-                    "Resource": "*", 
-                    "Effect": "Allow", 
-                    "Condition": {
-                        "StringEquals": {
-                            "aws:CalledViaLast": "bedrock.amazonaws.com"
-                        }
-                    }, 
-                    "Sid": "MarketplaceOperationsFromBedrockFor3pModels"
                 }
             ]
         }, 
