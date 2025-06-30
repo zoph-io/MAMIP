@@ -1,13 +1,17 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2022-07-07T14:54:05Z", 
-        "VersionId": "v3", 
+        "CreateDate": "2025-06-30T17:37:07Z", 
+        "VersionId": "v4", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": [
-                        "cassandra:Select"
+                        "cassandra:Select", 
+                        "cassandra:ListStreams", 
+                        "cassandra:GetStream", 
+                        "cassandra:GetShardIterator", 
+                        "cassandra:GetRecords"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow"
