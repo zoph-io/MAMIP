@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-05-23T21:07:07Z", 
-        "VersionId": "v25", 
+        "CreateDate": "2025-07-01T00:22:06Z", 
+        "VersionId": "v26", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -92,6 +92,9 @@
                         "profile:BatchGetCalculatedAttributeForProfile", 
                         "profile:GetSegmentMembership", 
                         "profile:ListDomainLayouts", 
+                        "profile:CreateUploadJob", 
+                        "profile:ListUploadJobs", 
+                        "profile:DetectProfileObjectType", 
                         "profile:GetSimilarProfiles"
                     ], 
                     "Resource": "arn:aws:profile:*:*:domains/amazon-connect-*", 
@@ -123,6 +126,19 @@
                     ], 
                     "Effect": "Allow", 
                     "Sid": "AllowCustomerProfilesDomainLayoutsForConnectDomain"
+                }, 
+                {
+                    "Action": [
+                        "profile:GetUploadJob", 
+                        "profile:GetUploadJobPath", 
+                        "profile:StartUploadJob", 
+                        "profile:StopUploadJob"
+                    ], 
+                    "Resource": [
+                        "arn:aws:profile:*:*:domains/amazon-connect-*/upload-jobs/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowCustomerProfilesSegmentationImportForConnectDomain"
                 }, 
                 {
                     "Action": [
