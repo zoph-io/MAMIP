@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2023-03-20T10:57:51Z", 
-        "VersionId": "v2", 
+        "CreateDate": "2025-07-02T18:07:08Z", 
+        "VersionId": "v3", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -30,6 +30,7 @@
                     ], 
                     "Resource": [
                         "arn:aws:ssm:*:*:document/*", 
+                        "arn:aws:ssm:*:*:automation-execution/*", 
                         "arn:aws:ssm:*:*:automation-definition/*:*"
                     ], 
                     "Effect": "Allow", 

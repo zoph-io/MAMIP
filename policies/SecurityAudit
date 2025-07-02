@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-05-05T17:22:06Z", 
-        "VersionId": "v51", 
+        "CreateDate": "2025-07-02T18:37:08Z", 
+        "VersionId": "v52", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -295,7 +295,6 @@
                         "eks:ListNodeGroups", 
                         "eks:ListTagsForResource", 
                         "eks:ListUpdates", 
-                        "elastic-inference:DescribeAccelerators", 
                         "elasticache:Describe*", 
                         "elasticache:ListTagsForResource", 
                         "elasticbeanstalk:Describe*", 
@@ -364,6 +363,8 @@
                         "grafana:ListWorkspaces", 
                         "greengrass:List*", 
                         "guardduty:DescribePublishingDestination", 
+                        "guardduty:DescribeOrganizationConfiguration", 
+                        "guardduty:DescribeMalwareScans", 
                         "guardduty:Get*", 
                         "guardduty:List*", 
                         "health:DescribeAffectedAccountsForOrganization", 
