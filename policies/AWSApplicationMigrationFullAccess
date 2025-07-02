@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-05-19T08:30:02Z", 
-        "VersionId": "v8", 
+        "CreateDate": "2025-07-02T15:37:08Z", 
+        "VersionId": "v9", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -218,7 +218,11 @@
                     "Action": [
                         "ssm:StartAutomationExecution"
                     ], 
-                    "Resource": "arn:aws:ssm:*:*:automation-definition/AWSMigration-*:$DEFAULT", 
+                    "Resource": [
+                        "arn:aws:ssm:*:*:document/AWSMigration-*", 
+                        "arn:aws:ssm:*:*:automation-execution/*", 
+                        "arn:aws:ssm:*:*:automation-definition/AWSMigration-*:$DEFAULT"
+                    ], 
                     "Effect": "Allow", 
                     "Condition": {
                         "ForAnyValue:StringEquals": {
