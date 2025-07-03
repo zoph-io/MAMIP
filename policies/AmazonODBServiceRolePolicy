@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-06-24T23:22:06Z", 
-        "VersionId": "v2", 
+        "CreateDate": "2025-07-03T17:07:07Z", 
+        "VersionId": "v3", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -22,7 +22,9 @@
                 }, 
                 {
                     "Action": [
-                        "ec2:DescribeAvailabilityZones"
+                        "ec2:DescribeAvailabilityZones", 
+                        "ec2:DescribeTransitGatewayVpcAttachments", 
+                        "ec2:DescribeSubnets"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
@@ -30,6 +32,7 @@
                 }, 
                 {
                     "Action": [
+                        "events:ActivateEventSource", 
                         "events:DescribeEventSource"
                     ], 
                     "Resource": "arn:aws:events:*:*:event-source/aws.partner/odb*", 
