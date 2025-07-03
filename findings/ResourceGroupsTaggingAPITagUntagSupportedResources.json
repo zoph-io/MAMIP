@@ -1,29 +1,6 @@
 [
     {
-        "findingDetails": "The 25709 characters in the identity policy, excluding whitespace, exceed the 10240 character maximum for inline and managed policies. We recommend that you use multiple granular policies.",
-        "findingType": "WARNING",
-        "issueCode": "POLICY_SIZE_EXCEEDS_IDENTITY_POLICY_QUOTA",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-general-warning-policy-size-exceeds-identity-policy-quota",
-        "locations": [
-            {
-                "path": [],
-                "span": {
-                    "end": {
-                        "column": 26828,
-                        "line": 1,
-                        "offset": 26828
-                    },
-                    "start": {
-                        "column": 0,
-                        "line": 1,
-                        "offset": 0
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "findingDetails": "The service elastic-inference:Connect specified in the action does not exist.",
+        "findingDetails": "The service elastic-inference:TagResource specified in the action does not exist.",
         "findingType": "ERROR",
         "issueCode": "INVALID_SERVICE_IN_ACTION",
         "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
@@ -34,32 +11,32 @@
                         "value": "Statement"
                     },
                     {
-                        "index": 11
+                        "index": 0
                     },
                     {
                         "value": "Action"
                     },
                     {
-                        "index": 43
+                        "index": 102
                     }
                 ],
                 "span": {
                     "end": {
-                        "column": 4764,
+                        "column": 2784,
                         "line": 1,
-                        "offset": 4764
+                        "offset": 2784
                     },
                     "start": {
-                        "column": 4737,
+                        "column": 2753,
                         "line": 1,
-                        "offset": 4737
+                        "offset": 2753
                     }
                 }
             }
         ]
     },
     {
-        "findingDetails": "The service elastic-inference:Connect specified in the action does not exist.",
+        "findingDetails": "The service elastic-inference:UntagResource specified in the action does not exist.",
         "findingType": "ERROR",
         "issueCode": "INVALID_SERVICE_IN_ACTION",
         "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
@@ -70,10 +47,10 @@
                         "value": "Statement"
                     },
                     {
-                        "index": 50
+                        "index": 0
                     },
                     {
-                        "value": "NotAction"
+                        "value": "Action"
                     },
                     {
                         "index": 103
@@ -81,14 +58,14 @@
                 ],
                 "span": {
                     "end": {
-                        "column": 22740,
+                        "column": 2819,
                         "line": 1,
-                        "offset": 22740
+                        "offset": 2819
                     },
                     "start": {
-                        "column": 22713,
+                        "column": 2786,
                         "line": 1,
-                        "offset": 22713
+                        "offset": 2786
                     }
                 }
             }

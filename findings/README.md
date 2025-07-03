@@ -1,11 +1,17 @@
-## AWS Access Analyzer - Findings - 2025-07-02
+## AWS Access Analyzer - Findings - 2025-07-03
 
-- Policies analyzed: `1369`
-- Errors: `5`
+- Policies analyzed: `1370`
+- Errors: `20`
   - [`AWSAccountActivityAccess`](./AWSAccountActivityAccess.json)
+  - [`AWSCodeStarFullAccess`](./AWSCodeStarFullAccess.json)
+  - [`RDSCloudHsmAuthorizationRole`](./RDSCloudHsmAuthorizationRole.json)
+  - [`AWSIAMIdentityCenterAllowListForIdentityContext`](./AWSIAMIdentityCenterAllowListForIdentityContext.json)
+  - [`AmazonDataZoneSageMakerEnvironmentRolePermissionsBoundary`](./AmazonDataZoneSageMakerEnvironmentRolePermissionsBoundary.json)
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
   - [`AmazonRedshiftServiceLinkedRolePolicy`](./AmazonRedshiftServiceLinkedRolePolicy.json)
   - [`AmazonDataZoneGlueManageAccessRolePolicy`](./AmazonDataZoneGlueManageAccessRolePolicy.json)
+  - [`ResourceGroupsTaggingAPITagUntagSupportedResources`](./ResourceGroupsTaggingAPITagUntagSupportedResources.json)
+  - [`AmazonSageMakerFullAccess`](./AmazonSageMakerFullAccess.json)
   - [`MemoryDBServiceRolePolicy`](./MemoryDBServiceRolePolicy.json)
 - Sec_Warnings: `25`
   - [`IAMFullAccess`](./IAMFullAccess.json)

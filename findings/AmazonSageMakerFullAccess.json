@@ -21,5 +21,41 @@
                 }
             }
         ]
+    },
+    {
+        "findingDetails": "The service elastic-inference:Connect specified in the action does not exist.",
+        "findingType": "ERROR",
+        "issueCode": "INVALID_SERVICE_IN_ACTION",
+        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+        "locations": [
+            {
+                "path": [
+                    {
+                        "value": "Statement"
+                    },
+                    {
+                        "index": 11
+                    },
+                    {
+                        "value": "Action"
+                    },
+                    {
+                        "index": 57
+                    }
+                ],
+                "span": {
+                    "end": {
+                        "column": 5303,
+                        "line": 1,
+                        "offset": 5303
+                    },
+                    "start": {
+                        "column": 5276,
+                        "line": 1,
+                        "offset": 5276
+                    }
+                }
+            }
+        ]
     }
 ]
