@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-06-19T19:07:07Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-07-09T22:07:07Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -37,7 +37,8 @@
                         "s3tables:UpdateTableMetadataLocation", 
                         "s3tables:GetTableMetadataLocation", 
                         "s3tables:GetTableData", 
-                        "s3tables:PutTableData"
+                        "s3tables:PutTableData", 
+                        "s3tables:PutTableBucketEncryption"
                     ], 
                     "Resource": [
                         "*"
