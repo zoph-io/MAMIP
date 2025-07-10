@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-03-12T18:07:07Z", 
-        "VersionId": "v10", 
+        "CreateDate": "2025-07-10T21:07:07Z", 
+        "VersionId": "v11", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -39,6 +39,9 @@
                         "cur:DescribeReportDefinitions", 
                         "freetier:GetFreeTierAlertPreference", 
                         "freetier:GetFreeTierUsage", 
+                        "freetier:GetAccountPlanState", 
+                        "freetier:GetAccountActivity", 
+                        "freetier:ListAccountActivities", 
                         "invoicing:BatchGetInvoiceProfile", 
                         "invoicing:GetInvoiceEmailDeliveryPreferences", 
                         "invoicing:GetInvoicePDF", 
