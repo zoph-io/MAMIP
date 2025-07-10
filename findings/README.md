@@ -30,7 +30,7 @@
   - [`AWSServiceRoleForSMS`](./AWSServiceRoleForSMS.json)
   - [`AWSCodePipeline_FullAccess`](./AWSCodePipeline_FullAccess.json)
   - [`AWSElasticBeanstalkService`](./AWSElasticBeanstalkService.json)
-- Suggestions: `46`
+- Suggestions: `45`
   - [`AWSMigrationHubOrchestratorServiceRolePolicy`](./AWSMigrationHubOrchestratorServiceRolePolicy.json)
   - [`AmazonElasticMapReduceFullAccess`](./AmazonElasticMapReduceFullAccess.json)
   - [`AIOpsAssistantPolicy`](./AIOpsAssistantPolicy.json)
