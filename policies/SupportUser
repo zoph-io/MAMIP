@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2023-08-25T18:40:27Z", 
-        "VersionId": "v8", 
+        "CreateDate": "2025-07-10T17:07:07Z", 
+        "VersionId": "v9", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -167,6 +167,15 @@
                         "rds:Describe*", 
                         "rds:ListTagsForResource", 
                         "redshift:Describe*", 
+                        "rolesanywhere:GetCrl", 
+                        "rolesanywhere:GetProfile", 
+                        "rolesanywhere:GetSubject", 
+                        "rolesanywhere:GetTrustAnchor", 
+                        "rolesanywhere:ListCrls", 
+                        "rolesanywhere:ListProfiles", 
+                        "rolesanywhere:ListSubjects", 
+                        "rolesanywhere:ListTagsForResource", 
+                        "rolesanywhere:ListTrustAnchors", 
                         "route53:Get*", 
                         "route53:List*", 
                         "route53domains:CheckDomainAvailability", 
