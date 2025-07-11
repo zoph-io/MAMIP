@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2020-08-06T20:10:42Z", 
-        "VersionId": "v2", 
+        "CreateDate": "2025-07-11T21:37:07Z", 
+        "VersionId": "v3", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -12,7 +12,12 @@
                         "s3:ListBucket"
                     ], 
                     "Resource": "arn:aws:s3:::amazon-braket-*", 
-                    "Effect": "Allow"
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
                 }, 
                 {
                     "Action": [
@@ -23,7 +28,12 @@
                         "logs:DescribeLogGroups"
                     ], 
                     "Resource": "arn:aws:logs:*:*:log-group:/aws/braket:*", 
-                    "Effect": "Allow"
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
                 }
             ]
         }, 
