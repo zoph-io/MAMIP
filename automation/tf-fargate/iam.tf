@@ -48,6 +48,13 @@ data "aws_iam_policy_document" "ecs_service_policy" {
       "sns:Publish"
     ]
   }
+  statement {
+    effect = "Allow"
+    resources = ["arn:aws:secretsmanager:${var.aws_region}:${data.aws_caller_identity.current.account_id}:secret:mamip/prod/github-*"]
+    actions = [
+      "secretsmanager:GetSecretValue"
+    ]
+  }
 }
 
 data "aws_iam_policy_document" "ecs_service_assume_role_policy" {

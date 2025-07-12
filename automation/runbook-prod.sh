@@ -10,15 +10,14 @@ set -euo pipefail
 DATE=$(date +%Y-%m-%d-%H-%M)
 
 # Repository settings
-REPO_URL="git@github.com:z0ph/MAMIP.git"
+REPO_URL="https://github.com/z0ph/MAMIP.git"
 REPO_PATH="/tmp/MAMIP"
 GIT_USER_NAME="MAMIP Bot"
 GIT_USER_EMAIL="mamip_bot@github.com"
 
 # AWS settings
 REGION="eu-west-1"
-S3_KEY_PATH="s3://mamip-artifacts/mamip"
-SSH_KEY_PATH="/tmp/mamip.key"
+GITHUB_SECRET_ARN="arn:aws:secretsmanager:eu-west-1:567589703415:secret:mamip/prod/github-MSzGtP"
 SNS_TOPIC_ARN="arn:aws:sns:eu-west-1:567589703415:mamip-sns-topic"
 SQS_TWITTER_URL="https://sqs.eu-west-1.amazonaws.com/567589703415/qtweet-mamip-sqs-queue.fifo"
 SQS_BLUESKY_URL="https://sqs.eu-west-1.amazonaws.com/567589703415/qbsky-mamip-prod-sqs-queue.fifo"
@@ -49,19 +48,29 @@ trap error_handler ERR
 # Repository Functions #
 ########################
 
-# Set up SSH and Git configuration
-setup_git_ssh() {
-    log "Setting up SSH and Git configuration"
-    aws s3 cp "$S3_KEY_PATH" "$SSH_KEY_PATH" --region "$REGION"
-    chmod 600 "$SSH_KEY_PATH"
-    eval "$(ssh-agent -s)"
-    ssh-add "$SSH_KEY_PATH"
+# Set up GitHub token and Git configuration
+setup_git_auth() {
+    log "Setting up GitHub authentication and Git configuration"
+    
+    # Retrieve GitHub token from Secrets Manager
+    GITHUB_TOKEN=$(aws secretsmanager get-secret-value \
+        --secret-id "$GITHUB_SECRET_ARN" \
+        --region "$REGION" \
+        --query 'SecretString' \
+        --output text | jq -r '.token')
+    
+    if [ -z "$GITHUB_TOKEN" ] || [ "$GITHUB_TOKEN" = "null" ]; then
+        log "Failed to retrieve GitHub token from Secrets Manager"
+        exit 1
+    fi
 
     git config --global user.name "$GIT_USER_NAME"
     git config --global user.email "$GIT_USER_EMAIL"
-
-    mkdir -p /home/mamip/.ssh/
-    ssh-keyscan github.com >>/home/mamip/.ssh/known_hosts
+    
+    # Configure Git to use the token for HTTPS authentication
+    git config --global credential.helper store
+    echo "https://x-access-token:$GITHUB_TOKEN@github.com" > /home/mamip/.git-credentials
+    chmod 600 /home/mamip/.git-credentials
 }
 
 # Clone the repository
@@ -180,7 +189,7 @@ process_changes() {
 
 main() {
     log "Starting MAMIP update process"
-    setup_git_ssh
+    setup_git_auth
     clone_repo
     process_policies
     process_changes

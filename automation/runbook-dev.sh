@@ -2,22 +2,35 @@
 
 DATE=$(date +%Y-%m-%d-%H-%M)
 WORDTOREMOVE="policies/"
+GITHUB_SECRET_ARN="arn:aws:secretsmanager:eu-west-1:567589703415:secret:mamip/prod/github-MSzGtP"
 
-# job preparation (SSH + Git)
+# job preparation (GitHub token + Git)
 echo "==> Job preparation"
-aws s3 cp s3://mamip-artifacts/mamip /tmp/mamip.key --region eu-west-1
-chmod 600 /tmp/mamip.key
-eval "$(ssh-agent -s)"
-ssh-add /tmp/mamip.key
+
+# Retrieve GitHub token from Secrets Manager
+GITHUB_TOKEN=$(aws secretsmanager get-secret-value \
+    --secret-id "$GITHUB_SECRET_ARN" \
+    --region eu-west-1 \
+    --query 'SecretString' \
+    --output text | jq -r '.token')
+
+if [ -z "$GITHUB_TOKEN" ] || [ "$GITHUB_TOKEN" = "null" ]; then
+    echo "Failed to retrieve GitHub token from Secrets Manager"
+    exit 1
+fi
+
 git config --global user.name "MAMIP Bot"
 git config --global user.email mamip_bot@github.com
-mkdir -p /root/.ssh/
-ssh-keyscan github.com >>/root/.ssh/known_hosts
+
+# Configure Git to use the token for HTTPS authentication
+git config --global credential.helper store
+echo "https://x-access-token:$GITHUB_TOKEN@github.com" > /root/.git-credentials
+chmod 600 /root/.git-credentials
 
 # run the magic
 echo "==> git clone"
 cd /app/
-git clone git@github.com:z0ph/MAMIP.git -q
+git clone https://github.com/z0ph/MAMIP.git -q
 if [ -d /app/MAMIP ]; then
     cd /app/MAMIP
     echo "==> Run the magic"
