@@ -113,32 +113,62 @@ send_notifications() {
         --region "$REGION"
 }
 
+# Extract policy version from JSON file
+get_policy_version() {
+    local file_path="$1"
+    if [[ -f "$file_path" ]]; then
+        jq -r '.PolicyVersion.VersionId // "unknown"' "$file_path" 2>/dev/null || echo "unknown"
+    else
+        echo "unknown"
+    fi
+}
+
 # Handle git changes and notifications
 process_changes() {
     log "Processing changes"
     if [[ -n $(git status -s) ]]; then
-        # Get changes
-        DIFF="$(git diff --name-only) $(git ls-files --others --exclude-standard)"
-        RAW_DIFF=${DIFF//$WORD_TO_REMOVE/}
-        TWEET_DIFF="${RAW_DIFF:0:200}..."
+        # Get all changed files
+        CHANGED_FILES="$(git diff --name-only) $(git ls-files --others --exclude-standard)"
+        ALL_COMMITS=()
+        
+        # Process each changed file individually
+        for file in $CHANGED_FILES; do
+            if [[ "$file" == policies/* ]]; then
+                POLICY_NAME=$(basename "$file")
+                POLICY_VERSION=$(get_policy_version "$file")
+                COMMIT_MESSAGE="$POLICY_NAME - Policy Version $POLICY_VERSION"
+                
+                log "Committing $file with version $POLICY_VERSION"
+                git add "$file"
+                git commit -m "$COMMIT_MESSAGE"
+                COMMIT_ID=$(git log --format="%h" -n 1)
+                ALL_COMMITS+=("$COMMIT_ID")
+                
+                # Create individual tag for this commit
+                git tag "${DATE}-${POLICY_NAME}"
+            fi
+        done
 
-        # Commit changes
-        git add ./policies
-        git commit -am "Update detected"
-        git tag "$DATE"
-        COMMIT_ID=$(git log --format="%h" -n 1)
+        # If we have commits, prepare notifications and push
+        if [[ ${#ALL_COMMITS[@]} -gt 0 ]]; then
+            # Get list of updated policies for notification
+            POLICY_NAMES=$(echo "$CHANGED_FILES" | grep "^policies/" | sed "s|^policies/||" | tr '\n' ',' | sed 's/,$//' | sed 's/,/, /g')
+            TWEET_DIFF="${POLICY_NAMES:0:200}..."
+            LAST_COMMIT_ID="${ALL_COMMITS[-1]}"
+            
+            # Format messages
+            MESSAGE="{\"UpdatedPolicies\": \"$POLICY_NAMES\", \"CommitUrl\": \"https://github.com/zoph-io/MAMIP/commit/$LAST_COMMIT_ID\", \"Date\": \"$DATE\", \"CommitCount\": \"${#ALL_COMMITS[@]}\"}"
+            MESSAGE_BODY="$TWEET_DIFF https://github.com/z0ph/MAMIP/commit/$LAST_COMMIT_ID"
 
-        # Format messages
-        FORMATTED_DIFF=$(echo "$RAW_DIFF" | tr '\n' ',' | sed 's/,$//' | sed 's/,/, /g')
-        MESSAGE="{\"UpdatedPolicies\": \"$FORMATTED_DIFF\", \"CommitUrl\": \"https://github.com/zoph-io/MAMIP/commit/$COMMIT_ID\", \"Date\": \"$DATE\", \"CommitId\": \"$COMMIT_ID\"}"
-        MESSAGE_BODY="$TWEET_DIFF https://github.com/z0ph/MAMIP/commit/$COMMIT_ID"
+            # Send notifications
+            send_notifications "$MESSAGE_BODY" "$MESSAGE"
 
-        # Send notifications
-        send_notifications "$MESSAGE_BODY" "$MESSAGE"
-
-        # Push changes
-        log "Pushing changes to master"
-        git push origin master --tags
+            # Push changes
+            log "Pushing ${#ALL_COMMITS[@]} commits to master"
+            git push origin master --tags
+        else
+            log "No policy files were changed"
+        fi
     else
         log "No changes detected"
     fi
