@@ -38,7 +38,7 @@ variable "qmasto_sqs_name" {
 }
 
 variable "log_group_retention" {
-  default = "90"
+  default = "14"
 }
 
 variable "artifacts_bucket" {
@@ -80,11 +80,11 @@ variable "assign_public_ip" {
 }
 
 variable "ecs_cpu_units" {
-  default     = "2048"
+  default     = "256"
   description = "Container: Number of CPU Units"
 }
 
 variable "ecs_memory" {
-  default     = "8192"
+  default     = "512"
   description = "Container: Memory Units"
 }
