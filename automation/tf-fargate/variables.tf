@@ -69,8 +69,7 @@ variable "security_groups" {
 }
 
 variable "schedule" {
-  #default     = "cron(0 */2 ? * MON-FRI *)"
-  default     = "cron(0 * ? * * *)"
+  default     = "cron(0 */4 ? * MON-FRI *)"
   description = "Schedule for your job"
 }
 
