@@ -73,3 +73,22 @@ resource "aws_iam_role_policy" "ecs_service_role_policy" {
   policy = data.aws_iam_policy_document.ecs_service_policy.json
   role   = aws_iam_role.ecs_role.id
 }
+
+# SNS Topic Policy to allow CloudWatch Events to publish
+resource "aws_sns_topic_policy" "ecs_task_failure_policy" {
+  arn = aws_sns_topic.ecs_task_failure.arn
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Principal = {
+          Service = "events.amazonaws.com"
+        }
+        Action   = "sns:Publish"
+        Resource = aws_sns_topic.ecs_task_failure.arn
+      }
+    ]
+  })
+}

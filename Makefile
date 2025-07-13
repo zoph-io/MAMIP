@@ -22,6 +22,7 @@ DESCRIPTION ?= Monitor AWS Managed IAM Policies Changes
 S3_BUCKET ?= zoph-lab-terraform-tfstate
 ARTIFACTS_BUCKET ?= mamip-artifacts
 AWS_REGION ?= eu-west-1
+NOTIFICATION_EMAIL ?= "victor+mamip@zoph.io"
 ENV ?= prod
 ECR ?= 567589703415.dkr.ecr.eu-west-1.amazonaws.com/mamip-ecr-$(ENV)
 ################################################
@@ -59,6 +60,7 @@ apply:
 		-var="env=$(ENV)" \
 		-var="project=$(PROJECT)" \
 		-var="description=$(DESCRIPTION)" \
+		-var="notification_email=$(NOTIFICATION_EMAIL)" \
 		-compact-warnings ./automation/tf-fargate/
 
 longest:

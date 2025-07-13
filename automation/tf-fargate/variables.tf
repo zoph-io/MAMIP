@@ -88,3 +88,8 @@ variable "ecs_memory" {
   default     = "512"
   description = "Container: Memory Units"
 }
+
+variable "notification_email" {
+  default     = ""
+  description = "Email address for ECS task failure notifications"
+}
