@@ -57,7 +57,7 @@ setup_git_auth() {
         --secret-id "$GITHUB_SECRET_ARN" \
         --region "$REGION" \
         --query 'SecretString' \
-        --output text | jq -r '.token')
+        --output text | jq -r '.github_token')
     
     if [ -z "$GITHUB_TOKEN" ] || [ "$GITHUB_TOKEN" = "null" ]; then
         log "Failed to retrieve GitHub token from Secrets Manager"
