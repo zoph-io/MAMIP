@@ -60,16 +60,10 @@ resource "aws_cloudwatch_event_target" "ecs_task_failure_target" {
   target_id = "${var.project}_ecs_task_failure_target_${var.env}"
   arn       = aws_sns_topic.ecs_task_failure.arn
 
-  input_transformer {
-    input_paths = {
-      cluster    = "$.detail.clusterArn"
-      taskArn    = "$.detail.taskArn"
-      stopCode   = "$.detail.stopCode"
-      stoppedAt  = "$.detail.stoppedAt"
-    }
-
-    input_template = "🚨 MAMIP ECS Task Failed\\n\\nCluster: <cluster>\\nTask: <taskArn>\\nStop Code: <stopCode>\\nStopped At: <stoppedAt>\\n\\nPlease check CloudWatch logs for more details."
-  }
+  input = jsonencode({
+    Subject = "🚨 MAMIP ECS Task Failed"
+    Message = "An ECS task has failed. Please check CloudWatch logs for more details."
+  })
 }
 
 # CloudWatch Alarm for task failures
