@@ -70,9 +70,7 @@ resource "aws_cloudwatch_event_target" "ecs_task_failure_target" {
       exitCode   = "$.detail.containers[0].exitCode"
     }
 
-    input_template = jsonencode({
-      default = "🚨 MAMIP ECS Task Failed\n\nCluster: <cluster>\nTask: <task>\nStop Code: <stopCode>\nExit Code: <exitCode>\nStopped At: <stoppedAt>\n\nPlease check CloudWatch logs for more details."
-    })
+    input_template = "🚨 MAMIP ECS Task Failed\n\nCluster: <cluster>\nTask: <task>\nStop Code: <stopCode>\nExit Code: <exitCode>\nStopped At: <stoppedAt>\n\nPlease check CloudWatch logs for more details."
   }
 }
 
