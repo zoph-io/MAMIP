@@ -63,14 +63,12 @@ resource "aws_cloudwatch_event_target" "ecs_task_failure_target" {
   input_transformer {
     input_paths = {
       cluster    = "$.detail.clusterArn"
-      task       = "$.detail.taskArn"
-      containers = "$.detail.containers"
+      taskArn    = "$.detail.taskArn"
       stopCode   = "$.detail.stopCode"
       stoppedAt  = "$.detail.stoppedAt"
-      exitCode   = "$.detail.containers[0].exitCode"
     }
 
-    input_template = "🚨 MAMIP ECS Task Failed\\n\\nCluster: <cluster>\\nTask: <task>\\nStop Code: <stopCode>\\nExit Code: <exitCode>\\nStopped At: <stoppedAt>\\n\\nPlease check CloudWatch logs for more details."
+    input_template = "🚨 MAMIP ECS Task Failed\\n\\nCluster: <cluster>\\nTask: <taskArn>\\nStop Code: <stopCode>\\nStopped At: <stoppedAt>\\n\\nPlease check CloudWatch logs for more details."
   }
 }
 
