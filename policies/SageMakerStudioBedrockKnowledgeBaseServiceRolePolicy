@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-04-16T20:37:07Z", 
-        "VersionId": "v2", 
+        "CreateDate": "2025-07-15T17:22:07Z", 
+        "VersionId": "v3", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -92,6 +92,87 @@
                         }
                     }, 
                     "Sid": "AccessDomainS3BucketPermissions"
+                }, 
+                {
+                    "Action": [
+                        "kms:Decrypt", 
+                        "kms:GenerateDataKey"
+                    ], 
+                    "Resource": "arn:aws:kms:*:*:key/${aws:PrincipalTag/KmsKeyId}", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
+                        "Null": {
+                            "kms:EncryptionContextKeys": "false"
+                        }, 
+                        "StringLike": {
+                            "kms:ViaService": [
+                                "neptune-graph.*.amazonaws.com", 
+                                "s3vectors.*.amazonaws.com"
+                            ]
+                        }
+                    }, 
+                    "Sid": "VectorStoresKms"
+                }, 
+                {
+                    "Action": [
+                        "kms:DescribeKey"
+                    ], 
+                    "Resource": "arn:aws:kms:*:*:key/${aws:PrincipalTag/KmsKeyId}", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
+                        "StringLike": {
+                            "kms:ViaService": [
+                                "neptune-graph.*.amazonaws.com", 
+                                "s3vectors.*.amazonaws.com"
+                            ]
+                        }
+                    }, 
+                    "Sid": "VectorStoresKmsDescribeKey"
+                }, 
+                {
+                    "Action": [
+                        "neptune-graph:GetGraph", 
+                        "neptune-graph:DeleteDataViaQuery", 
+                        "neptune-graph:WriteDataViaQuery", 
+                        "neptune-graph:ReadDataViaQuery"
+                    ], 
+                    "Resource": "arn:aws:neptune-graph:*:*:graph/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/AmazonDataZoneProject": "${aws:PrincipalTag/AmazonDataZoneProject}", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "NeptuneGraphDataAccess"
+                }, 
+                {
+                    "Action": [
+                        "s3vectors:GetVectorBucket", 
+                        "s3vectors:GetIndex", 
+                        "s3vectors:PutVectors", 
+                        "s3vectors:GetVectors", 
+                        "s3vectors:ListVectors", 
+                        "s3vectors:QueryVectors", 
+                        "s3vectors:DeleteVectors"
+                    ], 
+                    "Resource": "arn:aws:s3vectors:*:*:bucket/amazon-bedrock-ide-${aws:PrincipalTag/AmazonDataZoneProject}*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
+                        "StringNotEquals": {
+                            "aws:PrincipalTag/AmazonDataZoneProject": ""
+                        }
+                    }, 
+                    "Sid": "S3VectorsDataAccess"
                 }, 
                 {
                     "Action": [
