@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-04-14T21:52:06Z", 
-        "VersionId": "v8", 
+        "CreateDate": "2025-07-14T22:07:08Z", 
+        "VersionId": "v9", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -944,6 +944,177 @@
                         }
                     }, 
                     "Sid": "SageMakerKmsPermissions"
+                }, 
+                {
+                    "Action": [
+                        "s3:GetObject", 
+                        "s3:GetObjectVersion", 
+                        "s3:GetObjectAcl", 
+                        "s3:GetObjectVersionAcl", 
+                        "s3:ListMultipartUploadParts"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
+                        "ArnEquals": {
+                            "s3:AccessGrantsInstanceArn": [
+                                "arn:aws:s3:*:*:access-grants/default"
+                            ]
+                        }
+                    }, 
+                    "Sid": "S3AGObjectRead"
+                }, 
+                {
+                    "Action": [
+                        "s3:PutObject", 
+                        "s3:PutObjectAcl", 
+                        "s3:PutObjectVersionAcl", 
+                        "s3:DeleteObject", 
+                        "s3:DeleteObjectVersion", 
+                        "s3:AbortMultipartUpload"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
+                        "ArnEquals": {
+                            "s3:AccessGrantsInstanceArn": [
+                                "arn:aws:s3:*:*:access-grants/default"
+                            ]
+                        }
+                    }, 
+                    "Sid": "S3AGObjectWrite"
+                }, 
+                {
+                    "Action": [
+                        "s3:ListBucket"
+                    ], 
+                    "Resource": [
+                        "arn:aws:s3:::*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
+                        "ArnEquals": {
+                            "s3:AccessGrantsInstanceArn": [
+                                "arn:aws:s3:*:*:access-grants/default"
+                            ]
+                        }
+                    }, 
+                    "Sid": "S3AGBucketLevelReadPermissions"
+                }, 
+                {
+                    "Action": [
+                        "kms:Decrypt", 
+                        "kms:GenerateDataKey"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "kms:EncryptionContextKeys": "aws:s3:arn"
+                        }, 
+                        "StringLike": {
+                            "kms:ViaService": "s3.*.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "S3AGKMSPermissions"
+                }, 
+                {
+                    "Action": [
+                        "s3:CreateAccessGrantsLocation", 
+                        "s3:DeleteAccessGrantsLocation", 
+                        "s3:GetAccessGrantsLocation"
+                    ], 
+                    "Resource": [
+                        "arn:aws:s3:*:*:access-grants/default/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "s3:accessGrantsLocationScope": "s3://${aws:PrincipalTag/DomainBucketName}/${aws:PrincipalTag/AmazonDataZoneDomain}/${aws:PrincipalTag/AmazonDataZoneProject}/"
+                        }
+                    }, 
+                    "Sid": "S3AGLocationManagement"
+                }, 
+                {
+                    "Action": [
+                        "s3:CreateAccessGrant", 
+                        "s3:DeleteAccessGrant"
+                    ], 
+                    "Resource": [
+                        "arn:aws:s3:*:*:access-grants/default/location/*", 
+                        "arn:aws:s3:*:*:access-grants/default/grant/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "s3:accessGrantScope": "s3://${aws:PrincipalTag/DomainBucketName}/${aws:PrincipalTag/AmazonDataZoneDomain}/${aws:PrincipalTag/AmazonDataZoneProject}/*"
+                        }
+                    }, 
+                    "Sid": "S3AGPermissionManagement"
+                }, 
+                {
+                    "Action": [
+                        "ram:CreateResourceShare"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}", 
+                            "ram:RequestedResourceType": [
+                                "s3:AccessGrants"
+                            ]
+                        }, 
+                        "ArnEquals": {
+                            "ram:ResourceArn": [
+                                "arn:aws:s3:*:*:access-grants/default"
+                            ]
+                        }
+                    }, 
+                    "Sid": "CrossAccountS3AGResourceSharingPermissions"
+                }, 
+                {
+                    "Action": [
+                        "s3:TagResource", 
+                        "s3:ListTagsForResource"
+                    ], 
+                    "Resource": [
+                        "arn:aws:s3:*:*:access-grants/default/location/*", 
+                        "arn:aws:s3:*:*:access-grants/default/grant/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "S3AGTaggingPermission"
+                }, 
+                {
+                    "Action": [
+                        "s3:GetAccessGrantsInstanceForPrefix", 
+                        "s3:GetDataAccess", 
+                        "s3:ListCallerAccessGrants", 
+                        "ram:GetResourceShareInvitations"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ConsumerS3AGPermission"
                 }
             ]
         }, 
