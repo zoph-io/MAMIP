@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-11-15T14:08:27Z", 
-        "VersionId": "v15", 
+        "CreateDate": "2025-07-15T17:22:08Z", 
+        "VersionId": "v16", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -23,6 +23,23 @@
                         "*"
                     ], 
                     "Effect": "Allow"
+                }, 
+                {
+                    "Action": [
+                        "ssm:PutInventory"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ForAllValues:StringEquals": {
+                            "ssm:InventoryTypeName": [
+                                "AWS:ComplianceItem", 
+                                "AWS:PatchSummary"
+                            ]
+                        }
+                    }
                 }, 
                 {
                     "Action": [
