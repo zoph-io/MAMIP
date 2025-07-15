@@ -1,38 +1,38 @@
 [
-    {
-        "findingDetails": "The service elastic-inference does not exist. Use a valid service name.",
-        "findingType": "ERROR",
-        "issueCode": "INVALID_SERVICE",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service",
-        "locations": [
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 14
-                    },
-                    {
-                        "value": "Resource"
-                    },
-                    {
-                        "index": 11
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 4604,
-                        "line": 1,
-                        "offset": 4604
-                    },
-                    "start": {
-                        "column": 4541,
-                        "line": 1,
-                        "offset": 4541
-                    }
-                }
-            }
-        ]
-    }
+  {
+    "findingDetails": "The service elastic-inference does not exist. Use a valid service name.",
+    "findingType": "ERROR",
+    "issueCode": "INVALID_SERVICE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 14
+          },
+          {
+            "value": "Resource"
+          },
+          {
+            "index": 11
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 4541,
+            "offset": 4541
+          },
+          "end": {
+            "line": 1,
+            "column": 4604,
+            "offset": 4604
+          }
+        }
+      }
+    ]
+  }
 ]

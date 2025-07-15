@@ -1,74 +1,74 @@
 [
-    {
-        "findingDetails": "The service elastic-inference:TagResource specified in the action does not exist.",
-        "findingType": "ERROR",
-        "issueCode": "INVALID_SERVICE_IN_ACTION",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
-        "locations": [
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 0
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 102
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 2784,
-                        "line": 1,
-                        "offset": 2784
-                    },
-                    "start": {
-                        "column": 2753,
-                        "line": 1,
-                        "offset": 2753
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "findingDetails": "The service elastic-inference:UntagResource specified in the action does not exist.",
-        "findingType": "ERROR",
-        "issueCode": "INVALID_SERVICE_IN_ACTION",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
-        "locations": [
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 0
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 103
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 2819,
-                        "line": 1,
-                        "offset": 2819
-                    },
-                    "start": {
-                        "column": 2786,
-                        "line": 1,
-                        "offset": 2786
-                    }
-                }
-            }
-        ]
-    }
+  {
+    "findingDetails": "The service elastic-inference:TagResource specified in the action does not exist.",
+    "findingType": "ERROR",
+    "issueCode": "INVALID_SERVICE_IN_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 0
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 102
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 2753,
+            "offset": 2753
+          },
+          "end": {
+            "line": 1,
+            "column": 2784,
+            "offset": 2784
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "The service elastic-inference:UntagResource specified in the action does not exist.",
+    "findingType": "ERROR",
+    "issueCode": "INVALID_SERVICE_IN_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 0
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 103
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 2786,
+            "offset": 2786
+          },
+          "end": {
+            "line": 1,
+            "column": 2819,
+            "offset": 2819
+          }
+        }
+      }
+    ]
+  }
 ]

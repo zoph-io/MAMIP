@@ -1,66 +1,66 @@
 [
-    {
-        "findingDetails": "The 2 resource ARN(s) are redundant because they reference the same resource. Review the use of wildcards (*), or remove the resource arn:aws:s3:::elasticbeanstalk-env-resources-*/* to remove the redundancy.",
-        "findingType": "SUGGESTION",
-        "issueCode": "REDUNDANT_RESOURCE",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-resource",
-        "locations": [
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 6
-                    },
-                    {
-                        "value": "Resource"
-                    },
-                    {
-                        "index": 0
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 1949,
-                        "line": 1,
-                        "offset": 1949
-                    },
-                    "start": {
-                        "column": 1914,
-                        "line": 1,
-                        "offset": 1914
-                    }
-                }
-            },
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 6
-                    },
-                    {
-                        "value": "Resource"
-                    },
-                    {
-                        "index": 1
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 2000,
-                        "line": 1,
-                        "offset": 2000
-                    },
-                    "start": {
-                        "column": 1951,
-                        "line": 1,
-                        "offset": 1951
-                    }
-                }
-            }
-        ]
-    }
+  {
+    "findingDetails": "The 2 resource ARN(s) are redundant because they reference the same resource. Review the use of wildcards (*), or remove the resource arn:aws:s3:::elasticbeanstalk-env-resources-*/* to remove the redundancy.",
+    "findingType": "SUGGESTION",
+    "issueCode": "REDUNDANT_RESOURCE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-resource",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 6
+          },
+          {
+            "value": "Resource"
+          },
+          {
+            "index": 0
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 1914,
+            "offset": 1914
+          },
+          "end": {
+            "line": 1,
+            "column": 1949,
+            "offset": 1949
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 6
+          },
+          {
+            "value": "Resource"
+          },
+          {
+            "index": 1
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 1951,
+            "offset": 1951
+          },
+          "end": {
+            "line": 1,
+            "column": 2000,
+            "offset": 2000
+          }
+        }
+      }
+    ]
+  }
 ]

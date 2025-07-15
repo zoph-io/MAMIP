@@ -1,38 +1,38 @@
 [
-    {
-        "findingDetails": "The action account:GetChallengeQuestions does not exist.",
-        "findingType": "ERROR",
-        "issueCode": "INVALID_ACTION",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
-        "locations": [
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 0
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 2
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 147,
-                        "line": 1,
-                        "offset": 147
-                    },
-                    "start": {
-                        "column": 116,
-                        "line": 1,
-                        "offset": 116
-                    }
-                }
-            }
-        ]
-    }
+  {
+    "findingDetails": "The action account:GetChallengeQuestions does not exist.",
+    "findingType": "ERROR",
+    "issueCode": "INVALID_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 0
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 2
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 116,
+            "offset": 116
+          },
+          "end": {
+            "line": 1,
+            "column": 147,
+            "offset": 147
+          }
+        }
+      }
+    ]
+  }
 ]

@@ -1,66 +1,66 @@
 [
-    {
-        "findingDetails": "The 2 action(s) are redundant because they provide similar permissions. Update the policy to remove the redundant action such as: ec2:DescribeSubnets.",
-        "findingType": "SUGGESTION",
-        "issueCode": "REDUNDANT_ACTION",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-action",
-        "locations": [
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 0
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 1
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 93,
-                        "line": 1,
-                        "offset": 93
-                    },
-                    "start": {
-                        "column": 72,
-                        "line": 1,
-                        "offset": 72
-                    }
-                }
-            },
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 0
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 6
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 242,
-                        "line": 1,
-                        "offset": 242
-                    },
-                    "start": {
-                        "column": 221,
-                        "line": 1,
-                        "offset": 221
-                    }
-                }
-            }
-        ]
-    }
+  {
+    "findingDetails": "The 2 action(s) are redundant because they provide similar permissions. Update the policy to remove the redundant action such as: ec2:DescribeSubnets.",
+    "findingType": "SUGGESTION",
+    "issueCode": "REDUNDANT_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 0
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 1
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 72,
+            "offset": 72
+          },
+          "end": {
+            "line": 1,
+            "column": 93,
+            "offset": 93
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 0
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 6
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 221,
+            "offset": 221
+          },
+          "end": {
+            "line": 1,
+            "column": 242,
+            "offset": 242
+          }
+        }
+      }
+    ]
+  }
 ]

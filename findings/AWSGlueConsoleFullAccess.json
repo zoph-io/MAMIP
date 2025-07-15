@@ -1,66 +1,66 @@
 [
-    {
-        "findingDetails": "The 2 resource ARN(s) are redundant because they reference the same resource. Review the use of wildcards (*), or remove the resource arn:aws:s3:::aws-glue-*/* to remove the redundancy.",
-        "findingType": "SUGGESTION",
-        "issueCode": "REDUNDANT_RESOURCE",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-resource",
-        "locations": [
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 1
-                    },
-                    {
-                        "value": "Resource"
-                    },
-                    {
-                        "index": 0
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 1121,
-                        "line": 1,
-                        "offset": 1121
-                    },
-                    "start": {
-                        "column": 1094,
-                        "line": 1,
-                        "offset": 1094
-                    }
-                }
-            },
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 1
-                    },
-                    {
-                        "value": "Resource"
-                    },
-                    {
-                        "index": 2
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 1180,
-                        "line": 1,
-                        "offset": 1180
-                    },
-                    "start": {
-                        "column": 1155,
-                        "line": 1,
-                        "offset": 1155
-                    }
-                }
-            }
-        ]
-    }
+  {
+    "findingDetails": "The 2 resource ARN(s) are redundant because they reference the same resource. Review the use of wildcards (*), or remove the resource arn:aws:s3:::aws-glue-*/* to remove the redundancy.",
+    "findingType": "SUGGESTION",
+    "issueCode": "REDUNDANT_RESOURCE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-resource",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 1
+          },
+          {
+            "value": "Resource"
+          },
+          {
+            "index": 0
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 1094,
+            "offset": 1094
+          },
+          "end": {
+            "line": 1,
+            "column": 1121,
+            "offset": 1121
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 1
+          },
+          {
+            "value": "Resource"
+          },
+          {
+            "index": 2
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 1155,
+            "offset": 1155
+          },
+          "end": {
+            "line": 1,
+            "column": 1180,
+            "offset": 1180
+          }
+        }
+      }
+    ]
+  }
 ]

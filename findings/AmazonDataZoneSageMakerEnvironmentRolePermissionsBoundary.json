@@ -1,97 +1,97 @@
 [
-    {
-        "findingDetails": "The 25709 characters in the identity policy, excluding whitespace, exceed the 10240 character maximum for inline and managed policies. We recommend that you use multiple granular policies.",
-        "findingType": "WARNING",
-        "issueCode": "POLICY_SIZE_EXCEEDS_IDENTITY_POLICY_QUOTA",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-general-warning-policy-size-exceeds-identity-policy-quota",
-        "locations": [
-            {
-                "path": [],
-                "span": {
-                    "end": {
-                        "column": 26828,
-                        "line": 1,
-                        "offset": 26828
-                    },
-                    "start": {
-                        "column": 0,
-                        "line": 1,
-                        "offset": 0
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "findingDetails": "The service elastic-inference:Connect specified in the action does not exist.",
-        "findingType": "ERROR",
-        "issueCode": "INVALID_SERVICE_IN_ACTION",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
-        "locations": [
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 11
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 43
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 4764,
-                        "line": 1,
-                        "offset": 4764
-                    },
-                    "start": {
-                        "column": 4737,
-                        "line": 1,
-                        "offset": 4737
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "findingDetails": "The service elastic-inference:Connect specified in the action does not exist.",
-        "findingType": "ERROR",
-        "issueCode": "INVALID_SERVICE_IN_ACTION",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
-        "locations": [
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 50
-                    },
-                    {
-                        "value": "NotAction"
-                    },
-                    {
-                        "index": 103
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 22740,
-                        "line": 1,
-                        "offset": 22740
-                    },
-                    "start": {
-                        "column": 22713,
-                        "line": 1,
-                        "offset": 22713
-                    }
-                }
-            }
-        ]
-    }
+  {
+    "findingDetails": "The 25709 characters in the identity policy, excluding whitespace, exceed the 10240 character maximum for inline and managed policies. We recommend that you use multiple granular policies.",
+    "findingType": "WARNING",
+    "issueCode": "POLICY_SIZE_EXCEEDS_IDENTITY_POLICY_QUOTA",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-general-warning-policy-size-exceeds-identity-policy-quota",
+    "locations": [
+      {
+        "path": [],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 0,
+            "offset": 0
+          },
+          "end": {
+            "line": 1,
+            "column": 26828,
+            "offset": 26828
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "The service elastic-inference:Connect specified in the action does not exist.",
+    "findingType": "ERROR",
+    "issueCode": "INVALID_SERVICE_IN_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 11
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 43
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 4737,
+            "offset": 4737
+          },
+          "end": {
+            "line": 1,
+            "column": 4764,
+            "offset": 4764
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "The service elastic-inference:Connect specified in the action does not exist.",
+    "findingType": "ERROR",
+    "issueCode": "INVALID_SERVICE_IN_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 50
+          },
+          {
+            "value": "NotAction"
+          },
+          {
+            "index": 103
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 22713,
+            "offset": 22713
+          },
+          "end": {
+            "line": 1,
+            "column": 22740,
+            "offset": 22740
+          }
+        }
+      }
+    ]
+  }
 ]

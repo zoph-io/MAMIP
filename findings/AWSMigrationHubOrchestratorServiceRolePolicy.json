@@ -1,66 +1,66 @@
 [
-    {
-        "findingDetails": "The 2 resource ARN(s) are redundant because they reference the same resource. Review the use of wildcards (*), or remove the resource arn:aws:s3:::migrationhub-orchestrator-*/* to remove the redundancy.",
-        "findingType": "SUGGESTION",
-        "issueCode": "REDUNDANT_RESOURCE",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-resource",
-        "locations": [
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 8
-                    },
-                    {
-                        "value": "Resource"
-                    },
-                    {
-                        "index": 0
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 1482,
-                        "line": 1,
-                        "offset": 1482
-                    },
-                    "start": {
-                        "column": 1440,
-                        "line": 1,
-                        "offset": 1440
-                    }
-                }
-            },
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 8
-                    },
-                    {
-                        "value": "Resource"
-                    },
-                    {
-                        "index": 1
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 1528,
-                        "line": 1,
-                        "offset": 1528
-                    },
-                    "start": {
-                        "column": 1484,
-                        "line": 1,
-                        "offset": 1484
-                    }
-                }
-            }
-        ]
-    }
+  {
+    "findingDetails": "The 2 resource ARN(s) are redundant because they reference the same resource. Review the use of wildcards (*), or remove the resource arn:aws:s3:::migrationhub-orchestrator-*/* to remove the redundancy.",
+    "findingType": "SUGGESTION",
+    "issueCode": "REDUNDANT_RESOURCE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-resource",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 8
+          },
+          {
+            "value": "Resource"
+          },
+          {
+            "index": 0
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 1440,
+            "offset": 1440
+          },
+          "end": {
+            "line": 1,
+            "column": 1482,
+            "offset": 1482
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 8
+          },
+          {
+            "value": "Resource"
+          },
+          {
+            "index": 1
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 1484,
+            "offset": 1484
+          },
+          "end": {
+            "line": 1,
+            "column": 1528,
+            "offset": 1528
+          }
+        }
+      }
+    ]
+  }
 ]

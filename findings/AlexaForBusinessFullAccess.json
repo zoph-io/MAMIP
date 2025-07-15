@@ -1,63 +1,63 @@
 [
-    {
-        "findingDetails": "Using the iam:CreateServiceLinkedRole action with wildcards (*) in the resource can allow creation of unintended service-linked roles. We recommend that you specify resource ARNs instead.",
-        "findingType": "WARNING",
-        "issueCode": "CREATE_SLR_WITH_STAR_IN_RESOURCE",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-general-warning-create-slr-with-star-in-resource",
-        "locations": [
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 1
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 0
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 159,
-                        "line": 1,
-                        "offset": 159
-                    },
-                    "start": {
-                        "column": 130,
-                        "line": 1,
-                        "offset": 130
-                    }
-                }
-            },
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 1
-                    },
-                    {
-                        "value": "Resource"
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 177,
-                        "line": 1,
-                        "offset": 177
-                    },
-                    "start": {
-                        "column": 174,
-                        "line": 1,
-                        "offset": 174
-                    }
-                }
-            }
-        ]
-    }
+  {
+    "findingDetails": "Using the iam:CreateServiceLinkedRole action with wildcards (*) in the resource can allow creation of unintended service-linked roles. We recommend that you specify resource ARNs instead.",
+    "findingType": "WARNING",
+    "issueCode": "CREATE_SLR_WITH_STAR_IN_RESOURCE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-general-warning-create-slr-with-star-in-resource",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 1
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 0
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 130,
+            "offset": 130
+          },
+          "end": {
+            "line": 1,
+            "column": 159,
+            "offset": 159
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 1
+          },
+          {
+            "value": "Resource"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 174,
+            "offset": 174
+          },
+          "end": {
+            "line": 1,
+            "column": 177,
+            "offset": 177
+          }
+        }
+      }
+    ]
+  }
 ]

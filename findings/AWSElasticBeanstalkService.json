@@ -1,130 +1,130 @@
 [
-    {
-        "findingDetails": "The 2 resource ARN(s) are redundant because they reference the same resource. Review the use of wildcards (*), or remove the resource arn:aws:s3:::elasticbeanstalk-*/* to remove the redundancy.",
-        "findingType": "SUGGESTION",
-        "issueCode": "REDUNDANT_RESOURCE",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-resource",
-        "locations": [
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 3
-                    },
-                    {
-                        "value": "Resource"
-                    },
-                    {
-                        "index": 0
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 684,
-                        "line": 1,
-                        "offset": 684
-                    },
-                    "start": {
-                        "column": 651,
-                        "line": 1,
-                        "offset": 651
-                    }
-                }
-            },
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 3
-                    },
-                    {
-                        "value": "Resource"
-                    },
-                    {
-                        "index": 1
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 721,
-                        "line": 1,
-                        "offset": 721
-                    },
-                    "start": {
-                        "column": 686,
-                        "line": 1,
-                        "offset": 686
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "findingDetails": "Using the iam:PassRole action with wildcards (*) in the resource can be overly permissive because it allows iam:PassRole permissions on multiple resources. We recommend that you specify resource ARNs or add the iam:PassedToService condition key to your statement.",
-        "findingType": "SECURITY_WARNING",
-        "issueCode": "PASS_ROLE_WITH_STAR_IN_RESOURCE",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-security-warning-pass-role-with-star-in-resource",
-        "locations": [
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 6
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 73
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 3756,
-                        "line": 1,
-                        "offset": 3756
-                    },
-                    "start": {
-                        "column": 3742,
-                        "line": 1,
-                        "offset": 3742
-                    }
-                }
-            },
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 6
-                    },
-                    {
-                        "value": "Resource"
-                    },
-                    {
-                        "index": 0
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 4275,
-                        "line": 1,
-                        "offset": 4275
-                    },
-                    "start": {
-                        "column": 4272,
-                        "line": 1,
-                        "offset": 4272
-                    }
-                }
-            }
-        ]
-    }
+  {
+    "findingDetails": "The 2 resource ARN(s) are redundant because they reference the same resource. Review the use of wildcards (*), or remove the resource arn:aws:s3:::elasticbeanstalk-*/* to remove the redundancy.",
+    "findingType": "SUGGESTION",
+    "issueCode": "REDUNDANT_RESOURCE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-resource",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 3
+          },
+          {
+            "value": "Resource"
+          },
+          {
+            "index": 0
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 651,
+            "offset": 651
+          },
+          "end": {
+            "line": 1,
+            "column": 684,
+            "offset": 684
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 3
+          },
+          {
+            "value": "Resource"
+          },
+          {
+            "index": 1
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 686,
+            "offset": 686
+          },
+          "end": {
+            "line": 1,
+            "column": 721,
+            "offset": 721
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "Using the iam:PassRole action with wildcards (*) in the resource can be overly permissive because it allows iam:PassRole permissions on multiple resources. We recommend that you specify resource ARNs or add the iam:PassedToService condition key to your statement.",
+    "findingType": "SECURITY_WARNING",
+    "issueCode": "PASS_ROLE_WITH_STAR_IN_RESOURCE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-security-warning-pass-role-with-star-in-resource",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 6
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 73
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 3742,
+            "offset": 3742
+          },
+          "end": {
+            "line": 1,
+            "column": 3756,
+            "offset": 3756
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 6
+          },
+          {
+            "value": "Resource"
+          },
+          {
+            "index": 0
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 4272,
+            "offset": 4272
+          },
+          "end": {
+            "line": 1,
+            "column": 4275,
+            "offset": 4275
+          }
+        }
+      }
+    ]
+  }
 ]

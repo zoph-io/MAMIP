@@ -1,362 +1,362 @@
 [
-    {
-        "findingDetails": "The 8 action(s) are redundant because they provide similar permissions. Update the policy to remove the redundant action such as: ec2:DescribeReservedInstancesModifications.",
-        "findingType": "SUGGESTION",
-        "issueCode": "REDUNDANT_ACTION",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-action",
-        "locations": [
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 0
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 83
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 2470,
-                        "line": 1,
-                        "offset": 2470
-                    },
-                    "start": {
-                        "column": 2455,
-                        "line": 1,
-                        "offset": 2455
-                    }
-                }
-            },
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 0
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 84
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 2491,
-                        "line": 1,
-                        "offset": 2491
-                    },
-                    "start": {
-                        "column": 2472,
-                        "line": 1,
-                        "offset": 2472
-                    }
-                }
-            },
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 0
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 85
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 2523,
-                        "line": 1,
-                        "offset": 2523
-                    },
-                    "start": {
-                        "column": 2493,
-                        "line": 1,
-                        "offset": 2493
-                    }
-                }
-            },
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 0
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 86
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 2547,
-                        "line": 1,
-                        "offset": 2547
-                    },
-                    "start": {
-                        "column": 2525,
-                        "line": 1,
-                        "offset": 2525
-                    }
-                }
-            },
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 0
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 87
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 2580,
-                        "line": 1,
-                        "offset": 2580
-                    },
-                    "start": {
-                        "column": 2549,
-                        "line": 1,
-                        "offset": 2549
-                    }
-                }
-            },
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 0
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 88
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 2607,
-                        "line": 1,
-                        "offset": 2607
-                    },
-                    "start": {
-                        "column": 2582,
-                        "line": 1,
-                        "offset": 2582
-                    }
-                }
-            },
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 0
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 89
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 2653,
-                        "line": 1,
-                        "offset": 2653
-                    },
-                    "start": {
-                        "column": 2609,
-                        "line": 1,
-                        "offset": 2609
-                    }
-                }
-            },
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 0
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 90
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 2673,
-                        "line": 1,
-                        "offset": 2673
-                    },
-                    "start": {
-                        "column": 2655,
-                        "line": 1,
-                        "offset": 2655
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "findingDetails": "The 2 action(s) are redundant because they provide similar permissions. Update the policy to remove the redundant action such as: elasticfilesystem:DescribeFileSystems.",
-        "findingType": "SUGGESTION",
-        "issueCode": "REDUNDANT_ACTION",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-action",
-        "locations": [
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 0
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 106
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 3140,
-                        "line": 1,
-                        "offset": 3140
-                    },
-                    "start": {
-                        "column": 3111,
-                        "line": 1,
-                        "offset": 3111
-                    }
-                }
-            },
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 0
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 112
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 3327,
-                        "line": 1,
-                        "offset": 3327
-                    },
-                    "start": {
-                        "column": 3288,
-                        "line": 1,
-                        "offset": 3288
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "findingDetails": "The 2 action(s) are redundant because they provide similar permissions. Update the policy to remove the redundant action such as: glacier:ListVaults.",
-        "findingType": "SUGGESTION",
-        "issueCode": "REDUNDANT_ACTION",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-action",
-        "locations": [
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 0
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 124
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 3556,
-                        "line": 1,
-                        "offset": 3556
-                    },
-                    "start": {
-                        "column": 3536,
-                        "line": 1,
-                        "offset": 3536
-                    }
-                }
-            },
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 0
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 128
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 3637,
-                        "line": 1,
-                        "offset": 3637
-                    },
-                    "start": {
-                        "column": 3622,
-                        "line": 1,
-                        "offset": 3622
-                    }
-                }
-            }
-        ]
-    }
+  {
+    "findingDetails": "The 8 action(s) are redundant because they provide similar permissions. Update the policy to remove the redundant action such as: ec2:DescribeReservedInstancesModifications.",
+    "findingType": "SUGGESTION",
+    "issueCode": "REDUNDANT_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 0
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 83
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 2455,
+            "offset": 2455
+          },
+          "end": {
+            "line": 1,
+            "column": 2470,
+            "offset": 2470
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 0
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 84
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 2472,
+            "offset": 2472
+          },
+          "end": {
+            "line": 1,
+            "column": 2491,
+            "offset": 2491
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 0
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 85
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 2493,
+            "offset": 2493
+          },
+          "end": {
+            "line": 1,
+            "column": 2523,
+            "offset": 2523
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 0
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 86
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 2525,
+            "offset": 2525
+          },
+          "end": {
+            "line": 1,
+            "column": 2547,
+            "offset": 2547
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 0
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 87
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 2549,
+            "offset": 2549
+          },
+          "end": {
+            "line": 1,
+            "column": 2580,
+            "offset": 2580
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 0
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 88
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 2582,
+            "offset": 2582
+          },
+          "end": {
+            "line": 1,
+            "column": 2607,
+            "offset": 2607
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 0
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 89
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 2609,
+            "offset": 2609
+          },
+          "end": {
+            "line": 1,
+            "column": 2653,
+            "offset": 2653
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 0
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 90
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 2655,
+            "offset": 2655
+          },
+          "end": {
+            "line": 1,
+            "column": 2673,
+            "offset": 2673
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "The 2 action(s) are redundant because they provide similar permissions. Update the policy to remove the redundant action such as: elasticfilesystem:DescribeFileSystems.",
+    "findingType": "SUGGESTION",
+    "issueCode": "REDUNDANT_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 0
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 106
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 3111,
+            "offset": 3111
+          },
+          "end": {
+            "line": 1,
+            "column": 3140,
+            "offset": 3140
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 0
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 112
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 3288,
+            "offset": 3288
+          },
+          "end": {
+            "line": 1,
+            "column": 3327,
+            "offset": 3327
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "The 2 action(s) are redundant because they provide similar permissions. Update the policy to remove the redundant action such as: glacier:ListVaults.",
+    "findingType": "SUGGESTION",
+    "issueCode": "REDUNDANT_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 0
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 124
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 3536,
+            "offset": 3536
+          },
+          "end": {
+            "line": 1,
+            "column": 3556,
+            "offset": 3556
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 0
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 128
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 3622,
+            "offset": 3622
+          },
+          "end": {
+            "line": 1,
+            "column": 3637,
+            "offset": 3637
+          }
+        }
+      }
+    ]
+  }
 ]

@@ -1,61 +1,61 @@
 [
-    {
-        "findingDetails": "The 13719 characters in the identity policy, excluding whitespace, exceed the 10240 character maximum for inline and managed policies. We recommend that you use multiple granular policies.",
-        "findingType": "WARNING",
-        "issueCode": "POLICY_SIZE_EXCEEDS_IDENTITY_POLICY_QUOTA",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-general-warning-policy-size-exceeds-identity-policy-quota",
-        "locations": [
-            {
-                "path": [],
-                "span": {
-                    "end": {
-                        "column": 14351,
-                        "line": 1,
-                        "offset": 14351
-                    },
-                    "start": {
-                        "column": 0,
-                        "line": 1,
-                        "offset": 0
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "findingDetails": "The service elastic-inference:Connect specified in the action does not exist.",
-        "findingType": "ERROR",
-        "issueCode": "INVALID_SERVICE_IN_ACTION",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
-        "locations": [
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 11
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 57
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 5303,
-                        "line": 1,
-                        "offset": 5303
-                    },
-                    "start": {
-                        "column": 5276,
-                        "line": 1,
-                        "offset": 5276
-                    }
-                }
-            }
-        ]
-    }
+  {
+    "findingDetails": "The 13719 characters in the identity policy, excluding whitespace, exceed the 10240 character maximum for inline and managed policies. We recommend that you use multiple granular policies.",
+    "findingType": "WARNING",
+    "issueCode": "POLICY_SIZE_EXCEEDS_IDENTITY_POLICY_QUOTA",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-general-warning-policy-size-exceeds-identity-policy-quota",
+    "locations": [
+      {
+        "path": [],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 0,
+            "offset": 0
+          },
+          "end": {
+            "line": 1,
+            "column": 14351,
+            "offset": 14351
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "The service elastic-inference:Connect specified in the action does not exist.",
+    "findingType": "ERROR",
+    "issueCode": "INVALID_SERVICE_IN_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 11
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 57
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 5276,
+            "offset": 5276
+          },
+          "end": {
+            "line": 1,
+            "column": 5303,
+            "offset": 5303
+          }
+        }
+      }
+    ]
+  }
 ]

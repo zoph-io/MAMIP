@@ -1,89 +1,89 @@
 [
-    {
-        "findingDetails": "The 10878 characters in the identity policy, excluding whitespace, exceed the 10240 character maximum for inline and managed policies. We recommend that you use multiple granular policies.",
-        "findingType": "WARNING",
-        "issueCode": "POLICY_SIZE_EXCEEDS_IDENTITY_POLICY_QUOTA",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-general-warning-policy-size-exceeds-identity-policy-quota",
-        "locations": [
-            {
-                "path": [],
-                "span": {
-                    "end": {
-                        "column": 11256,
-                        "line": 1,
-                        "offset": 11256
-                    },
-                    "start": {
-                        "column": 0,
-                        "line": 1,
-                        "offset": 0
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "findingDetails": "The 2 action(s) are redundant because they provide similar permissions. Update the policy to remove the redundant action such as: ses:ListDedicatedIpPools.",
-        "findingType": "SUGGESTION",
-        "issueCode": "REDUNDANT_ACTION",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-action",
-        "locations": [
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 0
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 294
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 8511,
-                        "line": 1,
-                        "offset": 8511
-                    },
-                    "start": {
-                        "column": 8500,
-                        "line": 1,
-                        "offset": 8500
-                    }
-                }
-            },
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 0
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 295
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 8539,
-                        "line": 1,
-                        "offset": 8539
-                    },
-                    "start": {
-                        "column": 8513,
-                        "line": 1,
-                        "offset": 8513
-                    }
-                }
-            }
-        ]
-    }
+  {
+    "findingDetails": "The 10878 characters in the identity policy, excluding whitespace, exceed the 10240 character maximum for inline and managed policies. We recommend that you use multiple granular policies.",
+    "findingType": "WARNING",
+    "issueCode": "POLICY_SIZE_EXCEEDS_IDENTITY_POLICY_QUOTA",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-general-warning-policy-size-exceeds-identity-policy-quota",
+    "locations": [
+      {
+        "path": [],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 0,
+            "offset": 0
+          },
+          "end": {
+            "line": 1,
+            "column": 11256,
+            "offset": 11256
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "The 2 action(s) are redundant because they provide similar permissions. Update the policy to remove the redundant action such as: ses:ListDedicatedIpPools.",
+    "findingType": "SUGGESTION",
+    "issueCode": "REDUNDANT_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 0
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 294
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 8500,
+            "offset": 8500
+          },
+          "end": {
+            "line": 1,
+            "column": 8511,
+            "offset": 8511
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 0
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 295
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 8513,
+            "offset": 8513
+          },
+          "end": {
+            "line": 1,
+            "column": 8539,
+            "offset": 8539
+          }
+        }
+      }
+    ]
+  }
 ]

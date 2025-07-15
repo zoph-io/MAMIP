@@ -1,187 +1,187 @@
 [
-    {
-        "findingDetails": "The 21434 characters in the identity policy, excluding whitespace, exceed the 10240 character maximum for inline and managed policies. We recommend that you use multiple granular policies.",
-        "findingType": "WARNING",
-        "issueCode": "POLICY_SIZE_EXCEEDS_IDENTITY_POLICY_QUOTA",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-general-warning-policy-size-exceeds-identity-policy-quota",
-        "locations": [
-            {
-                "path": [],
-                "span": {
-                    "end": {
-                        "column": 22327,
-                        "line": 1,
-                        "offset": 22327
-                    },
-                    "start": {
-                        "column": 0,
-                        "line": 1,
-                        "offset": 0
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "findingDetails": "Using the effect Allow with the condition key aws:ResourceTag/AmazonDataZoneProject and actions for services with the following prefixes does not affect the policy: sagemaker-mlflow. The actions for the listed service are not allowed by this statement. We recommend that you move these actions to a different statement without this condition key.",
-        "findingType": "SUGGESTION",
-        "issueCode": "ALLOW_WITH_UNSUPPORTED_TAG_CONDITION_KEY_FOR_SERVICE",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-allow-with-unsupported-tag-condition-key-for-service",
-        "locations": [
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 7
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 5
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 2687,
-                        "line": 1,
-                        "offset": 2687
-                    },
-                    "start": {
-                        "column": 2660,
-                        "line": 1,
-                        "offset": 2660
-                    }
-                }
-            },
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 7
-                    },
-                    {
-                        "value": "Condition"
-                    },
-                    {
-                        "value": "StringEquals"
-                    },
-                    {
-                        "key": "aws:ResourceTag/AmazonDataZoneProject"
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 4449,
-                        "line": 1,
-                        "offset": 4449
-                    },
-                    "start": {
-                        "column": 4410,
-                        "line": 1,
-                        "offset": 4410
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "findingDetails": "Using the effect Allow with the condition key aws:ResourceTag/AmazonDataZoneProject and actions for services with the following prefixes does not affect the policy: sagemaker. The actions for the listed service are not allowed by this statement. We recommend that you move these actions to a different statement without this condition key.",
-        "findingType": "SUGGESTION",
-        "issueCode": "ALLOW_WITH_UNSUPPORTED_TAG_CONDITION_KEY_FOR_SERVICE",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-allow-with-unsupported-tag-condition-key-for-service",
-        "locations": [
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 21
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 0
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 10474,
-                        "line": 1,
-                        "offset": 10474
-                    },
-                    "start": {
-                        "column": 10436,
-                        "line": 1,
-                        "offset": 10436
-                    }
-                }
-            },
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 21
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 2
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 10560,
-                        "line": 1,
-                        "offset": 10560
-                    },
-                    "start": {
-                        "column": 10532,
-                        "line": 1,
-                        "offset": 10532
-                    }
-                }
-            },
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 21
-                    },
-                    {
-                        "value": "Condition"
-                    },
-                    {
-                        "value": "StringEquals"
-                    },
-                    {
-                        "key": "aws:ResourceTag/AmazonDataZoneProject"
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 10822,
-                        "line": 1,
-                        "offset": 10822
-                    },
-                    "start": {
-                        "column": 10783,
-                        "line": 1,
-                        "offset": 10783
-                    }
-                }
-            }
-        ]
-    }
+  {
+    "findingDetails": "The 24268 characters in the identity policy, excluding whitespace, exceed the 10240 character maximum for inline and managed policies. We recommend that you use multiple granular policies.",
+    "findingType": "WARNING",
+    "issueCode": "POLICY_SIZE_EXCEEDS_IDENTITY_POLICY_QUOTA",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-general-warning-policy-size-exceeds-identity-policy-quota",
+    "locations": [
+      {
+        "path": [],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 0,
+            "offset": 0
+          },
+          "end": {
+            "line": 1,
+            "column": 25301,
+            "offset": 25301
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "Using the effect Allow with the condition key aws:ResourceTag/AmazonDataZoneProject and actions for services with the following prefixes does not affect the policy: sagemaker-mlflow. The actions for the listed service are not allowed by this statement. We recommend that you move these actions to a different statement without this condition key.",
+    "findingType": "SUGGESTION",
+    "issueCode": "ALLOW_WITH_UNSUPPORTED_TAG_CONDITION_KEY_FOR_SERVICE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-allow-with-unsupported-tag-condition-key-for-service",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 7
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 5
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 2660,
+            "offset": 2660
+          },
+          "end": {
+            "line": 1,
+            "column": 2687,
+            "offset": 2687
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 7
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringEquals"
+          },
+          {
+            "key": "aws:ResourceTag/AmazonDataZoneProject"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 4410,
+            "offset": 4410
+          },
+          "end": {
+            "line": 1,
+            "column": 4449,
+            "offset": 4449
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "Using the effect Allow with the condition key aws:ResourceTag/AmazonDataZoneProject and actions for services with the following prefixes does not affect the policy: sagemaker. The actions for the listed service are not allowed by this statement. We recommend that you move these actions to a different statement without this condition key.",
+    "findingType": "SUGGESTION",
+    "issueCode": "ALLOW_WITH_UNSUPPORTED_TAG_CONDITION_KEY_FOR_SERVICE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-allow-with-unsupported-tag-condition-key-for-service",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 21
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 0
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 10436,
+            "offset": 10436
+          },
+          "end": {
+            "line": 1,
+            "column": 10474,
+            "offset": 10474
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 21
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 2
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 10532,
+            "offset": 10532
+          },
+          "end": {
+            "line": 1,
+            "column": 10560,
+            "offset": 10560
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 21
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringEquals"
+          },
+          {
+            "key": "aws:ResourceTag/AmazonDataZoneProject"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 10783,
+            "offset": 10783
+          },
+          "end": {
+            "line": 1,
+            "column": 10822,
+            "offset": 10822
+          }
+        }
+      }
+    ]
+  }
 ]

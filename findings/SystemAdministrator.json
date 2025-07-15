@@ -1,66 +1,66 @@
 [
-    {
-        "findingDetails": "The 2 action(s) are redundant because they provide similar permissions. Update the policy to remove the redundant action such as: ec2:Allocate*.",
-        "findingType": "SUGGESTION",
-        "issueCode": "REDUNDANT_ACTION",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-action",
-        "locations": [
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 0
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 28
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 654,
-                        "line": 1,
-                        "offset": 654
-                    },
-                    "start": {
-                        "column": 639,
-                        "line": 1,
-                        "offset": 639
-                    }
-                }
-            },
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 0
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 31
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 722,
-                        "line": 1,
-                        "offset": 722
-                    },
-                    "start": {
-                        "column": 707,
-                        "line": 1,
-                        "offset": 707
-                    }
-                }
-            }
-        ]
-    }
+  {
+    "findingDetails": "The 2 action(s) are redundant because they provide similar permissions. Update the policy to remove the redundant action such as: ec2:Allocate*.",
+    "findingType": "SUGGESTION",
+    "issueCode": "REDUNDANT_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 0
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 28
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 639,
+            "offset": 639
+          },
+          "end": {
+            "line": 1,
+            "column": 654,
+            "offset": 654
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 0
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 31
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 707,
+            "offset": 707
+          },
+          "end": {
+            "line": 1,
+            "column": 722,
+            "offset": 722
+          }
+        }
+      }
+    ]
+  }
 ]

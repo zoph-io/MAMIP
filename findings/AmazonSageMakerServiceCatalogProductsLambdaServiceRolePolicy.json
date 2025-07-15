@@ -1,153 +1,153 @@
 [
-    {
-        "findingDetails": "The 12673 characters in the identity policy, excluding whitespace, exceed the 10240 character maximum for inline and managed policies. We recommend that you use multiple granular policies.",
-        "findingType": "WARNING",
-        "issueCode": "POLICY_SIZE_EXCEEDS_IDENTITY_POLICY_QUOTA",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-general-warning-policy-size-exceeds-identity-policy-quota",
-        "locations": [
-            {
-                "path": [],
-                "span": {
-                    "end": {
-                        "column": 13090,
-                        "line": 1,
-                        "offset": 13090
-                    },
-                    "start": {
-                        "column": 0,
-                        "line": 1,
-                        "offset": 0
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "findingDetails": "The 2 resource ARN(s) are redundant because they reference the same resource. Review the use of wildcards (*), or remove the resource arn:aws:sagemaker:*:*:device-fleet/*/device/* to remove the redundancy.",
-        "findingType": "SUGGESTION",
-        "issueCode": "REDUNDANT_RESOURCE",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-resource",
-        "locations": [
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 4
-                    },
-                    {
-                        "value": "Resource"
-                    },
-                    {
-                        "index": 9
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 10493,
-                        "line": 1,
-                        "offset": 10493
-                    },
-                    "start": {
-                        "column": 10446,
-                        "line": 1,
-                        "offset": 10446
-                    }
-                }
-            },
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 4
-                    },
-                    {
-                        "value": "Resource"
-                    },
-                    {
-                        "index": 10
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 10533,
-                        "line": 1,
-                        "offset": 10533
-                    },
-                    "start": {
-                        "column": 10495,
-                        "line": 1,
-                        "offset": 10495
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "findingDetails": "The 2 resource ARN(s) are redundant because they reference the same resource. Review the use of wildcards (*), or remove the resource arn:aws:sagemaker:*:*:pipeline/*/execution/* to remove the redundancy.",
-        "findingType": "SUGGESTION",
-        "issueCode": "REDUNDANT_RESOURCE",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-resource",
-        "locations": [
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 4
-                    },
-                    {
-                        "value": "Resource"
-                    },
-                    {
-                        "index": 34
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 11624,
-                        "line": 1,
-                        "offset": 11624
-                    },
-                    "start": {
-                        "column": 11590,
-                        "line": 1,
-                        "offset": 11590
-                    }
-                }
-            },
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 4
-                    },
-                    {
-                        "value": "Resource"
-                    },
-                    {
-                        "index": 35
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 11672,
-                        "line": 1,
-                        "offset": 11672
-                    },
-                    "start": {
-                        "column": 11626,
-                        "line": 1,
-                        "offset": 11626
-                    }
-                }
-            }
-        ]
-    }
+  {
+    "findingDetails": "The 12673 characters in the identity policy, excluding whitespace, exceed the 10240 character maximum for inline and managed policies. We recommend that you use multiple granular policies.",
+    "findingType": "WARNING",
+    "issueCode": "POLICY_SIZE_EXCEEDS_IDENTITY_POLICY_QUOTA",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-general-warning-policy-size-exceeds-identity-policy-quota",
+    "locations": [
+      {
+        "path": [],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 0,
+            "offset": 0
+          },
+          "end": {
+            "line": 1,
+            "column": 13090,
+            "offset": 13090
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "The 2 resource ARN(s) are redundant because they reference the same resource. Review the use of wildcards (*), or remove the resource arn:aws:sagemaker:*:*:device-fleet/*/device/* to remove the redundancy.",
+    "findingType": "SUGGESTION",
+    "issueCode": "REDUNDANT_RESOURCE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-resource",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 4
+          },
+          {
+            "value": "Resource"
+          },
+          {
+            "index": 9
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 10446,
+            "offset": 10446
+          },
+          "end": {
+            "line": 1,
+            "column": 10493,
+            "offset": 10493
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 4
+          },
+          {
+            "value": "Resource"
+          },
+          {
+            "index": 10
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 10495,
+            "offset": 10495
+          },
+          "end": {
+            "line": 1,
+            "column": 10533,
+            "offset": 10533
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "The 2 resource ARN(s) are redundant because they reference the same resource. Review the use of wildcards (*), or remove the resource arn:aws:sagemaker:*:*:pipeline/*/execution/* to remove the redundancy.",
+    "findingType": "SUGGESTION",
+    "issueCode": "REDUNDANT_RESOURCE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-resource",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 4
+          },
+          {
+            "value": "Resource"
+          },
+          {
+            "index": 34
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 11590,
+            "offset": 11590
+          },
+          "end": {
+            "line": 1,
+            "column": 11624,
+            "offset": 11624
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 4
+          },
+          {
+            "value": "Resource"
+          },
+          {
+            "index": 35
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 11626,
+            "offset": 11626
+          },
+          "end": {
+            "line": 1,
+            "column": 11672,
+            "offset": 11672
+          }
+        }
+      }
+    ]
+  }
 ]

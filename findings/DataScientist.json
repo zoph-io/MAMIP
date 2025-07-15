@@ -1,94 +1,94 @@
 [
-    {
-        "findingDetails": "The 3 action(s) are redundant because they provide similar permissions. Update the policy to remove the redundant action such as: sns:ListSubscriptions.",
-        "findingType": "SUGGESTION",
-        "issueCode": "REDUNDANT_ACTION",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-action",
-        "locations": [
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 0
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 41
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 965,
-                        "line": 1,
-                        "offset": 965
-                    },
-                    "start": {
-                        "column": 942,
-                        "line": 1,
-                        "offset": 942
-                    }
-                }
-            },
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 0
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 42
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 983,
-                        "line": 1,
-                        "offset": 983
-                    },
-                    "start": {
-                        "column": 967,
-                        "line": 1,
-                        "offset": 967
-                    }
-                }
-            },
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 0
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 49
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 1108,
-                        "line": 1,
-                        "offset": 1108
-                    },
-                    "start": {
-                        "column": 1097,
-                        "line": 1,
-                        "offset": 1097
-                    }
-                }
-            }
-        ]
-    }
+  {
+    "findingDetails": "The 3 action(s) are redundant because they provide similar permissions. Update the policy to remove the redundant action such as: sns:ListSubscriptions.",
+    "findingType": "SUGGESTION",
+    "issueCode": "REDUNDANT_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 0
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 41
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 942,
+            "offset": 942
+          },
+          "end": {
+            "line": 1,
+            "column": 965,
+            "offset": 965
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 0
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 42
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 967,
+            "offset": 967
+          },
+          "end": {
+            "line": 1,
+            "column": 983,
+            "offset": 983
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 0
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 49
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 1097,
+            "offset": 1097
+          },
+          "end": {
+            "line": 1,
+            "column": 1108,
+            "offset": 1108
+          }
+        }
+      }
+    ]
+  }
 ]

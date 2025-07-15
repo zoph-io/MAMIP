@@ -1,74 +1,74 @@
 [
-    {
-        "findingDetails": "The action qapps:ImportDocumentToQApp does not exist.",
-        "findingType": "ERROR",
-        "issueCode": "INVALID_ACTION",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
-        "locations": [
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 0
-                    },
-                    {
-                        "value": "NotAction"
-                    },
-                    {
-                        "index": 91
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 2599,
-                        "line": 1,
-                        "offset": 2599
-                    },
-                    "start": {
-                        "column": 2571,
-                        "line": 1,
-                        "offset": 2571
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "findingDetails": "The action qapps:ImportDocumentToQAppSession does not exist.",
-        "findingType": "ERROR",
-        "issueCode": "INVALID_ACTION",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
-        "locations": [
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 0
-                    },
-                    {
-                        "value": "NotAction"
-                    },
-                    {
-                        "index": 92
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 2636,
-                        "line": 1,
-                        "offset": 2636
-                    },
-                    "start": {
-                        "column": 2601,
-                        "line": 1,
-                        "offset": 2601
-                    }
-                }
-            }
-        ]
-    }
+  {
+    "findingDetails": "The action qapps:ImportDocumentToQApp does not exist.",
+    "findingType": "ERROR",
+    "issueCode": "INVALID_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 0
+          },
+          {
+            "value": "NotAction"
+          },
+          {
+            "index": 91
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 2571,
+            "offset": 2571
+          },
+          "end": {
+            "line": 1,
+            "column": 2599,
+            "offset": 2599
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "The action qapps:ImportDocumentToQAppSession does not exist.",
+    "findingType": "ERROR",
+    "issueCode": "INVALID_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 0
+          },
+          {
+            "value": "NotAction"
+          },
+          {
+            "index": 92
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 2601,
+            "offset": 2601
+          },
+          "end": {
+            "line": 1,
+            "column": 2636,
+            "offset": 2636
+          }
+        }
+      }
+    ]
+  }
 ]

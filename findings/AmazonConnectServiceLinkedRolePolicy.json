@@ -1,97 +1,97 @@
 [
-    {
-        "findingDetails": "Using the effect Allow with the condition key aws:ResourceTag/AmazonConnectEnabled and actions for services with the following prefixes does not affect the policy: wisdom. The actions for the listed service are not allowed by this statement. We recommend that you move these actions to a different statement without this condition key.",
-        "findingType": "SUGGESTION",
-        "issueCode": "ALLOW_WITH_UNSUPPORTED_TAG_CONDITION_KEY_FOR_SERVICE",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-allow-with-unsupported-tag-condition-key-for-service",
-        "locations": [
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 13
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 8
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 3652,
-                        "line": 1,
-                        "offset": 3652
-                    },
-                    "start": {
-                        "column": 3614,
-                        "line": 1,
-                        "offset": 3614
-                    }
-                }
-            },
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 13
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 67
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 5384,
-                        "line": 1,
-                        "offset": 5384
-                    },
-                    "start": {
-                        "column": 5356,
-                        "line": 1,
-                        "offset": 5356
-                    }
-                }
-            },
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 13
-                    },
-                    {
-                        "value": "Condition"
-                    },
-                    {
-                        "value": "StringEquals"
-                    },
-                    {
-                        "key": "aws:ResourceTag/AmazonConnectEnabled"
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 5562,
-                        "line": 1,
-                        "offset": 5562
-                    },
-                    "start": {
-                        "column": 5524,
-                        "line": 1,
-                        "offset": 5524
-                    }
-                }
-            }
-        ]
-    }
+  {
+    "findingDetails": "Using the effect Allow with the condition key aws:ResourceTag/AmazonConnectEnabled and actions for services with the following prefixes does not affect the policy: wisdom. The actions for the listed service are not allowed by this statement. We recommend that you move these actions to a different statement without this condition key.",
+    "findingType": "SUGGESTION",
+    "issueCode": "ALLOW_WITH_UNSUPPORTED_TAG_CONDITION_KEY_FOR_SERVICE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-allow-with-unsupported-tag-condition-key-for-service",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 13
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 8
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 3614,
+            "offset": 3614
+          },
+          "end": {
+            "line": 1,
+            "column": 3652,
+            "offset": 3652
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 13
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 67
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 5356,
+            "offset": 5356
+          },
+          "end": {
+            "line": 1,
+            "column": 5384,
+            "offset": 5384
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 13
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringEquals"
+          },
+          {
+            "key": "aws:ResourceTag/AmazonConnectEnabled"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 5524,
+            "offset": 5524
+          },
+          "end": {
+            "line": 1,
+            "column": 5562,
+            "offset": 5562
+          }
+        }
+      }
+    ]
+  }
 ]

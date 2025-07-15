@@ -1,66 +1,66 @@
 [
-    {
-        "findingDetails": "The 2 action(s) are redundant because they provide similar permissions. Update the policy to remove the redundant action such as: ecs:DescribeClusters.",
-        "findingType": "SUGGESTION",
-        "issueCode": "REDUNDANT_ACTION",
-        "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-action",
-        "locations": [
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 0
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 9
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 307,
-                        "line": 1,
-                        "offset": 307
-                    },
-                    "start": {
-                        "column": 285,
-                        "line": 1,
-                        "offset": 285
-                    }
-                }
-            },
-            {
-                "path": [
-                    {
-                        "value": "Statement"
-                    },
-                    {
-                        "index": 0
-                    },
-                    {
-                        "value": "Action"
-                    },
-                    {
-                        "index": 10
-                    }
-                ],
-                "span": {
-                    "end": {
-                        "column": 324,
-                        "line": 1,
-                        "offset": 324
-                    },
-                    "start": {
-                        "column": 309,
-                        "line": 1,
-                        "offset": 309
-                    }
-                }
-            }
-        ]
-    }
+  {
+    "findingDetails": "The 2 action(s) are redundant because they provide similar permissions. Update the policy to remove the redundant action such as: ecs:DescribeClusters.",
+    "findingType": "SUGGESTION",
+    "issueCode": "REDUNDANT_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 0
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 9
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 285,
+            "offset": 285
+          },
+          "end": {
+            "line": 1,
+            "column": 307,
+            "offset": 307
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 0
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 10
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 309,
+            "offset": 309
+          },
+          "end": {
+            "line": 1,
+            "column": 324,
+            "offset": 324
+          }
+        }
+      }
+    ]
+  }
 ]
