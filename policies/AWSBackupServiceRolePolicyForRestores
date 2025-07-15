@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-05-22T00:37:06Z", 
-        "VersionId": "v23", 
+        "CreateDate": "2025-07-14T22:22:07Z", 
+        "VersionId": "v24", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -149,7 +149,11 @@
                         "dsql:TagResource", 
                         "dsql:CreateCluster", 
                         "dsql:PutMultiRegionProperties", 
-                        "dsql:PutWitnessRegion"
+                        "dsql:PutWitnessRegion", 
+                        "dsql:UpdateCluster", 
+                        "dsql:AddPeerCluster", 
+                        "dsql:RemovePeerCluster", 
+                        "dsql:GetCluster"
                     ], 
                     "Resource": [
                         "*"
