@@ -1,0 +1,107 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-07-16T14:52:07Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "rolesanywhere:ListTrustAnchors", 
+                        "rolesanywhere:GetTrustAnchor", 
+                        "rolesanywhere:CreateTrustAnchor", 
+                        "rolesanywhere:DeleteTrustAnchor", 
+                        "rolesanywhere:DisableTrustAnchor", 
+                        "rolesanywhere:EnableTrustAnchor", 
+                        "rolesanywhere:UpdateTrustAnchor"
+                    ], 
+                    "Resource": [
+                        "arn:aws:rolesanywhere:*:*:trust-anchor/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "TrustAnchors"
+                }, 
+                {
+                    "Action": [
+                        "rolesanywhere:ListProfiles", 
+                        "rolesanywhere:GetProfile", 
+                        "rolesanywhere:CreateProfile", 
+                        "rolesanywhere:DeleteProfile", 
+                        "rolesanywhere:DisableProfile", 
+                        "rolesanywhere:EnableProfile", 
+                        "rolesanywhere:UpdateProfile"
+                    ], 
+                    "Resource": [
+                        "arn:aws:rolesanywhere:*:*:profile/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "Profiles"
+                }, 
+                {
+                    "Action": [
+                        "rolesanywhere:ListCrls", 
+                        "rolesanywhere:GetCrl", 
+                        "rolesanywhere:DeleteCrl", 
+                        "rolesanywhere:DisableCrl", 
+                        "rolesanywhere:EnableCrl", 
+                        "rolesanywhere:ImportCrl", 
+                        "rolesanywhere:UpdateCrl"
+                    ], 
+                    "Resource": [
+                        "arn:aws:rolesanywhere:*:*:crl/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "CRLs"
+                }, 
+                {
+                    "Action": [
+                        "rolesanywhere:ListSubjects", 
+                        "rolesanywhere:GetSubject"
+                    ], 
+                    "Resource": [
+                        "arn:aws:rolesanywhere:*:*:subject/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "Subjects"
+                }, 
+                {
+                    "Action": [
+                        "rolesanywhere:PutAttributeMapping", 
+                        "rolesanywhere:DeleteAttributeMapping", 
+                        "rolesanywhere:ResetNotificationSettings", 
+                        "rolesanywhere:ListTagsForResource", 
+                        "rolesanywhere:TagResource", 
+                        "rolesanywhere:UntagResource", 
+                        "rolesanywhere:PutNotificationSettings"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "OtherRolesAnywherePermissions"
+                }, 
+                {
+                    "Action": "iam:PassRole", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:PassedToService": "rolesanywhere.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "PassRoleToRolesAnywhere"
+                }, 
+                {
+                    "Action": "iam:CreateServiceLinkedRole", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:AWSServiceName": "rolesanywhere.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "CreateRolesAnywhereServiceLinkedRole"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
