@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-07-01T00:22:06Z", 
-        "VersionId": "v26", 
+        "CreateDate": "2025-07-16T19:52:07Z", 
+        "VersionId": "v27", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -447,6 +447,18 @@
                         }
                     }, 
                     "Sid": "AllowMobileTargetingOperationsForConnect"
+                }, 
+                {
+                    "Action": [
+                        "polly:ListLexicons", 
+                        "polly:DescribeVoices", 
+                        "polly:SynthesizeSpeech"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowPollyActions"
                 }
             ]
         }, 
