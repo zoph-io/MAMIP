@@ -1,0 +1,66 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-07-16T15:07:07Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "rolesanywhere:ListProfiles", 
+                        "rolesanywhere:GetProfile"
+                    ], 
+                    "Resource": [
+                        "arn:aws:rolesanywhere:*:*:profile/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "Profiles"
+                }, 
+                {
+                    "Action": [
+                        "rolesanywhere:ListCrls", 
+                        "rolesanywhere:GetCrl"
+                    ], 
+                    "Resource": [
+                        "arn:aws:rolesanywhere:*:*:crl/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "CRLs"
+                }, 
+                {
+                    "Action": [
+                        "rolesanywhere:ListSubjects", 
+                        "rolesanywhere:GetSubject"
+                    ], 
+                    "Resource": [
+                        "arn:aws:rolesanywhere:*:*:subject/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "Subjects"
+                }, 
+                {
+                    "Action": [
+                        "rolesanywhere:ListTrustAnchors", 
+                        "rolesanywhere:GetTrustAnchor"
+                    ], 
+                    "Resource": [
+                        "arn:aws:rolesanywhere:*:*:trust-anchor/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "TrustAnchors"
+                }, 
+                {
+                    "Action": [
+                        "rolesanywhere:ListTagsForResource"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "Tags"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
