@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-11-16T00:08:07Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-07-16T17:37:07Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -35,6 +35,8 @@
                         "ssm:StartAutomationExecution"
                     ], 
                     "Resource": [
+                        "arn:aws:ssm:*:*:document/AWS-*UnmanagedEC2*", 
+                        "arn:aws:ssm:*:*:automation-execution/*", 
                         "arn:aws:ssm:*:*:automation-definition/AWS-*UnmanagedEC2*:*"
                     ], 
                     "Effect": "Allow", 
