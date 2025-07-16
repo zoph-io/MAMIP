@@ -1,0 +1,28 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-07-16T13:37:07Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "bedrock:InvokeModel", 
+                        "bedrock:InvokeModelWithResponseStream"
+                    ], 
+                    "Resource": [
+                        "arn:aws:bedrock:*::foundation-model/*", 
+                        "arn:aws:bedrock:*:*:inference-profile/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
