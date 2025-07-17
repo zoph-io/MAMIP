@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-07-05T18:02:53Z", 
-        "VersionId": "v2", 
+        "CreateDate": "2025-07-17T18:07:07Z", 
+        "VersionId": "v3", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -37,7 +37,8 @@
                 {
                     "Action": [
                         "ce:ListCostAllocationTags", 
-                        "ce:GetCostAndUsage"
+                        "ce:GetCostAndUsage", 
+                        "ce:GetDimensionValues"
                     ], 
                     "Resource": [
                         "*"
