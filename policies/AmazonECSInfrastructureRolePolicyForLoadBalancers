@@ -1,0 +1,45 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-07-17T16:37:07Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "elasticloadbalancing:DescribeListeners", 
+                        "elasticloadbalancing:DescribeRules"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ELBReadOperations"
+                }, 
+                {
+                    "Action": "elasticloadbalancing:ModifyListener", 
+                    "Resource": [
+                        "arn:aws:elasticloadbalancing:*:*:listener/app/*/*/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "ALBModifyListeners"
+                }, 
+                {
+                    "Action": "elasticloadbalancing:ModifyListener", 
+                    "Resource": [
+                        "arn:aws:elasticloadbalancing:*:*:listener/net/*/*/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "NLBModifyListeners"
+                }, 
+                {
+                    "Action": "elasticloadbalancing:ModifyRule", 
+                    "Resource": [
+                        "arn:aws:elasticloadbalancing:*:*:listener-rule/app/*/*/*/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "ALBModifyRules"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
