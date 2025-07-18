@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-05-14T17:07:07Z", 
-        "VersionId": "v2", 
+        "CreateDate": "2025-07-18T00:37:06Z", 
+        "VersionId": "v3", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -150,6 +150,36 @@
                 }, 
                 {
                     "Action": [
+                        "ec2:DeleteVolume"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:volume/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/CreatedBy": "EC2 Fast Launch"
+                        }
+                    }, 
+                    "Sid": "AllowDeleteVolumes"
+                }, 
+                {
+                    "Action": [
+                        "ec2:DeleteNetworkInterface"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:network-interface/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/CreatedBy": "EC2 Fast Launch"
+                        }
+                    }, 
+                    "Sid": "AllowDeleteNetworkInterfaces"
+                }, 
+                {
+                    "Action": [
                         "ec2:DescribeImages", 
                         "ec2:DescribeSnapshots", 
                         "ec2:DescribeSubnets", 
@@ -159,6 +189,8 @@
                         "ec2:DescribeInstanceTypeOfferings", 
                         "ec2:DescribeLaunchTemplateVersions", 
                         "ec2:DescribeLaunchTemplates", 
+                        "ec2:DescribeVolumes", 
+                        "ec2:DescribeNetworkInterfaces", 
                         "cloudformation:DescribeStacks"
                     ], 
                     "Resource": "*", 
@@ -226,6 +258,6 @@
                 }
             ]
         }, 
-        "IsDefaultVersion": false
+        "IsDefaultVersion": true
     }
 }
