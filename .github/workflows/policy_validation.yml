@@ -1,13 +1,13 @@
 on:
   push:
     tags:
-      - '202*'
+      - "202*"
   workflow_dispatch:
 
 name: AAA - Policy Validation
 
 env:
-  project: 'mamip'
+  project: "mamip"
 
 jobs:
   build:
@@ -29,18 +29,18 @@ jobs:
           role-to-assume: ${{ secrets.ROLE_TO_ASSUME }}
           role-duration-seconds: 1200
           role-session-name: GH-Actions-${{ env.project }}-policy-validation
-      
+
       - name: Who Am I?
         run: aws sts get-caller-identity
-      
+
       - name: Python version
         run: python3 --version
-      
+
       - name: pwd
         run: |
           pwd
           ls -l
-      
+
       - name: Install python requirements
         run: python3 -m pip install -r ./automation/requirements.txt
 
@@ -59,6 +59,8 @@ jobs:
           git add policies-list.json
           git commit -m "AccessAnalyzer - Policy Validation" || :
 
+      - name: Pull latest changes
+        run: git pull --rebase origin master
       - name: Push findings
         uses: ad-m/github-push-action@master
         with:
