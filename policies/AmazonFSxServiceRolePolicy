@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-01-10T20:53:47Z", 
-        "VersionId": "v7", 
+        "CreateDate": "2025-07-22T18:07:07Z", 
+        "VersionId": "v8", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -63,8 +63,10 @@
                 }, 
                 {
                     "Action": [
+                        "ec2:AssignIpv6Addresses", 
                         "ec2:AssignPrivateIpAddresses", 
                         "ec2:ModifyNetworkInterfaceAttribute", 
+                        "ec2:UnassignIpv6Addresses", 
                         "ec2:UnassignPrivateIpAddresses"
                     ], 
                     "Resource": [
