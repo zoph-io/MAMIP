@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-07-02T18:37:08Z", 
-        "VersionId": "v52", 
+        "CreateDate": "2025-07-21T21:37:08Z", 
+        "VersionId": "v53", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -607,12 +607,14 @@
                         "s3:GetMultiRegionAccessPointPolicy", 
                         "s3:GetMultiRegionAccessPointPolicyStatus", 
                         "s3:GetObjectAcl", 
+                        "s3:GetObjectTagging", 
                         "s3:GetObjectVersionAcl", 
                         "s3:GetReplicationConfiguration", 
                         "s3:GetStorageLensGroup", 
                         "s3:GetStorageLensConfiguration", 
                         "s3:ListAccessPoints", 
                         "s3:ListAllMyBuckets", 
+                        "s3:ListBucket", 
                         "s3:ListMultiRegionAccessPoints", 
                         "s3:ListAccessPointsForObjectLambda", 
                         "s3:ListStorageLensGroups", 
@@ -724,7 +726,6 @@
                         "ssm:ListTagsForResource", 
                         "sso:DescribeAccountAssignmentCreationStatus", 
                         "sso:DescribePermissionSet", 
-                        "sso:DescribePermissionsPolicies", 
                         "sso:DescribeAccountAssignmentDeletionStatus", 
                         "sso:DescribeApplication", 
                         "sso:DescribeApplicationAssignment", 
