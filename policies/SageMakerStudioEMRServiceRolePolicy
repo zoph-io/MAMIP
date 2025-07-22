@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-02-27T00:22:06Z", 
-        "VersionId": "v2", 
+        "CreateDate": "2025-07-22T16:52:07Z", 
+        "VersionId": "v3", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -46,8 +46,6 @@
                 {
                     "Action": [
                         "kms:CreateGrant", 
-                        "kms:ReEncryptFrom", 
-                        "kms:ReEncryptTo", 
                         "kms:Decrypt", 
                         "kms:Encrypt", 
                         "kms:GenerateDataKeyWithoutPlaintext"
@@ -82,8 +80,6 @@
                 }, 
                 {
                     "Action": [
-                        "kms:ListGrants", 
-                        "kms:RevokeGrant", 
                         "kms:DescribeKey"
                     ], 
                     "Resource": "arn:aws:kms:*:*:key/${aws:PrincipalTag/KmsKeyId}", 
@@ -91,28 +87,12 @@
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
-                        }, 
-                        "StringLike": {
-                            "kms:ViaService": [
-                                "ec2.*.amazonaws.com"
-                            ]
                         }
                     }, 
-                    "Sid": "AllowEMRForKMSManagement"
-                }, 
-                {
-                    "Action": "kms:ListAliases", 
-                    "Resource": "arn:aws:kms:*:*:key/${aws:PrincipalTag/KmsKeyId}", 
-                    "Effect": "Allow", 
-                    "Condition": {
-                        "StringEquals": {
-                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
-                        }
-                    }, 
-                    "Sid": "AllowEMRToListKmsAliases"
+                    "Sid": "AllowDescribeKeyForLogPusherCMK"
                 }
             ]
         }, 
-        "IsDefaultVersion": false
+        "IsDefaultVersion": true
     }
 }
