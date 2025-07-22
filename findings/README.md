@@ -1,6 +1,6 @@
 # AWS Access Analyzer - Findings - 2025-07-22
 
-- **Policies analyzed:** `1371`
+- **Policies analyzed:** `1370`
 - **Errors:** `20`
   - [`AWSAccountActivityAccess`](./AWSAccountActivityAccess.json)
   - [`AWSCodeStarFullAccess`](./AWSCodeStarFullAccess.json)
@@ -13,10 +13,9 @@
   - [`MemoryDBServiceRolePolicy`](./MemoryDBServiceRolePolicy.json)
   - [`RDSCloudHsmAuthorizationRole`](./RDSCloudHsmAuthorizationRole.json)
   - [`ResourceGroupsTaggingAPITagUntagSupportedResources`](./ResourceGroupsTaggingAPITagUntagSupportedResources.json)
-- **Security Warnings:** `25`
+- **Security Warnings:** `24`
   - [`AWSCodePipeline_FullAccess`](./AWSCodePipeline_FullAccess.json)
   - [`AWSCodePipeline_ReadOnlyAccess`](./AWSCodePipeline_ReadOnlyAccess.json)
-  - [`AWSElasticBeanstalkService`](./AWSElasticBeanstalkService.json)
   - [`AWSProtonCodeBuildProvisioningServiceRolePolicy`](./AWSProtonCodeBuildProvisioningServiceRolePolicy.json)
   - [`AWSServiceRoleForAmazonEKSNodegroup`](./AWSServiceRoleForAmazonEKSNodegroup.json)
   - [`AWSServiceRoleForSMS`](./AWSServiceRoleForSMS.json)
@@ -30,14 +29,13 @@
   - [`S3UnlockBucketPolicy`](./S3UnlockBucketPolicy.json)
   - [`SQSUnlockQueuePolicy`](./SQSUnlockQueuePolicy.json)
   - [`SecurityLakeResourceManagementServiceRolePolicy`](./SecurityLakeResourceManagementServiceRolePolicy.json)
-- **Suggestions:** `45`
+- **Suggestions:** `44`
   - [`AIOpsAssistantPolicy`](./AIOpsAssistantPolicy.json)
   - [`AWSBatchFullAccess`](./AWSBatchFullAccess.json)
   - [`AWSDeepLensLambdaFunctionAccessPolicy`](./AWSDeepLensLambdaFunctionAccessPolicy.json)
   - [`AWSDeepRacerFullAccess`](./AWSDeepRacerFullAccess.json)
   - [`AWSElasticBeanstalkCustomPlatformforEC2Role`](./AWSElasticBeanstalkCustomPlatformforEC2Role.json)
   - [`AWSElasticBeanstalkRoleCore`](./AWSElasticBeanstalkRoleCore.json)
-  - [`AWSElasticBeanstalkService`](./AWSElasticBeanstalkService.json)
   - [`AWSElasticBeanstalkWebTier`](./AWSElasticBeanstalkWebTier.json)
   - [`AWSElasticBeanstalkWorkerTier`](./AWSElasticBeanstalkWorkerTier.json)
   - [`AWSGlueConsoleFullAccess`](./AWSGlueConsoleFullAccess.json)
@@ -83,8 +81,9 @@
   - [`SageMakerStudioProjectRoleMachineLearningPolicy`](./SageMakerStudioProjectRoleMachineLearningPolicy.json)
   - [`SecurityAudit`](./SecurityAudit.json)
   - [`ViewOnlyAccess`](./ViewOnlyAccess.json)
-- **Failed validations:** `8`
+- **Failed validations:** `9`
   - `AWSConfigServiceRolePolicy`
+  - `AWSElasticBeanstalkService`
   - `AWSPartnerLedSupportReadOnlyAccess`
   - `AWSSupportServiceRolePolicy`
   - `AWS_ConfigRole`
