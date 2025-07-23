@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-07-14T22:07:08Z", 
-        "VersionId": "v9", 
+        "CreateDate": "2025-07-22T20:07:08Z", 
+        "VersionId": "v10", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -1074,19 +1074,29 @@
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Condition": {
-                        "StringEquals": {
-                            "aws:ResourceAccount": "${aws:PrincipalAccount}", 
+                        "StringEqualsIfExists": {
                             "ram:RequestedResourceType": [
                                 "s3:AccessGrants"
                             ]
                         }, 
-                        "ArnEquals": {
-                            "ram:ResourceArn": [
-                                "arn:aws:s3:*:*:access-grants/default"
-                            ]
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
                     }, 
                     "Sid": "CrossAccountS3AGResourceSharingPermissions"
+                }, 
+                {
+                    "Action": [
+                        "s3:PutAccessGrantsInstanceResourcePolicy"
+                    ], 
+                    "Resource": "arn:aws:s3:*:*:access-grants/default", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "CrossAccountS3AGResourceSharingPolicyPermissions"
                 }, 
                 {
                     "Action": [
@@ -1118,6 +1128,6 @@
                 }
             ]
         }, 
-        "IsDefaultVersion": false
+        "IsDefaultVersion": true
     }
 }
