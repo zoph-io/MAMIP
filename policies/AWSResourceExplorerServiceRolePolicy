@@ -1,10 +1,22 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-06-23T10:07:07Z", 
-        "VersionId": "v14", 
+        "CreateDate": "2025-07-23T15:22:07Z", 
+        "VersionId": "v15", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
+                {
+                    "Action": [
+                        "resource-explorer-2:UpdateIndexType", 
+                        "resource-explorer-2:CreateIndex", 
+                        "resource-explorer-2:CreateView", 
+                        "resource-explorer-2:AssociateDefaultView", 
+                        "resource-explorer-2:DeleteIndex"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ResourceExplorerAccess"
+                }, 
                 {
                     "Action": [
                         "cloudtrail:CreateServiceLinkedChannel", 
