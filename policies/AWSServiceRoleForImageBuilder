@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-12-26T23:52:06Z", 
-        "VersionId": "v20", 
+        "CreateDate": "2025-07-23T16:52:07Z", 
+        "VersionId": "v21", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -437,6 +437,21 @@
                     "Resource": [
                         "arn:aws:events:*:*:rule/ImageBuilder-*"
                     ], 
+                    "Effect": "Allow"
+                }, 
+                {
+                    "Action": [
+                        "ssm:GetParameter", 
+                        "ssm:PutParameter"
+                    ], 
+                    "Resource": "arn:aws:ssm:*:*:parameter/imagebuilder/*", 
+                    "Effect": "Allow"
+                }, 
+                {
+                    "Action": [
+                        "ssm:GetParameter"
+                    ], 
+                    "Resource": "arn:aws:ssm:*::parameter/aws/service/*", 
                     "Effect": "Allow"
                 }
             ]
