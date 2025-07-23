@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-06-06T19:07:07Z", 
-        "VersionId": "v4", 
+        "CreateDate": "2025-07-23T19:22:06Z", 
+        "VersionId": "v5", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -20,6 +20,7 @@
                         "kms:DescribeKey", 
                         "kms:ListAliases", 
                         "iam:ListRoles", 
+                        "iam:ListPolicies", 
                         "sso:DescribeRegisteredRegions", 
                         "s3:ListAllMyBuckets", 
                         "redshift:DescribeClusters", 
@@ -37,7 +38,8 @@
                         "bedrock:ListFoundationModels", 
                         "bedrock:ListTagsForResource", 
                         "aoss:ListSecurityPolicies", 
-                        "quicksight:DescribeAccountSubscription"
+                        "quicksight:DescribeAccountSubscription", 
+                        "cloudformation:ValidateTemplate"
                     ], 
                     "Resource": [
                         "*"
@@ -48,11 +50,29 @@
                 {
                     "Action": [
                         "s3:ListBucket", 
-                        "s3:GetBucketLocation"
+                        "s3:GetBucketLocation", 
+                        "s3:ListBucketVersions"
                     ], 
                     "Resource": "arn:aws:s3:::*", 
                     "Effect": "Allow", 
                     "Sid": "BucketReadOnlyStatement"
+                }, 
+                {
+                    "Action": "s3:GetObject", 
+                    "Resource": [
+                        "arn:aws:s3:::default-env-blueprint-*/*", 
+                        "arn:aws:s3:*:*:accesspoint/env-blueprint-accesspoint*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ArnLike": {
+                            "s3:DataAccessPointArn": "arn:aws:s3:*:*:accesspoint/env-blueprint-accesspoint"
+                        }, 
+                        "StringNotEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "ReadManagedBlueprintTemplatesStatement"
                 }, 
                 {
                     "Action": [
@@ -81,6 +101,22 @@
                         }
                     }, 
                     "Sid": "ConfigureBucketStatement"
+                }, 
+                {
+                    "Action": [
+                        "s3:PutObject", 
+                        "s3:GetObject"
+                    ], 
+                    "Resource": [
+                        "arn:aws:s3:::amazon-sagemaker*/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "PutObjectStatement"
                 }, 
                 {
                     "Action": [
@@ -171,8 +207,8 @@
                     "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
-                            "aws:ResourceTag/AmazonDataZoneDomain": "dzd_*", 
-                            "aws:RequestTag/AmazonDataZoneDomain": "dzd_*"
+                            "aws:ResourceTag/AmazonDataZoneDomain": "dzd*", 
+                            "aws:RequestTag/AmazonDataZoneDomain": "dzd*"
                         }, 
                         "ForAllValues:StringEquals": {
                             "aws:TagKeys": [
@@ -191,8 +227,8 @@
                     "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
-                            "aws:ResourceTag/AmazonDataZoneDomain": "dzd_*", 
-                            "aws:RequestTag/AmazonDataZoneDomain": "dzd_*"
+                            "aws:ResourceTag/AmazonDataZoneDomain": "dzd*", 
+                            "aws:RequestTag/AmazonDataZoneDomain": "dzd*"
                         }, 
                         "ForAllValues:StringEquals": {
                             "aws:TagKeys": [
@@ -210,7 +246,7 @@
                     "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
-                            "aws:RequestTag/AmazonDataZoneDomain": "dzd_*"
+                            "aws:RequestTag/AmazonDataZoneDomain": "dzd*"
                         }
                     }, 
                     "Sid": "CreateSecretStatement"
