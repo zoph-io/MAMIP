@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-02-11T22:07:07Z", 
-        "VersionId": "v7", 
+        "CreateDate": "2025-07-24T12:22:07Z", 
+        "VersionId": "v8", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -158,6 +158,17 @@
                         "logs:*", 
                         "rds:Describe*", 
                         "rds:ListTagsForResource", 
+                        "rolesanywhere:GetCrl", 
+                        "rolesanywhere:GetProfile", 
+                        "rolesanywhere:GetSubject", 
+                        "rolesanywhere:GetTrustAnchor", 
+                        "rolesanywhere:ListCrls", 
+                        "rolesanywhere:ListProfiles", 
+                        "rolesanywhere:ListSubjects", 
+                        "rolesanywhere:ListTagsForResource", 
+                        "rolesanywhere:ListTrustAnchors", 
+                        "rolesanywhere:PutNotificationSettings", 
+                        "rolesanywhere:ResetNotificationSettings", 
                         "route53:*", 
                         "route53domains:*", 
                         "ses:*", 
