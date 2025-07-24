@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-07-21T21:37:08Z", 
-        "VersionId": "v53", 
+        "CreateDate": "2025-07-24T15:07:07Z", 
+        "VersionId": "v54", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -574,6 +574,15 @@
                         "resource-groups:ListGroupResources", 
                         "robomaker:Describe*", 
                         "robomaker:List*", 
+                        "rolesanywhere:GetCrl", 
+                        "rolesanywhere:GetProfile", 
+                        "rolesanywhere:GetSubject", 
+                        "rolesanywhere:GetTrustAnchor", 
+                        "rolesanywhere:ListCrls", 
+                        "rolesanywhere:ListProfiles", 
+                        "rolesanywhere:ListSubjects", 
+                        "rolesanywhere:ListTagsForResource", 
+                        "rolesanywhere:ListTrustAnchors", 
                         "route53:Get*", 
                         "route53:List*", 
                         "route53domains:GetDomainDetail", 
