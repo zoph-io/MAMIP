@@ -1,6 +1,6 @@
-# AWS Access Analyzer - Findings - 2025-07-28
+# AWS Access Analyzer - Findings - 2025-07-29
 
-- **Policies analyzed:** `1371`
+- **Policies analyzed:** `1369`
 - **Errors:** `20`
   - [`AWSAccountActivityAccess`](./AWSAccountActivityAccess.json)
   - [`AWSCodeStarFullAccess`](./AWSCodeStarFullAccess.json)
@@ -83,8 +83,9 @@
   - [`SageMakerStudioProjectRoleMachineLearningPolicy`](./SageMakerStudioProjectRoleMachineLearningPolicy.json)
   - [`SecurityAudit`](./SecurityAudit.json)
   - [`ViewOnlyAccess`](./ViewOnlyAccess.json)
-- **Failed validations:** `8`
+- **Failed validations:** `10`
   - `AWSConfigServiceRolePolicy`
+  - `AWSIoTFleetwiseServiceRolePolicy`
   - `AWSPartnerLedSupportReadOnlyAccess`
   - `AWSSupportServiceRolePolicy`
   - `AWS_ConfigRole`
@@ -92,6 +93,7 @@
   - `SageMakerStudioProjectProvisioningRolePolicy`
   - `SageMakerStudioProjectUserRolePermissionsBoundary`
   - `SageMakerStudioProjectUserRolePolicy`
+  - `WAFLoggingServiceRolePolicy`
 - **Deprecated policies:** `64`
   - [`AWSB9InternalServicePolicy`](../policies/AWSB9InternalServicePolicy) (deprecated: Unknown)
   - [`AWSBackupAdminPolicy`](../policies/AWSBackupAdminPolicy) (deprecated: Unknown)
