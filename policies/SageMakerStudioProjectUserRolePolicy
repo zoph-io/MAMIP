@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-07-11T17:52:08Z", 
-        "VersionId": "v15", 
+        "CreateDate": "2025-07-28T22:22:06Z", 
+        "VersionId": "v16", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -440,7 +440,10 @@
                         "kms:Encrypt", 
                         "kms:GenerateDataKey"
                     ], 
-                    "Resource": "arn:aws:kms:*:*:key/${aws:PrincipalTag/KmsKeyId}", 
+                    "Resource": [
+                        "arn:aws:kms:*:*:key/${aws:PrincipalTag/DefaultGlueCatalogKmsKeyId}", 
+                        "arn:aws:kms:*:*:key/${aws:PrincipalTag/KmsKeyId}"
+                    ], 
                     "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
@@ -860,8 +863,10 @@
                         "logs:FilterLogEvents"
                     ], 
                     "Resource": [
-                        "arn:aws:logs:*:*:log-group:${aws:PrincipalTag/LogGroupName}/*", 
-                        "arn:aws:logs:*:*:log-group:${aws:PrincipalTag/LogGroupName}/*:log-stream:*"
+                        "arn:aws:logs:*:*:log-group:${aws:PrincipalTag/LogGroupName}/output", 
+                        "arn:aws:logs:*:*:log-group:${aws:PrincipalTag/LogGroupName}/error", 
+                        "arn:aws:logs:*:*:log-group:${aws:PrincipalTag/LogGroupName}/output:log-stream:*", 
+                        "arn:aws:logs:*:*:log-group:${aws:PrincipalTag/LogGroupName}/error:log-stream:*"
                     ], 
                     "Effect": "Allow", 
                     "Sid": "GlueJobLogGroupPermissions"
@@ -1262,6 +1267,22 @@
                         }
                     }, 
                     "Sid": "SetContextForTrustedIdentityPropagation"
+                }, 
+                {
+                    "Action": "sts:SetContext", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "Null": {
+                            "sts:RequestContextProviders": "false"
+                        }, 
+                        "ForAllValues:ArnEquals": {
+                            "sts:RequestContextProviders": [
+                                "arn:aws:iam::aws:contextProvider/IdentityCenter"
+                            ]
+                        }
+                    }, 
+                    "Sid": "StsContext"
                 }, 
                 {
                     "Action": [
