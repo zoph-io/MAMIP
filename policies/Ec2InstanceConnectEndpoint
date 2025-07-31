@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2023-01-24T20:19:21Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-07-31T17:49:06Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -27,8 +27,10 @@
                     "Resource": "arn:aws:ec2:*:*:network-interface/*", 
                     "Effect": "Allow", 
                     "Condition": {
-                        "Null": {
-                            "aws:RequestTag/InstanceConnectEndpointId": "false"
+                        "StringLike": {
+                            "aws:RequestTag/InstanceConnectEndpointId": [
+                                "eice-*"
+                            ]
                         }, 
                         "ForAllValues:StringEquals": {
                             "aws:TagKeys": [
@@ -44,8 +46,10 @@
                     "Resource": "arn:aws:ec2:*:*:network-interface/*", 
                     "Effect": "Allow", 
                     "Condition": {
-                        "Null": {
-                            "aws:ResourceTag/InstanceConnectEndpointId": "false"
+                        "StringLike": {
+                            "aws:ResourceTag/InstanceConnectEndpointId": [
+                                "eice-*"
+                            ]
                         }
                     }
                 }, 
@@ -56,8 +60,10 @@
                     "Resource": "arn:aws:ec2:*:*:network-interface/*", 
                     "Effect": "Allow", 
                     "Condition": {
-                        "Null": {
-                            "aws:RequestTag/InstanceConnectEndpointId": "false"
+                        "StringLike": {
+                            "aws:RequestTag/InstanceConnectEndpointId": [
+                                "eice-*"
+                            ]
                         }, 
                         "StringEquals": {
                             "ec2:CreateAction": "CreateNetworkInterface"
@@ -68,6 +74,26 @@
                             ]
                         }
                     }
+                }, 
+                {
+                    "Action": [
+                        "ec2:AssignIpv6Addresses", 
+                        "ec2:UnassignIpv6Addresses"
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:network-interface/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "aws:ResourceTag/InstanceConnectEndpointId": [
+                                "eice-*"
+                            ]
+                        }
+                    }
+                }, 
+                {
+                    "Action": "ec2:ModifyNetworkInterfaceAttribute", 
+                    "Resource": "arn:aws:ec2:*:*:security-group/*", 
+                    "Effect": "Allow"
                 }, 
                 {
                     "Action": [
