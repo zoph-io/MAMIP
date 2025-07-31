@@ -21,5 +21,44 @@
         }
       }
     ]
+  },
+  {
+    "findingDetails": "We recommend replacing the key aws:ResourceTag/FMManaged in the condition block of StringLike with {aws:ResourceTag/FMManaged: false} to ensure better enforcement of the condition.",
+    "findingType": "SUGGESTION",
+    "issueCode": "EQUIVALENT_TO_NULL_FALSE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 13
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringLike"
+          },
+          {
+            "value": "aws:ResourceTag/FMManaged"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 5370,
+            "offset": 5370
+          },
+          "end": {
+            "line": 1,
+            "column": 5373,
+            "offset": 5373
+          }
+        }
+      }
+    ]
   }
 ]

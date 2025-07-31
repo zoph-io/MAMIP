@@ -1,0 +1,80 @@
+[
+  {
+    "findingDetails": "We recommend replacing the key aws:ResourceTag/sagemaker:launch-source in the condition block of StringLike with {aws:ResourceTag/sagemaker:launch-source: false} to ensure better enforcement of the condition.",
+    "findingType": "SUGGESTION",
+    "issueCode": "EQUIVALENT_TO_NULL_FALSE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 0
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringLike"
+          },
+          {
+            "value": "aws:ResourceTag/sagemaker:launch-source"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 257,
+            "offset": 257
+          },
+          "end": {
+            "line": 1,
+            "column": 260,
+            "offset": 260
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "We recommend replacing the key aws:ResourceTag/sagemaker:launch-source in the condition block of StringLike with {aws:ResourceTag/sagemaker:launch-source: false} to ensure better enforcement of the condition.",
+    "findingType": "SUGGESTION",
+    "issueCode": "EQUIVALENT_TO_NULL_FALSE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 12
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringLike"
+          },
+          {
+            "value": "aws:ResourceTag/sagemaker:launch-source"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 3521,
+            "offset": 3521
+          },
+          "end": {
+            "line": 1,
+            "column": 3524,
+            "offset": 3524
+          }
+        }
+      }
+    ]
+  }
+]

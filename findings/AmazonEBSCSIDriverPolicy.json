@@ -1,126 +1,9 @@
 [
   {
-    "findingDetails": "We recommend replacing the key ec2:ResourceTag/eks in the condition block of StringLike with {ec2:ResourceTag/eks: false} to ensure better enforcement of the condition.",
+    "findingDetails": "We recommend replacing the key aws:RequestTag/CSIVolumeName in the condition block of StringLike with {aws:RequestTag/CSIVolumeName: false} to ensure better enforcement of the condition.",
     "findingType": "SUGGESTION",
     "issueCode": "EQUIVALENT_TO_NULL_FALSE",
     "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
-    "locations": [
-      {
-        "path": [
-          {
-            "value": "Statement"
-          },
-          {
-            "index": 0
-          },
-          {
-            "value": "Condition"
-          },
-          {
-            "value": "StringLike"
-          },
-          {
-            "value": "ec2:ResourceTag/eks"
-          }
-        ],
-        "span": {
-          "start": {
-            "line": 1,
-            "column": 333,
-            "offset": 333
-          },
-          "end": {
-            "line": 1,
-            "column": 336,
-            "offset": 336
-          }
-        }
-      }
-    ]
-  },
-  {
-    "findingDetails": "We recommend replacing the key ec2:ResourceTag/eks:nodegroup-name in the condition block of StringLike with {ec2:ResourceTag/eks:nodegroup-name: false} to ensure better enforcement of the condition.",
-    "findingType": "SUGGESTION",
-    "issueCode": "EQUIVALENT_TO_NULL_FALSE",
-    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
-    "locations": [
-      {
-        "path": [
-          {
-            "value": "Statement"
-          },
-          {
-            "index": 1
-          },
-          {
-            "value": "Condition"
-          },
-          {
-            "value": "StringLike"
-          },
-          {
-            "value": "ec2:ResourceTag/eks:nodegroup-name"
-          }
-        ],
-        "span": {
-          "start": {
-            "line": 1,
-            "column": 697,
-            "offset": 697
-          },
-          "end": {
-            "line": 1,
-            "column": 700,
-            "offset": 700
-          }
-        }
-      }
-    ]
-  },
-  {
-    "findingDetails": "We recommend replacing the key ec2:ResourceTag/eks:nodegroup-name in the condition block of StringLike with {ec2:ResourceTag/eks:nodegroup-name: false} to ensure better enforcement of the condition.",
-    "findingType": "SUGGESTION",
-    "issueCode": "EQUIVALENT_TO_NULL_FALSE",
-    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
-    "locations": [
-      {
-        "path": [
-          {
-            "value": "Statement"
-          },
-          {
-            "index": 2
-          },
-          {
-            "value": "Condition"
-          },
-          {
-            "value": "StringLike"
-          },
-          {
-            "value": "ec2:ResourceTag/eks:nodegroup-name"
-          }
-        ],
-        "span": {
-          "start": {
-            "line": 1,
-            "column": 936,
-            "offset": 936
-          },
-          "end": {
-            "line": 1,
-            "column": 939,
-            "offset": 939
-          }
-        }
-      }
-    ]
-  },
-  {
-    "findingDetails": "Using the iam:PassRole action with wildcards (*) in the resource can be overly permissive because it allows iam:PassRole permissions on multiple resources. We recommend that you specify resource ARNs or add the iam:PassedToService condition key to your statement.",
-    "findingType": "SECURITY_WARNING",
-    "issueCode": "PASS_ROLE_WITH_STAR_IN_RESOURCE",
-    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-security-warning-pass-role-with-star-in-resource",
     "locations": [
       {
         "path": [
@@ -131,51 +14,110 @@
             "index": 7
           },
           {
-            "value": "Action"
+            "value": "Condition"
+          },
+          {
+            "value": "StringLike"
+          },
+          {
+            "value": "aws:RequestTag/CSIVolumeName"
           }
         ],
         "span": {
           "start": {
             "line": 1,
-            "column": 2180,
-            "offset": 2180
+            "column": 1331,
+            "offset": 1331
           },
           "end": {
             "line": 1,
-            "column": 2194,
-            "offset": 2194
-          }
-        }
-      },
-      {
-        "path": [
-          {
-            "value": "Statement"
-          },
-          {
-            "index": 7
-          },
-          {
-            "value": "Resource"
-          }
-        ],
-        "span": {
-          "start": {
-            "line": 1,
-            "column": 2208,
-            "offset": 2208
-          },
-          "end": {
-            "line": 1,
-            "column": 2211,
-            "offset": 2211
+            "column": 1334,
+            "offset": 1334
           }
         }
       }
     ]
   },
   {
-    "findingDetails": "We recommend replacing the key ec2:ResourceTag/eks:nodegroup-name in the condition block of StringLike with {ec2:ResourceTag/eks:nodegroup-name: false} to ensure better enforcement of the condition.",
+    "findingDetails": "We recommend replacing the key ec2:ResourceTag/CSIVolumeName in the condition block of StringLike with {ec2:ResourceTag/CSIVolumeName: false} to ensure better enforcement of the condition.",
+    "findingType": "SUGGESTION",
+    "issueCode": "EQUIVALENT_TO_NULL_FALSE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 9
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringLike"
+          },
+          {
+            "value": "ec2:ResourceTag/CSIVolumeName"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 1668,
+            "offset": 1668
+          },
+          "end": {
+            "line": 1,
+            "column": 1671,
+            "offset": 1671
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "We recommend replacing the key ec2:ResourceTag/kubernetes.io/created-for/pvc/name in the condition block of StringLike with {ec2:ResourceTag/kubernetes.io/created-for/pvc/name: false} to ensure better enforcement of the condition.",
+    "findingType": "SUGGESTION",
+    "issueCode": "EQUIVALENT_TO_NULL_FALSE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 10
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringLike"
+          },
+          {
+            "value": "ec2:ResourceTag/kubernetes.io/created-for/pvc/name"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 1851,
+            "offset": 1851
+          },
+          "end": {
+            "line": 1,
+            "column": 1854,
+            "offset": 1854
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "We recommend replacing the key aws:RequestTag/CSIVolumeSnapshotName in the condition block of StringLike with {aws:RequestTag/CSIVolumeSnapshotName: false} to ensure better enforcement of the condition.",
     "findingType": "SUGGESTION",
     "issueCode": "EQUIVALENT_TO_NULL_FALSE",
     "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
@@ -195,19 +137,58 @@
             "value": "StringLike"
           },
           {
-            "value": "ec2:ResourceTag/eks:nodegroup-name"
+            "value": "aws:RequestTag/CSIVolumeSnapshotName"
           }
         ],
         "span": {
           "start": {
             "line": 1,
-            "column": 3503,
-            "offset": 3503
+            "column": 2024,
+            "offset": 2024
           },
           "end": {
             "line": 1,
-            "column": 3506,
-            "offset": 3506
+            "column": 2027,
+            "offset": 2027
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "We recommend replacing the key ec2:ResourceTag/CSIVolumeSnapshotName in the condition block of StringLike with {ec2:ResourceTag/CSIVolumeSnapshotName: false} to ensure better enforcement of the condition.",
+    "findingType": "SUGGESTION",
+    "issueCode": "EQUIVALENT_TO_NULL_FALSE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 13
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringLike"
+          },
+          {
+            "value": "ec2:ResourceTag/CSIVolumeSnapshotName"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 2376,
+            "offset": 2376
+          },
+          "end": {
+            "line": 1,
+            "column": 2379,
+            "offset": 2379
           }
         }
       }

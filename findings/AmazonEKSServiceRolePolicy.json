@@ -1,6 +1,6 @@
 [
   {
-    "findingDetails": "We recommend replacing the key ec2:ResourceTag/eks in the condition block of StringLike with {ec2:ResourceTag/eks: false} to ensure better enforcement of the condition.",
+    "findingDetails": "We recommend replacing the key aws:ResourceTag/eks:eks-cluster-name in the condition block of StringLike with {aws:ResourceTag/eks:eks-cluster-name: false} to ensure better enforcement of the condition.",
     "findingType": "SUGGESTION",
     "issueCode": "EQUIVALENT_TO_NULL_FALSE",
     "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
@@ -11,7 +11,7 @@
             "value": "Statement"
           },
           {
-            "index": 0
+            "index": 13
           },
           {
             "value": "Condition"
@@ -20,26 +20,26 @@
             "value": "StringLike"
           },
           {
-            "value": "ec2:ResourceTag/eks"
+            "value": "aws:ResourceTag/eks:eks-cluster-name"
           }
         ],
         "span": {
           "start": {
             "line": 1,
-            "column": 333,
-            "offset": 333
+            "column": 4617,
+            "offset": 4617
           },
           "end": {
             "line": 1,
-            "column": 336,
-            "offset": 336
+            "column": 4620,
+            "offset": 4620
           }
         }
       }
     ]
   },
   {
-    "findingDetails": "We recommend replacing the key ec2:ResourceTag/eks:nodegroup-name in the condition block of StringLike with {ec2:ResourceTag/eks:nodegroup-name: false} to ensure better enforcement of the condition.",
+    "findingDetails": "We recommend replacing the key aws:ResourceTag/eks:eks-cluster-name in the condition block of StringLike with {aws:ResourceTag/eks:eks-cluster-name: false} to ensure better enforcement of the condition.",
     "findingType": "SUGGESTION",
     "issueCode": "EQUIVALENT_TO_NULL_FALSE",
     "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
@@ -50,7 +50,7 @@
             "value": "Statement"
           },
           {
-            "index": 1
+            "index": 18
           },
           {
             "value": "Condition"
@@ -59,26 +59,26 @@
             "value": "StringLike"
           },
           {
-            "value": "ec2:ResourceTag/eks:nodegroup-name"
+            "value": "aws:ResourceTag/eks:eks-cluster-name"
           }
         ],
         "span": {
           "start": {
             "line": 1,
-            "column": 697,
-            "offset": 697
+            "column": 5481,
+            "offset": 5481
           },
           "end": {
             "line": 1,
-            "column": 700,
-            "offset": 700
+            "column": 5484,
+            "offset": 5484
           }
         }
       }
     ]
   },
   {
-    "findingDetails": "We recommend replacing the key ec2:ResourceTag/eks:nodegroup-name in the condition block of StringLike with {ec2:ResourceTag/eks:nodegroup-name: false} to ensure better enforcement of the condition.",
+    "findingDetails": "We recommend replacing the key aws:ResourceTag/eks:eks-cluster-name in the condition block of StringLike with {aws:ResourceTag/eks:eks-cluster-name: false} to ensure better enforcement of the condition.",
     "findingType": "SUGGESTION",
     "issueCode": "EQUIVALENT_TO_NULL_FALSE",
     "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
@@ -89,7 +89,7 @@
             "value": "Statement"
           },
           {
-            "index": 2
+            "index": 20
           },
           {
             "value": "Condition"
@@ -98,84 +98,26 @@
             "value": "StringLike"
           },
           {
-            "value": "ec2:ResourceTag/eks:nodegroup-name"
+            "value": "aws:ResourceTag/eks:eks-cluster-name"
           }
         ],
         "span": {
           "start": {
             "line": 1,
-            "column": 936,
-            "offset": 936
+            "column": 5818,
+            "offset": 5818
           },
           "end": {
             "line": 1,
-            "column": 939,
-            "offset": 939
+            "column": 5821,
+            "offset": 5821
           }
         }
       }
     ]
   },
   {
-    "findingDetails": "Using the iam:PassRole action with wildcards (*) in the resource can be overly permissive because it allows iam:PassRole permissions on multiple resources. We recommend that you specify resource ARNs or add the iam:PassedToService condition key to your statement.",
-    "findingType": "SECURITY_WARNING",
-    "issueCode": "PASS_ROLE_WITH_STAR_IN_RESOURCE",
-    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-security-warning-pass-role-with-star-in-resource",
-    "locations": [
-      {
-        "path": [
-          {
-            "value": "Statement"
-          },
-          {
-            "index": 7
-          },
-          {
-            "value": "Action"
-          }
-        ],
-        "span": {
-          "start": {
-            "line": 1,
-            "column": 2180,
-            "offset": 2180
-          },
-          "end": {
-            "line": 1,
-            "column": 2194,
-            "offset": 2194
-          }
-        }
-      },
-      {
-        "path": [
-          {
-            "value": "Statement"
-          },
-          {
-            "index": 7
-          },
-          {
-            "value": "Resource"
-          }
-        ],
-        "span": {
-          "start": {
-            "line": 1,
-            "column": 2208,
-            "offset": 2208
-          },
-          "end": {
-            "line": 1,
-            "column": 2211,
-            "offset": 2211
-          }
-        }
-      }
-    ]
-  },
-  {
-    "findingDetails": "We recommend replacing the key ec2:ResourceTag/eks:nodegroup-name in the condition block of StringLike with {ec2:ResourceTag/eks:nodegroup-name: false} to ensure better enforcement of the condition.",
+    "findingDetails": "We recommend replacing the key aws:ResourceTag/eks:eks-cluster-name in the condition block of StringLike with {aws:ResourceTag/eks:eks-cluster-name: false} to ensure better enforcement of the condition.",
     "findingType": "SUGGESTION",
     "issueCode": "EQUIVALENT_TO_NULL_FALSE",
     "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
@@ -186,7 +128,7 @@
             "value": "Statement"
           },
           {
-            "index": 11
+            "index": 21
           },
           {
             "value": "Condition"
@@ -195,19 +137,58 @@
             "value": "StringLike"
           },
           {
-            "value": "ec2:ResourceTag/eks:nodegroup-name"
+            "value": "aws:ResourceTag/eks:eks-cluster-name"
           }
         ],
         "span": {
           "start": {
             "line": 1,
-            "column": 3503,
-            "offset": 3503
+            "column": 5966,
+            "offset": 5966
           },
           "end": {
             "line": 1,
-            "column": 3506,
-            "offset": 3506
+            "column": 5969,
+            "offset": 5969
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "We recommend replacing the key aws:ResourceTag/eks:eks-cluster-name in the condition block of StringLike with {aws:ResourceTag/eks:eks-cluster-name: false} to ensure better enforcement of the condition.",
+    "findingType": "SUGGESTION",
+    "issueCode": "EQUIVALENT_TO_NULL_FALSE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 22
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringLike"
+          },
+          {
+            "value": "aws:ResourceTag/eks:eks-cluster-name"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 6349,
+            "offset": 6349
+          },
+          "end": {
+            "line": 1,
+            "column": 6352,
+            "offset": 6352
           }
         }
       }

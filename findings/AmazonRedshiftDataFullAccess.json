@@ -1,0 +1,80 @@
+[
+  {
+    "findingDetails": "We recommend replacing the key secretsmanager:ResourceTag/RedshiftDataFullAccess in the condition block of StringLike with {secretsmanager:ResourceTag/RedshiftDataFullAccess: false} to ensure better enforcement of the condition.",
+    "findingType": "SUGGESTION",
+    "issueCode": "EQUIVALENT_TO_NULL_FALSE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 1
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringLike"
+          },
+          {
+            "value": "secretsmanager:ResourceTag/RedshiftDataFullAccess"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 645,
+            "offset": 645
+          },
+          "end": {
+            "line": 1,
+            "column": 648,
+            "offset": 648
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "We recommend replacing the key aws:ResourceTag/RedshiftDataFullAccess in the condition block of StringLike with {aws:ResourceTag/RedshiftDataFullAccess: false} to ensure better enforcement of the condition.",
+    "findingType": "SUGGESTION",
+    "issueCode": "EQUIVALENT_TO_NULL_FALSE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 4
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringLike"
+          },
+          {
+            "value": "aws:ResourceTag/RedshiftDataFullAccess"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 1263,
+            "offset": 1263
+          },
+          "end": {
+            "line": 1,
+            "column": 1266,
+            "offset": 1266
+          }
+        }
+      }
+    ]
+  }
+]

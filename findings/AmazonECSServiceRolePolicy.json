@@ -1,0 +1,41 @@
+[
+  {
+    "findingDetails": "We recommend replacing the key aws:RequestTag/AmazonECSManaged in the condition block of StringLike with {aws:RequestTag/AmazonECSManaged: false} to ensure better enforcement of the condition.",
+    "findingType": "SUGGESTION",
+    "issueCode": "EQUIVALENT_TO_NULL_FALSE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 13
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringLike"
+          },
+          {
+            "value": "aws:RequestTag/AmazonECSManaged"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 3457,
+            "offset": 3457
+          },
+          "end": {
+            "line": 1,
+            "column": 3460,
+            "offset": 3460
+          }
+        }
+      }
+    ]
+  }
+]

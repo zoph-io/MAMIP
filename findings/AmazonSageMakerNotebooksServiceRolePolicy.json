@@ -1,0 +1,275 @@
+[
+  {
+    "findingDetails": "We recommend replacing the key aws:RequestTag/ManagedByAmazonSageMakerResource in the condition block of StringLike with {aws:RequestTag/ManagedByAmazonSageMakerResource: false} to ensure better enforcement of the condition.",
+    "findingType": "SUGGESTION",
+    "issueCode": "EQUIVALENT_TO_NULL_FALSE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 2
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringLike"
+          },
+          {
+            "value": "aws:RequestTag/ManagedByAmazonSageMakerResource"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 568,
+            "offset": 568
+          },
+          "end": {
+            "line": 1,
+            "column": 571,
+            "offset": 571
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "We recommend replacing the key aws:ResourceTag/ManagedByAmazonSageMakerResource in the condition block of StringLike with {aws:ResourceTag/ManagedByAmazonSageMakerResource: false} to ensure better enforcement of the condition.",
+    "findingType": "SUGGESTION",
+    "issueCode": "EQUIVALENT_TO_NULL_FALSE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 2
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringLike"
+          },
+          {
+            "value": "aws:ResourceTag/ManagedByAmazonSageMakerResource"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 625,
+            "offset": 625
+          },
+          "end": {
+            "line": 1,
+            "column": 628,
+            "offset": 628
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "We recommend replacing the key aws:ResourceTag/ManagedByAmazonSageMakerResource in the condition block of StringLike with {aws:ResourceTag/ManagedByAmazonSageMakerResource: false} to ensure better enforcement of the condition.",
+    "findingType": "SUGGESTION",
+    "issueCode": "EQUIVALENT_TO_NULL_FALSE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 3
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringLike"
+          },
+          {
+            "value": "aws:ResourceTag/ManagedByAmazonSageMakerResource"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 883,
+            "offset": 883
+          },
+          "end": {
+            "line": 1,
+            "column": 886,
+            "offset": 886
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "We recommend replacing the key aws:RequestTag/ManagedByAmazonSageMakerResource in the condition block of StringLike with {aws:RequestTag/ManagedByAmazonSageMakerResource: false} to ensure better enforcement of the condition.",
+    "findingType": "SUGGESTION",
+    "issueCode": "EQUIVALENT_TO_NULL_FALSE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 4
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringLike"
+          },
+          {
+            "value": "aws:RequestTag/ManagedByAmazonSageMakerResource"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 1094,
+            "offset": 1094
+          },
+          "end": {
+            "line": 1,
+            "column": 1097,
+            "offset": 1097
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "We recommend replacing the key aws:ResourceTag/ManagedByAmazonSageMakerResource in the condition block of StringLike with {aws:ResourceTag/ManagedByAmazonSageMakerResource: false} to ensure better enforcement of the condition.",
+    "findingType": "SUGGESTION",
+    "issueCode": "EQUIVALENT_TO_NULL_FALSE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 5
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringLike"
+          },
+          {
+            "value": "aws:ResourceTag/ManagedByAmazonSageMakerResource"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 1375,
+            "offset": 1375
+          },
+          "end": {
+            "line": 1,
+            "column": 1378,
+            "offset": 1378
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "We recommend replacing the key aws:ResourceTag/ManagedByAmazonSageMakerResource in the condition block of StringLike with {aws:ResourceTag/ManagedByAmazonSageMakerResource: false} to ensure better enforcement of the condition.",
+    "findingType": "SUGGESTION",
+    "issueCode": "EQUIVALENT_TO_NULL_FALSE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 7
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringLike"
+          },
+          {
+            "value": "aws:ResourceTag/ManagedByAmazonSageMakerResource"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 1874,
+            "offset": 1874
+          },
+          "end": {
+            "line": 1,
+            "column": 1877,
+            "offset": 1877
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "We recommend replacing the key ec2:ResourceTag/ManagedByAmazonSageMakerResource in the condition block of StringLike with {ec2:ResourceTag/ManagedByAmazonSageMakerResource: false} to ensure better enforcement of the condition.",
+    "findingType": "SUGGESTION",
+    "issueCode": "EQUIVALENT_TO_NULL_FALSE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 10
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringLike"
+          },
+          {
+            "value": "ec2:ResourceTag/ManagedByAmazonSageMakerResource"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 2787,
+            "offset": 2787
+          },
+          "end": {
+            "line": 1,
+            "column": 2790,
+            "offset": 2790
+          }
+        }
+      }
+    ]
+  }
+]

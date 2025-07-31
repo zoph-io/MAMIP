@@ -1,0 +1,80 @@
+[
+  {
+    "findingDetails": "We recommend replacing the key aws:PrincipalTag/QuickSetupManagerID in the condition block of StringLike with {aws:PrincipalTag/QuickSetupManagerID: false} to ensure better enforcement of the condition.",
+    "findingType": "SUGGESTION",
+    "issueCode": "EQUIVALENT_TO_NULL_FALSE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 2
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringLike"
+          },
+          {
+            "value": "aws:PrincipalTag/QuickSetupManagerID"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 780,
+            "offset": 780
+          },
+          "end": {
+            "line": 1,
+            "column": 783,
+            "offset": 783
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "We recommend replacing the key aws:PrincipalTag/QuickSetupManagerID in the condition block of StringLike with {aws:PrincipalTag/QuickSetupManagerID: false} to ensure better enforcement of the condition.",
+    "findingType": "SUGGESTION",
+    "issueCode": "EQUIVALENT_TO_NULL_FALSE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 4
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringLike"
+          },
+          {
+            "value": "aws:PrincipalTag/QuickSetupManagerID"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 1370,
+            "offset": 1370
+          },
+          "end": {
+            "line": 1,
+            "column": 1373,
+            "offset": 1373
+          }
+        }
+      }
+    ]
+  }
+]

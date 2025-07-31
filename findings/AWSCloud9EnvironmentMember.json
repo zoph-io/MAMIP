@@ -1,0 +1,41 @@
+[
+  {
+    "findingDetails": "We recommend replacing the key ssm:resourceTag/aws:cloud9:environment in the condition block of StringLike with {ssm:resourceTag/aws:cloud9:environment: false} to ensure better enforcement of the condition.",
+    "findingType": "SUGGESTION",
+    "issueCode": "EQUIVALENT_TO_NULL_FALSE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 2
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringLike"
+          },
+          {
+            "value": "ssm:resourceTag/aws:cloud9:environment"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 643,
+            "offset": 643
+          },
+          "end": {
+            "line": 1,
+            "column": 646,
+            "offset": 646
+          }
+        }
+      }
+    ]
+  }
+]

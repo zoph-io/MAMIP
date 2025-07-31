@@ -1,0 +1,119 @@
+[
+  {
+    "findingDetails": "We recommend replacing the key aws:ResourceTag/DocDBElasticFullAccess in the condition block of StringLike with {aws:ResourceTag/DocDBElasticFullAccess: false} to ensure better enforcement of the condition.",
+    "findingType": "SUGGESTION",
+    "issueCode": "EQUIVALENT_TO_NULL_FALSE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 2
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringLike"
+          },
+          {
+            "value": "aws:ResourceTag/DocDBElasticFullAccess"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 1450,
+            "offset": 1450
+          },
+          "end": {
+            "line": 1,
+            "column": 1453,
+            "offset": 1453
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "We recommend replacing the key aws:ResourceTag/DocDBElasticFullAccess in the condition block of StringLike with {aws:ResourceTag/DocDBElasticFullAccess: false} to ensure better enforcement of the condition.",
+    "findingType": "SUGGESTION",
+    "issueCode": "EQUIVALENT_TO_NULL_FALSE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 3
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringLike"
+          },
+          {
+            "value": "aws:ResourceTag/DocDBElasticFullAccess"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 1712,
+            "offset": 1712
+          },
+          "end": {
+            "line": 1,
+            "column": 1715,
+            "offset": 1715
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "We recommend replacing the key secretsmanager:ResourceTag/DocDBElasticFullAccess in the condition block of StringLike with {secretsmanager:ResourceTag/DocDBElasticFullAccess: false} to ensure better enforcement of the condition.",
+    "findingType": "SUGGESTION",
+    "issueCode": "EQUIVALENT_TO_NULL_FALSE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 4
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringLike"
+          },
+          {
+            "value": "secretsmanager:ResourceTag/DocDBElasticFullAccess"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 2085,
+            "offset": 2085
+          },
+          "end": {
+            "line": 1,
+            "column": 2088,
+            "offset": 2088
+          }
+        }
+      }
+    ]
+  }
+]

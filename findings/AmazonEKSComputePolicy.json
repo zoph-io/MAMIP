@@ -1,0 +1,80 @@
+[
+  {
+    "findingDetails": "We recommend replacing the key aws:RequestTag/eks:kubernetes-node-class-name in the condition block of StringLike with {aws:RequestTag/eks:kubernetes-node-class-name: false} to ensure better enforcement of the condition.",
+    "findingType": "SUGGESTION",
+    "issueCode": "EQUIVALENT_TO_NULL_FALSE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 2
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringLike"
+          },
+          {
+            "value": "aws:RequestTag/eks:kubernetes-node-class-name"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 690,
+            "offset": 690
+          },
+          "end": {
+            "line": 1,
+            "column": 693,
+            "offset": 693
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "We recommend replacing the key aws:RequestTag/eks:kubernetes-node-pool-name in the condition block of StringLike with {aws:RequestTag/eks:kubernetes-node-pool-name: false} to ensure better enforcement of the condition.",
+    "findingType": "SUGGESTION",
+    "issueCode": "EQUIVALENT_TO_NULL_FALSE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 2
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringLike"
+          },
+          {
+            "value": "aws:RequestTag/eks:kubernetes-node-pool-name"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 743,
+            "offset": 743
+          },
+          "end": {
+            "line": 1,
+            "column": 746,
+            "offset": 746
+          }
+        }
+      }
+    ]
+  }
+]

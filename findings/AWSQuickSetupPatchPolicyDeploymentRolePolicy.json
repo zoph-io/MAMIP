@@ -1,0 +1,80 @@
+[
+  {
+    "findingDetails": "We recommend replacing the key aws:ResourceTag/QuickSetupID in the condition block of StringLike with {aws:ResourceTag/QuickSetupID: false} to ensure better enforcement of the condition.",
+    "findingType": "SUGGESTION",
+    "issueCode": "EQUIVALENT_TO_NULL_FALSE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 16
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringLike"
+          },
+          {
+            "value": "aws:ResourceTag/QuickSetupID"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 4964,
+            "offset": 4964
+          },
+          "end": {
+            "line": 1,
+            "column": 4967,
+            "offset": 4967
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "We recommend replacing the key aws:ResourceTag/QuickSetupID in the condition block of StringLike with {aws:ResourceTag/QuickSetupID: false} to ensure better enforcement of the condition.",
+    "findingType": "SUGGESTION",
+    "issueCode": "EQUIVALENT_TO_NULL_FALSE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 17
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringLike"
+          },
+          {
+            "value": "aws:ResourceTag/QuickSetupID"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 5181,
+            "offset": 5181
+          },
+          "end": {
+            "line": 1,
+            "column": 5184,
+            "offset": 5184
+          }
+        }
+      }
+    ]
+  }
+]

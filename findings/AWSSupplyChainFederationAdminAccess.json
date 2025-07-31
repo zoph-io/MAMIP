@@ -1,0 +1,41 @@
+[
+  {
+    "findingDetails": "We recommend replacing the key aws:ResourceTag/SCNInstanceId in the condition block of StringLike with {aws:ResourceTag/SCNInstanceId: false} to ensure better enforcement of the condition.",
+    "findingType": "SUGGESTION",
+    "issueCode": "EQUIVALENT_TO_NULL_FALSE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 1
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringLike"
+          },
+          {
+            "value": "aws:ResourceTag/SCNInstanceId"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 924,
+            "offset": 924
+          },
+          "end": {
+            "line": 1,
+            "column": 927,
+            "offset": 927
+          }
+        }
+      }
+    ]
+  }
+]
