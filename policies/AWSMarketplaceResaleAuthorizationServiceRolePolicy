@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-03-05T18:47:54Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-08-01T15:19:07Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -15,7 +15,7 @@
                     "Effect": "Allow", 
                     "Condition": {
                         "ArnLike": {
-                            "ram:ResourceArn": "arn:aws:aws-marketplace:*:*:AWSMarketplace/ResaleAuthorization/*"
+                            "ram:ResourceArn": "arn:aws:aws-marketplace:*:*:*/ResaleAuthorization/*"
                         }, 
                         "StringEquals": {
                             "ram:RequestedResourceType": "aws-marketplace:Entity"
@@ -46,7 +46,8 @@
                 }, 
                 {
                     "Action": [
-                        "ram:AcceptResourceShareInvitation"
+                        "ram:AcceptResourceShareInvitation", 
+                        "ram:DeleteResourceShare"
                     ], 
                     "Resource": [
                         "arn:aws:ram:*:*:*"
@@ -57,7 +58,7 @@
                             "ram:ResourceShareName": "AWSMarketplaceResaleAuthorization"
                         }
                     }, 
-                    "Sid": "AllowResaleAuthorizationShareActionsRAMAccept"
+                    "Sid": "AllowResaleAuthorizationShareActionsRAMAcceptDelete"
                 }, 
                 {
                     "Action": [
@@ -73,9 +74,10 @@
                 {
                     "Action": [
                         "aws-marketplace:PutResourcePolicy", 
-                        "aws-marketplace:GetResourcePolicy"
+                        "aws-marketplace:GetResourcePolicy", 
+                        "aws-marketplace:DeleteResourcePolicy"
                     ], 
-                    "Resource": "arn:aws:aws-marketplace:*:*:AWSMarketplace/ResaleAuthorization/*", 
+                    "Resource": "arn:aws:aws-marketplace:*:*:*/ResaleAuthorization/*", 
                     "Effect": "Allow", 
                     "Condition": {
                         "ForAnyValue:StringEquals": {
@@ -90,7 +92,7 @@
                     "Action": [
                         "aws-marketplace:DescribeEntity"
                     ], 
-                    "Resource": "arn:aws:aws-marketplace:*:*:AWSMarketplace/ResaleAuthorization/*", 
+                    "Resource": "arn:aws:aws-marketplace:*:*:*/ResaleAuthorization/*", 
                     "Effect": "Allow", 
                     "Sid": "AllowResaleAuthorizationShareActionsMarketplaceDescribe"
                 }
