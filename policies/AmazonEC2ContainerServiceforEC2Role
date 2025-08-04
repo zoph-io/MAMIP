@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2023-03-06T22:19:04Z", 
-        "VersionId": "v7", 
+        "CreateDate": "2025-08-04T18:19:07Z", 
+        "VersionId": "v8", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -38,6 +38,16 @@
                             ]
                         }
                     }
+                }, 
+                {
+                    "Action": [
+                        "ecs:ListTagsForResource"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ecs:*:*:task/*/*", 
+                        "arn:aws:ecs:*:*:container-instance/*/*"
+                    ], 
+                    "Effect": "Allow"
                 }
             ]
         }, 
