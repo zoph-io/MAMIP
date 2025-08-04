@@ -1,6 +1,6 @@
-# AWS Access Analyzer - Findings - 2025-08-01
+# AWS Access Analyzer - Findings - 2025-08-04
 
-- **Policies analyzed:** `1372`
+- **Policies analyzed:** `1373`
 - **Errors:** `20`
   - [`AWSAccountActivityAccess`](./AWSAccountActivityAccess.json)
   - [`AWSCodeStarFullAccess`](./AWSCodeStarFullAccess.json)
@@ -30,7 +30,7 @@
   - [`S3UnlockBucketPolicy`](./S3UnlockBucketPolicy.json)
   - [`SQSUnlockQueuePolicy`](./SQSUnlockQueuePolicy.json)
   - [`SecurityLakeResourceManagementServiceRolePolicy`](./SecurityLakeResourceManagementServiceRolePolicy.json)
-- **Suggestions:** `135`
+- **Suggestions:** `136`
   - [`AIOpsAssistantPolicy`](./AIOpsAssistantPolicy.json)
   - [`AWSBatchFullAccess`](./AWSBatchFullAccess.json)
   - [`AWSCloud9Administrator`](./AWSCloud9Administrator.json)
@@ -54,6 +54,7 @@
   - [`AWSMigrationHubRefactorSpaces-EnvironmentsWithoutBridgesFullAccess`](./AWSMigrationHubRefactorSpaces-EnvironmentsWithoutBridgesFullAccess.json)
   - [`AWSMigrationHubRefactorSpacesFullAccess`](./AWSMigrationHubRefactorSpacesFullAccess.json)
   - [`AWSMigrationHubRefactorSpacesServiceRolePolicy`](./AWSMigrationHubRefactorSpacesServiceRolePolicy.json)
+  - [`AWSObservabilityAdminTelemetryEnablementServiceRolePolicy`](./AWSObservabilityAdminTelemetryEnablementServiceRolePolicy.json)
   - [`AWSQuickSetupDeploymentRolePolicy`](./AWSQuickSetupDeploymentRolePolicy.json)
   - [`AWSQuickSetupDistributorPermissionsBoundary`](./AWSQuickSetupDistributorPermissionsBoundary.json)
   - [`AWSQuickSetupPatchPolicyDeploymentRolePolicy`](./AWSQuickSetupPatchPolicyDeploymentRolePolicy.json)
