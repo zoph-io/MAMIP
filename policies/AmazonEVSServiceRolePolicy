@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-05-16T23:37:06Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-08-05T18:34:07Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -25,6 +25,19 @@
                     ], 
                     "Effect": "Allow", 
                     "Sid": "CreateEniInSubnetStatement"
+                }, 
+                {
+                    "Action": [
+                        "ec2:DeleteSubnet"
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:subnet/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "Null": {
+                            "aws:ResourceTag/AmazonEVSManaged": "false"
+                        }
+                    }, 
+                    "Sid": "ManageSubnetStatement"
                 }, 
                 {
                     "Action": [
@@ -80,6 +93,22 @@
                     "Resource": "arn:aws:ec2:*:*:security-group/*", 
                     "Effect": "Allow", 
                     "Sid": "UpdateSecurityGroupStatement"
+                }, 
+                {
+                    "Action": [
+                        "cloudwatch:PutMetricData"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "cloudwatch:namespace": [
+                                "AWS/Usage", 
+                                "AWS/EVS"
+                            ]
+                        }
+                    }, 
+                    "Sid": "CloudWatchPutMetricDataStatement"
                 }
             ]
         }, 
