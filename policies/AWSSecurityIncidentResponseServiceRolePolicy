@@ -1,17 +1,24 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-12-01T16:36:06Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-08-06T16:19:07Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": [
                         "organizations:ListAccounts", 
-                        "organizations:ListChildren"
+                        "organizations:ListChildren", 
+                        "organizations:DescribeAccount", 
+                        "organizations:ListDelegatedAdministrators"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
                     "Sid": "SecurityIncidentResponseOrganizationsPolicy"
                 }, 
                 {
@@ -36,6 +43,6 @@
                 }
             ]
         }, 
-        "IsDefaultVersion": false
+        "IsDefaultVersion": true
     }
 }
