@@ -1,6 +1,6 @@
 # AWS Access Analyzer - Findings - 2025-08-08
 
-- **Policies analyzed:** `1372`
+- **Policies analyzed:** `1375`
 - **Errors:** `20`
   - [`AWSAccountActivityAccess`](./AWSAccountActivityAccess.json)
   - [`AWSCodeStarFullAccess`](./AWSCodeStarFullAccess.json)
@@ -128,12 +128,11 @@
   - [`SageMakerStudioProjectRoleMachineLearningPolicy`](./SageMakerStudioProjectRoleMachineLearningPolicy.json)
   - [`SecurityAudit`](./SecurityAudit.json)
   - [`ViewOnlyAccess`](./ViewOnlyAccess.json)
-- **Failed validations:** `9`
+- **Failed validations:** `8`
   - `AWSConfigServiceRolePolicy`
   - `AWSPartnerLedSupportReadOnlyAccess`
   - `AWSSupportServiceRolePolicy`
   - `AWS_ConfigRole`
-  - `CloudWatchEventsBuiltInTargetExecutionAccess`
   - `ReadOnlyAccess`
   - `SageMakerStudioProjectProvisioningRolePolicy`
   - `SageMakerStudioProjectUserRolePermissionsBoundary`
