@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-08-06T16:19:07Z", 
-        "VersionId": "v2", 
+        "CreateDate": "2025-08-08T18:49:07Z", 
+        "VersionId": "v3", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -14,11 +14,6 @@
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
-                    "Condition": {
-                        "StringEquals": {
-                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
-                        }
-                    }, 
                     "Sid": "SecurityIncidentResponseOrganizationsPolicy"
                 }, 
                 {
