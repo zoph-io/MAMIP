@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-03-25T23:22:06Z", 
-        "VersionId": "v12", 
+        "CreateDate": "2025-08-07T20:49:07Z", 
+        "VersionId": "v13", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -407,7 +407,6 @@
                 }, 
                 {
                     "Action": [
-                        "ec2:CopySnapshot", 
                         "ec2:CreateSnapshot", 
                         "ec2:CreateSnapshots"
                     ], 
@@ -456,6 +455,33 @@
                         }
                     }, 
                     "Sid": "eccSnapshot4"
+                }, 
+                {
+                    "Action": [
+                        "ec2:CopySnapshot"
+                    ], 
+                    "Resource": "arn:aws:ec2:*::snapshot/snap-*", 
+                    "Effect": "Allow", 
+                    "Sid": "eccSnapshotCopySource"
+                }, 
+                {
+                    "Action": [
+                        "ec2:CopySnapshot"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*::snapshot/${*}"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:RequestTag/AWSRDSCustom": [
+                                "custom-oracle", 
+                                "custom-sqlserver", 
+                                "custom-oracle-rac"
+                            ]
+                        }
+                    }, 
+                    "Sid": "eccSnapshotCopyDestination"
                 }, 
                 {
                     "Action": [
