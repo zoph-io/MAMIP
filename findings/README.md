@@ -128,11 +128,12 @@
   - [`SageMakerStudioProjectRoleMachineLearningPolicy`](./SageMakerStudioProjectRoleMachineLearningPolicy.json)
   - [`SecurityAudit`](./SecurityAudit.json)
   - [`ViewOnlyAccess`](./ViewOnlyAccess.json)
-- **Failed validations:** `8`
+- **Failed validations:** `9`
   - `AWSConfigServiceRolePolicy`
   - `AWSPartnerLedSupportReadOnlyAccess`
   - `AWSSupportServiceRolePolicy`
   - `AWS_ConfigRole`
+  - `CloudWatchCrossAccountSharingConfiguration`
   - `ReadOnlyAccess`
   - `SageMakerStudioProjectProvisioningRolePolicy`
   - `SageMakerStudioProjectUserRolePermissionsBoundary`
