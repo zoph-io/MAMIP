@@ -1,0 +1,52 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-08-11T17:19:07Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "route53:GetHostedZone", 
+                        "route53:ListResourceRecordSets", 
+                        "route53:ListHostedZones", 
+                        "tag:GetResources"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ReadPermissions"
+                }, 
+                {
+                    "Action": [
+                        "route53:ChangeResourceRecordSets"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ForAllValues:StringLike": {
+                            "route53:ChangeResourceRecordSetsNormalizedRecordNames": [
+                                "*.hypershift.local", 
+                                "*.openshiftapps.com", 
+                                "*.devshift.org", 
+                                "*.openshiftusgov.com", 
+                                "*.devshiftusgov.com"
+                            ]
+                        }
+                    }, 
+                    "Sid": "ChangeResourceRecordSetsRestrictedRecordNames"
+                }, 
+                {
+                    "Action": [
+                        "route53:ChangeTagsForResource"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ChangeTagsForResourceNoCondition"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
