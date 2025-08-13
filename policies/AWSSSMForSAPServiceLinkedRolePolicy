@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-07-08T23:37:07Z", 
-        "VersionId": "v12", 
+        "CreateDate": "2025-08-12T23:04:07Z", 
+        "VersionId": "v13", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -13,6 +13,7 @@
                         "ec2:DescribeVolumes", 
                         "ec2:DescribeInstanceAttribute", 
                         "ec2:DescribeSnapshots", 
+                        "ec2:DescribeVpcs", 
                         "ssm:GetCommandInvocation", 
                         "ssm:DescribeInstanceInformation"
                     ], 
