@@ -1,6 +1,6 @@
 # AWS Access Analyzer - Findings - 2025-08-14
 
-- **Policies analyzed:** `1377`
+- **Policies analyzed:** `1370`
 - **Errors:** `20`
   - [`AWSAccountActivityAccess`](./AWSAccountActivityAccess.json)
   - [`AWSCodeStarFullAccess`](./AWSCodeStarFullAccess.json)
@@ -137,7 +137,7 @@
   - `SageMakerStudioProjectProvisioningRolePolicy`
   - `SageMakerStudioProjectUserRolePermissionsBoundary`
   - `SageMakerStudioProjectUserRolePolicy`
-- **Deprecated policies:** `64`
+- **Deprecated policies:** `71`
   - [`AWSB9InternalServicePolicy`](../policies/AWSB9InternalServicePolicy) (deprecated: Unknown)
   - [`AWSBackupAdminPolicy`](../policies/AWSBackupAdminPolicy) (deprecated: Unknown)
   - [`AWSBackupOperatorPolicy`](../policies/AWSBackupOperatorPolicy) (deprecated: Unknown)
@@ -160,9 +160,16 @@
   - [`AWSMarketplaceImageBuildFullAccess`](../policies/AWSMarketplaceImageBuildFullAccess) (deprecated: Unknown)
   - [`AWSMobileHub_FullAccess`](../policies/AWSMobileHub_FullAccess) (deprecated: Unknown)
   - [`AWSMobileHub_ReadOnly`](../policies/AWSMobileHub_ReadOnly) (deprecated: Unknown)
+  - [`AWSOpsWorksCMInstanceProfileRole`](../policies/AWSOpsWorksCMInstanceProfileRole) (deprecated: 2025-08-14)
+  - [`AWSOpsWorksCMServiceRole`](../policies/AWSOpsWorksCMServiceRole) (deprecated: 2025-08-14)
+  - [`AWSOpsWorksCloudWatchLogs`](../policies/AWSOpsWorksCloudWatchLogs) (deprecated: 2025-08-14)
   - [`AWSOpsWorksFullAccess`](../policies/AWSOpsWorksFullAccess) (deprecated: Unknown)
+  - [`AWSOpsWorksInstanceRegistration`](../policies/AWSOpsWorksInstanceRegistration) (deprecated: 2025-08-14)
   - [`AWSOpsWorksRegisterCLI`](../policies/AWSOpsWorksRegisterCLI) (deprecated: Unknown)
+  - [`AWSOpsWorksRegisterCLI_EC2`](../policies/AWSOpsWorksRegisterCLI_EC2) (deprecated: 2025-08-14)
+  - [`AWSOpsWorksRegisterCLI_OnPremises`](../policies/AWSOpsWorksRegisterCLI_OnPremises) (deprecated: 2025-08-14)
   - [`AWSOpsWorksRole`](../policies/AWSOpsWorksRole) (deprecated: Unknown)
+  - [`AWSOpsWorks_FullAccess`](../policies/AWSOpsWorks_FullAccess) (deprecated: 2025-08-14)
   - [`AWSProtonServiceSyncServiceRolePolicy`](../policies/AWSProtonServiceSyncServiceRolePolicy) (deprecated: Unknown)
   - [`AWSRoboMakerFullAccess`](../policies/AWSRoboMakerFullAccess) (deprecated: Unknown)
   - [`AWSSchemasServiceRolePolicy`](../policies/AWSSchemasServiceRolePolicy) (deprecated: Unknown)
