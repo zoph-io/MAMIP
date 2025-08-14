@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-07-15T16:22:08Z", 
-        "VersionId": "v17", 
+        "CreateDate": "2025-08-13T23:49:07Z", 
+        "VersionId": "v18", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -137,6 +137,7 @@
                 {
                     "Action": [
                         "codecommit:DeleteRepository", 
+                        "codecommit:UntagResource", 
                         "codecommit:UpdateRepositoryEncryptionKey", 
                         "codecommit:PutRepositoryTriggers"
                     ], 
@@ -537,6 +538,7 @@
                 {
                     "Action": [
                         "iam:DeleteRole", 
+                        "iam:DeleteRolePolicy", 
                         "iam:ListRolePolicies", 
                         "iam:GetRolePolicy", 
                         "iam:ListAttachedRolePolicies"
@@ -1596,6 +1598,7 @@
                 {
                     "Action": [
                         "logs:DeleteLogGroup", 
+                        "logs:UntagResource", 
                         "logs:DeleteRetentionPolicy", 
                         "logs:GetDataProtectionPolicy", 
                         "logs:PutDataProtectionPolicy", 
@@ -1647,6 +1650,8 @@
                 {
                     "Action": [
                         "athena:DeleteWorkGroup", 
+                        "athena:UpdateWorkGroup", 
+                        "athena:UntagResource", 
                         "athena:GetWorkGroup"
                     ], 
                     "Resource": "arn:aws:athena:*:*:workgroup/*", 
@@ -2716,7 +2721,10 @@
                     "Sid": "ListQueryPolicy"
                 }, 
                 {
-                    "Action": "ec2:DeleteSecurityGroup", 
+                    "Action": [
+                        "ec2:DeleteSecurityGroup", 
+                        "ec2:DeleteTags"
+                    ], 
                     "Resource": "arn:aws:ec2:*:*:security-group/*", 
                     "Effect": "Allow", 
                     "Condition": {
@@ -2768,7 +2776,10 @@
                     "Sid": "Scheduler"
                 }, 
                 {
-                    "Action": "scheduler:DeleteScheduleGroup", 
+                    "Action": [
+                        "scheduler:DeleteScheduleGroup", 
+                        "scheduler:UntagResource"
+                    ], 
                     "Resource": "arn:aws:scheduler:*:*:schedule-group/*", 
                     "Effect": "Allow", 
                     "Condition": {
