@@ -1,7 +1,7 @@
-# AWS Access Analyzer - Findings - 2025-08-15
+# AWS Access Analyzer - Findings - 2025-08-19
 
-- **Policies analyzed:** `1372`
-- **Errors:** `20`
+- **Policies analyzed:** `1377`
+- **Errors:** `22`
   - [`AWSAccountActivityAccess`](./AWSAccountActivityAccess.json)
   - [`AWSCodeStarFullAccess`](./AWSCodeStarFullAccess.json)
   - [`AWSIAMIdentityCenterAllowListForIdentityContext`](./AWSIAMIdentityCenterAllowListForIdentityContext.json)
@@ -13,6 +13,8 @@
   - [`MemoryDBServiceRolePolicy`](./MemoryDBServiceRolePolicy.json)
   - [`RDSCloudHsmAuthorizationRole`](./RDSCloudHsmAuthorizationRole.json)
   - [`ResourceGroupsTaggingAPITagUntagSupportedResources`](./ResourceGroupsTaggingAPITagUntagSupportedResources.json)
+  - [`SageMakerStudioAdminIAMDefaultExecutionPolicy`](./SageMakerStudioAdminIAMDefaultExecutionPolicy.json)
+  - [`SageMakerStudioUserIAMDefaultExecutionPolicy`](./SageMakerStudioUserIAMDefaultExecutionPolicy.json)
 - **Security Warnings:** `25`
   - [`AWSCodePipeline_FullAccess`](./AWSCodePipeline_FullAccess.json)
   - [`AWSCodePipeline_ReadOnlyAccess`](./AWSCodePipeline_ReadOnlyAccess.json)
