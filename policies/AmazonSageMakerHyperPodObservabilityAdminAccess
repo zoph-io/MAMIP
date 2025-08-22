@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-07-10T14:37:07Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-08-21T21:19:07Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -136,7 +136,7 @@
                     "Action": [
                         "iam:PassRole"
                     ], 
-                    "Resource": "arn:aws:iam::*:role/AmazonSageMakerHyperPodObservabilityGrafanaAccess-*", 
+                    "Resource": "arn:aws:iam::*:role/service-role/AmazonSageMakerHyperPodObservabilityGrafanaAccess-*", 
                     "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
@@ -151,7 +151,7 @@
                     "Action": [
                         "iam:PassRole"
                     ], 
-                    "Resource": "arn:aws:iam::*:role/AmazonSageMakerHyperPodObservabilityAddonAccess-*", 
+                    "Resource": "arn:aws:iam::*:role/service-role/AmazonSageMakerHyperPodObservabilityAddonAccess-*", 
                     "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
@@ -165,7 +165,7 @@
                 {
                     "Action": "iam:GetRole", 
                     "Resource": [
-                        "arn:aws:iam::*:role/AmazonSageMakerHyperPodObservabilityAddonAccess-*"
+                        "arn:aws:iam::*:role/service-role/AmazonSageMakerHyperPodObservabilityAddonAccess-*"
                     ], 
                     "Effect": "Allow", 
                     "Sid": "IAMGetRoleAccess"
@@ -199,10 +199,19 @@
                     "Sid": "EKSAddonDescribeAccess"
                 }, 
                 {
-                    "Action": "eks:DescribePodIdentityAssociation", 
+                    "Action": [
+                        "eks:DescribePodIdentityAssociation", 
+                        "eks:DeletePodIdentityAssociation", 
+                        "eks:UpdatePodIdentityAssociation"
+                    ], 
                     "Resource": "arn:aws:eks:*:*:podidentityassociation/*/*", 
                     "Effect": "Allow", 
-                    "Sid": "EKSAddonDescribePodIdentityAccess"
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/SageMaker": "true"
+                        }
+                    }, 
+                    "Sid": "EKSAddonPodIdentityAccess"
                 }, 
                 {
                     "Action": [
