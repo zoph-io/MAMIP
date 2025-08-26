@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-01-09T16:52:06Z", 
-        "VersionId": "v2", 
+        "CreateDate": "2025-08-26T17:34:07Z", 
+        "VersionId": "v3", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -39,6 +39,17 @@
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Sid": "AllowAppStreamAccess"
+                }, 
+                {
+                    "Action": "iam:CreateServiceLinkedRole", 
+                    "Resource": "arn:aws:iam::*:role/aws-service-role/monitoring.thinclient.amazonaws.com/AWSServiceRoleForAmazonWorkSpacesThinClientMonitoring", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:AWSServiceName": "monitoring.thinclient.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "AllowCreateServiceLinkedRole"
                 }
             ]
         }, 
