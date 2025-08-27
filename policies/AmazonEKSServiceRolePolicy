@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-06-20T21:07:07Z", 
-        "VersionId": "v8", 
+        "CreateDate": "2025-08-26T22:49:07Z", 
+        "VersionId": "v9", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -188,7 +188,8 @@
                                 "arn:aws:eks::aws:cluster-access-policy/AmazonEKSLoadBalancingClusterPolicy", 
                                 "arn:aws:eks::aws:cluster-access-policy/AmazonEKSBlockStoragePolicy", 
                                 "arn:aws:eks::aws:cluster-access-policy/AmazonEKSBlockStorageClusterPolicy", 
-                                "arn:aws:eks::aws:cluster-access-policy/AmazonEKSHybridPolicy"
+                                "arn:aws:eks::aws:cluster-access-policy/AmazonEKSHybridPolicy", 
+                                "arn:aws:eks::aws:cluster-access-policy/AmazonEKSEventPolicy"
                             ]
                         }
                     }
@@ -253,7 +254,10 @@
                         "ec2:DeleteLaunchTemplate", 
                         "ec2:TerminateInstances"
                     ], 
-                    "Resource": "*", 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:launch-template/*", 
+                        "arn:aws:ec2:*:*:instance/*"
+                    ], 
                     "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
