@@ -1,0 +1,226 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-08-28T06:34:07Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "cloudformation:DescribeStacks", 
+                        "cloudformation:DescribeStackEvents"
+                    ], 
+                    "Resource": [
+                        "arn:aws:cloudformation:*:*:stack/AWSTransform-Deploy-Infra-stack*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "cloudformation:CreateStack"
+                    ], 
+                    "Resource": "arn:aws:cloudformation:*:*:stack/AWSTransform-Deploy-Infra-stack*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:RequestTag/CreatedBy": "AWSTransform", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "cloudformation:UpdateStack"
+                    ], 
+                    "Resource": "arn:aws:cloudformation:*:*:stack/AWSTransform-Deploy-Infra-stack*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:RequestTag/CreatedBy": "AWSTransform", 
+                            "aws:ResourceTag/CreatedBy": "AWSTransform", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "ec2:DescribeVpcs", 
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:DescribeImages", 
+                        "ec2:DescribeInstances"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
+                {
+                    "Action": [
+                        "ec2:CreateTags", 
+                        "ec2:DeleteTags"
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:instance/*", 
+                    "Effect": "Deny", 
+                    "Condition": {
+                        "ForAnyValue:StringNotEquals": {
+                            "aws:TagKeys": [
+                                "CreatedBy", 
+                                "ApplicationName", 
+                                "TransformationType", 
+                                "aws:cloudformation:stack-name", 
+                                "aws:cloudformation:logical-id", 
+                                "aws:cloudformation:stack-id"
+                            ]
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "ec2:CreateTags", 
+                        "ec2:DeleteTags"
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:instance/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "aws:CalledVia": "cloudformation.amazonaws.com"
+                        }, 
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "ec2:RunInstances"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*::image/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "aws:CalledVia": "cloudformation.amazonaws.com"
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "ec2:RunInstances"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:network-interface/*", 
+                        "arn:aws:ec2:*:*:instance/*", 
+                        "arn:aws:ec2:*:*:volume/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "aws:CalledVia": "cloudformation.amazonaws.com"
+                        }, 
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "ec2:RunInstances"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:subnet/*", 
+                        "arn:aws:ec2:*:*:security-group/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "aws:CalledVia": "cloudformation.amazonaws.com"
+                        }, 
+                        "StringEquals": {
+                            "aws:ResourceTag/CreatedFor": "AWSTransform", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "iam:GetRole", 
+                        "iam:GetInstanceProfile"
+                    ], 
+                    "Resource": [
+                        "arn:aws:iam::*:role/AWSTransform-Deploy-EC2-Instance-Role", 
+                        "arn:aws:iam::*:instance-profile/AWSTransform-Deploy-EC2-Instance-Profile"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/CreatedFor": "AWSTransform", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "iam:PassRole"
+                    ], 
+                    "Resource": [
+                        "arn:aws:iam::*:role/AWSTransform-Deploy-EC2-Instance-Role"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:PassedToService": "ec2.amazonaws.com", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "ssm:GetParameters"
+                    ], 
+                    "Resource": "arn:aws:ssm:*::parameter/aws/service/ami-amazon-linux-latest*", 
+                    "Effect": "Allow"
+                }, 
+                {
+                    "Action": [
+                        "cloudformation:DeleteStack"
+                    ], 
+                    "Resource": [
+                        "arn:aws:cloudformation:*:*:stack/AWSTransform-Deploy-Infra-stack*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/CreatedBy": "AWSTransform", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "ec2:TerminateInstances", 
+                        "ec2:StopInstances", 
+                        "ec2:StartInstances", 
+                        "ec2:ModifyInstanceAttribute"
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:instance/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "aws:CalledVia": "cloudformation.amazonaws.com"
+                        }, 
+                        "StringEquals": {
+                            "aws:ResourceTag/CreatedBy": "AWSTransform", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
