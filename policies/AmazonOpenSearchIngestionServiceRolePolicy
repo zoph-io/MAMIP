@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2022-11-18T16:49:50Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-08-28T18:19:07Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -40,6 +40,7 @@
                 }, 
                 {
                     "Action": [
+                        "ec2:ModifyVpcEndpoint", 
                         "ec2:DeleteVpcEndpoints"
                     ], 
                     "Resource": [
