@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-08-27T17:49:07Z", 
-        "VersionId": "v19", 
+        "CreateDate": "2025-08-27T21:04:07Z", 
+        "VersionId": "v20", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -866,7 +866,7 @@
                     "Effect": "Allow", 
                     "Condition": {
                         "Null": {
-                            "aws:ResourceTag/AmazonDataZoneProject": "false", 
+                            "aws:RequestTag/AmazonDataZoneProject": "false", 
                             "aws:TagKeys": "false"
                         }, 
                         "StringEquals": {
@@ -1351,14 +1351,12 @@
                         "redshift-serverless:DeleteNamespace", 
                         "redshift-serverless:DeleteWorkgroup", 
                         "redshift-serverless:ListTagsForResource", 
-                        "redshift-serverless:ListSnapshotCopyConfigurations", 
                         "redshift-serverless:GetNamespace", 
                         "redshift-serverless:GetWorkgroup"
                     ], 
                     "Resource": [
                         "arn:aws:redshift-serverless:*:*:namespace/*", 
-                        "arn:aws:redshift-serverless:*:*:workgroup/*", 
-                        "arn:aws:redshift-serverless:*:*:snapshotcopyconfiguration/*"
+                        "arn:aws:redshift-serverless:*:*:workgroup/*"
                     ], 
                     "Effect": "Allow", 
                     "Condition": {
@@ -1420,7 +1418,7 @@
                     "Effect": "Allow", 
                     "Condition": {
                         "Null": {
-                            "aws:ResourceTag/AmazonDataZoneProject": "false", 
+                            "aws:RequestTag/AmazonDataZoneProject": "false", 
                             "aws:TagKeys": "false"
                         }, 
                         "StringEquals": {
@@ -1566,7 +1564,7 @@
                     "Effect": "Allow", 
                     "Condition": {
                         "Null": {
-                            "aws:ResourceTag/AmazonDataZoneProject": "false", 
+                            "aws:RequestTag/AmazonDataZoneProject": "false", 
                             "aws:TagKeys": "false"
                         }, 
                         "StringEquals": {
@@ -1993,7 +1991,7 @@
                     "Effect": "Allow", 
                     "Condition": {
                         "Null": {
-                            "aws:ResourceTag/AmazonDataZoneProject": "false"
+                            "aws:RequestTag/AmazonDataZoneProject": "false"
                         }, 
                         "StringEquals": {
                             "aws:CalledViaFirst": "cloudformation.amazonaws.com", 
@@ -2183,7 +2181,7 @@
                     "Effect": "Allow", 
                     "Condition": {
                         "Null": {
-                            "aws:ResourceTag/AmazonDataZoneProject": "false"
+                            "aws:RequestTag/AmazonDataZoneProject": "false"
                         }, 
                         "StringEquals": {
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
@@ -2451,7 +2449,7 @@
                     "Effect": "Allow", 
                     "Condition": {
                         "Null": {
-                            "aws:ResourceTag/AmazonDataZoneProject": "false"
+                            "aws:RequestTag/AmazonDataZoneProject": "false"
                         }, 
                         "StringEquals": {
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
@@ -3020,30 +3018,6 @@
                         }
                     }, 
                     "Sid": "S3AGPerm"
-                }, 
-                {
-                    "Action": [
-                        "bedrock:UntagResource", 
-                        "neptune-graph:UntagResource", 
-                        "quicksight:UntagResource", 
-                        "glue:UntagResource", 
-                        "airflow:UntagResource", 
-                        "secretsmanager:UntagResource", 
-                        "lambda:UntagResource", 
-                        "emr-serverless:UntagResource", 
-                        "elasticmapreduce:RemoveTags"
-                    ], 
-                    "Resource": "*", 
-                    "Effect": "Allow", 
-                    "Condition": {
-                        "Null": {
-                            "aws:ResourceTag/AmazonDataZoneProject": "false"
-                        }, 
-                        "StringEquals": {
-                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
-                        }
-                    }, 
-                    "Sid": "ResourceTagsUnTagPermissions"
                 }
             ]
         }, 
