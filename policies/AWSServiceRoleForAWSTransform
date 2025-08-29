@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-05-15T13:37:07Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-08-29T17:49:08Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -19,6 +19,18 @@
                         }
                     }, 
                     "Sid": "PublishCloudWatchMetrics"
+                }, 
+                {
+                    "Action": [
+                        "sso:DescribeApplication", 
+                        "sso:GetApplicationAssignmentConfiguration", 
+                        "sso:ListApplicationAssignmentsForPrincipal"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "UserManagementPolicy"
                 }
             ]
         }, 
