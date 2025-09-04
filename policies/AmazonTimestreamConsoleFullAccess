@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-06-17T13:37:06Z", 
-        "VersionId": "v5", 
+        "CreateDate": "2025-09-04T15:04:08Z", 
+        "VersionId": "v6", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -80,6 +80,37 @@
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow"
+                }, 
+                {
+                    "Action": [
+                        "aws-marketplace:ViewSubscriptions"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AWSMarketplaceViewSubscriptions"
+                }, 
+                {
+                    "Action": [
+                        "aws-marketplace:SearchAgreements", 
+                        "aws-marketplace:AcceptAgreementRequest", 
+                        "aws-marketplace:CreateAgreementRequest", 
+                        "aws-marketplace:ListEntitlementDetails", 
+                        "aws-marketplace:DescribeAgreement", 
+                        "aws-marketplace:Subscribe"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "aws-marketplace:ProductId": [
+                                "prod-xcc5llpq4vlbc", 
+                                "prod-5jijo74ujy36m"
+                            ]
+                        }
+                    }, 
+                    "Sid": "AWSMarketplaceAccess"
                 }
             ]
         }, 
