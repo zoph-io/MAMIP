@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-07-22T20:07:08Z", 
-        "VersionId": "v10", 
+        "CreateDate": "2025-09-08T18:34:08Z", 
+        "VersionId": "v11", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -784,6 +784,20 @@
                         }
                     }, 
                     "Sid": "SageMakerStudioRestrictPrivateSpaceAppsToOwnerUser"
+                }, 
+                {
+                    "Action": [
+                        "sagemaker:StartSession"
+                    ], 
+                    "Resource": "arn:aws:sagemaker:*:*:space/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/AmazonDataZoneProject": "${aws:PrincipalTag/AmazonDataZoneProject}", 
+                            "aws:ResourceTag/AmazonDataZoneUser": "${aws:PrincipalTag/datazone:userId}"
+                        }
+                    }, 
+                    "Sid": "AllowStartSessionForSpaceRemoteConnection"
                 }, 
                 {
                     "Action": [
