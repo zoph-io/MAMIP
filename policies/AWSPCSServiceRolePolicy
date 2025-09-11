@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-08-27T16:01:15Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-09-11T18:49:07Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -57,7 +57,8 @@
                         "ec2:DescribeSecurityGroups", 
                         "ec2:DescribeKeyPairs", 
                         "ec2:DescribeImages", 
-                        "ec2:DescribeImageAttribute"
+                        "ec2:DescribeImageAttribute", 
+                        "ec2:DescribeCapacityReservations"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
