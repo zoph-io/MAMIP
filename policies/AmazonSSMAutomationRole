@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2017-07-24T23:29:12Z", 
-        "VersionId": "v5", 
+        "CreateDate": "2025-09-11T17:34:07Z", 
+        "VersionId": "v6", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -55,6 +55,15 @@
                     ], 
                     "Resource": [
                         "arn:aws:sns:*:*:Automation*"
+                    ], 
+                    "Effect": "Allow"
+                }, 
+                {
+                    "Action": [
+                        "ssmmessages:OpenDataChannel"
+                    ], 
+                    "Resource": [
+                        "arn:*:ssm:*:*:session/*"
                     ], 
                     "Effect": "Allow"
                 }
