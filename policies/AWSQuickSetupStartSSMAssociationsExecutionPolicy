@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-08-08T12:04:07Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-09-12T14:49:07Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -10,9 +10,9 @@
                         "ssm:StartAutomationExecution"
                     ], 
                     "Resource": [
-                        "arn:aws:ssm:*:*:document/AWSQuickSetupType-StartSSMAssociations", 
+                        "arn:aws:ssm:*:*:document/AWSQuickSetupType-Scheduler-ChangeCalendarState", 
                         "arn:aws:ssm:*:*:automation-execution/*", 
-                        "arn:aws:ssm:*:*:automation-definition/AWSQuickSetupType-StartSSMAssociations*"
+                        "arn:aws:ssm:*:*:automation-definition/AWSQuickSetupType-Scheduler-ChangeCalendarState*"
                     ], 
                     "Effect": "Allow"
                 }, 
@@ -25,8 +25,8 @@
                     "Condition": {
                         "ArnLike": {
                             "iam:AssociatedResourceARN": [
-                                "arn:aws:ssm:*:*:document/AWSQuickSetupType-StartSSMAssociations", 
-                                "arn:aws:ssm:*:*:automation-definition/AWSQuickSetupType-StartSSMAssociations*"
+                                "arn:aws:ssm:*:*:document/AWSQuickSetupType-Scheduler-ChangeCalendarState", 
+                                "arn:aws:ssm:*:*:automation-definition/AWSQuickSetupType-Scheduler-ChangeCalendarState*"
                             ]
                         }, 
                         "StringEquals": {
