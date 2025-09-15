@@ -1,0 +1,43 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-09-15T14:34:06Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "logs:CreateLogGroup", 
+                        "logs:CreateLogStream", 
+                        "logs:PutLogEvents"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
+                {
+                    "Action": [
+                        "kms:Encrypt", 
+                        "kms:Decrypt", 
+                        "kms:GenerateDataKey"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "aws:CalledVia": [
+                                "logs.amazonaws.com"
+                            ]
+                        }, 
+                        "ArnLike": {
+                            "kms:EncryptionContext:aws:logs:arn": "arn:aws:logs:*:*:log-group:*"
+                        }, 
+                        "StringEquals": {
+                            "aws:ResourceTag/LogsManaged": "true"
+                        }
+                    }
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
