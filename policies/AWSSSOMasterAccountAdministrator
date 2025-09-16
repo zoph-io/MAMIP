@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-09-26T17:13:59Z", 
-        "VersionId": "v10", 
+        "CreateDate": "2025-09-16T19:49:07Z", 
+        "VersionId": "v11", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -80,6 +80,47 @@
                     ], 
                     "Effect": "Allow", 
                     "Sid": "AllowDeleteSyncProfile"
+                }, 
+                {
+                    "Action": [
+                        "kms:GenerateDataKeyWithoutPlaintext", 
+                        "kms:Encrypt", 
+                        "kms:Decrypt"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "kms:ViaService": "sso.*.amazonaws.com", 
+                            "kms:EncryptionContext:aws:sso:instance-arn": "*"
+                        }
+                    }, 
+                    "Sid": "AllowKMSKeyUseViaAWSIAMIdentityCenterService"
+                }, 
+                {
+                    "Action": [
+                        "kms:GenerateDataKeyWithoutPlaintext", 
+                        "kms:Encrypt", 
+                        "kms:Decrypt"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "kms:ViaService": "identitystore.*.amazonaws.com", 
+                            "kms:EncryptionContext:aws:identitystore:identitystore-arn": "*"
+                        }
+                    }, 
+                    "Sid": "AllowKMSKeyUseViaAWSIdentityStoreService"
+                }, 
+                {
+                    "Action": [
+                        "kms:ListAliases", 
+                        "kms:DescribeKey"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowKMSKeyDiscovery"
                 }
             ]
         }, 
