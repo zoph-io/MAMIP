@@ -1,21 +1,28 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2022-04-13T18:02:59Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-09-18T00:34:07Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": [
                         "billingconductor:List*", 
+                        "billingconductor:GetBillingGroupCostReport", 
                         "organizations:ListAccounts", 
-                        "pricing:DescribeServices"
+                        "pricing:DescribeServices", 
+                        "pricing:GetAttributeValues", 
+                        "pricing:GetProducts", 
+                        "organizations:ListRoots", 
+                        "organizations:ListOrganizationalUnitsForParent", 
+                        "organizations:ListChildren", 
+                        "organizations:DescribeAccount"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow"
                 }
             ]
         }, 
-        "IsDefaultVersion": false
+        "IsDefaultVersion": true
     }
 }
