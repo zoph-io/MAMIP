@@ -1,0 +1,41 @@
+[
+  {
+    "findingDetails": "We recommend replacing the key kms:EncryptionContext:aws:identitystore:identitystore-arn in the condition block of StringLike with {kms:EncryptionContext:aws:identitystore:identitystore-arn: false} to ensure better enforcement of the condition.",
+    "findingType": "SUGGESTION",
+    "issueCode": "EQUIVALENT_TO_NULL_FALSE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 1
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringLike"
+          },
+          {
+            "value": "kms:EncryptionContext:aws:identitystore:identitystore-arn"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 429,
+            "offset": 429
+          },
+          "end": {
+            "line": 1,
+            "column": 432,
+            "offset": 432
+          }
+        }
+      }
+    ]
+  }
+]

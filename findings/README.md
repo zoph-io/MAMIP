@@ -1,6 +1,6 @@
-# AWS Access Analyzer - Findings - 2025-09-15
+# AWS Access Analyzer - Findings - 2025-09-18
 
-- **Policies analyzed:** `1383`
+- **Policies analyzed:** `1381`
 - **Errors:** `20`
   - [`AWSAccountActivityAccess`](./AWSAccountActivityAccess.json)
   - [`AWSCodeStarFullAccess`](./AWSCodeStarFullAccess.json)
@@ -30,7 +30,7 @@
   - [`S3UnlockBucketPolicy`](./S3UnlockBucketPolicy.json)
   - [`SQSUnlockQueuePolicy`](./SQSUnlockQueuePolicy.json)
   - [`SecurityLakeResourceManagementServiceRolePolicy`](./SecurityLakeResourceManagementServiceRolePolicy.json)
-- **Suggestions:** `136`
+- **Suggestions:** `143`
   - [`AIOpsAssistantPolicy`](./AIOpsAssistantPolicy.json)
   - [`AWSBatchFullAccess`](./AWSBatchFullAccess.json)
   - [`AWSCloud9Administrator`](./AWSCloud9Administrator.json)
@@ -61,6 +61,11 @@
   - [`AWSQuickSetupPatchPolicyPermissionsBoundary`](./AWSQuickSetupPatchPolicyPermissionsBoundary.json)
   - [`AWSQuickSetupSSMDeploymentRolePolicy`](./AWSQuickSetupSSMDeploymentRolePolicy.json)
   - [`AWSQuickSetupSSMHostMgmtPermissionsBoundary`](./AWSQuickSetupSSMHostMgmtPermissionsBoundary.json)
+  - [`AWSSSODirectoryAdministrator`](./AWSSSODirectoryAdministrator.json)
+  - [`AWSSSODirectoryReadOnly`](./AWSSSODirectoryReadOnly.json)
+  - [`AWSSSOMasterAccountAdministrator`](./AWSSSOMasterAccountAdministrator.json)
+  - [`AWSSSOMemberAccountAdministrator`](./AWSSSOMemberAccountAdministrator.json)
+  - [`AWSSSOReadOnly`](./AWSSSOReadOnly.json)
   - [`AWSServiceRoleForAmazonEKSNodegroup`](./AWSServiceRoleForAmazonEKSNodegroup.json)
   - [`AWSServiceRoleForEC2ScheduledInstances`](./AWSServiceRoleForEC2ScheduledInstances.json)
   - [`AWSSupplyChainFederationAdminAccess`](./AWSSupplyChainFederationAdminAccess.json)
@@ -137,7 +142,7 @@
   - `SageMakerStudioProjectProvisioningRolePolicy`
   - `SageMakerStudioProjectUserRolePermissionsBoundary`
   - `SageMakerStudioProjectUserRolePolicy`
-- **Deprecated policies:** `71`
+- **Deprecated policies:** `73`
   - [`AWSB9InternalServicePolicy`](../policies/AWSB9InternalServicePolicy) (deprecated: Unknown)
   - [`AWSBackupAdminPolicy`](../policies/AWSBackupAdminPolicy) (deprecated: Unknown)
   - [`AWSBackupOperatorPolicy`](../policies/AWSBackupOperatorPolicy) (deprecated: Unknown)
@@ -151,6 +156,8 @@
   - [`AWSECRPullThroughCacheServiceRolePolicy`](../policies/AWSECRPullThroughCacheServiceRolePolicy) (deprecated: Unknown)
   - [`AWSElasticBeanstalkFullAccess`](../policies/AWSElasticBeanstalkFullAccess) (deprecated: Unknown)
   - [`AWSElasticBeanstalkReadOnlyAccess`](../policies/AWSElasticBeanstalkReadOnlyAccess) (deprecated: Unknown)
+  - [`AWSIoT1ClickFullAccess`](../policies/AWSIoT1ClickFullAccess) (deprecated: 2025-09-18)
+  - [`AWSIoT1ClickReadOnlyAccess`](../policies/AWSIoT1ClickReadOnlyAccess) (deprecated: 2025-09-18)
   - [`AWSIotRoboRunnerFullAccess`](../policies/AWSIotRoboRunnerFullAccess) (deprecated: Unknown)
   - [`AWSIotRoboRunnerReadOnly`](../policies/AWSIotRoboRunnerReadOnly) (deprecated: Unknown)
   - [`AWSIotRoboRunnerServiceRolePolicy`](../policies/AWSIotRoboRunnerServiceRolePolicy) (deprecated: Unknown)
