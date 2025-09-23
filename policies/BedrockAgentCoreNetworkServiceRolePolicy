@@ -1,0 +1,86 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-09-19T22:04:06Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": "ec2:CreateNetworkInterface", 
+                    "Resource": "arn:aws:ec2:*:*:subnet/*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowCreateEniInAnySubnet"
+                }, 
+                {
+                    "Action": "ec2:CreateNetworkInterface", 
+                    "Resource": "arn:aws:ec2:*:*:security-group/*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowCreateEniWithSecurityGroups"
+                }, 
+                {
+                    "Action": "ec2:CreateNetworkInterface", 
+                    "Resource": "arn:aws:ec2:*:*:network-interface/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:RequestTag/AmazonBedrockAgentCoreManaged": "true"
+                        }, 
+                        "ForAllValues:StringEquals": {
+                            "aws:TagKeys": [
+                                "AmazonBedrockAgentCoreManaged"
+                            ]
+                        }
+                    }, 
+                    "Sid": "AllowCreateEniWithBedrockManagedRequestTag"
+                }, 
+                {
+                    "Action": "ec2:CreateTags", 
+                    "Resource": "arn:aws:ec2:*:*:network-interface/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "ec2:CreateAction": "CreateNetworkInterface"
+                        }
+                    }, 
+                    "Sid": "AllowTagEniOnCreate"
+                }, 
+                {
+                    "Action": [
+                        "ec2:DeleteNetworkInterface", 
+                        "ec2:AssignPrivateIpAddresses", 
+                        "ec2:UnassignPrivateIpAddresses", 
+                        "ec2:CreateNetworkInterfacePermission"
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:network-interface/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/AmazonBedrockAgentCoreManaged": "true"
+                        }
+                    }, 
+                    "Sid": "AllowManageEniWhenBedrockManaged"
+                }, 
+                {
+                    "Action": [
+                        "ec2:GetSecurityGroupsForVPC"
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:vpc/*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowGetSecurityGroupsForVpc"
+                }, 
+                {
+                    "Action": [
+                        "ec2:DescribeNetworkInterfaces", 
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeVpcs"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowDescribeNetworkingResources"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
