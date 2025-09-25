@@ -13,7 +13,7 @@
   - [`MemoryDBServiceRolePolicy`](./MemoryDBServiceRolePolicy.json)
   - [`RDSCloudHsmAuthorizationRole`](./RDSCloudHsmAuthorizationRole.json)
   - [`ResourceGroupsTaggingAPITagUntagSupportedResources`](./ResourceGroupsTaggingAPITagUntagSupportedResources.json)
-- **Security Warnings:** `25`
+- **Security Warnings:** `24`
   - [`AWSCodePipeline_FullAccess`](./AWSCodePipeline_FullAccess.json)
   - [`AWSCodePipeline_ReadOnlyAccess`](./AWSCodePipeline_ReadOnlyAccess.json)
   - [`AWSElasticBeanstalkService`](./AWSElasticBeanstalkService.json)
@@ -29,7 +29,6 @@
   - [`IAMFullAccess`](./IAMFullAccess.json)
   - [`S3UnlockBucketPolicy`](./S3UnlockBucketPolicy.json)
   - [`SQSUnlockQueuePolicy`](./SQSUnlockQueuePolicy.json)
-  - [`SecurityLakeResourceManagementServiceRolePolicy`](./SecurityLakeResourceManagementServiceRolePolicy.json)
 - **Suggestions:** `145`
   - [`AIOpsAssistantPolicy`](./AIOpsAssistantPolicy.json)
   - [`AWSBatchFullAccess`](./AWSBatchFullAccess.json)
