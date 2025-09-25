@@ -1,4 +1,4 @@
-# AWS Access Analyzer - Findings - 2025-09-24
+# AWS Access Analyzer - Findings - 2025-09-25
 
 - **Policies analyzed:** `1382`
 - **Errors:** `20`
@@ -30,7 +30,7 @@
   - [`S3UnlockBucketPolicy`](./S3UnlockBucketPolicy.json)
   - [`SQSUnlockQueuePolicy`](./SQSUnlockQueuePolicy.json)
   - [`SecurityLakeResourceManagementServiceRolePolicy`](./SecurityLakeResourceManagementServiceRolePolicy.json)
-- **Suggestions:** `143`
+- **Suggestions:** `145`
   - [`AIOpsAssistantPolicy`](./AIOpsAssistantPolicy.json)
   - [`AWSBatchFullAccess`](./AWSBatchFullAccess.json)
   - [`AWSCloud9Administrator`](./AWSCloud9Administrator.json)
@@ -61,6 +61,7 @@
   - [`AWSQuickSetupPatchPolicyPermissionsBoundary`](./AWSQuickSetupPatchPolicyPermissionsBoundary.json)
   - [`AWSQuickSetupSSMDeploymentRolePolicy`](./AWSQuickSetupSSMDeploymentRolePolicy.json)
   - [`AWSQuickSetupSSMHostMgmtPermissionsBoundary`](./AWSQuickSetupSSMHostMgmtPermissionsBoundary.json)
+  - [`AWSResourceExplorerServiceRolePolicy`](./AWSResourceExplorerServiceRolePolicy.json)
   - [`AWSSSODirectoryAdministrator`](./AWSSSODirectoryAdministrator.json)
   - [`AWSSSODirectoryReadOnly`](./AWSSSODirectoryReadOnly.json)
   - [`AWSSSOMasterAccountAdministrator`](./AWSSSOMasterAccountAdministrator.json)

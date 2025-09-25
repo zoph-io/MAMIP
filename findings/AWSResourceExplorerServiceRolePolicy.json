@@ -1,6 +1,6 @@
 [
   {
-    "findingDetails": "The 21509 characters in the identity policy, excluding whitespace, exceed the 10240 character maximum for inline and managed policies. We recommend that you use multiple granular policies.",
+    "findingDetails": "The 23377 characters in the identity policy, excluding whitespace, exceed the 10240 character maximum for inline and managed policies. We recommend that you use multiple granular policies.",
     "findingType": "WARNING",
     "issueCode": "POLICY_SIZE_EXCEEDS_IDENTITY_POLICY_QUOTA",
     "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-general-warning-policy-size-exceeds-identity-policy-quota",
@@ -15,8 +15,360 @@
           },
           "end": {
             "line": 1,
-            "column": 22232,
-            "offset": 22232
+            "column": 24164,
+            "offset": 24164
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "The 7 resource ARN(s) are redundant because they reference the same resource. Review the use of wildcards (*), or remove the resource arn:aws:apigateway:*::/restapis/*/resources/*/methods/* to remove the redundancy.",
+    "findingType": "SUGGESTION",
+    "issueCode": "REDUNDANT_RESOURCE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-resource",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 3
+          },
+          {
+            "value": "Resource"
+          },
+          {
+            "index": 1
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 976,
+            "offset": 976
+          },
+          "end": {
+            "line": 1,
+            "column": 1011,
+            "offset": 1011
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 3
+          },
+          {
+            "value": "Resource"
+          },
+          {
+            "index": 2
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 1013,
+            "offset": 1013
+          },
+          "end": {
+            "line": 1,
+            "column": 1060,
+            "offset": 1060
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 3
+          },
+          {
+            "value": "Resource"
+          },
+          {
+            "index": 3
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 1062,
+            "offset": 1062
+          },
+          "end": {
+            "line": 1,
+            "column": 1107,
+            "offset": 1107
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 3
+          },
+          {
+            "value": "Resource"
+          },
+          {
+            "index": 4
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 1109,
+            "offset": 1109
+          },
+          "end": {
+            "line": 1,
+            "column": 1156,
+            "offset": 1156
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 3
+          },
+          {
+            "value": "Resource"
+          },
+          {
+            "index": 5
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 1158,
+            "offset": 1158
+          },
+          "end": {
+            "line": 1,
+            "column": 1215,
+            "offset": 1215
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 3
+          },
+          {
+            "value": "Resource"
+          },
+          {
+            "index": 6
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 1217,
+            "offset": 1217
+          },
+          "end": {
+            "line": 1,
+            "column": 1259,
+            "offset": 1259
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 3
+          },
+          {
+            "value": "Resource"
+          },
+          {
+            "index": 7
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 1261,
+            "offset": 1261
+          },
+          "end": {
+            "line": 1,
+            "column": 1305,
+            "offset": 1305
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "The 5 resource ARN(s) are redundant because they reference the same resource. Review the use of wildcards (*), or remove the resource arn:aws:apigateway:*::/apis/*/stages/* to remove the redundancy.",
+    "findingType": "SUGGESTION",
+    "issueCode": "REDUNDANT_RESOURCE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-resource",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 3
+          },
+          {
+            "value": "Resource"
+          },
+          {
+            "index": 10
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 1373,
+            "offset": 1373
+          },
+          "end": {
+            "line": 1,
+            "column": 1411,
+            "offset": 1411
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 3
+          },
+          {
+            "value": "Resource"
+          },
+          {
+            "index": 11
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 1413,
+            "offset": 1413
+          },
+          "end": {
+            "line": 1,
+            "column": 1451,
+            "offset": 1451
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 3
+          },
+          {
+            "value": "Resource"
+          },
+          {
+            "index": 12
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 1453,
+            "offset": 1453
+          },
+          "end": {
+            "line": 1,
+            "column": 1484,
+            "offset": 1484
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 3
+          },
+          {
+            "value": "Resource"
+          },
+          {
+            "index": 13
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 1486,
+            "offset": 1486
+          },
+          "end": {
+            "line": 1,
+            "column": 1526,
+            "offset": 1526
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 3
+          },
+          {
+            "value": "Resource"
+          },
+          {
+            "index": 14
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 1528,
+            "offset": 1528
+          },
+          "end": {
+            "line": 1,
+            "column": 1568,
+            "offset": 1568
           }
         }
       }
