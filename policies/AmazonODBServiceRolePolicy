@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-07-03T17:07:07Z", 
-        "VersionId": "v3", 
+        "CreateDate": "2025-09-29T17:34:06Z", 
+        "VersionId": "v4", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -29,6 +29,15 @@
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Sid": "EC2"
+                }, 
+                {
+                    "Action": [
+                        "networkmanager:GetVpcAttachment", 
+                        "networkmanager:ListAttachments"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "NM"
                 }, 
                 {
                     "Action": [
