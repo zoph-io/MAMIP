@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-06-06T22:48:30Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-09-29T16:19:08Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -15,7 +15,10 @@
                         "application-signals:ListServiceDependents", 
                         "application-signals:ListServiceOperations", 
                         "application-signals:ListServices", 
-                        "application-signals:ListTagsForResource"
+                        "application-signals:ListTagsForResource", 
+                        "application-signals:ListServiceStates", 
+                        "application-signals:ListAuditFindings", 
+                        "application-signals:ListGroupingAttributeDefinitions"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
@@ -29,16 +32,10 @@
                 }, 
                 {
                     "Action": [
-                        "logs:StartQuery"
-                    ], 
-                    "Resource": "arn:aws:logs:*:*:log-group:/aws/application-signals/data:*", 
-                    "Effect": "Allow", 
-                    "Sid": "CloudWatchApplicationSignalsLogGroupPermissions"
-                }, 
-                {
-                    "Action": [
+                        "logs:StartQuery", 
                         "logs:StopQuery", 
-                        "logs:GetQueryResults"
+                        "logs:GetQueryResults", 
+                        "logs:DescribeLogGroups"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
@@ -88,10 +85,62 @@
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
+                    "Sid": "CloudWatchApplicationSignalsXrayTracePermissions"
+                }, 
+                {
+                    "Action": [
+                        "xray:StartTraceRetrieval", 
+                        "xray:ListRetrievedTraces", 
+                        "xray:BatchGetTraces", 
+                        "xray:GetTraceSegmentDestination"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "aws:CalledVia": [
+                                "application-signals.cloudwatch.amazonaws.com"
+                            ]
+                        }
+                    }, 
                     "Sid": "CloudWatchApplicationSignalsXrayReadPermissions"
+                }, 
+                {
+                    "Action": [
+                        "cloudtrail:GetChannel"
+                    ], 
+                    "Resource": "arn:aws:cloudtrail:*:*:channel/aws-service-channel/application-signals/*", 
+                    "Effect": "Allow", 
+                    "Sid": "CloudWatchApplicationSignalsCloudTrailPermissions"
+                }, 
+                {
+                    "Action": [
+                        "cloudtrail:ListChannels"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "CloudWatchApplicationSignalsCloudTrailListPermissions"
+                }, 
+                {
+                    "Action": [
+                        "servicequotas:GetServiceQuota"
+                    ], 
+                    "Resource": [
+                        "arn:aws:servicequotas:*:*:s3/*", 
+                        "arn:aws:servicequotas:*:*:dynamodb/*", 
+                        "arn:aws:servicequotas:*:*:kinesis/*", 
+                        "arn:aws:servicequotas:*:*:sns/*", 
+                        "arn:aws:servicequotas:*:*:bedrock/*", 
+                        "arn:aws:servicequotas:*:*:lambda/*", 
+                        "arn:aws:servicequotas:*:*:fargate/*", 
+                        "arn:aws:servicequotas:*:*:elasticloadbalancing/*", 
+                        "arn:aws:servicequotas:*:*:ec2/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "CloudWatchApplicationSignalsServiceQuotaPermissions"
                 }
             ]
         }, 
-        "IsDefaultVersion": false
+        "IsDefaultVersion": true
     }
 }
