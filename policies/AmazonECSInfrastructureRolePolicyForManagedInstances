@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-09-26T18:04:07Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-09-29T21:04:07Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -130,7 +130,7 @@
                         "iam:PassRole"
                     ], 
                     "Resource": [
-                        "arn:aws:iam::*:role/ecsInstanceProfile*"
+                        "arn:aws:iam::*:role/ecsInstanceRole*"
                     ], 
                     "Effect": "Allow", 
                     "Condition": {
