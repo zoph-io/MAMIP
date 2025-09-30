@@ -1,7 +1,7 @@
-# AWS Access Analyzer - Findings - 2025-09-29
+# AWS Access Analyzer - Findings - 2025-09-30
 
-- **Policies analyzed:** `1384`
-- **Errors:** `20`
+- **Policies analyzed:** `1385`
+- **Errors:** `22`
   - [`AWSAccountActivityAccess`](./AWSAccountActivityAccess.json)
   - [`AWSCodeStarFullAccess`](./AWSCodeStarFullAccess.json)
   - [`AWSIAMIdentityCenterAllowListForIdentityContext`](./AWSIAMIdentityCenterAllowListForIdentityContext.json)
@@ -10,6 +10,8 @@
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
   - [`AmazonSageMakerFullAccess`](./AmazonSageMakerFullAccess.json)
   - [`BatchServiceRolePolicy`](./BatchServiceRolePolicy.json)
+  - [`CloudWatchApplicationSignalsFullAccess`](./CloudWatchApplicationSignalsFullAccess.json)
+  - [`CloudWatchApplicationSignalsReadOnlyAccess`](./CloudWatchApplicationSignalsReadOnlyAccess.json)
   - [`MemoryDBServiceRolePolicy`](./MemoryDBServiceRolePolicy.json)
   - [`RDSCloudHsmAuthorizationRole`](./RDSCloudHsmAuthorizationRole.json)
   - [`ResourceGroupsTaggingAPITagUntagSupportedResources`](./ResourceGroupsTaggingAPITagUntagSupportedResources.json)
@@ -29,7 +31,7 @@
   - [`IAMFullAccess`](./IAMFullAccess.json)
   - [`S3UnlockBucketPolicy`](./S3UnlockBucketPolicy.json)
   - [`SQSUnlockQueuePolicy`](./SQSUnlockQueuePolicy.json)
-- **Suggestions:** `145`
+- **Suggestions:** `146`
   - [`AIOpsAssistantPolicy`](./AIOpsAssistantPolicy.json)
   - [`AWSBatchFullAccess`](./AWSBatchFullAccess.json)
   - [`AWSCloud9Administrator`](./AWSCloud9Administrator.json)
@@ -71,6 +73,7 @@
   - [`AWSSupplyChainFederationAdminAccess`](./AWSSupplyChainFederationAdminAccess.json)
   - [`AWSThinkboxDeadlineResourceTrackerAccessPolicy`](./AWSThinkboxDeadlineResourceTrackerAccessPolicy.json)
   - [`AWSThinkboxDeadlineSpotEventPluginAdminPolicy`](./AWSThinkboxDeadlineSpotEventPluginAdminPolicy.json)
+  - [`AWSTransformApplicationDeploymentPolicy`](./AWSTransformApplicationDeploymentPolicy.json)
   - [`AmazonAppStreamPCAAccess`](./AmazonAppStreamPCAAccess.json)
   - [`AmazonAppStreamServiceAccess`](./AmazonAppStreamServiceAccess.json)
   - [`AmazonCodeGuruReviewerServiceRolePolicy`](./AmazonCodeGuruReviewerServiceRolePolicy.json)
