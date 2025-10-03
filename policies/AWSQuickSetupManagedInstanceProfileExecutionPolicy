@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-11-15T21:51:23Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-09-12T15:19:05Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -102,6 +102,7 @@
                     ], 
                     "Resource": [
                         "arn:aws:ssm:*:*:automation-execution/*", 
+                        "arn:aws:ssm:*:*:document/AWS-AttachIAMToInstance*", 
                         "arn:aws:ssm:*:*:automation-definition/AWS-AttachIAMToInstance*"
                     ], 
                     "Effect": "Allow", 

@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-07-10T21:07:07Z", 
-        "VersionId": "v11", 
+        "CreateDate": "2025-10-02T22:19:07Z", 
+        "VersionId": "v13", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -31,6 +31,8 @@
                         "ce:ListCostAllocationTagBackfillHistory", 
                         "ce:GetTags", 
                         "ce:GetDimensionValues", 
+                        "ce:GetCostAndUsageComparisons", 
+                        "ce:GetCostComparisonDrivers", 
                         "consolidatedbilling:ListLinkedAccounts", 
                         "consolidatedbilling:GetAccountBillingRole", 
                         "cur:GetClassicReport", 
@@ -46,9 +48,11 @@
                         "invoicing:GetInvoiceEmailDeliveryPreferences", 
                         "invoicing:GetInvoicePDF", 
                         "invoicing:GetInvoiceUnit", 
+                        "invoicing:GetInvoiceCorrection", 
                         "invoicing:ListInvoiceSummaries", 
                         "invoicing:ListInvoiceUnits", 
                         "invoicing:ListTagsForResource", 
+                        "invoicing:ListInvoiceCorrections", 
                         "mapcredits:ListQuarterSpend", 
                         "mapcredits:ListAssociatedPrograms", 
                         "mapcredits:ListQuarterCredits", 

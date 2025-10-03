@@ -1,0 +1,167 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-08-11T17:19:07Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "ec2:DescribeVpcEndpoints", 
+                        "ec2:DescribeVpcs", 
+                        "ec2:DescribeSecurityGroups"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ReadPermissions"
+                }, 
+                {
+                    "Action": [
+                        "ec2:CreateSecurityGroup"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:security-group*/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:RequestTag/red-hat-managed": "true"
+                        }
+                    }, 
+                    "Sid": "CreateSecurityGroups"
+                }, 
+                {
+                    "Action": [
+                        "ec2:DeleteSecurityGroup"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:security-group*/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/red-hat-managed": "true"
+                        }
+                    }, 
+                    "Sid": "DeleteSecurityGroup"
+                }, 
+                {
+                    "Action": [
+                        "ec2:AuthorizeSecurityGroupIngress", 
+                        "ec2:AuthorizeSecurityGroupEgress", 
+                        "ec2:RevokeSecurityGroupIngress", 
+                        "ec2:RevokeSecurityGroupEgress"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:security-group*/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/red-hat-managed": "true"
+                        }
+                    }, 
+                    "Sid": "SecurityGroupIngressEgress"
+                }, 
+                {
+                    "Action": [
+                        "ec2:CreateSecurityGroup"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:vpc/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "CreateSecurityGroupsVPCNoCondition"
+                }, 
+                {
+                    "Action": [
+                        "ec2:CreateVpcEndpoint"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:vpc-endpoint/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:RequestTag/red-hat-managed": "true"
+                        }
+                    }, 
+                    "Sid": "VPCEndpointWithCondition"
+                }, 
+                {
+                    "Action": [
+                        "ec2:CreateVpcEndpoint"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:security-group*/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/red-hat-managed": "true"
+                        }
+                    }, 
+                    "Sid": "VPCEndpointResourceTagCondition"
+                }, 
+                {
+                    "Action": [
+                        "ec2:CreateVpcEndpoint"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:vpc/*", 
+                        "arn:aws:ec2:*:*:subnet/*", 
+                        "arn:aws:ec2:*:*:route-table/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "VPCEndpointNoCondition"
+                }, 
+                {
+                    "Action": [
+                        "ec2:ModifyVpcEndpoint", 
+                        "ec2:DeleteVpcEndpoints"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:vpc-endpoint/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/red-hat-managed": "true"
+                        }
+                    }, 
+                    "Sid": "ManageVPCEndpointWithCondition"
+                }, 
+                {
+                    "Action": [
+                        "ec2:ModifyVpcEndpoint"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:subnet/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "ModifyVPCEndpoingNoCondition"
+                }, 
+                {
+                    "Action": [
+                        "ec2:CreateTags"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:vpc-endpoint/*", 
+                        "arn:aws:ec2:*:*:security-group/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "ec2:CreateAction": [
+                                "CreateVpcEndpoint", 
+                                "CreateSecurityGroup"
+                            ]
+                        }
+                    }, 
+                    "Sid": "CreateTagsRestrictedActions"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}

@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-05-16T23:37:06Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-08-14T16:04:06Z", 
+        "VersionId": "v3", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -25,6 +25,19 @@
                     ], 
                     "Effect": "Allow", 
                     "Sid": "CreateEniInSubnetStatement"
+                }, 
+                {
+                    "Action": [
+                        "ec2:DeleteSubnet"
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:subnet/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "Null": {
+                            "aws:ResourceTag/AmazonEVSManaged": "false"
+                        }
+                    }, 
+                    "Sid": "ManageSubnetStatement"
                 }, 
                 {
                     "Action": [
@@ -75,11 +88,82 @@
                 }, 
                 {
                     "Action": [
+                        "ec2:TerminateInstances", 
+                        "ec2:ModifyInstanceAttribute", 
+                        "ec2:DescribeInstanceAttribute"
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:instance/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "Null": {
+                            "aws:ResourceTag/AmazonEVSManaged": "false"
+                        }
+                    }, 
+                    "Sid": "ManageInstanceStatement"
+                }, 
+                {
+                    "Action": [
+                        "ec2:DescribeInstances", 
+                        "ec2:DescribeVolumes"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DescribeInstanceAndVolumeStatement"
+                }, 
+                {
+                    "Action": [
+                        "ec2:DeleteVolume", 
+                        "ec2:DetachVolume"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:volume/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "Null": {
+                            "aws:ResourceTag/AmazonEVSManaged": "false"
+                        }
+                    }, 
+                    "Sid": "ManageVolumeStatement"
+                }, 
+                {
+                    "Action": [
+                        "secretsmanager:DeleteSecret"
+                    ], 
+                    "Resource": [
+                        "arn:aws:secretsmanager:*:*:secret:*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "Null": {
+                            "aws:ResourceTag/AmazonEVSManaged": "false"
+                        }
+                    }, 
+                    "Sid": "ManageSecretStatement"
+                }, 
+                {
+                    "Action": [
                         "ec2:ModifyNetworkInterfaceAttribute"
                     ], 
                     "Resource": "arn:aws:ec2:*:*:security-group/*", 
                     "Effect": "Allow", 
                     "Sid": "UpdateSecurityGroupStatement"
+                }, 
+                {
+                    "Action": [
+                        "cloudwatch:PutMetricData"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "cloudwatch:namespace": [
+                                "AWS/Usage", 
+                                "AWS/EVS"
+                            ]
+                        }
+                    }, 
+                    "Sid": "CloudWatchPutMetricDataStatement"
                 }
             ]
         }, 

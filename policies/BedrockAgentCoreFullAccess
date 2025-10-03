@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-07-16T13:37:07Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-09-23T00:19:06Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -223,6 +223,17 @@
                     "Resource": "arn:aws:iam::*:role/aws-service-role/application-signals.cloudwatch.amazonaws.com/AWSServiceRoleForCloudWatchApplicationSignals", 
                     "Effect": "Allow", 
                     "Sid": "CloudWatchApplicationSignalsGetRolePermissions"
+                }, 
+                {
+                    "Action": "iam:CreateServiceLinkedRole", 
+                    "Resource": "arn:aws:iam::*:role/aws-service-role/network.bedrock-agentcore.amazonaws.com/AWSServiceRoleForBedrockAgentCoreNetwork", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:AWSServiceName": "network.bedrock-agentcore.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "CreateBedrockAgentCoreNetworkServiceLinkedRolePermissions"
                 }
             ]
         }, 

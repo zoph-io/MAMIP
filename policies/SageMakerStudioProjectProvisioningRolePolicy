@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-07-15T16:22:08Z", 
-        "VersionId": "v17", 
+        "CreateDate": "2025-09-29T20:04:07Z", 
+        "VersionId": "v21", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -84,7 +84,8 @@
                         "lakeformation:GrantPermissions", 
                         "lakeformation:BatchGrantPermissions", 
                         "lakeformation:ListResources", 
-                        "lakeformation:DescribeResource"
+                        "lakeformation:DescribeResource", 
+                        "lakeformation:*LakeFormationIdentityCenterConfiguration"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
@@ -137,6 +138,7 @@
                 {
                     "Action": [
                         "codecommit:DeleteRepository", 
+                        "codecommit:UntagResource", 
                         "codecommit:UpdateRepositoryEncryptionKey", 
                         "codecommit:PutRepositoryTriggers"
                     ], 
@@ -537,6 +539,7 @@
                 {
                     "Action": [
                         "iam:DeleteRole", 
+                        "iam:DeleteRolePolicy", 
                         "iam:ListRolePolicies", 
                         "iam:GetRolePolicy", 
                         "iam:ListAttachedRolePolicies"
@@ -633,7 +636,8 @@
                 {
                     "Action": [
                         "glue:ListConnectionTypes", 
-                        "glue:DescribeConnectionType"
+                        "glue:DescribeConnectionType", 
+                        "glue:*GlueIdentityCenterConfiguration"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
@@ -1596,6 +1600,7 @@
                 {
                     "Action": [
                         "logs:DeleteLogGroup", 
+                        "logs:UntagResource", 
                         "logs:DeleteRetentionPolicy", 
                         "logs:GetDataProtectionPolicy", 
                         "logs:PutDataProtectionPolicy", 
@@ -1647,6 +1652,8 @@
                 {
                     "Action": [
                         "athena:DeleteWorkGroup", 
+                        "athena:UpdateWorkGroup", 
+                        "athena:UntagResource", 
                         "athena:GetWorkGroup"
                     ], 
                     "Resource": "arn:aws:athena:*:*:workgroup/*", 
@@ -2518,15 +2525,11 @@
                 {
                     "Action": [
                         "elasticmapreduce:CreateSecurityConfiguration", 
-                        "elasticmapreduce:DeleteSecurityConfiguration"
+                        "elasticmapreduce:DeleteSecurityConfiguration", 
+                        "elasticmapreduce:DescribeSecurityConfiguration"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
-                    "Condition": {
-                        "StringEquals": {
-                            "aws:CalledViaFirst": "cloudformation.amazonaws.com"
-                        }
-                    }, 
                     "Sid": "EMRManage"
                 }, 
                 {
@@ -2716,7 +2719,10 @@
                     "Sid": "ListQueryPolicy"
                 }, 
                 {
-                    "Action": "ec2:DeleteSecurityGroup", 
+                    "Action": [
+                        "ec2:DeleteSecurityGroup", 
+                        "ec2:DeleteTags"
+                    ], 
                     "Resource": "arn:aws:ec2:*:*:security-group/*", 
                     "Effect": "Allow", 
                     "Condition": {
@@ -2768,7 +2774,10 @@
                     "Sid": "Scheduler"
                 }, 
                 {
-                    "Action": "scheduler:DeleteScheduleGroup", 
+                    "Action": [
+                        "scheduler:DeleteScheduleGroup", 
+                        "scheduler:UntagResource"
+                    ], 
                     "Resource": "arn:aws:scheduler:*:*:schedule-group/*", 
                     "Effect": "Allow", 
                     "Condition": {
@@ -3007,6 +3016,32 @@
                         }
                     }, 
                     "Sid": "S3AGPerm"
+                }, 
+                {
+                    "Action": [
+                        "sso:CreateApplication", 
+                        "sso:DeleteApplication", 
+                        "sso:DescribeApplication", 
+                        "sso:DescribeInstance", 
+                        "sso:ListInstances", 
+                        "sso:PutApplicationAccessScope", 
+                        "sso:PutApplicationAssignmentConfiguration", 
+                        "sso:PutApplicationAuthenticationMethod", 
+                        "sso:PutApplicationGrant"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ForAnyValue:StringLike": {
+                            "aws:CalledVia": [
+                                "elasticmapreduce.amazonaws.com", 
+                                "glue.amazonaws.com", 
+                                "lakeformation.amazonaws.com", 
+                                "ops.emr-serverless.amazonaws.com"
+                            ]
+                        }
+                    }, 
+                    "Sid": "SSOManage"
                 }
             ]
         }, 

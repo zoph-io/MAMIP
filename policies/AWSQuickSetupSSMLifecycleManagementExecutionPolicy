@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-11-15T21:55:57Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-09-12T15:34:08Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -39,6 +39,7 @@
                     ], 
                     "Resource": [
                         "arn:aws:ssm:*:*:automation-definition/AWSQuickSetupType-SSM-ManageResources*", 
+                        "arn:aws:ssm:*:*:document/AWSQuickSetupType-SSM-ManageResources*", 
                         "arn:aws:ssm:*:*:automation-execution/*"
                     ], 
                     "Effect": "Allow", 

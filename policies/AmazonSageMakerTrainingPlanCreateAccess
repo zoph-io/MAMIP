@@ -1,14 +1,15 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-12-04T13:21:07Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-08-08T21:19:07Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": [
                         "sagemaker:CreateTrainingPlan", 
-                        "sagemaker:CreateReservedCapacity"
+                        "sagemaker:CreateReservedCapacity", 
+                        "sagemaker:DescribeReservedCapacity"
                     ], 
                     "Resource": [
                         "arn:aws:sagemaker:*:*:training-plan/*", 
@@ -34,7 +35,7 @@
                             ]
                         }
                     }, 
-                    "Sid": "AggTagsToTrainingPlanPermissions"
+                    "Sid": "AddTagsToTrainingPlanPermissions"
                 }, 
                 {
                     "Action": "sagemaker:DescribeTrainingPlan", 
@@ -52,6 +53,14 @@
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Sid": "NonResourceLevelTrainingPlanPermissions"
+                }, 
+                {
+                    "Action": "sagemaker:ListUltraServersByReservedCapacity", 
+                    "Resource": [
+                        "arn:aws:sagemaker:*:*:reserved-capacity/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "ListUltraServersByReservedCapacityPermissions"
                 }
             ]
         }, 

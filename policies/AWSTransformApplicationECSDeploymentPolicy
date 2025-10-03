@@ -1,0 +1,301 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-09-29T22:49:07Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": "cloudformation:CreateStack", 
+                    "Resource": "arn:aws:cloudformation:*:*:stack/AWSTransform*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:RequestTag/CreatedBy": "AWSTransform", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "cloudformation:UpdateStack", 
+                        "cloudformation:DeleteStack"
+                    ], 
+                    "Resource": "arn:aws:cloudformation:*:*:stack/AWSTransform*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/CreatedBy": "AWSTransform", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "cloudformation:DescribeStacks", 
+                        "cloudformation:DescribeStackEvents"
+                    ], 
+                    "Resource": "arn:aws:cloudformation:*:*:stack/AWSTransform*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
+                }, 
+                {
+                    "Action": "ecs:CreateCluster", 
+                    "Resource": "arn:aws:ecs:*:*:cluster/AWSTransform*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:RequestTag/CreatedBy": "AWSTransform", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "ecs:UpdateCluster", 
+                        "ecs:DeleteCluster"
+                    ], 
+                    "Resource": "arn:aws:ecs:*:*:cluster/AWSTransform*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "ecs:ResourceTag/CreatedBy": "AWSTransform", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
+                }, 
+                {
+                    "Action": "ecs:RegisterTaskDefinition", 
+                    "Resource": "arn:aws:ecs:*:*:task-definition/AWSTransform*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:RequestTag/CreatedBy": "AWSTransform", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
+                }, 
+                {
+                    "Action": "ecs:RunTask", 
+                    "Resource": "arn:aws:ecs:*:*:task-definition/AWSTransform*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ArnLike": {
+                            "ecs:cluster": "arn:aws:ecs:*:*:cluster/AWSTransform*"
+                        }, 
+                        "StringEquals": {
+                            "aws:ResourceTag/CreatedBy": "AWSTransform", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
+                }, 
+                {
+                    "Action": "ecs:ListTasks", 
+                    "Resource": "arn:aws:ecs:*:*:container-instance/AWSTransform*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ArnLike": {
+                            "ecs:cluster": "arn:aws:ecs:*:*:cluster/AWSTransform*"
+                        }, 
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
+                }, 
+                {
+                    "Action": "ecs:DescribeTasks", 
+                    "Resource": "arn:aws:ecs:*:*:task/AWSTransform*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ArnLike": {
+                            "ecs:cluster": "arn:aws:ecs:*:*:cluster/AWSTransform*"
+                        }, 
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
+                }, 
+                {
+                    "Action": "iam:PassRole", 
+                    "Resource": [
+                        "arn:aws:iam::*:role/AWSTransform-Deploy-ECS-Task-Role", 
+                        "arn:aws:iam::*:role/AWSTransform-Deploy-ECS-Execution-Role"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:PassedToService": [
+                                "ecs-tasks.amazonaws.com", 
+                                "ecs.amazonaws.com"
+                            ], 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
+                }, 
+                {
+                    "Action": "iam:GetRole", 
+                    "Resource": [
+                        "arn:aws:iam::*:role/AWSTransform-Deploy-ECS-Task-Role", 
+                        "arn:aws:iam::*:role/AWSTransform-Deploy-ECS-Execution-Role"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
+                }, 
+                {
+                    "Action": "ecs:CreateService", 
+                    "Resource": "arn:aws:ecs:*:*:service/AWSTransform*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:RequestTag/CreatedBy": "AWSTransform", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "ecs:UpdateService", 
+                        "ecs:DeleteService"
+                    ], 
+                    "Resource": "arn:aws:ecs:*:*:service/AWSTransform*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "ecs:ResourceTag/CreatedBy": "AWSTransform", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "ecs:TagResource", 
+                        "ecs:UntagResource"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ecs:*:*:cluster/AWSTransform*", 
+                        "arn:aws:ecs:*:*:task-definition/AWSTransform*", 
+                        "arn:aws:ecs:*:*:service/AWSTransform*", 
+                        "arn:aws:ecs:*:*:task/AWSTransform*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
+                        "ForAllValues:StringEquals": {
+                            "aws:TagKeys": [
+                                "ResourceName", 
+                                "CreatedBy", 
+                                "TransformationType"
+                            ]
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "logs:CreateLogGroup", 
+                        "logs:TagResource"
+                    ], 
+                    "Resource": "arn:aws:logs:*:*:log-group:/aws/ecs/AWSTransform*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:RequestTag/CreatedBy": "AWSTransform", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
+                        "ForAllValues:StringEquals": {
+                            "aws:TagKeys": [
+                                "ResourceName", 
+                                "CreatedBy", 
+                                "TransformationType"
+                            ]
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "logs:DeleteLogGroup", 
+                        "logs:PutRetentionPolicy"
+                    ], 
+                    "Resource": "arn:aws:logs:*:*:log-group:/aws/ecs/AWSTransform*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
+                }, 
+                {
+                    "Action": "logs:UntagResource", 
+                    "Resource": "arn:aws:logs:*:*:log-group:/aws/ecs/AWSTransform*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
+                        "ForAllValues:StringEquals": {
+                            "aws:TagKeys": [
+                                "ResourceName", 
+                                "CreatedBy", 
+                                "TransformationType"
+                            ]
+                        }
+                    }
+                }, 
+                {
+                    "Action": "logs:GetLogEvents", 
+                    "Resource": "arn:aws:logs:*:*:log-group:/aws/ecs/AWSTransform*:log-stream:*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "ecr:CreateRepository", 
+                        "ecr:TagResource"
+                    ], 
+                    "Resource": "arn:aws:ecr:*:*:repository/awstransform*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:RequestTag/CreatedBy": "AWSTransform", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
+                        "ForAllValues:StringEquals": {
+                            "aws:TagKeys": [
+                                "ResourceName", 
+                                "CreatedBy", 
+                                "TransformationType"
+                            ]
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "ecs:DescribeClusters", 
+                        "ecs:DescribeServices", 
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:DescribeNetworkInterfaces", 
+                        "logs:DescribeLogGroups", 
+                        "logs:DescribeLogStreams", 
+                        "logs:ListTagsForResource"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}

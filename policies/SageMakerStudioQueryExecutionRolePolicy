@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-01-31T19:52:07Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-09-04T17:49:08Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -35,7 +35,7 @@
                         "s3:GetObject"
                     ], 
                     "Resource": [
-                        "arn:aws:s3:::*/dzd_*/*/dev/sys/athena/*"
+                        "arn:aws:s3:::*/dzd*/*/dev/sys/athena/*"
                     ], 
                     "Effect": "Allow", 
                     "Condition": {

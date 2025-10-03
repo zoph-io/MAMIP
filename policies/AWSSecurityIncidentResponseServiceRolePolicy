@@ -1,14 +1,16 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-12-01T16:36:06Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-08-08T18:49:07Z", 
+        "VersionId": "v3", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": [
                         "organizations:ListAccounts", 
-                        "organizations:ListChildren"
+                        "organizations:ListChildren", 
+                        "organizations:DescribeAccount", 
+                        "organizations:ListDelegatedAdministrators"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 

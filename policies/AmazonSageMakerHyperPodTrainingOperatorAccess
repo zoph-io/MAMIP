@@ -1,0 +1,23 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-08-19T17:04:07Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": "sagemaker:DescribeClusterNode", 
+                    "Resource": "arn:aws:sagemaker:*:*:cluster/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/SageMaker": "true"
+                        }
+                    }, 
+                    "Sid": "AllowDescribeClusterNodeOnHyperPodClusters"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}

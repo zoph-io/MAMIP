@@ -1,0 +1,44 @@
+[
+  {
+    "findingDetails": "The service principal does not match the expected format. Use the format service.amazonaws.com, or use one of the following suffixes: .amazon.com, .amazonaws.com.cn with all lowercase letters.",
+    "findingType": "ERROR",
+    "issueCode": "INVALID_SERVICE_PRINCIPAL_FORMAT",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-principal-format",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 7
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "ForAnyValue:StringEquals"
+          },
+          {
+            "value": "aws:CalledVia"
+          },
+          {
+            "index": 0
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 1575,
+            "offset": 1575
+          },
+          "end": {
+            "line": 1,
+            "column": 1621,
+            "offset": 1621
+          }
+        }
+      }
+    ]
+  }
+]

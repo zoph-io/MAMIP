@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2022-11-16T18:17:48Z", 
-        "VersionId": "v4", 
+        "CreateDate": "2025-09-16T19:49:07Z", 
+        "VersionId": "v5", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -19,6 +19,20 @@
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Sid": "AWSSSODirectoryReadOnly"
+                }, 
+                {
+                    "Action": [
+                        "kms:Decrypt"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "kms:ViaService": "identitystore.*.amazonaws.com", 
+                            "kms:EncryptionContext:aws:identitystore:identitystore-arn": "*"
+                        }
+                    }, 
+                    "Sid": "AllowKMSKeyUseViaAWSIdentityStoreService"
                 }
             ]
         }, 

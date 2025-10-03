@@ -1,7 +1,7 @@
-# AWS Access Analyzer - Findings - 2025-08-04
+# AWS Access Analyzer - Findings - 2025-10-03
 
-- **Policies analyzed:** `1373`
-- **Errors:** `20`
+- **Policies analyzed:** `1385`
+- **Errors:** `22`
   - [`AWSAccountActivityAccess`](./AWSAccountActivityAccess.json)
   - [`AWSCodeStarFullAccess`](./AWSCodeStarFullAccess.json)
   - [`AWSIAMIdentityCenterAllowListForIdentityContext`](./AWSIAMIdentityCenterAllowListForIdentityContext.json)
@@ -10,10 +10,12 @@
   - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
   - [`AmazonSageMakerFullAccess`](./AmazonSageMakerFullAccess.json)
   - [`BatchServiceRolePolicy`](./BatchServiceRolePolicy.json)
+  - [`CloudWatchApplicationSignalsFullAccess`](./CloudWatchApplicationSignalsFullAccess.json)
+  - [`CloudWatchApplicationSignalsReadOnlyAccess`](./CloudWatchApplicationSignalsReadOnlyAccess.json)
   - [`MemoryDBServiceRolePolicy`](./MemoryDBServiceRolePolicy.json)
   - [`RDSCloudHsmAuthorizationRole`](./RDSCloudHsmAuthorizationRole.json)
   - [`ResourceGroupsTaggingAPITagUntagSupportedResources`](./ResourceGroupsTaggingAPITagUntagSupportedResources.json)
-- **Security Warnings:** `25`
+- **Security Warnings:** `24`
   - [`AWSCodePipeline_FullAccess`](./AWSCodePipeline_FullAccess.json)
   - [`AWSCodePipeline_ReadOnlyAccess`](./AWSCodePipeline_ReadOnlyAccess.json)
   - [`AWSElasticBeanstalkService`](./AWSElasticBeanstalkService.json)
@@ -29,8 +31,7 @@
   - [`IAMFullAccess`](./IAMFullAccess.json)
   - [`S3UnlockBucketPolicy`](./S3UnlockBucketPolicy.json)
   - [`SQSUnlockQueuePolicy`](./SQSUnlockQueuePolicy.json)
-  - [`SecurityLakeResourceManagementServiceRolePolicy`](./SecurityLakeResourceManagementServiceRolePolicy.json)
-- **Suggestions:** `136`
+- **Suggestions:** `146`
   - [`AIOpsAssistantPolicy`](./AIOpsAssistantPolicy.json)
   - [`AWSBatchFullAccess`](./AWSBatchFullAccess.json)
   - [`AWSCloud9Administrator`](./AWSCloud9Administrator.json)
@@ -61,11 +62,18 @@
   - [`AWSQuickSetupPatchPolicyPermissionsBoundary`](./AWSQuickSetupPatchPolicyPermissionsBoundary.json)
   - [`AWSQuickSetupSSMDeploymentRolePolicy`](./AWSQuickSetupSSMDeploymentRolePolicy.json)
   - [`AWSQuickSetupSSMHostMgmtPermissionsBoundary`](./AWSQuickSetupSSMHostMgmtPermissionsBoundary.json)
+  - [`AWSResourceExplorerServiceRolePolicy`](./AWSResourceExplorerServiceRolePolicy.json)
+  - [`AWSSSODirectoryAdministrator`](./AWSSSODirectoryAdministrator.json)
+  - [`AWSSSODirectoryReadOnly`](./AWSSSODirectoryReadOnly.json)
+  - [`AWSSSOMasterAccountAdministrator`](./AWSSSOMasterAccountAdministrator.json)
+  - [`AWSSSOMemberAccountAdministrator`](./AWSSSOMemberAccountAdministrator.json)
+  - [`AWSSSOReadOnly`](./AWSSSOReadOnly.json)
   - [`AWSServiceRoleForAmazonEKSNodegroup`](./AWSServiceRoleForAmazonEKSNodegroup.json)
   - [`AWSServiceRoleForEC2ScheduledInstances`](./AWSServiceRoleForEC2ScheduledInstances.json)
   - [`AWSSupplyChainFederationAdminAccess`](./AWSSupplyChainFederationAdminAccess.json)
   - [`AWSThinkboxDeadlineResourceTrackerAccessPolicy`](./AWSThinkboxDeadlineResourceTrackerAccessPolicy.json)
   - [`AWSThinkboxDeadlineSpotEventPluginAdminPolicy`](./AWSThinkboxDeadlineSpotEventPluginAdminPolicy.json)
+  - [`AWSTransformApplicationDeploymentPolicy`](./AWSTransformApplicationDeploymentPolicy.json)
   - [`AmazonAppStreamPCAAccess`](./AmazonAppStreamPCAAccess.json)
   - [`AmazonAppStreamServiceAccess`](./AmazonAppStreamServiceAccess.json)
   - [`AmazonCodeGuruReviewerServiceRolePolicy`](./AmazonCodeGuruReviewerServiceRolePolicy.json)
@@ -137,7 +145,7 @@
   - `SageMakerStudioProjectProvisioningRolePolicy`
   - `SageMakerStudioProjectUserRolePermissionsBoundary`
   - `SageMakerStudioProjectUserRolePolicy`
-- **Deprecated policies:** `64`
+- **Deprecated policies:** `73`
   - [`AWSB9InternalServicePolicy`](../policies/AWSB9InternalServicePolicy) (deprecated: Unknown)
   - [`AWSBackupAdminPolicy`](../policies/AWSBackupAdminPolicy) (deprecated: Unknown)
   - [`AWSBackupOperatorPolicy`](../policies/AWSBackupOperatorPolicy) (deprecated: Unknown)
@@ -151,6 +159,8 @@
   - [`AWSECRPullThroughCacheServiceRolePolicy`](../policies/AWSECRPullThroughCacheServiceRolePolicy) (deprecated: Unknown)
   - [`AWSElasticBeanstalkFullAccess`](../policies/AWSElasticBeanstalkFullAccess) (deprecated: Unknown)
   - [`AWSElasticBeanstalkReadOnlyAccess`](../policies/AWSElasticBeanstalkReadOnlyAccess) (deprecated: Unknown)
+  - [`AWSIoT1ClickFullAccess`](../policies/AWSIoT1ClickFullAccess) (deprecated: 2025-09-18)
+  - [`AWSIoT1ClickReadOnlyAccess`](../policies/AWSIoT1ClickReadOnlyAccess) (deprecated: 2025-09-18)
   - [`AWSIotRoboRunnerFullAccess`](../policies/AWSIotRoboRunnerFullAccess) (deprecated: Unknown)
   - [`AWSIotRoboRunnerReadOnly`](../policies/AWSIotRoboRunnerReadOnly) (deprecated: Unknown)
   - [`AWSIotRoboRunnerServiceRolePolicy`](../policies/AWSIotRoboRunnerServiceRolePolicy) (deprecated: Unknown)
@@ -160,9 +170,16 @@
   - [`AWSMarketplaceImageBuildFullAccess`](../policies/AWSMarketplaceImageBuildFullAccess) (deprecated: Unknown)
   - [`AWSMobileHub_FullAccess`](../policies/AWSMobileHub_FullAccess) (deprecated: Unknown)
   - [`AWSMobileHub_ReadOnly`](../policies/AWSMobileHub_ReadOnly) (deprecated: Unknown)
+  - [`AWSOpsWorksCMInstanceProfileRole`](../policies/AWSOpsWorksCMInstanceProfileRole) (deprecated: 2025-08-14)
+  - [`AWSOpsWorksCMServiceRole`](../policies/AWSOpsWorksCMServiceRole) (deprecated: 2025-08-14)
+  - [`AWSOpsWorksCloudWatchLogs`](../policies/AWSOpsWorksCloudWatchLogs) (deprecated: 2025-08-14)
   - [`AWSOpsWorksFullAccess`](../policies/AWSOpsWorksFullAccess) (deprecated: Unknown)
+  - [`AWSOpsWorksInstanceRegistration`](../policies/AWSOpsWorksInstanceRegistration) (deprecated: 2025-08-14)
   - [`AWSOpsWorksRegisterCLI`](../policies/AWSOpsWorksRegisterCLI) (deprecated: Unknown)
+  - [`AWSOpsWorksRegisterCLI_EC2`](../policies/AWSOpsWorksRegisterCLI_EC2) (deprecated: 2025-08-14)
+  - [`AWSOpsWorksRegisterCLI_OnPremises`](../policies/AWSOpsWorksRegisterCLI_OnPremises) (deprecated: 2025-08-14)
   - [`AWSOpsWorksRole`](../policies/AWSOpsWorksRole) (deprecated: Unknown)
+  - [`AWSOpsWorks_FullAccess`](../policies/AWSOpsWorks_FullAccess) (deprecated: 2025-08-14)
   - [`AWSProtonServiceSyncServiceRolePolicy`](../policies/AWSProtonServiceSyncServiceRolePolicy) (deprecated: Unknown)
   - [`AWSRoboMakerFullAccess`](../policies/AWSRoboMakerFullAccess) (deprecated: Unknown)
   - [`AWSSchemasServiceRolePolicy`](../policies/AWSSchemasServiceRolePolicy) (deprecated: Unknown)

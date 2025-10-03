@@ -1,0 +1,55 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-08-18T22:49:07Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "datazone:ListDomains", 
+                        "datazone:GetDomain", 
+                        "datazone:GetUserProfile", 
+                        "datazone:ListProjects", 
+                        "datazone:ListProjectProfiles", 
+                        "datazone:CreateProject", 
+                        "datazone:GetProject", 
+                        "datazone:DeleteProject", 
+                        "datazone:GetIamPortalLoginUrl"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonDataZoneStatement"
+                }, 
+                {
+                    "Action": [
+                        "iam:ListRoles", 
+                        "iam:GetRole", 
+                        "iam:GetUser"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "ReadOnlyStatement"
+                }, 
+                {
+                    "Action": "iam:PassRole", 
+                    "Resource": [
+                        "arn:aws:iam::*:role/service-role/AmazonSageMaker*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:passedToService": "datazone.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "IAMPassRoleStatement"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}

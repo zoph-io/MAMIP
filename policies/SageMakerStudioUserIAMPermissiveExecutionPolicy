@@ -1,0 +1,209 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-08-26T21:34:07Z", 
+        "VersionId": "v2", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "cloudwatch:*", 
+                        "glue:*", 
+                        "logs:*", 
+                        "redshift-data:*", 
+                        "redshift-serverless:*", 
+                        "redshift:*", 
+                        "s3:*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DataAccess"
+                }, 
+                {
+                    "Action": [
+                        "athena:*", 
+                        "bedrock:*", 
+                        "codewhisperer:*", 
+                        "q:*", 
+                        "sagemaker:*", 
+                        "scheduler:*", 
+                        "sqlworkbench:*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ComputeAccess"
+                }, 
+                {
+                    "Action": [
+                        "datazone:CreateAsset*", 
+                        "datazone:CreateConnection", 
+                        "datazone:CreateProject", 
+                        "datazone:DeleteAsset*", 
+                        "datazone:DeleteConnection", 
+                        "datazone:DeleteProject", 
+                        "datazone:Get*", 
+                        "datazone:List*", 
+                        "datazone:PostLineageEvent", 
+                        "datazone:Search", 
+                        "datazone:SearchListings", 
+                        "datazone:SearchUserProfiles", 
+                        "datazone:UpdateAssetFilter", 
+                        "datazone:UpdateConnection", 
+                        "datazone:UpdateProject"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DataZone"
+                }, 
+                {
+                    "Action": [
+                        "iam:GetRole", 
+                        "iam:ListRoles", 
+                        "sts:AssumeRole"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "IamSts"
+                }, 
+                {
+                    "Action": "iam:CreateServiceLinkedRole", 
+                    "Resource": [
+                        "arn:aws:iam::*:role/aws-service-role/neptune-graph.amazonaws.com/AWSServiceRoleForNeptuneGraph", 
+                        "arn:aws:iam::*:role/aws-service-role/redshift.amazonaws.com/AWSServiceRoleForRedshift", 
+                        "arn:aws:iam::*:role/aws-service-role/sagemaker.amazonaws.com/AWSServiceRoleForAmazonSageMakerNotebooks", 
+                        "arn:aws:iam::*:role/aws-service-role/ops.emr-serverless.amazonaws.com/AWSServiceRoleForAmazonEMRServerless", 
+                        "arn:aws:iam::*:role/aws-service-role/airflow.amazonaws.com/AWSServiceRoleForAmazonMWAA", 
+                        "arn:aws:iam::*:role/aws-service-role/elasticmapreduce.amazonaws.com/AWSServiceRoleForEMRCleanup", 
+                        "arn:aws:iam::*:role/aws-service-role/sagemaker.application-autoscaling.amazonaws.com/AWSServiceRoleForApplicationAutoScaling_SageMakerEndpoint", 
+                        "arn:aws:iam::*:role/aws-service-role/observability.aoss.amazonaws.com/AWSServiceRoleForAmazonOpenSearchServerless"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "CreateSLR"
+                }, 
+                {
+                    "Action": "sts:TagSession", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ForAllValues:StringLike": {
+                            "aws:TagKeys": [
+                                "AmazonDataZone*"
+                            ]
+                        }
+                    }, 
+                    "Sid": "TagSession"
+                }, 
+                {
+                    "Action": "iam:PassRole", 
+                    "Resource": [
+                        "arn:aws:iam::*:role/service-role/AmazonSageMaker*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:PassedToService": [
+                                "sagemaker.amazonaws.com", 
+                                "lakeformation.amazonaws.com", 
+                                "glue.amazonaws.com", 
+                                "bedrock.amazonaws.com", 
+                                "redshift-serverless.amazonaws.com", 
+                                "redshift.amazonaws.com", 
+                                "scheduler.amazonaws.com"
+                            ]
+                        }
+                    }, 
+                    "Sid": "PassRole"
+                }, 
+                {
+                    "Action": "sts:SetSourceIdentity", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "sts:SourceIdentity": "${aws:PrincipalTag/datazone:userId}"
+                        }
+                    }, 
+                    "Sid": "SourceIdentity"
+                }, 
+                {
+                    "Action": [
+                        "ssm:GetParameter*"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ssm:*:*:parameter/amazon/datazone/q*", 
+                        "arn:aws:ssm:*:*:parameter/amazon/datazone/genAI/*", 
+                        "arn:aws:ssm:*::parameter/aws/service/sagemaker-distribution/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "SSM"
+                }, 
+                {
+                    "Action": [
+                        "lakeformation:DescribeResource", 
+                        "lakeformation:GetDataAccess", 
+                        "lakeformation:ListResources"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "LFAccess"
+                }, 
+                {
+                    "Action": [
+                        "dynamodb:List*", 
+                        "dynamodb:Describe*", 
+                        "dynamodb:Scan", 
+                        "dynamodb:PartiQLSelect", 
+                        "dynamodb:Query", 
+                        "secretsmanager:ListSecrets", 
+                        "resource-groups:GetGroupQuery", 
+                        "resource-groups:ListGroupResources"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "FederatedConn"
+                }, 
+                {
+                    "Action": [
+                        "secretsmanager:DescribeSecret", 
+                        "secretsmanager:GetSecretValue"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/AmazonDataZoneProject": "${datazone:projectId}"
+                        }
+                    }, 
+                    "Sid": "PrivateSecret"
+                }, 
+                {
+                    "Action": [
+                        "secretsmanager:DescribeSecret", 
+                        "secretsmanager:GetSecretValue"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/for-use-with-all-datazone-projects": "true"
+                        }
+                    }, 
+                    "Sid": "SharedSecret"
+                }, 
+                {
+                    "Action": [
+                        "ecr:BatchCheckLayerAvailability", 
+                        "ecr:BatchGetImage", 
+                        "ecr:DescribeImages", 
+                        "ecr:GetAuthorizationToken", 
+                        "ecr:GetDownloadUrlForLayer"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "Ecr"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}

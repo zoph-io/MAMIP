@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-04-21T20:07:07Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-08-25T20:49:06Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -45,6 +45,26 @@
                         }
                     }, 
                     "Sid": "AllowOpsItemReplicationTagging"
+                }, 
+                {
+                    "Action": [
+                        "ssm:AddTagsToResource"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ssm:*:*:automation-execution/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:RequestTag/SystemsManagerJustInTimeNodeAccessManaged": "true"
+                        }, 
+                        "ForAllValues:StringEquals": {
+                            "aws:TagKeys": [
+                                "SystemsManagerJustInTimeNodeAccessManaged"
+                            ]
+                        }
+                    }, 
+                    "Sid": "AllowAutomationExecutionTagging"
                 }, 
                 {
                     "Action": [

@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-04-10T23:52:06Z", 
-        "VersionId": "v5", 
+        "CreateDate": "2025-08-11T17:34:06Z", 
+        "VersionId": "v6", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -20,6 +20,7 @@
                         "ec2:DescribeVpcAttribute", 
                         "ec2:DescribeVpcs", 
                         "ec2:DescribeInstanceTypeOfferings", 
+                        "ec2:DescribeCapacityReservations", 
                         "elasticloadbalancing:DescribeAccountLimits", 
                         "elasticloadbalancing:DescribeLoadBalancers", 
                         "iam:GetOpenIDConnectProvider", 
@@ -325,6 +326,26 @@
                         }
                     }, 
                     "Sid": "CreateTagsK8sSubnet"
+                }, 
+                {
+                    "Action": [
+                        "ec2:DeleteTags"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:subnet/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "Null": {
+                            "aws:TagKeys": "false"
+                        }, 
+                        "ForAllValues:StringLike": {
+                            "aws:TagKeys": [
+                                "kubernetes.io/cluster/*"
+                            ]
+                        }
+                    }, 
+                    "Sid": "DeleteTagsK8sSubnet"
                 }, 
                 {
                     "Action": [
