@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-09-24T21:19:07Z", 
-        "VersionId": "v18", 
+        "CreateDate": "2025-10-03T16:04:07Z", 
+        "VersionId": "v19", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -547,6 +547,7 @@
                         "omics:ListRunGroups", 
                         "omics:ListWorkflows", 
                         "outposts:ListSites", 
+                        "organizations:DescribeResourcePolicy", 
                         "organizations:ListPolicies", 
                         "panorama:ListPackages", 
                         "partnercentral:ListEngagementInvitations", 
@@ -748,13 +749,19 @@
                         "ecs:ListTagsForResource", 
                         "elasticloadbalancing:DescribeCapacityReservation", 
                         "elasticloadbalancing:DescribeLoadBalancerAttributes", 
+                        "elasticloadbalancing:DescribeLoadBalancerPolicies", 
+                        "elasticloadbalancing:DescribeLoadBalancerPolicyTypes", 
                         "elasticloadbalancing:DescribeTags", 
+                        "elasticloadbalancing:DescribeTargetGroupAttributes", 
+                        "elasticloadbalancing:DescribeTargetHealth", 
                         "events:DescribeRule", 
                         "events:ListTargetsByRule", 
                         "iam:GetRole", 
                         "iam:GetRolePolicy", 
                         "iam:ListAttachedRolePolicies", 
                         "iam:ListRolePolicies", 
+                        "kinesis:DescribeStreamSummary", 
+                        "kinesis:ListTagsForStream", 
                         "lambda:GetEventSourceMapping", 
                         "lambda:GetFunction", 
                         "lambda:GetFunctionCodeSigningConfig", 
@@ -793,6 +800,6 @@
                 }
             ]
         }, 
-        "IsDefaultVersion": false
+        "IsDefaultVersion": true
     }
 }

@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-08-26T21:34:06Z", 
-        "VersionId": "v2", 
+        "CreateDate": "2025-10-03T18:04:07Z", 
+        "VersionId": "v3", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -141,6 +141,19 @@
                 }, 
                 {
                     "Action": [
+                        "sagemaker:StartSession"
+                    ], 
+                    "Resource": "arn:aws:sagemaker:*:*:space/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/AmazonDataZoneUser": "${aws:PrincipalTag/datazone:userId}"
+                        }
+                    }, 
+                    "Sid": "AllowStartSessionForSpaceRemoteConnection"
+                }, 
+                {
+                    "Action": [
                         "resource-groups:GetGroupQuery", 
                         "resource-groups:ListGroupResources"
                     ], 
@@ -217,6 +230,7 @@
                         "glue:StopSession", 
                         "glue:UseGlueStudio", 
                         "glue:TagResource", 
+                        "glue:UntagResource", 
                         "glue:*Job*"
                     ], 
                     "Resource": "*", 

@@ -1,0 +1,52 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-10-03T18:34:07Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "sso:ListPermissionSets"
+                    ], 
+                    "Resource": "arn:aws:sso:::instance/*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowIdentityCenterInstancePermissions"
+                }, 
+                {
+                    "Action": [
+                        "sso:DescribeRegisteredRegions", 
+                        "sso:ListDirectoryAssociations", 
+                        "sso:ListProfileAssociations", 
+                        "sso:AssociateProfile", 
+                        "sso:GetProfile", 
+                        "sso:CreateProfile", 
+                        "sso:UpdateProfile", 
+                        "sso:GetTrust", 
+                        "sso:CreateTrust", 
+                        "sso:UpdateTrust", 
+                        "sso:CreateApplicationInstance", 
+                        "sso:GetApplicationInstance", 
+                        "sso:GetSSOStatus"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowIdentityCenterManagementPermissions"
+                }, 
+                {
+                    "Action": [
+                        "sso-directory:SearchGroups", 
+                        "sso-directory:CreateGroup", 
+                        "sso-directory:SearchUsers", 
+                        "sso-directory:CreateUser", 
+                        "sso-directory:DescribeDirectory"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowIdentityCenterDirectoryPermissions"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
