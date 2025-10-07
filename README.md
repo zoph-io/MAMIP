@@ -1,90 +1,101 @@
-# 🔊 MAMIP - Monitor AWS Managed IAM Policies
+<div align="center">
 
-[![[Prod] MAMIP - GitHub Actions](https://github.com/z0ph/MAMIP/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/z0ph/MAMIP/actions/workflows/main.yml)
+# 🔊 MAMIP
 
-MAMIP is a comprehensive monitoring tool that tracks changes in AWS Managed IAM Policies and provides automated notifications through multiple channels. Built with a serverless architecture using ECS Fargate and Terraform, it ensures continuous monitoring of AWS policy updates with real-time validation using AWS Access Analyzer.
+### AWS Managed Policy Changes Archive
 
-## 📋 Table of Contents
+[![Build Status](https://github.com/z0ph/MAMIP/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/z0ph/MAMIP/actions/workflows/main.yml)
+[![License](https://img.shields.io/badge/license-GPL--3.0-blue.svg)](LICENSE)
+[![Website](https://img.shields.io/badge/website-mamip.zoph.io-brightgreen)](https://mamip.zoph.io)
 
-- [Features](#-features)
-- [Architecture](#-architecture)
-- [Getting Started](#-getting-started)
-- [Policy Validation](#-policy-validation)
-- [Data Storage](#-data-storage)
-- [Contributing](#-contributing)
-- [Credits](#-credits)
-- [License](#-license)
+Track every change to AWS Managed IAM Policies with full version history and validation.
 
-## 🔍 Features
+**[🌐 Visit the Website](https://mamip.zoph.io)** • **[📊 Browse Policies](https://mamip.zoph.io/policies)** • **[ℹ️ About](https://mamip.zoph.io/about)**
 
-### Core Functionality
+</div>
 
-- **Automated Policy Monitoring**: Continuously tracks all AWS Managed IAM Policies
-- **Change Detection**: Identifies new, updated, and deprecated policies
-- **Policy Validation**: Validates policies using AWS Access Analyzer with detailed findings
-- **Multi-Channel Notifications**: Sends alerts via social media, SNS, and GitHub
-- **Deprecation Tracking**: Maintains historical records of deprecated policies
-- **Individual Commit History**: Each policy change gets its own commit with version tracking
+---
 
-### Technical Features
+## 🖥️ Companion Website
 
-- **Serverless Architecture**: ECS Fargate with Spot instances for cost optimization
-- **Infrastructure as Code**: Complete Terraform configuration for reproducible deployments
-- **Container-Based**: Docker containerization for consistent execution environments
-- **GitHub Integration**: Secure token-based authentication via AWS Secrets Manager
-- **Automated CI/CD**: GitHub Actions for continuous integration and deployment
+Explore AWS Managed IAM Policies through our modern, searchable web interface:
 
-## 🏗 Architecture
+[![MAMIP Website](assets/compagnion-website.png)](https://mamip.zoph.io)
 
-![Schema ECS Fargate](assets/schema.drawio.svg)
+### **[✨ Visit mamip.zoph.io](https://mamip.zoph.io)**
 
-### System Components
+**Features:**
 
+- 🔍 **Search & Filter** - Instantly find any policy among 1,465+ managed policies
+- 📈 **Track Changes** - View full version history and git diffs for every policy
+- 🆕 **Spot New Features** - Discover v1 policies indicating new AWS services
+- 💻 **Syntax Highlighting** - Read policy documents with color-coded JSON
+- 📱 **Responsive Design** - Works seamlessly on desktop and mobile
+
+---
+
+## ✨ Key Features
+
+### 📊 Comprehensive Monitoring
+
+- **1,465+ Policies Tracked** - All AWS Managed IAM Policies monitored continuously
+- **Real-Time Updates** - Automated checks every 4 hours on weekdays
+- **Version History** - Full git history for every policy change
+- **Deprecation Tracking** - Historical records of 73+ deprecated policies
+
+### 🔔 Multi-Channel Notifications
+
+Stay informed about policy changes through your preferred channel:
+
+- 🦋 **Bluesky**: [@mamip.bsky.social](https://bsky.app/profile/mamip.bsky.social)
+- 𝕏 **X/Twitter**: [@mamip_aws](https://x.com/mamip_aws)
+- 📧 **AWS SNS**: `arn:aws:sns:eu-west-1:567589703415:mamip-sns-topic`
+- 🔔 **GitHub**: Watch this repository for releases
+
+### ✅ Policy Validation
+
+Every policy validated using [AWS Access Analyzer](https://aws.amazon.com/blogs/aws/iam-access-analyzer-update-policy-validation/):
+
+- Security analysis and best practice checks
+- Syntax validation and resource analysis
+- Detailed findings stored in [`findings/`](./findings/) directory
+
+### 🏗️ Technical Stack
+
+- **Serverless**: ECS Fargate with Spot instances
+- **Infrastructure**: Terraform (full IaC)
+- **Validation**: AWS Access Analyzer
+- **CI/CD**: GitHub Actions
+- **Frontend**: Next.js 15 + Tailwind CSS
+
+## 🏗️ How It Works
+
+![Architecture](assets/schema.drawio.svg)
+
+**Automated workflow running every 4 hours (Mon-Fri):**
+
+1. 🔄 **Fetch** - Retrieve all AWS Managed IAM Policies via AWS CLI
+2. 🔍 **Compare** - Detect new, updated, or deprecated policies
+3. ✅ **Validate** - Run AWS Access Analyzer policy validation
+4. 💾 **Store** - Commit changes to git with individual commits per policy
+5. 📢 **Notify** - Send alerts via Bluesky, X/Twitter, SNS, and GitHub
+6. 🌐 **Deploy** - Update the companion website automatically
+
+## 🚀 Quick Start
+
+### Subscribe to Updates
+
+**Option 1: Social Media (Recommended)**
+
+```bash
+# Follow on Bluesky
+https://bsky.app/profile/mamip.bsky.social
+
+# Follow on X/Twitter
+https://x.com/mamip_aws
 ```
-┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
-│   GitHub Actions │────│   ECS Fargate    │────│   AWS Services  │
-│   - Scheduled    │    │   - Container    │    │   - IAM APIs    │
-│   - Manual       │    │   - Python App   │    │   - Access Analyzer │
-└─────────────────┘    └──────────────────┘    │   - Secrets Mgr │
-                                               │   - SNS/SQS     │
-                                               └─────────────────┘
-            │                       │                       │
-            ▼                       ▼                       ▼
-┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
-│   Data Storage  │    │   Notifications  │    │   Monitoring    │
-│   - policies/   │    │   - Social Media │    │   - CloudWatch  │
-│   - findings/   │    │   - Email/SNS    │    │   - Logs        │
-│   - DEPRECATED  │    │   - GitHub       │    │   - Metrics     │
-└─────────────────┘    └──────────────────┘    └─────────────────┘
-```
 
-### Data Flow
-
-1. **Policy Fetching**: Script retrieves current AWS Managed Policies
-2. **Change Detection**: Compares with local repository to identify changes
-3. **Validation**: New/updated policies validated using AWS Access Analyzer
-4. **Storage**: Policy documents stored in `policies/`, findings in `findings/`
-5. **Versioning**: Individual commits created for each policy change
-6. **Notification**: Alerts sent through configured channels
-7. **Cleanup**: Deprecated policies moved to tracking list
-
-## 🖐 Usage
-
-### Notification Channels
-
-Choose from multiple ways to receive policy change notifications:
-
-#### 1. Social Media
-
-- **Bluesky**: [@mamip.bsky.social](https://bsky.app/profile/mamip.bsky.social)
-- **Twitter/𝕏**: [@mamip_aws](https://x.com/mamip_aws)
-
-#### 2. GitHub Notifications
-
-- Enable "Releases Only" notifications on this repository
-- Subscribe to commit RSS feed: [GitHub RSS Feed](https://github.com/z0ph/MAMIP/commits/master.atom)
-
-#### 3. AWS SNS Topic
+**Option 2: AWS SNS Email Notifications**
 
 ```bash
 aws sns subscribe \
@@ -93,153 +104,104 @@ aws sns subscribe \
   --notification-endpoint your-email@example.com
 ```
 
-#### 4. Direct Repository Monitoring
+**Option 3: GitHub**
 
-- Watch this repository for commit notifications
-- Monitor the `policies/` directory for changes
+- ⭐ Star this repository and enable "Releases only" notifications
+- 📡 Subscribe to [RSS feed](https://github.com/z0ph/MAMIP/commits/master.atom)
 
-### Manual Execution
+### Browse Policies
 
-For manual policy checks:
+Visit **[mamip.zoph.io](https://mamip.zoph.io)** for the full searchable archive with:
 
-```bash
-# Local execution
-cd automation
-python validate-batch.py
+- Policy search and filtering
+- Full version history and git diffs
+- Syntax-highlighted JSON viewer
+- Brand new (v1) policy tracking
 
-# Container execution
-docker run -e AWS_REGION=eu-west-1 your-ecr/mamip:latest
-```
-
-## ✅ Policy Validation
-
-Each AWS Managed Policy undergoes comprehensive validation using [AWS Access Analyzer Policy Validation](https://aws.amazon.com/blogs/aws/iam-access-analyzer-update-policy-validation/).
-
-### Validation Process
-
-1. **Syntax Validation**: Ensures proper JSON structure
-2. **Security Analysis**: Identifies potential security issues
-3. **Best Practice Checks**: Validates against AWS recommendations
-4. **Resource Analysis**: Checks resource ARN patterns
-
-### Validation Findings
-
-- **Location**: All findings stored in [`findings/`](./findings/) directory
-- **Format**: JSON files containing detailed validation results
-- **Naming**: Corresponds to policy names for easy reference
-- **Types**: Warnings, suggestions, and security findings
-
-### Example Finding Structure
-
-```json
-{
-  "findings": [
-    {
-      "findingType": "WARNING",
-      "issueCode": "REDUNDANT_STATEMENT",
-      "findingDetails": "...",
-      "locations": [...]
-    }
-  ],
-  "validatePolicyResponse": {...}
-}
-```
-
-## 💾 Data Storage
-
-### Repository Structure
+## 📂 Repository Structure
 
 ```
 MAMIP/
-├── automation/           # Core application code
-│   ├── validate-batch.py # Main validation script
-│   ├── tf-fargate/      # Terraform infrastructure
-│   └── runbook-*.sh     # Execution scripts
-├── policies/            # Current AWS Managed Policies
-├── findings/           # Policy validation results
-├── DEPRECATED.json     # List of deprecated policies
-└── assets/            # Documentation assets
+├── policies/          # 1,465+ AWS Managed IAM Policies (JSON)
+├── findings/          # Policy validation results from Access Analyzer
+├── DEPRECATED.json    # Historical record of 73+ deprecated policies
+├── automation/        # Python scripts & Terraform infrastructure
+├── website/           # Next.js companion website source code
+└── assets/            # Documentation and images
 ```
 
-### Policy Storage
+**Browse the data:**
 
-- **Current Policies**: Stored in `policies/` directory
-- **File Naming**: Direct policy name mapping
-- **Format**: AWS IAM policy JSON documents
-- **Versioning**: Git history tracks all changes
+- 📋 [All Policies](./policies/) - Current AWS Managed IAM Policies
+- 🔍 [Validation Findings](./findings/) - Access Analyzer results
+- 🗑️ [Deprecated Policies](./DEPRECATED.json) - Historical deprecation records
 
-### Deprecated Policies
+## 🛠️ Technical Details
 
-Policies no longer maintained by AWS are tracked in [`DEPRECATED.json`](./DEPRECATED.json):
+### Infrastructure
 
-```json
-{
-  "deprecated_policies": [
-    {
-      "policy_name": "ExampleDeprecatedPolicy",
-      "deprecated_date": "2024-01-15",
-      "reason": "Replaced by newer policy"
-    }
-  ]
-}
+- **Compute**: AWS ECS Fargate (Spot instances for cost optimization)
+- **Schedule**: CloudWatch Events (every 4 hours, Mon-Fri)
+- **IaC**: Terraform configuration in [`automation/tf-fargate/`](./automation/tf-fargate/)
+- **Container**: Python 3.x with AWS CLI and git
+- **Secrets**: AWS Secrets Manager for GitHub token storage
+
+### Required AWS Permissions
+
+```
+iam:ListPolicies, iam:GetPolicyVersion
+access-analyzer:ValidatePolicy
+secretsmanager:GetSecretValue
+sns:Publish, sqs:SendMessage
+s3:GetObject, s3:PutObject
 ```
 
-## 🔒 Security
+### Monitoring
 
-### Authentication
+- CloudWatch Logs for execution tracking
+- SNS alerts on failures
+- GitHub Actions status badges
 
-- **GitHub Integration**: Uses AWS Secrets Manager for secure token storage
-- **AWS Permissions**: Least-privilege IAM roles for ECS tasks
-- **Container Security**: Regular base image updates
+## 📈 Stats
 
-### Secrets Management
+<div align="center">
 
-- GitHub tokens stored in AWS Secrets Manager
-- No hardcoded credentials in code
-- Environment-specific configuration
+| Metric                  | Count                        |
+| ----------------------- | ---------------------------- |
+| **Active Policies**     | 1,465                        |
+| **Deprecated Policies** | 73                           |
+| **Brand New (v1)**      | 20                           |
+| **Most Modified**       | ReadOnlyAccess (97 versions) |
 
-### Permissions Required
+</div>
 
-The ECS task requires the following AWS permissions:
+## 💡 Credits & Inspiration
 
-- `iam:ListPolicies` - Fetch policy list
-- `iam:GetPolicyVersion` - Retrieve policy documents
-- `access-analyzer:ValidatePolicy` - Validate policies
-- `secretsmanager:GetSecretValue` - Retrieve GitHub token
-- `sns:Publish` - Send notifications
-- `sqs:SendMessage` - Queue social media posts
-- `s3:GetObject`, `s3:PutObject` - Access artifacts
+This project is inspired by [Scott Piper's](https://twitter.com/0xdabbad00) original [aws_managed_policies](https://github.com/SummitRoute/aws_managed_policies) repository. MAMIP extends this concept with:
 
-## 📊 Monitoring
+- ✅ Fully automated infrastructure and monitoring
+- ✅ Comprehensive AWS Access Analyzer validation
+- ✅ Multi-channel notifications (Bluesky, X, SNS, GitHub)
+- ✅ Modern searchable web interface
+- ✅ Complete deprecation lifecycle tracking
 
-### CloudWatch Integration
-
-- Container logs automatically sent to CloudWatch
-- Metrics tracking for execution success/failure
-- Alerting on validation errors
-
-### Execution Tracking
-
-- Detailed logging throughout execution
-- Error handling with automatic retries
-- Performance metrics collection
-
-## 🎖️ Credits
-
-Special thanks to [Scott Piper](https://twitter.com/0xdabbad00) for the original concept. This project extends his idea by:
-
-- Automating the complete monitoring process
-- Adding comprehensive policy validation
-- Implementing multiple notification channels
-- Providing infrastructure as code
-- Tracking policy deprecation lifecycle
+**Thank you, Scott, for pioneering this valuable resource!**
 
 ## 📄 License
 
-This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
+GNU General Public License v3.0 - see [LICENSE](LICENSE) for details.
 
 ---
 
-**Maintained by**: [@z0ph](https://github.com/z0ph)  
-**Latest Update**: Automatically updated every 6 hours  
-**Status**: [![Build Status](https://github.com/z0ph/MAMIP/actions/workflows/main.yml/badge.svg)](https://github.com/z0ph/MAMIP/actions/workflows/main.yml)
+<div align="center">
+
+**[🌐 Visit Website](https://mamip.zoph.io)** • **[📊 Browse Policies](https://mamip.zoph.io/policies)** • **[🦋 Follow on Bluesky](https://bsky.app/profile/mamip.bsky.social)** • **[𝕏 Follow on X](https://x.com/mamip_aws)**
+
+Made with ❤️ by [zoph.io](https://zoph.io) — AWS Cloud Advisory Boutique
+
+[![Build Status](https://github.com/z0ph/MAMIP/actions/workflows/main.yml/badge.svg)](https://github.com/z0ph/MAMIP/actions/workflows/main.yml)
+[![License](https://img.shields.io/badge/license-GPL--3.0-blue.svg)](LICENSE)
+
+_This is an unofficial archive and is not affiliated with Amazon Web Services (AWS)._
+
+</div>
