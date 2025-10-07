@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-11-21T17:51:05Z", 
-        "VersionId": "v10", 
+        "CreateDate": "2025-10-06T21:34:07Z", 
+        "VersionId": "v11", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -27,6 +27,18 @@
                         "logs:StartLiveTail", 
                         "logs:StopLiveTail", 
                         "oam:ListSinks", 
+                        "observabilityadmin:GetCentralizationRuleForOrganization", 
+                        "observabilityadmin:ListCentralizationRulesForOrganization", 
+                        "observabilityadmin:GetTelemetryEvaluationStatus", 
+                        "observabilityadmin:GetTelemetryEvaluationStatusForOrganization", 
+                        "observabilityadmin:GetTelemetryRule", 
+                        "observabilityadmin:GetTelemetryRuleForOrganization", 
+                        "observabilityadmin:ListResourceTelemetry", 
+                        "observabilityadmin:ListResourceTelemetryForOrganization", 
+                        "observabilityadmin:ListTelemetryRules", 
+                        "observabilityadmin:ListTelemetryRulesForOrganization", 
+                        "observabilityadmin:GetTelemetryEnrichmentStatus", 
+                        "observabilityadmin:ListTagsForResource", 
                         "sns:Get*", 
                         "sns:List*", 
                         "rum:BatchGet*", 
