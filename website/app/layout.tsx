@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description:
     "Track every change to AWS Managed IAM Policies with full version history. An unofficial archive by zoph.io - AWS Cloud Advisory Boutique.",
   metadataBase: new URL("https://mamip.zoph.io"),
+  // icon.svg and apple-icon.svg in app/ directory are automatically detected by Next.js
 };
 
 // Get base path based on deployment target
