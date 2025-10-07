@@ -1,0 +1,91 @@
+name: Deploy Website to CloudFront
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "policies/**"
+      - "website/**"
+      - ".github/workflows/deploy-cloudfront.yml"
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+env:
+  AWS_REGION: eu-west-1
+  S3_BUCKET: mamip.zoph.io
+  CLOUDFRONT_DISTRIBUTION_ID: E9B7QP8QWPHLW
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Fetch all history for git operations
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: website/package-lock.json
+
+      - name: Install dependencies
+        working-directory: ./website
+        run: npm ci
+
+      - name: Generate policy data
+        working-directory: ./website
+        run: npm run generate-data
+
+      - name: Build Next.js site
+        working-directory: ./website
+        run: npm run build
+        env:
+          NEXT_PUBLIC_USE_BASE_PATH: "false" # Custom domain, no basePath
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.ROLE_TO_ASSUME }}
+          role-session-name: GH-Actions-MAMIP-Website-Deploy
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Sync to S3
+        working-directory: ./website
+        run: |
+          aws s3 sync out/ s3://${{ env.S3_BUCKET }}/ \
+            --delete \
+            --cache-control "public, max-age=31536000, immutable" \
+            --exclude "*.html" \
+            --exclude "*.json" \
+            --exclude "*.txt" \
+            --exclude "*.xml"
+          
+          # HTML and JSON files with shorter cache
+          aws s3 sync out/ s3://${{ env.S3_BUCKET }}/ \
+            --cache-control "public, max-age=0, must-revalidate" \
+            --exclude "*" \
+            --include "*.html" \
+            --include "*.json" \
+            --include "*.txt" \
+            --include "*.xml"
+
+      - name: Create CloudFront invalidation
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${{ env.CLOUDFRONT_DISTRIBUTION_ID }} \
+            --paths "/*"
+
+      - name: Deployment summary
+        run: |
+          echo "✅ Website deployed successfully!"
+          echo "🌐 URL: https://mamip.zoph.io"
+          echo "📦 S3 Bucket: s3://${{ env.S3_BUCKET }}"
+          echo "☁️  CloudFront Distribution: ${{ env.CLOUDFRONT_DISTRIBUTION_ID }}"
+          echo "🔄 Cache invalidated"

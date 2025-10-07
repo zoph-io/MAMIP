@@ -22,7 +22,7 @@ export default function PoliciesPage() {
   useEffect(() => {
     async function loadPolicies() {
       try {
-        const basePath = process.env.NODE_ENV === "production" ? "/MAMIP" : "";
+        const basePath = process.env.NEXT_PUBLIC_USE_BASE_PATH === "true" ? "/MAMIP" : "";
         const response = await fetch(`${basePath}/data/summary.json`);
         const data = await response.json();
         setPolicies(data.policies);
@@ -152,7 +152,7 @@ export default function PoliciesPage() {
           <Link
             key={policy.name}
             href={`${
-              process.env.NODE_ENV === "production" ? "/MAMIP" : ""
+              process.env.NEXT_PUBLIC_USE_BASE_PATH === "true" ? "/MAMIP" : ""
             }/policies/${encodeURIComponent(policy.name)}`}
             className="group bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700 p-4 hover:shadow-lg hover:border-blue-400 dark:hover:border-blue-600 transition-all transform hover:-translate-y-0.5"
           >

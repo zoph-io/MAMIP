@@ -2,11 +2,14 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { JsonView, allExpanded, defaultStyles } from "react-json-view-lite";
-import "react-json-view-lite/dist/index.css";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import {
+  vscDarkPlus,
+  vs,
+} from "react-syntax-highlighter/dist/esm/styles/prism";
 
-// Get base path based on environment
-const basePath = process.env.NODE_ENV === "production" ? "/MAMIP" : "";
+// Get base path based on deployment target
+const basePath = process.env.NEXT_PUBLIC_USE_BASE_PATH === "true" ? "/MAMIP" : "";
 
 interface PolicyVersion {
   hash: string;
@@ -35,11 +38,22 @@ export default function PolicyDetailClient({
   const [policy, setPolicy] = useState<PolicyData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [isDark, setIsDark] = useState(false);
+
+  // Detect dark mode
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    setIsDark(mediaQuery.matches);
+
+    const handler = (e: MediaQueryListEvent) => setIsDark(e.matches);
+    mediaQuery.addEventListener("change", handler);
+    return () => mediaQuery.removeEventListener("change", handler);
+  }, []);
 
   useEffect(() => {
     async function loadPolicy() {
       try {
-        const basePath = process.env.NODE_ENV === "production" ? "/MAMIP" : "";
+        const basePath = process.env.NEXT_PUBLIC_USE_BASE_PATH === "true" ? "/MAMIP" : "";
         const response = await fetch(
           `${basePath}/data/${encodeURIComponent(decodedName)}.json`
         );
@@ -194,14 +208,34 @@ export default function PolicyDetailClient({
             View on GitHub →
           </a>
         </div>
-        <div className="p-6 overflow-x-auto bg-slate-50 dark:bg-slate-900">
-          <div className="json-viewer">
-            <JsonView
-              data={policy.content}
-              shouldExpandNode={allExpanded}
-              style={defaultStyles}
-            />
-          </div>
+        <div className="overflow-hidden">
+          <SyntaxHighlighter
+            language="json"
+            style={isDark ? vscDarkPlus : vs}
+            showLineNumbers={true}
+            wrapLines={true}
+            customStyle={{
+              margin: 0,
+              borderRadius: 0,
+              fontSize: "0.875rem",
+              lineHeight: "1.5",
+              background: isDark ? "#1e293b" : "#f8fafc",
+            }}
+            lineNumberStyle={{
+              minWidth: "3.5em",
+              paddingRight: "1em",
+              color: isDark ? "#64748b" : "#94a3b8",
+              userSelect: "none",
+              textAlign: "right",
+            }}
+            codeTagProps={{
+              style: {
+                fontFamily: "'Monaco', 'Menlo', 'Ubuntu Mono', monospace",
+              },
+            }}
+          >
+            {JSON.stringify(policy.content, null, 2)}
+          </SyntaxHighlighter>
         </div>
       </div>
 

@@ -79,6 +79,16 @@ async function generatePolicyData() {
   // Sort and calculate stats
   policies.sort((a, b) => new Date(b.lastModified) - new Date(a.lastModified));
 
+  // Find brand new policies (v1 version = new AWS service/feature)
+  const brandNewPolicies = [...policies]
+    .filter((p) => p.versionId === "v1")
+    .sort(
+      (a, b) =>
+        new Date(b.createDate || b.lastModified) -
+        new Date(a.createDate || a.lastModified)
+    )
+    .slice(0, 20);
+
   const stats = {
     totalPolicies: policies.length,
     lastUpdate: new Date().toISOString(),
@@ -94,6 +104,7 @@ async function generatePolicyData() {
       .filter((p) => p.createDate)
       .sort((a, b) => new Date(a.createDate) - new Date(b.createDate))
       .slice(0, 10),
+    brandNew: brandNewPolicies,
   };
 
   // Read deprecated policies

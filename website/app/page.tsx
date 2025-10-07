@@ -2,8 +2,9 @@ import StatsCard from "@/components/StatsCard";
 import PolicyList from "@/components/PolicyList";
 import Link from "next/link";
 
-// Get base path based on environment
-const basePath = process.env.NODE_ENV === "production" ? "/MAMIP" : "";
+// Get base path based on deployment target
+const basePath =
+  process.env.NEXT_PUBLIC_USE_BASE_PATH === "true" ? "/MAMIP" : "";
 
 async function getSummaryData() {
   try {
@@ -51,13 +52,34 @@ export default async function Home() {
     <div className="space-y-8">
       {/* Hero Section */}
       <div className="text-center py-12">
-        <div className="text-6xl mb-6">🔊</div>
-        <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
-          Historize AWS Managed Policy Changes
+        <div className="flex justify-center mb-6">
+          <img
+            src={`${basePath}/zoph-logo.png`}
+            alt="zoph.io"
+            className="h-20 w-auto dark:brightness-110"
+          />
+        </div>
+        <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-2">
+          AWS Managed Policy Changes Archive
         </h1>
-        <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
+        <span className="inline-block px-3 py-1 text-sm font-medium bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-400 rounded-full mb-4">
+          Unofficial
+        </span>
+        <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto mb-4">
           Track every change to AWS Managed IAM Policies with full version
           history.
+        </p>
+        <p className="text-sm text-slate-500 dark:text-slate-500">
+          A service by{" "}
+          <a
+            href="https://zoph.io"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
+          >
+            zoph.io
+          </a>{" "}
+          — AWS Cloud Advisory Boutique
         </p>
       </div>
 
@@ -70,22 +92,16 @@ export default async function Home() {
           icon="📋"
         />
         <StatsCard
+          title="Brand New (v1)"
+          value={stats.brandNew?.length || 0}
+          description="New AWS services/features"
+          icon="🆕"
+        />
+        <StatsCard
           title="Deprecated"
           value={deprecatedCount.toLocaleString()}
           description="Removed from AWS"
           icon="🗑️"
-        />
-        <StatsCard
-          title="Last Update"
-          value={new Date(stats.lastUpdate).toLocaleDateString("en-US", {
-            month: "short",
-            day: "numeric",
-          })}
-          description={new Date(stats.lastUpdate).toLocaleTimeString("en-US", {
-            hour: "2-digit",
-            minute: "2-digit",
-          })}
-          icon="🕐"
         />
         <StatsCard
           title="Most Active"
@@ -94,6 +110,61 @@ export default async function Home() {
           icon="📈"
         />
       </div>
+
+      {/* Brand New Policies Spotlight */}
+      {stats.brandNew && stats.brandNew.length > 0 && (
+        <div className="relative overflow-hidden bg-gradient-to-br from-emerald-600 via-emerald-500 to-teal-600 dark:from-emerald-700 dark:via-emerald-600 dark:to-teal-700 rounded-2xl p-8 text-white shadow-xl">
+          <div className="absolute inset-0 bg-grid-white/10 [mask-image:linear-gradient(0deg,transparent,black)]"></div>
+          <div className="relative">
+            <div className="flex items-center space-x-3 mb-4">
+              <span className="text-4xl">🆕</span>
+              <div>
+                <h3 className="text-2xl font-bold">Brand New Policies (v1)</h3>
+                <p className="text-emerald-100">
+                  Spot upcoming AWS services early — {stats.brandNew.length} new
+                  policies detected
+                </p>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-6">
+              {stats.brandNew.slice(0, 6).map((policy: any) => (
+                <Link
+                  key={policy.name}
+                  href={`${basePath}/policies/${encodeURIComponent(
+                    policy.name
+                  )}`}
+                  className="bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-lg p-4 transition-all group"
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-semibold text-white truncate group-hover:text-emerald-50">
+                        {policy.name}
+                      </p>
+                      <p className="text-xs text-emerald-100 mt-1">
+                        Version {policy.versionId} • Created{" "}
+                        {policy.createDate
+                          ? new Date(policy.createDate).toLocaleDateString()
+                          : "recently"}
+                      </p>
+                    </div>
+                    <svg
+                      className="w-5 h-5 text-emerald-200 flex-shrink-0 ml-2 group-hover:translate-x-1 transition-transform"
+                      fill="none"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Quick Actions */}
       <div className="relative overflow-hidden bg-gradient-to-br from-blue-600 via-blue-500 to-blue-700 dark:from-blue-700 dark:via-blue-600 dark:to-blue-800 rounded-2xl p-8 text-white shadow-xl">

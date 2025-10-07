@@ -1,7 +1,7 @@
 import Link from "next/link";
 
-// Get base path based on environment
-const basePath = process.env.NODE_ENV === "production" ? "/MAMIP" : "";
+// Get base path based on deployment target
+const basePath = process.env.NEXT_PUBLIC_USE_BASE_PATH === "true" ? "/MAMIP" : "";
 
 interface Policy {
   name: string;

@@ -46,6 +46,8 @@ jobs:
       - name: Build Next.js site
         working-directory: ./website
         run: npm run build
+        env:
+          NEXT_PUBLIC_USE_BASE_PATH: "true" # GitHub Pages needs /MAMIP basePath
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
