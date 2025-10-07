@@ -1,0 +1,36 @@
+{
+  "name": "mamip-website",
+  "version": "1.0.0",
+  "description": "Static website for browsing AWS Managed IAM Policies",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "generate-data": "node scripts/generate-data.js",
+    "export": "next build && next export"
+  },
+  "keywords": [
+    "aws",
+    "iam",
+    "policies",
+    "monitoring"
+  ],
+  "author": "",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "@types/node": "^22.10.5",
+    "@types/react": "^19.0.6",
+    "@types/react-syntax-highlighter": "^15.5.13",
+    "autoprefixer": "^10.4.20",
+    "next": "^15.1.6",
+    "postcss": "^8.4.49",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-syntax-highlighter": "^15.6.6",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.2"
+  },
+  "devDependencies": {
+    "simple-git": "^3.28.0"
+  }
+}
