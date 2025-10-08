@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-05-17T22:20:49Z", 
-        "VersionId": "v3", 
+        "CreateDate": "2025-10-08T17:34:07Z", 
+        "VersionId": "v4", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -59,6 +59,41 @@
                     "Resource": "arn:aws:oam:*:*:sink/*", 
                     "Effect": "Allow", 
                     "Sid": "OAMReadPermissions"
+                }, 
+                {
+                    "Action": [
+                        "cloudtrail:CreateServiceLinkedChannel", 
+                        "cloudtrail:GetChannel"
+                    ], 
+                    "Resource": "arn:aws:cloudtrail:*:*:channel/aws-service-channel/application-signals/*", 
+                    "Effect": "Allow", 
+                    "Sid": "CloudWatchCloudTrailPermissions"
+                }, 
+                {
+                    "Action": [
+                        "cloudtrail:ListChannels"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "CloudWatchApplicationSignalsCloudTrailListPermissions"
+                }, 
+                {
+                    "Action": [
+                        "servicequotas:GetServiceQuota"
+                    ], 
+                    "Resource": [
+                        "arn:aws:servicequotas:*:*:s3/*", 
+                        "arn:aws:servicequotas:*:*:dynamodb/*", 
+                        "arn:aws:servicequotas:*:*:kinesis/*", 
+                        "arn:aws:servicequotas:*:*:sns/*", 
+                        "arn:aws:servicequotas:*:*:bedrock/*", 
+                        "arn:aws:servicequotas:*:*:lambda/*", 
+                        "arn:aws:servicequotas:*:*:fargate/*", 
+                        "arn:aws:servicequotas:*:*:elasticloadbalancing/*", 
+                        "arn:aws:servicequotas:*:*:ec2/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "CloudWatchServiceQuotaPermissions"
                 }
             ]
         }, 
