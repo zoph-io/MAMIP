@@ -1,6 +1,6 @@
 # AWS Access Analyzer - Findings - 2025-10-10
 
-- **Policies analyzed:** `1386`
+- **Policies analyzed:** `1387`
 - **Errors:** `22`
   - [`AWSAccountActivityAccess`](./AWSAccountActivityAccess.json)
   - [`AWSCodeStarFullAccess`](./AWSCodeStarFullAccess.json)
