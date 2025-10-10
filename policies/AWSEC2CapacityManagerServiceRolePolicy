@@ -1,0 +1,40 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-10-09T22:04:07Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "organizations:ListAccounts", 
+                        "organizations:ListChildren", 
+                        "organizations:ListAWSServiceAccessForOrganization", 
+                        "organizations:DescribeOrganization"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowOrganizationsDefaultReadActions"
+                }, 
+                {
+                    "Action": [
+                        "organizations:ListDelegatedAdministrators"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLikeIfExists": {
+                            "organizations:ServicePrincipal": [
+                                "ec2.capacitymanager.amazonaws.com"
+                            ]
+                        }
+                    }, 
+                    "Sid": "AllowOrganizationsListDelegatedAdministratorsAction"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
