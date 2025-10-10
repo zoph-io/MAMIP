@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-01-13T18:22:06Z", 
-        "VersionId": "v11", 
+        "CreateDate": "2025-10-09T21:04:07Z", 
+        "VersionId": "v12", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -198,6 +198,15 @@
                     "Resource": "arn:aws:cloudformation:*:*:type/hook/AWS-ControlTower*", 
                     "Effect": "Allow", 
                     "Sid": "AllowActionsForCloudFormationHooksIntegration"
+                }, 
+                {
+                    "Action": [
+                        "cloudformation:ActivateOrganizationsAccess", 
+                        "cloudformation:DescribeOrganizationsAccess"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowActionsForCloudFormationStackSetOrganizationsTrustedAccess"
                 }
             ]
         }, 
