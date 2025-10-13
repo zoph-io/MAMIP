@@ -1,6 +1,6 @@
 [
   {
-    "findingDetails": "The 29051 characters in the identity policy, excluding whitespace, exceed the 10240 character maximum for inline and managed policies. We recommend that you use multiple granular policies.",
+    "findingDetails": "The 29328 characters in the identity policy, excluding whitespace, exceed the 10240 character maximum for inline and managed policies. We recommend that you use multiple granular policies.",
     "findingType": "WARNING",
     "issueCode": "POLICY_SIZE_EXCEEDS_IDENTITY_POLICY_QUOTA",
     "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-general-warning-policy-size-exceeds-identity-policy-quota",
@@ -15,8 +15,136 @@
           },
           "end": {
             "line": 1,
-            "column": 29993,
-            "offset": 29993
+            "column": 30278,
+            "offset": 30278
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "The 2 action(s) are redundant because they provide similar permissions. Update the policy to remove the redundant action such as: ec2:GetTransitGatewayPrefixListReferences.",
+    "findingType": "SUGGESTION",
+    "issueCode": "REDUNDANT_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 0
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 300
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 9822,
+            "offset": 9822
+          },
+          "end": {
+            "line": 1,
+            "column": 9865,
+            "offset": 9865
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 0
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 301
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 9867,
+            "offset": 9867
+          },
+          "end": {
+            "line": 1,
+            "column": 9910,
+            "offset": 9910
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "The 2 action(s) are redundant because they provide similar permissions. Update the policy to remove the redundant action such as: ec2:SearchTransitGatewayRoutes.",
+    "findingType": "SUGGESTION",
+    "issueCode": "REDUNDANT_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 0
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 304
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 10006,
+            "offset": 10006
+          },
+          "end": {
+            "line": 1,
+            "column": 10038,
+            "offset": 10038
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 0
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 305
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 10040,
+            "offset": 10040
+          },
+          "end": {
+            "line": 1,
+            "column": 10072,
+            "offset": 10072
           }
         }
       }

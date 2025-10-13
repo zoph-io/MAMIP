@@ -1,6 +1,6 @@
 # AWS Access Analyzer - Findings - 2025-10-13
 
-- **Policies analyzed:** `1388`
+- **Policies analyzed:** `1389`
 - **Errors:** `22`
   - [`AWSAccountActivityAccess`](./AWSAccountActivityAccess.json)
   - [`AWSCodeStarFullAccess`](./AWSCodeStarFullAccess.json)
@@ -31,7 +31,7 @@
   - [`IAMFullAccess`](./IAMFullAccess.json)
   - [`S3UnlockBucketPolicy`](./S3UnlockBucketPolicy.json)
   - [`SQSUnlockQueuePolicy`](./SQSUnlockQueuePolicy.json)
-- **Suggestions:** `146`
+- **Suggestions:** `148`
   - [`AIOpsAssistantPolicy`](./AIOpsAssistantPolicy.json)
   - [`AWSBatchFullAccess`](./AWSBatchFullAccess.json)
   - [`AWSCloud9Administrator`](./AWSCloud9Administrator.json)
@@ -110,6 +110,7 @@
   - [`KafkaServiceRolePolicy`](./KafkaServiceRolePolicy.json)
   - [`NeptuneConsoleFullAccess`](./NeptuneConsoleFullAccess.json)
   - [`SageMakerStudioProjectRoleMachineLearningPolicy`](./SageMakerStudioProjectRoleMachineLearningPolicy.json)
+  - [`SecurityAudit`](./SecurityAudit.json)
   - [`SupportUser`](./SupportUser.json)
   - [`SystemAdministrator`](./SystemAdministrator.json)
   - [`ViewOnlyAccess`](./ViewOnlyAccess.json)
@@ -136,10 +137,9 @@
   - [`SageMakerStudioProjectRoleMachineLearningPolicy`](./SageMakerStudioProjectRoleMachineLearningPolicy.json)
   - [`SecurityAudit`](./SecurityAudit.json)
   - [`ViewOnlyAccess`](./ViewOnlyAccess.json)
-- **Failed validations:** `9`
+- **Failed validations:** `8`
   - `AWSConfigServiceRolePolicy`
   - `AWSPartnerLedSupportReadOnlyAccess`
-  - `AWSProtonServiceGitSyncServiceRolePolicy`
   - `AWSSupportServiceRolePolicy`
   - `AWS_ConfigRole`
   - `ReadOnlyAccess`
