@@ -1,13 +1,12 @@
-# AWS Access Analyzer - Findings - 2025-10-14
+# AWS Access Analyzer - Findings - 2025-10-16
 
 - **Policies analyzed:** `1389`
-- **Errors:** `22`
+- **Errors:** `21`
   - [`AWSAccountActivityAccess`](./AWSAccountActivityAccess.json)
   - [`AWSCodeStarFullAccess`](./AWSCodeStarFullAccess.json)
   - [`AWSIAMIdentityCenterAllowListForIdentityContext`](./AWSIAMIdentityCenterAllowListForIdentityContext.json)
   - [`AmazonDataZoneGlueManageAccessRolePolicy`](./AmazonDataZoneGlueManageAccessRolePolicy.json)
   - [`AmazonDataZoneSageMakerEnvironmentRolePermissionsBoundary`](./AmazonDataZoneSageMakerEnvironmentRolePermissionsBoundary.json)
-  - [`AmazonEKSConnectorServiceRolePolicy`](./AmazonEKSConnectorServiceRolePolicy.json)
   - [`AmazonSageMakerFullAccess`](./AmazonSageMakerFullAccess.json)
   - [`BatchServiceRolePolicy`](./BatchServiceRolePolicy.json)
   - [`CloudWatchApplicationSignalsFullAccess`](./CloudWatchApplicationSignalsFullAccess.json)
