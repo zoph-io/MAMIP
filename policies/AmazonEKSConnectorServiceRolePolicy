@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2021-09-04T20:31:08Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-10-15T22:34:07Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -57,7 +57,9 @@
                     "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
-                            "events:ManagedBy": "eks-connector.amazonaws.com", 
+                            "events:ManagedBy": "eks-connector.amazonaws.com"
+                        }, 
+                        "ForAllValues:StringEquals": {
                             "events:source": "aws.ssm"
                         }
                     }, 
@@ -73,6 +75,14 @@
                         }
                     }, 
                     "Sid": "PutManagedEventTarget"
+                }, 
+                {
+                    "Action": [
+                        "ssmmessages:OpenDataChannel"
+                    ], 
+                    "Resource": "arn:aws:ssm:*:*:session/*", 
+                    "Effect": "Allow", 
+                    "Sid": "OpenDataChannel"
                 }
             ]
         }, 
