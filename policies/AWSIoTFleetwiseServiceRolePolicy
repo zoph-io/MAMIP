@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2022-09-21T23:27:48Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-10-16T04:04:07Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -14,13 +14,14 @@
                     "Condition": {
                         "StringEquals": {
                             "cloudwatch:namespace": [
-                                "AWS/IoTFleetWise"
+                                "AWS/IoTFleetWise", 
+                                "AWS/Usage"
                             ]
                         }
                     }
                 }
             ]
         }, 
-        "IsDefaultVersion": false
+        "IsDefaultVersion": true
     }
 }
