@@ -1,0 +1,48 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-10-15T17:34:07Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "application-autoscaling:RegisterScalableTarget", 
+                        "application-autoscaling:DescribeScalableTargets", 
+                        "application-autoscaling:PutScalingPolicy", 
+                        "application-autoscaling:DescribeScalingPolicies"
+                    ], 
+                    "Resource": [
+                        "arn:aws:application-autoscaling:*:*:scalable-target/*", 
+                        "arn:aws:autoscaling:*:*:scalingPolicy:*:resource/dynamodb/table/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "application-autoscaling:service-namespace": [
+                                "dynamodb"
+                            ]
+                        }
+                    }, 
+                    "Sid": "DynamoDBActionsNeededToReplicateSettings"
+                }, 
+                {
+                    "Action": [
+                        "iam:CreateServiceLinkedRole"
+                    ], 
+                    "Resource": "arn:aws:iam::*:role/aws-service-role/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:AWSServiceName": [
+                                "dynamodb.application-autoscaling.amazonaws.com"
+                            ]
+                        }
+                    }, 
+                    "Sid": "DynamoDBReplicationServiceRolePolicy"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
