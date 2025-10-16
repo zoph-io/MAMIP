@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-04-17T18:22:07Z", 
-        "VersionId": "v4", 
+        "CreateDate": "2025-10-15T21:19:07Z", 
+        "VersionId": "v5", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -25,9 +25,7 @@
                         "timestream-influxdb:ListDbClusters", 
                         "timestream-influxdb:ListDbInstancesForCluster"
                     ], 
-                    "Resource": [
-                        "arn:aws:timestream-influxdb:*:*:*"
-                    ], 
+                    "Resource": "arn:aws:timestream-influxdb:*:*:*", 
                     "Effect": "Allow", 
                     "Sid": "TimestreamInfluxDBStatement"
                 }, 
@@ -49,9 +47,7 @@
                         "ec2:DescribeSecurityGroups", 
                         "ec2:DescribeRouteTables"
                     ], 
-                    "Resource": [
-                        "*"
-                    ], 
+                    "Resource": "*", 
                     "Effect": "Allow", 
                     "Sid": "NetworkValidationStatement"
                 }, 
@@ -87,16 +83,12 @@
                     "Action": [
                         "aws-marketplace:ViewSubscriptions"
                     ], 
-                    "Resource": [
-                        "*"
-                    ], 
+                    "Resource": "*", 
                     "Effect": "Allow", 
                     "Sid": "MPViewAccessStatement"
                 }, 
                 {
-                    "Action": [
-                        "aws-marketplace:Subscribe"
-                    ], 
+                    "Action": "aws-marketplace:Subscribe", 
                     "Resource": [
                         "*"
                     ], 
@@ -104,7 +96,8 @@
                     "Condition": {
                         "ForAnyValue:StringEquals": {
                             "aws-marketplace:ProductId": [
-                                "prod-xcc5llpq4vlbc"
+                                "prod-xcc5llpq4vlbc", 
+                                "prod-rjppt7huo35fm"
                             ]
                         }
                     }, 
