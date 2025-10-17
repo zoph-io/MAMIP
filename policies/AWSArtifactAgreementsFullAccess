@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-11-22T19:36:07Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-10-16T20:19:07Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -59,16 +59,30 @@
                 }, 
                 {
                     "Action": [
-                        "organizations:EnableAWSServiceAccess", 
                         "organizations:ListAWSServiceAccessForOrganization", 
                         "organizations:DescribeOrganization"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Sid": "EnableServiceTrust"
+                }, 
+                {
+                    "Action": [
+                        "organizations:EnableAWSServiceAccess"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "organizations:ServicePrincipal": [
+                                "aws-artifact-account-sync.amazonaws.com"
+                            ]
+                        }
+                    }, 
+                    "Sid": "EnableServiceTrustForArtifact"
                 }
             ]
         }, 
-        "IsDefaultVersion": false
+        "IsDefaultVersion": true
     }
 }
