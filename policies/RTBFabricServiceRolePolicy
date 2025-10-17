@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-10-16T16:49:07Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-10-17T19:19:07Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -85,7 +85,7 @@
                     "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
-                            "cloudwatch:namespace": "rtbfabric"
+                            "cloudwatch:namespace": "AWS/RTBFabric"
                         }
                     }, 
                     "Sid": "RTBFabricRolePutMetricDataActions"
