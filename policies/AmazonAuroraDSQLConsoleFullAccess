@@ -1,12 +1,15 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-08-22T19:19:07Z", 
-        "VersionId": "v4", 
+        "CreateDate": "2025-10-23T17:49:07Z", 
+        "VersionId": "v5", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": [
+                        "dsql:PutClusterPolicy", 
+                        "dsql:GetClusterPolicy", 
+                        "dsql:DeleteClusterPolicy", 
                         "dsql:CreateCluster", 
                         "dsql:GetCluster", 
                         "dsql:UpdateCluster", 
@@ -36,6 +39,7 @@
                 }, 
                 {
                     "Action": [
+                        "access-analyzer:ValidatePolicy", 
                         "tag:GetTagKeys", 
                         "tag:GetTagValues", 
                         "cloudwatch:GetMetricData", 
