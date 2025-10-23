@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-11-08T16:29:09Z", 
-        "VersionId": "v5", 
+        "CreateDate": "2025-10-23T15:19:07Z", 
+        "VersionId": "v6", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -29,7 +29,10 @@
                         "organizations:ListDelegatedAdministrators", 
                         "organizations:ListChildren", 
                         "organizations:ListParents", 
-                        "organizations:DescribeOrganizationalUnit"
+                        "organizations:DescribeOrganizationalUnit", 
+                        "cloudfront:ListAnycastIpLists", 
+                        "cloudfront:ListDistributionsByAnycastIpListId", 
+                        "cloudfront:ListTagsForResource"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
@@ -45,6 +48,38 @@
                         }
                     }, 
                     "Sid": "CloudWatchMetricsPublishActions"
+                }, 
+                {
+                    "Action": "ec2:AllocateIpamPoolCidr", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "IPAMAllocationPolicyActions"
+                }, 
+                {
+                    "Action": [
+                        "ec2:ModifyManagedPrefixList"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:prefix-list/pl-*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "Null": {
+                            "ec2:Attribute/ExpectedIpamPrefixListResolverTarget": "false"
+                        }
+                    }, 
+                    "Sid": "PrefixListResolverWriteActions"
+                }, 
+                {
+                    "Action": [
+                        "ec2:DescribeManagedPrefixLists", 
+                        "ec2:GetManagedPrefixListEntries"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:prefix-list/pl-*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "PrefixListResolverReadActions"
                 }
             ]
         }, 
