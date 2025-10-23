@@ -1,0 +1,50 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-10-23T18:34:06Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "sts:AssumeRole", 
+                        "sts:TagSession"
+                    ], 
+                    "Resource": [
+                        "arn:aws:iam::*:role/datazone_emr_containers_query_engine_role_*", 
+                        "arn:aws:iam::*:role/datazone_usr_role_*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEqualsIfExists": {
+                            "aws:RequestTag/AmazonDataZoneProject": "${aws:PrincipalTag/AmazonDataZoneProject}"
+                        }, 
+                        "StringEquals": {
+                            "aws:ResourceTag/AmazonDataZoneProject": "${aws:PrincipalTag/AmazonDataZoneProject}", 
+                            "aws:CalledViaLast": "emr-containers.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "AssumeProjectRoles"
+                }, 
+                {
+                    "Action": [
+                        "sts:SetContext"
+                    ], 
+                    "Resource": [
+                        "arn:aws:iam::*:role/datazone_emr_containers_query_engine_role_*", 
+                        "arn:aws:iam::*:role/datazone_usr_role_*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/AmazonDataZoneProject": "${aws:PrincipalTag/AmazonDataZoneProject}", 
+                            "aws:CalledViaLast": "emr-containers.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "SetContextProjectRoles"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
