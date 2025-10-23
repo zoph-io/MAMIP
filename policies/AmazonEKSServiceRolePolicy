@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-08-26T22:49:07Z", 
-        "VersionId": "v9", 
+        "CreateDate": "2025-10-22T23:49:06Z", 
+        "VersionId": "v10", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -39,6 +39,8 @@
                         "ec2:DescribeVolumesModifications", 
                         "ec2:DescribeVpcPeeringConnections", 
                         "ec2:DescribeVpcs", 
+                        "ec2:DescribeRouteTables", 
+                        "ec2:DescribeNetworkAcls", 
                         "ec2:GetCoipPoolUsage", 
                         "ec2:GetSecurityGroupsForVpc", 
                         "eks:DescribeCluster", 
