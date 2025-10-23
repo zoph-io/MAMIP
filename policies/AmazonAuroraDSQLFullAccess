@@ -1,12 +1,15 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-08-22T19:04:07Z", 
-        "VersionId": "v4", 
+        "CreateDate": "2025-10-23T18:04:08Z", 
+        "VersionId": "v5", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": [
+                        "dsql:PutClusterPolicy", 
+                        "dsql:GetClusterPolicy", 
+                        "dsql:DeleteClusterPolicy", 
                         "dsql:CreateCluster", 
                         "dsql:GetCluster", 
                         "dsql:UpdateCluster", 
