@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-05-05T10:52:06Z", 
-        "VersionId": "v3", 
+        "CreateDate": "2025-10-27T11:49:07Z", 
+        "VersionId": "v4", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -349,6 +349,108 @@
                         }, 
                         "StringLike": {
                             "aws:RequestTag/QuickSetupDocumentVersionName": "*"
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "ssm:CreateAssociation", 
+                        "ssm:AddTagsToResource"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ssm:*:*:association/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:RequestTag/QuickSetupDocument": [
+                                "AWSQuickSetupType-SSM"
+                            ]
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "ssm:CreateAssociation", 
+                        "ssm:UpdateAssociation", 
+                        "ssm:DeleteAssociation", 
+                        "ssm:DescribeAssociation"
+                    ], 
+                    "Resource": "arn:aws:ssm:*::document/AWSQuickSetupType-SSM-ManageResources", 
+                    "Effect": "Allow"
+                }, 
+                {
+                    "Action": [
+                        "ssm:UpdateAssociation", 
+                        "ssm:DeleteAssociation", 
+                        "ssm:DescribeAssociation"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ssm:*:*:association/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/QuickSetupDocument": [
+                                "AWSQuickSetupType-SSM"
+                            ]
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "ssm:AddTagsToResource", 
+                        "ssm:RemoveTagsFromResource"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ssm:*:*:automation-execution/*", 
+                        "arn:aws:ssm:*:*:association/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/QuickSetupDocument": [
+                                "AWSQuickSetupType-SSM"
+                            ]
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "ssm:DescribeAssociationExecutions", 
+                        "ssm:DescribeAssociationExecutionTargets", 
+                        "ssm:GetAutomationExecution"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ssm:*:*:automation-execution/*", 
+                        "arn:aws:ssm:*:*:association/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "aws:CalledVia": [
+                                "cloudformation.amazonaws.com"
+                            ]
+                        }, 
+                        "StringEquals": {
+                            "aws:ResourceTag/QuickSetupDocument": [
+                                "AWSQuickSetupType-SSM"
+                            ]
+                        }
+                    }
+                }, 
+                {
+                    "Action": "iam:PassRole", 
+                    "Resource": "arn:aws:iam::*:role/AWS-QuickSetup-SSM-ManageResources*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:ResourceTag/QuickSetupDocument": [
+                                "AWSQuickSetupType-SSM"
+                            ], 
+                            "iam:PassedToService": [
+                                "ssm.amazonaws.com"
+                            ]
                         }
                     }
                 }
