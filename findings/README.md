@@ -1,4 +1,4 @@
-# AWS Access Analyzer - Findings - 2025-10-24
+# AWS Access Analyzer - Findings - 2025-10-27
 
 - **Policies analyzed:** `1392`
 - **Errors:** `21`
@@ -136,9 +136,8 @@
   - [`SageMakerStudioProjectRoleMachineLearningPolicy`](./SageMakerStudioProjectRoleMachineLearningPolicy.json)
   - [`SecurityAudit`](./SecurityAudit.json)
   - [`ViewOnlyAccess`](./ViewOnlyAccess.json)
-- **Failed validations:** `9`
+- **Failed validations:** `8`
   - `AWSConfigServiceRolePolicy`
-  - `AWSDirectoryServiceServiceRolePolicy`
   - `AWSPartnerLedSupportReadOnlyAccess`
   - `AWSSupportServiceRolePolicy`
   - `AWS_ConfigRole`
