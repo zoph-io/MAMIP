@@ -1,4 +1,4 @@
-# AWS Access Analyzer - Findings - 2025-10-27
+# AWS Access Analyzer - Findings - 2025-10-28
 
 - **Policies analyzed:** `1392`
 - **Errors:** `21`
