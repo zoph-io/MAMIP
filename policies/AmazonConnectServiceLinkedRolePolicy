@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-07-29T21:22:06Z", 
-        "VersionId": "v28", 
+        "CreateDate": "2025-10-27T21:19:07Z", 
+        "VersionId": "v29", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -440,6 +440,34 @@
                         }
                     }, 
                     "Sid": "AllowSocialMessagingOperations"
+                }, 
+                {
+                    "Action": [
+                        "social-messaging:ListLinkedWhatsAppBusinessAccounts"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "AllowRetrievalOfWabas"
+                }, 
+                {
+                    "Action": [
+                        "social-messaging:GetWhatsAppMessageTemplate", 
+                        "social-messaging:ListWhatsAppMessageTemplates"
+                    ], 
+                    "Resource": "arn:aws:social-messaging:*:*:waba/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/AmazonConnectEnabled": "True", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "AllowRetrievalOfWhatsAppTemplates"
                 }, 
                 {
                     "Action": "mobiletargeting:SendMessages", 
