@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-02-21T17:37:06Z", 
-        "VersionId": "v2", 
+        "CreateDate": "2025-10-29T14:34:07Z", 
+        "VersionId": "v3", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -22,6 +22,38 @@
                     ], 
                     "Effect": "Allow", 
                     "Sid": "SubscriptionManagementPolicy"
+                }, 
+                {
+                    "Action": [
+                        "kms:Decrypt"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ArnLike": {
+                            "kms:EncryptionContext:aws:sso:instance-arn": "arn:*:sso:::instance/*"
+                        }, 
+                        "StringLike": {
+                            "kms:ViaService": "sso.*.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "AllowKmsAccessViaIdentityCenter"
+                }, 
+                {
+                    "Action": [
+                        "kms:Decrypt"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ArnLike": {
+                            "kms:EncryptionContext:aws:identitystore:identitystore-arn": "arn:*:identitystore::*:identitystore/*"
+                        }, 
+                        "StringLike": {
+                            "kms:ViaService": "identitystore.*.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "AllowKmsAccessViaIdentityStore"
                 }
             ]
         }, 
