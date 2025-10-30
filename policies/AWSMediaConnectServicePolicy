@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2023-04-03T22:11:40Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-10-29T21:34:07Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -47,6 +47,31 @@
                         "ecs:ListContainerInstances"
                     ], 
                     "Resource": "arn:aws:ecs:*:*:cluster/MediaConnectGateway", 
+                    "Effect": "Allow"
+                }, 
+                {
+                    "Action": [
+                        "ec2:DeleteNetworkInterface", 
+                        "ec2:DeleteNetworkInterfacePermission", 
+                        "ec2:CreateNetworkInterfacePermission"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:network-interface/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/created-for-service": "MediaConnect"
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "ec2:DescribeNetworkInterfaces", 
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:DescribeSubnets"
+                    ], 
+                    "Resource": "*", 
                     "Effect": "Allow"
                 }
             ]
