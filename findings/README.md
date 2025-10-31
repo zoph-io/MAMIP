@@ -1,4 +1,4 @@
-# AWS Access Analyzer - Findings - 2025-10-30
+# AWS Access Analyzer - Findings - 2025-10-31
 
 - **Policies analyzed:** `1392`
 - **Errors:** `21`
@@ -113,7 +113,7 @@
   - [`SupportUser`](./SupportUser.json)
   - [`SystemAdministrator`](./SystemAdministrator.json)
   - [`ViewOnlyAccess`](./ViewOnlyAccess.json)
-- **Warnings:** `24`
+- **Warnings:** `26`
   - [`AIOpsAssistantPolicy`](./AIOpsAssistantPolicy.json)
   - [`AWSElasticDisasterRecoveryConsoleFullAccess_v2`](./AWSElasticDisasterRecoveryConsoleFullAccess_v2.json)
   - [`AWSOrganizationsServiceTrustPolicy`](./AWSOrganizationsServiceTrustPolicy.json)
@@ -133,7 +133,9 @@
   - [`FMSServiceRolePolicy`](./FMSServiceRolePolicy.json)
   - [`IAMFullAccess`](./IAMFullAccess.json)
   - [`PowerUserAccess`](./PowerUserAccess.json)
+  - [`SageMakerStudioAdminIAMDefaultExecutionPolicy`](./SageMakerStudioAdminIAMDefaultExecutionPolicy.json)
   - [`SageMakerStudioProjectRoleMachineLearningPolicy`](./SageMakerStudioProjectRoleMachineLearningPolicy.json)
+  - [`SageMakerStudioUserIAMDefaultExecutionPolicy`](./SageMakerStudioUserIAMDefaultExecutionPolicy.json)
   - [`SecurityAudit`](./SecurityAudit.json)
   - [`ViewOnlyAccess`](./ViewOnlyAccess.json)
 - **Failed validations:** `8`
