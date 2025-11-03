@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-05-05T21:52:07Z", 
-        "VersionId": "v8", 
+        "CreateDate": "2025-10-31T21:04:08Z", 
+        "VersionId": "v9", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -132,13 +132,14 @@
                     "Action": [
                         "apigateway:GET"
                     ], 
-                    "Resource": "*", 
+                    "Resource": "arn:aws:apigateway:*::/*", 
                     "Effect": "Allow", 
                     "Sid": "AllowListActionsForAPIGateway"
                 }, 
                 {
                     "Action": [
-                        "appsync:ListGraphqlApis"
+                        "appsync:ListGraphqlApis", 
+                        "appsync:ListApis"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
@@ -211,6 +212,58 @@
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Sid": "AllowListActionsForAmplify"
+                }, 
+                {
+                    "Action": [
+                        "s3:ListAllMyBuckets"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowS3ListAllMyBuckets"
+                }, 
+                {
+                    "Action": [
+                        "logs:DescribeResourcePolicies", 
+                        "logs:DescribeLogGroups"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowLogGroupDescribeActions"
+                }, 
+                {
+                    "Action": [
+                        "firehose:ListDeliveryStreams"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowListActionForFirehoseStream"
+                }, 
+                {
+                    "Action": [
+                        "pricing:ListPriceLists", 
+                        "pricing:GetPriceListFileUrl"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowActionsForPricing"
+                }, 
+                {
+                    "Action": [
+                        "aws-marketplace:ViewSubscriptions"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowMarketplaceViewSubscriptions"
+                }, 
+                {
+                    "Action": [
+                        "logs:StartQuery", 
+                        "logs:DescribeQueryDefinitions", 
+                        "logs:GetQueryResults"
+                    ], 
+                    "Resource": "arn:aws:logs:*:*:log-group:aws-waf-logs-*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowLogQueryActions"
                 }
             ]
         }, 
