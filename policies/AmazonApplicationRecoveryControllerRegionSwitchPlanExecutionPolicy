@@ -1,0 +1,38 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-11-03T19:34:08Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "arc-region-switch:GetPlan", 
+                        "arc-region-switch:GetPlanExecution", 
+                        "arc-region-switch:ListPlanExecutions"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "GetPlanAndExecutions"
+                }, 
+                {
+                    "Action": "iam:SimulatePrincipalPolicy", 
+                    "Resource": "arn:aws:iam::*:role/*", 
+                    "Effect": "Allow", 
+                    "Sid": "PlanEvaluation"
+                }, 
+                {
+                    "Action": [
+                        "cloudwatch:DescribeAlarms", 
+                        "cloudwatch:DescribeAlarmHistory", 
+                        "cloudwatch:GetMetricStatistics"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "CloudWatch"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
