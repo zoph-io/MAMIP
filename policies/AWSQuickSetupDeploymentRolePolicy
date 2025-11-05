@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-08-08T12:19:06Z", 
-        "VersionId": "v3", 
+        "CreateDate": "2025-11-05T19:19:09Z", 
+        "VersionId": "v4", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -113,6 +113,8 @@
                         "arn:aws:ssm:*::document/AWSQuickSetupType-ManageInstanceProfile", 
                         "arn:aws:ssm:*::document/AWSQuickSetupType-EnableConfigRecording", 
                         "arn:aws:ssm:*::document/AWSQuickSetupType-Scheduler-ChangeCalendarState", 
+                        "arn:aws:ssm:*::document/AmazonCloudWatch-ManageAgent", 
+                        "arn:aws:ssm:*::document/AWSQuickSetupType-InstallAndManageCloudWatchAgent", 
                         "arn:aws:ssm:*::document/AWSQuickSetupType-Scheduler-ApplyInstanceState"
                     ], 
                     "Effect": "Allow", 
@@ -138,6 +140,8 @@
                         "arn:aws:ssm:*::document/AWSQuickSetupType-EnableConfigRecording", 
                         "arn:aws:ssm:*::document/AWSQuickSetupType-Scheduler-ChangeCalendarState", 
                         "arn:aws:ssm:*::document/AWSQuickSetupType-Scheduler-ApplyInstanceState", 
+                        "arn:aws:ssm:*::document/AmazonCloudWatch-ManageAgent", 
+                        "arn:aws:ssm:*::document/AWSQuickSetupType-InstallAndManageCloudWatchAgent", 
                         "arn:aws:ec2:*:*:instance/*", 
                         "arn:aws:ssm:*:*:managed-instance/*", 
                         "arn:aws:ssm:*:*:association/*"
