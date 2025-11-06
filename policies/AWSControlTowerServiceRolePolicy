@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-10-09T21:04:07Z", 
-        "VersionId": "v12", 
+        "CreateDate": "2025-11-05T22:49:07Z", 
+        "VersionId": "v13", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -67,7 +67,7 @@
                         "logs:PutRetentionPolicy"
                     ], 
                     "Resource": [
-                        "arn:aws:logs:*:*:log-group:aws-controltower/CloudTrailLogs:*", 
+                        "arn:aws:logs:*:*:log-group:aws-controltower/CloudTrailLogs*:*", 
                         "arn:aws:cloudtrail:*:*:trail/aws-controltower*"
                     ], 
                     "Effect": "Allow"
