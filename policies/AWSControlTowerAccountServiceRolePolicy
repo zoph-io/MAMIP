@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-06-03T17:07:06Z", 
-        "VersionId": "v2", 
+        "CreateDate": "2025-11-05T23:19:09Z", 
+        "VersionId": "v3", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -105,6 +105,115 @@
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Sid": "AllowConfigRulesDescribe"
+                }, 
+                {
+                    "Action": [
+                        "config:PutConfigurationAggregator"
+                    ], 
+                    "Resource": [
+                        "arn:aws:config:*:*:config-aggregator/aws-service-config-aggregator/controltower.amazonaws.com/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "AllowControlTowerToCreateConfigAggregator"
+                }, 
+                {
+                    "Action": [
+                        "config:DeleteConfigurationAggregator", 
+                        "config:DescribeAggregateComplianceByConfigRules", 
+                        "config:SelectAggregateResourceConfig"
+                    ], 
+                    "Resource": [
+                        "arn:aws:config:*:*:config-aggregator/aws-service-config-aggregator/controltower.amazonaws.com/config-aggregator-*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "AllowControlTowerToManageConfigAggregator"
+                }, 
+                {
+                    "Action": [
+                        "config:TagResource"
+                    ], 
+                    "Resource": [
+                        "arn:aws:config:*:*:config-aggregator/aws-service-config-aggregator/controltower.amazonaws.com/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:RequestTag/aws-control-tower": "managed-by-control-tower", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "AllowControlTowerToTagConfigAggregator"
+                }, 
+                {
+                    "Action": [
+                        "iam:PassRole"
+                    ], 
+                    "Resource": [
+                        "arn:aws:iam::*:role/aws-service-role/config.amazonaws.com/AWSServiceRoleForConfig"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:PassedToService": "config.amazonaws.com", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "AllowControlTowerToPassAggregatorRoleToConfig"
+                }, 
+                {
+                    "Action": [
+                        "config:DescribeConfigurationAggregators"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowDescribeConfigurationAggregators"
+                }, 
+                {
+                    "Action": [
+                        "organizations:ListDelegatedAdministrators"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "organizations:ServicePrincipal": "config.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "AllowListDelegatedAdministratorsForConfig"
+                }, 
+                {
+                    "Action": [
+                        "organizations:DescribeOrganization"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowListDescribeOrganization"
+                }, 
+                {
+                    "Action": [
+                        "cloudformation:SetTypeConfiguration", 
+                        "cloudformation:DeactivateType", 
+                        "cloudformation:ActivateType"
+                    ], 
+                    "Resource": "arn:aws:cloudformation:*:*:type/hook/AWS-ControlTower*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowActionsForCloudFormationHooksIntegration"
                 }
             ]
         }, 
