@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-06-25T17:52:08Z", 
-        "VersionId": "v13", 
+        "CreateDate": "2025-11-05T20:19:08Z", 
+        "VersionId": "v14", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -20,7 +20,8 @@
                         "firehose:ListDeliveryStreams", 
                         "kms:ListAliases", 
                         "logs:DescribeLogGroups", 
-                        "s3:ListBucket"
+                        "s3:ListBucket", 
+                        "secretsmanager:ListSecrets"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
@@ -149,6 +150,6 @@
                 }
             ]
         }, 
-        "IsDefaultVersion": false
+        "IsDefaultVersion": true
     }
 }
