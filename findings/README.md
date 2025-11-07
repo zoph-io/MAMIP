@@ -1,6 +1,6 @@
-# AWS Access Analyzer - Findings - 2025-11-05
+# AWS Access Analyzer - Findings - 2025-11-07
 
-- **Policies analyzed:** `1394`
+- **Policies analyzed:** `1396`
 - **Errors:** `21`
   - [`AWSAccountActivityAccess`](./AWSAccountActivityAccess.json)
   - [`AWSCodeStarFullAccess`](./AWSCodeStarFullAccess.json)
@@ -30,7 +30,7 @@
   - [`IAMFullAccess`](./IAMFullAccess.json)
   - [`S3UnlockBucketPolicy`](./S3UnlockBucketPolicy.json)
   - [`SQSUnlockQueuePolicy`](./SQSUnlockQueuePolicy.json)
-- **Suggestions:** `148`
+- **Suggestions:** `149`
   - [`AIOpsAssistantPolicy`](./AIOpsAssistantPolicy.json)
   - [`AWSBatchFullAccess`](./AWSBatchFullAccess.json)
   - [`AWSCloud9Administrator`](./AWSCloud9Administrator.json)
@@ -113,7 +113,7 @@
   - [`SupportUser`](./SupportUser.json)
   - [`SystemAdministrator`](./SystemAdministrator.json)
   - [`ViewOnlyAccess`](./ViewOnlyAccess.json)
-- **Warnings:** `26`
+- **Warnings:** `27`
   - [`AIOpsAssistantPolicy`](./AIOpsAssistantPolicy.json)
   - [`AWSElasticDisasterRecoveryConsoleFullAccess_v2`](./AWSElasticDisasterRecoveryConsoleFullAccess_v2.json)
   - [`AWSOrganizationsServiceTrustPolicy`](./AWSOrganizationsServiceTrustPolicy.json)
@@ -121,6 +121,7 @@
   - [`AdministratorAccess`](./AdministratorAccess.json)
   - [`AdministratorAccess-Amplify`](./AdministratorAccess-Amplify.json)
   - [`AlexaForBusinessFullAccess`](./AlexaForBusinessFullAccess.json)
+  - [`AmazonConnectServiceLinkedRolePolicy`](./AmazonConnectServiceLinkedRolePolicy.json)
   - [`AmazonDataZoneEnvironmentRolePermissionsBoundary`](./AmazonDataZoneEnvironmentRolePermissionsBoundary.json)
   - [`AmazonDataZoneSageMakerEnvironmentRolePermissionsBoundary`](./AmazonDataZoneSageMakerEnvironmentRolePermissionsBoundary.json)
   - [`AmazonLaunchWizardFullAccessV2`](./AmazonLaunchWizardFullAccessV2.json)

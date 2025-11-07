@@ -1,6 +1,29 @@
 [
   {
-    "findingDetails": "Using the effect Allow with the condition key aws:ResourceTag/AmazonConnectEnabled and actions for services with the following prefixes does not affect the policy: wisdom. The actions for the listed service are not allowed by this statement. We recommend that you move these actions to a different statement without this condition key.",
+    "findingDetails": "The 11380 characters in the identity policy, excluding whitespace, exceed the 10240 character maximum for inline and managed policies. We recommend that you use multiple granular policies.",
+    "findingType": "WARNING",
+    "issueCode": "POLICY_SIZE_EXCEEDS_IDENTITY_POLICY_QUOTA",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-general-warning-policy-size-exceeds-identity-policy-quota",
+    "locations": [
+      {
+        "path": [],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 0,
+            "offset": 0
+          },
+          "end": {
+            "line": 1,
+            "column": 11880,
+            "offset": 11880
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "Using the effect Allow with the condition key aws:ResourceTag/AmazonConnectEnabled and actions for services with the following prefixes does not affect the policy: app-integrations. The actions for the listed service are not allowed by this statement. We recommend that you move these actions to a different statement without this condition key.",
     "findingType": "SUGGESTION",
     "issueCode": "ALLOW_WITH_UNSUPPORTED_TAG_CONDITION_KEY_FOR_SERVICE",
     "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-allow-with-unsupported-tag-condition-key-for-service",
@@ -11,25 +34,25 @@
             "value": "Statement"
           },
           {
-            "index": 13
+            "index": 15
           },
           {
             "value": "Action"
           },
           {
-            "index": 48
+            "index": 1
           }
         ],
         "span": {
           "start": {
             "line": 1,
-            "column": 4924,
-            "offset": 4924
+            "column": 4224,
+            "offset": 4224
           },
           "end": {
             "line": 1,
-            "column": 4945,
-            "offset": 4945
+            "column": 4274,
+            "offset": 4274
           }
         }
       },
@@ -39,91 +62,7 @@
             "value": "Statement"
           },
           {
-            "index": 13
-          },
-          {
-            "value": "Action"
-          },
-          {
-            "index": 56
-          }
-        ],
-        "span": {
-          "start": {
-            "line": 1,
-            "column": 5138,
-            "offset": 5138
-          },
-          "end": {
-            "line": 1,
-            "column": 5160,
-            "offset": 5160
-          }
-        }
-      },
-      {
-        "path": [
-          {
-            "value": "Statement"
-          },
-          {
-            "index": 13
-          },
-          {
-            "value": "Action"
-          },
-          {
-            "index": 64
-          }
-        ],
-        "span": {
-          "start": {
-            "line": 1,
-            "column": 5372,
-            "offset": 5372
-          },
-          "end": {
-            "line": 1,
-            "column": 5397,
-            "offset": 5397
-          }
-        }
-      },
-      {
-        "path": [
-          {
-            "value": "Statement"
-          },
-          {
-            "index": 13
-          },
-          {
-            "value": "Action"
-          },
-          {
-            "index": 67
-          }
-        ],
-        "span": {
-          "start": {
-            "line": 1,
-            "column": 5459,
-            "offset": 5459
-          },
-          "end": {
-            "line": 1,
-            "column": 5487,
-            "offset": 5487
-          }
-        }
-      },
-      {
-        "path": [
-          {
-            "value": "Statement"
-          },
-          {
-            "index": 13
+            "index": 15
           },
           {
             "value": "Condition"
@@ -138,13 +77,164 @@
         "span": {
           "start": {
             "line": 1,
-            "column": 5627,
-            "offset": 5627
+            "column": 4688,
+            "offset": 4688
           },
           "end": {
             "line": 1,
-            "column": 5665,
-            "offset": 5665
+            "column": 4726,
+            "offset": 4726
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "Using the effect Allow with the condition key aws:ResourceTag/AmazonConnectEnabled and actions for services with the following prefixes does not affect the policy: wisdom. The actions for the listed service are not allowed by this statement. We recommend that you move these actions to a different statement without this condition key.",
+    "findingType": "SUGGESTION",
+    "issueCode": "ALLOW_WITH_UNSUPPORTED_TAG_CONDITION_KEY_FOR_SERVICE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-allow-with-unsupported-tag-condition-key-for-service",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 16
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 48
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 6220,
+            "offset": 6220
+          },
+          "end": {
+            "line": 1,
+            "column": 6241,
+            "offset": 6241
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 16
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 56
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 6434,
+            "offset": 6434
+          },
+          "end": {
+            "line": 1,
+            "column": 6456,
+            "offset": 6456
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 16
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 64
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 6668,
+            "offset": 6668
+          },
+          "end": {
+            "line": 1,
+            "column": 6693,
+            "offset": 6693
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 16
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 67
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 6755,
+            "offset": 6755
+          },
+          "end": {
+            "line": 1,
+            "column": 6783,
+            "offset": 6783
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 16
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringEquals"
+          },
+          {
+            "key": "aws:ResourceTag/AmazonConnectEnabled"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 6923,
+            "offset": 6923
+          },
+          "end": {
+            "line": 1,
+            "column": 6961,
+            "offset": 6961
           }
         }
       }
