@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-12-01T22:51:07Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-11-06T23:19:08Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -21,6 +21,15 @@
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow"
+                }, 
+                {
+                    "Action": [
+                        "ec2:DescribeManagedPrefixLists", 
+                        "ec2:GetManagedPrefixListEntries"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "PrefixListStatement"
                 }
             ]
         }, 
