@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-09-17T21:04:07Z", 
-        "VersionId": "v18", 
+        "CreateDate": "2025-11-07T17:34:09Z", 
+        "VersionId": "v19", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -447,8 +447,7 @@
                     "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
-                            "kms:EncryptionContext:glue_catalog_id": "${aws:PrincipalAccount}", 
-                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                            "kms:EncryptionContext:glue_catalog_id": "${aws:PrincipalAccount}"
                         }, 
                         "StringLike": {
                             "kms:ViaService": [
@@ -1348,22 +1347,44 @@
                         "sqlworkbench:DriverExecute", 
                         "sqlworkbench:GetUserInfo", 
                         "sqlworkbench:ListTabs", 
-                        "sqlworkbench:GetAutocompletionMetadata", 
-                        "sqlworkbench:GetAutocompletionResource", 
+                        "sqlworkbench:GetAutocompletion*", 
                         "sqlworkbench:PassAccountSettings", 
                         "sqlworkbench:ListQueryExecutionHistory", 
                         "sqlworkbench:GetQueryExecutionHistory", 
                         "sqlworkbench:CreateConnection", 
-                        "sqlworkbench:PutQCustomContext", 
-                        "sqlworkbench:GetQCustomContext", 
-                        "sqlworkbench:DeleteQCustomContext", 
-                        "sqlworkbench:GetQSqlRecommendations", 
-                        "sqlworkbench:GetQSqlPromptQuotas", 
+                        "sqlworkbench:*QCustomContext", 
+                        "sqlworkbench:GetQSql*", 
                         "sqlworkbench:GetSchemaInference"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Sid": "SQLWorkBenchActionsWithoutResourceType"
+                }, 
+                {
+                    "Action": "sqlworkbench:AssociateNotebookWithTab", 
+                    "Resource": "arn:*:sqlworkbench:*:*:notebook/*", 
+                    "Effect": "Allow", 
+                    "Sid": "SQLWorkBenchActions"
+                }, 
+                {
+                    "Action": [
+                        "sqlworkbench:CreateNotebook*", 
+                        "sqlworkbench:GetNotebook", 
+                        "sqlworkbench:UpdateNotebook*", 
+                        "sqlworkbench:DeleteNotebook*", 
+                        "sqlworkbench:ExportNotebook", 
+                        "sqlworkbench:BatchGetNotebookCell", 
+                        "sqlworkbench:TagResource"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/AmazonDataZoneProject": "${aws:PrincipalTag/AmazonDataZoneProject}", 
+                            "aws:ResourceTag/sqlworkbench-resource-owner": "${aws:userid}"
+                        }
+                    }, 
+                    "Sid": "SQLWorkBenchNotebookActions"
                 }, 
                 {
                     "Action": [
@@ -1473,6 +1494,10 @@
                 }, 
                 {
                     "Action": [
+                        "emr-containers:DescribeManagedEndpoint", 
+                        "emr-containers:DescribeSecurityConfiguration", 
+                        "emr-containers:DescribeVirtualCluster", 
+                        "emr-containers:GetManagedEndpointSessionCredentials", 
                         "redshift-serverless:GetCredentials", 
                         "redshift:GetClusterCredentialsWithIAM"
                     ], 
@@ -1483,7 +1508,7 @@
                             "aws:ResourceTag/AmazonDataZoneProject": "${aws:PrincipalTag/AmazonDataZoneProject}"
                         }
                     }, 
-                    "Sid": "RedshiftGetCredentials"
+                    "Sid": "ComputeCredentials"
                 }, 
                 {
                     "Action": [
@@ -1617,6 +1642,21 @@
                         }
                     }, 
                     "Sid": "EMRGetClusterSessionCredentials"
+                }, 
+                {
+                    "Action": [
+                        "sso:DescribeApplication"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ForAnyValue:StringLike": {
+                            "aws:CalledVia": [
+                                "emr-containers.amazonaws.com"
+                            ]
+                        }
+                    }, 
+                    "Sid": "EmrContainersSSO"
                 }, 
                 {
                     "Action": [
