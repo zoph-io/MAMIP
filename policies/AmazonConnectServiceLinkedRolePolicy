@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-10-27T21:19:07Z", 
-        "VersionId": "v29", 
+        "CreateDate": "2025-11-06T22:49:10Z", 
+        "VersionId": "v30", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -99,7 +99,10 @@
                         "profile:GetUploadJob", 
                         "profile:GetUploadJobPath", 
                         "profile:StartUploadJob", 
-                        "profile:StopUploadJob"
+                        "profile:StopUploadJob", 
+                        "profile:GetProfileRecommendations", 
+                        "profile:GetProfileInsights", 
+                        "profile:ListRecommenders"
                     ], 
                     "Resource": "arn:aws:profile:*:*:domains/amazon-connect-*", 
                     "Effect": "Allow", 
@@ -148,13 +151,39 @@
                     "Action": [
                         "profile:ListProfileObjects", 
                         "profile:GetProfileObjectType", 
-                        "profile:ListObjectTypeAttributes"
+                        "profile:ListObjectTypeAttributes", 
+                        "profile:ListObjectTypeAttributeValues"
                     ], 
                     "Resource": [
                         "arn:aws:profile:*:*:domains/amazon-connect-*/object-types/*"
                     ], 
                     "Effect": "Allow", 
                     "Sid": "AllowReadPermissionForCustomerProfileObjects"
+                }, 
+                {
+                    "Action": [
+                        "profile:GetRecommender", 
+                        "profile:CreateRecommender", 
+                        "profile:UpdateRecommender", 
+                        "profile:DeleteRecommender", 
+                        "profile:StopRecommender", 
+                        "profile:StartRecommender"
+                    ], 
+                    "Resource": [
+                        "arn:aws:profile:*:*:domains/amazon-connect-*/recommenders/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowReadPermissionForCustomerProfilePredictiveInsights"
+                }, 
+                {
+                    "Action": [
+                        "profile:ListRecommenderRecipes"
+                    ], 
+                    "Resource": [
+                        "arn:aws:profile:*:*:*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowReadPermissionForCustomerProfilesPersonalizeForRecommenderRecipes"
                 }, 
                 {
                     "Action": [
@@ -172,6 +201,27 @@
                     "Resource": "arn:aws:profile:*:*:/templates*", 
                     "Effect": "Allow", 
                     "Sid": "AllowReadForCustomerProfileObjectTemplates"
+                }, 
+                {
+                    "Action": [
+                        "app-integrations:GetDataIntegration", 
+                        "app-integrations:ListDataIntegrationAssociations", 
+                        "app-integrations:CreateDataIntegrationSchedule", 
+                        "app-integrations:StartDataIntegrationExecution", 
+                        "app-integrations:ListDataIntegrationExecutions", 
+                        "app-integrations:GetDataIntegrationExecution", 
+                        "app-integrations:ListDataIntegrationSchedules", 
+                        "app-integrations:UpdateDataIntegrationSchedule", 
+                        "app-integrations:GetDataIntegrationSchedule"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/AmazonConnectEnabled": "True"
+                        }
+                    }, 
+                    "Sid": "AllowAppIntegrationsForConnectEnabledTaggedResources"
                 }, 
                 {
                     "Action": [
