@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-10-10T21:49:07Z", 
-        "VersionId": "v3", 
+        "CreateDate": "2025-11-07T22:49:10Z", 
+        "VersionId": "v4", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -19,7 +19,14 @@
                         "aiops:PutFact", 
                         "aiops:UpdateReport", 
                         "aiops:GenerateReport", 
-                        "aiops:CreateReport"
+                        "aiops:CreateReport", 
+                        "q:StartConversation", 
+                        "q:SendMessage", 
+                        "q:GetConversation", 
+                        "q:ListConversations", 
+                        "q:UpdateConversation", 
+                        "q:DeleteConversation", 
+                        "q:PassRequest"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
