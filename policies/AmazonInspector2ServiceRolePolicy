@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-04-29T17:37:06Z", 
-        "VersionId": "v16", 
+        "CreateDate": "2025-11-10T18:19:10Z", 
+        "VersionId": "v17", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -315,6 +315,33 @@
                         }
                     }, 
                     "Sid": "AllowAccessToECSTasks"
+                }, 
+                {
+                    "Action": [
+                        "inspector2:Enable", 
+                        "inspector2:Disable", 
+                        "inspector2:EnableDelegatedAdminAccount", 
+                        "inspector2:AssociateMember"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowInspectorEnablementForAwsOrgPolicy"
+                }, 
+                {
+                    "Action": [
+                        "organizations:ListDelegatedAdministrators"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLikeIfExists": {
+                            "organizations:ServicePrincipal": [
+                                "agentless.inspector2.amazonaws.com", 
+                                "inspector2.amazonaws.com"
+                            ]
+                        }
+                    }, 
+                    "Sid": "AllowInspectorServiceDelegatedAdminFromAwsOrg"
                 }
             ]
         }, 
