@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-09-09T18:49:07Z", 
-        "VersionId": "v20", 
+        "CreateDate": "2025-11-10T19:19:07Z", 
+        "VersionId": "v21", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -419,6 +419,28 @@
                         }
                     }, 
                     "Sid": "OrgsListDelegatedAdmins"
+                }, 
+                {
+                    "Action": [
+                        "eks:ListClusters", 
+                        "eks:ListTagsForResource", 
+                        "eks:DescribeCluster", 
+                        "eks:ListAddons", 
+                        "eks:DescribeAddon", 
+                        "eks:ListNodegroups", 
+                        "eks:DescribeNodegroup", 
+                        "eks:ListPodIdentityAssociations", 
+                        "eks:DescribePodIdentityAssociation", 
+                        "eks:ListAccessEntries", 
+                        "eks:DescribeAccessEntry", 
+                        "eks:ListAssociatedAccessPolicies", 
+                        "eks:ListFargateProfiles", 
+                        "eks:DescribeFargateProfile", 
+                        "ec2:DescribeLaunchTemplateVersions"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "EKSClusterConfigurationBackup"
                 }
             ]
         }, 
