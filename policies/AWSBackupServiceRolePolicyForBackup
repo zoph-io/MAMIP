@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-05-22T00:37:06Z", 
-        "VersionId": "v22", 
+        "CreateDate": "2025-11-10T19:34:10Z", 
+        "VersionId": "v23", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -216,10 +216,7 @@
                         "ec2:DescribeVolumes", 
                         "ec2:DescribeSnapshots"
                     ], 
-                    "Resource": [
-                        "arn:aws:ec2:*::snapshot/*", 
-                        "arn:aws:ec2:*:*:volume/*"
-                    ], 
+                    "Resource": "*", 
                     "Effect": "Allow", 
                     "Sid": "EBSResourcePermissions"
                 }, 
@@ -576,6 +573,51 @@
                         }
                     }, 
                     "Sid": "KMSDSQLPermissions"
+                }, 
+                {
+                    "Action": [
+                        "eks:ListClusters", 
+                        "eks:ListTagsForResource", 
+                        "eks:DescribeCluster", 
+                        "eks:ListAddons", 
+                        "eks:DescribeAddon", 
+                        "eks:ListNodegroups", 
+                        "eks:DescribeNodegroup", 
+                        "eks:ListPodIdentityAssociations", 
+                        "eks:DescribePodIdentityAssociation", 
+                        "eks:ListAccessEntries", 
+                        "eks:DescribeAccessEntry", 
+                        "eks:ListAssociatedAccessPolicies", 
+                        "eks:ListFargateProfiles", 
+                        "eks:DescribeFargateProfile", 
+                        "ec2:DescribeLaunchTemplateVersions"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "EKSClusterConfigurationBackup"
+                }, 
+                {
+                    "Action": [
+                        "eks:CreateAccessEntry"
+                    ], 
+                    "Resource": "arn:aws:eks:*:*:cluster/*", 
+                    "Effect": "Allow", 
+                    "Sid": "CreateBackupAccessEntry"
+                }, 
+                {
+                    "Action": [
+                        "eks:AssociateAccessPolicy", 
+                        "eks:DisassociateAccessPolicy"
+                    ], 
+                    "Resource": "arn:aws:eks:*:*:access-entry/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "eks:policyArn": "arn:aws:eks::aws:cluster-access-policy/AWSBackupFullAccessPolicyForBackup", 
+                            "eks:accessScope": "cluster"
+                        }
+                    }, 
+                    "Sid": "AssociateBackupAccessPolicy"
                 }
             ]
         }, 
