@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-05-22T00:37:07Z", 
-        "VersionId": "v18", 
+        "CreateDate": "2025-11-10T19:19:07Z", 
+        "VersionId": "v19", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -366,6 +366,16 @@
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Sid": "DSQLDescribePermissions"
+                }, 
+                {
+                    "Action": [
+                        "eks:ListClusters", 
+                        "eks:ListTagsForResource", 
+                        "eks:DescribeCluster"
+                    ], 
+                    "Resource": "arn:aws:eks:*:*:cluster/*", 
+                    "Effect": "Allow", 
+                    "Sid": "EKSClusterPermissions"
                 }
             ]
         }, 
