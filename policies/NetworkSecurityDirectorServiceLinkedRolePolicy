@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-06-13T20:07:06Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-11-10T19:49:08Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -152,6 +152,75 @@
                     ], 
                     "Effect": "Allow", 
                     "Sid": "apiGatewayGetAPI"
+                }, 
+                {
+                    "Action": [
+                        "organizations:DescribeAccount", 
+                        "organizations:DescribeOrganization", 
+                        "organizations:DescribeOrganizationalUnit", 
+                        "organizations:ListAccounts", 
+                        "organizations:ListAccountsForParent", 
+                        "organizations:ListChildren", 
+                        "organizations:ListOrganizationalUnitsForParent", 
+                        "organizations:ListParents", 
+                        "organizations:ListRoots", 
+                        "organizations:ListDelegatedAdministrators", 
+                        "organizations:ListAWSServiceAccessForOrganization", 
+                        "organizations:ListTargetsForPolicy"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowOrganizationsReadAccess"
+                }, 
+                {
+                    "Action": [
+                        "organizations:ListDelegatedAdministrators"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLikeIfExists": {
+                            "organizations:ServicePrincipal": [
+                                "network-security-director.amazonaws.com"
+                            ]
+                        }
+                    }, 
+                    "Sid": "AllowOrganizationsAdmins"
+                }, 
+                {
+                    "Action": [
+                        "account:GetAccountInformation", 
+                        "account:GetRegionOptStatus"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowAccountInformationRead"
+                }, 
+                {
+                    "Action": [
+                        "config:ListConfigurationRecorders"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowConfigRecorderList"
+                }, 
+                {
+                    "Action": [
+                        "config:DescribeConfigurationRecorders", 
+                        "config:DescribeConfigurationRecorderStatus", 
+                        "config:PutServiceLinkedConfigurationRecorder", 
+                        "config:DeleteServiceLinkedConfigurationRecorder"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLikeIfExists": {
+                            "config:ConfigurationRecorderServicePrincipal": [
+                                "network-security-director.amazonaws.com"
+                            ]
+                        }
+                    }, 
+                    "Sid": "AllowConfigRecorderScopedAccess"
                 }
             ]
         }, 
