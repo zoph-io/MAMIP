@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-08-18T22:49:07Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-11-10T22:19:10Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -15,7 +15,15 @@
                         "datazone:CreateProject", 
                         "datazone:GetProject", 
                         "datazone:DeleteProject", 
-                        "datazone:GetIamPortalLoginUrl"
+                        "datazone:GetIamPortalLoginUrl", 
+                        "datazone:ListEnvironmentBlueprints", 
+                        "datazone:ListEnvironments", 
+                        "datazone:GetEnvironment", 
+                        "datazone:GetEnvironmentCredentials", 
+                        "datazone:GetGroupProfile", 
+                        "datazone:SearchGroupProfiles", 
+                        "datazone:SearchUserProfiles", 
+                        "datazone:ListProjectMemberships"
                     ], 
                     "Resource": [
                         "*"
@@ -47,6 +55,23 @@
                         }
                     }, 
                     "Sid": "IAMPassRoleStatement"
+                }, 
+                {
+                    "Action": [
+                        "kms:Decrypt", 
+                        "kms:GenerateDataKey"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "kms:EncryptionContextKeys": "aws:datazone:domainId"
+                        }, 
+                        "StringLike": {
+                            "kms:ViaService": "datazone.*.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "DataZoneKMSPermissions"
                 }
             ]
         }, 
