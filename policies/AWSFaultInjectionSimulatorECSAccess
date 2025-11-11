@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-03-07T14:52:07Z", 
-        "VersionId": "v4", 
+        "CreateDate": "2025-11-11T09:49:07Z", 
+        "VersionId": "v5", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -70,6 +70,24 @@
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Sid": "TargetResolutionByTags"
+                }, 
+                {
+                    "Action": "ecs:DescribeContainerInstances", 
+                    "Resource": "arn:aws:ecs:*:*:container-instance/*/*", 
+                    "Effect": "Allow", 
+                    "Sid": "DescribeContainerInstances"
+                }, 
+                {
+                    "Action": "ec2:DescribeInstances", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DescribeInstances"
+                }, 
+                {
+                    "Action": "ec2:DescribeSubnets", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DescribeSubnets"
                 }
             ]
         }, 
