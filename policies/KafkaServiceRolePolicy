@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2023-04-28T00:39:35Z", 
-        "VersionId": "v4", 
+        "CreateDate": "2025-11-10T23:19:09Z", 
+        "VersionId": "v5", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -55,6 +55,23 @@
                     "Condition": {
                         "ArnLike": {
                             "secretsmanager:SecretId": "arn:*:secretsmanager:*:*:secret:AmazonMSK_*"
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "ec2:AssignIpv6Addresses", 
+                        "ec2:UnassignIpv6Addresses", 
+                        "ec2:ModifyNetworkInterfaceAttribute"
+                    ], 
+                    "Resource": "arn:*:ec2:*:*:network-interface/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "ec2:ResourceTag/ClusterArn": "*"
+                        }, 
+                        "StringEquals": {
+                            "ec2:ResourceTag/AWSMSKManaged": "true"
                         }
                     }
                 }
