@@ -1,6 +1,6 @@
-# AWS Access Analyzer - Findings - 2025-11-10
+# AWS Access Analyzer - Findings - 2025-11-11
 
-- **Policies analyzed:** `1396`
+- **Policies analyzed:** `1397`
 - **Errors:** `21`
   - [`AWSAccountActivityAccess`](./AWSAccountActivityAccess.json)
   - [`AWSCodeStarFullAccess`](./AWSCodeStarFullAccess.json)
@@ -30,7 +30,7 @@
   - [`IAMFullAccess`](./IAMFullAccess.json)
   - [`S3UnlockBucketPolicy`](./S3UnlockBucketPolicy.json)
   - [`SQSUnlockQueuePolicy`](./SQSUnlockQueuePolicy.json)
-- **Suggestions:** `149`
+- **Suggestions:** `150`
   - [`AIOpsAssistantPolicy`](./AIOpsAssistantPolicy.json)
   - [`AWSBatchFullAccess`](./AWSBatchFullAccess.json)
   - [`AWSCloud9Administrator`](./AWSCloud9Administrator.json)
@@ -113,8 +113,11 @@
   - [`SupportUser`](./SupportUser.json)
   - [`SystemAdministrator`](./SystemAdministrator.json)
   - [`ViewOnlyAccess`](./ViewOnlyAccess.json)
-- **Warnings:** `27`
+- **Warnings:** `30`
   - [`AIOpsAssistantPolicy`](./AIOpsAssistantPolicy.json)
+  - [`AWSApplicationMigrationNetworkMigrationMultiAccount`](./AWSApplicationMigrationNetworkMigrationMultiAccount.json)
+  - [`AWSBackupServiceRolePolicyForBackup`](./AWSBackupServiceRolePolicyForBackup.json)
+  - [`AWSBackupServiceRolePolicyForRestores`](./AWSBackupServiceRolePolicyForRestores.json)
   - [`AWSElasticDisasterRecoveryConsoleFullAccess_v2`](./AWSElasticDisasterRecoveryConsoleFullAccess_v2.json)
   - [`AWSOrganizationsServiceTrustPolicy`](./AWSOrganizationsServiceTrustPolicy.json)
   - [`AWSResourceExplorerServiceRolePolicy`](./AWSResourceExplorerServiceRolePolicy.json)
