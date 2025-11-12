@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-11-15T17:10:25Z", 
-        "VersionId": "v9", 
+        "CreateDate": "2025-11-12T18:19:06Z", 
+        "VersionId": "v10", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -9,6 +9,7 @@
                     "Action": [
                         "ec2:AttachClassicLinkVpc", 
                         "ec2:CancelSpotInstanceRequests", 
+                        "ec2:CreateReplaceRootVolumeTask", 
                         "ec2:CreateFleet", 
                         "ec2:CreateTags", 
                         "ec2:DeleteTags", 
@@ -87,8 +88,7 @@
                         "events:PutRule", 
                         "events:PutTargets", 
                         "events:RemoveTargets", 
-                        "events:DeleteRule", 
-                        "events:DescribeRule"
+                        "events:DeleteRule"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
