@@ -1,0 +1,41 @@
+[
+  {
+    "findingDetails": "We recommend replacing the key aws:ResourceTag/AWSEc2SqlHa in the condition block of StringLike with {aws:ResourceTag/AWSEc2SqlHa: false} to ensure better enforcement of the condition.",
+    "findingType": "SUGGESTION",
+    "issueCode": "EQUIVALENT_TO_NULL_FALSE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 1
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringLike"
+          },
+          {
+            "value": "aws:ResourceTag/AWSEc2SqlHa"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 397,
+            "offset": 397
+          },
+          "end": {
+            "line": 1,
+            "column": 400,
+            "offset": 400
+          }
+        }
+      }
+    ]
+  }
+]

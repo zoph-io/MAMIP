@@ -1,6 +1,6 @@
 # AWS Access Analyzer - Findings - 2025-11-13
 
-- **Policies analyzed:** `1397`
+- **Policies analyzed:** `1399`
 - **Errors:** `25`
   - [`AWSAccountActivityAccess`](./AWSAccountActivityAccess.json)
   - [`AWSAuditManagerAdministratorAccess`](./AWSAuditManagerAdministratorAccess.json)
@@ -34,7 +34,7 @@
   - [`IAMFullAccess`](./IAMFullAccess.json)
   - [`S3UnlockBucketPolicy`](./S3UnlockBucketPolicy.json)
   - [`SQSUnlockQueuePolicy`](./SQSUnlockQueuePolicy.json)
-- **Suggestions:** `150`
+- **Suggestions:** `151`
   - [`AIOpsAssistantPolicy`](./AIOpsAssistantPolicy.json)
   - [`AWSBatchFullAccess`](./AWSBatchFullAccess.json)
   - [`AWSCloud9Administrator`](./AWSCloud9Administrator.json)
@@ -44,6 +44,7 @@
   - [`AWSDeepRacerFullAccess`](./AWSDeepRacerFullAccess.json)
   - [`AWSEC2FleetServiceRolePolicy`](./AWSEC2FleetServiceRolePolicy.json)
   - [`AWSEC2SpotFleetServiceRolePolicy`](./AWSEC2SpotFleetServiceRolePolicy.json)
+  - [`AWSEC2SqlHaInstancePolicy`](./AWSEC2SqlHaInstancePolicy.json)
   - [`AWSEC2VssSnapshotPolicy`](./AWSEC2VssSnapshotPolicy.json)
   - [`AWSElasticBeanstalkCustomPlatformforEC2Role`](./AWSElasticBeanstalkCustomPlatformforEC2Role.json)
   - [`AWSElasticBeanstalkRoleCore`](./AWSElasticBeanstalkRoleCore.json)
