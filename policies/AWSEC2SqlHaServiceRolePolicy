@@ -1,0 +1,81 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-11-13T01:34:10Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": "ssm:SendCommand", 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:instance/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "aws:ResourceTag/SqlHaMonitored": "true"
+                        }
+                    }, 
+                    "Sid": "AllowSSMSendCommandToTaggedInstances"
+                }, 
+                {
+                    "Action": "ssm:SendCommand", 
+                    "Resource": [
+                        "arn:aws:ssm:*:*:document/AWSEC2-DetectSqlHa*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowSSMSendCommandOfOwnedDoc"
+                }, 
+                {
+                    "Action": [
+                        "ssm:DescribeInstanceInformation", 
+                        "ssm:GetCommandInvocation", 
+                        "ssm:ListCommands", 
+                        "ssm:ListCommandInvocations"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowSSMNonMutating"
+                }, 
+                {
+                    "Action": [
+                        "ec2:DescribeInstances", 
+                        "ec2:DescribeInstanceAttribute", 
+                        "ec2:DescribeInstanceStatus", 
+                        "ec2:DescribeTags"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowEC2NonMutating"
+                }, 
+                {
+                    "Action": [
+                        "events:PutTargets", 
+                        "events:PutRule", 
+                        "events:DeleteRule", 
+                        "events:RemoveTargets"
+                    ], 
+                    "Resource": "arn:aws:events:*:*:rule/AWSEC2SqlHa*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "events:ManagedBy": "ec2sqlha.amazonaws.com", 
+                            "aws:PrincipalAccount": "${aws:ResourceAccount}"
+                        }
+                    }, 
+                    "Sid": "AllowEventsMutateManagedRule"
+                }, 
+                {
+                    "Action": [
+                        "events:ListTargetsByRule", 
+                        "events:DescribeRule"
+                    ], 
+                    "Resource": "arn:aws:events:*:*:rule/AWSEC2SqlHa*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowEventsNonMutatingManagedRule"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
