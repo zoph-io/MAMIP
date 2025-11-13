@@ -1,14 +1,18 @@
-# AWS Access Analyzer - Findings - 2025-11-12
+# AWS Access Analyzer - Findings - 2025-11-13
 
 - **Policies analyzed:** `1397`
-- **Errors:** `21`
+- **Errors:** `25`
   - [`AWSAccountActivityAccess`](./AWSAccountActivityAccess.json)
+  - [`AWSAuditManagerAdministratorAccess`](./AWSAuditManagerAdministratorAccess.json)
+  - [`AWSAuditManagerServiceRolePolicy`](./AWSAuditManagerServiceRolePolicy.json)
   - [`AWSCodeStarFullAccess`](./AWSCodeStarFullAccess.json)
+  - [`AWSControlTowerAccountServiceRolePolicy`](./AWSControlTowerAccountServiceRolePolicy.json)
   - [`AWSIAMIdentityCenterAllowListForIdentityContext`](./AWSIAMIdentityCenterAllowListForIdentityContext.json)
   - [`AmazonDataZoneGlueManageAccessRolePolicy`](./AmazonDataZoneGlueManageAccessRolePolicy.json)
   - [`AmazonDataZoneSageMakerEnvironmentRolePermissionsBoundary`](./AmazonDataZoneSageMakerEnvironmentRolePermissionsBoundary.json)
   - [`AmazonSageMakerFullAccess`](./AmazonSageMakerFullAccess.json)
   - [`BatchServiceRolePolicy`](./BatchServiceRolePolicy.json)
+  - [`CloudTrailEventContext`](./CloudTrailEventContext.json)
   - [`CloudWatchApplicationSignalsFullAccess`](./CloudWatchApplicationSignalsFullAccess.json)
   - [`CloudWatchApplicationSignalsReadOnlyAccess`](./CloudWatchApplicationSignalsReadOnlyAccess.json)
   - [`MemoryDBServiceRolePolicy`](./MemoryDBServiceRolePolicy.json)

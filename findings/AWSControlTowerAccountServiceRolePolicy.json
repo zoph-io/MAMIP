@@ -1,0 +1,41 @@
+[
+  {
+    "findingDetails": "The request context key events:detail-type has multiple values. Use the ForAllValues or ForAnyValue condition key qualifiers in your policy.",
+    "findingType": "ERROR",
+    "issueCode": "MISSING_QUALIFIER",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-missing-qualifier",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 0
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringEquals"
+          },
+          {
+            "key": "events:detail-type"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 330,
+            "offset": 330
+          },
+          "end": {
+            "line": 1,
+            "column": 350,
+            "offset": 350
+          }
+        }
+      }
+    ]
+  }
+]
