@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-01-19T20:08:36Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-11-13T22:34:08Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -43,7 +43,6 @@
                 }, 
                 {
                     "Action": [
-                        "secretsmanager:DescribeSecret", 
                         "secretsmanager:UpdateSecret", 
                         "secretsmanager:GetSecretValue", 
                         "secretsmanager:PutSecretValue", 
@@ -60,6 +59,19 @@
                         }
                     }, 
                     "Sid": "RotateTLSCertificateSecret"
+                }, 
+                {
+                    "Action": [
+                        "secretsmanager:DescribeSecret"
+                    ], 
+                    "Resource": "arn:aws:secretsmanager:*:*:secret:ecs-sc!*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "DescribeTLSCertificateSecret"
                 }, 
                 {
                     "Action": [
