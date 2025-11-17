@@ -1,0 +1,28 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-11-14T22:34:08Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "cloudwatch:PutMetricData"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "cloudwatch:namespace": [
+                                "AWS/Athena", 
+                                "AWS/Usage"
+                            ]
+                        }
+                    }, 
+                    "Sid": "CloudWatchPolicyStatement"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
