@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-03-17T15:07:06Z", 
-        "VersionId": "v6", 
+        "CreateDate": "2025-11-14T21:19:07Z", 
+        "VersionId": "v7", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -107,6 +107,26 @@
                         }
                     }, 
                     "Sid": "EC2AutoScalingPermission"
+                }, 
+                {
+                    "Action": [
+                        "resource-explorer-2:Search"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "ResourceExplorerReadOnlyAccess"
+                }, 
+                {
+                    "Action": [
+                        "cloudtrail:CreateServiceLinkedChannel"
+                    ], 
+                    "Resource": [
+                        "arn:aws:cloudtrail:*:*:channel/aws-service-channel/application-signals/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "CloudTrailServiceLinkedChannelCreationPermission"
                 }
             ]
         }, 
