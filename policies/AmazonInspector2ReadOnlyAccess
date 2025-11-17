@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2023-09-22T20:56:53Z", 
-        "VersionId": "v5", 
+        "CreateDate": "2025-11-14T23:34:08Z", 
+        "VersionId": "v6", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -22,6 +22,38 @@
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow"
+                }, 
+                {
+                    "Action": "organizations:ListPolicies", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "organizations:PolicyType": [
+                                "INSPECTOR_POLICY"
+                            ]
+                        }
+                    }, 
+                    "Sid": "AllowListPoliciesForInspectorPolicyType"
+                }, 
+                {
+                    "Action": "organizations:DescribeResourcePolicy", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowDescribeResourcePolicyForDelegation"
+                }, 
+                {
+                    "Action": "organizations:DescribeEffectivePolicy", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "organizations:PolicyType": [
+                                "INSPECTOR_POLICY"
+                            ]
+                        }
+                    }, 
+                    "Sid": "AllowDescribeEffectivePolicyForInspector"
                 }
             ]
         }, 
