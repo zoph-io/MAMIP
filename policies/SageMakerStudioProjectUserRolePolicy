@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-11-07T17:34:09Z", 
-        "VersionId": "v19", 
+        "CreateDate": "2025-11-14T23:04:07Z", 
+        "VersionId": "v20", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -2764,6 +2764,16 @@
                         }
                     }, 
                     "Sid": "CreateFolderMembership"
+                }, 
+                {
+                    "Action": [
+                        "sagemaker-unified-studio-mcp:InvokeMcp", 
+                        "sagemaker-unified-studio-mcp:CallReadOnlyTool", 
+                        "sagemaker-unified-studio-mcp:CallPrivilegedTool"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "SageMakerUnifiedStudioMcp"
                 }
             ]
         }, 
