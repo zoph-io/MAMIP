@@ -1,0 +1,76 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-11-15T01:19:07Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "ec2:DescribeVolumes", 
+                        "ec2:DescribeSnapshots", 
+                        "ec2:DescribeVolumesModifications"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "EBSReadOnly"
+                }, 
+                {
+                    "Action": [
+                        "ec2:ModifyVolume", 
+                        "ec2:DeleteVolume"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "Null": {
+                            "aws:ResourceTag/exclude-from-compute-optimizer-automation": "true"
+                        }
+                    }, 
+                    "Sid": "EBSVolumeModification"
+                }, 
+                {
+                    "Action": [
+                        "ec2:CreateSnapshot"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "CreateEBSSnapshot"
+                }, 
+                {
+                    "Action": [
+                        "ec2:CreateVolume"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "RollbackEBSVolumeDeletion"
+                }, 
+                {
+                    "Action": [
+                        "ec2:CreateTags"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:volume/*", 
+                        "arn:aws:ec2:*:*:snapshot/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "ec2:CreateAction": [
+                                "CreateVolume", 
+                                "CreateSnapshot"
+                            ]
+                        }
+                    }, 
+                    "Sid": "Tag"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
