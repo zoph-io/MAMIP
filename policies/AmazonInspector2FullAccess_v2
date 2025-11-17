@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-07-03T16:07:07Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-11-14T23:34:08Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -56,7 +56,7 @@
                     "Action": [
                         "organizations:DescribeOrganizationalUnit"
                     ], 
-                    "Resource": "arn:*:organizations::*:ou/o-*/ou-*", 
+                    "Resource": "arn:aws:organizations::*:ou/o-*/ou-*", 
                     "Effect": "Allow", 
                     "Sid": "AllowOrganizationalBasedAccessToOrganizationApis"
                 }, 
@@ -64,7 +64,7 @@
                     "Action": [
                         "organizations:DescribeAccount"
                     ], 
-                    "Resource": "arn:*:organizations::*:account/o-*/*", 
+                    "Resource": "arn:aws:organizations::*:account/o-*/*", 
                     "Effect": "Allow", 
                     "Sid": "AllowAccountsBasedAccessToOrganizationApis"
                 }, 
@@ -76,6 +76,38 @@
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Sid": "AllowAccessToOrganizationApis"
+                }, 
+                {
+                    "Action": "organizations:ListPolicies", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "organizations:PolicyType": [
+                                "INSPECTOR_POLICY"
+                            ]
+                        }
+                    }, 
+                    "Sid": "AllowListPoliciesForInspectorPolicyType"
+                }, 
+                {
+                    "Action": "organizations:DescribeResourcePolicy", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowDescribeResourcePolicyForDelegation"
+                }, 
+                {
+                    "Action": "organizations:DescribeEffectivePolicy", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "organizations:PolicyType": [
+                                "INSPECTOR_POLICY"
+                            ]
+                        }
+                    }, 
+                    "Sid": "AllowDescribeEffectivePolicyForInspector"
                 }
             ]
         }, 
