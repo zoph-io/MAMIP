@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-11-21T23:06:06Z", 
-        "VersionId": "v5", 
+        "CreateDate": "2025-11-17T18:34:06Z", 
+        "VersionId": "v6", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -275,7 +275,7 @@
                     "Effect": "Allow", 
                     "Condition": {
                         "StringLike": {
-                            "ram:ResourceShareName": "dzd_*"
+                            "ram:ResourceShareName": "dzd*"
                         }
                     }, 
                     "Sid": "AllowRAMInvitation"
@@ -806,8 +806,8 @@
                             "aws:RequestTag/AmazonDataZoneProject": "false"
                         }, 
                         "StringLike": {
-                            "aws:ResourceTag/AmazonDataZoneDomain": "dzd_*", 
-                            "aws:RequestTag/AmazonDataZoneDomain": "dzd_*"
+                            "aws:ResourceTag/AmazonDataZoneDomain": "dzd*", 
+                            "aws:RequestTag/AmazonDataZoneDomain": "dzd*"
                         }, 
                         "ForAllValues:StringEquals": {
                             "aws:TagKeys": [
@@ -1030,7 +1030,6 @@
                         "ecr:StartImageScan", 
                         "ecr:TagResource", 
                         "ecr:UntagResource", 
-                        "elastic-inference:Connect", 
                         "elasticfilesystem:DescribeFileSystems", 
                         "elasticfilesystem:DescribeMountTargets", 
                         "elasticmapreduce:DescribeCluster", 
