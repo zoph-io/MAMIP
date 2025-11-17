@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-07-15T20:37:06Z", 
-        "VersionId": "v4", 
+        "CreateDate": "2025-11-17T17:04:07Z", 
+        "VersionId": "v5", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -24,6 +24,15 @@
                         "ec2:ModifyVolume"
                     ], 
                     "Resource": "arn:aws:ec2:*:*:volume/*", 
+                    "Effect": "Allow"
+                }, 
+                {
+                    "Action": [
+                        "ec2:CopyVolumes"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:volume/vol-*"
+                    ], 
                     "Effect": "Allow"
                 }, 
                 {
@@ -58,7 +67,8 @@
                         "StringEquals": {
                             "ec2:CreateAction": [
                                 "CreateVolume", 
-                                "CreateSnapshot"
+                                "CreateSnapshot", 
+                                "CopyVolumes"
                             ]
                         }
                     }
@@ -75,7 +85,8 @@
                 }, 
                 {
                     "Action": [
-                        "ec2:CreateVolume"
+                        "ec2:CreateVolume", 
+                        "ec2:CopyVolumes"
                     ], 
                     "Resource": "arn:aws:ec2:*:*:volume/*", 
                     "Effect": "Allow", 
@@ -87,7 +98,8 @@
                 }, 
                 {
                     "Action": [
-                        "ec2:CreateVolume"
+                        "ec2:CreateVolume", 
+                        "ec2:CopyVolumes"
                     ], 
                     "Resource": "arn:aws:ec2:*:*:volume/*", 
                     "Effect": "Allow", 
