@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-10-23T21:49:07Z", 
-        "VersionId": "v20", 
+        "CreateDate": "2025-11-17T22:49:09Z", 
+        "VersionId": "v21", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -757,6 +757,7 @@
                         "dynamodb:DescribeContributorInsights", 
                         "dynamodb:DescribeKinesisStreamingDestination", 
                         "dynamodb:DescribeTable", 
+                        "dynamodb:DescribeTimeToLive", 
                         "dynamodb:GetResourcePolicy", 
                         "dynamodb:ListTagsOfResource", 
                         "ecs:DescribeClusters", 
@@ -784,8 +785,10 @@
                         "lambda:GetFunction", 
                         "lambda:GetFunctionCodeSigningConfig", 
                         "lambda:GetFunctionRecursionConfig", 
+                        "lambda:GetRuntimeManagementConfig", 
                         "lambda:ListTags", 
                         "logs:DescribeIndexPolicies", 
+                        "logs:DescribeResourcePolicies", 
                         "logs:GetDataProtectionPolicy", 
                         "route53:GetHostedZone", 
                         "route53:ListQueryLoggingConfigs", 
