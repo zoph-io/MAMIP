@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-10-15T21:19:07Z", 
-        "VersionId": "v5", 
+        "CreateDate": "2025-11-17T21:49:10Z", 
+        "VersionId": "v6", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -45,7 +45,8 @@
                         "ec2:DescribeSubnets", 
                         "ec2:DescribeVpcs", 
                         "ec2:DescribeSecurityGroups", 
-                        "ec2:DescribeRouteTables"
+                        "ec2:DescribeRouteTables", 
+                        "ec2:DescribeVpcEndpoints"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
