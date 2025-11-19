@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-10-02T21:04:07Z", 
-        "VersionId": "v16", 
+        "CreateDate": "2025-11-18T21:49:07Z", 
+        "VersionId": "v17", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -88,6 +88,12 @@
                         "invoicing:GetInvoiceCorrection", 
                         "invoicing:ListInvoiceSummaries", 
                         "invoicing:ListInvoiceUnits", 
+                        "invoicing:CreateProcurementPortalPreference", 
+                        "invoicing:GetProcurementPortalPreference", 
+                        "invoicing:PutProcurementPortalPreference", 
+                        "invoicing:UpdateProcurementPortalPreferenceStatus", 
+                        "invoicing:ListProcurementPortalPreferences", 
+                        "invoicing:DeleteProcurementPortalPreference", 
                         "invoicing:ListTagsForResource", 
                         "invoicing:ListInvoiceCorrections", 
                         "invoicing:StartInvoiceCorrection", 
