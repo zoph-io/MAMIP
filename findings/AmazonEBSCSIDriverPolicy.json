@@ -11,7 +11,7 @@
             "value": "Statement"
           },
           {
-            "index": 7
+            "index": 8
           },
           {
             "value": "Condition"
@@ -26,13 +26,13 @@
         "span": {
           "start": {
             "line": 1,
-            "column": 1331,
-            "offset": 1331
+            "column": 1482,
+            "offset": 1482
           },
           "end": {
             "line": 1,
-            "column": 1334,
-            "offset": 1334
+            "column": 1485,
+            "offset": 1485
           }
         }
       }
@@ -40,45 +40,6 @@
   },
   {
     "findingDetails": "We recommend replacing the key ec2:ResourceTag/CSIVolumeName in the condition block of StringLike with {ec2:ResourceTag/CSIVolumeName: false} to ensure better enforcement of the condition.",
-    "findingType": "SUGGESTION",
-    "issueCode": "EQUIVALENT_TO_NULL_FALSE",
-    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
-    "locations": [
-      {
-        "path": [
-          {
-            "value": "Statement"
-          },
-          {
-            "index": 9
-          },
-          {
-            "value": "Condition"
-          },
-          {
-            "value": "StringLike"
-          },
-          {
-            "value": "ec2:ResourceTag/CSIVolumeName"
-          }
-        ],
-        "span": {
-          "start": {
-            "line": 1,
-            "column": 1668,
-            "offset": 1668
-          },
-          "end": {
-            "line": 1,
-            "column": 1671,
-            "offset": 1671
-          }
-        }
-      }
-    ]
-  },
-  {
-    "findingDetails": "We recommend replacing the key ec2:ResourceTag/kubernetes.io/created-for/pvc/name in the condition block of StringLike with {ec2:ResourceTag/kubernetes.io/created-for/pvc/name: false} to ensure better enforcement of the condition.",
     "findingType": "SUGGESTION",
     "issueCode": "EQUIVALENT_TO_NULL_FALSE",
     "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
@@ -98,26 +59,26 @@
             "value": "StringLike"
           },
           {
-            "value": "ec2:ResourceTag/kubernetes.io/created-for/pvc/name"
+            "value": "ec2:ResourceTag/CSIVolumeName"
           }
         ],
         "span": {
           "start": {
             "line": 1,
-            "column": 1851,
-            "offset": 1851
+            "column": 1819,
+            "offset": 1819
           },
           "end": {
             "line": 1,
-            "column": 1854,
-            "offset": 1854
+            "column": 1822,
+            "offset": 1822
           }
         }
       }
     ]
   },
   {
-    "findingDetails": "We recommend replacing the key aws:RequestTag/CSIVolumeSnapshotName in the condition block of StringLike with {aws:RequestTag/CSIVolumeSnapshotName: false} to ensure better enforcement of the condition.",
+    "findingDetails": "We recommend replacing the key ec2:ResourceTag/kubernetes.io/created-for/pvc/name in the condition block of StringLike with {ec2:ResourceTag/kubernetes.io/created-for/pvc/name: false} to ensure better enforcement of the condition.",
     "findingType": "SUGGESTION",
     "issueCode": "EQUIVALENT_TO_NULL_FALSE",
     "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
@@ -137,19 +98,58 @@
             "value": "StringLike"
           },
           {
+            "value": "ec2:ResourceTag/kubernetes.io/created-for/pvc/name"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 2002,
+            "offset": 2002
+          },
+          "end": {
+            "line": 1,
+            "column": 2005,
+            "offset": 2005
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "We recommend replacing the key aws:RequestTag/CSIVolumeSnapshotName in the condition block of StringLike with {aws:RequestTag/CSIVolumeSnapshotName: false} to ensure better enforcement of the condition.",
+    "findingType": "SUGGESTION",
+    "issueCode": "EQUIVALENT_TO_NULL_FALSE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 12
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringLike"
+          },
+          {
             "value": "aws:RequestTag/CSIVolumeSnapshotName"
           }
         ],
         "span": {
           "start": {
             "line": 1,
-            "column": 2024,
-            "offset": 2024
+            "column": 2175,
+            "offset": 2175
           },
           "end": {
             "line": 1,
-            "column": 2027,
-            "offset": 2027
+            "column": 2178,
+            "offset": 2178
           }
         }
       }
@@ -167,7 +167,7 @@
             "value": "Statement"
           },
           {
-            "index": 13
+            "index": 14
           },
           {
             "value": "Condition"
@@ -182,13 +182,13 @@
         "span": {
           "start": {
             "line": 1,
-            "column": 2376,
-            "offset": 2376
+            "column": 2527,
+            "offset": 2527
           },
           "end": {
             "line": 1,
-            "column": 2379,
-            "offset": 2379
+            "column": 2530,
+            "offset": 2530
           }
         }
       }

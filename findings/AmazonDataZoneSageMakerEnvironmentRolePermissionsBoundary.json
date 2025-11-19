@@ -1,6 +1,6 @@
 [
   {
-    "findingDetails": "The 25709 characters in the identity policy, excluding whitespace, exceed the 10240 character maximum for inline and managed policies. We recommend that you use multiple granular policies.",
+    "findingDetails": "The 25678 characters in the identity policy, excluding whitespace, exceed the 10240 character maximum for inline and managed policies. We recommend that you use multiple granular policies.",
     "findingType": "WARNING",
     "issueCode": "POLICY_SIZE_EXCEEDS_IDENTITY_POLICY_QUOTA",
     "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-general-warning-policy-size-exceeds-identity-policy-quota",
@@ -15,8 +15,8 @@
           },
           "end": {
             "line": 1,
-            "column": 26828,
-            "offset": 26828
+            "column": 26796,
+            "offset": 26796
           }
         }
       }
@@ -53,42 +53,6 @@
             "line": 1,
             "column": 4764,
             "offset": 4764
-          }
-        }
-      }
-    ]
-  },
-  {
-    "findingDetails": "The service elastic-inference:Connect specified in the action does not exist.",
-    "findingType": "ERROR",
-    "issueCode": "INVALID_SERVICE_IN_ACTION",
-    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
-    "locations": [
-      {
-        "path": [
-          {
-            "value": "Statement"
-          },
-          {
-            "index": 50
-          },
-          {
-            "value": "NotAction"
-          },
-          {
-            "index": 103
-          }
-        ],
-        "span": {
-          "start": {
-            "line": 1,
-            "column": 22713,
-            "offset": 22713
-          },
-          "end": {
-            "line": 1,
-            "column": 22740,
-            "offset": 22740
           }
         }
       }

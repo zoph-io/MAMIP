@@ -1,6 +1,6 @@
 [
   {
-    "findingDetails": "The 11380 characters in the identity policy, excluding whitespace, exceed the 10240 character maximum for inline and managed policies. We recommend that you use multiple granular policies.",
+    "findingDetails": "The 11433 characters in the identity policy, excluding whitespace, exceed the 10240 character maximum for inline and managed policies. We recommend that you use multiple granular policies.",
     "findingType": "WARNING",
     "issueCode": "POLICY_SIZE_EXCEEDS_IDENTITY_POLICY_QUOTA",
     "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-general-warning-policy-size-exceeds-identity-policy-quota",
@@ -15,8 +15,8 @@
           },
           "end": {
             "line": 1,
-            "column": 11880,
-            "offset": 11880
+            "column": 11935,
+            "offset": 11935
           }
         }
       }
@@ -216,6 +216,34 @@
             "index": 16
           },
           {
+            "value": "Action"
+          },
+          {
+            "index": 72
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 6874,
+            "offset": 6874
+          },
+          "end": {
+            "line": 1,
+            "column": 6908,
+            "offset": 6908
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 16
+          },
+          {
             "value": "Condition"
           },
           {
@@ -228,13 +256,13 @@
         "span": {
           "start": {
             "line": 1,
-            "column": 6923,
-            "offset": 6923
+            "column": 6978,
+            "offset": 6978
           },
           "end": {
             "line": 1,
-            "column": 6961,
-            "offset": 6961
+            "column": 7016,
+            "offset": 7016
           }
         }
       }

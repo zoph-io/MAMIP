@@ -1,7 +1,7 @@
-# AWS Access Analyzer - Findings - 2025-11-14
+# AWS Access Analyzer - Findings - 2025-11-19
 
-- **Policies analyzed:** `1400`
-- **Errors:** `25`
+- **Policies analyzed:** `1404`
+- **Errors:** `24`
   - [`AWSAccountActivityAccess`](./AWSAccountActivityAccess.json)
   - [`AWSAuditManagerAdministratorAccess`](./AWSAuditManagerAdministratorAccess.json)
   - [`AWSAuditManagerServiceRolePolicy`](./AWSAuditManagerServiceRolePolicy.json)
@@ -34,7 +34,7 @@
   - [`IAMFullAccess`](./IAMFullAccess.json)
   - [`S3UnlockBucketPolicy`](./S3UnlockBucketPolicy.json)
   - [`SQSUnlockQueuePolicy`](./SQSUnlockQueuePolicy.json)
-- **Suggestions:** `151`
+- **Suggestions:** `150`
   - [`AIOpsAssistantPolicy`](./AIOpsAssistantPolicy.json)
   - [`AWSBatchFullAccess`](./AWSBatchFullAccess.json)
   - [`AWSCloud9Administrator`](./AWSCloud9Administrator.json)
@@ -79,7 +79,6 @@
   - [`AWSThinkboxDeadlineSpotEventPluginAdminPolicy`](./AWSThinkboxDeadlineSpotEventPluginAdminPolicy.json)
   - [`AWSTransformApplicationDeploymentPolicy`](./AWSTransformApplicationDeploymentPolicy.json)
   - [`AmazonAppStreamPCAAccess`](./AmazonAppStreamPCAAccess.json)
-  - [`AmazonAppStreamServiceAccess`](./AmazonAppStreamServiceAccess.json)
   - [`AmazonCodeGuruReviewerServiceRolePolicy`](./AmazonCodeGuruReviewerServiceRolePolicy.json)
   - [`AmazonConnectServiceLinkedRolePolicy`](./AmazonConnectServiceLinkedRolePolicy.json)
   - [`AmazonDataZoneEnvironmentRolePermissionsBoundary`](./AmazonDataZoneEnvironmentRolePermissionsBoundary.json)
@@ -118,7 +117,7 @@
   - [`SupportUser`](./SupportUser.json)
   - [`SystemAdministrator`](./SystemAdministrator.json)
   - [`ViewOnlyAccess`](./ViewOnlyAccess.json)
-- **Warnings:** `30`
+- **Warnings:** `32`
   - [`AIOpsAssistantPolicy`](./AIOpsAssistantPolicy.json)
   - [`AWSApplicationMigrationNetworkMigrationMultiAccount`](./AWSApplicationMigrationNetworkMigrationMultiAccount.json)
   - [`AWSBackupServiceRolePolicyForBackup`](./AWSBackupServiceRolePolicyForBackup.json)
@@ -143,8 +142,10 @@
   - [`IAMFullAccess`](./IAMFullAccess.json)
   - [`PowerUserAccess`](./PowerUserAccess.json)
   - [`SageMakerStudioAdminIAMDefaultExecutionPolicy`](./SageMakerStudioAdminIAMDefaultExecutionPolicy.json)
+  - [`SageMakerStudioAdminIAMPermissiveExecutionPolicy`](./SageMakerStudioAdminIAMPermissiveExecutionPolicy.json)
   - [`SageMakerStudioProjectRoleMachineLearningPolicy`](./SageMakerStudioProjectRoleMachineLearningPolicy.json)
   - [`SageMakerStudioUserIAMDefaultExecutionPolicy`](./SageMakerStudioUserIAMDefaultExecutionPolicy.json)
+  - [`SageMakerStudioUserIAMPermissiveExecutionPolicy`](./SageMakerStudioUserIAMPermissiveExecutionPolicy.json)
   - [`SecurityAudit`](./SecurityAudit.json)
   - [`ViewOnlyAccess`](./ViewOnlyAccess.json)
 - **Failed validations:** `8`
