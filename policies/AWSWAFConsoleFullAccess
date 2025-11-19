@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-10-31T21:04:07Z", 
-        "VersionId": "v10", 
+        "CreateDate": "2025-11-18T16:49:08Z", 
+        "VersionId": "v11", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -100,6 +100,7 @@
                 {
                     "Action": [
                         "cloudfront:GetDistributionConfig", 
+                        "cloudfront:GetDistribution", 
                         "cloudfront:UpdateDistribution", 
                         "cloudfront:AssociateDistributionWebACL", 
                         "cloudfront:DisassociateDistributionWebACL"
@@ -339,6 +340,27 @@
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Sid": "AllowMarketplaceViewSubscriptions"
+                }, 
+                {
+                    "Action": [
+                        "pricingplanmanager:GetSubscription", 
+                        "pricingplanmanager:ListSubscriptions", 
+                        "pricingplanmanager:UpdateSubscription", 
+                        "pricingplanmanager:CancelSubscription", 
+                        "pricingplanmanager:CancelSubscriptionChange"
+                    ], 
+                    "Resource": "arn:aws:pricingplanmanager::*:subscription:*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowActionsForPricingPlanManager"
+                }, 
+                {
+                    "Action": [
+                        "route53:ListHostedZones", 
+                        "route53:GetHostedZone"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowListActionsForRoute53"
                 }
             ]
         }, 
