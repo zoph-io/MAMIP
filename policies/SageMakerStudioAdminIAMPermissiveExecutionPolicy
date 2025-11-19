@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-11-15T03:04:09Z", 
-        "VersionId": "v4", 
+        "CreateDate": "2025-11-18T23:34:07Z", 
+        "VersionId": "v5", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -351,7 +351,11 @@
                 {
                     "Action": [
                         "kms:Decrypt", 
-                        "kms:GenerateDataKey"
+                        "kms:GenerateDataKey", 
+                        "kms:Encrypt", 
+                        "kms:GenerateDataKeyWithoutPlaintext", 
+                        "kms:ReEncryptTo", 
+                        "kms:ReEncryptFrom"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
@@ -392,9 +396,6 @@
                     "Condition": {
                         "Null": {
                             "kms:EncryptionContext:aws:scheduler:schedule:arn": "false"
-                        }, 
-                        "StringLike": {
-                            "kms:ViaService": "scheduler.*.amazonaws.com"
                         }
                     }, 
                     "Sid": "SchedulerKms"
@@ -453,6 +454,32 @@
                 }, 
                 {
                     "Action": [
+                        "kms:CreateGrant"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "kms:ViaService": "datazone.*.amazonaws.com"
+                        }, 
+                        "ForAllValues:StringEquals": {
+                            "kms:GrantOperations": [
+                                "Encrypt", 
+                                "Decrypt", 
+                                "ReEncryptFrom", 
+                                "ReEncryptTo", 
+                                "GenerateDataKeyWithoutPlaintext", 
+                                "GenerateDataKey", 
+                                "DescribeKey", 
+                                "RetireGrant", 
+                                "CreateGrant"
+                            ]
+                        }
+                    }, 
+                    "Sid": "DataZoneCreateGrant"
+                }, 
+                {
+                    "Action": [
                         "kms:Decrypt", 
                         "kms:Encrypt", 
                         "kms:GenerateDataKey", 
@@ -503,10 +530,11 @@
                         }, 
                         "ForAllValues:StringEquals": {
                             "kms:GrantOperations": [
-                                "kms:Decrypt", 
-                                "kms:Encrypt", 
-                                "kms:GenerateDataKey", 
-                                "kms:GenerateDataKeyWithoutPlaintext"
+                                "Decrypt", 
+                                "Encrypt", 
+                                "GenerateDataKey", 
+                                "GenerateDataKeyWithoutPlaintext", 
+                                "RetireGrant"
                             ]
                         }
                     }, 
@@ -524,9 +552,6 @@
                     "Condition": {
                         "ForAnyValue:StringEquals": {
                             "kms:EncryptionContextKeys": "aws:airflow-serverless:workflow-arn"
-                        }, 
-                        "StringLike": {
-                            "kms:ViaService": "airflow-serverless.*.amazonaws.com"
                         }
                     }, 
                     "Sid": "WorkflowsKms"
