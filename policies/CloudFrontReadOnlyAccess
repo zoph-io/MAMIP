@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-04-28T17:07:06Z", 
-        "VersionId": "v7", 
+        "CreateDate": "2025-11-18T17:19:10Z", 
+        "VersionId": "v8", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -20,7 +20,11 @@
                         "waf:ListWebACLs", 
                         "waf:GetWebACL", 
                         "wafv2:ListWebACLs", 
-                        "wafv2:GetWebACL"
+                        "wafv2:GetWebACL", 
+                        "ec2:DescribeIpamPools", 
+                        "ec2:GetIpamPoolCidrs", 
+                        "pricingplanmanager:ListSubscriptions", 
+                        "pricingplanmanager:GetSubscription"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
