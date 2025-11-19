@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-04-28T16:52:07Z", 
-        "VersionId": "v9", 
+        "CreateDate": "2025-11-18T17:19:09Z", 
+        "VersionId": "v10", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -24,10 +24,15 @@
                         "waf:GetWebACL", 
                         "wafv2:ListWebACLs", 
                         "wafv2:GetWebACL", 
+                        "wafv2:CreateWebACL", 
                         "kinesis:ListStreams", 
                         "ec2:DescribeInstances", 
                         "elasticloadbalancing:DescribeLoadBalancers", 
-                        "ec2:DescribeInternetGateways"
+                        "ec2:DescribeInternetGateways", 
+                        "ec2:DescribeIpamPools", 
+                        "ec2:GetIpamPoolCidrs", 
+                        "pricingplanmanager:ListSubscriptions", 
+                        "pricingplanmanager:CreateSubscription"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
@@ -61,6 +66,19 @@
                     "Resource": "arn:aws:iam::*:*", 
                     "Effect": "Allow", 
                     "Sid": "cfflistroles"
+                }, 
+                {
+                    "Action": [
+                        "pricingplanmanager:AssociateResourcesToSubscription", 
+                        "pricingplanmanager:CancelSubscription", 
+                        "pricingplanmanager:CancelSubscriptionChange", 
+                        "pricingplanmanager:DisassociateResourcesFromSubscription", 
+                        "pricingplanmanager:GetSubscription", 
+                        "pricingplanmanager:UpdateSubscription"
+                    ], 
+                    "Resource": "arn:aws:pricingplanmanager::*:subscription:*", 
+                    "Effect": "Allow", 
+                    "Sid": "ppmFullAccess"
                 }
             ]
         }, 
