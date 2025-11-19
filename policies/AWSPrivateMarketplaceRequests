@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2019-10-28T21:44:03Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-11-19T19:19:11Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -12,7 +12,68 @@
                         "aws-marketplace:DescribePrivateMarketplaceRequests"
                     ], 
                     "Resource": "*", 
-                    "Effect": "Allow"
+                    "Effect": "Allow", 
+                    "Sid": "LegacyPrivateMarketplaceRequestsPermissions"
+                }, 
+                {
+                    "Action": [
+                        "aws-marketplace:StartChangeSet"
+                    ], 
+                    "Resource": [
+                        "arn:aws:aws-marketplace:*:*:AWSMarketplace/ProductProcurementRequest/*", 
+                        "arn:aws:aws-marketplace:*:*:AWSMarketplace/ChangeSet/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "catalog:ChangeType": [
+                                "CreateProductProcurementRequest", 
+                                "CancelProductProcurementRequest"
+                            ]
+                        }
+                    }, 
+                    "Sid": "PrivateMarketplaceManageRequestsPermissions"
+                }, 
+                {
+                    "Action": [
+                        "aws-marketplace:DescribeEntity"
+                    ], 
+                    "Resource": [
+                        "arn:aws:aws-marketplace:*:*:AWSMarketplace/ProductProcurementRequest/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "PrivateMarketplaceReadRequestsPermissions"
+                }, 
+                {
+                    "Action": [
+                        "aws-marketplace:ListEntities", 
+                        "aws-marketplace:ListChangeSets"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "PrivateMarketplaceListRequestsPermissions"
+                }, 
+                {
+                    "Action": [
+                        "aws-marketplace:DescribeChangeSet"
+                    ], 
+                    "Resource": [
+                        "arn:aws:aws-marketplace:*:*:AWSMarketplace/ChangeSet/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "PrivateMarketplaceReadChangeSetPermissions"
+                }, 
+                {
+                    "Action": [
+                        "aws-marketplace:TagResource", 
+                        "aws-marketplace:UntagResource", 
+                        "aws-marketplace:ListTagsForResource"
+                    ], 
+                    "Resource": [
+                        "arn:aws:aws-marketplace:*:*:AWSMarketplace/ProductProcurementRequest/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "PrivateMarketplaceTaggingRequestsPermissions"
                 }
             ]
         }, 
