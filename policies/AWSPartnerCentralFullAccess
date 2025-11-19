@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-12-10T18:21:17Z", 
-        "VersionId": "v2", 
+        "CreateDate": "2025-11-19T16:34:12Z", 
+        "VersionId": "v3", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -58,9 +58,20 @@
                         }
                     }, 
                     "Sid": "PassAWSPartnerCentralSnapshotJobRole"
+                }, 
+                {
+                    "Action": [
+                        "sts:AssumeRole"
+                    ], 
+                    "Resource": [
+                        "arn:aws:iam::*:role/PartnerCentralChannelBillingTransferManagement", 
+                        "arn:aws:iam::*:role/PartnerCentralChannelBillingTransferReadOnly"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "ChannelBillingTransferRoleAccess"
                 }
             ]
         }, 
-        "IsDefaultVersion": false
+        "IsDefaultVersion": true
     }
 }
