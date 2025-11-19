@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-10-31T21:04:08Z", 
-        "VersionId": "v9", 
+        "CreateDate": "2025-11-18T16:49:06Z", 
+        "VersionId": "v10", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -88,7 +88,8 @@
                 }, 
                 {
                     "Action": [
-                        "cloudfront:GetDistributionConfig"
+                        "cloudfront:GetDistributionConfig", 
+                        "cloudfront:GetDistribution"
                     ], 
                     "Resource": "arn:aws:cloudfront::*:distribution/*", 
                     "Effect": "Allow", 
@@ -264,6 +265,24 @@
                     "Resource": "arn:aws:logs:*:*:log-group:aws-waf-logs-*", 
                     "Effect": "Allow", 
                     "Sid": "AllowLogQueryActions"
+                }, 
+                {
+                    "Action": [
+                        "pricingplanmanager:GetSubscription", 
+                        "pricingplanmanager:ListSubscriptions"
+                    ], 
+                    "Resource": "arn:aws:pricingplanmanager::*:subscription:*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowListActionsForPricingPlanManager"
+                }, 
+                {
+                    "Action": [
+                        "route53:ListHostedZones", 
+                        "route53:GetHostedZone"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowListActionsForRoute53"
                 }
             ]
         }, 
