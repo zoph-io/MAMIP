@@ -1,0 +1,30 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-11-19T16:34:07Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "partnercentral:ListChannelHandshakes", 
+                        "partnercentral:AcceptChannelHandshake", 
+                        "partnercentral:RejectChannelHandshake"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "partnercentral:Catalog": [
+                                "AWS", 
+                                "Sandbox"
+                            ]
+                        }
+                    }, 
+                    "Sid": "ChannelHandshakeManagement"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
