@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2023-12-19T00:03:51Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-11-19T17:19:09Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -13,7 +13,8 @@
                         "cost-optimization-hub:UpdatePreferences", 
                         "cost-optimization-hub:GetRecommendation", 
                         "cost-optimization-hub:ListRecommendations", 
-                        "cost-optimization-hub:ListRecommendationSummaries"
+                        "cost-optimization-hub:ListRecommendationSummaries", 
+                        "cost-optimization-hub:ListEfficiencyMetrics"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
