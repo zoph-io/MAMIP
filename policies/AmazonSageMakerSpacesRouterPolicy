@@ -1,0 +1,35 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-11-19T04:34:07Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "kms:DescribeKey"
+                    ], 
+                    "Resource": "arn:aws:kms:*:*:key/*", 
+                    "Effect": "Allow", 
+                    "Sid": "KMSDescribeKey"
+                }, 
+                {
+                    "Action": [
+                        "kms:GenerateDataKey", 
+                        "kms:Decrypt"
+                    ], 
+                    "Resource": "arn:aws:kms:*:*:key/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "kms:EncryptionContext:sagemaker:component": "amazon-sagemaker-spaces", 
+                            "kms:EncryptionContext:sagemaker:eks-cluster-arn": "${aws:PrincipalTag/eks-cluster-arn}"
+                        }
+                    }, 
+                    "Sid": "KMSKeyOperations"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
