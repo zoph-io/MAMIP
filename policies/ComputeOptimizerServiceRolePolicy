@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-01-03T21:37:06Z", 
-        "VersionId": "v4", 
+        "CreateDate": "2025-11-19T01:04:07Z", 
+        "VersionId": "v5", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -49,7 +49,9 @@
                 {
                     "Action": [
                         "ec2:DescribeInstances", 
-                        "ec2:DescribeVolumes"
+                        "ec2:DescribeVolumes", 
+                        "ec2:DescribeNatGateways", 
+                        "ec2:DescribeRouteTables"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
