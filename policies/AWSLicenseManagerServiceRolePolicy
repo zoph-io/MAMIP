@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2021-07-30T01:43:19Z", 
-        "VersionId": "v7", 
+        "CreateDate": "2025-11-19T18:34:07Z", 
+        "VersionId": "v8", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -102,13 +102,26 @@
                     "Action": [
                         "ssm:ListInventoryEntries", 
                         "ssm:GetInventory", 
-                        "ssm:CreateAssociation"
+                        "ssm:CreateAssociation", 
+                        "ssm:GetCommandInvocation"
                     ], 
                     "Resource": [
                         "*"
                     ], 
                     "Effect": "Allow", 
                     "Sid": "SSMPermissions"
+                }, 
+                {
+                    "Action": [
+                        "ssm:SendCommand"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:instance/*", 
+                        "arn:aws:ssm:*:*:managed-instance/*", 
+                        "arn:aws:ssm:*::document/AWSLicenseManager-*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "SSMSendCommandPermission"
                 }, 
                 {
                     "Action": [
