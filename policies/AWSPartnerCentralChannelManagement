@@ -1,0 +1,74 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-11-19T16:34:09Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "partnercentral:CreateProgramManagementAccount", 
+                        "partnercentral:UpdateProgramManagementAccount", 
+                        "partnercentral:DeleteProgramManagementAccount", 
+                        "partnercentral:ListProgramManagementAccounts", 
+                        "partnercentral:GetProgramManagementAccount", 
+                        "partnercentral:CreateRelationship", 
+                        "partnercentral:UpdateRelationship", 
+                        "partnercentral:DeleteRelationship", 
+                        "partnercentral:GetRelationship", 
+                        "partnercentral:ListRelationships", 
+                        "partnercentral:CreateChannelHandshake", 
+                        "partnercentral:AcceptChannelHandshake", 
+                        "partnercentral:RejectChannelHandshake", 
+                        "partnercentral:CancelChannelHandshake", 
+                        "partnercentral:ListChannelHandshakes"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "partnercentral:Catalog": [
+                                "AWS", 
+                                "Sandbox"
+                            ]
+                        }
+                    }, 
+                    "Sid": "ChannelManagement"
+                }, 
+                {
+                    "Action": [
+                        "sts:AssumeRole"
+                    ], 
+                    "Resource": [
+                        "arn:aws:iam::*:role/PartnerCentralChannelBillingTransferManagement", 
+                        "arn:aws:iam::*:role/PartnerCentralChannelBillingTransferReadOnly"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "ChannelBillingTransferRoleAccess"
+                }, 
+                {
+                    "Action": [
+                        "partnercentral:TagResource", 
+                        "partnercentral:UntagResource", 
+                        "partnercentral:ListTagsForResource"
+                    ], 
+                    "Resource": [
+                        "arn:aws:partnercentral:*:*:catalog/*/program-management-account/*", 
+                        "arn:aws:partnercentral:*:*:catalog/*/channel-handshake/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "partnercentral:Catalog": [
+                                "AWS", 
+                                "Sandbox"
+                            ]
+                        }
+                    }, 
+                    "Sid": "TaggingAccess"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
