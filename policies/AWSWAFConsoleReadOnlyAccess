@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-11-18T16:49:06Z", 
-        "VersionId": "v10", 
+        "CreateDate": "2025-11-19T02:34:08Z", 
+        "VersionId": "v11", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -268,8 +268,7 @@
                 }, 
                 {
                     "Action": [
-                        "pricingplanmanager:GetSubscription", 
-                        "pricingplanmanager:ListSubscriptions"
+                        "pricingplanmanager:GetSubscription"
                     ], 
                     "Resource": "arn:aws:pricingplanmanager::*:subscription:*", 
                     "Effect": "Allow", 
@@ -283,6 +282,14 @@
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Sid": "AllowListActionsForRoute53"
+                }, 
+                {
+                    "Action": [
+                        "pricingplanmanager:ListSubscriptions"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowListSubscriptionsForPricingPlanManager"
                 }
             ]
         }, 
