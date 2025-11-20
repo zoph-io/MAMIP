@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-11-14T23:04:07Z", 
-        "VersionId": "v20", 
+        "CreateDate": "2025-11-20T14:49:11Z", 
+        "VersionId": "v21", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -1702,7 +1702,20 @@
                             ]
                         }
                     }, 
-                    "Sid": "KmsWithEncryptPermissions"
+                    "Sid": "KmsWithEncrypt"
+                }, 
+                {
+                    "Action": [
+                        "kms:Decrypt"
+                    ], 
+                    "Resource": "arn:aws:kms:*:*:key/${aws:PrincipalTag/KmsKeyId}", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "Null": {
+                            "kms:EncryptionContext:aws:scheduler:schedule:arn": "false"
+                        }
+                    }, 
+                    "Sid": "EBDecrypt"
                 }, 
                 {
                     "Action": [
@@ -1755,7 +1768,7 @@
                             ]
                         }
                     }, 
-                    "Sid": "KmsManagementPermissions"
+                    "Sid": "KmsManagement"
                 }, 
                 {
                     "Action": [
@@ -1805,7 +1818,7 @@
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
                     }, 
-                    "Sid": "AwsOwnedKmsManagementPermissions"
+                    "Sid": "AwsOwnedKmsManagement"
                 }, 
                 {
                     "Action": [
@@ -1818,7 +1831,7 @@
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
                     }, 
-                    "Sid": "ListKMSPermissions"
+                    "Sid": "ListKMS"
                 }, 
                 {
                     "Action": [
@@ -1847,7 +1860,7 @@
                             "aws:PrincipalTag/EnableAmazonBedrockIDEPermissions": "true"
                         }
                     }, 
-                    "Sid": "InvokeBedrockModelPermissions"
+                    "Sid": "InvokeBedrockModel"
                 }, 
                 {
                     "Action": [
