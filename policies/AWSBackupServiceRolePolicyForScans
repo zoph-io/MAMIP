@@ -1,0 +1,41 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-11-20T03:34:10Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "guardduty:StartMalwareScan", 
+                        "guardduty:GetMalwareScan"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "GuardDutyMalwareScanPermissions"
+                }, 
+                {
+                    "Action": "iam:PassRole", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:PassedToService": "malware-protection.guardduty.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "IAMPassPermissions"
+                }, 
+                {
+                    "Action": [
+                        "ec2:DescribeImages", 
+                        "ec2:DescribeSnapshots"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "EC2ReadAPIPermissions"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
