@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-06-04T20:22:07Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-11-20T02:19:08Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -64,15 +64,20 @@
                     "Sid": "GuardDutyIamRoleAccess"
                 }, 
                 {
-                    "Action": "iam:PassRole", 
+                    "Action": [
+                        "iam:PassRole"
+                    ], 
                     "Resource": "arn:aws:iam::*:role/*", 
                     "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
-                            "iam:PassedToService": "malware-protection-plan.guardduty.amazonaws.com"
+                            "iam:PassedToService": [
+                                "malware-protection-plan.guardduty.amazonaws.com", 
+                                "malware-protection.guardduty.amazonaws.com"
+                            ]
                         }
                     }, 
-                    "Sid": "PassRoleToMalwareProtectionPlan"
+                    "Sid": "AllowPassRoleToMalwareProtection"
                 }
             ]
         }, 
