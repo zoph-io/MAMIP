@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-09-29T16:19:07Z", 
-        "VersionId": "v2", 
+        "CreateDate": "2025-11-20T19:34:08Z", 
+        "VersionId": "v3", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -164,6 +164,57 @@
                     ], 
                     "Effect": "Allow", 
                     "Sid": "CloudWatchApplicationSignalsServiceQuotaPermissions"
+                }, 
+                {
+                    "Action": [
+                        "resource-explorer-2:ListIndexes", 
+                        "resource-explorer-2:Search"
+                    ], 
+                    "Resource": [
+                        "arn:aws:resource-explorer-2:*::view/AWSServiceViewForApplicationSignals/service-view", 
+                        "arn:aws:resource-explorer-2:*::view/AWSServiceViewForApplicationSignalsOrgScopeProd/service-view"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "CloudWatchApplicationSignalsResourceExplorerPermissions"
+                }, 
+                {
+                    "Action": [
+                        "iam:CreateServiceLinkedRole"
+                    ], 
+                    "Resource": "arn:aws:iam::*:role/aws-service-role/resource-explorer-2.amazonaws.com/AWSServiceRoleForResourceExplorer", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:AWSServiceName": [
+                                "resource-explorer-2.amazonaws.com"
+                            ]
+                        }
+                    }, 
+                    "Sid": "CloudWatchApplicationSignalsResourceExplorerSLRPermissions"
+                }, 
+                {
+                    "Action": [
+                        "resource-explorer-2:CreateIndex"
+                    ], 
+                    "Resource": "arn:aws:resource-explorer-2:*:*:index/*", 
+                    "Effect": "Allow", 
+                    "Sid": "CloudWatchApplicationSignalsResourceExplorerCreateIndexPermissions"
+                }, 
+                {
+                    "Action": [
+                        "oam:ListAttachedLinks"
+                    ], 
+                    "Resource": "arn:aws:oam:*:*:sink/*", 
+                    "Effect": "Allow", 
+                    "Sid": "CloudWatchApplicationSignalsOAMAttachedLinksPermissions"
+                }, 
+                {
+                    "Action": [
+                        "oam:ListSinks"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "CloudWatchApplicationSignalsOAMListSinksPermissions"
                 }
             ]
         }, 
