@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-10-08T17:34:07Z", 
-        "VersionId": "v12", 
+        "CreateDate": "2025-11-20T19:34:11Z", 
+        "VersionId": "v13", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -97,6 +97,18 @@
                     ], 
                     "Effect": "Allow", 
                     "Sid": "CloudWatchServiceQuotaPermissions"
+                }, 
+                {
+                    "Action": [
+                        "resource-explorer-2:ListIndexes", 
+                        "resource-explorer-2:Search"
+                    ], 
+                    "Resource": [
+                        "arn:aws:resource-explorer-2:*::view/AWSServiceViewForApplicationSignals/service-view", 
+                        "arn:aws:resource-explorer-2:*::view/AWSServiceViewForApplicationSignalsOrgScopeProd/service-view"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "CloudWatchResourceExplorerPermissions"
                 }
             ]
         }, 
