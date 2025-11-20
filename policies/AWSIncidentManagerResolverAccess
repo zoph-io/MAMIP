@@ -1,13 +1,14 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2021-05-10T06:12:34Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-11-20T18:49:06Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": [
-                        "ssm-incidents:StartIncident"
+                        "ssm-incidents:StartIncident", 
+                        "ssm-contacts:StartEngagement"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
