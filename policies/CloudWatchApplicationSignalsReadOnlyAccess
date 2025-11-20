@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-09-29T16:19:08Z", 
-        "VersionId": "v2", 
+        "CreateDate": "2025-11-20T19:34:12Z", 
+        "VersionId": "v3", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -18,7 +18,9 @@
                         "application-signals:ListTagsForResource", 
                         "application-signals:ListServiceStates", 
                         "application-signals:ListAuditFindings", 
-                        "application-signals:ListGroupingAttributeDefinitions"
+                        "application-signals:ListGroupingAttributeDefinitions", 
+                        "application-signals:ListServiceLevelObjectiveExclusionWindows", 
+                        "application-signals:ListEntityEvents"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
@@ -138,6 +140,34 @@
                     ], 
                     "Effect": "Allow", 
                     "Sid": "CloudWatchApplicationSignalsServiceQuotaPermissions"
+                }, 
+                {
+                    "Action": [
+                        "resource-explorer-2:ListIndexes", 
+                        "resource-explorer-2:Search"
+                    ], 
+                    "Resource": [
+                        "arn:aws:resource-explorer-2:*::view/AWSServiceViewForApplicationSignals/service-view", 
+                        "arn:aws:resource-explorer-2:*::view/AWSServiceViewForApplicationSignalsOrgScopeProd/service-view"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "CloudWatchApplicationSignalsResourceExplorerPermissions"
+                }, 
+                {
+                    "Action": [
+                        "oam:ListAttachedLinks"
+                    ], 
+                    "Resource": "arn:aws:oam:*:*:sink/*", 
+                    "Effect": "Allow", 
+                    "Sid": "CloudWatchApplicationSignalsOAMAttachedLinksPermissions"
+                }, 
+                {
+                    "Action": [
+                        "oam:ListSinks"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "CloudWatchApplicationSignalsOAMListSinksPermissions"
                 }
             ]
         }, 
