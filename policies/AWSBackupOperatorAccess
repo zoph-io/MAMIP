@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-11-10T19:19:07Z", 
-        "VersionId": "v19", 
+        "CreateDate": "2025-11-20T03:34:08Z", 
+        "VersionId": "v20", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -14,7 +14,8 @@
                         "backup:DeleteBackupSelection", 
                         "backup:StartBackupJob", 
                         "backup:StartRestoreJob", 
-                        "backup:StartCopyJob"
+                        "backup:StartCopyJob", 
+                        "backup:StartScanJob"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
@@ -376,6 +377,20 @@
                     "Resource": "arn:aws:eks:*:*:cluster/*", 
                     "Effect": "Allow", 
                     "Sid": "EKSClusterPermissions"
+                }, 
+                {
+                    "Action": "iam:PassRole", 
+                    "Resource": [
+                        "arn:aws:iam::*:role/*AwsBackupGuardDuty*", 
+                        "arn:aws:iam::*:role/*AWSBackupGuardDuty*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:PassedToService": "malware-protection.guardduty.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "IamPassRolePermissionsForGuardDuty"
                 }
             ]
         }, 
