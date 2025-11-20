@@ -1,6 +1,6 @@
-# AWS Access Analyzer - Findings - 2025-11-19
+# AWS Access Analyzer - Findings - 2025-11-20
 
-- **Policies analyzed:** `1406`
+- **Policies analyzed:** `1411`
 - **Errors:** `24`
   - [`AWSAccountActivityAccess`](./AWSAccountActivityAccess.json)
   - [`AWSAuditManagerAdministratorAccess`](./AWSAuditManagerAdministratorAccess.json)
@@ -34,8 +34,9 @@
   - [`IAMFullAccess`](./IAMFullAccess.json)
   - [`S3UnlockBucketPolicy`](./S3UnlockBucketPolicy.json)
   - [`SQSUnlockQueuePolicy`](./SQSUnlockQueuePolicy.json)
-- **Suggestions:** `150`
+- **Suggestions:** `153`
   - [`AIOpsAssistantPolicy`](./AIOpsAssistantPolicy.json)
+  - [`AWSBackupGuardDutyRolePolicyForScans`](./AWSBackupGuardDutyRolePolicyForScans.json)
   - [`AWSBatchFullAccess`](./AWSBatchFullAccess.json)
   - [`AWSCloud9Administrator`](./AWSCloud9Administrator.json)
   - [`AWSCloud9EnvironmentMember`](./AWSCloud9EnvironmentMember.json)

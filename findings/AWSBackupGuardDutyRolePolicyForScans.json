@@ -1,0 +1,119 @@
+[
+  {
+    "findingDetails": "We recommend replacing the key aws:ResourceTag/aws:backup:source-resource in the condition block of StringLike with {aws:ResourceTag/aws:backup:source-resource: false} to ensure better enforcement of the condition.",
+    "findingType": "SUGGESTION",
+    "issueCode": "EQUIVALENT_TO_NULL_FALSE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 0
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringLike"
+          },
+          {
+            "value": "aws:ResourceTag/aws:backup:source-resource"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 328,
+            "offset": 328
+          },
+          "end": {
+            "line": 1,
+            "column": 331,
+            "offset": 331
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "We recommend replacing the key aws:ResourceTag/aws:backup:source-resource in the condition block of StringLike with {aws:ResourceTag/aws:backup:source-resource: false} to ensure better enforcement of the condition.",
+    "findingType": "SUGGESTION",
+    "issueCode": "EQUIVALENT_TO_NULL_FALSE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 5
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringLike"
+          },
+          {
+            "value": "aws:ResourceTag/aws:backup:source-resource"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 1838,
+            "offset": 1838
+          },
+          "end": {
+            "line": 1,
+            "column": 1841,
+            "offset": 1841
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "We recommend replacing the key kms:EncryptionContext:aws:backup:backup-vault in the condition block of StringLike with {kms:EncryptionContext:aws:backup:backup-vault: false} to ensure better enforcement of the condition.",
+    "findingType": "SUGGESTION",
+    "issueCode": "EQUIVALENT_TO_NULL_FALSE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 10
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringLike"
+          },
+          {
+            "value": "kms:EncryptionContext:aws:backup:backup-vault"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 2815,
+            "offset": 2815
+          },
+          "end": {
+            "line": 1,
+            "column": 2818,
+            "offset": 2818
+          }
+        }
+      }
+    ]
+  }
+]
