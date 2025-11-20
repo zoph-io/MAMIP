@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-11-10T19:19:06Z", 
-        "VersionId": "v21", 
+        "CreateDate": "2025-11-20T03:34:07Z", 
+        "VersionId": "v22", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -495,6 +495,20 @@
                     "Resource": "arn:aws:eks:*:*:cluster/*", 
                     "Effect": "Allow", 
                     "Sid": "EKSClusterPermissions"
+                }, 
+                {
+                    "Action": "iam:PassRole", 
+                    "Resource": [
+                        "arn:aws:iam::*:role/*AwsBackupGuardDuty*", 
+                        "arn:aws:iam::*:role/*AWSBackupGuardDuty*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:PassedToService": "malware-protection.guardduty.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "IamPassRolePermissionsForGuardDuty"
                 }
             ]
         }, 
