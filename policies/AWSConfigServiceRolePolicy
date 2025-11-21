@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-11-12T20:49:11Z", 
-        "VersionId": "v62", 
+        "CreateDate": "2025-11-21T17:04:12Z", 
+        "VersionId": "v63", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -1128,6 +1128,7 @@
                         "license-manager:ListDistributedGrants", 
                         "license-manager:ListLicenses", 
                         "license-manager:ListReceivedGrants", 
+                        "lightsail:GetActiveNames", 
                         "lightsail:GetAlarms", 
                         "lightsail:GetBuckets", 
                         "lightsail:GetCertificates", 
@@ -1145,6 +1146,7 @@
                         "lightsail:GetLoadBalancer", 
                         "lightsail:GetLoadBalancers", 
                         "lightsail:GetLoadBalancerTlsCertificates", 
+                        "lightsail:GetOperations", 
                         "lightsail:GetRelationalDatabase", 
                         "lightsail:GetRelationalDatabaseParameters", 
                         "lightsail:GetRelationalDatabases", 
@@ -1561,6 +1563,7 @@
                         "s3:GetAccessPointPolicyStatusForObjectLambda", 
                         "s3:GetAccountPublicAccessBlock", 
                         "s3:GetBucketAcl", 
+                        "s3:GetBucketAbac", 
                         "s3:GetBucketCORS", 
                         "s3:GetBucketLocation", 
                         "s3:GetBucketLogging", 
