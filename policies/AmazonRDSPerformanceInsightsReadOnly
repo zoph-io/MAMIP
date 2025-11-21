@@ -1,21 +1,37 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2023-10-23T21:17:06Z", 
-        "VersionId": "v3", 
+        "CreateDate": "2025-11-20T22:19:10Z", 
+        "VersionId": "v4", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": "rds:DescribeDBInstances", 
-                    "Resource": "*", 
+                    "Resource": "arn:aws:rds:*:*:db:*", 
                     "Effect": "Allow", 
                     "Sid": "AmazonRDSDescribeDBInstances"
                 }, 
                 {
                     "Action": "rds:DescribeDBClusters", 
-                    "Resource": "*", 
+                    "Resource": "arn:aws:rds:*:*:cluster:*", 
                     "Effect": "Allow", 
                     "Sid": "AmazonRDSDescribeDBClusters"
+                }, 
+                {
+                    "Action": "rds:DescribeDBShardGroups", 
+                    "Resource": "arn:aws:rds:*:*:shard-group:*", 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonRDSDescribeDBShardGroups"
+                }, 
+                {
+                    "Action": "rds:ListTagsForResource", 
+                    "Resource": [
+                        "arn:aws:rds:*:*:db:*", 
+                        "arn:aws:rds:*:*:shard-group:*", 
+                        "arn:aws:rds:*:*:cluster:*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonRDSListTagsForResource"
                 }, 
                 {
                     "Action": "pi:DescribeDimensionKeys", 
