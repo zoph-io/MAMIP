@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-11-11T23:04:09Z", 
-        "VersionId": "v23", 
+        "CreateDate": "2025-11-21T00:04:06Z", 
+        "VersionId": "v24", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -3049,7 +3049,12 @@
                         "ec2:DescribeNetworkInterfaces", 
                         "ec2:RevokeSecurityGroupEgress", 
                         "ec2:RevokeSecurityGroupIngress", 
-                        "eks:DescribeAccessEntry"
+                        "eks:AssociateAccessPolicy", 
+                        "eks:CreateAccessEntry", 
+                        "eks:DisassociateAccessPolicy", 
+                        "eks:DeleteAccessEntry", 
+                        "eks:DescribeAccessEntry", 
+                        "eks:ListAssociatedAccessPolicies"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
@@ -3064,6 +3069,6 @@
                 }
             ]
         }, 
-        "IsDefaultVersion": false
+        "IsDefaultVersion": true
     }
 }
