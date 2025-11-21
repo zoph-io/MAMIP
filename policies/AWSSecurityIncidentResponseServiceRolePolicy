@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-08-08T18:49:07Z", 
-        "VersionId": "v3", 
+        "CreateDate": "2025-11-21T04:34:10Z", 
+        "VersionId": "v4", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -35,9 +35,26 @@
                         }
                     }, 
                     "Sid": "SecurityIncidentResponseCreateCasePolicyTagOnCreate"
+                }, 
+                {
+                    "Action": [
+                        "security-ir:GetCase", 
+                        "security-ir:UpdateCase", 
+                        "security-ir:ListCases", 
+                        "security-ir:CreateCaseComment", 
+                        "security-ir:ListComments"
+                    ], 
+                    "Resource": "arn:aws:security-ir:*:*:case/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "SecurityIncidentResponseOperationsPolicy"
                 }
             ]
         }, 
-        "IsDefaultVersion": false
+        "IsDefaultVersion": true
     }
 }
