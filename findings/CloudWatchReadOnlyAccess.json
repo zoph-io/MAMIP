@@ -1,47 +1,5 @@
 [
   {
-    "findingDetails": "The service principal does not match the expected format. Use the format service.amazonaws.com, or use one of the following suffixes: .amazon.com, .amazonaws.com.cn with all lowercase letters.",
-    "findingType": "ERROR",
-    "issueCode": "INVALID_SERVICE_PRINCIPAL_FORMAT",
-    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-principal-format",
-    "locations": [
-      {
-        "path": [
-          {
-            "value": "Statement"
-          },
-          {
-            "index": 7
-          },
-          {
-            "value": "Condition"
-          },
-          {
-            "value": "ForAnyValue:StringEquals"
-          },
-          {
-            "value": "aws:CalledVia"
-          },
-          {
-            "index": 0
-          }
-        ],
-        "span": {
-          "start": {
-            "line": 1,
-            "column": 1575,
-            "offset": 1575
-          },
-          "end": {
-            "line": 1,
-            "column": 1621,
-            "offset": 1621
-          }
-        }
-      }
-    ]
-  },
-  {
     "findingDetails": "The resource view/AWSServiceViewForApplicationSignals/service-view in the arn is missing an account id. Please provide a 12 digit account id.",
     "findingType": "ERROR",
     "issueCode": "MISSING_ARN_ACCOUNT",
@@ -53,7 +11,7 @@
             "value": "Statement"
           },
           {
-            "index": 16
+            "index": 5
           },
           {
             "value": "Resource"
@@ -65,13 +23,13 @@
         "span": {
           "start": {
             "line": 1,
-            "column": 3889,
-            "offset": 3889
+            "column": 2605,
+            "offset": 2605
           },
           "end": {
             "line": 1,
-            "column": 3975,
-            "offset": 3975
+            "column": 2691,
+            "offset": 2691
           }
         }
       }
@@ -89,7 +47,7 @@
             "value": "Statement"
           },
           {
-            "index": 16
+            "index": 5
           },
           {
             "value": "Resource"
@@ -101,13 +59,13 @@
         "span": {
           "start": {
             "line": 1,
-            "column": 3977,
-            "offset": 3977
+            "column": 2693,
+            "offset": 2693
           },
           "end": {
             "line": 1,
-            "column": 4075,
-            "offset": 4075
+            "column": 2791,
+            "offset": 2791
           }
         }
       }

@@ -29,13 +29,85 @@
         "span": {
           "start": {
             "line": 1,
-            "column": 2228,
-            "offset": 2228
+            "column": 2333,
+            "offset": 2333
           },
           "end": {
             "line": 1,
-            "column": 2274,
-            "offset": 2274
+            "column": 2379,
+            "offset": 2379
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "The resource view/AWSServiceViewForApplicationSignals/service-view in the arn is missing an account id. Please provide a 12 digit account id.",
+    "findingType": "ERROR",
+    "issueCode": "MISSING_ARN_ACCOUNT",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-missing-arn-account",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 12
+          },
+          {
+            "value": "Resource"
+          },
+          {
+            "index": 0
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 3374,
+            "offset": 3374
+          },
+          "end": {
+            "line": 1,
+            "column": 3460,
+            "offset": 3460
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "The resource view/AWSServiceViewForApplicationSignalsOrgScopeProd/service-view in the arn is missing an account id. Please provide a 12 digit account id.",
+    "findingType": "ERROR",
+    "issueCode": "MISSING_ARN_ACCOUNT",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-missing-arn-account",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 12
+          },
+          {
+            "value": "Resource"
+          },
+          {
+            "index": 1
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 3462,
+            "offset": 3462
+          },
+          "end": {
+            "line": 1,
+            "column": 3560,
+            "offset": 3560
           }
         }
       }
