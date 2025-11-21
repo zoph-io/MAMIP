@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2023-10-23T21:14:27Z", 
-        "VersionId": "v2", 
+        "CreateDate": "2025-11-20T22:04:08Z", 
+        "VersionId": "v3", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -42,9 +42,15 @@
                 {
                     "Action": [
                         "rds:DescribeDBInstances", 
-                        "rds:DescribeDBClusters"
+                        "rds:DescribeDBClusters", 
+                        "rds:ListTagsForResource", 
+                        "rds:DescribeDBShardGroups"
                     ], 
-                    "Resource": "*", 
+                    "Resource": [
+                        "arn:aws:rds:*:*:db:*", 
+                        "arn:aws:rds:*:*:cluster:*", 
+                        "arn:aws:rds:*:*:shard-group:*"
+                    ], 
                     "Effect": "Allow", 
                     "Sid": "AmazonRDSDescribeInstanceAccess"
                 }, 
