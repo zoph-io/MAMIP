@@ -23,13 +23,13 @@
         "span": {
           "start": {
             "line": 1,
-            "column": 4326,
-            "offset": 4326
+            "column": 4486,
+            "offset": 4486
           },
           "end": {
             "line": 1,
-            "column": 4374,
-            "offset": 4374
+            "column": 4534,
+            "offset": 4534
           }
         }
       },
@@ -51,13 +51,130 @@
         "span": {
           "start": {
             "line": 1,
-            "column": 4376,
-            "offset": 4376
+            "column": 4536,
+            "offset": 4536
           },
           "end": {
             "line": 1,
-            "column": 4426,
-            "offset": 4426
+            "column": 4586,
+            "offset": 4586
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "We recommend replacing the key kms:EncryptionContext:aws-transform in the condition block of StringLike with {kms:EncryptionContext:aws-transform: false} to ensure better enforcement of the condition.",
+    "findingType": "SUGGESTION",
+    "issueCode": "EQUIVALENT_TO_NULL_FALSE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 18
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringLike"
+          },
+          {
+            "value": "kms:EncryptionContext:aws-transform"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 5063,
+            "offset": 5063
+          },
+          "end": {
+            "line": 1,
+            "column": 5066,
+            "offset": 5066
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "We recommend replacing the key kms:EncryptionContext:aws:ebs:id in the condition block of StringLike with {kms:EncryptionContext:aws:ebs:id: false} to ensure better enforcement of the condition.",
+    "findingType": "SUGGESTION",
+    "issueCode": "EQUIVALENT_TO_NULL_FALSE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 19
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringLike"
+          },
+          {
+            "value": "kms:EncryptionContext:aws:ebs:id"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 5381,
+            "offset": 5381
+          },
+          "end": {
+            "line": 1,
+            "column": 5384,
+            "offset": 5384
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "We recommend replacing the key kms:EncryptionContext:aws:ebs:id in the condition block of StringLike with {kms:EncryptionContext:aws:ebs:id: false} to ensure better enforcement of the condition.",
+    "findingType": "SUGGESTION",
+    "issueCode": "EQUIVALENT_TO_NULL_FALSE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 20
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringLike"
+          },
+          {
+            "value": "kms:EncryptionContext:aws:ebs:id"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 5839,
+            "offset": 5839
+          },
+          "end": {
+            "line": 1,
+            "column": 5842,
+            "offset": 5842
           }
         }
       }

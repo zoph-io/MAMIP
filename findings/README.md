@@ -1,13 +1,14 @@
-# AWS Access Analyzer - Findings - 2025-11-21
+# AWS Access Analyzer - Findings - 2025-11-24
 
-- **Policies analyzed:** `1412`
-- **Errors:** `32`
+- **Policies analyzed:** `1415`
+- **Errors:** `36`
   - [`AWSAccountActivityAccess`](./AWSAccountActivityAccess.json)
   - [`AWSAuditManagerAdministratorAccess`](./AWSAuditManagerAdministratorAccess.json)
   - [`AWSAuditManagerServiceRolePolicy`](./AWSAuditManagerServiceRolePolicy.json)
   - [`AWSCodeStarFullAccess`](./AWSCodeStarFullAccess.json)
   - [`AWSControlTowerAccountServiceRolePolicy`](./AWSControlTowerAccountServiceRolePolicy.json)
   - [`AWSIAMIdentityCenterAllowListForIdentityContext`](./AWSIAMIdentityCenterAllowListForIdentityContext.json)
+  - [`AmazonConnectSynchronizationServiceRolePolicy`](./AmazonConnectSynchronizationServiceRolePolicy.json)
   - [`AmazonDataZoneGlueManageAccessRolePolicy`](./AmazonDataZoneGlueManageAccessRolePolicy.json)
   - [`AmazonDataZoneSageMakerEnvironmentRolePermissionsBoundary`](./AmazonDataZoneSageMakerEnvironmentRolePermissionsBoundary.json)
   - [`AmazonSageMakerFullAccess`](./AmazonSageMakerFullAccess.json)
@@ -20,10 +21,11 @@
   - [`MemoryDBServiceRolePolicy`](./MemoryDBServiceRolePolicy.json)
   - [`RDSCloudHsmAuthorizationRole`](./RDSCloudHsmAuthorizationRole.json)
   - [`ResourceGroupsTaggingAPITagUntagSupportedResources`](./ResourceGroupsTaggingAPITagUntagSupportedResources.json)
-- **Security Warnings:** `24`
+- **Security Warnings:** `25`
   - [`AWSCodePipeline_FullAccess`](./AWSCodePipeline_FullAccess.json)
   - [`AWSCodePipeline_ReadOnlyAccess`](./AWSCodePipeline_ReadOnlyAccess.json)
   - [`AWSElasticBeanstalkService`](./AWSElasticBeanstalkService.json)
+  - [`AWSMcpServiceActionsFullAccess`](./AWSMcpServiceActionsFullAccess.json)
   - [`AWSProtonCodeBuildProvisioningServiceRolePolicy`](./AWSProtonCodeBuildProvisioningServiceRolePolicy.json)
   - [`AWSServiceRoleForAmazonEKSNodegroup`](./AWSServiceRoleForAmazonEKSNodegroup.json)
   - [`AWSServiceRoleForSMS`](./AWSServiceRoleForSMS.json)
@@ -36,7 +38,7 @@
   - [`IAMFullAccess`](./IAMFullAccess.json)
   - [`S3UnlockBucketPolicy`](./S3UnlockBucketPolicy.json)
   - [`SQSUnlockQueuePolicy`](./SQSUnlockQueuePolicy.json)
-- **Suggestions:** `153`
+- **Suggestions:** `157`
   - [`AIOpsAssistantPolicy`](./AIOpsAssistantPolicy.json)
   - [`AWSBackupGuardDutyRolePolicyForScans`](./AWSBackupGuardDutyRolePolicyForScans.json)
   - [`AWSBatchFullAccess`](./AWSBatchFullAccess.json)
@@ -81,6 +83,7 @@
   - [`AWSThinkboxDeadlineResourceTrackerAccessPolicy`](./AWSThinkboxDeadlineResourceTrackerAccessPolicy.json)
   - [`AWSThinkboxDeadlineSpotEventPluginAdminPolicy`](./AWSThinkboxDeadlineSpotEventPluginAdminPolicy.json)
   - [`AWSTransformApplicationDeploymentPolicy`](./AWSTransformApplicationDeploymentPolicy.json)
+  - [`AWSTransformApplicationECSDeploymentPolicy`](./AWSTransformApplicationECSDeploymentPolicy.json)
   - [`AmazonAppStreamPCAAccess`](./AmazonAppStreamPCAAccess.json)
   - [`AmazonCodeGuruReviewerServiceRolePolicy`](./AmazonCodeGuruReviewerServiceRolePolicy.json)
   - [`AmazonConnectServiceLinkedRolePolicy`](./AmazonConnectServiceLinkedRolePolicy.json)
@@ -120,12 +123,13 @@
   - [`SupportUser`](./SupportUser.json)
   - [`SystemAdministrator`](./SystemAdministrator.json)
   - [`ViewOnlyAccess`](./ViewOnlyAccess.json)
-- **Warnings:** `32`
+- **Warnings:** `33`
   - [`AIOpsAssistantPolicy`](./AIOpsAssistantPolicy.json)
   - [`AWSApplicationMigrationNetworkMigrationMultiAccount`](./AWSApplicationMigrationNetworkMigrationMultiAccount.json)
   - [`AWSBackupServiceRolePolicyForBackup`](./AWSBackupServiceRolePolicyForBackup.json)
   - [`AWSBackupServiceRolePolicyForRestores`](./AWSBackupServiceRolePolicyForRestores.json)
   - [`AWSElasticDisasterRecoveryConsoleFullAccess_v2`](./AWSElasticDisasterRecoveryConsoleFullAccess_v2.json)
+  - [`AWSMcpServiceActionsFullAccess`](./AWSMcpServiceActionsFullAccess.json)
   - [`AWSOrganizationsServiceTrustPolicy`](./AWSOrganizationsServiceTrustPolicy.json)
   - [`AWSResourceExplorerServiceRolePolicy`](./AWSResourceExplorerServiceRolePolicy.json)
   - [`AdministratorAccess`](./AdministratorAccess.json)
