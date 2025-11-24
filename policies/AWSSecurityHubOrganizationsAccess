@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-06-24T22:22:08Z", 
-        "VersionId": "v3", 
+        "CreateDate": "2025-11-21T21:19:08Z", 
+        "VersionId": "v4", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -19,7 +19,8 @@
                         "organizations:DescribeOrganizationalUnit", 
                         "organizations:ListPolicies", 
                         "organizations:ListPoliciesForTarget", 
-                        "organizations:ListTargetsForPolicy"
+                        "organizations:ListTargetsForPolicy", 
+                        "organizations:DescribeResourcePolicy"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
@@ -31,7 +32,12 @@
                     "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
-                            "organizations:ServicePrincipal": "securityhub.amazonaws.com"
+                            "organizations:ServicePrincipal": [
+                                "securityhub.amazonaws.com", 
+                                "inspector2.amazonaws.com", 
+                                "guardduty.amazonaws.com", 
+                                "malware-protection.guardduty.amazonaws.com"
+                            ]
                         }
                     }, 
                     "Sid": "OrganizationPermissionsEnable"
@@ -45,7 +51,12 @@
                     "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
-                            "organizations:ServicePrincipal": "securityhub.amazonaws.com"
+                            "organizations:ServicePrincipal": [
+                                "securityhub.amazonaws.com", 
+                                "inspector2.amazonaws.com", 
+                                "guardduty.amazonaws.com", 
+                                "malware-protection.guardduty.amazonaws.com"
+                            ]
                         }
                     }, 
                     "Sid": "OrganizationPermissionsDelegatedAdmin"
@@ -66,12 +77,16 @@
                         "arn:aws:organizations::*:root/o-*/*", 
                         "arn:aws:organizations::*:account/o-*/*", 
                         "arn:aws:organizations::*:ou/o-*/*", 
-                        "arn:aws:organizations::*:policy/o-*/securityhub_policy/*"
+                        "arn:aws:organizations::*:policy/o-*/securityhub_policy/*", 
+                        "arn:aws:organizations::*:policy/o-*/inspector_policy/*"
                     ], 
                     "Effect": "Allow", 
                     "Condition": {
                         "StringLikeIfExists": {
-                            "organizations:PolicyType": "SECURITYHUB_POLICY"
+                            "organizations:PolicyType": [
+                                "SECURITYHUB_POLICY", 
+                                "INSPECTOR_POLICY"
+                            ]
                         }
                     }, 
                     "Sid": "OrganizationPolicyPermissions"
@@ -83,7 +98,8 @@
                         "organizations:ListTagsForResource"
                     ], 
                     "Resource": [
-                        "arn:aws:organizations::*:policy/o-*/securityhub_policy/*"
+                        "arn:aws:organizations::*:policy/o-*/securityhub_policy/*", 
+                        "arn:aws:organizations::*:policy/o-*/inspector_policy/*"
                     ], 
                     "Effect": "Allow", 
                     "Sid": "OrganizationPolicyTaggingPermissions"
