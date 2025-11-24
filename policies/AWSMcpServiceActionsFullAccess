@@ -1,0 +1,23 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-11-21T22:49:08Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": "*", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "Bool": {
+                            "aws:IsMcpServiceAction": "true"
+                        }
+                    }, 
+                    "Sid": "AllowAllMCPServiceActions"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
