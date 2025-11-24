@@ -1,22 +1,27 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-11-12T22:22:17Z", 
-        "VersionId": "v4", 
+        "CreateDate": "2025-11-21T20:19:09Z", 
+        "VersionId": "v5", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": [
                         "connect:Create*", 
+                        "connect:BatchCreate*", 
                         "connect:Update*", 
+                        "connect:BatchUpdate*", 
                         "connect:Delete*", 
+                        "connect:BatchDelete*", 
                         "connect:Describe*", 
+                        "connect:BatchDescribe*", 
                         "connect:List*", 
                         "connect:Search*", 
                         "connect:Associate*", 
                         "connect:Disassociate*", 
                         "connect:Get*", 
                         "connect:BatchGet*", 
+                        "connect:Import*", 
                         "connect:TagResource", 
                         "connect:UntagResource"
                     ], 
@@ -75,6 +80,6 @@
                 }
             ]
         }, 
-        "IsDefaultVersion": false
+        "IsDefaultVersion": true
     }
 }
