@@ -1,0 +1,50 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-11-22T00:04:08Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "glue:GetCatalog", 
+                        "glue:GetCatalogs", 
+                        "glue:GetDatabase", 
+                        "glue:GetDatabases", 
+                        "glue:GetTable", 
+                        "glue:GetTables", 
+                        "glue:GetUserDefinedFunctions", 
+                        "glue:CreateDatabase", 
+                        "glue:CreateTable", 
+                        "glue:DeleteDatabase", 
+                        "glue:DeleteTable", 
+                        "glue:UpdateCatalog", 
+                        "glue:UpdateDatabase", 
+                        "glue:UpdateTable", 
+                        "glue:RenameTable", 
+                        "glue:FederateAuthorization"
+                    ], 
+                    "Resource": [
+                        "arn:aws:glue:*:*:*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "glue:FederatedAuthorizationSource": "Redshift"
+                        }
+                    }, 
+                    "Sid": "AmazonRedshiftFederatedAuthorization"
+                }, 
+                {
+                    "Action": [
+                        "sts:SetContext"
+                    ], 
+                    "Resource": "arn:aws:sts::*:self", 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonRedshiftIdentityCenterSetContext"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
