@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-09-29T22:19:07Z", 
-        "VersionId": "v2", 
+        "CreateDate": "2025-11-21T23:34:07Z", 
+        "VersionId": "v3", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -66,7 +66,9 @@
                         "ec2:DescribeSubnets", 
                         "ec2:DescribeSecurityGroups", 
                         "ec2:DescribeImages", 
-                        "ec2:DescribeInstances"
+                        "ec2:DescribeInstances", 
+                        "ec2:DescribeRouteTables", 
+                        "ec2:DescribeInternetGateways"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow"
@@ -146,7 +148,10 @@
                 {
                     "Action": [
                         "iam:GetRole", 
-                        "iam:GetInstanceProfile"
+                        "iam:GetInstanceProfile", 
+                        "iam:GetRolePolicy", 
+                        "iam:ListRolePolicies", 
+                        "iam:ListAttachedRolePolicies"
                     ], 
                     "Resource": [
                         "arn:aws:iam::*:role/AWSTransform-Deploy-Builder-Instance-Role", 
@@ -237,6 +242,7 @@
                 }, 
                 {
                     "Action": [
+                        "s3:GetBucketLocation", 
                         "s3:PutObject", 
                         "s3:ListMultipartUploadParts", 
                         "s3:ListBucketMultipartUploads", 
@@ -247,6 +253,88 @@
                         "arn:aws:s3:::aws-transform-deployment-bucket-*", 
                         "arn:aws:s3:::aws-transform-deployment-bucket-*/*"
                     ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "s3:ListAllMyBuckets"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "kms:Decrypt", 
+                        "kms:GenerateDataKey"
+                    ], 
+                    "Resource": "arn:aws:kms:*:*:key/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "kms:ViaService": "s3.*.amazonaws.com", 
+                            "kms:EncryptionContext:aws-transform": "*"
+                        }, 
+                        "StringEquals": {
+                            "aws:ResourceTag/CreatedFor": "AWSTransform", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "kms:CreateGrant"
+                    ], 
+                    "Resource": "arn:aws:kms:*:*:key/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "kms:ViaService": [
+                                "ec2.*.amazonaws.com"
+                            ], 
+                            "kms:EncryptionContext:aws:ebs:id": "*"
+                        }, 
+                        "Bool": {
+                            "kms:GrantIsForAWSResource": "true"
+                        }, 
+                        "StringEquals": {
+                            "kms:GrantConstraintType": "EncryptionContextSubset", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
+                        "ForAllValues:StringEquals": {
+                            "kms:GrantOperations": [
+                                "Decrypt"
+                            ]
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "kms:GenerateDataKeyWithoutPlaintext"
+                    ], 
+                    "Resource": "arn:aws:kms:*:*:key/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "kms:ViaService": "ec2.*.amazonaws.com", 
+                            "kms:EncryptionContext:aws:ebs:id": "*"
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "kms:DescribeKey"
+                    ], 
+                    "Resource": "arn:aws:kms:*:*:key/*", 
                     "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
