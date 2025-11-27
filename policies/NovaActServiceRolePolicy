@@ -1,0 +1,25 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-11-26T16:19:08Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "cloudwatch:PutMetricData"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "cloudwatch:namespace": "AWS/NovaAct"
+                        }
+                    }, 
+                    "Sid": "AllowPublishCloudWatchMetrics"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
