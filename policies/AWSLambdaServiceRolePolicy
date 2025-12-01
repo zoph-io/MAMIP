@@ -1,0 +1,36 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-11-30T08:04:07Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "ec2:TerminateInstances"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:instance/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "ec2:ManagedResourceOperator": "scaler.lambda.amazonaws.com"
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "ec2:DescribeInstanceStatus", 
+                        "ec2:DescribeInstances"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
