@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-01-14T19:52:06Z", 
-        "VersionId": "v16", 
+        "CreateDate": "2025-12-01T00:49:11Z", 
+        "VersionId": "v17", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -144,6 +144,27 @@
                         }
                     }, 
                     "Sid": "CreateServiceLinkedRole"
+                }, 
+                {
+                    "Action": [
+                        "aws-marketplace:SendAgreementPaymentRequest", 
+                        "aws-marketplace:GetAgreementPaymentRequest", 
+                        "aws-marketplace:ListAgreementPaymentRequests", 
+                        "aws-marketplace:CancelAgreementPaymentRequest"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws-marketplace:PartyType": "Proposer"
+                        }, 
+                        "ForAllValues:StringEquals": {
+                            "aws-marketplace:AgreementType": [
+                                "PurchaseAgreement"
+                            ]
+                        }
+                    }, 
+                    "Sid": "AgreementPaymentRequestAccess"
                 }
             ]
         }, 
