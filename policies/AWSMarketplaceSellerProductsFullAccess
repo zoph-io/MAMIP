@@ -1,34 +1,57 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-12-10T19:06:12Z", 
-        "VersionId": "v9", 
+        "CreateDate": "2025-12-01T00:49:07Z", 
+        "VersionId": "v10", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
                 {
                     "Action": [
                         "aws-marketplace:ListChangeSets", 
+                        "aws-marketplace:ListEntities", 
+                        "aws-marketplace:ListAssessments"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "MarketplaceListAccess"
+                }, 
+                {
+                    "Action": [
                         "aws-marketplace:DescribeChangeSet", 
                         "aws-marketplace:StartChangeSet", 
                         "aws-marketplace:CancelChangeSet", 
-                        "aws-marketplace:ListEntities", 
-                        "aws-marketplace:DescribeEntity", 
-                        "aws-marketplace:ListAssessments", 
-                        "aws-marketplace:DescribeAssessment", 
+                        "aws-marketplace:DescribeEntity"
+                    ], 
+                    "Resource": "arn:aws:aws-marketplace:*:*:AWSMarketplace*/*", 
+                    "Effect": "Allow", 
+                    "Sid": "MarketplaceResourceAccess"
+                }, 
+                {
+                    "Action": [
+                        "aws-marketplace:DescribeAssessment"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "MarketplaceAssessmentAccess"
+                }, 
+                {
+                    "Action": [
                         "ec2:DescribeImages", 
                         "ec2:DescribeSnapshots", 
                         "ec2:ModifyImageAttribute", 
                         "ec2:ModifySnapshotAttribute"
                     ], 
                     "Resource": "*", 
-                    "Effect": "Allow"
+                    "Effect": "Allow", 
+                    "Sid": "EC2ResourceAccess"
                 }, 
                 {
                     "Action": [
                         "iam:GetRole"
                     ], 
                     "Resource": "arn:aws:iam::*:role/*", 
-                    "Effect": "Allow"
+                    "Effect": "Allow", 
+                    "Sid": "GetIAMRoleAccess"
                 }, 
                 {
                     "Action": [
@@ -40,7 +63,8 @@
                         "StringEquals": {
                             "iam:PassedToService": "assets.marketplace.amazonaws.com"
                         }
-                    }
+                    }, 
+                    "Sid": "IAMPassRoleAccess"
                 }, 
                 {
                     "Action": [
@@ -52,7 +76,8 @@
                         "vendor-insights:ListSecurityProfileSnapshots"
                     ], 
                     "Resource": "*", 
-                    "Effect": "Allow"
+                    "Effect": "Allow", 
+                    "Sid": "VendorInsightsAccess"
                 }, 
                 {
                     "Action": [
@@ -60,8 +85,9 @@
                         "aws-marketplace:UntagResource", 
                         "aws-marketplace:ListTagsForResource"
                     ], 
-                    "Resource": "arn:aws:aws-marketplace:*:*:AWSMarketplace/*", 
-                    "Effect": "Allow"
+                    "Resource": "arn:aws:aws-marketplace:*:*:AWSMarketplace*/*", 
+                    "Effect": "Allow", 
+                    "Sid": "TagAccess"
                 }, 
                 {
                     "Action": [
@@ -69,8 +95,32 @@
                         "aws-marketplace:PutResourcePolicy", 
                         "aws-marketplace:DeleteResourcePolicy"
                     ], 
-                    "Resource": "arn:aws:aws-marketplace:*:*:AWSMarketplace/*", 
-                    "Effect": "Allow"
+                    "Resource": "arn:aws:aws-marketplace:*:*:AWSMarketplace*/*", 
+                    "Effect": "Allow", 
+                    "Sid": "ResourceSharingAccess"
+                }, 
+                {
+                    "Action": [
+                        "s3:PutObject"
+                    ], 
+                    "Resource": [
+                        "arn:aws:s3:::aws-partner-central-marketplace-ephemeral-writeonly-files/${aws:PrincipalAccount}/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "MarketplaceEphemeralWriteS3Access"
+                }, 
+                {
+                    "Action": [
+                        "partnercentral-account-management:AccessLegacyPartnerCentral"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "partnercentral-account-management:LegacyPartnerCentralRole": "TechnicalStaff"
+                        }
+                    }, 
+                    "Sid": "LegacyPartnerCentralAccess"
                 }
             ]
         }, 
