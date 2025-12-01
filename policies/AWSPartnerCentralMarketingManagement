@@ -1,0 +1,97 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-12-01T00:34:10Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "partnercentral-account-management:AccessMarketingCentral"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "PartnerCentralMarketingAccess"
+                }, 
+                {
+                    "Action": [
+                        "partnercentral-account-management:AccessLegacyPartnerCentral"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "partnercentral-account-management:LegacyPartnerCentralRole": "MarketingStaff"
+                        }
+                    }, 
+                    "Sid": "LegacyPartnerCentralAccess"
+                }, 
+                {
+                    "Action": [
+                        "partnercentral:SearchPartnerProfiles", 
+                        "partnercentral:GetPartnerProfile"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "PartnerDiscoveryAccess"
+                }, 
+                {
+                    "Action": [
+                        "partnercentral:StartProfileUpdateTask", 
+                        "partnercentral:GetProfileUpdateTask", 
+                        "partnercentral:CancelProfileUpdateTask", 
+                        "partnercentral:PutProfileVisibility", 
+                        "partnercentral:GetProfileVisibility"
+                    ], 
+                    "Resource": "arn:aws:partnercentral:*:*:catalog/*/partner/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "partnercentral:Catalog": [
+                                "AWS", 
+                                "Sandbox"
+                            ]
+                        }
+                    }, 
+                    "Sid": "PartnerProfileAccess"
+                }, 
+                {
+                    "Action": [
+                        "partnercentral:ListPartners", 
+                        "partnercentral:GetPartner"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "partnercentral:Catalog": [
+                                "AWS", 
+                                "Sandbox"
+                            ]
+                        }
+                    }, 
+                    "Sid": "PartnerResourceAccess"
+                }, 
+                {
+                    "Action": [
+                        "s3:PutObject"
+                    ], 
+                    "Resource": "arn:aws:s3:::aws-partner-central-marketplace-ephemeral-writeonly-files/${aws:PrincipalAccount}/*", 
+                    "Effect": "Allow", 
+                    "Sid": "PartnerCentralEphemeralWriteS3Access"
+                }, 
+                {
+                    "Action": [
+                        "partnercentral:GetPartnerDashboard"
+                    ], 
+                    "Resource": [
+                        "arn:aws:partnercentral::*:catalog/AWS/ReportingData/MarketingCampaign_V1/Dashboard/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "PartnerDashboardAccess"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
