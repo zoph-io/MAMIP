@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-05-07T20:07:07Z", 
-        "VersionId": "v6", 
+        "CreateDate": "2025-12-01T00:34:07Z", 
+        "VersionId": "v7", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -34,7 +34,9 @@
                 {
                     "Action": [
                         "aws-marketplace:ListPrivateMarketplaceRequests", 
-                        "aws-marketplace:DescribePrivateMarketplaceRequests"
+                        "aws-marketplace:DescribePrivateMarketplaceRequests", 
+                        "aws-marketplace:GetAgreementPaymentRequest", 
+                        "aws-marketplace:ListAgreementPaymentRequests"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow"
