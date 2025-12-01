@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-03-17T21:37:06Z", 
-        "VersionId": "v2", 
+        "CreateDate": "2025-12-01T16:04:11Z", 
+        "VersionId": "v3", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -14,6 +14,7 @@
                         "ec2:DescribeSecurityGroups", 
                         "ec2:DescribeSubnets", 
                         "ec2:DescribeVpcs", 
+                        "kms:DescribeKey", 
                         "kms:ListAliases", 
                         "iam:GetPolicy", 
                         "iam:GetPolicyVersion", 
@@ -53,9 +54,19 @@
                     ], 
                     "Resource": "arn:aws:logs:*:*:log-group:/aws/lambda/*", 
                     "Effect": "Allow"
+                }, 
+                {
+                    "Action": "iam:CreateServiceLinkedRole", 
+                    "Resource": "arn:aws:iam::*:role/aws-service-role/lambda.amazonaws.com/AWSServiceRoleForLambda", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:AWSServiceName": "lambda.amazonaws.com"
+                        }
+                    }
                 }
             ]
         }, 
-        "IsDefaultVersion": false
+        "IsDefaultVersion": true
     }
 }
