@@ -1,0 +1,69 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-11-30T08:34:09Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "ec2:RunInstances", 
+                        "ec2:CreateTags", 
+                        "ec2:AttachNetworkInterface"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:instance/*", 
+                        "arn:aws:ec2:*:*:network-interface/*", 
+                        "arn:aws:ec2:*:*:volume/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "ec2:ManagedResourceOperator": "scaler.lambda.amazonaws.com"
+                        }
+                    }
+                }, 
+                {
+                    "Action": [
+                        "ec2:DescribeAvailabilityZones", 
+                        "ec2:DescribeCapacityReservations", 
+                        "ec2:DescribeInstances", 
+                        "ec2:DescribeInstanceStatus", 
+                        "ec2:DescribeInstanceTypeOfferings", 
+                        "ec2:DescribeInstanceTypes", 
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:DescribeSubnets"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
+                {
+                    "Action": [
+                        "ec2:RunInstances", 
+                        "ec2:CreateNetworkInterface"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:subnet/*", 
+                        "arn:aws:ec2:*:*:security-group/*"
+                    ], 
+                    "Effect": "Allow"
+                }, 
+                {
+                    "Action": [
+                        "ec2:RunInstances"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:image/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "ec2:Owner": "amazon"
+                        }
+                    }
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
