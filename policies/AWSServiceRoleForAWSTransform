@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-09-18T20:34:07Z", 
-        "VersionId": "v3", 
+        "CreateDate": "2025-12-01T13:19:12Z", 
+        "VersionId": "v4", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -63,6 +63,32 @@
                         }
                     }, 
                     "Sid": "AllowKmsAccessViaIdentityStore"
+                }, 
+                {
+                    "Action": [
+                        "support:CreateCase", 
+                        "support:DescribeCases", 
+                        "support:DescribeCommunications", 
+                        "support:AddCommunicationToCase", 
+                        "support:ResolveCase"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "SupportCaseManagement"
+                }, 
+                {
+                    "Action": [
+                        "secretsmanager:GetSecretValue"
+                    ], 
+                    "Resource": "arn:aws:secretsmanager:*:*:secret:transform!*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "secretsmanager:ResourceTag/aws:secretsmanager:owningService": "transform", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "ExternalIdpSecretsAccess"
                 }
             ]
         }, 
