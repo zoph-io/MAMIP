@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-11-19T16:34:12Z", 
-        "VersionId": "v3", 
+        "CreateDate": "2025-12-01T00:34:08Z", 
+        "VersionId": "v4", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -46,6 +46,15 @@
                 }, 
                 {
                     "Action": [
+                        "partnercentral:StartVerification", 
+                        "partnercentral:GetVerification"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "VerificationAccess"
+                }, 
+                {
+                    "Action": [
                         "iam:PassRole"
                     ], 
                     "Resource": [
@@ -61,6 +70,22 @@
                 }, 
                 {
                     "Action": [
+                        "partnercentral-account-management:AccessLegacyPartnerCentral"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "LegacyPartnerCentralAccess"
+                }, 
+                {
+                    "Action": [
+                        "partnercentral-account-management:AccessMarketingCentral"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "PartnerCentralMarketingAccess"
+                }, 
+                {
+                    "Action": [
                         "sts:AssumeRole"
                     ], 
                     "Resource": [
@@ -69,9 +94,50 @@
                     ], 
                     "Effect": "Allow", 
                     "Sid": "ChannelBillingTransferRoleAccess"
+                }, 
+                {
+                    "Action": [
+                        "s3:PutObject"
+                    ], 
+                    "Resource": "arn:aws:s3:::aws-partner-central-marketplace-ephemeral-writeonly-files/${aws:PrincipalAccount}/*", 
+                    "Effect": "Allow", 
+                    "Sid": "PartnerCentralEphemeralWriteS3Access"
+                }, 
+                {
+                    "Action": [
+                        "support:CreateCase", 
+                        "support:DescribeCases", 
+                        "support:AddCommunicationToCase", 
+                        "support:ResolveCase", 
+                        "support:AddAttachmentsToSet", 
+                        "support:DescribeCommunications"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "SupportAccess"
+                }, 
+                {
+                    "Action": [
+                        "aws-marketplace:ListEntities"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ListEntitiesAccess"
+                }, 
+                {
+                    "Action": [
+                        "aws-marketplace:DescribeEntity"
+                    ], 
+                    "Resource": [
+                        "arn:aws:aws-marketplace:*:*:AWSMarketplace*/Solution/*", 
+                        "arn:aws:aws-marketplace:*:*:AWSMarketplace*/OfferSet/*", 
+                        "arn:aws:aws-marketplace:*:*:AWSMarketplace*/Offer/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "DescribeEntityAccess"
                 }
             ]
         }, 
-        "IsDefaultVersion": false
+        "IsDefaultVersion": true
     }
 }
