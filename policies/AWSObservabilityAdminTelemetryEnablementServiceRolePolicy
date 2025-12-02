@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-08-01T18:04:06Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-12-02T01:19:06Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -90,9 +90,14 @@
                 {
                     "Action": [
                         "ec2:DeleteFlowLogs", 
+                        "logs:CreateDelivery", 
                         "logs:CreateLogGroup", 
                         "logs:PutResourcePolicy", 
-                        "logs:PutRetentionPolicy"
+                        "logs:PutRetentionPolicy", 
+                        "logs:PutDeliveryDestination", 
+                        "logs:PutDeliverySource", 
+                        "logs:CreateLogStream", 
+                        "logs:DescribeLogGroups"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
@@ -103,6 +108,265 @@
                         }
                     }, 
                     "Sid": "TelemetryOperationsForLogs"
+                }, 
+                {
+                    "Action": [
+                        "eks:UpdateClusterConfig"
+                    ], 
+                    "Resource": "arn:aws:eks:*:*:cluster/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "Bool": {
+                            "eks:loggingType/api": "true"
+                        }, 
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "TelemetryOperationsForEKSApiLogs"
+                }, 
+                {
+                    "Action": [
+                        "eks:UpdateClusterConfig"
+                    ], 
+                    "Resource": "arn:aws:eks:*:*:cluster/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "Bool": {
+                            "eks:loggingType/audit": "true"
+                        }, 
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "TelemetryOperationsForEKSAuditLogs"
+                }, 
+                {
+                    "Action": [
+                        "eks:UpdateClusterConfig"
+                    ], 
+                    "Resource": "arn:aws:eks:*:*:cluster/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "Bool": {
+                            "eks:loggingType/authenticator": "true"
+                        }, 
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "TelemetryOperationsForEKSAuthenticatorLogs"
+                }, 
+                {
+                    "Action": [
+                        "eks:UpdateClusterConfig"
+                    ], 
+                    "Resource": "arn:aws:eks:*:*:cluster/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "Bool": {
+                            "eks:loggingType/controllerManager": "true"
+                        }, 
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "TelemetryOperationsForEKSControllerManagerLogs"
+                }, 
+                {
+                    "Action": [
+                        "eks:UpdateClusterConfig"
+                    ], 
+                    "Resource": "arn:aws:eks:*:*:cluster/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "Bool": {
+                            "eks:loggingType/scheduler": "true"
+                        }, 
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "TelemetryOperationsForEKSSchedulerLogs"
+                }, 
+                {
+                    "Action": [
+                        "wafv2:PutLoggingConfiguration"
+                    ], 
+                    "Resource": "arn:aws:wafv2:*:*:regional/webacl/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ArnLike": {
+                            "wafv2:LogDestinationResource": "arn:aws:logs:*:*:log-group:*"
+                        }, 
+                        "StringEquals": {
+                            "wafv2:LogScope": "CloudwatchTelemetryRuleManaged", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "TelemetryOperationsForWafLoggingConfigurations"
+                }, 
+                {
+                    "Action": [
+                        "logs:CreateLogDelivery"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "aws:CalledVia": [
+                                "wafv2.amazonaws.com"
+                            ]
+                        }, 
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "TelemetryOperationsForWafLogDelivery"
+                }, 
+                {
+                    "Action": [
+                        "elasticloadbalancing:AllowVendedLogDeliveryForResource"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "TelemetryOperationsForELB"
+                }, 
+                {
+                    "Action": [
+                        "bedrock-agentcore:AllowVendedLogDeliveryForResource"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "TelemetryOperationsForBedrock"
+                }, 
+                {
+                    "Action": [
+                        "cloudtrail:CreateServiceLinkedChannel", 
+                        "cloudtrail:UpdateServiceLinkedChannel", 
+                        "cloudtrail:DeleteServiceLinkedChannel"
+                    ], 
+                    "Resource": "arn:aws:cloudtrail:*:*:channel/aws-service-channel/cloudwatch/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "TelemetryOperationsForCloudTrailLogs"
+                }, 
+                {
+                    "Action": [
+                        "logs:CreateLogGroup", 
+                        "logs:PutResourcePolicy", 
+                        "logs:PutRetentionPolicy"
+                    ], 
+                    "Resource": [
+                        "arn:aws:logs:*:*:log-group:aws/cloudtrail", 
+                        "arn:aws:logs:*:*:log-group:aws/cloudtrail/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "TelemetryOperationsForManagedLogs"
+                }, 
+                {
+                    "Action": [
+                        "route53resolver:ListResolverQueryLogConfigs", 
+                        "route53resolver:ListResolverQueryLogConfigAssociations"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "Route53QueryLoggingListOperations"
+                }, 
+                {
+                    "Action": [
+                        "route53resolver:GetResolverQueryLogConfig", 
+                        "route53resolver:ListTagsForResource"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/CloudWatchTelemetryRuleManaged": "true", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "Route53QueryLoggingGetOperations"
+                }, 
+                {
+                    "Action": [
+                        "route53resolver:CreateResolverQueryLogConfig", 
+                        "route53resolver:TagResource"
+                    ], 
+                    "Resource": "arn:aws:route53resolver:*:*:resolver-query-log-config/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:RequestTag/CloudWatchTelemetryRuleManaged": "true", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "Route53QueryLoggingConfigCreation"
+                }, 
+                {
+                    "Action": [
+                        "route53resolver:AssociateResolverQueryLogConfig"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/CloudWatchTelemetryRuleManaged": "true", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "Route53QueryLoggingConfigAssociation"
+                }, 
+                {
+                    "Action": [
+                        "iam:CreateServiceLinkedRole"
+                    ], 
+                    "Resource": "arn:*:iam::*:role/aws-service-role/route53resolver.amazonaws.com/AWSServiceRoleForRoute53Resolver", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "BoolIfExists": {
+                            "aws:ViaAWSService": "true"
+                        }, 
+                        "StringEquals": {
+                            "iam:AWSServiceName": [
+                                "route53resolver.amazonaws.com"
+                            ], 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "TelemetryOperationsForRoute53LogDeliverySLR"
+                }, 
+                {
+                    "Action": [
+                        "logs:CreateLogDelivery"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "TelemetryOperationsForRoute53LogDelivery"
                 }, 
                 {
                     "Action": [
