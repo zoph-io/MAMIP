@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-05-20T16:52:06Z", 
-        "VersionId": "v7", 
+        "CreateDate": "2025-12-02T16:34:10Z", 
+        "VersionId": "v8", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -17,7 +17,10 @@
                         "logs:StartLiveTail", 
                         "logs:StopLiveTail", 
                         "cloudwatch:GenerateQuery", 
-                        "cloudwatch:GenerateQueryResultsSummary"
+                        "cloudwatch:GenerateQueryResultsSummary", 
+                        "observabilityadmin:ListS3TableIntegrations", 
+                        "observabilityadmin:GetS3TableIntegration", 
+                        "observabilityadmin:ListTelemetryPipelines"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
