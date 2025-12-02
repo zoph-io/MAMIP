@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-11-20T19:34:11Z", 
-        "VersionId": "v13", 
+        "CreateDate": "2025-12-02T16:49:09Z", 
+        "VersionId": "v14", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -40,6 +40,12 @@
                         "observabilityadmin:ListTelemetryRulesForOrganization", 
                         "observabilityadmin:GetTelemetryEnrichmentStatus", 
                         "observabilityadmin:ListTagsForResource", 
+                        "observabilityadmin:GetTelemetryPipeline", 
+                        "observabilityadmin:ListTelemetryPipelines", 
+                        "observabilityadmin:TestTelemetryPipeline", 
+                        "observabilityadmin:ValidateTelemetryPipelineConfiguration", 
+                        "observabilityadmin:GetS3TableIntegration", 
+                        "observabilityadmin:ListS3TableIntegrations", 
                         "sns:Get*", 
                         "sns:List*", 
                         "rum:BatchGet*", 
