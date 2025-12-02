@@ -1,0 +1,68 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-12-02T15:04:06Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "securityagent:ListAgentInstances", 
+                        "securityagent:ListControls"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "ApplicationAccess"
+                }, 
+                {
+                    "Action": [
+                        "securityagent:AddArtifact", 
+                        "securityagent:BatchDeletePentests", 
+                        "securityagent:BatchGetAgentInstances", 
+                        "securityagent:BatchGetArtifactMetadata", 
+                        "securityagent:BatchGetFindings", 
+                        "securityagent:BatchGetPentestJobs", 
+                        "securityagent:BatchGetPentests", 
+                        "securityagent:BatchGetTasks", 
+                        "securityagent:CreateDocumentReview", 
+                        "securityagent:CreatePentest", 
+                        "securityagent:DeleteArtifact", 
+                        "securityagent:GetArtifact", 
+                        "securityagent:GetCodeReviewTask", 
+                        "securityagent:GetDocReviewTask", 
+                        "securityagent:GetDocumentReview", 
+                        "securityagent:GetDocumentReviewArtifact", 
+                        "securityagent:ListArtifacts", 
+                        "securityagent:ListControls", 
+                        "securityagent:ListDiscoveredEndpoints", 
+                        "securityagent:ListDocumentReviewComments", 
+                        "securityagent:ListDocumentReviews", 
+                        "securityagent:ListFindings", 
+                        "securityagent:ListIntegratedResources", 
+                        "securityagent:ListPentestJobsForPentest", 
+                        "securityagent:ListPentests", 
+                        "securityagent:ListTasks", 
+                        "securityagent:StartPentestExecution", 
+                        "securityagent:StopPentestExecution", 
+                        "securityagent:UpdateFinding", 
+                        "securityagent:UpdatePentest"
+                    ], 
+                    "Resource": "arn:aws:securityagent:*:*:agent-instance*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "AgentInstanceAccess"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
