@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-11-03T21:04:07Z", 
-        "VersionId": "v4", 
+        "CreateDate": "2025-12-02T13:34:12Z", 
+        "VersionId": "v5", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -137,6 +137,16 @@
                     ], 
                     "Effect": "Allow", 
                     "Sid": "BedrockAgentCoreGatewayLambdaAccess"
+                }, 
+                {
+                    "Action": [
+                        "apigateway:GET"
+                    ], 
+                    "Resource": [
+                        "arn:aws:apigateway:*::/restapis/*/stages/*/exports/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "BedrockAgentCoreGatewayApiGateway"
                 }, 
                 {
                     "Action": [
@@ -341,6 +351,40 @@
                     ], 
                     "Effect": "Allow", 
                     "Sid": "BedrockAgentCoreRuntimeECRAccess"
+                }, 
+                {
+                    "Action": [
+                        "logs:CreateLogGroup"
+                    ], 
+                    "Resource": [
+                        "arn:aws:logs:*:*:log-group:/aws/bedrock-agentcore/evaluations/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AgentCoreEvaluationCloudWatchLogCreate"
+                }, 
+                {
+                    "Action": [
+                        "logs:PutIndexPolicy", 
+                        "logs:DescribeIndexPolicies"
+                    ], 
+                    "Resource": [
+                        "arn:aws:logs:*:*:log-group:aws/spans", 
+                        "arn:aws:logs:*:*:log-group:aws/spans:*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AgentCoreEvaluationCloudWatchLogIndexAccess"
+                }, 
+                {
+                    "Action": [
+                        "bedrock:InvokeModel", 
+                        "bedrock:InvokeModelWithResponseStream"
+                    ], 
+                    "Resource": [
+                        "arn:aws:bedrock:*::foundation-model/*", 
+                        "arn:aws:bedrock:*:*:inference-profile/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AgentCoreEvaluationBedrockInvokeAccess"
                 }
             ]
         }, 
