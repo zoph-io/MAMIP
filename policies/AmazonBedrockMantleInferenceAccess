@@ -1,0 +1,30 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-12-04T07:19:08Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "bedrock-mantle:Get*", 
+                        "bedrock-mantle:List*", 
+                        "bedrock-mantle:CreateInference"
+                    ], 
+                    "Resource": "arn:aws:bedrock-mantle:*:*:project/*", 
+                    "Effect": "Allow", 
+                    "Sid": "BedrockMantleInference"
+                }, 
+                {
+                    "Action": [
+                        "bedrock-mantle:CallWithBearerToken"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "BedrockMantleCallWithBearerToken"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
