@@ -1,0 +1,22 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-12-05T15:19:07Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "transform-custom:*"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AWSTransformCustomAllActions"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
