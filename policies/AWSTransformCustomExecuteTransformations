@@ -1,0 +1,26 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-12-05T15:34:10Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "transform-custom:ConverseStream", 
+                        "transform-custom:ExecuteTransformation", 
+                        "transform-custom:GetCampaign", 
+                        "transform-custom:UpdateCampaignRepositoryStatus", 
+                        "transform-custom:UpdateCampaign"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AWSTransformCustomExecuteTransformations"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
