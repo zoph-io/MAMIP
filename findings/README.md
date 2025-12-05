@@ -1,14 +1,13 @@
-# AWS Access Analyzer - Findings - 2025-12-04
+# AWS Access Analyzer - Findings - 2025-12-05
 
-- **Policies analyzed:** `1422`
-- **Errors:** `36`
+- **Policies analyzed:** `1424`
+- **Errors:** `32`
   - [`AWSAccountActivityAccess`](./AWSAccountActivityAccess.json)
   - [`AWSAuditManagerAdministratorAccess`](./AWSAuditManagerAdministratorAccess.json)
   - [`AWSAuditManagerServiceRolePolicy`](./AWSAuditManagerServiceRolePolicy.json)
   - [`AWSCodeStarFullAccess`](./AWSCodeStarFullAccess.json)
   - [`AWSControlTowerAccountServiceRolePolicy`](./AWSControlTowerAccountServiceRolePolicy.json)
   - [`AWSIAMIdentityCenterAllowListForIdentityContext`](./AWSIAMIdentityCenterAllowListForIdentityContext.json)
-  - [`AmazonBedrockMantleReadOnly`](./AmazonBedrockMantleReadOnly.json)
   - [`AmazonDataZoneGlueManageAccessRolePolicy`](./AmazonDataZoneGlueManageAccessRolePolicy.json)
   - [`AmazonDataZoneSageMakerEnvironmentRolePermissionsBoundary`](./AmazonDataZoneSageMakerEnvironmentRolePermissionsBoundary.json)
   - [`AmazonSageMakerFullAccess`](./AmazonSageMakerFullAccess.json)
@@ -155,14 +154,12 @@
   - [`SageMakerStudioUserIAMPermissiveExecutionPolicy`](./SageMakerStudioUserIAMPermissiveExecutionPolicy.json)
   - [`SecurityAudit`](./SecurityAudit.json)
   - [`ViewOnlyAccess`](./ViewOnlyAccess.json)
-- **Failed validations:** `10`
+- **Failed validations:** `8`
   - `AWSConfigServiceRolePolicy`
   - `AWSPartnerLedSupportReadOnlyAccess`
   - `AWSSupportServiceRolePolicy`
   - `AWS_ConfigRole`
-  - `AmazonSESFullAccess`
   - `ReadOnlyAccess`
-  - `SageMakerStudioBedrockAgentServiceRolePolicy`
   - `SageMakerStudioProjectProvisioningRolePolicy`
   - `SageMakerStudioProjectUserRolePermissionsBoundary`
   - `SageMakerStudioProjectUserRolePolicy`
