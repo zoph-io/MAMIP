@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-06-29T22:22:06Z", 
-        "VersionId": "v3", 
+        "CreateDate": "2025-12-05T05:34:09Z", 
+        "VersionId": "v4", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -12,6 +12,14 @@
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Sid": "BedrockAll"
+                }, 
+                {
+                    "Action": [
+                        "bedrock-mantle:*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "BedrockMantleAll"
                 }, 
                 {
                     "Action": [
