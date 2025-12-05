@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-06-29T22:22:06Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-12-05T05:34:09Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -60,6 +60,17 @@
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Sid": "APIsWithAllResourceAccess"
+                }, 
+                {
+                    "Action": [
+                        "bedrock-mantle:CallWithBearerToken", 
+                        "bedrock-mantle:Get*", 
+                        "bedrock-mantle:List*", 
+                        "bedrock-mantle:CreateInference"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "BedrockMantleAPIs"
                 }, 
                 {
                     "Action": [
