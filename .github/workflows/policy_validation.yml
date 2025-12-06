@@ -44,6 +44,11 @@ jobs:
       - name: Install python requirements
         run: python3 -m pip install -r ./automation/requirements.txt
 
+      - name: Sync with latest remote
+        run: |
+          git fetch origin master
+          git reset --hard origin/master
+
       - name: Retrieve the list of current AWS Managed Policies
         run: aws iam list-policies --scope AWS > policies-list.json
 
@@ -59,8 +64,6 @@ jobs:
           git add policies-list.json
           git commit -m "AccessAnalyzer - Policy Validation" || :
 
-      - name: Pull latest changes
-        run: git pull --rebase origin master
       - name: Push findings
         uses: ad-m/github-push-action@master
         with:
