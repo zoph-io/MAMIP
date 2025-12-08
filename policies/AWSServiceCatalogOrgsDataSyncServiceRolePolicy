@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2023-04-10T20:48:28Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-12-08T19:04:09Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -17,6 +17,19 @@
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Sid": "OrganizationsDataSyncToServiceCatalog"
+                }, 
+                {
+                    "Action": [
+                        "account:ListRegions"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "OrganizationsDataSyncToServiceCatalogRegions"
                 }
             ]
         }, 
