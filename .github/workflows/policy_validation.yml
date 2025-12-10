@@ -6,6 +6,11 @@ on:
 
 name: AAA - Policy Validation
 
+# Ensure only one instance runs at a time - cancel older runs
+concurrency:
+  group: policy-validation
+  cancel-in-progress: true
+
 env:
   project: "mamip"
 
@@ -44,28 +49,40 @@ jobs:
       - name: Install python requirements
         run: python3 -m pip install -r ./automation/requirements.txt
 
-      - name: Sync with latest remote
-        run: |
-          git fetch origin master
-          git reset --hard origin/master
-
       - name: Retrieve the list of current AWS Managed Policies
         run: aws iam list-policies --scope AWS > policies-list.json
 
       - name: AWS Access Analyzer - Policy Validation
         run: python3 ./automation/validate-batch.py
 
-      - name: Commit findings
+      - name: Commit and Push findings
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --local user.email "mamip@noreply"
           git config --local user.name "mamip-github-actions[bot]"
+
+          # Store our changes temporarily
+          git stash --include-untracked
+
+          # Sync with latest remote
+          git fetch origin master
+          git reset --hard origin/master
+
+          # Re-apply our changes
+          git stash pop || true
+
+          # Commit
           git add ./findings
           git add DEPRECATED.json
           git add policies-list.json
-          git commit -m "AccessAnalyzer - Policy Validation" || :
+          git commit -m "AccessAnalyzer - Policy Validation" || exit 0
 
-      - name: Push findings
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: master
+          # Push with retry logic
+          for i in 1 2 3; do
+            git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git HEAD:master && break
+            echo "Push failed, retrying ($i/3)..."
+            sleep 5
+            git fetch origin master
+            git rebase origin/master -X theirs || git rebase --abort
+          done
