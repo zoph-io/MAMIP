@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-12-02T15:04:06Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-12-10T01:04:12Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -28,6 +28,7 @@
                         "securityagent:BatchGetFindings", 
                         "securityagent:BatchGetPentestJobs", 
                         "securityagent:BatchGetPentests", 
+                        "securityagent:BatchGetSecurityTestContentMetadata", 
                         "securityagent:BatchGetTasks", 
                         "securityagent:CreateDocumentReview", 
                         "securityagent:CreatePentest", 
@@ -63,6 +64,6 @@
                 }
             ]
         }, 
-        "IsDefaultVersion": false
+        "IsDefaultVersion": true
     }
 }
