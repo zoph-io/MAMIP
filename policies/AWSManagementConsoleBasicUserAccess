@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-08-14T20:34:08Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-12-10T00:04:07Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -32,13 +32,15 @@
                         "q:GetConversation", 
                         "q:PassRequest", 
                         "resource-explorer-2:ListIndexes", 
-                        "resource-explorer-2:Search"
+                        "resource-explorer-2:Search", 
+                        "action-recommendations:ListRecommendedActions", 
+                        "account:GetAccountInformation"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow"
                 }
             ]
         }, 
-        "IsDefaultVersion": false
+        "IsDefaultVersion": true
     }
 }
