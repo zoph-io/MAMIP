@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-08-14T21:19:07Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2025-12-10T00:04:10Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -85,13 +85,15 @@
                         "resource-explorer-2:TagResource", 
                         "resource-explorer-2:UntagResource", 
                         "resource-explorer-2:UpdateIndexType", 
-                        "resource-explorer-2:UpdateView"
+                        "resource-explorer-2:UpdateView", 
+                        "action-recommendations:ListRecommendedActions", 
+                        "account:GetAccountInformation"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow"
                 }
             ]
         }, 
-        "IsDefaultVersion": false
+        "IsDefaultVersion": true
     }
 }
