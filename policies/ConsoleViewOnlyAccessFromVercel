@@ -1,0 +1,77 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-12-11T16:49:11Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "dsql:GetCluster", 
+                        "dsql:ListClusters", 
+                        "dsql:ListTagsForResource"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "DSQL"
+                }, 
+                {
+                    "Action": [
+                        "dynamodb:ListTables", 
+                        "dynamodb:ListTagsOfResource", 
+                        "dynamodb:DescribeTimeToLive", 
+                        "dynamodb:DescribeTable", 
+                        "dynamodb:DescribeLimits"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "DynamoDB"
+                }, 
+                {
+                    "Action": [
+                        "rds:Describe*", 
+                        "rds:ListTagsForResource", 
+                        "ec2:DescribeAvailabilityZones"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "Aurora"
+                }, 
+                {
+                    "Action": [
+                        "cloudwatch:DescribeAlarms", 
+                        "cloudwatch:GetMetricData", 
+                        "cloudwatch:GetMetricStatistics", 
+                        "cloudwatch:ListMetrics", 
+                        "logs:DescribeLogStreams", 
+                        "logs:GetLogEvents", 
+                        "tag:GetTagKeys", 
+                        "tag:GetTagValues"
+                    ], 
+                    "Resource": [
+                        "*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "Observability"
+                }, 
+                {
+                    "Action": [
+                        "application-autoscaling:DescribeScalableTargets", 
+                        "application-autoscaling:DescribeScalingActivities", 
+                        "application-autoscaling:DescribeScalingPolicies"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ApplicationAutoscalingDescribeActions"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
