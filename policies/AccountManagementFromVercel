@@ -1,0 +1,38 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2025-12-11T16:34:19Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "account:CloseAccount", 
+                        "bcm-recommended-actions:ListRecommendedActions", 
+                        "ce:GetCostAndUsage", 
+                        "cur:GetUsageReport", 
+                        "iam:ListSAMLProviders", 
+                        "freetier:GetFreeTierUsage", 
+                        "freetier:GetAccountPlanState"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow"
+                }, 
+                {
+                    "Action": [
+                        "iam:UpdateSamlProvider", 
+                        "iam:GetSamlProvider"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/VercelInstallId": "${aws:PrincipalTag/VercelInstallId}"
+                        }
+                    }
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
