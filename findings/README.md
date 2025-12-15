@@ -1,6 +1,10 @@
 # AWS Access Analyzer - Findings - 2025-12-15
 
+<<<<<<< Updated upstream
 - **Policies analyzed:** `1432`
+=======
+- **Policies analyzed:** `1433`
+>>>>>>> Stashed changes
 - **Errors:** `32`
   - [`AWSAccountActivityAccess`](./AWSAccountActivityAccess.json)
   - [`AWSAuditManagerAdministratorAccess`](./AWSAuditManagerAdministratorAccess.json)
