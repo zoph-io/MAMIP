@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2023-10-16T18:46:10Z", 
-        "VersionId": "v2", 
+        "CreateDate": "2025-12-15T21:19:10Z", 
+        "VersionId": "v3", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -110,6 +110,29 @@
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Sid": "ADXReadAccess"
+                }, 
+                {
+                    "Action": [
+                        "connect:ListInstances", 
+                        "profile:ListDomains", 
+                        "profile:GetDomain", 
+                        "profile:ListIntegrations", 
+                        "profile:ListAccountIntegrations", 
+                        "profile:ListProfileObjectTypes"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "CustomerProfilesIntegrationReadAccess"
+                }, 
+                {
+                    "Action": [
+                        "profile:PutProfileObjectType"
+                    ], 
+                    "Resource": [
+                        "arn:aws:profile:*:*:domains/*/object-types/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "CustomerProfilesIntegrationWriteAccess"
                 }
             ]
         }, 
