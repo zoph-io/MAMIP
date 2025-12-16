@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-09-29T21:04:07Z", 
-        "VersionId": "v2", 
+        "CreateDate": "2025-12-15T22:49:10Z", 
+        "VersionId": "v3", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -45,10 +45,7 @@
                         "arn:aws:ec2:*:*:instance/*", 
                         "arn:aws:ec2:*:*:network-interface/*", 
                         "arn:aws:ec2:*:*:launch-template/*", 
-                        "arn:aws:ec2:*:*:security-group/*", 
-                        "arn:aws:ec2:*:*:subnet/*", 
-                        "arn:aws:ec2:*:*:volume/*", 
-                        "arn:aws:ec2:*:*:image/*"
+                        "arn:aws:ec2:*:*:volume/*"
                     ], 
                     "Effect": "Allow", 
                     "Condition": {
@@ -57,6 +54,18 @@
                         }
                     }, 
                     "Sid": "ProvisionEC2InstancesForManagedInstances"
+                }, 
+                {
+                    "Action": [
+                        "ec2:CreateFleet"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:subnet/*", 
+                        "arn:aws:ec2:*:*:security-group/*", 
+                        "arn:aws:ec2:*::image/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "CreateFleetForSupportingResources"
                 }, 
                 {
                     "Action": [
