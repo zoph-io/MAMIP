@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-11-17T21:49:10Z", 
-        "VersionId": "v6", 
+        "CreateDate": "2025-12-16T20:34:12Z", 
+        "VersionId": "v7", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -23,7 +23,9 @@
                         "timestream-influxdb:UpdateDbCluster", 
                         "timestream-influxdb:DeleteDbCluster", 
                         "timestream-influxdb:ListDbClusters", 
-                        "timestream-influxdb:ListDbInstancesForCluster"
+                        "timestream-influxdb:ListDbInstancesForCluster", 
+                        "timestream-influxdb:RebootDbInstance", 
+                        "timestream-influxdb:RebootDbCluster"
                     ], 
                     "Resource": "arn:aws:timestream-influxdb:*:*:*", 
                     "Effect": "Allow", 
@@ -106,6 +108,6 @@
                 }
             ]
         }, 
-        "IsDefaultVersion": false
+        "IsDefaultVersion": true
     }
 }
