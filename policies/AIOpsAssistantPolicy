@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-09-24T15:34:07Z", 
-        "VersionId": "v3", 
+        "CreateDate": "2025-12-17T16:49:12Z", 
+        "VersionId": "v4", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -446,6 +446,9 @@
                         "kms:DescribeKey", 
                         "kms:ListResourceTags", 
                         "kms:ListKeys", 
+                        "kms:GetKeyRotationStatus", 
+                        "kms:ListAliases", 
+                        "kms:ListKeyRotations", 
                         "lakeformation:Describe*", 
                         "lakeformation:GetLFTag", 
                         "lakeformation:GetResourceLFTags", 
@@ -900,6 +903,6 @@
                 }
             ]
         }, 
-        "IsDefaultVersion": false
+        "IsDefaultVersion": true
     }
 }
