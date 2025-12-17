@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-11-17T22:49:09Z", 
-        "VersionId": "v21", 
+        "CreateDate": "2025-12-16T20:19:10Z", 
+        "VersionId": "v22", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -772,6 +772,7 @@
                         "elasticloadbalancing:DescribeTargetGroupAttributes", 
                         "elasticloadbalancing:DescribeTargetHealth", 
                         "events:DescribeRule", 
+                        "events:ListTagsForResource", 
                         "events:ListTargetsByRule", 
                         "iam:GetPolicy", 
                         "iam:GetPolicyVersion", 
@@ -826,6 +827,6 @@
                 }
             ]
         }, 
-        "IsDefaultVersion": false
+        "IsDefaultVersion": true
     }
 }
