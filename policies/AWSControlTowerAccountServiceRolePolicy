@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-11-05T23:19:09Z", 
-        "VersionId": "v3", 
+        "CreateDate": "2025-12-31T19:49:09Z", 
+        "VersionId": "v4", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -17,7 +17,9 @@
                             "events:detail-type": "false"
                         }, 
                         "StringEquals": {
-                            "events:ManagedBy": "controltower.amazonaws.com", 
+                            "events:ManagedBy": "controltower.amazonaws.com"
+                        }, 
+                        "ForAllValues:StringEquals": {
                             "events:detail-type": "Security Hub Findings - Imported"
                         }
                     }, 
