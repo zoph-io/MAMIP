@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-12-16T20:07:06Z", 
-        "VersionId": "v16", 
+        "CreateDate": "2026-01-15T15:04:08Z", 
+        "VersionId": "v17", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -49,6 +49,14 @@
                     "Resource": "arn:aws:ecs:*:*:task/*/*", 
                     "Effect": "Allow", 
                     "Sid": "SSMStartSessionAccess"
+                }, 
+                {
+                    "Action": [
+                        "ssmmessages:OpenDataChannel"
+                    ], 
+                    "Resource": "arn:aws:ssm:*:*:session/*", 
+                    "Effect": "Allow", 
+                    "Sid": "SSMOpenDataChannelAccess"
                 }, 
                 {
                     "Action": [
