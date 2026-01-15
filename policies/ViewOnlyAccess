@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2026-01-08T16:34:15Z", 
-        "VersionId": "v28", 
+        "CreateDate": "2026-01-15T18:34:12Z", 
+        "VersionId": "v29", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -341,7 +341,14 @@
                         "workdocs:DescribeAvailableDirectories", 
                         "workdocs:DescribeInstances", 
                         "workmail:Describe*", 
-                        "workspaces:Describe*"
+                        "workspaces:Describe*", 
+                        "xray:GetEncryptionConfig", 
+                        "xray:GetGroups", 
+                        "xray:GetSamplingRules", 
+                        "xray:GetSamplingStatisticSummaries", 
+                        "xray:GetSamplingTargets", 
+                        "xray:GetTraceSegmentDestination", 
+                        "xray:ListResourcePolicies"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
