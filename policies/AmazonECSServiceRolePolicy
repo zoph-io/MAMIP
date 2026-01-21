@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-11-20T23:49:10Z", 
-        "VersionId": "v14", 
+        "CreateDate": "2026-01-21T18:04:08Z", 
+        "VersionId": "v15", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -155,6 +155,21 @@
                     ], 
                     "Effect": "Allow", 
                     "Sid": "ExecuteCommand"
+                }, 
+                {
+                    "Action": [
+                        "ssmmessages:OpenDataChannel"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ssm:*:*:session/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:PrincipalAccount": "${aws:ResourceAccount}"
+                        }
+                    }, 
+                    "Sid": "OpenDataChannel"
                 }, 
                 {
                     "Action": [
