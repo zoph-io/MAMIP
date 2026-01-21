@@ -1,0 +1,28 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2026-01-17T01:04:07Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "sagemaker:CreateHubContentPresignedUrls"
+                    ], 
+                    "Resource": [
+                        "arn:aws:sagemaker:*:*:hub/SageMakerPublicHub", 
+                        "arn:aws:sagemaker:*:*:hub-content/SageMakerPublicHub/*/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "CreatePresignedUrlAccess"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
