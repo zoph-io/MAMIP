@@ -1,0 +1,327 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2026-01-27T20:34:09Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "s3:DeleteObject"
+                    ], 
+                    "Resource": [
+                        "arn:aws:s3:::hyperpod-tls*/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "DeleteObjectsPermission"
+                }, 
+                {
+                    "Action": [
+                        "s3:GetObject"
+                    ], 
+                    "Resource": [
+                        "arn:aws:s3:::hyperpod-tls*/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "s3:ExistingObjectTag/CreatedBy": "HyperPodInference", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "S3GetObjectAccess"
+                }, 
+                {
+                    "Action": [
+                        "s3:PutObject", 
+                        "s3:PutObjectTagging"
+                    ], 
+                    "Resource": [
+                        "arn:aws:s3:::hyperpod-tls*/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "s3:RequestObjectTag/CreatedBy": "HyperPodInference", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "S3PutObjectAccess"
+                }, 
+                {
+                    "Action": [
+                        "ecr:GetAuthorizationToken"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ECRAuthorization"
+                }, 
+                {
+                    "Action": [
+                        "ecr:GetDownloadUrlForLayer", 
+                        "ecr:BatchGetImage"
+                    ], 
+                    "Resource": "arn:aws:ecr:*:*:repository/*", 
+                    "Effect": "Allow", 
+                    "Sid": "ECRRepositoryAccess"
+                }, 
+                {
+                    "Action": [
+                        "ec2:DescribeVpcs", 
+                        "ec2:DescribeInstanceTypes", 
+                        "ec2:DescribeNetworkInterfaces", 
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeDhcpOptions", 
+                        "ec2:DescribeSecurityGroups"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "EC2DescribeAccess"
+                }, 
+                {
+                    "Action": [
+                        "ec2:CreateNetworkInterface", 
+                        "ec2:CreateNetworkInterfacePermission"
+                    ], 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:network-interface/*", 
+                        "arn:aws:ec2:*:*:subnet/*", 
+                        "arn:aws:ec2:*:*:security-group/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "EC2NetworkInterfaceActions"
+                }, 
+                {
+                    "Action": [
+                        "eks:DescribeCluster", 
+                        "eks-auth:AssumeRoleForPodIdentity"
+                    ], 
+                    "Resource": "arn:aws:eks:*:*:cluster/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "EKSClusterAccess"
+                }, 
+                {
+                    "Action": [
+                        "eks:AssociateAccessPolicy", 
+                        "eks:DisassociateAccessPolicy"
+                    ], 
+                    "Resource": "arn:aws:eks:*:*:access-entry/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "eks:policyarn": "arn:aws:eks::aws:cluster-access-policy/AmazonSagemakerHyperpodInferenceMonitoringPolicy"
+                        }
+                    }, 
+                    "Sid": "EKSAccessEntryPolicyAssociation"
+                }, 
+                {
+                    "Action": [
+                        "elasticloadbalancing:DescribeLoadBalancers"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "ELBListAndDescribeAccess"
+                }, 
+                {
+                    "Action": [
+                        "fsx:DescribeFileSystems"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "FSxAccess"
+                }, 
+                {
+                    "Action": [
+                        "acm:AddTagsToCertificate", 
+                        "acm:ImportCertificate"
+                    ], 
+                    "Resource": "arn:aws:acm:*:*:certificate/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:RequestTag/CreatedBy": "HyperPodInference", 
+                            "aws:ResourceTag/CreatedBy": "HyperPodInference", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }, 
+                        "ForAllValues:StringEquals": {
+                            "aws:TagKeys": "CreatedBy"
+                        }
+                    }, 
+                    "Sid": "CertificateImportPermission"
+                }, 
+                {
+                    "Action": "acm:DeleteCertificate", 
+                    "Resource": "arn:aws:acm:*:*:certificate/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/CreatedBy": "HyperPodInference", 
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "CertificateDeletePermission"
+                }, 
+                {
+                    "Action": [
+                        "iam:PassRole"
+                    ], 
+                    "Resource": "arn:aws:iam::*:role/SageMakerHyperPodInference*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:PassedToService": "sagemaker.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "AllowPassRoleToSageMaker"
+                }, 
+                {
+                    "Action": [
+                        "cloudwatch:PutMetricData"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "cloudwatch:namespace": "HyperPodInference"
+                        }
+                    }, 
+                    "Sid": "CloudWatchMetricsAccess"
+                }, 
+                {
+                    "Action": [
+                        "logs:PutLogEvents", 
+                        "logs:CreateLogStream", 
+                        "logs:CreateLogGroup"
+                    ], 
+                    "Resource": [
+                        "arn:aws:logs:*:*:log-group:*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "CloudWatchLogsAccess"
+                }, 
+                {
+                    "Action": [
+                        "sagemaker:DescribeModel", 
+                        "sagemaker:DescribeEndpointConfig", 
+                        "sagemaker:DescribeEndpoint", 
+                        "sagemaker:DescribeCluster", 
+                        "sagemaker:DescribeClusterInference", 
+                        "sagemaker:UpdateClusterInference", 
+                        "sagemaker:DescribeHubContent"
+                    ], 
+                    "Resource": [
+                        "arn:aws:sagemaker:*:*:model/*", 
+                        "arn:aws:sagemaker:*:*:endpoint/*", 
+                        "arn:aws:sagemaker:*:*:endpointconfig/*", 
+                        "arn:aws:sagemaker:*:*:cluster/*", 
+                        "arn:aws:sagemaker:*:*:hub-content/*", 
+                        "arn:aws:sagemaker:*:*:hub/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }, 
+                    "Sid": "SageMakerAccess"
+                }, 
+                {
+                    "Action": [
+                        "sagemaker:CreateModel", 
+                        "sagemaker:CreateEndpointConfig", 
+                        "sagemaker:CreateEndpoint"
+                    ], 
+                    "Resource": [
+                        "arn:aws:sagemaker:*:*:model/*", 
+                        "arn:aws:sagemaker:*:*:endpoint/*", 
+                        "arn:aws:sagemaker:*:*:endpoint-config/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:RequestTag/CreatedBy": "HyperPodInference"
+                        }
+                    }, 
+                    "Sid": "SageMakerCreateAccess"
+                }, 
+                {
+                    "Action": [
+                        "sagemaker:AddTags"
+                    ], 
+                    "Resource": [
+                        "arn:aws:sagemaker:*:*:model/*", 
+                        "arn:aws:sagemaker:*:*:endpoint/*", 
+                        "arn:aws:sagemaker:*:*:endpoint-config/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "sagemaker:TaggingAction": [
+                                "CreateModel", 
+                                "CreateEndpointConfig", 
+                                "CreateEndpoint"
+                            ]
+                        }
+                    }, 
+                    "Sid": "SageMakerTagging"
+                }, 
+                {
+                    "Action": [
+                        "sagemaker:DeleteModel", 
+                        "sagemaker:DeleteEndpointConfig", 
+                        "sagemaker:DeleteEndpoint", 
+                        "sagemaker:UpdateEndpoint"
+                    ], 
+                    "Resource": [
+                        "arn:aws:sagemaker:*:*:model/*", 
+                        "arn:aws:sagemaker:*:*:endpoint/*", 
+                        "arn:aws:sagemaker:*:*:endpoint-config/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/CreatedBy": "HyperPodInference"
+                        }
+                    }, 
+                    "Sid": "SageMakerDeleteAccess"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
