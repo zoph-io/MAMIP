@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-11-21T00:04:06Z", 
-        "VersionId": "v24", 
+        "CreateDate": "2026-01-27T21:04:10Z", 
+        "VersionId": "v25", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -1936,7 +1936,8 @@
                     ], 
                     "Resource": [
                         "arn:aws:sagemaker:*:*:domain/*", 
-                        "arn:aws:sagemaker:*:*:mlflow-tracking-server/*"
+                        "arn:aws:sagemaker:*:*:mlflow-tracking-server/*", 
+                        "arn:aws:sagemaker:*:*:mlflow-app/*"
                     ], 
                     "Effect": "Allow", 
                     "Condition": {
@@ -1956,7 +1957,8 @@
                     ], 
                     "Resource": [
                         "arn:aws:sagemaker:*:*:domain/*", 
-                        "arn:aws:sagemaker:*:*:mlflow-tracking-server/*"
+                        "arn:aws:sagemaker:*:*:mlflow-tracking-server/*", 
+                        "arn:aws:sagemaker:*:*:mlflow-app/*"
                     ], 
                     "Effect": "Allow", 
                     "Condition": {
@@ -2171,6 +2173,33 @@
                         }
                     }, 
                     "Sid": "MLFlowDelete"
+                }, 
+                {
+                    "Action": [
+                        "sagemaker:CreateMlflowApp"
+                    ], 
+                    "Resource": "arn:aws:sagemaker:*:*:mlflow-app/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "Null": {
+                            "aws:RequestTag/AmazonDataZoneProject": "false"
+                        }
+                    }, 
+                    "Sid": "MLFlowServerlessCreate"
+                }, 
+                {
+                    "Action": [
+                        "sagemaker:DeleteMlflowApp", 
+                        "sagemaker:DescribeMlflowApp"
+                    ], 
+                    "Resource": "arn:aws:sagemaker:*:*:mlflow-app/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "Null": {
+                            "aws:ResourceTag/AmazonDataZoneProject": "false"
+                        }
+                    }, 
+                    "Sid": "MLFlowServerlessDescribeDelete"
                 }, 
                 {
                     "Action": [
