@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-11-21T17:19:10Z", 
-        "VersionId": "v12", 
+        "CreateDate": "2026-01-27T21:19:09Z", 
+        "VersionId": "v13", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -143,6 +143,24 @@
                         }
                     }, 
                     "Sid": "SageMakerMlflowPermission"
+                }, 
+                {
+                    "Action": [
+                        "sagemaker:CreateMlflowApp", 
+                        "sagemaker:CreatePresignedMlflowAppUrl", 
+                        "sagemaker:DeleteMlflowApp", 
+                        "sagemaker:DescribeMlflowApp", 
+                        "sagemaker:UpdateMlflowApp", 
+                        "sagemaker:CallMlflowAppApi"
+                    ], 
+                    "Resource": "arn:aws:sagemaker:*:*:mlflow-app/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/AmazonDataZoneProject": "${aws:PrincipalTag/AmazonDataZoneProject}"
+                        }
+                    }, 
+                    "Sid": "SageMakerMlflowServerlessPermission"
                 }, 
                 {
                     "Action": [
@@ -353,7 +371,8 @@
                         "sagemaker:ListArtifacts", 
                         "sagemaker:ListHubs", 
                         "sagemaker:ListPipelines", 
-                        "sagemaker:ListContexts"
+                        "sagemaker:ListContexts", 
+                        "sagemaker:ListMlflowApps"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
