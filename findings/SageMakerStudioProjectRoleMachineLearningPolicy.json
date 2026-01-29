@@ -1,6 +1,6 @@
 [
   {
-    "findingDetails": "The 23245 characters in the identity policy, excluding whitespace, exceed the 10240 character maximum for inline and managed policies. We recommend that you use multiple granular policies.",
+    "findingDetails": "The 23692 characters in the identity policy, excluding whitespace, exceed the 10240 character maximum for inline and managed policies. We recommend that you use multiple granular policies.",
     "findingType": "WARNING",
     "issueCode": "POLICY_SIZE_EXCEEDS_IDENTITY_POLICY_QUOTA",
     "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-general-warning-policy-size-exceeds-identity-policy-quota",
@@ -15,8 +15,8 @@
           },
           "end": {
             "line": 1,
-            "column": 24259,
-            "offset": 24259
+            "column": 24724,
+            "offset": 24724
           }
         }
       }
@@ -101,25 +101,25 @@
             "value": "Statement"
           },
           {
-            "index": 21
+            "index": 8
           },
           {
             "value": "Action"
           },
           {
-            "index": 0
+            "index": 5
           }
         ],
         "span": {
           "start": {
             "line": 1,
-            "column": 8821,
-            "offset": 8821
+            "column": 3091,
+            "offset": 3091
           },
           "end": {
             "line": 1,
-            "column": 8859,
-            "offset": 8859
+            "column": 3119,
+            "offset": 3119
           }
         }
       },
@@ -129,35 +129,7 @@
             "value": "Statement"
           },
           {
-            "index": 21
-          },
-          {
-            "value": "Action"
-          },
-          {
-            "index": 2
-          }
-        ],
-        "span": {
-          "start": {
-            "line": 1,
-            "column": 8917,
-            "offset": 8917
-          },
-          "end": {
-            "line": 1,
-            "column": 8945,
-            "offset": 8945
-          }
-        }
-      },
-      {
-        "path": [
-          {
-            "value": "Statement"
-          },
-          {
-            "index": 21
+            "index": 8
           },
           {
             "value": "Condition"
@@ -172,13 +144,108 @@
         "span": {
           "start": {
             "line": 1,
-            "column": 9168,
-            "offset": 9168
+            "column": 3222,
+            "offset": 3222
           },
           "end": {
             "line": 1,
-            "column": 9207,
-            "offset": 9207
+            "column": 3261,
+            "offset": 3261
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "Using the effect Allow with the condition key aws:ResourceTag/AmazonDataZoneProject and actions for services with the following prefixes does not affect the policy: sagemaker. The actions for the listed service are not allowed by this statement. We recommend that you move these actions to a different statement without this condition key.",
+    "findingType": "SUGGESTION",
+    "issueCode": "ALLOW_WITH_UNSUPPORTED_TAG_CONDITION_KEY_FOR_SERVICE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-allow-with-unsupported-tag-condition-key-for-service",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 22
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 0
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 9286,
+            "offset": 9286
+          },
+          "end": {
+            "line": 1,
+            "column": 9324,
+            "offset": 9324
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 22
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 2
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 9382,
+            "offset": 9382
+          },
+          "end": {
+            "line": 1,
+            "column": 9410,
+            "offset": 9410
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 22
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringEquals"
+          },
+          {
+            "key": "aws:ResourceTag/AmazonDataZoneProject"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 9633,
+            "offset": 9633
+          },
+          "end": {
+            "line": 1,
+            "column": 9672,
+            "offset": 9672
           }
         }
       }
