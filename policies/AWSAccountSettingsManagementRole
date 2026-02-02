@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-12-11T17:49:09Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2026-01-30T21:19:07Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -92,7 +92,9 @@
                 {
                     "Action": [
                         "sso:ListInstances", 
-                        "sso:ListApplications"
+                        "sso:ListApplications", 
+                        "sso:DescribeApplication", 
+                        "sso:DescribeInstance"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow"
