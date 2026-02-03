@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-10-22T23:49:06Z", 
-        "VersionId": "v10", 
+        "CreateDate": "2026-02-02T22:19:08Z", 
+        "VersionId": "v11", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -243,12 +243,16 @@
                 }, 
                 {
                     "Action": [
-                        "iam:GetInstanceProfile", 
                         "iam:CreateInstanceProfile", 
                         "iam:DeleteInstanceProfile", 
                         "iam:RemoveRoleFromInstanceProfile"
                     ], 
                     "Resource": "arn:aws:iam::*:instance-profile/eks*", 
+                    "Effect": "Allow"
+                }, 
+                {
+                    "Action": "iam:GetInstanceProfile", 
+                    "Resource": "arn:aws:iam::*:instance-profile/*", 
                     "Effect": "Allow"
                 }, 
                 {
