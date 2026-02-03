@@ -50,7 +50,7 @@
             "value": "Statement"
           },
           {
-            "index": 18
+            "index": 19
           },
           {
             "value": "Condition"
@@ -65,52 +65,13 @@
         "span": {
           "start": {
             "line": 1,
-            "column": 5662,
-            "offset": 5662
+            "column": 5742,
+            "offset": 5742
           },
           "end": {
             "line": 1,
-            "column": 5665,
-            "offset": 5665
-          }
-        }
-      }
-    ]
-  },
-  {
-    "findingDetails": "We recommend replacing the key aws:ResourceTag/eks:eks-cluster-name in the condition block of StringLike with {aws:ResourceTag/eks:eks-cluster-name: false} to ensure better enforcement of the condition.",
-    "findingType": "SUGGESTION",
-    "issueCode": "EQUIVALENT_TO_NULL_FALSE",
-    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
-    "locations": [
-      {
-        "path": [
-          {
-            "value": "Statement"
-          },
-          {
-            "index": 20
-          },
-          {
-            "value": "Condition"
-          },
-          {
-            "value": "StringLike"
-          },
-          {
-            "value": "aws:ResourceTag/eks:eks-cluster-name"
-          }
-        ],
-        "span": {
-          "start": {
-            "line": 1,
-            "column": 5999,
-            "offset": 5999
-          },
-          "end": {
-            "line": 1,
-            "column": 6002,
-            "offset": 6002
+            "column": 5745,
+            "offset": 5745
           }
         }
       }
@@ -143,13 +104,13 @@
         "span": {
           "start": {
             "line": 1,
-            "column": 6147,
-            "offset": 6147
+            "column": 6079,
+            "offset": 6079
           },
           "end": {
             "line": 1,
-            "column": 6150,
-            "offset": 6150
+            "column": 6082,
+            "offset": 6082
           }
         }
       }
@@ -182,13 +143,52 @@
         "span": {
           "start": {
             "line": 1,
-            "column": 6530,
-            "offset": 6530
+            "column": 6227,
+            "offset": 6227
           },
           "end": {
             "line": 1,
-            "column": 6533,
-            "offset": 6533
+            "column": 6230,
+            "offset": 6230
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "We recommend replacing the key aws:ResourceTag/eks:eks-cluster-name in the condition block of StringLike with {aws:ResourceTag/eks:eks-cluster-name: false} to ensure better enforcement of the condition.",
+    "findingType": "SUGGESTION",
+    "issueCode": "EQUIVALENT_TO_NULL_FALSE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 23
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringLike"
+          },
+          {
+            "value": "aws:ResourceTag/eks:eks-cluster-name"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 6610,
+            "offset": 6610
+          },
+          "end": {
+            "line": 1,
+            "column": 6613,
+            "offset": 6613
           }
         }
       }
