@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2025-04-29T19:07:07Z", 
-        "VersionId": "v7", 
+        "CreateDate": "2026-02-03T22:34:10Z", 
+        "VersionId": "v8", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -17,6 +17,7 @@
                 {
                     "Action": [
                         "account:GetAccountInformation", 
+                        "account:GetGovCloudAccountInformation", 
                         "account:GetPrimaryEmail", 
                         "account:ListRegions", 
                         "iam:CreateServiceLinkedRole", 
