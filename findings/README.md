@@ -1,6 +1,6 @@
-# AWS Access Analyzer - Findings - 2026-02-05
+# AWS Access Analyzer - Findings - 2026-02-06
 
-- **Policies analyzed:** `1436`
+- **Policies analyzed:** `1438`
 - **Errors:** `31`
   - [`AWSAccountActivityAccess`](./AWSAccountActivityAccess.json)
   - [`AWSAuditManagerAdministratorAccess`](./AWSAuditManagerAdministratorAccess.json)
