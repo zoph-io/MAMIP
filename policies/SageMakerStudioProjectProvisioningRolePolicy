@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2026-01-27T21:04:10Z", 
-        "VersionId": "v25", 
+        "CreateDate": "2026-02-09T15:04:09Z", 
+        "VersionId": "v26", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -48,7 +48,7 @@
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
                     }, 
-                    "Sid": "CfnManage"
+                    "Sid": "CfnMng"
                 }, 
                 {
                     "Action": [
@@ -67,10 +67,34 @@
                     "Sid": "CfnDelete"
                 }, 
                 {
-                    "Action": "cloudformation:ValidateTemplate", 
+                    "Action": [
+                        "airflow:GetEnvironment", 
+                        "bedrock:ListEvaluationJobs", 
+                        "cloudformation:ValidateTemplate", 
+                        "codecommit:ListRepositories", 
+                        "eks:DescribeCluster", 
+                        "elasticmapreduce:CreateSecurityConfiguration", 
+                        "elasticmapreduce:DeleteSecurityConfiguration", 
+                        "elasticmapreduce:DescribeSecurityConfiguration", 
+                        "glue:DescribeConnectionType", 
+                        "glue:ListConnectionTypes", 
+                        "glue:*GlueIdentityCenterConfiguration", 
+                        "iam:ListPolicies", 
+                        "logs:DescribeLogGroups", 
+                        "redshift-data:DescribeStatement", 
+                        "redshift-data:GetStatementResult", 
+                        "redshift-serverless:ListNamespaces", 
+                        "redshift-serverless:ListWorkgroups", 
+                        "redshift:DescribeDataShares", 
+                        "redshift:DescribeDataSharesForConsumer", 
+                        "redshift:GetResourcePolicy", 
+                        "sagemaker:DescribeDomain", 
+                        "sagemaker:ListDomains", 
+                        "secretsmanager:GetRandomPassword"
+                    ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
-                    "Sid": "ValidateCfn"
+                    "Sid": "Discovery"
                 }, 
                 {
                     "Action": [
@@ -89,7 +113,7 @@
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
-                    "Sid": "LFManage"
+                    "Sid": "LFMng"
                 }, 
                 {
                     "Action": "s3:GetObject", 
@@ -171,14 +195,6 @@
                 }, 
                 {
                     "Action": [
-                        "codecommit:ListRepositories"
-                    ], 
-                    "Resource": "*", 
-                    "Effect": "Allow", 
-                    "Sid": "CcList"
-                }, 
-                {
-                    "Action": [
                         "kms:Decrypt", 
                         "kms:ReEncryptTo", 
                         "kms:ReEncryptFrom", 
@@ -237,7 +253,7 @@
                             "iam:PermissionsBoundary": "arn:aws:iam::aws:policy/SageMakerStudioProjectUserRolePermissionsBoundary"
                         }
                     }, 
-                    "Sid": "IAMManage"
+                    "Sid": "IAMMng"
                 }, 
                 {
                     "Action": [
@@ -256,7 +272,7 @@
                             "iam:PermissionsBoundary": "arn:aws:iam::aws:policy/SageMakerStudioProjectUserRolePermissionsBoundary"
                         }
                     }, 
-                    "Sid": "IamDzManage"
+                    "Sid": "IamDzMng"
                 }, 
                 {
                     "Action": [
@@ -301,7 +317,7 @@
                             ]
                         }
                     }, 
-                    "Sid": "IamManage"
+                    "Sid": "IamMng"
                 }, 
                 {
                     "Action": [
@@ -322,7 +338,7 @@
                             ]
                         }
                     }, 
-                    "Sid": "IamManageAdmin"
+                    "Sid": "IamMngAdmin"
                 }, 
                 {
                     "Action": [
@@ -349,7 +365,7 @@
                             ]
                         }
                     }, 
-                    "Sid": "IamManageBR"
+                    "Sid": "IamMngBR"
                 }, 
                 {
                     "Action": [
@@ -417,7 +433,7 @@
                             ]
                         }
                     }, 
-                    "Sid": "AdminProjectTagRoleManagement"
+                    "Sid": "AdminProjectTagRoleMng"
                 }, 
                 {
                     "Action": [
@@ -530,7 +546,7 @@
                             "aws:ResourceTag/AmazonDataZoneProject": "false"
                         }
                     }, 
-                    "Sid": "ManageRoles"
+                    "Sid": "MngRoles"
                 }, 
                 {
                     "Action": [
@@ -550,7 +566,7 @@
                             "aws:ResourceTag/AmazonDataZoneProject": "false"
                         }
                     }, 
-                    "Sid": "DzManageRoles"
+                    "Sid": "DzMngRoles"
                 }, 
                 {
                     "Action": [
@@ -595,25 +611,7 @@
                         "arn:aws:iam::*:policy/SageMakerStudioQueryExecutionRolePolicy"
                     ], 
                     "Effect": "Allow", 
-                    "Sid": "DzManagePolicy"
-                }, 
-                {
-                    "Action": [
-                        "iam:ListPolicies"
-                    ], 
-                    "Resource": "*", 
-                    "Effect": "Allow", 
-                    "Sid": "ListPolicy"
-                }, 
-                {
-                    "Action": [
-                        "glue:ListConnectionTypes", 
-                        "glue:DescribeConnectionType", 
-                        "glue:*GlueIdentityCenterConfiguration"
-                    ], 
-                    "Resource": "*", 
-                    "Effect": "Allow", 
-                    "Sid": "GlueConnection"
+                    "Sid": "DzMngPolicy"
                 }, 
                 {
                     "Action": [
@@ -871,7 +869,7 @@
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
                     }, 
-                    "Sid": "GlueConnManage"
+                    "Sid": "GlueConnMng"
                 }, 
                 {
                     "Action": [
@@ -971,7 +969,7 @@
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
                     }, 
-                    "Sid": "ManageConnection"
+                    "Sid": "MngConnection"
                 }, 
                 {
                     "Action": [
@@ -987,7 +985,7 @@
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
                     }, 
-                    "Sid": "ManageCatalogConn"
+                    "Sid": "MngCatalogConn"
                 }, 
                 {
                     "Action": [
@@ -1066,7 +1064,9 @@
                 {
                     "Action": [
                         "lambda:CreateFunction", 
-                        "lambda:DeleteFunction"
+                        "lambda:DeleteFunction", 
+                        "lambda:GetFunctionConfiguration", 
+                        "lambda:UpdateFunctionConfiguration"
                     ], 
                     "Resource": [
                         "arn:aws:lambda:*:*:function:athenafederatedcatalog*"
@@ -1080,7 +1080,7 @@
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
                     }, 
-                    "Sid": "LambdaManage"
+                    "Sid": "LambdaMng"
                 }, 
                 {
                     "Action": [
@@ -1100,25 +1100,6 @@
                         }
                     }, 
                     "Sid": "LambdaGet"
-                }, 
-                {
-                    "Action": [
-                        "lambda:GetFunctionConfiguration", 
-                        "lambda:UpdateFunctionConfiguration"
-                    ], 
-                    "Resource": [
-                        "arn:aws:lambda:*:*:function:athenafederatedcatalog*"
-                    ], 
-                    "Effect": "Allow", 
-                    "Condition": {
-                        "Null": {
-                            "aws:ResourceTag/AmazonDataZoneProject": "false"
-                        }, 
-                        "StringEquals": {
-                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
-                        }
-                    }, 
-                    "Sid": "LambdaUpdate"
                 }, 
                 {
                     "Action": [
@@ -1347,7 +1328,7 @@
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
                     }, 
-                    "Sid": "RSManage"
+                    "Sid": "RSMng"
                 }, 
                 {
                     "Action": [
@@ -1459,7 +1440,7 @@
                         "arn:aws:ec2:*:*:security-group/*"
                     ], 
                     "Effect": "Allow", 
-                    "Sid": "SGManage"
+                    "Sid": "SGMng"
                 }, 
                 {
                     "Action": [
@@ -1511,13 +1492,7 @@
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
-                    "Sid": "EC2Describe"
-                }, 
-                {
-                    "Action": "logs:DescribeLogGroups", 
-                    "Resource": "*", 
-                    "Effect": "Allow", 
-                    "Sid": "DescribeLG"
+                    "Sid": "EC2Mng"
                 }, 
                 {
                     "Action": [
@@ -1584,7 +1559,7 @@
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
                     }, 
-                    "Sid": "ManageLG"
+                    "Sid": "MngLG"
                 }, 
                 {
                     "Action": [
@@ -1607,7 +1582,7 @@
                             ]
                         }
                     }, 
-                    "Sid": "AthenaManage"
+                    "Sid": "AthenaMng"
                 }, 
                 {
                     "Action": [
@@ -1685,7 +1660,7 @@
                             "aws:ResourceTag/CreatedBy": "false"
                         }
                     }, 
-                    "Sid": "ManageSecret"
+                    "Sid": "MngSecret"
                 }, 
                 {
                     "Action": [
@@ -1760,6 +1735,34 @@
                     "Sid": "SecretKms"
                 }, 
                 {
+                    "Action": "kms:Decrypt", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ArnLike": {
+                            "kms:EncryptionContext:aws:sso:instance-arn": "arn:*:sso:::instance/*"
+                        }, 
+                        "StringLike": {
+                            "kms:ViaService": "sso.*.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "SsoKms"
+                }, 
+                {
+                    "Action": "kms:Decrypt", 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ArnLike": {
+                            "kms:EncryptionContext:aws:identitystore:identitystore-arn": "arn:*:identitystore::*:identitystore/*"
+                        }, 
+                        "StringLike": {
+                            "kms:ViaService": "identitystore.*.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "IdStoreKms"
+                }, 
+                {
                     "Action": "iam:CreateServiceLinkedRole", 
                     "Resource": [
                         "arn:aws:iam::*:role/aws-service-role/neptune-graph.amazonaws.com/AWSServiceRoleForNeptuneGraph", 
@@ -1775,51 +1778,11 @@
                 }, 
                 {
                     "Action": [
-                        "redshift-serverless:ListNamespaces", 
-                        "redshift-serverless:ListWorkgroups", 
-                        "redshift:GetResourcePolicy"
-                    ], 
-                    "Resource": "*", 
-                    "Effect": "Allow", 
-                    "Sid": "RedshiftList"
-                }, 
-                {
-                    "Action": [
                         "redshift-data:ExecuteStatement", 
-                        "redshift:GetResourcePolicy", 
-                        "redshift-serverless:GetCredentials"
-                    ], 
-                    "Resource": [
-                        "arn:aws:redshift-serverless:*:*:namespace/*", 
-                        "arn:aws:redshift-serverless:*:*:workgroup/*"
-                    ], 
-                    "Effect": "Allow", 
-                    "Condition": {
-                        "Null": {
-                            "aws:ResourceTag/AmazonDataZoneProject": "false"
-                        }, 
-                        "StringEquals": {
-                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
-                        }
-                    }, 
-                    "Sid": "RssDbRole"
-                }, 
-                {
-                    "Action": [
-                        "redshift-data:DescribeStatement", 
-                        "redshift-data:GetStatementResult", 
-                        "redshift:DescribeDataSharesForConsumer", 
-                        "redshift:DescribeDataShares"
-                    ], 
-                    "Resource": "*", 
-                    "Effect": "Allow", 
-                    "Sid": "RedshiftData"
-                }, 
-                {
-                    "Action": [
+                        "redshift-serverless:GetCredentials", 
+                        "redshift-serverless:UntagResource", 
                         "redshift-serverless:UpdateNamespace", 
-                        "redshift-serverless:UpdateWorkgroup", 
-                        "redshift-serverless:UntagResource"
+                        "redshift-serverless:UpdateWorkgroup"
                     ], 
                     "Resource": [
                         "arn:aws:redshift-serverless:*:*:namespace/*", 
@@ -1834,7 +1797,7 @@
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
                     }, 
-                    "Sid": "RedshiftManage"
+                    "Sid": "RssMng"
                 }, 
                 {
                     "Action": [
@@ -1858,12 +1821,6 @@
                         }
                     }, 
                     "Sid": "RedshiftKms"
-                }, 
-                {
-                    "Action": "secretsmanager:GetRandomPassword", 
-                    "Resource": "*", 
-                    "Effect": "Allow", 
-                    "Sid": "GetRandom"
                 }, 
                 {
                     "Action": [
@@ -1986,16 +1943,7 @@
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
                     }, 
-                    "Sid": "ManageSMD"
-                }, 
-                {
-                    "Action": [
-                        "sagemaker:ListDomains", 
-                        "sagemaker:DescribeDomain"
-                    ], 
-                    "Resource": "*", 
-                    "Effect": "Allow", 
-                    "Sid": "SMDManage"
+                    "Sid": "MngSMD"
                 }, 
                 {
                     "Action": "sagemaker:DeleteApp", 
@@ -2071,31 +2019,12 @@
                 }, 
                 {
                     "Action": [
-                        "emr-serverless:UpdateApplication", 
-                        "emr-serverless:DeleteApplication"
-                    ], 
-                    "Resource": [
-                        "*"
-                    ], 
-                    "Effect": "Allow", 
-                    "Condition": {
-                        "Null": {
-                            "aws:ResourceTag/AmazonDataZoneProject": "false"
-                        }, 
-                        "StringEquals": {
-                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
-                        }
-                    }, 
-                    "Sid": "EmrSManage"
-                }, 
-                {
-                    "Action": [
+                        "emr-serverless:DeleteApplication", 
                         "emr-serverless:GetApplication", 
-                        "emr-serverless:StopApplication"
+                        "emr-serverless:StopApplication", 
+                        "emr-serverless:UpdateApplication"
                     ], 
-                    "Resource": [
-                        "*"
-                    ], 
+                    "Resource": "*", 
                     "Effect": "Allow", 
                     "Condition": {
                         "Null": {
@@ -2105,7 +2034,7 @@
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
                     }, 
-                    "Sid": "EmrSGetStop"
+                    "Sid": "EmrSMng"
                 }, 
                 {
                     "Action": "ec2:CreateNetworkInterface", 
@@ -2216,7 +2145,7 @@
                             "aoss:index": "bedrock-ide-*"
                         }
                     }, 
-                    "Sid": "AossManage"
+                    "Sid": "AossMng"
                 }, 
                 {
                     "Action": [
@@ -2232,7 +2161,7 @@
                             "aoss:collection": "bedrock-ide-*"
                         }
                     }, 
-                    "Sid": "ManageAossPolicies"
+                    "Sid": "MngAossPolicies"
                 }, 
                 {
                     "Action": "aoss:BatchGetCollection", 
@@ -2279,7 +2208,7 @@
                             "aws:ResourceTag/AmazonDataZoneProject": "false"
                         }
                     }, 
-                    "Sid": "ManageNeptune"
+                    "Sid": "MngNeptune"
                 }, 
                 {
                     "Action": [
@@ -2299,7 +2228,7 @@
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
                     }, 
-                    "Sid": "S3VectorsManage"
+                    "Sid": "S3VectorsMng"
                 }, 
                 {
                     "Action": [
@@ -2419,7 +2348,7 @@
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
                     }, 
-                    "Sid": "BRManage"
+                    "Sid": "BRMng"
                 }, 
                 {
                     "Action": "bedrock:TagResource", 
@@ -2439,12 +2368,6 @@
                     "Sid": "TagBR"
                 }, 
                 {
-                    "Action": "bedrock:ListEvaluationJobs", 
-                    "Resource": "*", 
-                    "Effect": "Allow", 
-                    "Sid": "ListBRJobs"
-                }, 
-                {
                     "Action": "bedrock:BatchDeleteEvaluationJob", 
                     "Resource": "*", 
                     "Effect": "Allow", 
@@ -2456,7 +2379,7 @@
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
                     }, 
-                    "Sid": "ManageBRJobs"
+                    "Sid": "MngBRJobs"
                 }, 
                 {
                     "Action": [
@@ -2497,17 +2420,7 @@
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
                     }, 
-                    "Sid": "ManageBRLambda"
-                }, 
-                {
-                    "Action": [
-                        "elasticmapreduce:CreateSecurityConfiguration", 
-                        "elasticmapreduce:DeleteSecurityConfiguration", 
-                        "elasticmapreduce:DescribeSecurityConfiguration"
-                    ], 
-                    "Resource": "*", 
-                    "Effect": "Allow", 
-                    "Sid": "EMRManage"
+                    "Sid": "MngBRLambda"
                 }, 
                 {
                     "Action": [
@@ -2528,7 +2441,7 @@
                             "aws:ResourceTag/AmazonDataZoneProject": "false"
                         }
                     }, 
-                    "Sid": "EMRClusterManage"
+                    "Sid": "EMRClusterMng"
                 }, 
                 {
                     "Action": [
@@ -2545,14 +2458,6 @@
                         }
                     }, 
                     "Sid": "AirflowEnv"
-                }, 
-                {
-                    "Action": [
-                        "airflow:GetEnvironment"
-                    ], 
-                    "Resource": "*", 
-                    "Effect": "Allow", 
-                    "Sid": "AirflowGet"
                 }, 
                 {
                     "Action": [
@@ -2644,7 +2549,7 @@
                             "iam:PermissionsBoundary": "arn:aws:iam::aws:policy/SageMakerStudioProjectUserRolePermissionsBoundary"
                         }
                     }, 
-                    "Sid": "QueryRoleManage"
+                    "Sid": "QueryRoleMng"
                 }, 
                 {
                     "Action": [
@@ -2849,7 +2754,7 @@
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
                     }, 
-                    "Sid": "ManageQSFolder"
+                    "Sid": "MngQSFolder"
                 }, 
                 {
                     "Action": [
@@ -2954,7 +2859,7 @@
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
                     }, 
-                    "Sid": "ManageEventRules"
+                    "Sid": "MngEventRules"
                 }, 
                 {
                     "Action": [
@@ -3037,15 +2942,7 @@
                             ]
                         }
                     }, 
-                    "Sid": "SSOManage"
-                }, 
-                {
-                    "Action": [
-                        "eks:DescribeCluster"
-                    ], 
-                    "Resource": "*", 
-                    "Effect": "Allow", 
-                    "Sid": "EksClusterDiscovery"
+                    "Sid": "SSOMng"
                 }, 
                 {
                     "Action": [
@@ -3067,7 +2964,7 @@
                             "aws:ResourceTag/AmazonDataZoneProject": "false"
                         }
                     }, 
-                    "Sid": "EmrContainersManage"
+                    "Sid": "EmrContainersMng"
                 }, 
                 {
                     "Action": [
@@ -3094,7 +2991,7 @@
                             ]
                         }
                     }, 
-                    "Sid": "ManageViaEmrContainers"
+                    "Sid": "MngViaEmrContainers"
                 }
             ]
         }, 
