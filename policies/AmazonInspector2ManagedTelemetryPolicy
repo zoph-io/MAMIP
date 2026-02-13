@@ -1,0 +1,23 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2026-02-13T17:12:06Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "inspector2-telemetry:StartSession", 
+                        "inspector2-telemetry:StopSession", 
+                        "inspector2-telemetry:SendTelemetry", 
+                        "inspector2-telemetry:NotifyHeartbeat"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "PermissionsForInspector2Telemetry"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
