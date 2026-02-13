@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2026-02-12T17:59:14Z", 
-        "VersionId": "v25", 
+        "CreateDate": "2026-02-13T17:12:07Z", 
+        "VersionId": "v26", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -52,6 +52,7 @@
                         "elasticloadbalancing:DescribeTargetGroupAttributes", 
                         "elasticloadbalancing:DescribeTargetHealth", 
                         "network-firewall:DescribeFirewall", 
+                        "network-firewall:DescribeFirewallMetadata", 
                         "network-firewall:DescribeFirewallPolicy", 
                         "network-firewall:DescribeResourcePolicy", 
                         "network-firewall:DescribeRuleGroup", 
@@ -112,6 +113,7 @@
                     ], 
                     "Resource": [
                         "arn:aws:ec2:*:*:instance/*", 
+                        "arn:aws:ssm:*:*:document/AWS-ConfigureAWSPackage", 
                         "arn:aws:ssm:*:*:document/AmazonInspector2-*", 
                         "arn:aws:ssm:*:*:document/AWS-GatherSoftwareInventory", 
                         "arn:aws:ssm:*:*:managed-instance/*", 
