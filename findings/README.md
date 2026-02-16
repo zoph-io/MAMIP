@@ -1,10 +1,6 @@
-# AWS Access Analyzer - Findings - 2026-02-13
+# AWS Access Analyzer - Findings - 2026-02-16
 
-<<<<<<< Updated upstream
 - **Policies analyzed:** `1440`
-=======
-- **Policies analyzed:** `1439`
->>>>>>> Stashed changes
 - **Errors:** `31`
   - [`AWSAccountActivityAccess`](./AWSAccountActivityAccess.json)
   - [`AWSAuditManagerAdministratorAccess`](./AWSAuditManagerAdministratorAccess.json)
@@ -40,7 +36,7 @@
   - [`IAMFullAccess`](./IAMFullAccess.json)
   - [`S3UnlockBucketPolicy`](./S3UnlockBucketPolicy.json)
   - [`SQSUnlockQueuePolicy`](./SQSUnlockQueuePolicy.json)
-- **Suggestions:** `158`
+- **Suggestions:** `157`
   - [`AIOpsAssistantPolicy`](./AIOpsAssistantPolicy.json)
   - [`AWSBackupGuardDutyRolePolicyForScans`](./AWSBackupGuardDutyRolePolicyForScans.json)
   - [`AWSBatchFullAccess`](./AWSBatchFullAccess.json)
