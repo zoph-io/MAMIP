@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2026-02-12T18:00:07Z", 
-        "VersionId": "v6", 
+        "CreateDate": "2026-02-14T00:57:09Z", 
+        "VersionId": "v7", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -106,6 +106,18 @@
                         }
                     }, 
                     "Sid": "PartnerResourceAccess"
+                }, 
+                {
+                    "Action": [
+                        "q:StartConversation", 
+                        "q:SendMessage", 
+                        "q:GetConversation", 
+                        "q:ListConversations", 
+                        "q:PassRequest"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonQPartnerAssistantAccess"
                 }
             ]
         }, 
