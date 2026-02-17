@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-11-21T00:07:12Z", 
-        "VersionId": "v10", 
+        "CreateDate": "2026-02-17T18:42:07Z", 
+        "VersionId": "v11", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -66,7 +66,9 @@
                         "autoscaling:EnableMetricsCollection", 
                         "autoscaling:PutScheduledUpdateGroupAction", 
                         "autoscaling:ResumeProcesses", 
-                        "autoscaling:SuspendProcesses"
+                        "autoscaling:SuspendProcesses", 
+                        "autoscaling:PutWarmPool", 
+                        "autoscaling:DeleteWarmPool"
                     ], 
                     "Resource": "arn:aws:autoscaling:*:*:*:autoScalingGroupName/eks-*", 
                     "Effect": "Allow", 
@@ -140,7 +142,8 @@
                         "ec2:GetConsoleOutput", 
                         "ec2:DescribeRouteTables", 
                         "ec2:DescribeSubnets", 
-                        "ec2:DescribeCapacityReservations"
+                        "ec2:DescribeCapacityReservations", 
+                        "autoscaling:DescribeWarmPool"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
