@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2026-02-12T17:58:04Z", 
-        "VersionId": "v3", 
+        "CreateDate": "2026-02-18T19:27:07Z", 
+        "VersionId": "v4", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -69,6 +69,14 @@
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Sid": "ApplicationAutoscalingDescribeActions"
+                }, 
+                {
+                    "Action": [
+                        "freetier:GetAccountPlanState"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ViewFreeTierState"
                 }
             ]
         }, 
