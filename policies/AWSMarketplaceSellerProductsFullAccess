@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2026-02-12T18:01:40Z", 
-        "VersionId": "v14", 
+        "CreateDate": "2026-02-19T19:12:10Z", 
+        "VersionId": "v15", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -121,6 +121,18 @@
                         }
                     }, 
                     "Sid": "LegacyPartnerCentralAccess"
+                }, 
+                {
+                    "Action": [
+                        "q:StartConversation", 
+                        "q:SendMessage", 
+                        "q:GetConversation", 
+                        "q:ListConversations", 
+                        "q:PassRequest"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AmazonQPartnerAssistantAccess"
                 }
             ]
         }, 
