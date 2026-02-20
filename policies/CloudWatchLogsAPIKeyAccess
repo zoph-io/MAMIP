@@ -1,0 +1,51 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2026-02-20T19:42:07Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "logs:CallWithBearerToken", 
+                        "logs:PutLogEvents"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "LogsAPIs"
+                }, 
+                {
+                    "Action": [
+                        "kms:GenerateDataKey", 
+                        "kms:Decrypt"
+                    ], 
+                    "Resource": "arn:aws:kms:*:*:key/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ArnLike": {
+                            "kms:EncryptionContext:aws:logs:arn": "arn:aws:logs:*:*:log-group:*"
+                        }, 
+                        "StringLike": {
+                            "kms:ViaService": "logs.*.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "KMSAPIs"
+                }, 
+                {
+                    "Action": [
+                        "kms:DescribeKey"
+                    ], 
+                    "Resource": "arn:aws:kms:*:*:key/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringLike": {
+                            "kms:ViaService": "logs.*.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "KMSDescribeAPIs"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
