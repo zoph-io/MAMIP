@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-10-28T22:34:33Z", 
-        "VersionId": "v1", 
+        "CreateDate": "2026-02-20T19:12:09Z", 
+        "VersionId": "v2", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -52,6 +52,19 @@
                         "ec2:AssignIpv6Addresses"
                     ], 
                     "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/eks:eks-cluster-name": "${aws:PrincipalTag/eks:eks-cluster-name}"
+                        }
+                    }
+                }, 
+                {
+                    "Action": "ec2:ModifyNetworkInterfaceAttribute", 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:network-interface/*", 
+                        "arn:aws:ec2:*:*:instance/*"
+                    ], 
                     "Effect": "Allow", 
                     "Condition": {
                         "StringEquals": {
