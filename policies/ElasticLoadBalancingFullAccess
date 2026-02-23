@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-10-24T22:21:39Z", 
-        "VersionId": "v8", 
+        "CreateDate": "2026-02-23T18:57:07Z", 
+        "VersionId": "v9", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -27,6 +27,7 @@
                         "ec2:GetCoipPoolUsage", 
                         "ec2:GetSecurityGroupsForVpc", 
                         "ec2:DescribeVpcPeeringConnections", 
+                        "ec2:DescribeAvailabilityZones", 
                         "cognito-idp:DescribeUserPoolClient"
                     ], 
                     "Resource": "*", 
