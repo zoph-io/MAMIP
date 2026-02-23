@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2026-02-12T17:59:19Z", 
-        "VersionId": "v29", 
+        "CreateDate": "2026-02-23T19:42:11Z", 
+        "VersionId": "v30", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -618,6 +618,26 @@
                         }
                     }, 
                     "Sid": "AssociateBackupAccessPolicy"
+                }, 
+                {
+                    "Action": [
+                        "guardduty:StartMalwareScan", 
+                        "guardduty:GetMalwareScan"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "GuardDutyMalwareScanPermissions"
+                }, 
+                {
+                    "Action": "iam:PassRole", 
+                    "Resource": "arn:aws:iam::*:role/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:PassedToService": "malware-protection.guardduty.amazonaws.com"
+                        }
+                    }, 
+                    "Sid": "GuardDutyMalwareScanIAMPassPermissions"
                 }
             ]
         }, 
