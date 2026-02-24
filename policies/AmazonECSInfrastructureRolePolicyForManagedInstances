@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2026-02-12T17:59:11Z", 
-        "VersionId": "v9", 
+        "CreateDate": "2026-02-24T19:42:09Z", 
+        "VersionId": "v10", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -106,7 +106,8 @@
                     "Resource": [
                         "arn:aws:ec2:*:*:subnet/*", 
                         "arn:aws:ec2:*:*:security-group/*", 
-                        "arn:aws:ec2:*::image/*"
+                        "arn:aws:ec2:*::image/*", 
+                        "arn:aws:resource-groups:*:*:group/*"
                     ], 
                     "Effect": "Allow", 
                     "Sid": "RunInstancesForSupportingResources"
@@ -169,11 +170,23 @@
                         "ec2:DescribeAvailabilityZones", 
                         "ec2:DescribeSecurityGroups", 
                         "ec2:DescribeSubnets", 
-                        "ec2:DescribeVpcs"
+                        "ec2:DescribeVpcs", 
+                        "ec2:DescribeCapacityReservations"
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Sid": "DescribeEC2ResourcesManagedByECS"
+                }, 
+                {
+                    "Action": [
+                        "resource-groups:ListGroupResources", 
+                        "cloudformation:DescribeStacks", 
+                        "cloudformation:ListStackResources", 
+                        "tag:GetResources"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "ListResourceGroupResources"
                 }
             ]
         }, 
