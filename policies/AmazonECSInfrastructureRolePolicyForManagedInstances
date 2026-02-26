@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2026-02-24T19:42:09Z", 
-        "VersionId": "v10", 
+        "CreateDate": "2026-02-26T18:27:10Z", 
+        "VersionId": "v11", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -144,8 +144,8 @@
                     ], 
                     "Effect": "Allow", 
                     "Condition": {
-                        "StringEquals": {
-                            "iam:PassedToService": "ec2.amazonaws.com"
+                        "StringLike": {
+                            "iam:PassedToService": "ec2.*"
                         }
                     }, 
                     "Sid": "PassInstanceRoleForManagedInstances"
