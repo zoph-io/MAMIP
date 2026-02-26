@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2026-02-12T17:59:33Z", 
-        "VersionId": "v12", 
+        "CreateDate": "2026-02-26T00:12:11Z", 
+        "VersionId": "v13", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -113,6 +113,7 @@
                         "datazone:ListSubscriptions", 
                         "datazone:ListTimeSeriesDataPoints", 
                         "datazone:ListWarehouseMetadata", 
+                        "datazone:QueryGraph", 
                         "datazone:RejectPredictions", 
                         "datazone:RejectSubscriptionRequest", 
                         "datazone:RemoveEntityOwner", 
@@ -152,6 +153,6 @@
                 }
             ]
         }, 
-        "IsDefaultVersion": false
+        "IsDefaultVersion": true
     }
 }
