@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2026-02-12T18:02:49Z", 
-        "VersionId": "v37", 
+        "CreateDate": "2026-02-26T21:42:10Z", 
+        "VersionId": "v38", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -1115,6 +1115,144 @@
                     "Resource": "*", 
                     "Effect": "Allow", 
                     "Sid": "ConsumerS3AGPermission"
+                }, 
+                {
+                    "Action": [
+                        "airflow-serverless:ListWorkflow*", 
+                        "airflow-serverless:ListTask*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "MLAccountDiscovery"
+                }, 
+                {
+                    "Action": [
+                        "airflow-serverless:CreateWorkflow", 
+                        "airflow-serverless:DeleteWorkflow", 
+                        "airflow-serverless:GetTaskInstance", 
+                        "airflow-serverless:GetWorkflow", 
+                        "airflow-serverless:GetWorkflowRun", 
+                        "airflow-serverless:ListTagsForResource", 
+                        "airflow-serverless:StartWorkflowRun", 
+                        "airflow-serverless:StopWorkflowRun", 
+                        "airflow-serverless:TagResource", 
+                        "airflow-serverless:UntagResource", 
+                        "airflow-serverless:UpdateWorkflow"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/AmazonDataZoneProject": "${aws:PrincipalTag/AmazonDataZoneProject}"
+                        }
+                    }, 
+                    "Sid": "AirflowServerlessPermissions"
+                }, 
+                {
+                    "Action": [
+                        "logs:CreateLogStream", 
+                        "logs:CreateLogGroup", 
+                        "logs:PutLogEvents", 
+                        "logs:GetLogEvents", 
+                        "logs:GetLogRecord", 
+                        "logs:GetLogGroupFields", 
+                        "logs:GetQueryResults"
+                    ], 
+                    "Resource": [
+                        "arn:aws:logs:*:*:log-group:/aws/mwaa-serverless/${aws:PrincipalTag/AmazonDataZoneDomain}-${aws:PrincipalTag/AmazonDataZoneProject}/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AirflowCloudwatchLogsActions"
+                }, 
+                {
+                    "Action": [
+                        "kms:CreateGrant"
+                    ], 
+                    "Resource": "arn:aws:kms:*:*:key/${aws:PrincipalTag/KmsKeyId}", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "kms:EncryptionContextKeys": "aws:airflow-serverless:workflow-arn"
+                        }, 
+                        "StringLike": {
+                            "kms:ViaService": "airflow-serverless.*.amazonaws.com"
+                        }, 
+                        "ForAllValues:StringEquals": {
+                            "kms:GrantOperations": [
+                                "Decrypt", 
+                                "Encrypt", 
+                                "GenerateDataKey", 
+                                "GenerateDataKeyWithoutPlaintext", 
+                                "RetireGrant"
+                            ]
+                        }
+                    }, 
+                    "Sid": "WorkflowsCreateGrant"
+                }, 
+                {
+                    "Action": [
+                        "kms:Decrypt", 
+                        "kms:Encrypt", 
+                        "kms:GenerateDataKey", 
+                        "kms:GenerateDataKeyWithoutPlaintext"
+                    ], 
+                    "Resource": "arn:aws:kms:*:*:key/${aws:PrincipalTag/KmsKeyId}", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "ForAnyValue:StringEquals": {
+                            "kms:EncryptionContextKeys": "aws:airflow-serverless:workflow-arn"
+                        }
+                    }, 
+                    "Sid": "WorkflowsKms"
+                }, 
+                {
+                    "Action": "iam:CreateServiceLinkedRole", 
+                    "Resource": [
+                        "arn:aws:iam::*:role/aws-service-role/airflow-serverless.amazonaws.com/AWSServiceRoleForAmazonMWAAServerless"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "CreateSLR"
+                }, 
+                {
+                    "Action": [
+                        "datazone:GenerateCode", 
+                        "datazone:SendMessage", 
+                        "datazone:*Conversation*", 
+                        "datazone:*Cell*", 
+                        "datazone:*Notebook*"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "DataZoneUserPermissions"
+                }, 
+                {
+                    "Action": [
+                        "athena:GetSessionEndpoint", 
+                        "athena:GetResourceDashboard", 
+                        "athena:TagResource"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/AmazonDataZoneProject": "${aws:PrincipalTag/AmazonDataZoneProject}"
+                        }
+                    }, 
+                    "Sid": "AthenaSession"
+                }, 
+                {
+                    "Action": [
+                        "sqlworkbench:GetConnection"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/AmazonDataZoneProject": "${aws:PrincipalTag/AmazonDataZoneProject}", 
+                            "aws:ResourceTag/sqlworkbench-resource-owner": "${aws:userid}"
+                        }
+                    }, 
+                    "Sid": "SQLWorkBenchMLActionsWithResourceType"
                 }
             ]
         }, 
