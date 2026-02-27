@@ -25,6 +25,7 @@ interface PolicyData {
   lastModified: string;
   versionsCount: number;
   size: number;
+  actionCount?: number;
   history: PolicyVersion[];
   content: any;
 }
@@ -90,9 +91,24 @@ export default function PolicyDetailClient({
     if (diffInDays === 0) return "Today";
     if (diffInDays === 1) return "Yesterday";
     if (diffInDays < 7) return `${diffInDays} days ago`;
-    if (diffInDays < 30) return `${Math.floor(diffInDays / 7)} weeks ago`;
-    if (diffInDays < 365) return `${Math.floor(diffInDays / 30)} months ago`;
-    return `${Math.floor(diffInDays / 365)} years ago`;
+    if (diffInDays < 30) {
+      const weeks = Math.floor(diffInDays / 7);
+      return `${weeks} week${weeks !== 1 ? "s" : ""} ago`;
+    }
+
+    const months =
+      (now.getFullYear() - date.getFullYear()) * 12 +
+      (now.getMonth() - date.getMonth());
+    if (months < 12) {
+      return `${months} month${months !== 1 ? "s" : ""} ago`;
+    }
+
+    const years = Math.floor(months / 12);
+    const remainingMonths = months % 12;
+    if (remainingMonths === 0) {
+      return `${years} year${years !== 1 ? "s" : ""} ago`;
+    }
+    return `${years}y ${remainingMonths}m ago`;
   };
 
   if (loading) {
@@ -152,7 +168,7 @@ export default function PolicyDetailClient({
         <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">
           {policy.name}
         </h1>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
           <div>
             <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">
               Last Modified
@@ -190,6 +206,16 @@ export default function PolicyDetailClient({
                 : "N/A"}
             </p>
           </div>
+          {policy.actionCount !== undefined && (
+            <div>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">
+                Actions
+              </p>
+              <p className="font-medium text-slate-900 dark:text-white">
+                {policy.actionCount}
+              </p>
+            </div>
+          )}
         </div>
       </div>
 

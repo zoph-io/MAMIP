@@ -3,11 +3,62 @@ import "./globals.css";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "AWS Managed Policy Changes Archive (Unofficial) | zoph.io",
+  title: {
+    default: "MAMIP - AWS Managed Policy Changes Archive (Unofficial) | zoph.io",
+    template: "%s | MAMIP",
+  },
   description:
     "Track every change to AWS Managed IAM Policies with full version history. An unofficial archive by zoph.io - AWS Cloud Advisory Boutique.",
   metadataBase: new URL("https://mamip.zoph.io"),
-  // icon.svg and apple-icon.svg in app/ directory are automatically detected by Next.js
+  keywords: [
+    "AWS",
+    "IAM",
+    "managed policies",
+    "policy changes",
+    "version history",
+    "AWS security",
+    "cloud security",
+    "policy monitoring",
+    "AWS managed IAM policies",
+  ],
+  authors: [{ name: "zoph.io", url: "https://zoph.io" }],
+  creator: "zoph.io",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://mamip.zoph.io",
+    siteName: "MAMIP - AWS Managed Policy Changes Archive",
+    title: "MAMIP - AWS Managed Policy Changes Archive (Unofficial)",
+    description:
+      "Track every change to AWS Managed IAM Policies with full version history. An unofficial archive by zoph.io.",
+    images: [
+      {
+        url: "/zoph-logo.png",
+        width: 512,
+        height: 512,
+        alt: "MAMIP by zoph.io",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    site: "@mamip_aws",
+    creator: "@zaborovjak",
+    title: "MAMIP - AWS Managed Policy Changes Archive",
+    description:
+      "Track every change to AWS Managed IAM Policies with full version history.",
+  },
+  alternates: {
+    canonical: "https://mamip.zoph.io",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
 };
 
 // Get base path based on deployment target
@@ -21,6 +72,31 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "MAMIP - AWS Managed Policy Changes Archive",
+              url: "https://mamip.zoph.io",
+              description:
+                "Track every change to AWS Managed IAM Policies with full version history.",
+              publisher: {
+                "@type": "Organization",
+                name: "zoph.io",
+                url: "https://zoph.io",
+              },
+              potentialAction: {
+                "@type": "SearchAction",
+                target: "https://mamip.zoph.io/policies?q={search_term_string}",
+                "query-input": "required name=search_term_string",
+              },
+            }),
+          }}
+        />
+      </head>
       <body
         className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100 dark:from-slate-950 dark:via-blue-950/20 dark:to-slate-900"
         suppressHydrationWarning
@@ -55,6 +131,12 @@ export default function RootLayout({
                   className="px-4 py-2 text-sm font-medium text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/30 rounded-lg transition-all"
                 >
                   Policies
+                </Link>
+                <Link
+                  href={`${basePath}/accounts`}
+                  className="px-4 py-2 text-sm font-medium text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/30 rounded-lg transition-all"
+                >
+                  Accounts
                 </Link>
                 <Link
                   href={`${basePath}/about`}

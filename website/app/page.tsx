@@ -1,5 +1,6 @@
 import StatsCard from "@/components/StatsCard";
 import PolicyList from "@/components/PolicyList";
+import PolicyAgeChart from "@/components/PolicyAgeChart";
 import Link from "next/link";
 
 // Get base path based on deployment target
@@ -79,36 +80,42 @@ export default async function Home() {
           >
             zoph.io
           </a>{" "}
-          — AWS Cloud Advisory Boutique
+          - AWS Cloud Advisory Boutique
         </p>
       </div>
 
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <StatsCard
-          title="Total Policies"
-          value={stats.totalPolicies.toLocaleString()}
-          description="Active AWS Managed Policies"
-          icon="📋"
-        />
+        <Link href={`${basePath}/policies`}>
+          <StatsCard
+            title="Total Policies"
+            value={stats.totalPolicies.toLocaleString()}
+            description="Active AWS Managed Policies"
+            icon="📋"
+          />
+        </Link>
         <StatsCard
           title="Brand New (v1)"
           value={stats.brandNew?.length || 0}
           description="New AWS services/features"
           icon="🆕"
         />
-        <StatsCard
-          title="Deprecated"
-          value={deprecatedCount.toLocaleString()}
-          description="Removed from AWS"
-          icon="🗑️"
-        />
-        <StatsCard
-          title="Most Active"
-          value={stats.mostModified[0]?.versionsCount || 0}
-          description={`${stats.mostModified[0]?.name.substring(0, 20)}...`}
-          icon="📈"
-        />
+        <Link href={`${basePath}/deprecated`}>
+          <StatsCard
+            title="Deprecated"
+            value={deprecatedCount.toLocaleString()}
+            description="Removed from AWS"
+            icon="🗑️"
+          />
+        </Link>
+        <Link href={`${basePath}/most-active`}>
+          <StatsCard
+            title="Most Active"
+            value={stats.mostModified[0]?.versionsCount || 0}
+            description={`${stats.mostModified[0]?.name.substring(0, 20)}...`}
+            icon="📈"
+          />
+        </Link>
       </div>
 
       {/* Brand New Policies Spotlight */}
@@ -121,7 +128,7 @@ export default async function Home() {
               <div>
                 <h3 className="text-2xl font-bold">Brand New Policies (v1)</h3>
                 <p className="text-emerald-100">
-                  Spot upcoming AWS services early — {stats.brandNew.length} new
+                  Spot upcoming AWS services early - {stats.brandNew.length} new
                   policies detected
                 </p>
               </div>
@@ -182,6 +189,42 @@ export default async function Home() {
             className="px-6 py-3 bg-white text-blue-600 rounded-lg font-semibold hover:bg-blue-50 hover:shadow-lg transition-all transform hover:scale-105"
           >
             Explore →
+          </Link>
+        </div>
+      </div>
+
+      {/* Policy Age Histogram + New Stats */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="lg:col-span-2">
+          {stats.policiesByYear && (
+            <PolicyAgeChart policiesByYear={stats.policiesByYear} />
+          )}
+        </div>
+        <div className="space-y-6">
+          <Link href={`${basePath}/largest-policies`}>
+            <StatsCard
+              title="Largest Policy"
+              value={`${stats.largestByActionCount?.[0]?.actionCount || 0} actions`}
+              description={
+                stats.largestByActionCount?.[0]?.name.substring(0, 25) + "..." ||
+                "N/A"
+              }
+              icon="📐"
+            />
+          </Link>
+          <Link href={`${basePath}/service-growth`}>
+            <StatsCard
+              title="AWS Services Tracked"
+              value={
+                stats.serviceGrowth
+                  ? Object.values(
+                      stats.serviceGrowth as Record<string, string[]>
+                    ).reduce((sum, arr) => sum + arr.length, 0)
+                  : 0
+              }
+              description="IAM service namespaces over time"
+              icon="🚀"
+            />
           </Link>
         </div>
       </div>

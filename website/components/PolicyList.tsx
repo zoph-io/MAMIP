@@ -15,12 +15,14 @@ interface PolicyListProps {
   title: string;
   policies: Policy[];
   showVersions?: boolean;
+  showCreateDatePrimary?: boolean;
 }
 
 export default function PolicyList({
   title,
   policies,
   showVersions = true,
+  showCreateDatePrimary = false,
 }: PolicyListProps) {
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString("en-US", {
@@ -39,9 +41,24 @@ export default function PolicyList({
     if (diffInDays === 0) return "Today";
     if (diffInDays === 1) return "Yesterday";
     if (diffInDays < 7) return `${diffInDays} days ago`;
-    if (diffInDays < 30) return `${Math.floor(diffInDays / 7)} weeks ago`;
-    if (diffInDays < 365) return `${Math.floor(diffInDays / 30)} months ago`;
-    return `${Math.floor(diffInDays / 365)} years ago`;
+    if (diffInDays < 30) {
+      const weeks = Math.floor(diffInDays / 7);
+      return `${weeks} week${weeks !== 1 ? "s" : ""} ago`;
+    }
+
+    const months =
+      (now.getFullYear() - date.getFullYear()) * 12 +
+      (now.getMonth() - date.getMonth());
+    if (months < 12) {
+      return `${months} month${months !== 1 ? "s" : ""} ago`;
+    }
+
+    const years = Math.floor(months / 12);
+    const remainingMonths = months % 12;
+    if (remainingMonths === 0) {
+      return `${years} year${years !== 1 ? "s" : ""} ago`;
+    }
+    return `${years}y ${remainingMonths}m ago`;
   };
 
   return (
@@ -69,17 +86,28 @@ export default function PolicyList({
                     {policy.name}
                   </p>
                   <div className="mt-1 flex items-center space-x-3 text-xs text-slate-500 dark:text-slate-400">
-                    <span>{getRelativeTime(policy.lastModified)}</span>
-                    {showVersions && (
-                      <span>
-                        • {policy.versionsCount} version
-                        {policy.versionsCount !== 1 ? "s" : ""}
-                      </span>
-                    )}
-                    {policy.createDate && (
-                      <span className="hidden sm:inline">
-                        • Created {formatDate(policy.createDate)}
-                      </span>
+                    {showCreateDatePrimary && policy.createDate ? (
+                      <>
+                        <span>Created {formatDate(policy.createDate)}</span>
+                        <span className="hidden sm:inline">
+                          • Updated {getRelativeTime(policy.lastModified)}
+                        </span>
+                      </>
+                    ) : (
+                      <>
+                        <span>{getRelativeTime(policy.lastModified)}</span>
+                        {showVersions && (
+                          <span>
+                            • {policy.versionsCount} version
+                            {policy.versionsCount !== 1 ? "s" : ""}
+                          </span>
+                        )}
+                        {policy.createDate && (
+                          <span className="hidden sm:inline">
+                            • Created {formatDate(policy.createDate)}
+                          </span>
+                        )}
+                      </>
                     )}
                   </div>
                 </div>

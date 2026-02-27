@@ -1,11 +1,31 @@
 const fs = require("fs");
 const path = require("path");
+const https = require("https");
 const { simpleGit } = require("simple-git");
+const yaml = require("js-yaml");
 
 const REPO_ROOT = path.join(__dirname, "../..");
 const POLICIES_DIR = path.join(REPO_ROOT, "policies");
 const OUTPUT_DIR = path.join(__dirname, "../public/data");
+const PUBLIC_DIR = path.join(__dirname, "../public");
+const SITE_URL = "https://mamip.zoph.io";
 const git = simpleGit(REPO_ROOT);
+
+function fetchUrl(url) {
+  return new Promise((resolve, reject) => {
+    https
+      .get(url, (res) => {
+        if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
+          return fetchUrl(res.headers.location).then(resolve, reject);
+        }
+        let data = "";
+        res.on("data", (chunk) => (data += chunk));
+        res.on("end", () => resolve(data));
+        res.on("error", reject);
+      })
+      .on("error", reject);
+  });
+}
 
 async function generatePolicyData() {
   console.log("🔍 Scanning policies directory...");
@@ -41,6 +61,37 @@ async function generatePolicyData() {
       // Get file stats
       const stats = fs.statSync(policyPath);
 
+      // Count actions and extract service prefixes from IAM actions
+      let actionCount = 0;
+      const servicePrefixes = new Set();
+      try {
+        const statements =
+          policyData.PolicyVersion?.Document?.Statement || [];
+        const stmtArray = Array.isArray(statements)
+          ? statements
+          : [statements];
+        for (const stmt of stmtArray) {
+          const actions = stmt.Action || stmt.NotAction || [];
+          const actionArray = Array.isArray(actions) ? actions : [actions];
+          actionCount += actionArray.length;
+          for (const action of actionArray) {
+            if (typeof action === "string") {
+              const prefix = action.split(":")[0];
+              if (prefix && prefix !== "*") {
+                servicePrefixes.add(prefix.toLowerCase());
+              }
+            }
+          }
+        }
+      } catch (e) {
+        // skip action parsing errors
+      }
+
+      const firstSeenDate =
+        logs.all.length > 0
+          ? logs.all[logs.all.length - 1].date
+          : stats.mtime.toISOString();
+
       const policy = {
         name: policyName,
         createDate: policyData.PolicyVersion?.CreateDate || null,
@@ -50,6 +101,9 @@ async function generatePolicyData() {
           : stats.mtime.toISOString(),
         versionsCount: logs.total,
         size: stats.size,
+        actionCount,
+        servicePrefixes: [...servicePrefixes],
+        firstSeen: firstSeenDate,
         history: logs.all.slice(0, 10).map((log) => ({
           hash: log.hash,
           date: log.date,
@@ -101,11 +155,47 @@ async function generatePolicyData() {
       .sort((a, b) => new Date(b.createDate) - new Date(a.createDate))
       .slice(0, 10),
     oldest: [...policies]
-      .filter((p) => p.createDate)
-      .sort((a, b) => new Date(a.createDate) - new Date(b.createDate))
+      .sort((a, b) => new Date(a.lastModified) - new Date(b.lastModified))
       .slice(0, 10),
     brandNew: brandNewPolicies,
   };
+
+  // Policies by year (based on first-seen in git)
+  const policiesByYear = {};
+  for (const p of policies) {
+    const year = new Date(p.firstSeen).getFullYear().toString();
+    policiesByYear[year] = (policiesByYear[year] || 0) + 1;
+  }
+  stats.policiesByYear = policiesByYear;
+
+  // Largest policies by action count
+  stats.largestByActionCount = [...policies]
+    .sort((a, b) => b.actionCount - a.actionCount)
+    .slice(0, 20)
+    .map((p) => ({ name: p.name, actionCount: p.actionCount }));
+
+  // Service growth: find the earliest year each IAM service prefix appeared
+  const serviceFirstSeen = {};
+  for (const p of policies) {
+    const year = new Date(p.firstSeen).getFullYear();
+    for (const svc of p.servicePrefixes) {
+      if (!serviceFirstSeen[svc] || year < serviceFirstSeen[svc]) {
+        serviceFirstSeen[svc] = year;
+      }
+    }
+  }
+  const serviceGrowth = {};
+  for (const [svc, year] of Object.entries(serviceFirstSeen)) {
+    const yearStr = year.toString();
+    if (!serviceGrowth[yearStr]) {
+      serviceGrowth[yearStr] = [];
+    }
+    serviceGrowth[yearStr].push(svc);
+  }
+  for (const year of Object.keys(serviceGrowth)) {
+    serviceGrowth[year].sort();
+  }
+  stats.serviceGrowth = serviceGrowth;
 
   // Read deprecated policies
   const deprecatedPath = path.join(REPO_ROOT, "DEPRECATED.json");
@@ -123,6 +213,7 @@ async function generatePolicyData() {
       createDate: p.createDate,
       versionsCount: p.versionsCount,
       versionId: p.versionId,
+      actionCount: p.actionCount,
     })),
     deprecated,
   };
@@ -131,6 +222,58 @@ async function generatePolicyData() {
     path.join(OUTPUT_DIR, "summary.json"),
     JSON.stringify(summary, null, 2)
   );
+
+  // Fetch known AWS accounts from fwdcloudsec community
+  console.log("🔎 Fetching known AWS accounts...");
+  try {
+    const yamlText = await fetchUrl(
+      "https://raw.githubusercontent.com/fwdcloudsec/known_aws_accounts/main/accounts.yaml"
+    );
+    const accounts = yaml.load(yamlText);
+    fs.writeFileSync(
+      path.join(OUTPUT_DIR, "known-accounts.json"),
+      JSON.stringify(accounts, null, 2)
+    );
+    console.log(`   🏢 Known accounts entries: ${accounts.length}`);
+  } catch (err) {
+    console.warn("⚠️  Could not fetch known AWS accounts:", err.message);
+  }
+
+  // Generate sitemap.xml
+  console.log("🗺️  Generating sitemap.xml...");
+  const today = new Date().toISOString().split("T")[0];
+  const sitemapEntries = [
+    { loc: "/", priority: "1.0", changefreq: "daily" },
+    { loc: "/policies/", priority: "0.9", changefreq: "daily" },
+    { loc: "/deprecated/", priority: "0.7", changefreq: "weekly" },
+    { loc: "/most-active/", priority: "0.7", changefreq: "weekly" },
+    { loc: "/accounts/", priority: "0.7", changefreq: "weekly" },
+    { loc: "/largest-policies/", priority: "0.7", changefreq: "weekly" },
+    { loc: "/service-growth/", priority: "0.7", changefreq: "weekly" },
+    { loc: "/about/", priority: "0.5", changefreq: "monthly" },
+  ];
+  policies.forEach((p) => {
+    sitemapEntries.push({
+      loc: `/policies/${encodeURIComponent(p.name)}/`,
+      priority: "0.6",
+      changefreq: "weekly",
+    });
+  });
+  const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${sitemapEntries
+  .map(
+    (e) => `  <url>
+    <loc>${SITE_URL}${e.loc}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>${e.changefreq}</changefreq>
+    <priority>${e.priority}</priority>
+  </url>`
+  )
+  .join("\n")}
+</urlset>`;
+  fs.writeFileSync(path.join(PUBLIC_DIR, "sitemap.xml"), sitemapXml);
+  console.log(`   🗺️  Sitemap entries: ${sitemapEntries.length}`);
 
   console.log("✅ Data generation complete!");
   console.log(`   📁 Policies processed: ${policies.length}`);

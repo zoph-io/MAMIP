@@ -1,4 +1,20 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "About MAMIP - How We Track AWS IAM Policy Changes",
+  description:
+    "Learn how MAMIP monitors and archives every change to AWS Managed IAM Policies using automated infrastructure, git version control, and policy validation.",
+  alternates: {
+    canonical: "https://mamip.zoph.io/about",
+  },
+  openGraph: {
+    title: "About MAMIP | AWS Managed Policy Changes Archive",
+    description:
+      "Learn how MAMIP monitors and archives every change to AWS Managed IAM Policies.",
+    url: "https://mamip.zoph.io/about",
+  },
+};
 
 const basePath = process.env.NEXT_PUBLIC_USE_BASE_PATH === "true" ? "/MAMIP" : "";
 
@@ -223,6 +239,68 @@ export default function AboutPage() {
               laid the foundation for tracking these important security changes
               in the AWS ecosystem.
             </p>
+          </div>
+        </section>
+
+        {/* Known AWS Accounts & fwd:cloudsec */}
+        <section className="border-t border-slate-200 dark:border-slate-700 pt-6">
+          <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
+            🔎 Known AWS Account Lookup
+          </h2>
+          <div className="flex flex-col sm:flex-row items-start gap-5">
+            <a
+              href="https://fwdcloudsec.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-shrink-0 hover:opacity-80 transition-opacity"
+            >
+              <img
+                src="https://fwdcloudsec.org/assets/img/logo.svg"
+                alt="fwd:cloudsec"
+                className="h-12 w-auto dark:invert"
+              />
+            </a>
+            <div className="space-y-3">
+              <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
+                MAMIP includes a{" "}
+                <Link
+                  href={`${basePath}/accounts`}
+                  className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium"
+                >
+                  Known AWS Account Lookup
+                </Link>{" "}
+                tool powered by the{" "}
+                <a
+                  href="https://github.com/fwdcloudsec/known_aws_accounts"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium"
+                >
+                  fwdcloudsec/known_aws_accounts
+                </a>{" "}
+                community dataset. Paste an AWS account ID to identify its owner
+                - useful when investigating CloudTrail logs, S3 bucket policies,
+                or IAM trust relationships.
+              </p>
+              <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
+                This dataset is maintained under the{" "}
+                <a
+                  href="https://fwdcloudsec.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium"
+                >
+                  fwd:cloudsec
+                </a>{" "}
+                organization, a non-profit conference on cloud security. At this
+                conference you can expect discussions about all the major cloud
+                platforms, both attack and defense research, limitations of
+                security features, the pros and cons of different security
+                strategies, and generally the types of things cloud practitioners
+                want to know, but that don't fit neatly into a vendor conference
+                schedule.
+              </p>
+            </div>
           </div>
         </section>
 

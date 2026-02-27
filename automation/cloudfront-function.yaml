@@ -1,0 +1,36 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: CloudFront Function for URL rewriting (Next.js static export on S3)
+
+Parameters:
+  CloudFrontDistributionId:
+    Type: String
+    Description: CloudFront distribution ID to associate the function with
+
+Resources:
+  UrlRewriteFunction:
+    Type: AWS::CloudFront::Function
+    Properties:
+      Name: mamip-url-rewrite
+      AutoPublish: true
+      FunctionConfig:
+        Comment: Rewrite URIs for Next.js static export — appends index.html to directory paths
+        Runtime: cloudfront-js-2.0
+      FunctionCode: |
+        function handler(event) {
+          var request = event.request;
+          var uri = request.uri;
+          if (uri.endsWith('/')) {
+            request.uri += 'index.html';
+          } else if (!uri.includes('.')) {
+            request.uri += '/index.html';
+          }
+          return request;
+        }
+
+Outputs:
+  FunctionArn:
+    Description: ARN of the CloudFront Function
+    Value: !GetAtt UrlRewriteFunction.FunctionARN
+  FunctionName:
+    Description: Name of the CloudFront Function
+    Value: !Ref UrlRewriteFunction

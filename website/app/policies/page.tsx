@@ -74,8 +74,16 @@ export default function PoliciesPage() {
     if (diffInDays === 1) return "Yesterday";
     if (diffInDays < 7) return `${diffInDays}d ago`;
     if (diffInDays < 30) return `${Math.floor(diffInDays / 7)}w ago`;
-    if (diffInDays < 365) return `${Math.floor(diffInDays / 30)}mo ago`;
-    return `${Math.floor(diffInDays / 365)}y ago`;
+
+    const months =
+      (now.getFullYear() - date.getFullYear()) * 12 +
+      (now.getMonth() - date.getMonth());
+    if (months < 12) return `${months}mo ago`;
+
+    const years = Math.floor(months / 12);
+    const remainingMonths = months % 12;
+    if (remainingMonths === 0) return `${years}y ago`;
+    return `${years}y ${remainingMonths}m ago`;
   };
 
   if (loading) {

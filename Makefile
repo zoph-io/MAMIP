@@ -12,6 +12,8 @@ help:
 	@echo "	apply - deploy the IaC using Terraform"
 	@echo "	destroy - delete all previously created infrastructure using Terraform"
 	@echo "	update-runbook - update the runbook script on S3 artifacts bucket"
+	@echo "	deploy-cf-function - deploy CloudFront URL rewrite function (CloudFormation)"
+	@echo "	delete-cf-function - delete CloudFront URL rewrite function stack"
 	@echo ""
 	@echo "Website:"
 	@echo "	website-install - install website dependencies"
@@ -90,6 +92,37 @@ destroy:
 update-runbook:
 	@echo "Copying runbook scripts in artifacts s3 bucket"
 	@aws s3 cp automation/runbook-$(ENV).sh 's3://${ARTIFACTS_BUCKET}/$(ENV)/runbook.sh'
+
+################ CloudFront Function ###########
+CF_STACK_NAME ?= mamip-cloudfront-url-rewrite
+CF_DISTRIBUTION_ID ?= E9B7QP8QWPHLW
+
+deploy-cf-function:
+	@echo "☁️  Deploying CloudFront URL rewrite function..."
+	@aws cloudformation deploy \
+		--template-file automation/cloudfront-function.yaml \
+		--stack-name $(CF_STACK_NAME) \
+		--parameter-overrides CloudFrontDistributionId=$(CF_DISTRIBUTION_ID) \
+		--region us-east-1 \
+		--no-fail-on-empty-changeset
+	@echo "✅ CloudFront Function deployed"
+	@echo "⚠️  Remember to associate the function with your distribution's viewer-request event"
+	@echo "   Function ARN:"
+	@aws cloudformation describe-stacks \
+		--stack-name $(CF_STACK_NAME) \
+		--region us-east-1 \
+		--query 'Stacks[0].Outputs[?OutputKey==`FunctionArn`].OutputValue' \
+		--output text
+
+delete-cf-function:
+	@echo "🗑️  Deleting CloudFront URL rewrite function stack..."
+	@aws cloudformation delete-stack \
+		--stack-name $(CF_STACK_NAME) \
+		--region us-east-1
+	@aws cloudformation wait stack-delete-complete \
+		--stack-name $(CF_STACK_NAME) \
+		--region us-east-1
+	@echo "✅ Stack deleted"
 
 ################ Website #######################
 website-install:
