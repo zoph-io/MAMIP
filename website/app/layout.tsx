@@ -74,6 +74,11 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <script
+          src="https://cdn.usefathom.com/script.js"
+          data-site="NZNRSCBU"
+          defer
+        />
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
