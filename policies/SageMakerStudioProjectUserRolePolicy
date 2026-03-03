@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2026-02-12T18:00:03Z", 
-        "VersionId": "v61", 
+        "CreateDate": "2026-03-02T20:27:10Z", 
+        "VersionId": "v63", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -76,7 +76,7 @@
                             "aws:ResourceTag/AmazonDataZoneProject": "${aws:PrincipalTag/AmazonDataZoneProject}"
                         }
                     }, 
-                    "Sid": "CommonUserCodeCommitPermissions"
+                    "Sid": "CodeCommit"
                 }, 
                 {
                     "Action": [
@@ -102,7 +102,7 @@
                             ]
                         }
                     }, 
-                    "Sid": "CodeCommitKmsPermissions"
+                    "Sid": "CodeCommitKms"
                 }, 
                 {
                     "Action": [
@@ -110,7 +110,7 @@
                     ], 
                     "Resource": "*", 
                     "Effect": "Allow", 
-                    "Sid": "AllowCodeWhispererGenerateRecommendations"
+                    "Sid": "CodeWhisperer"
                 }, 
                 {
                     "Action": [
@@ -831,11 +831,11 @@
                     "Resource": "arn:aws:kms:*:*:key/${aws:PrincipalTag/DomainKmsKeyId}", 
                     "Effect": "Allow", 
                     "Condition": {
+                        "StringLike": {
+                            "kms:ViaService": "datazone.*.amazonaws.com"
+                        }, 
                         "StringEquals": {
-                            "kms:EncryptionContext:aws:datazone:domainId": "${aws:PrincipalTag/AmazonDataZoneDomain}", 
-                            "kms:ViaService": [
-                                "datazone.*.amazonaws.com"
-                            ]
+                            "kms:EncryptionContext:aws:datazone:domainId": "${aws:PrincipalTag/AmazonDataZoneDomain}"
                         }
                     }, 
                     "Sid": "DZDomainKMSKeyXAcctPerm"
@@ -1328,6 +1328,7 @@
                     "Condition": {
                         "StringEquals": {
                             "iam:PassedToService": [
+                                "airflow-serverless.amazonaws.com", 
                                 "sagemaker.amazonaws.com", 
                                 "glue.amazonaws.com", 
                                 "airflow.amazonaws.com", 
@@ -1418,7 +1419,7 @@
                             "aws:ResourceTag/AmazonDataZoneProject": "${aws:PrincipalTag/AmazonDataZoneProject}"
                         }
                     }, 
-                    "Sid": "RedshiftDataActionsForResources"
+                    "Sid": "RedshiftDataActions"
                 }, 
                 {
                     "Action": [
@@ -2790,6 +2791,6 @@
                 }
             ]
         }, 
-        "IsDefaultVersion": false
+        "IsDefaultVersion": true
     }
 }
