@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2026-02-12T18:03:06Z", 
-        "VersionId": "v76", 
+        "CreateDate": "2026-03-02T20:12:08Z", 
+        "VersionId": "v77", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -644,7 +644,8 @@
                                 "redshift-serverless.amazonaws.com", 
                                 "redshift.amazonaws.com", 
                                 "emr-serverless.amazonaws.com", 
-                                "airflow.amazonaws.com"
+                                "airflow.amazonaws.com", 
+                                "athena.amazonaws.com"
                             ]
                         }
                     }, 
@@ -2995,6 +2996,6 @@
                 }
             ]
         }, 
-        "IsDefaultVersion": false
+        "IsDefaultVersion": true
     }
 }
