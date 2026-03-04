@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2024-03-04T20:20:55Z", 
-        "VersionId": "v5", 
+        "CreateDate": "2026-03-04T19:12:14Z", 
+        "VersionId": "v6", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -16,6 +16,7 @@
                         "ec2:DescribeNetworkInterfaces", 
                         "ec2:DescribeInstanceTypes", 
                         "ec2:DescribeSubnets", 
+                        "ec2:DescribeSecurityGroups", 
                         "ec2:DetachNetworkInterface", 
                         "ec2:ModifyNetworkInterfaceAttribute", 
                         "ec2:UnassignPrivateIpAddresses"
