@@ -1,7 +1,7 @@
-# AWS Access Analyzer - Findings - 2026-03-03
+# AWS Access Analyzer - Findings - 2026-03-04
 
 - **Policies analyzed:** `1442`
-- **Errors:** `30`
+- **Errors:** `22`
   - [`AWSAuditManagerAdministratorAccess`](./AWSAuditManagerAdministratorAccess.json)
   - [`AWSAuditManagerServiceRolePolicy`](./AWSAuditManagerServiceRolePolicy.json)
   - [`AWSCodeStarFullAccess`](./AWSCodeStarFullAccess.json)
@@ -13,8 +13,6 @@
   - [`CloudTrailEventContext`](./CloudTrailEventContext.json)
   - [`CloudWatchApplicationSignalsFullAccess`](./CloudWatchApplicationSignalsFullAccess.json)
   - [`CloudWatchApplicationSignalsReadOnlyAccess`](./CloudWatchApplicationSignalsReadOnlyAccess.json)
-  - [`CloudWatchFullAccessV2`](./CloudWatchFullAccessV2.json)
-  - [`CloudWatchReadOnlyAccess`](./CloudWatchReadOnlyAccess.json)
   - [`MemoryDBServiceRolePolicy`](./MemoryDBServiceRolePolicy.json)
   - [`RDSCloudHsmAuthorizationRole`](./RDSCloudHsmAuthorizationRole.json)
   - [`ResourceGroupsTaggingAPITagUntagSupportedResources`](./ResourceGroupsTaggingAPITagUntagSupportedResources.json)
