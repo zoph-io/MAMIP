@@ -1,0 +1,90 @@
+{
+    "PolicyVersion": {
+        "CreateDate": "2026-03-04T22:57:11Z", 
+        "VersionId": "v1", 
+        "Document": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": [
+                        "ec2:DescribeSubnets", 
+                        "ec2:DescribeTags", 
+                        "ec2:DescribeSecurityGroups", 
+                        "ec2:DescribeSecurityGroupRules", 
+                        "ec2:DescribeVpcs", 
+                        "ec2:DescribeNetworkInterfaces", 
+                        "ec2:DescribeAvailabilityZones"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowEC2DescribeActions"
+                }, 
+                {
+                    "Action": [
+                        "ec2:GetSecurityGroupsForVpc"
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:vpc/*", 
+                    "Effect": "Allow", 
+                    "Sid": "AllowVpcGetActions"
+                }, 
+                {
+                    "Action": "ec2:CreateNetworkInterface", 
+                    "Resource": "arn:aws:ec2:*:*:network-interface/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:RequestTag/Service": "HealthOmics"
+                        }
+                    }, 
+                    "Sid": "AllowCreateNetworkInterfaceWithTag"
+                }, 
+                {
+                    "Action": "ec2:CreateNetworkInterface", 
+                    "Resource": [
+                        "arn:aws:ec2:*:*:subnet/*", 
+                        "arn:aws:ec2:*:*:security-group/*"
+                    ], 
+                    "Effect": "Allow", 
+                    "Sid": "AllowCreateNetworkInterfaceSubnetSecurityGroup"
+                }, 
+                {
+                    "Action": "ec2:CreateTags", 
+                    "Resource": "arn:aws:ec2:*:*:network-interface/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "ec2:CreateAction": "CreateNetworkInterface"
+                        }
+                    }, 
+                    "Sid": "AllowCreateTags"
+                }, 
+                {
+                    "Action": "ec2:DeleteNetworkInterface", 
+                    "Resource": "arn:aws:ec2:*:*:network-interface/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/Service": "HealthOmics"
+                        }
+                    }, 
+                    "Sid": "AllowDeleteNetworkInterface"
+                }, 
+                {
+                    "Action": [
+                        "ec2:AssignPrivateIpAddresses", 
+                        "ec2:UnassignPrivateIpAddresses"
+                    ], 
+                    "Resource": "arn:aws:ec2:*:*:network-interface/*", 
+                    "Effect": "Allow", 
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/Service": "HealthOmics"
+                        }
+                    }, 
+                    "Sid": "AllowAssignUnassignPrivateIpAddresses"
+                }
+            ]
+        }, 
+        "IsDefaultVersion": true
+    }
+}
