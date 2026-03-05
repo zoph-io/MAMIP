@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2026-02-12T18:02:11Z", 
-        "VersionId": "v6", 
+        "CreateDate": "2026-03-05T16:57:14Z", 
+        "VersionId": "v7", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -26,6 +26,7 @@
                         "ArnLike": {
                             "iam:AssociatedResourceARN": [
                                 "arn:aws:ssm:*:*:document/AWSQuickSetupType-Scheduler-ChangeCalendarState", 
+                                "arn:aws:ssm:*:*:automation-execution/*", 
                                 "arn:aws:ssm:*:*:automation-definition/AWSQuickSetupType-Scheduler-ChangeCalendarState*"
                             ]
                         }, 
@@ -38,6 +39,6 @@
                 }
             ]
         }, 
-        "IsDefaultVersion": false
+        "IsDefaultVersion": true
     }
 }
