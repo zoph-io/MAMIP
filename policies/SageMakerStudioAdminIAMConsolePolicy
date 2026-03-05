@@ -1,7 +1,7 @@
 {
     "PolicyVersion": {
-        "CreateDate": "2026-02-12T17:59:21Z", 
-        "VersionId": "v6", 
+        "CreateDate": "2026-03-05T17:42:10Z", 
+        "VersionId": "v7", 
         "Document": {
             "Version": "2012-10-17", 
             "Statement": [
@@ -465,6 +465,14 @@
                         }
                     }, 
                     "Sid": "DataZoneKMSGrantPermissions"
+                }, 
+                {
+                    "Action": [
+                        "glue:GetCatalog"
+                    ], 
+                    "Resource": "*", 
+                    "Effect": "Allow", 
+                    "Sid": "GlueCatalogPermissions"
                 }
             ]
         }, 
