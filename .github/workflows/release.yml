@@ -1,44 +1,35 @@
 on:
   push:
     tags:
-      - '202*'
+      - "202*"
 
 name: Create Release
 
+permissions:
+  contents: write
+
 jobs:
-  build:
+  release:
     name: Create Release
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - name: Get changed files
         id: getfile
         run: |
-            export PREVIOUS=$( git describe --abbrev=0 --tags `git rev-list --tags --skip=1 --max-count=1` )
-            export DIFF=$( git diff --name-only ${{ github.ref }} $PREVIOUS )
-            echo "PREVIOUS: $PREVIOUS"
-            echo "DIFF: $DIFF"
-
-            filechange=$DIFF
-            filechange="${filechange//'%'/'%25'}"
-            filechange="${filechange//$'\n'/'%0A'}"
-            filechange="${filechange//$'\r'/'%0D'}"
-            echo "::set-output name=filechange_clean::$filechange"
+          PREVIOUS=$(git describe --abbrev=0 --tags $(git rev-list --tags --skip=1 --max-count=1))
+          DIFF=$(git diff --name-only ${{ github.ref_name }} "$PREVIOUS")
+          echo "files<<EOF" >> "$GITHUB_OUTPUT"
+          echo "$DIFF" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
 
       - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
           body: |
-            File changed: 
-            ${{ steps.getfile.outputs.filechange_clean }}
-          draft: false
-          prerelease: false
+            Files changed:
+            ${{ steps.getfile.outputs.files }}

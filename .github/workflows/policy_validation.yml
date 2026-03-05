@@ -1,12 +1,10 @@
 on:
-  push:
-    tags:
-      - "202*"
+  schedule:
+    - cron: "0 6 * * *"
   workflow_dispatch:
 
 name: AAA - Policy Validation
 
-# Ensure only one instance runs at a time - cancel older runs
 concurrency:
   group: policy-validation
   cancel-in-progress: true
@@ -23,28 +21,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
-          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
-          fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
+          persist-credentials: false
+          fetch-depth: 0
+
       - name: AWS IAM Assume Role
-        uses: aws-actions/configure-aws-credentials@master
+        uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-region: ${{ secrets.REGION }}
           role-to-assume: ${{ secrets.ROLE_TO_ASSUME }}
           role-duration-seconds: 1200
           role-session-name: GH-Actions-${{ env.project }}-policy-validation
-
-      - name: Who Am I?
-        run: aws sts get-caller-identity
-
-      - name: Python version
-        run: python3 --version
-
-      - name: pwd
-        run: |
-          pwd
-          ls -l
 
       - name: Install python requirements
         run: python3 -m pip install -r ./automation/requirements.txt
