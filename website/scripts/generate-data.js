@@ -6,6 +6,7 @@ const yaml = require("js-yaml");
 
 const REPO_ROOT = path.join(__dirname, "../..");
 const POLICIES_DIR = path.join(REPO_ROOT, "policies");
+const FINDINGS_DIR = path.join(REPO_ROOT, "findings");
 const OUTPUT_DIR = path.join(__dirname, "../public/data");
 const PUBLIC_DIR = path.join(__dirname, "../public");
 const SITE_URL = "https://mamip.zoph.io";
@@ -239,12 +240,65 @@ async function generatePolicyData() {
     console.warn("⚠️  Could not fetch known AWS accounts:", err.message);
   }
 
+  // Aggregate findings from Access Analyzer validation
+  console.log("🔎 Aggregating policy validation findings...");
+  try {
+    const findingsFiles = fs
+      .readdirSync(FINDINGS_DIR)
+      .filter((f) => f.endsWith(".json"));
+
+    const byType = { ERROR: 0, SECURITY_WARNING: 0, WARNING: 0, SUGGESTION: 0 };
+    const findingsPolicies = [];
+
+    for (const file of findingsFiles) {
+      try {
+        const raw = JSON.parse(
+          fs.readFileSync(path.join(FINDINGS_DIR, file), "utf8")
+        );
+        const policyName = file.replace(/\.json$/, "");
+        const stripped = raw.map((f) => ({
+          findingType: f.findingType,
+          findingDetails: f.findingDetails,
+          issueCode: f.issueCode,
+          learnMoreLink: f.learnMoreLink,
+        }));
+        for (const f of stripped) {
+          if (byType[f.findingType] !== undefined) byType[f.findingType]++;
+        }
+        findingsPolicies.push({ name: policyName, findings: stripped });
+      } catch (e) {
+        // skip unparseable findings files
+      }
+    }
+
+    findingsPolicies.sort((a, b) => a.name.localeCompare(b.name));
+
+    const findingsData = {
+      lastUpdated: new Date().toISOString().split("T")[0],
+      totalPoliciesAnalyzed: policies.length,
+      policiesWithFindings: findingsPolicies.length,
+      byType,
+      policies: findingsPolicies,
+    };
+
+    fs.writeFileSync(
+      path.join(OUTPUT_DIR, "findings.json"),
+      JSON.stringify(findingsData, null, 2)
+    );
+    console.log(
+      `   🛡️  Findings: ${findingsPolicies.length} policies, ${Object.values(byType).reduce((a, b) => a + b, 0)} total findings`
+    );
+  } catch (err) {
+    console.warn("⚠️  Could not aggregate findings:", err.message);
+  }
+
   // Generate sitemap.xml
   console.log("🗺️  Generating sitemap.xml...");
   const today = new Date().toISOString().split("T")[0];
   const sitemapEntries = [
     { loc: "/", priority: "1.0", changefreq: "daily" },
     { loc: "/policies/", priority: "0.9", changefreq: "daily" },
+    { loc: "/findings/", priority: "0.8", changefreq: "daily" },
     { loc: "/deprecated/", priority: "0.7", changefreq: "weekly" },
     { loc: "/most-active/", priority: "0.7", changefreq: "weekly" },
     { loc: "/accounts/", priority: "0.7", changefreq: "weekly" },
