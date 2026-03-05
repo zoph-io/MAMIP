@@ -33,20 +33,21 @@ export const metadata: Metadata = {
       "Track every change to AWS Managed IAM Policies with full version history. An unofficial archive by zoph.io.",
     images: [
       {
-        url: "/zoph-logo.png",
-        width: 512,
-        height: 512,
-        alt: "MAMIP by zoph.io",
+        url: "/social.png",
+        width: 1200,
+        height: 630,
+        alt: "MAMIP - AWS Managed Policy Changes Archive by zoph.io",
       },
     ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     site: "@mamip_aws",
     creator: "@zaborovjak",
     title: "MAMIP - AWS Managed Policy Changes Archive",
     description:
       "Track every change to AWS Managed IAM Policies with full version history.",
+    images: ["/social.png"],
   },
   alternates: {
     canonical: "https://mamip.zoph.io",
