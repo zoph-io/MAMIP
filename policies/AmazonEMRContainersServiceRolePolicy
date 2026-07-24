@@ -87,11 +87,28 @@
                             "ec2:CreateAction": "CreateVpcEndpointServiceConfiguration"
                         }
                     }
+                },
+                {
+                    "Sid": "CloudWatchPolicyStatement",
+                    "Effect": "Allow",
+                    "Action": [
+                        "cloudwatch:PutMetricData"
+                    ],
+                    "Resource": [
+                        "*"
+                    ],
+                    "Condition": {
+                        "StringEquals": {
+                            "cloudwatch:namespace": [
+                                "AWS/EMRContainers"
+                            ]
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v5",
+        "VersionId": "v6",
         "IsDefaultVersion": true,
-        "CreateDate": "2026-06-19T16:27:19+00:00"
+        "CreateDate": "2026-07-24T17:27:11+00:00"
     }
 }
