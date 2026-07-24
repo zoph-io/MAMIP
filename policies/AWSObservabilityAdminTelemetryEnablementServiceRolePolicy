@@ -560,11 +560,39 @@
                             "aws:ResourceTag/CloudWatchTelemetryRuleManaged": "true"
                         }
                     }
+                },
+                {
+                    "Sid": "TelemetryKMSOperationsForAccount",
+                    "Effect": "Allow",
+                    "Action": [
+                        "kms:Describe*",
+                        "logs:AssociateKmsKey"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
+                },
+                {
+                    "Sid": "TelemetryKMSOperationsForOrganization",
+                    "Effect": "Allow",
+                    "Action": [
+                        "kms:Describe*",
+                        "logs:AssociateKmsKey"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:PrincipalOrgId": "${aws:ResourceOrgId}"
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v13",
+        "VersionId": "v14",
         "IsDefaultVersion": true,
-        "CreateDate": "2026-06-30T18:57:30+00:00"
+        "CreateDate": "2026-07-24T19:12:23+00:00"
     }
 }
