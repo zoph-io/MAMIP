@@ -2,6 +2,12 @@ import type { Metadata, Viewport } from "next";
 import { Rss } from "lucide-react";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
+import {
+  FOUNDER_ID,
+  PARENT_ORG_NODE,
+  SIBLING_LINKS,
+  SITE_URL,
+} from "@/lib/galaxy";
 
 export const metadata: Metadata = {
   title: {
@@ -9,7 +15,7 @@ export const metadata: Metadata = {
     template: "%s | IAMTrail",
   },
   description:
-    "Track every change to AWS Managed IAM Policies with full version history. An unofficial archive by zoph.io - AWS Cloud Advisory Boutique.",
+    "Track every change to AWS Managed IAM Policies with full version history. An unofficial archive by zoph.io, an independent AWS consulting boutique.",
   metadataBase: new URL("https://iamtrail.com"),
   keywords: [
     "AWS",
@@ -96,15 +102,14 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
+              "@id": `${SITE_URL}/#website`,
               name: "IAMTrail - AWS Managed Policy Changes Archive",
-              url: "https://iamtrail.com",
+              url: SITE_URL,
               description:
                 "Track every change to AWS Managed IAM Policies with full version history.",
-              publisher: {
-                "@type": "Organization",
-                name: "zoph.io",
-                url: "https://zoph.io",
-              },
+              inLanguage: "en",
+              publisher: PARENT_ORG_NODE,
+              creator: { "@id": FOUNDER_ID },
               potentialAction: {
                 "@type": "SearchAction",
                 target: "https://iamtrail.com/policies?q={search_term_string}",
@@ -199,6 +204,23 @@ export default function RootLayout({
                   />
                 </a>
               </div>
+
+              <p className="text-center text-xs text-zinc-400 dark:text-zinc-500">
+                More from zoph.io:{" "}
+                {SIBLING_LINKS.map((link, index) => (
+                  <span key={link.href}>
+                    {index > 0 && " · "}
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-red-600 dark:hover:text-red-400 transition-colors"
+                    >
+                      {link.label}, {link.description}
+                    </a>
+                  </span>
+                ))}
+              </p>
               <p className="text-center text-xs text-zinc-400 dark:text-zinc-500 max-w-2xl">
                 This is an unofficial archive and is not affiliated with,
                 endorsed by, or sponsored by Amazon Web Services (AWS). AWS and

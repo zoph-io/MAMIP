@@ -15,6 +15,14 @@ import {
   AlertTriangle,
   Library,
 } from "lucide-react";
+import {
+  FOUNDER_ID,
+  FOUNDER_NAME,
+  FOUNDER_SAME_AS,
+  PARENT_BRAND_URL,
+  PARENT_ORG_NODE,
+  SITE_URL,
+} from "@/lib/galaxy";
 
 export const metadata: Metadata = {
   title: "About IAMTrail - AWS IAM Policy, Endpoint & GuardDuty Change Archive",
@@ -33,9 +41,31 @@ export const metadata: Metadata = {
   },
 };
 
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": FOUNDER_ID,
+  name: FOUNDER_NAME,
+  jobTitle: "Independent AWS Infrastructure & Security Consultant",
+  url: PARENT_BRAND_URL,
+  mainEntityOfPage: `${SITE_URL}/about`,
+  worksFor: PARENT_ORG_NODE,
+  sameAs: FOUNDER_SAME_AS,
+  knowsAbout: [
+    "Amazon Web Services",
+    "Identity and Access Management",
+    "Cloud Security",
+    "AWS Managed IAM Policies",
+  ],
+};
+
 export default function AboutPage() {
   return (
     <div className="max-w-4xl mx-auto space-y-10">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+      />
       {/* Header */}
       <div className="py-8 border-b border-zinc-100 dark:border-zinc-800">
         <h1 className="text-3xl font-bold font-mono text-zinc-900 dark:text-white mb-3">
@@ -452,8 +482,9 @@ export default function AboutPage() {
               >
                 zoph.io
               </a>
-              , an AWS Cloud Advisory Boutique based in France, specializing
-              in cloud security, compliance, and infrastructure automation.
+              , an independent AWS consulting boutique founded by Victor Grenu,
+              based in France and specializing in cloud security, compliance,
+              and infrastructure automation.
             </p>
           </div>
         </div>
