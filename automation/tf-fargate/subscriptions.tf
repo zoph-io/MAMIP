@@ -3,14 +3,16 @@
 ################################
 
 locals {
-  domain_name                  = "iamtrail.com"
-  api_domain                   = "api.iamtrail.com"
-  sender                       = "IAMTrail <noreply@iamtrail.com>"
-  sender_email                 = "noreply@iamtrail.com"
-  ses_region                   = "eu-west-3"
-  discord_webhook_ssm          = "/iamtrail/discord-webhook-url"
-  discord_public_webhook_ssm   = "/iamtrail/discord-public-webhook-url"
-  bluesky_fifo_queue_url       = "https://sqs.${var.aws_region}.amazonaws.com/${data.aws_caller_identity.current.account_id}/${var.qbsky_sqs_name}.fifo"
+  domain_name                = "iamtrail.com"
+  api_domain                 = "api.iamtrail.com"
+  sender                     = "IAMTrail <noreply@iamtrail.com>"
+  sender_email               = "noreply@iamtrail.com"
+  ses_region                 = "eu-west-3"
+  discord_webhook_ssm        = "/iamtrail/discord-webhook-url"
+  discord_public_webhook_ssm = "/iamtrail/discord-public-webhook-url"
+  github_secret_id           = "mamip/prod/github"
+  github_secret_arn_pattern  = "arn:aws:secretsmanager:${var.aws_region}:${data.aws_caller_identity.current.account_id}:secret:mamip/prod/github-*"
+  bluesky_fifo_queue_url     = "https://sqs.${var.aws_region}.amazonaws.com/${data.aws_caller_identity.current.account_id}/${var.qbsky_sqs_name}.fifo"
 }
 
 # ──────────────────────────────
@@ -564,6 +566,10 @@ data "archive_file" "digest_sender" {
     content  = file("${path.module}/../lambdas/shared/discord_notifier.py")
     filename = "discord_notifier.py"
   }
+  source {
+    content  = file("${path.module}/../lambdas/shared/policy_diff.py")
+    filename = "policy_diff.py"
+  }
 }
 
 resource "aws_lambda_function" "digest_sender" {
@@ -586,6 +592,7 @@ resource "aws_lambda_function" "digest_sender" {
       SES_REGION             = local.ses_region
       SITE_URL               = "https://${local.domain_name}"
       GITHUB_REPO            = "zoph-io/IAMTrail"
+      GITHUB_SECRET_ID       = local.github_secret_id
       DISCORD_WEBHOOK_SSM    = local.discord_webhook_ssm
     }
   }
@@ -606,6 +613,10 @@ data "archive_file" "instant_notifier" {
   source {
     content  = file("${path.module}/../lambdas/shared/discord_notifier.py")
     filename = "discord_notifier.py"
+  }
+  source {
+    content  = file("${path.module}/../lambdas/shared/policy_diff.py")
+    filename = "policy_diff.py"
   }
 }
 
@@ -628,6 +639,7 @@ resource "aws_lambda_function" "instant_notifier" {
       SES_REGION          = local.ses_region
       SITE_URL            = "https://${local.domain_name}"
       GITHUB_REPO         = "zoph-io/IAMTrail"
+      GITHUB_SECRET_ID    = local.github_secret_id
       DISCORD_WEBHOOK_SSM = local.discord_webhook_ssm
     }
   }
@@ -1020,6 +1032,13 @@ resource "aws_iam_role_policy" "digest_sender" {
         Resource = ["arn:aws:ssm:${var.aws_region}:${data.aws_caller_identity.current.account_id}:parameter${local.discord_webhook_ssm}"]
       },
       {
+        # Authenticated GitHub API calls, otherwise diffs hit the 60/hour
+        # unauthenticated limit shared across Lambda egress IPs.
+        Effect   = "Allow"
+        Action   = ["secretsmanager:GetSecretValue"]
+        Resource = [local.github_secret_arn_pattern]
+      },
+      {
         Effect   = "Allow"
         Action   = ["logs:CreateLogGroup", "logs:CreateLogStream", "logs:PutLogEvents"]
         Resource = ["arn:aws:logs:*:*:*"]
@@ -1066,6 +1085,13 @@ resource "aws_iam_role_policy" "instant_notifier" {
         Effect   = "Allow"
         Action   = ["ssm:GetParameter"]
         Resource = ["arn:aws:ssm:${var.aws_region}:${data.aws_caller_identity.current.account_id}:parameter${local.discord_webhook_ssm}"]
+      },
+      {
+        # Authenticated GitHub API calls, otherwise diffs hit the 60/hour
+        # unauthenticated limit shared across Lambda egress IPs.
+        Effect   = "Allow"
+        Action   = ["secretsmanager:GetSecretValue"]
+        Resource = [local.github_secret_arn_pattern]
       },
       {
         Effect   = "Allow"
