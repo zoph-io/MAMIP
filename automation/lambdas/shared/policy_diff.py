@@ -27,6 +27,12 @@ MAX_DIFF_LINES = 40
 MAX_LISTED_ITEMS = 12
 MAX_CONTEXT_RUN = 2
 
+# A push is not instantly readable through the API, so callers notified at push
+# time can arrive before the commit does. Kept short enough to leave the rest of
+# the Lambda budget for resolving a full day of changes.
+COMMIT_VISIBILITY_ATTEMPTS = 4
+COMMIT_VISIBILITY_DELAY = 5
+
 # AWS occasionally rewrites hundreds of policies in one day. Cap the work and
 # the payload so those days stay inside the GitHub API budget and below the
 # ~102 KB at which Gmail starts clipping messages.
@@ -121,6 +127,32 @@ def _commit(sha):
 
     _commit_cache[sha] = data
     return data
+
+
+def wait_for_commit(commit_sha):
+    """Poll until a commit is readable through the GitHub API.
+
+    Returns True as soon as it resolves, leaving the commit in the cache so the
+    resolution that follows costs no extra request. A miss is dropped from the
+    cache, because _commit stores negative results and would otherwise answer
+    every later lookup of this SHA from that failure.
+    """
+    if not commit_sha:
+        return False
+
+    for attempt in range(COMMIT_VISIBILITY_ATTEMPTS):
+        if _commit(commit_sha):
+            return True
+        _commit_cache.pop(commit_sha, None)
+        if attempt < COMMIT_VISIBILITY_ATTEMPTS - 1:
+            print(
+                f"[policy_diff] Commit {commit_sha[:8]} not visible yet, "
+                f"retrying in {COMMIT_VISIBILITY_DELAY}s"
+            )
+            time.sleep(COMMIT_VISIBILITY_DELAY)
+
+    print(f"[policy_diff] Commit {commit_sha[:8]} never became visible")
+    return False
 
 
 def _policy_document(sha, policy_name):

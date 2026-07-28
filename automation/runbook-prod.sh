@@ -242,9 +242,6 @@ process_changes() {
             MESSAGE="{\"UpdatedPolicies\": \"$POLICY_NAMES\", \"CommitUrl\": \"https://github.com/zoph-io/IAMTrail/commit/$LAST_COMMIT_ID\", \"CommitMap\": $COMMIT_MAP_JSON, \"Date\": \"$DATE\", \"CommitCount\": \"${#ALL_COMMITS[@]}\"}"
             MESSAGE_BODY="$TWEET_DIFF https://github.com/zoph-io/IAMTrail/commit/$LAST_COMMIT_ID"
 
-            # Send notifications
-            send_notifications "$MESSAGE_BODY" "$MESSAGE"
-
             # Tag the run with a single summary tag
             git tag "${DATE}-update-${#ALL_COMMITS[@]}-policies"
 
@@ -252,6 +249,11 @@ process_changes() {
             log "Pushing ${#ALL_COMMITS[@]} commits to master"
             git push origin master
             git push origin --tags
+
+            # Notify only once the commits are on GitHub, otherwise consumers
+            # such as the instant notifier resolve diffs against SHAs the API
+            # cannot see yet.
+            send_notifications "$MESSAGE_BODY" "$MESSAGE"
 
             RESULT_STATUS="changes"
             RESULT_POLICY_NAMES="$POLICY_NAMES"

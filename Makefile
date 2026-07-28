@@ -133,6 +133,7 @@ SUBSCRIPTION_TARGETS = \
 	-target=aws_lambda_function.subscription_api \
 	-target=aws_lambda_function.change_recorder \
 	-target=aws_lambda_function.digest_sender \
+	-target=aws_lambda_function.instant_notifier \
 	-target=aws_apigatewayv2_api.subscriptions \
 	-target=aws_apigatewayv2_stage.default \
 	-target=aws_apigatewayv2_domain_name.api \

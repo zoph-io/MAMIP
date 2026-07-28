@@ -92,6 +92,14 @@ def handler(event, context):
                     ),
                 })
 
+            # Waiting on the newest SHA covers the whole batch, since every
+            # entry in CommitMap is one of its ancestors.
+            if commit_sha and not policy_diff.wait_for_commit(commit_sha):
+                print(
+                    f"Commit {commit_sha[:8]} is not on GitHub, "
+                    "sending without diffs"
+                )
+
             policy_changes = policy_diff.resolve_changes(rows)
 
             subscribers = get_instant_subscribers()
