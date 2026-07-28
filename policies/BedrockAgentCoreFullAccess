@@ -403,11 +403,28 @@
                         "lambda:GetFunction"
                     ],
                     "Resource": "arn:aws:lambda:*:*:function:*"
+                },
+                {
+                    "Sid": "AgentCoreEvaluationBedrockMantleInference",
+                    "Effect": "Allow",
+                    "Action": "bedrock-mantle:CreateInference",
+                    "Resource": "arn:aws:bedrock-mantle:*:*:project/*",
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
+                },
+                {
+                    "Sid": "AgentCoreEvaluationBedrockMantleCallWithBearerToken",
+                    "Effect": "Allow",
+                    "Action": "bedrock-mantle:CallWithBearerToken",
+                    "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v17",
+        "VersionId": "v18",
         "IsDefaultVersion": true,
-        "CreateDate": "2026-04-21T17:42:20+00:00"
+        "CreateDate": "2026-07-28T16:57:19+00:00"
     }
 }
