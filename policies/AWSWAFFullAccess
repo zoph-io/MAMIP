@@ -223,7 +223,7 @@
                     "Action": [
                         "logs:PutResourcePolicy"
                     ],
-                    "Resource": "*",
+                    "Resource": "arn:aws:logs:*:*:log-group:*",
                     "Condition": {
                         "ForAnyValue:StringEquals": {
                             "aws:CalledVia": [
@@ -252,8 +252,8 @@
                 }
             ]
         },
-        "VersionId": "v16",
+        "VersionId": "v17",
         "IsDefaultVersion": true,
-        "CreateDate": "2026-06-30T22:42:20+00:00"
+        "CreateDate": "2026-07-28T21:42:26+00:00"
     }
 }
