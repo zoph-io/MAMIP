@@ -10,6 +10,7 @@
                         "ec2:DescribeVpcEndpoints",
                         "ec2:DescribeVpcs",
                         "ec2:DescribeSecurityGroups",
+                        "ec2:DescribeSubnets",
                         "route53:ListHostedZones"
                     ],
                     "Resource": "*"
@@ -188,22 +189,33 @@
                     }
                 },
                 {
-                    "Sid": "AddTagsToRedHatManagedSecurityGroups",
+                    "Sid": "AddDeleteTagsRedHatManagedSecurityGroups",
                     "Effect": "Allow",
                     "Action": [
-                        "ec2:CreateTags"
+                        "ec2:CreateTags",
+                        "ec2:DeleteTags"
                     ],
-                    "Resource": "arn:aws:ec2:*:*:security-group/*",
+                    "Resource": [
+                        "arn:aws:ec2:*:*:security-group/*"
+                    ],
                     "Condition": {
                         "StringEquals": {
                             "aws:ResourceTag/red-hat-managed": "true"
+                        },
+                        "ForAllValues:StringNotEquals": {
+                            "aws:TagKeys": [
+                                "red-hat-managed"
+                            ]
+                        },
+                        "Null": {
+                            "aws:TagKeys": "false"
                         }
                     }
                 }
             ]
         },
-        "VersionId": "v6",
+        "VersionId": "v7",
         "IsDefaultVersion": true,
-        "CreateDate": "2026-04-10T16:12:18+00:00"
+        "CreateDate": "2026-07-28T23:12:18+00:00"
     }
 }
