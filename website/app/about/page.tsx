@@ -23,6 +23,7 @@ import {
   PARENT_ORG_NODE,
   SITE_URL,
 } from "@/lib/galaxy";
+import { TELEGRAM_URL } from "@/lib/social";
 
 export const metadata: Metadata = {
   title: "About IAMTrail - AWS IAM Policy, Endpoint & GuardDuty Change Archive",
@@ -432,6 +433,23 @@ export default function AboutPage() {
                 </Link>
                 .
               </p>
+              {TELEGRAM_URL && (
+                <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed mt-2">
+                  The{" "}
+                  <a
+                    href={TELEGRAM_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-red-600 dark:text-red-400 hover:underline font-medium"
+                  >
+                    Telegram channel
+                  </a>{" "}
+                  is read-only and carries discoveries only: IAM actions and
+                  service prefixes that have never appeared in any AWS managed
+                  policy before, often the first public sign of an unannounced
+                  service.
+                </p>
+              )}
             </div>
           </div>
         </div>

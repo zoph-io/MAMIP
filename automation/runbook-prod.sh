@@ -19,7 +19,6 @@ GIT_USER_EMAIL="mamip_bot@github.com"
 REGION="eu-west-1"
 GITHUB_SECRET_ARN="arn:aws:secretsmanager:eu-west-1:567589703415:secret:mamip/prod/github-MSzGtP"
 SNS_TOPIC_ARN="arn:aws:sns:eu-west-1:567589703415:mamip-sns-topic"
-SQS_BLUESKY_URL="https://sqs.eu-west-1.amazonaws.com/567589703415/qbsky-mamip-prod-sqs-queue.fifo"
 DISCORD_WEBHOOK_SSM="/iamtrail/discord-webhook-url"
 
 # File processing
@@ -164,19 +163,14 @@ process_policies() {
     log "Fetched $POLICY_COUNT AWS managed policies"
 }
 
-# Send notifications to various platforms
+# Announce the run on SNS, which fans out to the instant notifier.
+#
+# Social posting lives in the instant notifier rather than here: it resolves the
+# diffs and classifies never-before-seen actions, so it can say "new AWS service
+# detected" instead of dumping a truncated list of policy names.
 send_notifications() {
-    local message_body="$1"
-    local sns_message="$2"
+    local sns_message="$1"
 
-    # Bluesky (@iamtrail.bsky.social) via qbsky-mamip-prod FIFO queue
-    local bsky_body="[Policies] ${message_body}"
-    aws sqs send-message \
-        --queue-url "$SQS_BLUESKY_URL" \
-        --message-body "$bsky_body" \
-        --message-group-id 1
-
-    # SNS
     aws sns publish \
         --topic-arn "$SNS_TOPIC_ARN" \
         --message "$sns_message" \
@@ -222,7 +216,6 @@ process_changes() {
         if [[ ${#ALL_COMMITS[@]} -gt 0 ]]; then
             # Get list of updated policies for notification
             POLICY_NAMES=$(echo "$CHANGED_FILES" | grep "^policies/" | sed "s|^policies/||" | tr '\n' ',' | sed 's/,$//' | sed 's/,/, /g')
-            TWEET_DIFF="${POLICY_NAMES:0:200}..."
             LAST_COMMIT_ID="${ALL_COMMITS[-1]}"
             
             # Build per-policy commit map JSON
@@ -240,7 +233,6 @@ process_changes() {
 
             # Format messages
             MESSAGE="{\"UpdatedPolicies\": \"$POLICY_NAMES\", \"CommitUrl\": \"https://github.com/zoph-io/IAMTrail/commit/$LAST_COMMIT_ID\", \"CommitMap\": $COMMIT_MAP_JSON, \"Date\": \"$DATE\", \"CommitCount\": \"${#ALL_COMMITS[@]}\"}"
-            MESSAGE_BODY="$TWEET_DIFF https://github.com/zoph-io/IAMTrail/commit/$LAST_COMMIT_ID"
 
             # Tag the run with a single summary tag
             git tag "${DATE}-update-${#ALL_COMMITS[@]}-policies"
@@ -253,7 +245,7 @@ process_changes() {
             # Notify only once the commits are on GitHub, otherwise consumers
             # such as the instant notifier resolve diffs against SHAs the API
             # cannot see yet.
-            send_notifications "$MESSAGE_BODY" "$MESSAGE"
+            send_notifications "$MESSAGE"
 
             RESULT_STATUS="changes"
             RESULT_POLICY_NAMES="$POLICY_NAMES"

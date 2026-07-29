@@ -1,0 +1,276 @@
+#!/usr/bin/env python3
+"""Build the first-seen registry of every IAM action in the IAMTrail archive.
+
+The archive's git history is the only record of when an AWS managed IAM policy
+first mentioned a given action, so this replays every commit that ever touched
+policies/ and keeps the earliest sighting of each action string and each service
+prefix. A brand-new service prefix is the strongest available signal that AWS is
+standing up an unannounced service, since the IAM component usually lands before
+the SDK and the docs.
+
+The replay is a single `git log` plus a single `git cat-file --batch`, which
+keeps the whole 2019-onwards history at a couple of seconds rather than the tens
+of minutes a `git show` per blob would cost.
+
+Writes data/action-registry.json, and with --seed loads the same content into
+DynamoDB for the notification Lambdas, which cannot walk git history themselves.
+
+Stdlib only unless --seed is passed, so it runs on a bare runner.
+"""
+
+import argparse
+import json
+import subprocess
+import sys
+import time
+from pathlib import Path
+
+POLICY_PREFIX = "policies/"
+REGISTRY_PATH = "data/action-registry.json"
+SCHEMA_VERSION = 1
+
+# Key prefixes keep actions, service prefixes and bookkeeping in one table.
+ACTION_KEY = "act#"
+SERVICE_KEY = "svc#"
+SEEDED_KEY = "meta#seeded"
+
+# git log record separators, chosen because neither can appear in a path.
+REC, FIELD = "\x01", "\x02"
+
+
+def is_literal_action(value):
+    """Mirror isLiteralIamActionString in website/lib/iamActionPattern.ts.
+
+    Wildcards are excluded because `s3:*` says nothing about which concrete
+    actions exist, so it cannot establish a first sighting.
+    """
+    if not isinstance(value, str) or not value:
+        return False
+    if "*" in value:
+        return False
+    idx = value.find(":")
+    return 0 < idx < len(value) - 1
+
+
+def statements(doc):
+    if not isinstance(doc, dict):
+        return []
+    stmts = doc.get("PolicyVersion", {}).get("Document", {}).get("Statement", [])
+    if isinstance(stmts, dict):
+        return [stmts]
+    if isinstance(stmts, list):
+        return [s for s in stmts if isinstance(s, dict)]
+    return []
+
+
+def literal_actions(doc):
+    """Every literal action a policy document mentions, regardless of effect.
+
+    Effect and Action/NotAction are deliberately ignored: the question here is
+    whether the action string has ever existed, not whether it was allowed.
+    """
+    found = set()
+    for stmt in statements(doc):
+        for key in ("Action", "NotAction"):
+            values = stmt.get(key)
+            if isinstance(values, str):
+                values = [values]
+            if not isinstance(values, list):
+                continue
+            for value in values:
+                if is_literal_action(value):
+                    found.add(value)
+    return found
+
+
+def touched_blobs():
+    """Every (sha, commit time, path) that added or modified a policy, oldest first."""
+    out = subprocess.run(
+        [
+            "git", "log", "--reverse", "--no-renames", "--diff-filter=AM",
+            f"--format={REC}%H{FIELD}%ct", "--name-only", "--", POLICY_PREFIX,
+        ],
+        check=True,
+        capture_output=True,
+        text=True,
+    ).stdout
+
+    pairs = []
+    sha, when = "", 0
+    for line in out.split("\n"):
+        if line.startswith(REC):
+            sha, raw_when = line[1:].split(FIELD)
+            when = int(raw_when)
+        elif line.startswith(POLICY_PREFIX):
+            pairs.append((sha, when, line))
+    return pairs
+
+
+def read_blobs(pairs):
+    """Yield (sha, when, path, document) for each pair, via one cat-file process.
+
+    Blobs are requested and parsed in order, so a missing or unparseable object
+    is skipped without desynchronising the stream from the request list.
+    """
+    proc = subprocess.Popen(
+        ["git", "cat-file", "--batch"],
+        stdin=subprocess.PIPE,
+        stdout=subprocess.PIPE,
+    )
+    request = "".join(f"{sha}:{path}\n" for sha, _, path in pairs).encode()
+    out, _ = proc.communicate(request)
+
+    pos, index = 0, 0
+    while pos < len(out) and index < len(pairs):
+        end = out.find(b"\n", pos)
+        if end == -1:
+            break
+        header = out[pos:end].decode("utf-8", errors="replace").split()
+        sha, when, path = pairs[index]
+        index += 1
+
+        # "<oid> missing" has no size and no body to skip past.
+        if len(header) < 3:
+            pos = end + 1
+            continue
+
+        size = int(header[2])
+        body = out[end + 1:end + 1 + size]
+        pos = end + 1 + size + 1
+
+        try:
+            yield sha, when, path, json.loads(body)
+        except (json.JSONDecodeError, ValueError, UnicodeDecodeError):
+            continue
+
+
+def build():
+    """Replay the archive into {entry: {first_seen_at, first_commit_sha, first_policy}}."""
+    pairs = touched_blobs()
+    print(f"Replaying {len(pairs)} commit/file pairs")
+
+    entries = {}
+    for sha, when, path, doc in read_blobs(pairs):
+        policy = path[len(POLICY_PREFIX):]
+        seen_at = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime(when))
+        for action in literal_actions(doc):
+            service = action.split(":", 1)[0].lower()
+            sighting = {
+                "first_seen_at": seen_at,
+                "first_commit_sha": sha,
+                "first_policy": policy,
+            }
+            # Keys are lowercased because IAM matches actions case-insensitively
+            # and AWS is inconsistent about it: s3:GetBucketPolicy, S3:GetBucketPolicy
+            # and s3:getBucketPolicy all appear in the archive. Keying on the raw
+            # string would report a mere re-spelling as a brand-new action.
+            for key in (ACTION_KEY + action.lower(), SERVICE_KEY + service):
+                # Oldest first, so the first writer is the first sighting.
+                entries.setdefault(key, dict(sighting))
+            entries[ACTION_KEY + action.lower()].setdefault("first_action", action)
+    return entries
+
+
+def counts(entries):
+    actions = sum(1 for k in entries if k.startswith(ACTION_KEY))
+    return actions, len(entries) - actions
+
+
+def write_registry(entries, root):
+    """Serialise one entry per line, so regenerating this file yields a readable diff.
+
+    json.dump with an indent would spread each entry over five lines and triple
+    the size, and a fully compact dump would put 15k entries on one line.
+    """
+    actions, services = counts(entries)
+    head = {
+        "schemaVersion": SCHEMA_VERSION,
+        "generatedAt": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+        "stats": {"actionCount": actions, "serviceCount": services},
+    }
+    rows = ",\n".join(
+        f"    {json.dumps(key)}: "
+        f"{json.dumps(entries[key], sort_keys=True, separators=(',', ':'))}"
+        for key in sorted(entries)
+    )
+
+    path = root / REGISTRY_PATH
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w") as handle:
+        handle.write("{\n")
+        for key, value in head.items():
+            handle.write(f"  {json.dumps(key)}: {json.dumps(value, sort_keys=True)},\n")
+        handle.write('  "entries": {\n')
+        handle.write(rows)
+        handle.write("\n  }\n}\n")
+    print(f"Wrote {path} ({actions} actions, {services} services)")
+
+
+def seed(entries, table_name):
+    """Bulk-load the registry, then mark it seeded.
+
+    The sentinel is written last and on purpose: the Lambdas refuse to classify
+    without it, so a run that dies midway leaves the table inert rather than
+    reporting every already-known action as a discovery.
+    """
+    import boto3
+
+    table = boto3.resource("dynamodb").Table(table_name)
+    with table.batch_writer(overwrite_by_pkeys=["entry"]) as batch:
+        for written, (key, value) in enumerate(entries.items(), start=1):
+            batch.put_item(Item={"entry": key, **value})
+            if written % 5000 == 0:
+                print(f"  seeded {written}/{len(entries)}")
+
+    actions, services = counts(entries)
+    table.put_item(
+        Item={
+            "entry": SEEDED_KEY,
+            "seeded_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+            "action_count": actions,
+            "service_count": services,
+            "schema_version": SCHEMA_VERSION,
+        }
+    )
+    print(f"Seeded {len(entries)} entries into {table_name}")
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--seed",
+        metavar="TABLE",
+        help="also load the registry into this DynamoDB table",
+    )
+    parser.add_argument(
+        "--no-write",
+        action="store_true",
+        help="skip writing data/action-registry.json",
+    )
+    args = parser.parse_args()
+
+    root = Path(
+        subprocess.run(
+            ["git", "rev-parse", "--show-toplevel"],
+            check=True, capture_output=True, text=True,
+        ).stdout.strip()
+    )
+
+    started = time.time()
+    entries = build()
+    if not entries:
+        print("No actions found, refusing to write an empty registry", file=sys.stderr)
+        return 1
+
+    actions, services = counts(entries)
+    print(f"Built {actions} actions and {services} services in {time.time() - started:.1f}s")
+
+    if not args.no_write:
+        write_registry(entries, root)
+    if args.seed:
+        seed(entries, args.seed)
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

@@ -3,17 +3,22 @@
 import { useState, useEffect, useMemo, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { Shield, Globe, Eye } from "lucide-react";
+import { Shield, Globe, Eye, Radar } from "lucide-react";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://api.iamtrail.com";
 
-type Topic = "iam_policies" | "endpoints" | "guardduty";
+type Topic = "iam_policies" | "discoveries" | "endpoints" | "guardduty";
 
 const TOPIC_CONFIG: Record<Topic, { label: string; description: string; icon: typeof Shield }> = {
   iam_policies: {
     label: "IAM Policy Changes",
     description: "AWS Managed IAM Policy additions, modifications, and deprecations",
     icon: Shield,
+  },
+  discoveries: {
+    label: "New Service Discoveries",
+    description: "Actions and service prefixes never seen in any managed policy before, often the first public sign of an unannounced AWS service",
+    icon: Radar,
   },
   endpoints: {
     label: "AWS Endpoint Changes",

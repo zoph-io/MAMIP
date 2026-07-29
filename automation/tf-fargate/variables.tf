@@ -94,3 +94,16 @@ variable "guardduty_sns_topic_arn" {
   description = "AWS-owned GuardDuty Announcements SNS topic ARN (eu-west-1)"
 }
 
+# ──────────────────────────────
+# Telegram discoveries channel
+# ──────────────────────────────
+
+# The channel handle is not a secret, unlike the bot token, which lives in SSM at
+# /iamtrail/telegram-bot-token. Posting stays inert while this is empty, so the
+# code can ship before the channel is claimed. Keep it in step with
+# TELEGRAM_HANDLE in website/lib/social.ts.
+variable "telegram_chat_id" {
+  default     = ""
+  description = "Telegram channel handle for IAMTrail discoveries, e.g. @iamtrail"
+}
+

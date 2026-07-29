@@ -10,6 +10,7 @@ locals {
   ses_region                 = "eu-west-3"
   discord_webhook_ssm        = "/iamtrail/discord-webhook-url"
   discord_public_webhook_ssm = "/iamtrail/discord-public-webhook-url"
+  telegram_token_ssm         = "/iamtrail/telegram-bot-token"
   github_secret_id           = "mamip/prod/github"
   github_secret_arn_pattern  = "arn:aws:secretsmanager:${var.aws_region}:${data.aws_caller_identity.current.account_id}:secret:mamip/prod/github-*"
   bluesky_fifo_queue_url     = "https://sqs.${var.aws_region}.amazonaws.com/${data.aws_caller_identity.current.account_id}/${var.qbsky_sqs_name}.fifo"
@@ -319,6 +320,29 @@ resource "aws_dynamodb_table" "policy_changes" {
 }
 
 # ──────────────────────────────────────
+# DynamoDB - IAM action first-seen registry
+# ──────────────────────────────────────
+
+# Earliest sighting of every IAM action and service prefix in the archive, so a
+# notification can say "never seen before" without walking git history. Seeded by
+# automation/scripts/build_action_registry.py and appended to as changes arrive.
+# Deliberately no TTL: an expired entry would re-announce a known action.
+resource "aws_dynamodb_table" "action_registry" {
+  name         = "iamtrail-action-registry"
+  billing_mode = "PAY_PER_REQUEST"
+  hash_key     = "entry"
+
+  attribute {
+    name = "entry"
+    type = "S"
+  }
+
+  point_in_time_recovery {
+    enabled = true
+  }
+}
+
+# ──────────────────────────────────────
 # DynamoDB - Endpoint Changes (botocore)
 # ──────────────────────────────────────
 
@@ -570,6 +594,10 @@ data "archive_file" "digest_sender" {
     content  = file("${path.module}/../lambdas/shared/policy_diff.py")
     filename = "policy_diff.py"
   }
+  source {
+    content  = file("${path.module}/../lambdas/shared/action_registry.py")
+    filename = "action_registry.py"
+  }
 }
 
 resource "aws_lambda_function" "digest_sender" {
@@ -588,6 +616,7 @@ resource "aws_lambda_function" "digest_sender" {
       CHANGES_TABLE          = aws_dynamodb_table.policy_changes.name
       ENDPOINT_CHANGES_TABLE = aws_dynamodb_table.endpoint_changes.name
       GUARDDUTY_TABLE        = aws_dynamodb_table.guardduty_announcements.name
+      ACTION_REGISTRY_TABLE  = aws_dynamodb_table.action_registry.name
       SENDER_EMAIL           = local.sender
       SES_REGION             = local.ses_region
       SITE_URL               = "https://${local.domain_name}"
@@ -618,6 +647,18 @@ data "archive_file" "instant_notifier" {
     content  = file("${path.module}/../lambdas/shared/policy_diff.py")
     filename = "policy_diff.py"
   }
+  source {
+    content  = file("${path.module}/../lambdas/shared/action_registry.py")
+    filename = "action_registry.py"
+  }
+  source {
+    content  = file("${path.module}/../lambdas/shared/bluesky_publisher.py")
+    filename = "bluesky_publisher.py"
+  }
+  source {
+    content  = file("${path.module}/../lambdas/shared/telegram_publisher.py")
+    filename = "telegram_publisher.py"
+  }
 }
 
 resource "aws_lambda_function" "instant_notifier" {
@@ -634,13 +675,17 @@ resource "aws_lambda_function" "instant_notifier" {
 
   environment {
     variables = {
-      SUBSCRIPTIONS_TABLE = aws_dynamodb_table.subscriptions.name
-      SENDER_EMAIL        = local.sender
-      SES_REGION          = local.ses_region
-      SITE_URL            = "https://${local.domain_name}"
-      GITHUB_REPO         = "zoph-io/IAMTrail"
-      GITHUB_SECRET_ID    = local.github_secret_id
-      DISCORD_WEBHOOK_SSM = local.discord_webhook_ssm
+      SUBSCRIPTIONS_TABLE   = aws_dynamodb_table.subscriptions.name
+      ACTION_REGISTRY_TABLE = aws_dynamodb_table.action_registry.name
+      SENDER_EMAIL          = local.sender
+      SES_REGION            = local.ses_region
+      SITE_URL              = "https://${local.domain_name}"
+      GITHUB_REPO           = "zoph-io/IAMTrail"
+      GITHUB_SECRET_ID      = local.github_secret_id
+      DISCORD_WEBHOOK_SSM   = local.discord_webhook_ssm
+      BLUESKY_QUEUE_URL     = local.bluesky_fifo_queue_url
+      TELEGRAM_TOKEN_SSM    = local.telegram_token_ssm
+      TELEGRAM_CHAT_ID      = var.telegram_chat_id
     }
   }
 }
@@ -1017,6 +1062,12 @@ resource "aws_iam_role_policy" "digest_sender" {
         ]
       },
       {
+        # First-seen lookups for the discovery badges.
+        Effect   = "Allow"
+        Action   = ["dynamodb:BatchGetItem", "dynamodb:GetItem", "dynamodb:PutItem"]
+        Resource = [aws_dynamodb_table.action_registry.arn]
+      },
+      {
         Effect   = "Allow"
         Action   = ["ses:SendEmail"]
         Resource = ["*"]
@@ -1067,9 +1118,21 @@ resource "aws_iam_role_policy" "instant_notifier" {
         Resource = [aws_dynamodb_table.subscriptions.arn]
       },
       {
+        # First-seen lookups for the discovery badges.
+        Effect   = "Allow"
+        Action   = ["dynamodb:BatchGetItem", "dynamodb:GetItem", "dynamodb:PutItem"]
+        Resource = [aws_dynamodb_table.action_registry.arn]
+      },
+      {
         Effect   = "Allow"
         Action   = ["sqs:ReceiveMessage", "sqs:DeleteMessage", "sqs:GetQueueAttributes"]
         Resource = [aws_sqs_queue.instant.arn]
+      },
+      {
+        # Public Bluesky posts, consumed by the external qbsky publisher.
+        Effect   = "Allow"
+        Action   = ["sqs:SendMessage"]
+        Resource = ["arn:aws:sqs:${var.aws_region}:${data.aws_caller_identity.current.account_id}:${var.qbsky_sqs_name}.fifo"]
       },
       {
         Effect   = "Allow"
@@ -1082,9 +1145,12 @@ resource "aws_iam_role_policy" "instant_notifier" {
         }
       },
       {
-        Effect   = "Allow"
-        Action   = ["ssm:GetParameter"]
-        Resource = ["arn:aws:ssm:${var.aws_region}:${data.aws_caller_identity.current.account_id}:parameter${local.discord_webhook_ssm}"]
+        Effect = "Allow"
+        Action = ["ssm:GetParameter"]
+        Resource = [
+          "arn:aws:ssm:${var.aws_region}:${data.aws_caller_identity.current.account_id}:parameter${local.discord_webhook_ssm}",
+          "arn:aws:ssm:${var.aws_region}:${data.aws_caller_identity.current.account_id}:parameter${local.telegram_token_ssm}",
+        ]
       },
       {
         # Authenticated GitHub API calls, otherwise diffs hit the 60/hour
@@ -1325,8 +1391,16 @@ output "iamtrail_nameservers" {
 # Create SecureString /iamtrail/discord-public-webhook-url in the console
 # with the channel webhook URL. Not advertised on iamtrail.com (Bluesky + RSS only).
 # ──────────────────────────────────────────────
-# Social: Bluesky only. Posts are enqueued to the qbsky FIFO queue; the external
-# qbsky-mamip-prod consumer holds Bluesky credentials (qbsky-mamip-secrets-prod).
+# Social: Bluesky and a read-only Telegram channel. Bluesky posts are enqueued to
+# the qbsky FIFO queue; the external qbsky-mamip-prod consumer holds Bluesky
+# credentials (qbsky-mamip-secrets-prod). Both are published by the instant
+# notifier, which is the only place that classifies never-before-seen actions.
+# ──────────────────────────────────────────────
+# SSM: Telegram bot token (not Terraform-managed)
+# Create SecureString /iamtrail/telegram-bot-token in the console with the
+# @BotFather token, add the bot to the channel as an administrator with "Post
+# Messages", and set var.telegram_chat_id to the channel handle. Leave no
+# discussion group linked, so the channel stays read-only.
 # ──────────────────────────────────────────────
 
 output "iamtrail_cloudfront_distribution_id" {

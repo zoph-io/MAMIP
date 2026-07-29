@@ -21,7 +21,7 @@ table = dynamodb.Table(TABLE_NAME)
 rate_table = dynamodb.Table(RATE_LIMIT_TABLE_NAME) if RATE_LIMIT_TABLE_NAME else None
 
 EMAIL_RE = re.compile(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")
-VALID_TOPICS = {"iam_policies", "endpoints", "guardduty"}
+VALID_TOPICS = {"iam_policies", "endpoints", "guardduty", "discoveries"}
 
 RATE_LIMIT_COUNT = 3
 RATE_LIMIT_WINDOW_S = 3600

@@ -65,6 +65,12 @@ jobs:
           restore-keys: |
             nextjs-${{ hashFiles('website/package-lock.json') }}-
 
+      - name: Rebuild first-seen action registry
+        # Full replay of the archive, ~3s, stdlib only. Keeps the discoveries page
+        # and the action first-seen dates current instead of serving whatever was
+        # last committed. Needs the fetch-depth: 0 checkout above.
+        run: python3 automation/scripts/build_action_registry.py
+
       - name: Generate policy data
         working-directory: ./website
         run: npm run generate-data

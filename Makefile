@@ -127,6 +127,7 @@ SUBSCRIPTION_TARGETS = \
 	-target=aws_ses_domain_mail_from.iamtrail \
 	-target=aws_dynamodb_table.subscriptions \
 	-target=aws_dynamodb_table.policy_changes \
+	-target=aws_dynamodb_table.action_registry \
 	-target=aws_sqs_queue.changes \
 	-target=aws_sqs_queue_policy.changes \
 	-target=aws_sns_topic_subscription.changes \

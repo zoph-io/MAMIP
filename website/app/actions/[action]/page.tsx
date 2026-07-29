@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { BookMarked } from "lucide-react";
-import { getActionDetail, getActionIndex } from "@/lib/loadActionIndex";
+import { BookMarked, CalendarClock } from "lucide-react";
+import {
+  getActionDetail,
+  getActionIndex,
+  getServiceFirstSighting,
+} from "@/lib/loadActionIndex";
+import type { ActionDetail, FirstSighting } from "@/lib/loadActionIndex";
 import {
   getActionDefinition,
   getActionDefinitionsMeta,
@@ -99,6 +104,123 @@ function ActionReferenceCard({ def }: { def: ActionDefinitionRow }) {
   );
 }
 
+function FirstSeenCard({
+  action,
+  detail,
+  service,
+}: {
+  action: string;
+  detail: ActionDetail;
+  service: FirstSighting | null;
+}) {
+  const prefix = action.split(":", 1)[0];
+
+  // Same day as its whole service prefix means this action was part of the batch
+  // that introduced the service, which is often AWS shipping the IAM component
+  // ahead of the announcement. Never true for the 2019 import, where the date is
+  // only the archive's floor.
+  const introducedService =
+    !!service &&
+    !service.sinceStart &&
+    !detail.sinceStart &&
+    !!detail.firstSeen &&
+    service.firstSeen === detail.firstSeen;
+
+  // The service line only earns its place when it differs from the action's.
+  const showService =
+    !!service && !introducedService && service.firstSeen !== detail.firstSeen;
+
+  return (
+    <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg overflow-hidden">
+      <div className="px-5 py-3 border-b border-zinc-200 dark:border-zinc-800 flex items-center gap-2">
+        <CalendarClock className="w-4 h-4 text-red-600 dark:text-red-400 flex-shrink-0" />
+        <h2 className="text-sm font-semibold font-mono uppercase tracking-wider text-zinc-900 dark:text-white">
+          First seen
+        </h2>
+        <span className="text-[10px] font-mono text-zinc-500 dark:text-zinc-400 ml-auto">
+          From archive history
+        </span>
+      </div>
+      <div className="px-5 py-4 space-y-4">
+        {detail.firstSeen ? (
+          <div>
+            <p className="text-[10px] font-mono uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-1.5">
+              This action
+            </p>
+            {detail.sinceStart ? (
+              <p className="text-sm text-zinc-700 dark:text-zinc-300">
+                Already present when the archive began, on{" "}
+                <span className="font-mono text-zinc-900 dark:text-white">
+                  {detail.firstSeen}
+                </span>
+              </p>
+            ) : (
+              <p className="text-sm text-zinc-700 dark:text-zinc-300">
+                <span className="font-mono text-zinc-900 dark:text-white">
+                  {detail.firstSeen}
+                </span>
+                {detail.firstPolicy ? (
+                  <>
+                    {" in "}
+                    <Link
+                      href={`/policies/${encodeURIComponent(detail.firstPolicy)}`}
+                      className="font-mono text-red-600 dark:text-red-400 hover:underline"
+                    >
+                      {detail.firstPolicy}
+                    </Link>
+                  </>
+                ) : null}
+              </p>
+            )}
+            {introducedService ? (
+              <p className="mt-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-mono font-medium border bg-amber-50 text-amber-900 dark:bg-amber-950/40 dark:text-amber-200 border-amber-200 dark:border-amber-800">
+                Introduced the {prefix} service prefix
+              </p>
+            ) : null}
+          </div>
+        ) : null}
+        {showService ? (
+          <div>
+            <p className="text-[10px] font-mono uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-1.5">
+              Service prefix{" "}
+              {/* normal-case, since IAM prefixes are lowercase and the label is not */}
+              <span className="normal-case text-zinc-700 dark:text-zinc-300">
+                {prefix}
+              </span>
+            </p>
+            {service.sinceStart ? (
+              <p className="text-sm text-zinc-700 dark:text-zinc-300">
+                Already present when the archive began
+              </p>
+            ) : (
+              <p className="text-sm text-zinc-700 dark:text-zinc-300">
+                <span className="font-mono text-zinc-900 dark:text-white">
+                  {service.firstSeen}
+                </span>
+                {service.firstPolicy ? (
+                  <>
+                    {" in "}
+                    <Link
+                      href={`/policies/${encodeURIComponent(service.firstPolicy)}`}
+                      className="font-mono text-red-600 dark:text-red-400 hover:underline"
+                    >
+                      {service.firstPolicy}
+                    </Link>
+                  </>
+                ) : null}
+              </p>
+            )}
+          </div>
+        ) : null}
+        <p className="text-[10px] font-mono text-zinc-500 dark:text-zinc-500">
+          Earliest appearance in any AWS managed policy tracked here, not an
+          official AWS launch date. Matched case-insensitively, as IAM does.
+        </p>
+      </div>
+    </div>
+  );
+}
+
 export async function generateStaticParams() {
   const fs = require("fs");
   const path = require("path");
@@ -185,6 +307,7 @@ export default async function ActionDetailPage(props: {
   const idx = getActionIndex();
   const sarDef = getActionDefinition(action);
   const defsMeta = getActionDefinitionsMeta();
+  const serviceSighting = getServiceFirstSighting(action);
   const allowN = detail.actionAllowPolicies.length;
   const denyN = detail.actionDenyPolicies.length;
   const notN = detail.notActionPolicies.length;
@@ -266,6 +389,14 @@ export default async function ActionDetailPage(props: {
           deploy.
         </p>
       </div>
+
+      {detail.firstSeen || serviceSighting ? (
+        <FirstSeenCard
+          action={action}
+          detail={detail}
+          service={serviceSighting}
+        />
+      ) : null}
 
       {sarDef ? <ActionReferenceCard def={sarDef} /> : null}
 

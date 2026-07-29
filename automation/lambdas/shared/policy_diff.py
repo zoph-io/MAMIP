@@ -356,6 +356,10 @@ def _blank_change(policy_name, commit_sha="", commit_url="", detailed=True):
         "diff_truncated": False,
         "resolved": False,
         "detailed": detailed,
+        # Filled in by action_registry.classify when a registry is available, so
+        # an unclassified record renders exactly as it did before discoveries.
+        "new_service_prefixes": [],
+        "new_actions": [],
     }
 
 
@@ -461,6 +465,9 @@ _STATUS_LABELS = {
 }
 _STATUS_DEFAULT = ("Updated", "#e8effd", "#1d4ed8")
 
+# Discoveries get their own amber, distinct from the blue of a routine update.
+_DISCOVERY_BG, _DISCOVERY_FG = "#fef3c7", "#92400e"
+
 _DIFF_STYLES = {
     "add": ("+ ", "background:#e7f8ec;color:#0f5132;"),
     "del": ("- ", "background:#fdeaea;color:#8a1c1c;"),
@@ -501,9 +508,60 @@ def _summary_line(glyph, label, body, fg):
     )
 
 
+def is_discovery(change):
+    """True when this change contains an action never seen anywhere before."""
+    return bool(change.get("new_service_prefixes") or change.get("new_actions"))
+
+
+def discovery_rank(change):
+    """Sort key: a whole new service outranks a new action, which outranks the rest."""
+    if change.get("new_service_prefixes"):
+        return 0
+    if change.get("new_actions"):
+        return 1
+    return 2
+
+
+def _discovery_lines(change):
+    """Lead with the never-before-seen finding, since it outranks the rest.
+
+    A first-ever service prefix usually means AWS is standing up a service it has
+    not announced, so it is called out separately from a merely new action.
+    """
+    prefixes = change.get("new_service_prefixes") or []
+    actions = change.get("new_actions") or []
+    lines = []
+
+    if prefixes:
+        label = "New AWS service" if len(prefixes) == 1 else "New AWS services"
+        lines.append(
+            _summary_line(
+                "*",
+                label,
+                f"{_join_items(prefixes)}, never seen in any managed policy before",
+                _DISCOVERY_FG,
+            )
+        )
+
+    # Under a new prefix every action is new by definition, so listing them again
+    # would just repeat the headline.
+    extra = [a for a in actions if a.split(":", 1)[0].lower() not in set(prefixes)]
+    if extra:
+        count = len(extra)
+        lines.append(
+            _summary_line(
+                "*",
+                f"{count} first-ever action{'s' if count != 1 else ''}",
+                _join_items(extra),
+                _DISCOVERY_FG,
+            )
+        )
+    return lines
+
+
 def _render_summary(change):
     """Plain-language description of what AWS actually changed."""
-    lines = []
+    lines = _discovery_lines(change)
 
     if change["status"] == "added":
         count = len(change["actions_added"])
@@ -619,6 +677,24 @@ def render_policy_card(change, site_url, include_diff=True):
     label, bg, fg = _STATUS_LABELS.get(change["status"], _STATUS_DEFAULT)
     badges = [_badge(label, bg, fg)]
 
+    prefixes = change.get("new_service_prefixes") or []
+    if prefixes:
+        text = (
+            f"New service: {prefixes[0]}"
+            if len(prefixes) == 1
+            else f"{len(prefixes)} new services"
+        )
+        badges.append(_badge(text, _DISCOVERY_BG, _DISCOVERY_FG))
+    elif change.get("new_actions"):
+        count = len(change["new_actions"])
+        badges.append(
+            _badge(
+                f"{count} first-ever action{'s' if count != 1 else ''}",
+                _DISCOVERY_BG,
+                _DISCOVERY_FG,
+            )
+        )
+
     old_v, new_v = change["old_version"], change["new_version"]
     if old_v and new_v and old_v != new_v:
         badges.append(
@@ -732,13 +808,17 @@ def render_policy_section(changes, site_url):
     """The IAM policy changes section, shared by digest and instant emails.
 
     Cards are emitted until the byte budget runs out; everything after that is
-    listed by name so a bulk day cannot produce a clipped email.
+    listed by name so a bulk day cannot produce a clipped email. Discoveries are
+    rendered first so they claim a full card with its diff, instead of being
+    pushed into the name-only overflow list on a busy day.
     """
     cards = []
     overflow = []
     spent = 0
 
-    for change in changes:
+    ordered = sorted(changes, key=discovery_rank)
+
+    for change in ordered:
         if not change.get("detailed", True) or spent > MAX_SECTION_BYTES:
             overflow.append(change)
             continue

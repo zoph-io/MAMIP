@@ -1,6 +1,7 @@
 import os
 import traceback
 from datetime import datetime, timedelta, timezone
+import action_registry
 import boto3
 from boto3.dynamodb.conditions import Key
 import discord_notifier as discord
@@ -190,6 +191,19 @@ def _build_guardduty_section(changes):
     """
 
 
+def _policy_selection(changes, topics):
+    """The policy changes a subscriber's topics entitle them to.
+
+    Holding discoveries without iam_policies means "only tell me about actions
+    AWS has never used before", not every version bump.
+    """
+    if "iam_policies" in topics:
+        return changes
+    if "discoveries" in topics:
+        return [c for c in changes if policy_diff.is_discovery(c)]
+    return []
+
+
 def _summary_parts(policy_changes, endpoint_changes, guardduty_changes, brief=False):
     """Topic counts used for both the subject line and the header subtitle."""
     parts = []
@@ -270,6 +284,9 @@ def handler(event, context):
         daily_policy = resolve_policy_changes(daily_policy)
         weekly_policy = resolve_policy_changes(weekly_policy)
 
+        # Daily and weekly share these record objects, so one pass annotates both.
+        action_registry.classify(list(_resolved_changes.values()))
+
         failed = [
             c["name"]
             for c in _resolved_changes.values()
@@ -309,11 +326,11 @@ def handler(event, context):
                 continue
 
             if frequency == "daily" or frequency == "instant":
-                pc = daily_policy if "iam_policies" in topics else []
+                pc = _policy_selection(daily_policy, topics)
                 ec = daily_endpoints if "endpoints" in topics else []
                 gc = daily_guardduty if "guardduty" in topics else []
             elif frequency == "weekly":
-                pc = weekly_policy if "iam_policies" in topics else []
+                pc = _policy_selection(weekly_policy, topics)
                 ec = weekly_endpoints if "endpoints" in topics else []
                 gc = weekly_guardduty if "guardduty" in topics else []
             else:

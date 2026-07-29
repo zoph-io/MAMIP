@@ -12,6 +12,7 @@ const PATHFINDING_PATHS_JSON = path.join(
   REPO_ROOT,
   "data/pathfinding/paths.json"
 );
+const ACTION_REGISTRY_JSON = path.join(REPO_ROOT, "data/action-registry.json");
 const OUTPUT_DIR = path.join(__dirname, "../public/data");
 const PUBLIC_DIR = path.join(__dirname, "../public");
 const FEEDS_DIR = path.join(PUBLIC_DIR, "feeds");
@@ -26,6 +27,73 @@ function displayAuthorName(name) {
   if (/^mamip\s*bot$/i.test(t)) return "IAMTrail";
   if (/mamip-github-actions/i.test(t)) return "IAMTrail";
   return name;
+}
+
+/**
+ * First-ever sighting of each IAM action and service prefix, from
+ * data/action-registry.json (built by automation/scripts/build_action_registry.py).
+ *
+ * The registry replays the whole archive, so it knows when an action appeared for
+ * the first time anywhere - which the per-policy git history cannot answer, since
+ * a prefix new to AWS can arrive inside a policy that has existed since 2019.
+ *
+ * Keys are lowercased there because IAM matches actions case-insensitively and
+ * AWS is inconsistent about it. Returns empty maps when the file is absent, so
+ * the site still builds without it.
+ *
+ * Anything whose first sighting is the archive's own first commit is flagged
+ * sinceStart: those actions already existed in 2019 when tracking began, so their
+ * date is the archive's floor and says nothing about when AWS shipped them.
+ */
+function loadActionRegistry() {
+  if (!fs.existsSync(ACTION_REGISTRY_JSON)) {
+    console.log(
+      "   ⚠️  No data/action-registry.json found, action pages will omit first-seen dates"
+    );
+    return { actions: {}, services: {}, actionLabels: {}, archiveStart: "" };
+  }
+
+  const raw = JSON.parse(fs.readFileSync(ACTION_REGISTRY_JSON, "utf8"));
+  const entries = Object.entries(raw.entries || {});
+
+  // Derived rather than hardcoded, so a rebased or re-imported archive stays right.
+  let baseline = null;
+  for (const [, value] of entries) {
+    if (!baseline || (value.first_seen_at || "") < baseline.first_seen_at) {
+      baseline = value;
+    }
+  }
+  const baselineCommit = baseline ? baseline.first_commit_sha : "";
+  const archiveStart = baseline ? baseline.first_seen_at.slice(0, 10) : "";
+
+  const actions = {};
+  const services = {};
+  // Registry keys are lowercased because IAM is case-insensitive; this keeps the
+  // casing AWS shipped, for display. Held apart from the sightings so it does not
+  // get spread into every entry of the action index.
+  const actionLabels = {};
+  let sinceStartCount = 0;
+  for (const [key, value] of entries) {
+    // Day precision is all an action page shows, and it keeps the index small.
+    const firstSeen = (value.first_seen_at || "").slice(0, 10);
+    if (!firstSeen) continue;
+    const sighting = { firstSeen, firstPolicy: value.first_policy || "" };
+    if (value.first_commit_sha && value.first_commit_sha === baselineCommit) {
+      sighting.sinceStart = true;
+      sinceStartCount++;
+    }
+    if (key.startsWith("act#")) {
+      actions[key.slice(4)] = sighting;
+      actionLabels[key.slice(4)] = value.first_action || key.slice(4);
+    } else if (key.startsWith("svc#")) {
+      services[key.slice(4)] = sighting;
+    }
+  }
+  console.log(
+    `   🕵️  Action registry: first-seen for ${Object.keys(actions).length} actions, ` +
+      `${Object.keys(services).length} services (${sinceStartCount} present at archive start ${archiveStart})`
+  );
+  return { actions, services, actionLabels, archiveStart };
 }
 
 function iamActionToSlug(action) {
@@ -733,13 +801,16 @@ async function generatePolicyData() {
   // deprecated dict was loaded before the per-policy loop
 
   // IAM action inverse index (literal strings only; wildcards excluded from keys)
+  const registry = loadActionRegistry();
   const actionsOut = {};
   for (const action of [...uniqueLiteralActions].sort()) {
     const b = actionBucket(action);
+    const sighting = registry.actions[action.toLowerCase()];
     actionsOut[action] = {
       actionAllowPolicies: [...b.actionAllow].sort(),
       actionDenyPolicies: [...b.actionDeny].sort(),
       notActionPolicies: [...b.notAction].sort(),
+      ...(sighting || {}),
     };
   }
   const actionIndexPayload = {
@@ -752,6 +823,10 @@ async function generatePolicyData() {
     },
     effectiveGrantPreview: null,
     actions: actionsOut,
+    // Per service prefix rather than repeated on every action, since a prefix
+    // arrives only once and thousands of actions can share it.
+    services: registry.services,
+    archiveStart: registry.archiveStart,
   };
   fs.writeFileSync(
     path.join(OUTPUT_DIR, "action-index.json"),
@@ -759,6 +834,80 @@ async function generatePolicyData() {
   );
   console.log(
     `   🔑 Action index: ${uniqueLiteralActions.size} literal actions, ${policiesWithWildcard.size} policies with wildcards`
+  );
+
+  // Discoveries feed: first-ever sightings, newest first. A dedicated file rather
+  // than the 4.4 MB action index, so the page loads only what it renders.
+  // The service list is short enough to show whole; actions are capped because
+  // thousands of them would bloat the page for no added signal.
+  const DISCOVERY_SERVICE_CAP = 1000;
+  const DISCOVERY_ACTION_CAP = 400;
+
+  // Actions per prefix, counted from the registry so it reflects the whole
+  // archive rather than only the actions still present today.
+  const registryActionsByPrefix = {};
+  for (const action of Object.keys(registry.actions)) {
+    const prefix = action.split(":", 1)[0];
+    registryActionsByPrefix[prefix] = (registryActionsByPrefix[prefix] || 0) + 1;
+  }
+
+  // Anything present at the 2019 import is excluded throughout: its date is when
+  // tracking began, not when AWS introduced it.
+  const discoveredServices = Object.entries(registry.services)
+    .filter(([, v]) => !v.sinceStart)
+    .map(([prefix, v]) => ({
+      prefix,
+      firstSeen: v.firstSeen,
+      firstPolicy: v.firstPolicy,
+      actionCount: registryActionsByPrefix[prefix] || 0,
+    }))
+    .sort((a, b) => b.firstSeen.localeCompare(a.firstSeen));
+
+  const newServiceDates = new Set(
+    discoveredServices.map((s) => `${s.prefix}|${s.firstSeen}`)
+  );
+  // Canonical casing of actions still present today, which is what the action
+  // page slugs are built from. Anything since removed gets no link.
+  const currentActionCasing = {};
+  for (const action of Object.keys(actionsOut)) {
+    currentActionCasing[action.toLowerCase()] = action;
+  }
+  // Actions that landed on a service prefix that already existed. The ones that
+  // arrived with their prefix are already represented by the service entry.
+  const discoveredActions = Object.entries(registry.actions)
+    .filter(
+      ([action, v]) =>
+        !v.sinceStart &&
+        !newServiceDates.has(`${action.split(":", 1)[0]}|${v.firstSeen}`)
+    )
+    .map(([action, v]) => ({
+      action: currentActionCasing[action] || registry.actionLabels[action] || action,
+      firstSeen: v.firstSeen,
+      firstPolicy: v.firstPolicy,
+      hasPage: Boolean(currentActionCasing[action]),
+    }))
+    .sort((a, b) => b.firstSeen.localeCompare(a.firstSeen));
+
+  fs.writeFileSync(
+    path.join(OUTPUT_DIR, "discoveries.json"),
+    JSON.stringify({
+      schemaVersion: 1,
+      generatedAt: new Date().toISOString(),
+      archiveStart: registry.archiveStart,
+      stats: {
+        totalNewServices: discoveredServices.length,
+        totalNewActions: discoveredActions.length,
+        servicesSinceStart: Object.values(registry.services).filter(
+          (v) => v.sinceStart
+        ).length,
+      },
+      services: discoveredServices.slice(0, DISCOVERY_SERVICE_CAP),
+      actions: discoveredActions.slice(0, DISCOVERY_ACTION_CAP),
+    })
+  );
+  console.log(
+    `   🛰️  Discoveries: ${discoveredServices.length} service prefixes and ` +
+      `${discoveredActions.length} actions first seen after ${registry.archiveStart}`
   );
 
   // SAR-style action definitions (iam-dataset by Ian McKay) intersected with our action keys
@@ -985,6 +1134,7 @@ async function generatePolicyData() {
     { loc: "/accounts/", priority: "0.7", changefreq: "weekly" },
     { loc: "/largest-policies/", priority: "0.7", changefreq: "weekly" },
     { loc: "/service-growth/", priority: "0.7", changefreq: "weekly" },
+    { loc: "/discoveries/", priority: "0.8", changefreq: "daily" },
     { loc: "/endpoints/", priority: "0.8", changefreq: "daily" },
     { loc: "/guardduty/", priority: "0.8", changefreq: "daily" },
     { loc: "/feeds/", priority: "0.5", changefreq: "weekly" },

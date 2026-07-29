@@ -4,17 +4,23 @@ import { useState, useEffect, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
 import Link from "next/link";
-import { Shield, Globe, Eye } from "lucide-react";
+import { Shield, Globe, Eye, Radar } from "lucide-react";
+import { TELEGRAM_URL } from "@/lib/social";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://api.iamtrail.com";
 
-type Topic = "iam_policies" | "endpoints" | "guardduty";
+type Topic = "iam_policies" | "discoveries" | "endpoints" | "guardduty";
 
 const TOPIC_CONFIG: Record<Topic, { label: string; description: string; icon: typeof Shield }> = {
   iam_policies: {
     label: "IAM Policy Changes",
     description: "AWS Managed IAM Policy additions, modifications, and deprecations",
     icon: Shield,
+  },
+  discoveries: {
+    label: "New Service Discoveries",
+    description: "Actions and service prefixes never seen in any managed policy before, often the first public sign of an unannounced AWS service",
+    icon: Radar,
   },
   endpoints: {
     label: "AWS Endpoint Changes",
@@ -270,6 +276,20 @@ function SubscribeContent() {
           {selectedTopics.length === 0 && (
             <p className="mt-2 text-xs text-red-600 dark:text-red-400 font-mono">
               Select at least one topic.
+            </p>
+          )}
+          {TELEGRAM_URL && (
+            <p className="mt-3 text-xs text-zinc-500 dark:text-zinc-400">
+              Prefer no email? Discoveries are also broadcast to a read-only{" "}
+              <a
+                href={TELEGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-red-600 dark:text-red-400 hover:underline font-medium"
+              >
+                Telegram channel
+              </a>
+              .
             </p>
           )}
         </div>
