@@ -1585,7 +1585,8 @@
                     "Sid": "AllowGetSecretForRedShift",
                     "Effect": "Allow",
                     "Action": [
-                        "secretsmanager:GetSecretValue"
+                        "secretsmanager:GetSecretValue",
+                        "secretsmanager:PutSecretValue"
                     ],
                     "Resource": "arn:aws:secretsmanager:*:*:secret:*",
                     "Condition": {
@@ -2423,6 +2424,7 @@
                     "Effect": "Allow",
                     "Action": [
                         "secretsmanager:GetSecretValue",
+                        "secretsmanager:PutSecretValue",
                         "glue:GetConnections"
                     ],
                     "Resource": "*",
@@ -2814,8 +2816,8 @@
                 }
             ]
         },
-        "VersionId": "v72",
+        "VersionId": "v73",
         "IsDefaultVersion": true,
-        "CreateDate": "2026-07-14T19:12:29+00:00"
+        "CreateDate": "2026-07-29T21:12:28+00:00"
     }
 }
