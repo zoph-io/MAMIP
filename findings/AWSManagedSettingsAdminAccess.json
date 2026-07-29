@@ -1,41 +1,5 @@
 [
   {
-    "findingDetails": "The action account:GetPrimaryEmailUpdateStatus does not exist.",
-    "findingType": "ERROR",
-    "issueCode": "INVALID_ACTION",
-    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
-    "locations": [
-      {
-        "path": [
-          {
-            "value": "Statement"
-          },
-          {
-            "index": 1
-          },
-          {
-            "value": "Action"
-          },
-          {
-            "index": 7
-          }
-        ],
-        "span": {
-          "start": {
-            "line": 1,
-            "column": 525,
-            "offset": 525
-          },
-          "end": {
-            "line": 1,
-            "column": 562,
-            "offset": 562
-          }
-        }
-      }
-    ]
-  },
-  {
     "findingDetails": "The action budgets:UpdateBudget does not exist.",
     "findingType": "ERROR",
     "issueCode": "INVALID_ACTION",

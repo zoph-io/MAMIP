@@ -23,13 +23,13 @@
         "span": {
           "start": {
             "line": 1,
-            "column": 450,
-            "offset": 450
+            "column": 723,
+            "offset": 723
           },
           "end": {
             "line": 1,
-            "column": 482,
-            "offset": 482
+            "column": 755,
+            "offset": 755
           }
         }
       },
@@ -51,13 +51,13 @@
         "span": {
           "start": {
             "line": 1,
-            "column": 484,
-            "offset": 484
+            "column": 757,
+            "offset": 757
           },
           "end": {
             "line": 1,
-            "column": 518,
-            "offset": 518
+            "column": 791,
+            "offset": 791
           }
         }
       }
@@ -87,13 +87,13 @@
         "span": {
           "start": {
             "line": 1,
-            "column": 711,
-            "offset": 711
+            "column": 984,
+            "offset": 984
           },
           "end": {
             "line": 1,
-            "column": 745,
-            "offset": 745
+            "column": 1018,
+            "offset": 1018
           }
         }
       },
@@ -115,13 +115,13 @@
         "span": {
           "start": {
             "line": 1,
-            "column": 747,
-            "offset": 747
+            "column": 1020,
+            "offset": 1020
           },
           "end": {
             "line": 1,
-            "column": 783,
-            "offset": 783
+            "column": 1056,
+            "offset": 1056
           }
         }
       }
@@ -151,13 +151,13 @@
         "span": {
           "start": {
             "line": 1,
-            "column": 785,
-            "offset": 785
+            "column": 1058,
+            "offset": 1058
           },
           "end": {
             "line": 1,
-            "column": 815,
-            "offset": 815
+            "column": 1088,
+            "offset": 1088
           }
         }
       },
@@ -179,13 +179,77 @@
         "span": {
           "start": {
             "line": 1,
-            "column": 817,
-            "offset": 817
+            "column": 1090,
+            "offset": 1090
           },
           "end": {
             "line": 1,
-            "column": 849,
-            "offset": 849
+            "column": 1122,
+            "offset": 1122
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "The 2 resource ARN(s) are redundant because they reference the same resource. Review the use of wildcards (*), or remove the resource arn:aws:cloudformation:*:*:stack/atx-*/* to remove the redundancy.",
+    "findingType": "SUGGESTION",
+    "issueCode": "REDUNDANT_RESOURCE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-redundant-resource",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 8
+          },
+          {
+            "value": "Resource"
+          },
+          {
+            "index": 2
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 3087,
+            "offset": 3087
+          },
+          "end": {
+            "line": 1,
+            "column": 3127,
+            "offset": 3127
+          }
+        }
+      },
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 8
+          },
+          {
+            "value": "Resource"
+          },
+          {
+            "index": 3
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 3129,
+            "offset": 3129
+          },
+          "end": {
+            "line": 1,
+            "column": 3171,
+            "offset": 3171
           }
         }
       }
