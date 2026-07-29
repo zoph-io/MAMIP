@@ -327,6 +327,8 @@ resource "aws_dynamodb_table" "policy_changes" {
 # notification can say "never seen before" without walking git history. Seeded by
 # automation/scripts/build_action_registry.py and appended to as changes arrive.
 # Deliberately no TTL: an expired entry would re-announce a known action.
+# No point-in-time recovery either: every entry is derivable from the archive, so
+# a rebuild from git is faster than a restore and costs nothing.
 resource "aws_dynamodb_table" "action_registry" {
   name         = "iamtrail-action-registry"
   billing_mode = "PAY_PER_REQUEST"
@@ -335,10 +337,6 @@ resource "aws_dynamodb_table" "action_registry" {
   attribute {
     name = "entry"
     type = "S"
-  }
-
-  point_in_time_recovery {
-    enabled = true
   }
 }
 
@@ -1021,8 +1019,8 @@ resource "aws_iam_role_policy" "change_recorder" {
         Resource = [aws_sqs_queue.changes.arn]
       },
       {
-        Effect   = "Allow"
-        Action   = ["ssm:GetParameter"]
+        Effect = "Allow"
+        Action = ["ssm:GetParameter"]
         Resource = [
           "arn:aws:ssm:${var.aws_region}:${data.aws_caller_identity.current.account_id}:parameter${local.discord_webhook_ssm}",
           "arn:aws:ssm:${var.aws_region}:${data.aws_caller_identity.current.account_id}:parameter${local.discord_public_webhook_ssm}",
@@ -1292,10 +1290,10 @@ resource "aws_lambda_function" "guardduty_recorder" {
 
   environment {
     variables = {
-      GUARDDUTY_TABLE              = aws_dynamodb_table.guardduty_announcements.name
-      DISCORD_WEBHOOK_SSM          = local.discord_webhook_ssm
-      DISCORD_PUBLIC_WEBHOOK_SSM   = local.discord_public_webhook_ssm
-      BLUESKY_QUEUE_URL            = local.bluesky_fifo_queue_url
+      GUARDDUTY_TABLE            = aws_dynamodb_table.guardduty_announcements.name
+      DISCORD_WEBHOOK_SSM        = local.discord_webhook_ssm
+      DISCORD_PUBLIC_WEBHOOK_SSM = local.discord_public_webhook_ssm
+      BLUESKY_QUEUE_URL          = local.bluesky_fifo_queue_url
     }
   }
 }
@@ -1334,8 +1332,8 @@ resource "aws_iam_role_policy" "guardduty_recorder" {
         Resource = [aws_sqs_queue.guardduty.arn]
       },
       {
-        Effect   = "Allow"
-        Action   = ["ssm:GetParameter"]
+        Effect = "Allow"
+        Action = ["ssm:GetParameter"]
         Resource = [
           "arn:aws:ssm:${var.aws_region}:${data.aws_caller_identity.current.account_id}:parameter${local.discord_webhook_ssm}",
           "arn:aws:ssm:${var.aws_region}:${data.aws_caller_identity.current.account_id}:parameter${local.discord_public_webhook_ssm}",
