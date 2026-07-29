@@ -153,7 +153,10 @@ def build():
     for sha, when, path, doc in read_blobs(pairs):
         policy = path[len(POLICY_PREFIX):]
         seen_at = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime(when))
-        for action in literal_actions(doc):
+        # Sorted, because a document can spell one action two ways and set order
+        # varies per process: without this, first_action flips between rebuilds.
+        # Sorting also favours the PascalCase spelling AWS documents.
+        for action in sorted(literal_actions(doc)):
             service = action.split(":", 1)[0].lower()
             sighting = {
                 "first_seen_at": seen_at,
