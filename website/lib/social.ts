@@ -6,7 +6,10 @@
  * (automation/tf-fargate/variables.tf). Set TELEGRAM_HANDLE to "" to hide every
  * Telegram link until the channel is live.
  */
-export const TELEGRAM_HANDLE = "iamtrail";
+// Empty until @iamtrail is claimed on Telegram: t.me/iamtrail is an unclaimed
+// username today, so publishing the links would advertise a channel nobody can
+// join. Set this to "iamtrail" once the channel exists.
+export const TELEGRAM_HANDLE = "";
 
 export const TELEGRAM_URL = TELEGRAM_HANDLE
   ? `https://t.me/${TELEGRAM_HANDLE}`
