@@ -1,7 +1,9 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { Radar, Sparkles } from "lucide-react";
-import { iamActionToSlug } from "@/lib/actionSlug";
+import DiscoveryExplorer, {
+  type ActionDiscovery,
+  type ServiceDiscovery,
+} from "@/components/DiscoveryExplorer";
 import { TELEGRAM_URL } from "@/lib/social";
 
 export const metadata: Metadata = {
@@ -13,19 +15,9 @@ export const metadata: Metadata = {
   },
 };
 
-type ServiceDiscovery = {
-  prefix: string;
-  firstSeen: string;
-  firstPolicy: string;
-  actionCount: number;
-};
-
-type ActionDiscovery = {
-  action: string;
-  firstSeen: string;
-  firstPolicy: string;
-  hasPage: boolean;
-};
+// Enough rows to fill the first screen and give crawlers the recent sightings;
+// the client swaps in the full set for search and paging.
+const SEED_ROWS = 30;
 
 type DiscoveriesFile = {
   archiveStart: string;
@@ -44,18 +36,6 @@ async function getDiscoveries(): Promise<DiscoveriesFile | null> {
   const dataPath = path.join(process.cwd(), "public/data/discoveries.json");
   if (!fs.existsSync(dataPath)) return null;
   return JSON.parse(fs.readFileSync(dataPath, "utf8"));
-}
-
-function PolicyLink({ name }: { name: string }) {
-  if (!name) return <span className="text-zinc-500">unknown</span>;
-  return (
-    <Link
-      href={`/policies/${encodeURIComponent(name)}`}
-      className="text-red-600 dark:text-red-400 hover:underline"
-    >
-      {name}
-    </Link>
-  );
 }
 
 export default async function DiscoveriesPage() {
@@ -119,97 +99,12 @@ export default async function DiscoveriesPage() {
         ) : null}
       </div>
 
-      <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg overflow-hidden">
-        <div className="px-5 py-3 border-b border-zinc-200 dark:border-zinc-800 flex items-center gap-2">
-          <Radar className="w-4 h-4 text-red-600 dark:text-red-400 flex-shrink-0" />
-          <h2 className="text-sm font-semibold font-mono uppercase tracking-wider text-zinc-900 dark:text-white">
-            New service prefixes
-          </h2>
-          <span className="text-[10px] font-mono text-zinc-500 dark:text-zinc-400 ml-auto">
-            {services.length < stats.totalNewServices
-              ? `${services.length} most recent`
-              : `all ${services.length}`}
-          </span>
-        </div>
-        {services.length > 0 ? (
-          <div className="divide-y divide-zinc-100 dark:divide-zinc-800">
-            {services.map((s) => (
-              <div
-                key={s.prefix}
-                className="flex items-start justify-between gap-4 px-5 py-3"
-              >
-                <div className="flex-1 min-w-0">
-                  <p className="text-sm font-mono font-medium text-zinc-900 dark:text-white break-all">
-                    {s.prefix}
-                  </p>
-                  <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
-                    {s.actionCount}{" "}
-                    {s.actionCount === 1 ? "action" : "actions"} to date, first
-                    seen in <PolicyLink name={s.firstPolicy} />
-                  </p>
-                </div>
-                <span className="flex-shrink-0 text-xs font-mono text-zinc-500 dark:text-zinc-400">
-                  {s.firstSeen}
-                </span>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <p className="px-5 py-8 text-center text-sm text-zinc-600 dark:text-zinc-400">
-            No new service prefixes recorded yet.
-          </p>
-        )}
-      </div>
-
-      <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg overflow-hidden">
-        <div className="px-5 py-3 border-b border-zinc-200 dark:border-zinc-800 flex items-center gap-2">
-          <Sparkles className="w-4 h-4 text-red-600 dark:text-red-400 flex-shrink-0" />
-          <h2 className="text-sm font-semibold font-mono uppercase tracking-wider text-zinc-900 dark:text-white">
-            New actions on existing services
-          </h2>
-          <span className="text-[10px] font-mono text-zinc-500 dark:text-zinc-400 ml-auto">
-            {actions.length < stats.totalNewActions
-              ? `${actions.length} most recent of ${stats.totalNewActions.toLocaleString("en-US")}`
-              : `all ${actions.length}`}
-          </span>
-        </div>
-        {actions.length > 0 ? (
-          <div className="divide-y divide-zinc-100 dark:divide-zinc-800">
-            {actions.map((a) => (
-              <div
-                key={a.action}
-                className="flex items-start justify-between gap-4 px-5 py-3"
-              >
-                <div className="flex-1 min-w-0">
-                  {a.hasPage ? (
-                    <Link
-                      href={`/actions/${iamActionToSlug(a.action)}`}
-                      className="text-sm font-mono text-red-600 dark:text-red-400 hover:underline break-all"
-                    >
-                      {a.action}
-                    </Link>
-                  ) : (
-                    <p className="text-sm font-mono text-zinc-900 dark:text-white break-all">
-                      {a.action}
-                    </p>
-                  )}
-                  <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
-                    first seen in <PolicyLink name={a.firstPolicy} />
-                    {a.hasPage ? "" : " - no longer in any tracked policy"}
-                  </p>
-                </div>
-                <span className="flex-shrink-0 text-xs font-mono text-zinc-500 dark:text-zinc-400">
-                  {a.firstSeen}
-                </span>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <p className="px-5 py-8 text-center text-sm text-zinc-600 dark:text-zinc-400">
-            No new actions recorded yet.
-          </p>
-        )}
-      </div>
+      <DiscoveryExplorer
+        initialServices={services.slice(0, SEED_ROWS)}
+        initialActions={actions.slice(0, SEED_ROWS)}
+        totalServices={stats.totalNewServices}
+        totalActions={stats.totalNewActions}
+      />
 
       <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
         Dates are the earliest appearance in an AWS managed policy tracked here,

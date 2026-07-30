@@ -837,11 +837,10 @@ async function generatePolicyData() {
   );
 
   // Discoveries feed: first-ever sightings, newest first. A dedicated file rather
-  // than the 4.4 MB action index, so the page loads only what it renders.
-  // The service list is short enough to show whole; actions are capped because
-  // thousands of them would bloat the page for no added signal.
-  const DISCOVERY_SERVICE_CAP = 1000;
-  const DISCOVERY_ACTION_CAP = 400;
+  // than the 4.4 MB action index, so the page loads only what it renders. Nothing
+  // is capped: the page fetches this file to search it, and a capped file would
+  // mean a search box that silently misses older sightings. CloudFront compresses
+  // it, and the repetition across dates and policy names compresses well.
 
   // Actions per prefix, counted from the registry so it reflects the whole
   // archive rather than only the actions still present today.
@@ -901,8 +900,8 @@ async function generatePolicyData() {
           (v) => v.sinceStart
         ).length,
       },
-      services: discoveredServices.slice(0, DISCOVERY_SERVICE_CAP),
-      actions: discoveredActions.slice(0, DISCOVERY_ACTION_CAP),
+      services: discoveredServices,
+      actions: discoveredActions,
     })
   );
   console.log(
