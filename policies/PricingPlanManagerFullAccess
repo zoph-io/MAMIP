@@ -1,0 +1,31 @@
+{
+    "PolicyVersion": {
+        "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Sid": "ppmglobalactions",
+                    "Effect": "Allow",
+                    "Action": [
+                        "pricingplanmanager:GetSubscription",
+                        "pricingplanmanager:ListSubscriptions",
+                        "pricingplanmanager:CreateSubscription",
+                        "pricingplanmanager:ApprovePaidSubscription",
+                        "pricingplanmanager:UpdateSubscription",
+                        "pricingplanmanager:CancelSubscription",
+                        "pricingplanmanager:CancelSubscriptionChange",
+                        "pricingplanmanager:AssociateResourcesToSubscription",
+                        "pricingplanmanager:DisassociateResourcesFromSubscription",
+                        "freetier:GetAccountPlanState",
+                        "cloudwatch:GetMetricData",
+                        "shield:ListProtections"
+                    ],
+                    "Resource": "*"
+                }
+            ]
+        },
+        "VersionId": "v1",
+        "IsDefaultVersion": true,
+        "CreateDate": "2026-07-30T16:42:14+00:00"
+    }
+}
