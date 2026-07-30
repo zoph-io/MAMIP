@@ -32,7 +32,10 @@
                         "ec2:DescribeIpamPools",
                         "ec2:GetIpamPoolCidrs",
                         "pricingplanmanager:ListSubscriptions",
-                        "pricingplanmanager:CreateSubscription"
+                        "pricingplanmanager:CreateSubscription",
+                        "cloudwatch:GetMetricData",
+                        "freetier:GetAccountPlanState",
+                        "shield:ListProtections"
                     ],
                     "Resource": "*"
                 },
@@ -69,6 +72,7 @@
                     "Sid": "ppmFullAccess",
                     "Effect": "Allow",
                     "Action": [
+                        "pricingplanmanager:ApprovePaidSubscription",
                         "pricingplanmanager:AssociateResourcesToSubscription",
                         "pricingplanmanager:CancelSubscription",
                         "pricingplanmanager:CancelSubscriptionChange",
@@ -80,8 +84,8 @@
                 }
             ]
         },
-        "VersionId": "v14",
+        "VersionId": "v15",
         "IsDefaultVersion": true,
-        "CreateDate": "2026-02-12T17:59:45+00:00"
+        "CreateDate": "2026-07-30T16:42:27+00:00"
     }
 }
