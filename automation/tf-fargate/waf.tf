@@ -18,6 +18,11 @@ resource "aws_wafv2_web_acl" "website" {
   description = "Per-IP rate limits for the IAMTrail website and public JSON API"
   scope       = "CLOUDFRONT"
 
+  # The deploy role grants itself wafv2 through this policy, so without an
+  # explicit edge Terraform is free to attempt CreateWebACL first and fail on
+  # AccessDenied.
+  depends_on = [aws_iam_role_policy_attachment.github_actions_s3_foundation]
+
   default_action {
     allow {}
   }
