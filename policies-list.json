@@ -53,12 +53,12 @@
             "PolicyId": "ANPAIPRV52SH6HDCCFY6U",
             "Arn": "arn:aws:iam::aws:policy/CloudFrontFullAccess",
             "Path": "/",
-            "DefaultVersionId": "v14",
+            "DefaultVersionId": "v15",
             "AttachmentCount": 0,
             "PermissionsBoundaryUsageCount": 0,
             "IsAttachable": true,
             "CreateDate": "2015-02-06T18:39:50+00:00",
-            "UpdateDate": "2026-02-12T17:59:45+00:00"
+            "UpdateDate": "2026-07-30T16:42:27+00:00"
         },
         {
             "PolicyName": "AWSCloudHSMFullAccess",
@@ -2201,12 +2201,12 @@
             "PolicyId": "ANPAIFTHXT6FFMIRT7ZEA",
             "Arn": "arn:aws:iam::aws:policy/job-function/Billing",
             "Path": "/job-function/",
-            "DefaultVersionId": "v29",
+            "DefaultVersionId": "v30",
             "AttachmentCount": 0,
             "PermissionsBoundaryUsageCount": 0,
             "IsAttachable": true,
             "CreateDate": "2016-11-10T17:33:18+00:00",
-            "UpdateDate": "2026-07-21T19:57:23+00:00"
+            "UpdateDate": "2026-07-30T22:12:16+00:00"
         },
         {
             "PolicyName": "IAMUserChangePassword",
@@ -4145,12 +4145,12 @@
             "PolicyId": "ANPAJUCWFHNZER665LLQQ",
             "Arn": "arn:aws:iam::aws:policy/aws-service-role/AWSConfigServiceRolePolicy",
             "Path": "/aws-service-role/",
-            "DefaultVersionId": "v93",
+            "DefaultVersionId": "v94",
             "AttachmentCount": 1,
             "PermissionsBoundaryUsageCount": 0,
             "IsAttachable": true,
             "CreateDate": "2018-05-30T23:31:46+00:00",
-            "UpdateDate": "2026-05-05T22:42:19+00:00"
+            "UpdateDate": "2026-07-30T23:27:21+00:00"
         },
         {
             "PolicyName": "AmazonRDSPreviewServiceRolePolicy",
@@ -7949,12 +7949,12 @@
             "PolicyId": "ANPAZKAPJZG4LJ3OSZ5SX",
             "Arn": "arn:aws:iam::aws:policy/AWSBillingReadOnlyAccess",
             "Path": "/",
-            "DefaultVersionId": "v27",
+            "DefaultVersionId": "v28",
             "AttachmentCount": 0,
             "PermissionsBoundaryUsageCount": 0,
             "IsAttachable": true,
             "CreateDate": "2020-08-27T20:08:51+00:00",
-            "UpdateDate": "2026-04-08T17:12:09+00:00"
+            "UpdateDate": "2026-07-30T22:12:29+00:00"
         },
         {
             "PolicyName": "ElementalActivationsReadOnlyAccess",
@@ -8033,12 +8033,12 @@
             "PolicyId": "ANPAZKAPJZG4PP7QZ4FBG",
             "Arn": "arn:aws:iam::aws:policy/service-role/AWS_ConfigRole",
             "Path": "/service-role/",
-            "DefaultVersionId": "v70",
+            "DefaultVersionId": "v71",
             "AttachmentCount": 1,
             "PermissionsBoundaryUsageCount": 0,
             "IsAttachable": true,
             "CreateDate": "2020-09-15T20:30:30+00:00",
-            "UpdateDate": "2026-05-05T22:42:19+00:00"
+            "UpdateDate": "2026-07-30T23:27:21+00:00"
         },
         {
             "PolicyName": "MediaPackageServiceRolePolicy",
@@ -18455,6 +18455,54 @@
             "IsAttachable": true,
             "CreateDate": "2026-07-27T16:42:18+00:00",
             "UpdateDate": "2026-07-27T16:42:18+00:00"
+        },
+        {
+            "PolicyName": "PricingPlanManagerFullAccess",
+            "PolicyId": "ANPAZKAPJZG4HDZ3KSAUC",
+            "Arn": "arn:aws:iam::aws:policy/PricingPlanManagerFullAccess",
+            "Path": "/",
+            "DefaultVersionId": "v1",
+            "AttachmentCount": 0,
+            "PermissionsBoundaryUsageCount": 0,
+            "IsAttachable": true,
+            "CreateDate": "2026-07-30T16:42:14+00:00",
+            "UpdateDate": "2026-07-30T16:42:14+00:00"
+        },
+        {
+            "PolicyName": "PricingPlanManagerReadonlyAccess",
+            "PolicyId": "ANPAZKAPJZG4JNPNZXGWC",
+            "Arn": "arn:aws:iam::aws:policy/PricingPlanManagerReadonlyAccess",
+            "Path": "/",
+            "DefaultVersionId": "v1",
+            "AttachmentCount": 0,
+            "PermissionsBoundaryUsageCount": 0,
+            "IsAttachable": true,
+            "CreateDate": "2026-07-30T16:42:18+00:00",
+            "UpdateDate": "2026-07-30T16:42:18+00:00"
+        },
+        {
+            "PolicyName": "AmazonInspector2AmiScanServiceRolePolicy",
+            "PolicyId": "ANPAZKAPJZG4J27MIOIP5",
+            "Arn": "arn:aws:iam::aws:policy/aws-service-role/AmazonInspector2AmiScanServiceRolePolicy",
+            "Path": "/aws-service-role/",
+            "DefaultVersionId": "v1",
+            "AttachmentCount": 0,
+            "PermissionsBoundaryUsageCount": 0,
+            "IsAttachable": true,
+            "CreateDate": "2026-07-30T17:57:10+00:00",
+            "UpdateDate": "2026-07-30T17:57:10+00:00"
+        },
+        {
+            "PolicyName": "AmazonSageMakerInferenceServiceRolePolicy",
+            "PolicyId": "ANPAZKAPJZG4OVZ22IKHX",
+            "Arn": "arn:aws:iam::aws:policy/aws-service-role/AmazonSageMakerInferenceServiceRolePolicy",
+            "Path": "/aws-service-role/",
+            "DefaultVersionId": "v1",
+            "AttachmentCount": 0,
+            "PermissionsBoundaryUsageCount": 0,
+            "IsAttachable": true,
+            "CreateDate": "2026-07-30T19:42:26+00:00",
+            "UpdateDate": "2026-07-30T19:42:26+00:00"
         },
         {
             "PolicyName": "AWSConfigRole",
