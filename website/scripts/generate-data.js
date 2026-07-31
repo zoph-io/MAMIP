@@ -4,6 +4,7 @@ const https = require("https");
 const { simpleGit } = require("simple-git");
 const yaml = require("js-yaml");
 const { generateUsageStats } = require("./generate-usage-stats");
+const wording = require("./change-wording");
 
 const REPO_ROOT = path.join(__dirname, "../..");
 const POLICIES_DIR = path.join(REPO_ROOT, "policies");
@@ -13,6 +14,11 @@ const PATHFINDING_PATHS_JSON = path.join(
   "data/pathfinding/paths.json"
 );
 const ACTION_REGISTRY_JSON = path.join(REPO_ROOT, "data/action-registry.json");
+const POLICY_DELTAS_JSON = path.join(
+  REPO_ROOT,
+  "data/policy-change-deltas.json"
+);
+const IAM_METADATA_JSON = path.join(REPO_ROOT, "data/iam-metadata.json");
 const OUTPUT_DIR = path.join(__dirname, "../public/data");
 const PUBLIC_DIR = path.join(__dirname, "../public");
 const FEEDS_DIR = path.join(PUBLIC_DIR, "feeds");
@@ -94,6 +100,53 @@ function loadActionRegistry() {
       `${Object.keys(services).length} services (${sinceStartCount} present at archive start ${archiveStart})`
   );
   return { actions, services, actionLabels, archiveStart };
+}
+
+/**
+ * What each recent commit actually changed, from data/policy-change-deltas.json
+ * (built by the same archive replay as the action registry).
+ *
+ * Keyed by "<sha>:<policyName>" because one commit can touch several policies.
+ * Returns an empty map when the file is absent, so the feeds fall back to naming
+ * the policy rather than failing the build.
+ */
+function loadPolicyChangeDeltas() {
+  if (!fs.existsSync(POLICY_DELTAS_JSON)) {
+    console.log(
+      "   ⚠️  No data/policy-change-deltas.json found, feeds will omit action changes"
+    );
+    return new Map();
+  }
+
+  const raw = JSON.parse(fs.readFileSync(POLICY_DELTAS_JSON, "utf8"));
+  const byCommit = new Map();
+  for (const change of raw.changes || []) {
+    if (!change.sha || !change.policyName) continue;
+    byCommit.set(`${change.sha}:${change.policyName}`, change);
+  }
+  console.log(`   🧾 Change deltas: ${byCommit.size} recent policy changes`);
+  return byCommit;
+}
+
+/**
+ * Access levels and friendly service names, from data/iam-metadata.json.
+ *
+ * The same file ships inside the notification Lambdas, so a feed item and a post
+ * about the same change describe it in the same words.
+ */
+function loadIamMetadata() {
+  if (!fs.existsSync(IAM_METADATA_JSON)) {
+    console.log(
+      "   ⚠️  No data/iam-metadata.json found, feeds will show bare service prefixes"
+    );
+    return { permissionsManagement: new Set(), serviceNames: {} };
+  }
+
+  const raw = JSON.parse(fs.readFileSync(IAM_METADATA_JSON, "utf8"));
+  return {
+    permissionsManagement: new Set(raw.permissionsManagement || []),
+    serviceNames: raw.serviceNames || {},
+  };
 }
 
 function iamActionToSlug(action) {
@@ -706,7 +759,7 @@ async function generatePolicyData() {
   // and volatility all share one definition.
   if (bulkDays.size > 0) {
     console.log(
-      `   ⚠️  Excluding ${bulkDays.size} bulk-reformat day(s): ${[...bulkDays].join(", ")}`
+      `   ⚠️  Excluding ${wording.plural(bulkDays.size, "bulk-reformat day")}: ${[...bulkDays].join(", ")}`
     );
   }
   const cleanEntries = filteredEntries.filter(
@@ -793,7 +846,7 @@ async function generatePolicyData() {
     .map(([name, changesThisYear]) => ({ name, changesThisYear }));
 
   console.log(
-    `   📈 Chart data: ${cleanEntries.length} commit entries (excl. 2019 + ${bulkDays.size} bulk day(s)), ` +
+    `   📈 Chart data: ${cleanEntries.length} commit entries (excl. 2019 + ${wording.plural(bulkDays.size, "bulk day")}), ` +
       `${reinventYears.length} re:Invent years, ` +
       `${stats.volatileThisYear.length} volatile policies`
   );
@@ -1174,7 +1227,7 @@ ${sitemapEntries
   console.log(`   ⚠️  Errors: ${errors.length}`);
   console.log(`   📊 Output directory: ${OUTPUT_DIR}`);
 
-  return { policies, allCommitEntries };
+  return { policies, allCommitEntries, discoveredServices, discoveredActions };
 }
 
 const GUARDDUTY_DIR = path.join(REPO_ROOT, "data/guardduty");
@@ -1413,7 +1466,7 @@ async function generateEndpointsData() {
   );
 
   console.log(
-    `   🌐 Endpoints: ${totalRegions} regions, ${totalServices} services across ${partitions.length} partitions, ${allChangeRecords.length} change record(s)`
+    `   🌐 Endpoints: ${totalRegions} regions, ${totalServices} services across ${partitions.length} partitions, ${wording.plural(allChangeRecords.length, "change record")}`
   );
 
   return { allChangeRecords };
@@ -1432,12 +1485,21 @@ function toRFC2822(dateStr) {
 }
 
 function escapeXml(str) {
-  return str
+  return String(str)
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&apos;");
+}
+
+/** Stable, guid-safe form of an arbitrary string. */
+function slugify(text) {
+  return String(text || "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 80);
 }
 
 /**
@@ -1455,17 +1517,38 @@ function smartTruncate(text, max) {
   return `${sliced.slice(0, cutoff).replace(/[.,;:!?\-]+$/, "")}...`;
 }
 
+/**
+ * A deploy runs on every push to policies/, so a reader polling hourly is never
+ * ahead of the data. Six hours, the previous value, told readers to poll far
+ * less often than the feed actually changes.
+ */
+const FEED_TTL_MINUTES = 60;
+
+/**
+ * An item's guid is only a permalink when it genuinely is a URL. Declaring
+ * isPermaLink="true" on a synthetic string invites readers to resolve it.
+ */
+function isUrl(value) {
+  return typeof value === "string" && /^https?:\/\//.test(value);
+}
+
 function buildRSSFeed(channel, items) {
   const itemsXml = items
-    .map(
-      (item) => `    <item>
+    .map((item) => {
+      const categories = (item.categories || [])
+        .map((c) => `\n      <category>${escapeXml(c)}</category>`)
+        .join("");
+      const enclosure = item.enclosure
+        ? `\n      <enclosure url="${escapeXml(item.enclosure.url)}" length="${item.enclosure.length}" type="${escapeXml(item.enclosure.type)}" />`
+        : "";
+      return `    <item>
       <title>${escapeXml(item.title)}</title>
       <link>${escapeXml(item.link)}</link>
-      <guid isPermaLink="${item.permalink ? "true" : "false"}">${escapeXml(item.guid)}</guid>
-      <pubDate>${toRFC2822(item.date)}</pubDate>${item.category ? `\n      <category>${escapeXml(item.category)}</category>` : ""}
+      <guid isPermaLink="${isUrl(item.guid) ? "true" : "false"}">${escapeXml(item.guid)}</guid>
+      <pubDate>${toRFC2822(item.date)}</pubDate>${categories}${enclosure}
       <description><![CDATA[${item.description}]]></description>
-    </item>`
-    )
+    </item>`;
+    })
     .join("\n");
 
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -1476,39 +1559,291 @@ function buildRSSFeed(channel, items) {
     <description>${escapeXml(channel.description)}</description>
     <language>en-us</language>
     <lastBuildDate>${toRFC2822(new Date().toISOString())}</lastBuildDate>
-    <ttl>360</ttl>
+    <ttl>${FEED_TTL_MINUTES}</ttl>
     <atom:link href="${escapeXml(channel.feedUrl)}" rel="self" type="application/rss+xml" />
 ${itemsXml}
   </channel>
 </rss>`;
 }
 
+/**
+ * The per-policy Open Graph card, when it has already been rendered.
+ *
+ * generate-og runs after this script, so a policy AWS created today has no image
+ * on the first build. RSS requires a byte length on an enclosure, so an image we
+ * cannot measure is simply left out rather than guessed at.
+ */
+function policyEnclosure(policyName) {
+  const file = path.join(PUBLIC_DIR, "policies", policyName, "opengraph.png");
+  try {
+    return {
+      url: `${SITE_URL}/policies/${encodeURIComponent(policyName)}/opengraph.png`,
+      length: fs.statSync(file).size,
+      type: "image/png",
+    };
+  } catch {
+    return null;
+  }
+}
+
+/** "iam:PassRole, s3:GetObject and 4 more", so a description names names. */
+function listActions(actions, cap = 12) {
+  const shown = actions.slice(0, cap).map((a) => escapeXml(a));
+  const extra = actions.length - shown.length;
+  const body = shown.join(", ");
+  return extra > 0 ? `${body} and ${extra} more` : body;
+}
+
+/**
+ * What a single policy change actually did, in words and then in detail.
+ *
+ * Falls back to naming the policy when no delta is available, which happens for
+ * a commit older than the window data/policy-change-deltas.json covers.
+ */
+function describePolicyChange(policyName, delta, meta) {
+  const policyUrl = `${SITE_URL}/policies/${encodeURIComponent(policyName)}/`;
+  const link = `<a href="${policyUrl}">${escapeXml(policyName)}</a>`;
+
+  if (!delta) {
+    return `<p>${link} was updated.</p>`;
+  }
+
+  const added = delta.actionsAdded || [];
+  const removed = delta.actionsRemoved || [];
+  const escalations = added.filter((a) =>
+    meta.permissionsManagement.has(a.toLowerCase())
+  );
+  const parts = [];
+
+  const version = delta.versionId ? ` (${escapeXml(delta.versionId)})` : "";
+  parts.push(
+    `<p>${link}${version}: ${escapeXml(
+      wording.actionDeltaPhrase(added, removed)
+    )}.</p>`
+  );
+
+  if (delta.newServicePrefixes && delta.newServicePrefixes.length) {
+    const named = delta.newServicePrefixes
+      .map((p) => escapeXml(serviceLabel(p, meta)))
+      .join(", ");
+    parts.push(
+      `<p><strong>${escapeXml(
+        wording.sentence(wording.newServicePhrase(delta.newServicePrefixes))
+      )}</strong>: ${named}. Never seen in any AWS managed policy before.</p>`
+    );
+  }
+
+  const newActions = (delta.newActions || []).filter(
+    (a) =>
+      !(delta.newServicePrefixes || []).includes(a.split(":", 1)[0].toLowerCase())
+  );
+  if (newActions.length) {
+    parts.push(
+      `<p><strong>${escapeXml(
+        wording.sentence(wording.neverBeforeSeen(newActions.length))
+      )}</strong>: ${listActions(newActions)}</p>`
+    );
+  }
+
+  if (escalations.length) {
+    parts.push(
+      `<p><strong>Permissions management</strong>: ${listActions(
+        escalations
+      )}</p>`
+    );
+  }
+
+  if (added.length) {
+    parts.push(`<p>Actions added: ${listActions(added)}</p>`);
+  }
+  if (removed.length) {
+    parts.push(`<p>Actions removed: ${listActions(removed)}</p>`);
+  }
+
+  return parts.join("");
+}
+
+/** "Amazon Bedrock (bedrock)", or the bare prefix when iam-dataset has no name. */
+function serviceLabel(prefix, meta) {
+  const name = meta.serviceNames[prefix];
+  return name ? `${name} (${prefix})` : prefix;
+}
+
+/**
+ * Collapse same-day, same-service action sightings into one entry.
+ *
+ * AWS lands a service's actions in a single policy commit, so the ungrouped feed
+ * was 48 near-identical odb items in a row and nothing else fit on the page. One
+ * item per service per day says the same thing and leaves room for the rest.
+ */
+function groupDiscoveredActions(actions) {
+  const groups = new Map();
+  for (const entry of actions) {
+    const prefix = entry.action.split(":", 1)[0].toLowerCase();
+    const key = `${entry.firstSeen}|${prefix}`;
+    if (!groups.has(key)) {
+      groups.set(key, {
+        prefix,
+        firstSeen: entry.firstSeen,
+        actions: [],
+        policies: new Set(),
+        hasPage: {},
+      });
+    }
+    const group = groups.get(key);
+    group.actions.push(entry.action);
+    group.policies.add(entry.firstPolicy);
+    group.hasPage[entry.action] = entry.hasPage;
+  }
+  for (const group of groups.values()) group.actions.sort();
+  return [...groups.values()];
+}
+
+/** The headline for one policy change, leading with the strongest signal. */
+function policyChangeTitle(policyName, delta) {
+  if (!delta) return `${policyName} updated`;
+
+  if (delta.newServicePrefixes && delta.newServicePrefixes.length) {
+    return `${policyName}: ${wording.newServicePhrase(
+      delta.newServicePrefixes
+    )}`;
+  }
+  if (delta.newActions && delta.newActions.length) {
+    return `${policyName}: ${wording.neverBeforeSeen(delta.newActions.length)}`;
+  }
+  if (delta.status === "added") {
+    const count = (delta.actionsAdded || []).length;
+    return `New policy: ${policyName} (${wording.plural(count, "action")})`;
+  }
+  if (delta.status === "removed") {
+    return `Policy removed: ${policyName}`;
+  }
+
+  const suffix = delta.versionId ? ` (${delta.versionId})` : "";
+  return `${policyName}: ${wording.actionDeltaPhrase(
+    delta.actionsAdded,
+    delta.actionsRemoved
+  )}${suffix}`;
+}
+
+/**
+ * Recount an endpoint change record rather than trusting its stored summary.
+ *
+ * botocore ships the same service in several partitions at once, so counting
+ * rows reported "5 new services" for three. Counting distinct identifiers per
+ * change type is what a reader means by "new service", and recomputing here
+ * fixes the records already committed as well as the ones still to come.
+ */
+function summarizeEndpointChanges(record) {
+  const changes = record.changes || [];
+  if (!changes.length) return record.summary || "endpoint changes detected";
+
+  const LABELS = [
+    ["new_partition", "new partition"],
+    ["new_region", "new region"],
+    ["removed_region", "removed region"],
+    ["new_service", "new service"],
+    ["removed_service", "removed service"],
+    ["service_expansion", "service expansion"],
+    ["service_contraction", "service contraction"],
+    ["region_updated", "region rename"],
+    ["removed_partition", "removed partition"],
+  ];
+
+  const distinct = {};
+  for (const c of changes) {
+    (distinct[c.type] = distinct[c.type] || new Set()).add(
+      c.id || c.service || c.description || ""
+    );
+  }
+
+  const parts = [];
+  for (const [type, label] of LABELS) {
+    if (distinct[type]) parts.push(wording.plural(distinct[type].size, label));
+  }
+  for (const type of Object.keys(distinct)) {
+    if (!LABELS.some(([t]) => t === type)) {
+      parts.push(wording.plural(distinct[type].size, type.replace(/_/g, " ")));
+    }
+  }
+  return parts.join(", ") || "endpoint changes detected";
+}
+
+/**
+ * One line per endpoint change, naming the partition.
+ *
+ * Without it the same service arriving in aws-iso and aws-iso-b renders as the
+ * identical bullet twice, which reads like a bug in the feed.
+ */
+function describeEndpointChange(change) {
+  const partition = change.partition ? ` [${escapeXml(change.partition)}]` : "";
+  return `<li>${escapeXml(change.description || change.id || "")}${partition}</li>`;
+}
+
 function generateRSSFeeds(policyData, endpointsData, guarddutyData) {
   console.log("\n📡 Generating RSS feeds...");
 
   const MAX_ITEMS = 50;
+  const deltas = loadPolicyChangeDeltas();
+  const meta = loadIamMetadata();
 
   // --- IAM Policies feed ---
-  const seenHashes = new Set();
-  const policyItems = (policyData.allCommitEntries || [])
-    .filter((e) => {
-      if (seenHashes.has(e.hash)) return false;
-      seenHashes.add(e.hash);
-      return true;
-    })
+  // Grouped by commit, because dropping every entry that repeats a hash would
+  // silently discard the other policies a multi-policy commit touched.
+  const byCommit = new Map();
+  for (const entry of policyData.allCommitEntries || []) {
+    if (!byCommit.has(entry.hash)) {
+      byCommit.set(entry.hash, {
+        hash: entry.hash,
+        date: entry.date,
+        policyNames: [],
+      });
+    }
+    byCommit.get(entry.hash).policyNames.push(entry.policyName);
+  }
+
+  const policyItems = [...byCommit.values()]
     .sort((a, b) => new Date(b.date) - new Date(a.date))
     .slice(0, MAX_ITEMS)
-    .map((e) => {
-      const policyUrl = `${SITE_URL}/policies/${encodeURIComponent(e.policyName)}/`;
-      const shortHash = (e.hash || "").slice(0, 7);
+    .map((commit) => {
+      const names = commit.policyNames;
+      const changes = names.map((name) => ({
+        name,
+        delta: deltas.get(`${commit.hash}:${name}`),
+      }));
+      const commitUrl = `${GITHUB_REPO}/commit/${commit.hash}`;
+
+      const title =
+        names.length === 1
+          ? policyChangeTitle(changes[0].name, changes[0].delta)
+          : `${wording.plural(names.length, "IAM policy", "IAM policies")} updated: ${names
+              .slice(0, 3)
+              .join(", ")}${names.length > 3 ? ` and ${names.length - 3} more` : ""}`;
+
+      const body = changes
+        .map((c) => describePolicyChange(c.name, c.delta, meta))
+        .join("");
+
+      // Categories let a reader filter by service, which is the axis they
+      // actually care about when a feed carries hundreds of policy names.
+      const services = new Set();
+      for (const { delta } of changes) {
+        for (const action of (delta && delta.actionsAdded) || []) {
+          services.add(action.split(":", 1)[0].toLowerCase());
+        }
+      }
+
       return {
-        title: `${e.policyName} updated`,
-        link: policyUrl,
-        guid: `${GITHUB_REPO}/commit/${e.hash}`,
-        permalink: false,
-        date: e.date,
-        category: "IAM Policy",
-        description: `<p>Policy <strong>${escapeXml(e.policyName)}</strong> was updated.</p><p>${escapeXml(e.message)}</p>${shortHash ? `<p>Commit: ${escapeXml(shortHash)}</p>` : ""}`,
+        title,
+        link:
+          names.length === 1
+            ? `${SITE_URL}/policies/${encodeURIComponent(names[0])}/`
+            : `${SITE_URL}/policies/`,
+        guid: commitUrl,
+        date: commit.date,
+        categories: ["IAM Policy", ...[...services].sort().slice(0, 10)],
+        enclosure: names.length === 1 ? policyEnclosure(names[0]) : null,
+        description: `${body}<p><a href="${commitUrl}">View the diff on GitHub</a></p>`,
       };
     });
 
@@ -1529,18 +1864,22 @@ function generateRSSFeeds(policyData, endpointsData, guarddutyData) {
     .sort((a, b) => new Date(b.detected_at) - new Date(a.detected_at))
     .slice(0, MAX_ITEMS)
     .map((r) => {
-      const changeList = r.changes
-        .map((c) => `<li>${escapeXml(c.description)}</li>`)
-        .join("");
-      const guid = r.botocore_commit_url || `iamtrail:endpoints:${r.detected_at}`;
+      const summary = summarizeEndpointChanges(r);
+      const changeList = (r.changes || []).map(describeEndpointChange).join("");
+      const partitions = [
+        ...new Set((r.changes || []).map((c) => c.partition).filter(Boolean)),
+      ].sort();
       return {
-        title: `Endpoint changes: ${r.summary}`,
+        title: `Endpoint changes: ${summary}`,
         link: `${SITE_URL}/endpoints/`,
-        guid,
-        permalink: false,
+        guid: r.botocore_commit_url || `iamtrail:endpoints:${r.detected_at}`,
         date: r.detected_at,
-        category: "Endpoints",
-        description: `<p>${escapeXml(r.summary)}</p><ul>${changeList}</ul>`,
+        categories: ["Endpoints", ...partitions],
+        description: `<p>${escapeXml(summary)}</p><ul>${changeList}</ul>${
+          r.botocore_commit_url
+            ? `<p><a href="${escapeXml(r.botocore_commit_url)}">botocore commit</a></p>`
+            : ""
+        }`,
       };
     });
 
@@ -1598,13 +1937,24 @@ function generateRSSFeeds(policyData, endpointsData, guarddutyData) {
       if (a.link) descParts.push(`<p><a href="${escapeXml(a.link)}">AWS Documentation</a></p>`);
       if (a.gist_url) descParts.push(`<p><a href="${escapeXml(a.gist_url)}">Raw SNS message</a></p>`);
       descParts.push(`<p><a href="${SITE_URL}/guardduty/">View on IAMTrail</a></p>`);
+
+      // AWS publishes several findings in one SNS batch, so detected_at and type
+      // are shared. Keying on those alone gave two distinct findings the same
+      // guid, and a reader that dedupes by guid showed only one of them.
+      //
+      // link is deliberately not part of the chain: several announcements can
+      // point at one documentation page (every retired finding links to the same
+      // "retired findings" page), so it identifies a topic, not an announcement.
+      const guid =
+        a.gist_url ||
+        `iamtrail:guardduty:${a.detected_at}:${a.type}:${slugify(sourceText)}`;
+
       return {
         title,
         link: a.link || a.gist_url || `${SITE_URL}/guardduty/`,
-        guid: a.gist_url || `guardduty-${a.detected_at}-${a.type}`,
-        permalink: !!(a.link || a.gist_url),
+        guid,
         date: a.detected_at,
-        category: "GuardDuty",
+        categories: ["GuardDuty", label.replace(/^GuardDuty /, "")],
         description: descParts.join(""),
       };
     });
@@ -1621,8 +1971,106 @@ function generateRSSFeeds(policyData, endpointsData, guarddutyData) {
   fs.writeFileSync(path.join(FEEDS_DIR, "guardduty.xml"), guarddutyFeed);
   console.log(`   📡 GuardDuty feed: ${guarddutyItems.length} items`);
 
+  // --- Discoveries feed ---
+  // The archive's strongest signal, and until now the only one with no feed: an
+  // IAM action or service prefix appearing for the very first time, which is
+  // usually how a service AWS has not announced becomes visible.
+  const discoveryItems = [
+    ...(policyData.discoveredServices || []).map((s) => ({
+      sortKey: `${s.firstSeen}|0|${s.prefix}`,
+      title: wording.sentence(wording.newServicePhrase([s.prefix])),
+      link: `${SITE_URL}/discoveries/`,
+      guid: `iamtrail:discovery:service:${s.prefix}`,
+      date: s.firstSeen,
+      categories: ["Discovery", "New AWS service", s.prefix],
+      description:
+        `<p><strong>${escapeXml(serviceLabel(s.prefix, meta))}</strong> appeared in an AWS managed IAM policy ` +
+        `for the first time, in <a href="${SITE_URL}/policies/${encodeURIComponent(
+          s.firstPolicy
+        )}/">${escapeXml(s.firstPolicy)}</a>.</p>` +
+        `<p>${escapeXml(wording.plural(s.actionCount, "action"))} on this prefix ${
+          s.actionCount === 1 ? "is" : "are"
+        } now tracked.</p>` +
+        `<p><a href="${SITE_URL}/discoveries/">View all discoveries</a></p>`,
+    })),
+    ...groupDiscoveredActions(policyData.discoveredActions || []).map((g) => {
+      const escalations = g.actions.filter((a) =>
+        meta.permissionsManagement.has(a.toLowerCase())
+      );
+      const links = g.actions
+        .slice(0, 40)
+        .map((a) =>
+          g.hasPage[a]
+            ? `<a href="${SITE_URL}/actions/${iamActionToSlug(a)}/">${escapeXml(a)}</a>`
+            : escapeXml(a)
+        )
+        .join(", ");
+      const extra = g.actions.length - Math.min(g.actions.length, 40);
+      const single = g.actions.length === 1;
+
+      return {
+        sortKey: `${g.firstSeen}|1|${g.prefix}`,
+        title: single
+          ? `${wording.sentence(wording.neverBeforeSeen(1))}: ${g.actions[0]}`
+          : `${wording.sentence(
+              wording.neverBeforeSeen(g.actions.length)
+            )} on ${serviceLabel(g.prefix, meta)}`,
+        link:
+          single && g.hasPage[g.actions[0]]
+            ? `${SITE_URL}/actions/${iamActionToSlug(g.actions[0])}/`
+            : `${SITE_URL}/discoveries/`,
+        guid: `iamtrail:discovery:actions:${g.firstSeen}:${g.prefix}`,
+        date: g.firstSeen,
+        categories: ["Discovery", "Never-before-seen action", g.prefix],
+        description:
+          `<p>${escapeXml(
+            wording.sentence(wording.neverBeforeSeen(g.actions.length))
+          )} on <strong>${escapeXml(serviceLabel(g.prefix, meta))}</strong>, ` +
+          `first seen in ${[...g.policies]
+            .slice(0, 3)
+            .map(
+              (p) =>
+                `<a href="${SITE_URL}/policies/${encodeURIComponent(p)}/">${escapeXml(p)}</a>`
+            )
+            .join(", ")}.</p>` +
+          (escalations.length
+            ? `<p><strong>Permissions management</strong>: ${listActions(escalations)}</p>`
+            : "") +
+          `<p>${links}${extra > 0 ? ` and ${extra} more` : ""}</p>` +
+          `<p><a href="${SITE_URL}/discoveries/">View all discoveries</a></p>`,
+      };
+    }),
+  ]
+    // A service prefix outranks a single action on the same day, since the
+    // prefix is the finding and the actions under it merely follow from it.
+    .sort((a, b) => b.sortKey.localeCompare(a.sortKey))
+    .slice(0, MAX_ITEMS);
+
+  const discoveriesFeed = buildRSSFeed(
+    {
+      title: "IAMTrail - Discoveries",
+      link: `${SITE_URL}/discoveries/`,
+      description:
+        "First-ever sightings of AWS IAM service prefixes and actions, often visible here before AWS announces the service. An unofficial archive by zoph.io.",
+      feedUrl: `${SITE_URL}/feeds/discoveries.xml`,
+    },
+    discoveryItems
+  );
+  fs.writeFileSync(path.join(FEEDS_DIR, "discoveries.xml"), discoveriesFeed);
+  console.log(`   📡 Discoveries feed: ${discoveryItems.length} items`);
+
   // --- All-in-One feed ---
-  const allItems = [...policyItems, ...endpointItems, ...guarddutyItems]
+  // Quotas rather than a plain merge: policy churn runs an order of magnitude
+  // hotter than the other sources, so a straight date sort left this feed with
+  // 44 policy items and a single GuardDuty one, making "All Changes" a
+  // misnomer for the very readers who chose it to avoid missing anything.
+  const QUOTAS = [
+    [discoveryItems, 8],
+    [policyItems, 22],
+    [endpointItems, 12],
+    [guarddutyItems, 8],
+  ];
+  const allItems = QUOTAS.flatMap(([items, quota]) => items.slice(0, quota))
     .sort((a, b) => new Date(b.date) - new Date(a.date))
     .slice(0, MAX_ITEMS);
 
@@ -1630,7 +2078,7 @@ function generateRSSFeeds(policyData, endpointsData, guarddutyData) {
     {
       title: "IAMTrail - All Changes",
       link: SITE_URL,
-      description: "All IAMTrail changes in one feed - IAM policies, endpoints, and GuardDuty announcements. An unofficial archive by zoph.io.",
+      description: "All IAMTrail changes in one feed - discoveries, IAM policies, endpoints, and GuardDuty announcements. An unofficial archive by zoph.io.",
       feedUrl: `${SITE_URL}/feeds/all.xml`,
     },
     allItems

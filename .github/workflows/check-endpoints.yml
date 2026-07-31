@@ -133,7 +133,7 @@ jobs:
         run: |
           aws sqs send-message \
             --queue-url "https://sqs.eu-west-1.amazonaws.com/567589703415/qbsky-mamip-prod-sqs-queue.fifo" \
-            --message-body "[Endpoints] ${{ env.ENDPOINT_MESSAGE }}" \
+            --message-body "${{ env.ENDPOINT_MESSAGE }}" \
             --message-group-id 1 \
             --region "${{ env.aws_region }}"
 

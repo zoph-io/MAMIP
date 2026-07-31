@@ -456,14 +456,91 @@ def resolve_change(commit_sha, policy_name, commit_url=""):
 
 
 # ──────────────────────────────
+# Wording
+# ──────────────────────────────
+#
+# One concept used to have a different name in every channel: an action nobody
+# had seen before was a "never-before-seen action" on Bluesky, a "first-ever IAM
+# action" on Telegram and a "first-ever action" in email. A reader who follows
+# two of them could not tell they were the same finding. These are the canonical
+# phrasings, mirrored for the site build in website/scripts/change-wording.js and
+# recorded in .cursor/rules/project-context.mdc.
+
+STATUS_WORDS = {
+    "added": "new policy",
+    "removed": "policy removed",
+    "modified": "updated",
+}
+
+
+def plural(count, singular, plural_form=None):
+    """"1 action" / "2 actions", never the "1 action(s)" of a lazy template."""
+    word = singular if count == 1 else (plural_form or f"{singular}s")
+    return f"{count} {word}"
+
+
+def sentence(text):
+    """Uppercase the first character only, leaving AWS and iam:PassRole intact.
+
+    str.capitalize would lowercase the rest and turn "new AWS service" into
+    "New aws service".
+    """
+    return text[:1].upper() + text[1:]
+
+
+def never_before_seen(count):
+    """The canonical name for an action string absent from the whole archive."""
+    return plural(count, "never-before-seen action")
+
+
+def new_service_phrase(prefixes):
+    """"new AWS service odb" or "3 new AWS services", the strongest signal we have."""
+    count = len(prefixes)
+    if count == 1:
+        return f"new AWS service {prefixes[0]}"
+    return f"{count} new AWS services"
+
+
+def action_delta_phrase(added, removed):
+    """"3 actions added, 1 removed", or how a change with no action delta reads.
+
+    AWS reissues a policy version for a Resource or Condition edit far more often
+    than for a permission change, so the no-delta wording is the common case and
+    has to say something truthful rather than imply nothing happened.
+    """
+    if added and removed:
+        return f"{plural(len(added), 'action')} added, {len(removed)} removed"
+    if added:
+        return f"{plural(len(added), 'action')} added"
+    if removed:
+        return f"{plural(len(removed), 'action')} removed"
+    return "scope changed, no action added or removed"
+
+
+def permissions_management_phrase(actions):
+    """"2 permissions management, incl. iam:PassRole", or "" when there are none.
+
+    Lowercase to match the access level as the AWS Service Authorization Reference
+    spells it, and named because the example is the part a reader acts on.
+    """
+    if not actions:
+        return ""
+    if len(actions) == 1:
+        return f"permissions management: {actions[0]}"
+    return f"{len(actions)} permissions management, incl. {actions[0]}"
+
+
+# ──────────────────────────────
 # Rendering
 # ──────────────────────────────
 
+# Badge text is the canonical word capitalised, so a badge can never drift from
+# the phrasing the other channels use for the same status.
 _STATUS_LABELS = {
-    "added": ("New policy", "#e7f8ec", "#0f5132"),
-    "removed": ("Policy removed", "#fdeaea", "#8a1c1c"),
+    "added": (sentence(STATUS_WORDS["added"]), "#e7f8ec", "#0f5132"),
+    "removed": (sentence(STATUS_WORDS["removed"]), "#fdeaea", "#8a1c1c"),
 }
-_STATUS_DEFAULT = ("Updated", "#e8effd", "#1d4ed8")
+_STATUS_DEFAULT = (sentence(STATUS_WORDS["modified"]), "#e8effd", "#1d4ed8")
 
 # Discoveries get their own amber, distinct from the blue of a routine update.
 _DISCOVERY_BG, _DISCOVERY_FG = "#fef3c7", "#92400e"
@@ -547,11 +624,10 @@ def _discovery_lines(change):
     # would just repeat the headline.
     extra = [a for a in actions if a.split(":", 1)[0].lower() not in set(prefixes)]
     if extra:
-        count = len(extra)
         lines.append(
             _summary_line(
                 "*",
-                f"{count} first-ever action{'s' if count != 1 else ''}",
+                sentence(never_before_seen(len(extra))),
                 _join_items(extra),
                 _DISCOVERY_FG,
             )
@@ -679,17 +755,13 @@ def render_policy_card(change, site_url, include_diff=True):
 
     prefixes = change.get("new_service_prefixes") or []
     if prefixes:
-        text = (
-            f"New service: {prefixes[0]}"
-            if len(prefixes) == 1
-            else f"{len(prefixes)} new services"
+        badges.append(
+            _badge(sentence(new_service_phrase(prefixes)), _DISCOVERY_BG, _DISCOVERY_FG)
         )
-        badges.append(_badge(text, _DISCOVERY_BG, _DISCOVERY_FG))
     elif change.get("new_actions"):
-        count = len(change["new_actions"])
         badges.append(
             _badge(
-                f"{count} first-ever action{'s' if count != 1 else ''}",
+                never_before_seen(len(change["new_actions"])),
                 _DISCOVERY_BG,
                 _DISCOVERY_FG,
             )

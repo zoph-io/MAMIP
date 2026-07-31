@@ -5,7 +5,9 @@ import action_registry
 import boto3
 from boto3.dynamodb.conditions import Key
 import discord_notifier as discord
+import iam_metadata
 import policy_diff
+import telegram_publisher
 
 dynamodb = boto3.resource("dynamodb")
 ses = boto3.client("ses", region_name=os.environ.get("SES_REGION", "eu-west-3"))
@@ -248,6 +250,68 @@ def build_subject(policy_changes, endpoint_changes, guardduty_changes):
     return f"IAMTrail: {', '.join(parts)}"
 
 
+def build_telegram_recap(now, policy_changes, endpoint_changes, guardduty_changes):
+    """The Monday recap for the Telegram channel.
+
+    The channel carries discoveries only, so it can go quiet for weeks and a
+    reader has no way to tell whether it is working or whether AWS has simply
+    been still. One post a week is enough of a pulse, and it doubles as the
+    summary a reader who muted the busy days would want.
+    """
+    esc = telegram_publisher.escape
+    week_of = (now - timedelta(days=7)).strftime("%-d %B")
+
+    lines = [
+        "<b>IAMTrail weekly recap</b>",
+        f"{week_of} to {now.strftime('%-d %B %Y')}",
+        "",
+    ]
+
+    if policy_changes:
+        lines.append(
+            policy_diff.plural(
+                len(policy_changes), "AWS managed IAM policy", "AWS managed IAM policies"
+            )
+            + " updated"
+        )
+
+    prefixes = sorted(
+        {p for c in policy_changes for p in c.get("new_service_prefixes") or []}
+    )
+    with_new_actions = [
+        c for c in policy_changes if c.get("new_actions") and not c.get("new_service_prefixes")
+    ]
+
+    if prefixes:
+        named = ", ".join(iam_metadata.label_service(p) for p in prefixes)
+        lines.append(
+            f"<b>{policy_diff.sentence(policy_diff.new_service_phrase(prefixes))}</b>: {esc(named)}"
+        )
+    if with_new_actions:
+        total = sum(len(c.get("new_actions") or []) for c in with_new_actions)
+        lines.append(
+            f"<b>{policy_diff.sentence(policy_diff.never_before_seen(total))}</b> across "
+            + policy_diff.plural(len(with_new_actions), "policy", "policies")
+        )
+    if not prefixes and not with_new_actions:
+        lines.append("No never-before-seen actions or services this week")
+
+    if endpoint_changes:
+        lines.append(policy_diff.plural(len(endpoint_changes), "AWS endpoint change"))
+    if guardduty_changes:
+        lines.append(
+            policy_diff.plural(len(guardduty_changes), "GuardDuty announcement")
+        )
+
+    lines.append("")
+    lines.append(f"{SITE_URL}/discoveries")
+
+    body = "\n".join(lines)
+    if len(body) > telegram_publisher.MESSAGE_LIMIT:
+        body = body[: telegram_publisher.MESSAGE_LIMIT]
+    return body
+
+
 def handler(event, context):
     try:
         policy_diff.clear_cache()
@@ -269,6 +333,10 @@ def handler(event, context):
 
         if not has_daily and not has_weekly:
             print("No changes to report across any topic")
+            # The recap still goes out, because a quiet week is itself the news
+            # and silence would read as a broken channel.
+            if is_monday:
+                telegram_publisher.post(build_telegram_recap(now, [], [], []))
             discord.send(
                 "Digest - No Changes",
                 "No changes to report today (policies, endpoints, GuardDuty)",
@@ -294,6 +362,15 @@ def handler(event, context):
         ]
         if failed:
             print(f"Could not resolve diffs for {len(failed)}: {failed[:10]}")
+
+        # Posted before the per-subscriber loop, so a slow or partly failing send
+        # cannot cost the channel its weekly pulse.
+        if is_monday:
+            telegram_publisher.post(
+                build_telegram_recap(
+                    now, weekly_policy, weekly_endpoints, weekly_guardduty
+                )
+            )
 
         subscribers = []
         scan_kwargs = {

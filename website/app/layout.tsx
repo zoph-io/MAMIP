@@ -64,6 +64,7 @@ export const metadata: Metadata = {
     types: {
       "application/rss+xml": [
         { url: "/feeds/all.xml", title: "IAMTrail - All Changes" },
+        { url: "/feeds/discoveries.xml", title: "IAMTrail - Discoveries" },
         { url: "/feeds/iam-policies.xml", title: "IAMTrail - IAM Policy Changes" },
         { url: "/feeds/endpoints.xml", title: "IAMTrail - Endpoint Changes" },
         { url: "/feeds/guardduty.xml", title: "IAMTrail - GuardDuty Announcements" },

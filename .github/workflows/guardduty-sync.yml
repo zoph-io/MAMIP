@@ -95,6 +95,13 @@ jobs:
             echo "CHANGES_DETECTED=true" >> "$GITHUB_OUTPUT"
             CHANGE_COUNT=$(git status --porcelain data/guardduty/ | wc -l | tr -d ' ')
             echo "CHANGE_COUNT=$CHANGE_COUNT" >> "$GITHUB_OUTPUT"
+            # Resolved once here so every downstream message reads "1 announcement"
+            # or "2 announcements" rather than "announcement(s)".
+            if [ "$CHANGE_COUNT" -eq 1 ]; then
+              echo "CHANGE_NOUN=announcement" >> "$GITHUB_OUTPUT"
+            else
+              echo "CHANGE_NOUN=announcements" >> "$GITHUB_OUTPUT"
+            fi
             echo "$CHANGE_COUNT new announcement files"
           else
             echo "CHANGES_DETECTED=false" >> "$GITHUB_OUTPUT"
@@ -113,7 +120,7 @@ jobs:
           TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
           PAYLOAD=$(jq -n \
             --arg title "GuardDuty Announcements Synced" \
-            --arg desc "${{ steps.query.outputs.CHANGE_COUNT }} new announcement(s) committed to git" \
+            --arg desc "${{ steps.query.outputs.CHANGE_COUNT }} new ${{ steps.query.outputs.CHANGE_NOUN }} committed to git" \
             --arg count "${{ steps.query.outputs.CHANGE_COUNT }}" \
             --arg ts "$TIMESTAMP" \
             '{
@@ -143,7 +150,7 @@ jobs:
           TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
           PAYLOAD=$(jq -n \
             --arg title "GuardDuty announcements synced" \
-            --arg desc "${{ steps.query.outputs.CHANGE_COUNT }} new announcement(s) committed to git" \
+            --arg desc "${{ steps.query.outputs.CHANGE_COUNT }} new ${{ steps.query.outputs.CHANGE_NOUN }} committed to git" \
             --arg count "${{ steps.query.outputs.CHANGE_COUNT }}" \
             --arg url "https://iamtrail.com/guardduty" \
             --arg ts "$TIMESTAMP" \
@@ -164,7 +171,8 @@ jobs:
       - name: Post to Bluesky (@iamtrail.bsky.social)
         if: steps.query.outputs.CHANGES_DETECTED == 'true'
         run: |
-          MSG="[GuardDuty] ${{ steps.query.outputs.CHANGE_COUNT }} new GuardDuty announcement(s) - https://iamtrail.com/guardduty"
+          MSG=$(printf '%s new GuardDuty %s on IAMTrail\n\nhttps://iamtrail.com/guardduty\n\n#AWS #GuardDuty' \
+            "${{ steps.query.outputs.CHANGE_COUNT }}" "${{ steps.query.outputs.CHANGE_NOUN }}")
           aws sqs send-message \
             --queue-url "https://sqs.eu-west-1.amazonaws.com/567589703415/qbsky-mamip-prod-sqs-queue.fifo" \
             --message-body "$MSG" \
@@ -177,7 +185,7 @@ jobs:
           git config --local user.email "iamtrail-bot@noreply.github.com"
           git config --local user.name "IAMTrail GuardDuty Monitor"
           git add data/guardduty/
-          git commit -m "guardduty: ${{ steps.query.outputs.CHANGE_COUNT }} new announcement(s)"
+          git commit -m "guardduty: ${{ steps.query.outputs.CHANGE_COUNT }} new ${{ steps.query.outputs.CHANGE_NOUN }}"
           git push origin master
 
       - name: Trigger website deployment

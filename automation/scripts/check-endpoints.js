@@ -211,55 +211,91 @@ function detectChanges(oldData, newData) {
   return changes;
 }
 
+/** "1 new service" / "2 new services", never the "1 new service(s)" of a lazy template. */
+function plural(count, singular, pluralForm) {
+  return `${count} ${count === 1 ? singular : pluralForm || `${singular}s`}`;
+}
+
+/**
+ * Count distinct identifiers per change type, not rows.
+ *
+ * botocore ships the same service across several partitions in one commit, so
+ * counting rows announced "5 new services" when AWS had added three.
+ */
 function buildSummary(changes) {
-  const counts = {};
+  const LABELS = [
+    ["new_partition", "new partition"],
+    ["new_region", "new region"],
+    ["removed_region", "removed region"],
+    ["new_service", "new service"],
+    ["removed_service", "removed service"],
+    ["service_expansion", "service expansion"],
+    ["service_contraction", "service contraction"],
+    ["region_updated", "region rename"],
+    ["removed_partition", "removed partition"],
+  ];
+
+  const distinct = {};
   for (const c of changes) {
-    const key = c.type;
-    counts[key] = (counts[key] || 0) + 1;
+    (distinct[c.type] = distinct[c.type] || new Set()).add(
+      c.id || c.service || c.description || ""
+    );
   }
+
   const parts = [];
-  if (counts.new_partition) parts.push(`${counts.new_partition} new partition(s)`);
-  if (counts.new_region) parts.push(`${counts.new_region} new region(s)`);
-  if (counts.removed_region) parts.push(`${counts.removed_region} removed region(s)`);
-  if (counts.new_service) parts.push(`${counts.new_service} new service(s)`);
-  if (counts.removed_service) parts.push(`${counts.removed_service} removed service(s)`);
-  if (counts.service_expansion) parts.push(`${counts.service_expansion} service expansion(s)`);
-  if (counts.service_contraction) parts.push(`${counts.service_contraction} service contraction(s)`);
-  if (counts.region_updated) parts.push(`${counts.region_updated} region rename(s)`);
-  if (counts.removed_partition) parts.push(`${counts.removed_partition} removed partition(s)`);
+  for (const [type, label] of LABELS) {
+    if (distinct[type]) parts.push(plural(distinct[type].size, label));
+  }
   return parts.join(", ") || "endpoint changes detected";
 }
 
-function buildTweetMessage(changes, commitHash) {
+// Bluesky rejects a post longer than this. Tags are the only discovery surface
+// the account has, so they are budgeted alongside the links rather than dropped.
+const BLUESKY_LIMIT = 300;
+const BLUESKY_TAGS = "#AWS #CloudComputing";
+
+function buildBlueskyMessage(changes, commitHash) {
   const shortHash = (commitHash || "").slice(0, 7);
   const commitUrl = commitHash
     ? `https://github.com/boto/botocore/commit/${shortHash}`
     : "";
 
+  // Distinct identifiers, so one service arriving in three partitions is one
+  // new service rather than three.
+  const distinct = (type, key) => [
+    ...new Set(changes.filter((c) => c.type === type).map((c) => c[key])),
+  ];
   const newRegions = changes.filter((c) => c.type === "new_region");
-  const newServices = changes.filter((c) => c.type === "new_service");
+  const newServices = distinct("new_service", "id");
   const expansions = changes.filter((c) => c.type === "service_expansion");
 
   let body = "";
   if (newRegions.length > 0) {
-    const names = newRegions.map((r) => `${r.id} (${r.description})`).join(", ");
-    body = `New AWS Region: ${names}`;
+    const names = [
+      ...new Set(newRegions.map((r) => `${r.id} (${r.description})`)),
+    ].join(", ");
+    body = `${plural(newRegions.length, "new AWS region")}: ${names}`;
   } else if (newServices.length > 0) {
-    const names = newServices.map((s) => s.id).join(", ");
-    body = `New AWS Service: ${names}`;
+    body = `${plural(newServices.length, "new AWS service")}: ${newServices.join(", ")}`;
   } else if (expansions.length > 0) {
     const svc = expansions[0];
-    body = `AWS Service Expansion: ${svc.service} now in ${svc.new_regions.join(", ")}`;
+    body = `${svc.service} expanded to ${svc.new_regions.join(", ")}`;
   } else {
     body = buildSummary(changes);
   }
+  body = sentence(body);
 
-  const suffix = `\n\n${commitUrl}\niamtrail.com/endpoints`;
-  const maxBody = 280 - suffix.length;
+  const suffix = `\n\n${commitUrl}\niamtrail.com/endpoints\n\n${BLUESKY_TAGS}`;
+  const maxBody = BLUESKY_LIMIT - suffix.length;
   if (body.length > maxBody) {
     body = body.slice(0, maxBody - 3) + "...";
   }
   return body + suffix;
+}
+
+/** Uppercase the first character only, so "AWS" survives. */
+function sentence(text) {
+  return text ? text.charAt(0).toUpperCase() + text.slice(1) : "";
 }
 
 function buildDiscordDescription(changes, commitHash) {
@@ -343,7 +379,7 @@ async function main() {
     return;
   }
 
-  console.log(`Detected ${changes.length} change(s):`);
+  console.log(`Detected ${plural(changes.length, "change")}:`);
   for (const c of changes) {
     console.log(`  - [${c.type}] ${c.partition}: ${c.description}`);
   }
@@ -371,7 +407,7 @@ async function main() {
   fs.writeFileSync(ENDPOINTS_PATH, JSON.stringify(latestData, null, 2));
   console.log("Updated data/endpoints.json with latest version.");
 
-  const message = buildTweetMessage(changes, commitHash);
+  const message = buildBlueskyMessage(changes, commitHash);
   setOutput("CHANGES_DETECTED", "true");
   setOutput("CHANGE_SUMMARY", changeRecord.summary);
   setOutput("CHANGE_FILE", path.basename(changeFile));

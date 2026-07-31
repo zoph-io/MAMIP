@@ -8,6 +8,11 @@ import discord_notifier as discord
 
 TABLE_NAME = os.environ.get("GUARDDUTY_TABLE", "")
 
+# Bluesky rejects a post longer than this. Tags are the only discovery surface
+# the account has, so they are budgeted alongside the link rather than dropped.
+BLUESKY_LIMIT = 300
+BLUESKY_TAGS = "#AWS #GuardDuty #CloudSecurity"
+
 TYPE_CONFIG = {
     "NEW_FINDINGS": {
         "detail_key": "findingDetails",
@@ -146,8 +151,7 @@ def _process_typed(message, msg_type, table, today, timestamp_id, now):
             url=page_url,
         )
 
-        post_text = _build_post(config["post_prefix"], short_desc, link)
-        bluesky_publisher.post(f"[GuardDuty] {post_text}")
+        bluesky_publisher.post(_build_post(config["post_prefix"], short_desc, link))
 
     print(f"Recorded {len(details)} {msg_type} announcements")
 
@@ -200,20 +204,28 @@ def _process_general(message, table, today, timestamp_id, now):
             url=page_url,
         )
 
-        post_text = _build_post(GENERAL_CONFIG["post_prefix"], title, link)
-        bluesky_publisher.post(f"[GuardDuty] {post_text}")
+        bluesky_publisher.post(_build_post(GENERAL_CONFIG["post_prefix"], title, link))
 
     print(f"Recorded {len(entries)} GENERAL announcements")
 
 
 def _build_post(prefix, description, link):
-    max_desc_len = 280 - len(prefix) - 2
+    """A GuardDuty post: what happened, the doc link, then the tags.
+
+    Budgeted against Bluesky's 300-character cap with the link and the tags held
+    back, since a truncated link is worthless and a post without tags reaches
+    nobody. The description yields whatever room is left.
+    """
+    fixed = len(prefix) + len(BLUESKY_TAGS) + 4
     if link:
-        max_desc_len -= 24
+        fixed += len(link) + 2
+    max_desc_len = max(0, BLUESKY_LIMIT - fixed)
+
     desc = description[:max_desc_len]
     if len(description) > max_desc_len:
-        desc = desc[:max_desc_len - 3] + "..."
+        desc = desc[:max(0, max_desc_len - 3)] + "..."
+
     parts = [prefix, desc]
     if link:
         parts.append(link)
-    return " ".join(parts)
+    return f"{' '.join(p for p in parts if p)}\n\n{BLUESKY_TAGS}"

@@ -596,6 +596,20 @@ data "archive_file" "digest_sender" {
     content  = file("${path.module}/../lambdas/shared/action_registry.py")
     filename = "action_registry.py"
   }
+  source {
+    content  = file("${path.module}/../lambdas/shared/iam_metadata.py")
+    filename = "iam_metadata.py"
+  }
+  source {
+    content  = file("${path.module}/../lambdas/shared/telegram_publisher.py")
+    filename = "telegram_publisher.py"
+  }
+  # Access levels and friendly service names, so the digest can name a service
+  # and flag permissions management without reaching for the 3.5 MB site dataset.
+  source {
+    content  = file("${path.module}/../../data/iam-metadata.json")
+    filename = "iam-metadata.json"
+  }
 }
 
 resource "aws_lambda_function" "digest_sender" {
@@ -621,6 +635,10 @@ resource "aws_lambda_function" "digest_sender" {
       GITHUB_REPO            = "zoph-io/IAMTrail"
       GITHUB_SECRET_ID       = local.github_secret_id
       DISCORD_WEBHOOK_SSM    = local.discord_webhook_ssm
+      # The Monday recap: the Telegram channel is discoveries-only and can go
+      # quiet for weeks, so this is the pulse that shows it is still alive.
+      TELEGRAM_TOKEN_SSM = local.telegram_token_ssm
+      TELEGRAM_CHAT_ID   = var.telegram_chat_id
     }
   }
 }
@@ -656,6 +674,16 @@ data "archive_file" "instant_notifier" {
   source {
     content  = file("${path.module}/../lambdas/shared/telegram_publisher.py")
     filename = "telegram_publisher.py"
+  }
+  source {
+    content  = file("${path.module}/../lambdas/shared/iam_metadata.py")
+    filename = "iam_metadata.py"
+  }
+  # Access levels and friendly service names, so a post can say "permissions
+  # management" and name the service instead of showing a bare prefix.
+  source {
+    content  = file("${path.module}/../../data/iam-metadata.json")
+    filename = "iam-metadata.json"
   }
 }
 
@@ -1076,9 +1104,13 @@ resource "aws_iam_role_policy" "digest_sender" {
         }
       },
       {
-        Effect   = "Allow"
-        Action   = ["ssm:GetParameter"]
-        Resource = ["arn:aws:ssm:${var.aws_region}:${data.aws_caller_identity.current.account_id}:parameter${local.discord_webhook_ssm}"]
+        Effect = "Allow"
+        Action = ["ssm:GetParameter"]
+        Resource = [
+          "arn:aws:ssm:${var.aws_region}:${data.aws_caller_identity.current.account_id}:parameter${local.discord_webhook_ssm}",
+          # The Monday recap posts to the Telegram channel.
+          "arn:aws:ssm:${var.aws_region}:${data.aws_caller_identity.current.account_id}:parameter${local.telegram_token_ssm}",
+        ]
       },
       {
         # Authenticated GitHub API calls, otherwise diffs hit the 60/hour

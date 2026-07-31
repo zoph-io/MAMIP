@@ -35,6 +35,10 @@ help:
 	@echo "	website-sync - sync existing build to S3 (no rebuild)"
 	@echo "	website-clean - clean website build artifacts"
 	@echo ""
+	@echo "Data:"
+	@echo "	action-registry - rebuild data/action-registry.json and data/policy-change-deltas.json from git history"
+	@echo "	iam-metadata - refresh data/iam-metadata.json from iam-dataset (access levels, service names)"
+	@echo ""
 	@echo "Utilities:"
 	@echo "	clean - clean all build folders"
 	@echo "	longest - show 10 longest policy names"
@@ -181,6 +185,18 @@ infra-apply-all:
 		-var="description=$(DESCRIPTION)" \
 		-var="notification_email=$(NOTIFICATION_EMAIL)" \
 		-compact-warnings
+####################################################
+
+################ Data ##########################
+action-registry:
+	@echo "🔁 Replaying the archive into the action registry and change deltas..."
+	@python3 automation/scripts/build_action_registry.py
+
+# Not run in CI on purpose: the Service Authorization Reference moves slowly, and
+# committing the refresh keeps the deploy from having to push to master.
+iam-metadata:
+	@echo "📚 Refreshing IAM metadata from iam-dataset..."
+	@python3 automation/scripts/build_iam_metadata.py
 ####################################################
 
 longest:

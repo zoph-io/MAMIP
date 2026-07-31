@@ -381,6 +381,7 @@ export default function AboutPage() {
               <div className="flex flex-wrap gap-2">
                 {[
                   { label: "All Changes", href: "/feeds/all.xml" },
+                  { label: "Discoveries", href: "/feeds/discoveries.xml" },
                   { label: "IAM Policies", href: "/feeds/iam-policies.xml" },
                   { label: "Endpoints", href: "/feeds/endpoints.xml" },
                   { label: "GuardDuty", href: "/feeds/guardduty.xml" },

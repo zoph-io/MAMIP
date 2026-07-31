@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { Rss } from "lucide-react";
 import DiscoveryExplorer, {
   type ActionDiscovery,
   type ServiceDiscovery,
@@ -12,6 +13,11 @@ export const metadata: Metadata = {
     "IAM actions and service prefixes appearing for the first time in AWS managed policies. Often the earliest public sign of an unannounced AWS service or feature.",
   alternates: {
     canonical: "https://iamtrail.com/discoveries",
+    types: {
+      "application/rss+xml": [
+        { url: "/feeds/discoveries.xml", title: "IAMTrail - Discoveries" },
+      ],
+    },
   },
 };
 
@@ -60,9 +66,18 @@ export default async function DiscoveriesPage() {
   return (
     <div className="max-w-4xl mx-auto space-y-8">
       <div className="py-8 border-b border-zinc-100 dark:border-zinc-800">
-        <h1 className="text-2xl font-bold font-mono text-zinc-900 dark:text-white mb-2">
-          Discoveries
-        </h1>
+        <div className="flex items-center gap-3 mb-2">
+          <h1 className="text-2xl font-bold font-mono text-zinc-900 dark:text-white">
+            Discoveries
+          </h1>
+          <a
+            href="/feeds/discoveries.xml"
+            title="Subscribe via RSS"
+            className="text-zinc-400 hover:text-orange-500 dark:text-zinc-500 dark:hover:text-orange-400 transition-colors"
+          >
+            <Rss className="w-5 h-5" />
+          </a>
+        </div>
         <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
           IAM actions and service prefixes appearing for the first time anywhere
           in the AWS managed policy archive. AWS usually ships the IAM component
@@ -87,13 +102,20 @@ export default async function DiscoveriesPage() {
             >
               Telegram channel
             </a>{" "}
-            and by email via the{" "}
+            , by email via the{" "}
             <Link
               href="/subscribe"
               className="text-red-600 dark:text-red-400 hover:underline font-medium"
             >
               discoveries topic
             </Link>
+            , and in the{" "}
+            <a
+              href="/feeds/discoveries.xml"
+              className="text-red-600 dark:text-red-400 hover:underline font-medium"
+            >
+              discoveries RSS feed
+            </a>
             .
           </p>
         ) : null}
