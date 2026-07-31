@@ -46,8 +46,13 @@ function SubscribeContent() {
 
   const [email, setEmail] = useState("");
   const [frequency, setFrequency] = useState<"daily" | "weekly" | "instant">("daily");
+  // Discoveries is on by default: it is the one signal nobody else publishes,
+  // and leaving it unchecked meant most subscribers never saw a new AWS service
+  // land. Arriving with a specific policy in hand is the one narrow intent.
   const [selectedTopics, setSelectedTopics] = useState<Topic[]>(
-    preselectedPolicy ? ["iam_policies"] : ["iam_policies", "endpoints", "guardduty"]
+    preselectedPolicy
+      ? ["iam_policies"]
+      : ["iam_policies", "discoveries", "endpoints", "guardduty"]
   );
   const [allPolicies, setAllPolicies] = useState(!preselectedPolicy);
   const [selectedPolicies, setSelectedPolicies] = useState<string[]>(

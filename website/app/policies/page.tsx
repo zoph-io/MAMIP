@@ -1,8 +1,10 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { Suspense, useState, useMemo, useEffect, useRef } from "react";
 import { Rss } from "lucide-react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import { iamActionToSlug } from "@/lib/actionSlug";
 
 interface Policy {
   name: string;
@@ -12,13 +14,38 @@ interface Policy {
   versionId: string | null;
 }
 
-export default function PoliciesPage() {
+type ActionEntry = {
+  actionAllowPolicies?: string[];
+  actionDenyPolicies?: string[];
+  notActionPolicies?: string[];
+};
+
+type ActionIndex = { actions: Record<string, ActionEntry> };
+
+/**
+ * A query naming a service is asking about permissions, not about file names.
+ * "s3:" or "kms:Decrypt" means "which policies grant this", which the policy
+ * name filter can never answer.
+ */
+function looksLikeActionQuery(q: string): boolean {
+  return q.includes(":");
+}
+
+/** Actions whose name contains the query, capped so the banner stays readable. */
+const MAX_LISTED_ACTIONS = 12;
+
+function PoliciesContent() {
+  const searchParams = useSearchParams();
   const [policies, setPolicies] = useState<Policy[]>([]);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState(searchParams.get("q") || "");
   const [sortBy, setSortBy] = useState<"name" | "modified" | "versions">(
     "modified"
   );
   const [loading, setLoading] = useState(true);
+  const [actionIndex, setActionIndex] = useState<ActionIndex | null>(null);
+  const [actionIndexState, setActionIndexState] = useState<
+    "idle" | "loading" | "ready" | "failed"
+  >("idle");
 
   useEffect(() => {
     async function loadPolicies() {
@@ -35,10 +62,62 @@ export default function PoliciesPage() {
     loadPolicies();
   }, []);
 
+  const isActionQuery = looksLikeActionQuery(searchTerm.trim());
+
+  // Fetched only once someone actually asks an action question, so the common
+  // case of browsing by name never pays for the index. The ref, rather than the
+  // status, is what guards the fetch: keying the effect on its own state made
+  // the state change re-run the effect, whose cleanup then cancelled the very
+  // request it had just started.
+  const actionIndexRequested = useRef(false);
+  useEffect(() => {
+    if (!isActionQuery || actionIndexRequested.current) return;
+    actionIndexRequested.current = true;
+    setActionIndexState("loading");
+    fetch("/data/action-index.json")
+      .then((r) => r.json())
+      .then((data) => {
+        setActionIndex(data);
+        setActionIndexState("ready");
+      })
+      .catch(() => setActionIndexState("failed"));
+  }, [isActionQuery]);
+
+  // Keep the URL shareable, and make the SearchAction in the site's structured
+  // data true: it has always advertised /policies?q=.
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    const current = url.searchParams.get("q") || "";
+    if (current === searchTerm) return;
+    if (searchTerm) url.searchParams.set("q", searchTerm);
+    else url.searchParams.delete("q");
+    window.history.replaceState(null, "", url.toString());
+  }, [searchTerm]);
+
+  const actionMatch = useMemo(() => {
+    const q = searchTerm.trim().toLowerCase();
+    if (!isActionQuery || !actionIndex?.actions) return null;
+
+    const matchedActions: string[] = [];
+    const policyNames = new Set<string>();
+    for (const [action, entry] of Object.entries(actionIndex.actions)) {
+      if (!action.toLowerCase().includes(q)) continue;
+      matchedActions.push(action);
+      for (const name of entry.actionAllowPolicies || []) policyNames.add(name);
+      for (const name of entry.actionDenyPolicies || []) policyNames.add(name);
+      for (const name of entry.notActionPolicies || []) policyNames.add(name);
+    }
+    matchedActions.sort();
+    return { matchedActions, policyNames };
+  }, [actionIndex, searchTerm, isActionQuery]);
+
   const filteredAndSortedPolicies = useMemo(() => {
-    let filtered = policies.filter((policy) =>
-      policy.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    const q = searchTerm.trim().toLowerCase();
+    const filtered = policies.filter((policy) => {
+      if (!q) return true;
+      if (policy.name.toLowerCase().includes(q)) return true;
+      return actionMatch ? actionMatch.policyNames.has(policy.name) : false;
+    });
 
     return filtered.sort((a, b) => {
       switch (sortBy) {
@@ -54,7 +133,7 @@ export default function PoliciesPage() {
           );
       }
     });
-  }, [policies, searchTerm, sortBy]);
+  }, [policies, searchTerm, sortBy, actionMatch]);
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString("en-US", {
@@ -114,7 +193,8 @@ export default function PoliciesPage() {
           </a>
         </div>
         <p className="text-sm text-zinc-600 dark:text-zinc-400">
-          Browse and search {policies.length} AWS Managed IAM Policies
+          Browse {policies.length} AWS Managed IAM Policies by name, or search an
+          IAM action to find every policy that grants it.
         </p>
       </div>
 
@@ -139,7 +219,7 @@ export default function PoliciesPage() {
               <input
                 type="text"
                 className="block w-full pl-10 pr-3 py-2 border border-zinc-200 dark:border-zinc-700 rounded bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent text-sm font-mono"
-                placeholder="Search policies..."
+                placeholder="Search a policy name or an action like kms:Decrypt"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
@@ -160,7 +240,50 @@ export default function PoliciesPage() {
         <div className="mt-3 text-xs font-mono text-zinc-500 dark:text-zinc-400">
           Showing {filteredAndSortedPolicies.length} of {policies.length}{" "}
           policies
+          {isActionQuery && actionIndexState === "loading"
+            ? " - loading the action index"
+            : null}
+          {isActionQuery && actionIndexState === "failed"
+            ? " - the action index failed to load, matching policy names only"
+            : null}
         </div>
+
+        {actionMatch && actionMatch.matchedActions.length > 0 ? (
+          <div className="mt-3 rounded border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-800/50 px-3 py-2 text-xs text-zinc-600 dark:text-zinc-400">
+            <span className="font-semibold text-zinc-800 dark:text-zinc-200">
+              {actionMatch.matchedActions.length.toLocaleString()} matching{" "}
+              {actionMatch.matchedActions.length === 1 ? "action" : "actions"}
+            </span>{" "}
+            in {actionMatch.policyNames.size.toLocaleString()}{" "}
+            {actionMatch.policyNames.size === 1 ? "policy" : "policies"}:{" "}
+            {actionMatch.matchedActions
+              .slice(0, MAX_LISTED_ACTIONS)
+              .map((action, i) => (
+                <span key={action}>
+                  {i > 0 ? ", " : ""}
+                  <Link
+                    href={`/actions/${iamActionToSlug(action)}`}
+                    className="font-mono text-red-600 dark:text-red-400 hover:underline"
+                  >
+                    {action}
+                  </Link>
+                </span>
+              ))}
+            {actionMatch.matchedActions.length > MAX_LISTED_ACTIONS
+              ? ` and ${(
+                  actionMatch.matchedActions.length - MAX_LISTED_ACTIONS
+                ).toLocaleString()} more`
+              : ""}
+          </div>
+        ) : null}
+
+        {actionMatch && actionMatch.matchedActions.length === 0 ? (
+          <div className="mt-3 rounded border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-800/50 px-3 py-2 text-xs text-zinc-600 dark:text-zinc-400">
+            No literal IAM action matches this query. Wildcards such as{" "}
+            <code className="font-mono">s3:*</code> are not indexed, since they
+            name no concrete action.
+          </div>
+        ) : null}
       </div>
 
       {/* Policies Grid */}
@@ -217,10 +340,19 @@ export default function PoliciesPage() {
             No policies found
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Try adjusting your search term
+            Try a policy name, or an IAM action such as{" "}
+            <code className="font-mono text-xs">iam:PassRole</code>.
           </p>
         </div>
       )}
     </div>
+  );
+}
+
+export default function PoliciesPage() {
+  return (
+    <Suspense>
+      <PoliciesContent />
+    </Suspense>
   );
 }

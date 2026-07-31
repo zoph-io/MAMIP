@@ -38,6 +38,11 @@ next-env.d.ts
 !/public/data/usage-stats.json
 /public/sitemap.xml
 /public/feeds/*.xml
+# Generated public API (scripts/generate-data.js)
+/public/api/
+
+# Changed-path report written by scripts/deploy-s3.mjs for the CDN invalidation
+/invalidation.json
 
 # Generated per-policy Open Graph images (scripts/generate-og-images.mjs)
 /public/policies/

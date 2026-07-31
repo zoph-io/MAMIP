@@ -432,6 +432,13 @@ export default function AboutPage() {
                 >
                   RSS feeds
                 </Link>
+                . Aggregate delivery numbers are published on the{" "}
+                <Link
+                  href="/usage"
+                  className="text-red-600 dark:text-red-400 hover:underline font-medium"
+                >
+                  usage page
+                </Link>
                 .
               </p>
               {TELEGRAM_URL && (

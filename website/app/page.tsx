@@ -1,5 +1,7 @@
 import StatsCard from "@/components/StatsCard";
+import ChangeCard from "@/components/ChangeCard";
 import PolicyList from "@/components/PolicyList";
+import type { PolicyChange } from "@/lib/changes";
 import PolicyAgeChart from "@/components/PolicyAgeChart";
 import SeasonalityChart from "@/components/SeasonalityChart";
 import ReinventPulseChart from "@/components/ReinventPulseChart";
@@ -15,6 +17,7 @@ import {
   Layers,
   ChevronRight,
   Globe,
+  History,
   Key,
 } from "lucide-react";
 
@@ -63,6 +66,22 @@ async function getEndpointsSummary() {
   }
 }
 
+async function getRecentChanges() {
+  try {
+    const fs = require("fs");
+    const path = require("path");
+    const dataPath = path.join(process.cwd(), "public/data/changes.json");
+    if (!fs.existsSync(dataPath)) return null;
+    const data = JSON.parse(fs.readFileSync(dataPath, "utf8"));
+    return {
+      changes: (data.changes || []).slice(0, 6) as PolicyChange[],
+      total: data.stats?.total ?? 0,
+    };
+  } catch {
+    return null;
+  }
+}
+
 async function getSummaryData() {
   try {
     const fs = require("fs");
@@ -84,6 +103,7 @@ async function getSummaryData() {
 export default async function Home() {
   const summaryData = await getSummaryData();
   const endpointsData = await getEndpointsSummary();
+  const recentChanges = await getRecentChanges();
 
   if (!summaryData) {
     return (
@@ -176,6 +196,43 @@ export default async function Home() {
           />
         </Link>
       </div>
+
+      {/* Latest Changes */}
+      {recentChanges && recentChanges.changes.length > 0 && (
+        <div className="border border-zinc-200 dark:border-zinc-800 rounded-lg overflow-hidden">
+          <div className="px-6 py-4 bg-zinc-50 dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800">
+            <div className="flex items-center space-x-3">
+              <History className="w-5 h-5 text-zinc-500 dark:text-zinc-400" />
+              <div>
+                <h3 className="text-sm font-bold font-mono uppercase tracking-wider text-zinc-700 dark:text-zinc-300">
+                  Latest Changes
+                </h3>
+                <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
+                  What AWS changed most recently, and exactly which actions moved
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="divide-y divide-zinc-100 dark:divide-zinc-800">
+            {recentChanges.changes.map((change) => (
+              <ChangeCard
+                key={`${change.sha}:${change.policyName}`}
+                change={change}
+                compact
+              />
+            ))}
+          </div>
+          <div className="px-5 py-3 border-t border-zinc-100 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900">
+            <Link
+              href="/changes"
+              className="inline-flex items-center gap-1 text-sm font-medium font-mono text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 transition-colors"
+            >
+              View all {recentChanges.total.toLocaleString()} recent changes
+              <ChevronRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </div>
+      )}
 
       {/* Brand New Policies Spotlight */}
       {stats.brandNew && stats.brandNew.length > 0 && (

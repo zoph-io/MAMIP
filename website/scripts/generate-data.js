@@ -22,6 +22,14 @@ const IAM_METADATA_JSON = path.join(REPO_ROOT, "data/iam-metadata.json");
 const OUTPUT_DIR = path.join(__dirname, "../public/data");
 const PUBLIC_DIR = path.join(__dirname, "../public");
 const FEEDS_DIR = path.join(PUBLIC_DIR, "feeds");
+// The public contract, held apart from public/data so the site's own files stay
+// free to change shape without breaking anyone consuming the API.
+const API_VERSION = "v1";
+const API_DIR = path.join(PUBLIC_DIR, "api", API_VERSION);
+const API_POLICIES_DIR = path.join(API_DIR, "policies");
+// One timestamp for the whole run, so a consumer that fetches two resources can
+// tell whether they came from the same build.
+const GENERATED_AT = new Date().toISOString();
 const SITE_URL = "https://iamtrail.com";
 const GITHUB_REPO = "https://github.com/zoph-io/IAMTrail";
 const git = simpleGit(REPO_ROOT);
@@ -107,15 +115,25 @@ function loadActionRegistry() {
  * (built by the same archive replay as the action registry).
  *
  * Keyed by "<sha>:<policyName>" because one commit can touch several policies.
+ * Insertion order is the file's own newest-first order, so iterating the values
+ * gives a ready-made timeline for /changes.
+ *
  * Returns an empty map when the file is absent, so the feeds fall back to naming
  * the policy rather than failing the build.
+ *
+ * Memoized: the per-policy history, the changes timeline, the public API and the
+ * feeds all want the same map, and it is a 400 KB parse.
  */
+let policyChangeDeltasCache = null;
 function loadPolicyChangeDeltas() {
+  if (policyChangeDeltasCache) return policyChangeDeltasCache;
+
   if (!fs.existsSync(POLICY_DELTAS_JSON)) {
     console.log(
       "   ⚠️  No data/policy-change-deltas.json found, feeds will omit action changes"
     );
-    return new Map();
+    policyChangeDeltasCache = new Map();
+    return policyChangeDeltasCache;
   }
 
   const raw = JSON.parse(fs.readFileSync(POLICY_DELTAS_JSON, "utf8"));
@@ -125,6 +143,7 @@ function loadPolicyChangeDeltas() {
     byCommit.set(`${change.sha}:${change.policyName}`, change);
   }
   console.log(`   🧾 Change deltas: ${byCommit.size} recent policy changes`);
+  policyChangeDeltasCache = byCommit;
   return byCommit;
 }
 
@@ -134,19 +153,24 @@ function loadPolicyChangeDeltas() {
  * The same file ships inside the notification Lambdas, so a feed item and a post
  * about the same change describe it in the same words.
  */
+let iamMetadataCache = null;
 function loadIamMetadata() {
+  if (iamMetadataCache) return iamMetadataCache;
+
   if (!fs.existsSync(IAM_METADATA_JSON)) {
     console.log(
       "   ⚠️  No data/iam-metadata.json found, feeds will show bare service prefixes"
     );
-    return { permissionsManagement: new Set(), serviceNames: {} };
+    iamMetadataCache = { permissionsManagement: new Set(), serviceNames: {} };
+    return iamMetadataCache;
   }
 
   const raw = JSON.parse(fs.readFileSync(IAM_METADATA_JSON, "utf8"));
-  return {
+  iamMetadataCache = {
     permissionsManagement: new Set(raw.permissionsManagement || []),
     serviceNames: raw.serviceNames || {},
   };
+  return iamMetadataCache;
 }
 
 function iamActionToSlug(action) {
@@ -240,21 +264,21 @@ function pathfindingPathUrl(pathId) {
  * policies/ instead of spawning one `git log` subprocess per policy
  * (~1,566 sequential spawns, the dominant cost of data generation).
  *
- * Stored history entries are newest-first and capped at the 100 most recent
- * commits per policy (used for the changelog display). Modification counts and
- * first-seen dates are computed UNCAPPED from the same pass so they stay
- * accurate for policies with more than 100 commits, and bulk-reformat days are
- * detected here so every consumer shares one definition.
+ * Stored history entries are newest-first and uncapped: the seven-year archive
+ * is the point of the site, and truncating it only pushed readers to GitHub to
+ * see the rest. The deepest policy is ReadOnlyAccess at 115 commits, so the
+ * whole history costs a few KB per file. Modification counts and first-seen
+ * dates come from the same pass, and bulk-reformat days are detected here so
+ * every consumer shares one definition.
  *
  * Returns:
- * - historyByPolicy: Map<name, entries[]> (capped at 100, newest-first)
- * - versionsCountByPolicy: Map<name, count> of real modifications (uncapped,
- *   excluding bulk-reformat days)
- * - firstSeenByPolicy: Map<name, ISO date> of the oldest commit (uncapped)
+ * - historyByPolicy: Map<name, entries[]> (newest-first, full history)
+ * - versionsCountByPolicy: Map<name, count> of real modifications (excluding
+ *   bulk-reformat days)
+ * - firstSeenByPolicy: Map<name, ISO date> of the oldest commit
  * - bulkDays: Set<YYYY-MM-DD> of false-positive bulk-reformat days
  */
 async function buildPolicyHistory() {
-  const MAX_ENTRIES_PER_POLICY = 100;
   const BULK_DAY_THRESHOLD = 50;
   const COMMIT_PREFIX = "__C__";
   // --no-renames matches the previous per-path behavior (no --follow, no
@@ -291,9 +315,7 @@ async function buildPolicyHistory() {
       entries = [];
       historyByPolicy.set(policyName, entries);
     }
-    if (entries.length < MAX_ENTRIES_PER_POLICY) {
-      entries.push(current);
-    }
+    entries.push(current);
 
     // Uncapped per-policy day tracking for accurate modification counts.
     const day = new Date(current.date).toISOString().slice(0, 10);
@@ -474,6 +496,11 @@ async function generatePolicyData() {
     bulkDays,
   } = await buildPolicyHistory();
 
+  // What each recent commit actually changed, so a version history row can say
+  // "31 actions added" instead of only naming the version it bumped to.
+  const changeDeltas = loadPolicyChangeDeltas();
+  const iamMeta = loadIamMetadata();
+
   for (const policyName of policyFiles) {
     try {
       const policyPath = path.join(POLICIES_DIR, policyName);
@@ -576,6 +603,10 @@ async function generatePolicyData() {
         actionCount,
         servicePrefixes: [...servicePrefixes],
         firstSeen: firstSeenDate,
+        // Deliberately short: this object is also spread into summary.json's
+        // stats lists (mostModified, recentlyUpdated, newest, oldest), and the
+        // full history belongs in the per-policy file that the detail page
+        // actually loads.
         history: logEntries.slice(0, 10).map((entry) => ({
           hash: entry.hash,
           date: entry.date,
@@ -585,6 +616,23 @@ async function generatePolicyData() {
       };
 
       policies.push(policy);
+
+      // The detail page gets every version, each carrying what it changed when
+      // the archive replay reached back far enough to know.
+      const fullHistory = logEntries.map((entry) => {
+        const row = {
+          hash: entry.hash,
+          date: entry.date,
+          message: entry.message,
+          author: displayAuthorName(entry.author_name),
+        };
+        const delta = normalizeDelta(
+          changeDeltas.get(`${entry.hash}:${policyName}`),
+          iamMeta
+        );
+        if (delta) row.delta = delta;
+        return row;
+      });
 
       const allowInfo = extractAllowActionInfo(policyData);
       const pathfindingFindings = buildPathfindingFindingsForPolicy(
@@ -614,6 +662,7 @@ async function generatePolicyData() {
       // Save individual policy with full content
       const policyDetail = {
         ...policy,
+        history: fullHistory,
         content: policyData,
         deprecation: deprecated[policyName]
           ? {
@@ -638,6 +687,28 @@ async function generatePolicyData() {
       fs.writeFileSync(
         path.join(OUTPUT_DIR, `${policyName}.json`),
         JSON.stringify(policyDetail, null, 2)
+      );
+
+      // Public API twin. Named fields only, so a consumer is not exposed to the
+      // site's UI-shaped extras (securitySignals, servicePrefixes) that exist to
+      // serve a component and may be reshaped at any time.
+      fs.writeFileSync(
+        path.join(API_POLICIES_DIR, `${policyName}.json`),
+        JSON.stringify({
+          schemaVersion: 1,
+          generatedAt: GENERATED_AT,
+          name: policyName,
+          arn: `arn:aws:iam::aws:policy/${policyName}`,
+          versionId: policy.versionId,
+          createDate: policy.createDate,
+          lastModified: policy.lastModified,
+          firstSeen: policy.firstSeen,
+          versionsCount: policy.versionsCount,
+          actionCount,
+          deprecatedOn: deprecated[policyName] || null,
+          document: policyData.PolicyVersion?.Document ?? null,
+          history: fullHistory,
+        })
       );
     } catch (error) {
       errors.push({ policyName, error: error.message });
@@ -868,7 +939,7 @@ async function generatePolicyData() {
   }
   const actionIndexPayload = {
     schemaVersion: 1,
-    generatedAt: new Date().toISOString(),
+    generatedAt: GENERATED_AT,
     stats: {
       uniqueLiteralActionCount: uniqueLiteralActions.size,
       policiesWithWildcardActions: policiesWithWildcard.size,
@@ -883,6 +954,13 @@ async function generatePolicyData() {
   };
   fs.writeFileSync(
     path.join(OUTPUT_DIR, "action-index.json"),
+    JSON.stringify(actionIndexPayload)
+  );
+  // One file rather than 14,928 per-action files: it is 272 KB over the wire
+  // compressed, and a consumer that wants one action can index it locally far
+  // faster than it could make one request per action.
+  fs.writeFileSync(
+    path.join(API_DIR, "actions.json"),
     JSON.stringify(actionIndexPayload)
   );
   console.log(
@@ -940,22 +1018,27 @@ async function generatePolicyData() {
     }))
     .sort((a, b) => b.firstSeen.localeCompare(a.firstSeen));
 
+  const discoveriesPayload = {
+    schemaVersion: 1,
+    generatedAt: GENERATED_AT,
+    archiveStart: registry.archiveStart,
+    stats: {
+      totalNewServices: discoveredServices.length,
+      totalNewActions: discoveredActions.length,
+      servicesSinceStart: Object.values(registry.services).filter(
+        (v) => v.sinceStart
+      ).length,
+    },
+    services: discoveredServices,
+    actions: discoveredActions,
+  };
   fs.writeFileSync(
     path.join(OUTPUT_DIR, "discoveries.json"),
-    JSON.stringify({
-      schemaVersion: 1,
-      generatedAt: new Date().toISOString(),
-      archiveStart: registry.archiveStart,
-      stats: {
-        totalNewServices: discoveredServices.length,
-        totalNewActions: discoveredActions.length,
-        servicesSinceStart: Object.values(registry.services).filter(
-          (v) => v.sinceStart
-        ).length,
-      },
-      services: discoveredServices,
-      actions: discoveredActions,
-    })
+    JSON.stringify(discoveriesPayload)
+  );
+  fs.writeFileSync(
+    path.join(API_DIR, "discoveries.json"),
+    JSON.stringify(discoveriesPayload)
   );
   console.log(
     `   🛰️  Discoveries: ${discoveredServices.length} service prefixes and ` +
@@ -1010,7 +1093,7 @@ async function generatePolicyData() {
     sourceUrl: "https://github.com/iann0036/iam-dataset",
     sourceLicense: "MIT",
     attribution: attributionText,
-    generatedAt: new Date().toISOString(),
+    generatedAt: GENERATED_AT,
     definitions: {},
   };
   try {
@@ -1068,6 +1151,61 @@ async function generatePolicyData() {
   fs.writeFileSync(
     path.join(OUTPUT_DIR, "summary.json"),
     JSON.stringify(summary, null, 2)
+  );
+
+  // The change timeline. The archive's whole purpose is that policies change,
+  // and until now the only place that said what changed was the RSS feed.
+  console.log("🧾 Building change timeline...");
+  const timeline = [...changeDeltas.values()]
+    .map((d) => normalizeDelta(d, iamMeta))
+    .filter(Boolean)
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  const changesOut = {
+    schemaVersion: 1,
+    generatedAt: GENERATED_AT,
+    stats: {
+      total: timeline.length,
+      discoveries: timeline.filter(isDiscovery).length,
+      permissionsManagement: timeline.filter(
+        (c) => c.permissionsManagement.length > 0
+      ).length,
+      oldest: timeline.length ? timeline[timeline.length - 1].date : null,
+      newest: timeline.length ? timeline[0].date : null,
+    },
+    changes: timeline,
+  };
+  fs.writeFileSync(
+    path.join(OUTPUT_DIR, "changes.json"),
+    JSON.stringify(changesOut)
+  );
+  console.log(
+    `   🧾 Timeline: ${timeline.length} changes, ${changesOut.stats.discoveries} carrying a discovery`
+  );
+
+  // --- Public API ---
+  console.log(`🔌 Writing /api/${API_VERSION} ...`);
+  fs.writeFileSync(
+    path.join(API_DIR, "changes.json"),
+    JSON.stringify(changesOut)
+  );
+  fs.writeFileSync(
+    path.join(API_DIR, "policies.json"),
+    JSON.stringify({
+      schemaVersion: 1,
+      generatedAt: GENERATED_AT,
+      count: policies.length,
+      policies: policies.map((p) => ({
+        name: p.name,
+        arn: `arn:aws:iam::aws:policy/${p.name}`,
+        versionId: p.versionId,
+        createDate: p.createDate,
+        lastModified: p.lastModified,
+        versionsCount: p.versionsCount,
+        actionCount: p.actionCount,
+        deprecatedOn: deprecated[p.name] || null,
+      })),
+    })
   );
 
   // Fetch known AWS accounts from fwdcloudsec community
@@ -1179,6 +1317,7 @@ async function generatePolicyData() {
   const today = new Date().toISOString().split("T")[0];
   const sitemapEntries = [
     { loc: "/", priority: "1.0", changefreq: "daily" },
+    { loc: "/changes/", priority: "0.9", changefreq: "hourly" },
     { loc: "/policies/", priority: "0.9", changefreq: "daily" },
     { loc: "/findings/", priority: "0.8", changefreq: "daily" },
     { loc: "/deprecated/", priority: "0.7", changefreq: "weekly" },
@@ -1190,6 +1329,7 @@ async function generatePolicyData() {
     { loc: "/endpoints/", priority: "0.8", changefreq: "daily" },
     { loc: "/guardduty/", priority: "0.8", changefreq: "daily" },
     { loc: "/feeds/", priority: "0.5", changefreq: "weekly" },
+    { loc: "/api/", priority: "0.5", changefreq: "monthly" },
     { loc: "/about/", priority: "0.5", changefreq: "monthly" },
   ];
   policies.forEach((p) => {
@@ -1221,6 +1361,51 @@ ${sitemapEntries
 </urlset>`;
   fs.writeFileSync(path.join(PUBLIC_DIR, "sitemap.xml"), sitemapXml);
   console.log(`   🗺️  Sitemap entries: ${sitemapEntries.length}`);
+
+  // The one URL a consumer has to hard-code. Everything else is reachable from
+  // here, so a future v2 can move files without breaking a client that starts
+  // by reading this document.
+  const apiBase = `${SITE_URL}/api/${API_VERSION}`;
+  fs.writeFileSync(
+    path.join(API_DIR, "index.json"),
+    JSON.stringify(
+      {
+        schemaVersion: 1,
+        apiVersion: API_VERSION,
+        generatedAt: GENERATED_AT,
+        name: "IAMTrail API",
+        description:
+          "An unofficial archive of AWS Managed IAM Policy changes, tracked since 2019 by zoph.io.",
+        documentation: `${SITE_URL}/api/`,
+        license: "GPL-3.0",
+        source: GITHUB_REPO,
+        counts: {
+          policies: policies.length,
+          changes: timeline.length,
+          literalActions: uniqueLiteralActions.size,
+          discoveredServices: discoveredServices.length,
+          discoveredActions: discoveredActions.length,
+        },
+        resources: {
+          policies: `${apiBase}/policies.json`,
+          policy: `${apiBase}/policies/{policyName}.json`,
+          changes: `${apiBase}/changes.json`,
+          actions: `${apiBase}/actions.json`,
+          discoveries: `${apiBase}/discoveries.json`,
+        },
+        feeds: {
+          all: `${SITE_URL}/feeds/all.xml`,
+          discoveries: `${SITE_URL}/feeds/discoveries.xml`,
+          iamPolicies: `${SITE_URL}/feeds/iam-policies.xml`,
+          endpoints: `${SITE_URL}/feeds/endpoints.xml`,
+          guardduty: `${SITE_URL}/feeds/guardduty.xml`,
+        },
+      },
+      null,
+      2
+    )
+  );
+  console.log(`   🔌 API ${API_VERSION}: ${policies.length + 5} documents`);
 
   console.log("✅ Data generation complete!");
   console.log(`   📁 Policies processed: ${policies.length}`);
@@ -1473,11 +1658,10 @@ async function generateEndpointsData() {
 }
 
 // Ensure output directories exist
-if (!fs.existsSync(OUTPUT_DIR)) {
-  fs.mkdirSync(OUTPUT_DIR, { recursive: true });
-}
-if (!fs.existsSync(FEEDS_DIR)) {
-  fs.mkdirSync(FEEDS_DIR, { recursive: true });
+for (const dir of [OUTPUT_DIR, FEEDS_DIR, API_POLICIES_DIR]) {
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
 }
 
 function toRFC2822(dateStr) {
@@ -1724,6 +1908,82 @@ function policyChangeTitle(policyName, delta) {
     delta.actionsAdded,
     delta.actionsRemoved
   )}${suffix}`;
+}
+
+/**
+ * A policy change as data rather than as feed markup.
+ *
+ * describePolicyChange renders the same delta into RSS HTML. This is the shape
+ * the /changes page, the per-policy version history and the public API all read,
+ * so none of them can end up describing a change differently from the feed.
+ * Every phrase still comes from change-wording.js, whose Python counterpart in
+ * automation/lambdas/shared/policy_diff.py words the emails and social posts.
+ *
+ * Returns null for a version with no recorded delta: policy-change-deltas.json
+ * covers the most recent 1,000 changes, so older versions have none and callers
+ * must render them as "no recorded delta" rather than as "nothing changed".
+ */
+function normalizeDelta(delta, meta) {
+  if (!delta) return null;
+
+  const added = delta.actionsAdded || [];
+  const removed = delta.actionsRemoved || [];
+  const prefixes = delta.newServicePrefixes || [];
+
+  // An action that is new only because its whole service prefix is new is
+  // already reported by the prefix; listing it twice overstates the finding.
+  const newActions = (delta.newActions || []).filter(
+    (a) => !prefixes.includes(a.split(":", 1)[0].toLowerCase())
+  );
+
+  const services = [
+    ...new Set([...added, ...removed].map((a) => a.split(":", 1)[0].toLowerCase())),
+  ].sort();
+
+  const permissionsManagement = added.filter((a) =>
+    meta.permissionsManagement.has(a.toLowerCase())
+  );
+
+  // Every phrase is rendered here rather than in the React components, so the
+  // page, the API and the feed all read the same words out of change-wording.js
+  // instead of each growing its own way of saying the same thing.
+  const phrases = {
+    summary: wording.actionDeltaPhrase(added, removed),
+    newService: prefixes.length
+      ? wording.sentence(wording.newServicePhrase(prefixes))
+      : "",
+    newActions: newActions.length
+      ? wording.sentence(wording.neverBeforeSeen(newActions.length))
+      : "",
+    permissionsManagement: wording.sentence(
+      wording.permissionsManagementPhrase(permissionsManagement)
+    ),
+  };
+
+  return {
+    sha: delta.sha,
+    date: delta.date,
+    policyName: delta.policyName,
+    versionId: delta.versionId || null,
+    status: delta.status || "modified",
+    headline: policyChangeTitle(delta.policyName, delta),
+    summary: phrases.summary,
+    phrases,
+    actionsAdded: added,
+    actionsRemoved: removed,
+    newActions,
+    newServicePrefixes: prefixes,
+    permissionsManagement,
+    services,
+    commitUrl: `${GITHUB_REPO}/commit/${delta.sha}`,
+  };
+}
+
+/** A change worth leading with: it names something never seen in the archive. */
+function isDiscovery(change) {
+  return (
+    change.newActions.length > 0 || change.newServicePrefixes.length > 0
+  );
 }
 
 /**

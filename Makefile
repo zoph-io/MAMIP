@@ -278,19 +278,29 @@ website-build-fast:
 	@cd website && npm run generate-og
 	@cd website && npm run build
 
+# Upload, then invalidate only the immutable objects that changed. Everything
+# else is served "max-age=0, must-revalidate" and revalidates against S3 on its
+# own, so a blanket "/*" would flush the edge cache for no freshness gain.
+define deploy_website
+	@cd website && node scripts/deploy-s3.mjs --bucket iamtrail.com --invalidation-manifest invalidation.json
+	@paths=$$(jq -r '.paths | join(" ")' website/invalidation.json); \
+	if [ -z "$$paths" ]; then \
+		echo "🔄 Nothing to invalidate; changed objects revalidate on request."; \
+	else \
+		echo "🔄 Invalidating: $$paths"; \
+		set -f; \
+		aws cloudfront create-invalidation --distribution-id $(CF_DISTRIBUTION_ID) --paths $$paths >/dev/null; \
+	fi
+	@echo "✅ Deployed to https://iamtrail.com"
+endef
+
 website-deploy: website-build
 	@echo "☁️  Deploying to S3 and CloudFront (content-diff, changed files only)..."
-	@cd website && node scripts/deploy-s3.mjs --bucket iamtrail.com
-	@echo "🔄 Creating CloudFront invalidation..."
-	@aws cloudfront create-invalidation --distribution-id E2R2N8OZK7U78U --paths "/*"
-	@echo "✅ Deployed to https://iamtrail.com"
+	$(deploy_website)
 
 website-deploy-fast: website-build-fast
 	@echo "☁️  Deploying to S3 and CloudFront (no data regeneration)..."
-	@cd website && node scripts/deploy-s3.mjs --bucket iamtrail.com
-	@echo "🔄 Creating CloudFront invalidation..."
-	@aws cloudfront create-invalidation --distribution-id E2R2N8OZK7U78U --paths "/*"
-	@echo "✅ Deployed to https://iamtrail.com"
+	$(deploy_website)
 
 website-sync:
 	@echo "☁️  Syncing to S3 and CloudFront (no rebuild)..."
@@ -298,10 +308,7 @@ website-sync:
 		echo "❌ Error: website/out directory not found. Run 'make website-build' first."; \
 		exit 1; \
 	fi
-	@cd website && node scripts/deploy-s3.mjs --bucket iamtrail.com
-	@echo "🔄 Creating CloudFront invalidation..."
-	@aws cloudfront create-invalidation --distribution-id E2R2N8OZK7U78U --paths "/*"
-	@echo "✅ Deployed to https://iamtrail.com"
+	$(deploy_website)
 
 website-clean:
 	@echo "🧹 Cleaning website build artifacts..."

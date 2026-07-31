@@ -12,6 +12,8 @@ import {
 } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { isLiteralIamActionString } from "@/lib/iamActionPattern";
 import { iamActionToSlug } from "@/lib/actionSlug";
+import type { PolicyChange } from "@/lib/changes";
+import ChangeCard from "@/components/ChangeCard";
 
 function transformIAMActionTextNodes(node: unknown): unknown {
   if (Array.isArray(node)) {
@@ -100,6 +102,12 @@ interface PolicyVersion {
   date: string;
   message: string;
   author: string;
+  /**
+   * What this version actually changed. Absent for versions older than the
+   * archive replay window in data/policy-change-deltas.json, which is why the
+   * row says "no recorded delta" rather than implying nothing changed.
+   */
+  delta?: PolicyChange;
 }
 
 interface PathfindingOverlap {
@@ -129,6 +137,9 @@ interface PolicyData {
   };
 }
 
+/** ReadOnlyAccess is 115 versions deep; the rest of the archive is far shorter. */
+const VERSIONS_PAGE_SIZE = 20;
+
 export default function PolicyDetailClient({
   policyName,
 }: {
@@ -139,6 +150,7 @@ export default function PolicyDetailClient({
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [isDark, setIsDark] = useState(false);
+  const [visibleVersions, setVisibleVersions] = useState(VERSIONS_PAGE_SIZE);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
@@ -492,57 +504,77 @@ export default function PolicyDetailClient({
       {/* Version History */}
       {policy.history && policy.history.length > 0 && (
         <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg overflow-hidden">
-          <div className="px-5 py-3 border-b border-zinc-200 dark:border-zinc-800">
+          <div className="px-5 py-3 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
             <h2 className="text-sm font-semibold font-mono uppercase tracking-wider text-zinc-900 dark:text-white">
-              Version History ({policy.versionsCount} total)
+              Version History ({policy.history.length} recorded)
             </h2>
+            <a
+              href={`https://github.com/zoph-io/IAMTrail/commits/master/policies/${policy.name}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs font-mono text-red-600 dark:text-red-400 hover:underline"
+            >
+              Raw history
+            </a>
           </div>
           <div className="divide-y divide-zinc-100 dark:divide-zinc-800">
-            {policy.history.map((version) => (
-              <div
-                key={version.hash}
-                className="px-5 py-3 hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition-colors"
-              >
-                <div className="flex items-start justify-between mb-1">
-                  <div className="flex-1">
-                    <div className="flex items-center space-x-3">
-                      <span className="font-mono text-xs px-1.5 py-0.5 bg-zinc-100 dark:bg-zinc-800 rounded text-zinc-600 dark:text-zinc-400">
-                        {version.hash.substring(0, 7)}
-                      </span>
-                      <span className="text-xs text-zinc-500 dark:text-zinc-400">
-                        {version.author}
-                      </span>
-                      <span className="text-xs font-mono text-zinc-400 dark:text-zinc-500">
-                        {getRelativeTime(version.date)}
-                      </span>
+            {policy.history.slice(0, visibleVersions).map((version) =>
+              version.delta ? (
+                <ChangeCard
+                  key={version.hash}
+                  change={version.delta}
+                  hidePolicyName
+                />
+              ) : (
+                <div key={version.hash} className="px-5 py-4">
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm text-zinc-900 dark:text-white">
+                        {version.message}
+                      </p>
+                      <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">
+                        No recorded action delta - this version predates the
+                        change index.{" "}
+                        <a
+                          href={`https://github.com/zoph-io/IAMTrail/commit/${version.hash}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-red-600 dark:text-red-400 hover:underline"
+                        >
+                          View the raw diff
+                        </a>
+                        .
+                      </p>
                     </div>
-                    <p className="mt-1 text-sm text-zinc-900 dark:text-white">
-                      {version.message}
-                    </p>
+                    <div className="flex-shrink-0 text-right">
+                      <p className="text-xs font-mono text-zinc-400 dark:text-zinc-500">
+                        {getRelativeTime(version.date)}
+                      </p>
+                      <a
+                        href={`https://github.com/zoph-io/IAMTrail/commit/${version.hash}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[10px] font-mono text-zinc-400 dark:text-zinc-500 hover:text-red-600 dark:hover:text-red-400"
+                      >
+                        {version.hash.substring(0, 7)}
+                      </a>
+                    </div>
                   </div>
-                  <a
-                    href={`https://github.com/zoph-io/IAMTrail/commit/${version.hash}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="ml-4 text-red-600 dark:text-red-400 hover:underline text-xs font-mono"
-                  >
-                    View diff
-                  </a>
                 </div>
-              </div>
-            ))}
+              )
+            )}
           </div>
-          {policy.versionsCount > policy.history.length && (
-            <div className="px-5 py-3 bg-zinc-50 dark:bg-zinc-900 text-center border-t border-zinc-100 dark:border-zinc-800">
-              <a
-                href={`https://github.com/zoph-io/IAMTrail/commits/master/policies/${policy.name}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs font-mono text-red-600 dark:text-red-400 hover:underline"
-              >
-                View all {policy.versionsCount} versions on GitHub
-              </a>
-            </div>
+          {policy.history.length > visibleVersions && (
+            <button
+              onClick={() => setVisibleVersions((n) => n + VERSIONS_PAGE_SIZE)}
+              className="w-full px-5 py-3 border-t border-zinc-200 dark:border-zinc-800 text-xs font-mono text-zinc-600 dark:text-zinc-400 hover:text-red-600 dark:hover:text-red-400 hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition-colors"
+            >
+              Load more ({policy.history.length - visibleVersions} older{" "}
+              {policy.history.length - visibleVersions === 1
+                ? "version"
+                : "versions"}
+              )
+            </button>
           )}
         </div>
       )}

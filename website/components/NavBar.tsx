@@ -4,15 +4,19 @@ import Link from "next/link";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
+// Ordered by what a reader comes here for. Changes leads because the archive
+// exists to record them. Usage is a subscriber counter and lives on /about.
 const navLinks = [
+  { href: "/changes", label: "Changes" },
   { href: "/policies", label: "Policies" },
   { href: "/discoveries", label: "Discoveries" },
   { href: "/accounts", label: "Account Lookup" },
   { href: "/findings", label: "Security findings" },
   { href: "/endpoints", label: "Endpoints" },
   { href: "/guardduty", label: "GuardDuty" },
+  { href: "/feeds", label: "Feeds" },
+  { href: "/api", label: "API" },
   { href: "/subscribe", label: "Subscribe" },
-  { href: "/usage", label: "Usage" },
   { href: "/about", label: "About" },
 ];
 

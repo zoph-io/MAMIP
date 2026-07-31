@@ -57,6 +57,29 @@ All policies are stored as JSON in this repository and updated automatically eve
 | [`findings/`](./findings/) | Access Analyzer validation results |
 | [`DEPRECATED.json`](./DEPRECATED.json) | Historical record of 73+ deprecated policies |
 
+## API
+
+The whole archive is also published as versioned JSON at `https://iamtrail.com/api/v1`. No key, no sign-up, no rate limit - these are static files on the same CloudFront distribution that serves the site. Full documentation at [iamtrail.com/api](https://iamtrail.com/api).
+
+| Resource | Description |
+| --- | --- |
+| [`/api/v1/index.json`](https://iamtrail.com/api/v1/index.json) | Service index: contract version, counts, and the URL of every other resource |
+| [`/api/v1/policies.json`](https://iamtrail.com/api/v1/policies.json) | Every tracked policy with its ARN, current version and dates |
+| `/api/v1/policies/{policyName}.json` | One policy: current IAM document plus full version history with per-version action deltas |
+| [`/api/v1/changes.json`](https://iamtrail.com/api/v1/changes.json) | Recent changes, each naming the actions added and removed |
+| [`/api/v1/actions.json`](https://iamtrail.com/api/v1/actions.json) | Every literal IAM action mapped to the policies that allow, deny or NotAction it |
+| [`/api/v1/discoveries.json`](https://iamtrail.com/api/v1/discoveries.json) | Actions and service prefixes seen for the first time anywhere in the archive |
+
+```bash
+# What changed in the last day
+curl -s https://iamtrail.com/api/v1/changes.json \
+  | jq -r '.changes[]
+      | select(.date > (now - 86400 | todate))
+      | "\(.policyName) \(.versionId): \(.summary)"'
+```
+
+Fields are added, never removed or repurposed, within a version. A breaking change means a new path under `/api/v2/`.
+
 ## How It Works
 
 An automated workflow runs every hour (Mon-Fri):

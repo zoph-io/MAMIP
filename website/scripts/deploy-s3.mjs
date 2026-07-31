@@ -33,21 +33,30 @@ import { fileURLToPath } from "node:url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 function parseArgs(argv) {
-  const args = { bucket: null, dir: "out", dryRun: false, concurrency: 32 };
+  const args = {
+    bucket: null,
+    dir: "out",
+    dryRun: false,
+    concurrency: 32,
+    invalidationManifest: null,
+  };
   for (let i = 2; i < argv.length; i++) {
     const a = argv[i];
     if (a === "--bucket") args.bucket = argv[++i];
     else if (a === "--dir") args.dir = argv[++i];
     else if (a === "--dry-run") args.dryRun = true;
     else if (a === "--concurrency") args.concurrency = parseInt(argv[++i], 10);
-    else {
+    else if (a === "--invalidation-manifest") {
+      args.invalidationManifest = argv[++i];
+    } else {
       console.error(`Unknown argument: ${a}`);
       process.exit(2);
     }
   }
   if (!args.bucket) {
     console.error(
-      "Usage: node scripts/deploy-s3.mjs --bucket <bucket> [--dir out] [--dry-run]"
+      "Usage: node scripts/deploy-s3.mjs --bucket <bucket> [--dir out] [--dry-run]\n" +
+        "         [--invalidation-manifest <path>]"
     );
     process.exit(2);
   }
@@ -59,6 +68,11 @@ function parseArgs(argv) {
 const SHORT_CACHE_EXTS = new Set([".html", ".json", ".txt", ".xml"]);
 const CACHE_SHORT = "public, max-age=0, must-revalidate";
 const CACHE_IMMUTABLE = "public, max-age=31536000, immutable";
+// The published API is polled by scripts rather than read by a browser that is
+// about to navigate, so it trades a few minutes of staleness for not hitting
+// the origin on every request. The scraper runs hourly, so five minutes costs
+// a consumer nothing real.
+const CACHE_API = "public, max-age=300, stale-while-revalidate=3600";
 
 const CONTENT_TYPES = {
   ".html": "text/html",
@@ -89,8 +103,44 @@ function contentTypeFor(key) {
 }
 
 function cacheControlFor(key) {
+  // Only the versioned payloads, not the /api/ documentation page, which is
+  // ordinary HTML and should revalidate like the rest of the site.
+  if (key.startsWith("api/v")) return CACHE_API;
   const ext = path.extname(key).toLowerCase();
   return SHORT_CACHE_EXTS.has(ext) ? CACHE_SHORT : CACHE_IMMUTABLE;
+}
+
+/**
+ * Beyond this, a wildcard is both cheaper and kinder than naming every path.
+ * CloudFront bills per path after 1,000 a month and "/*" counts as one, so a
+ * long explicit list is the expensive option, not the frugal one.
+ */
+const MAX_INVALIDATION_PATHS = 40;
+
+/**
+ * The paths a deploy actually has to invalidate.
+ *
+ * Everything short-cached (.html/.json/.xml/.txt) ships
+ * "max-age=0, must-revalidate", so CloudFront already revalidates it against S3
+ * on every request and an invalidation changes nothing for it. Immutable
+ * objects are the real target: Next.js hashes its asset filenames, so in
+ * practice this is the per-policy Open Graph images, which keep their path and
+ * change their bytes.
+ *
+ * The previous blanket "/*" therefore bought no freshness and dumped the entire
+ * edge cache roughly thirteen times a day, making every asset on the next
+ * request a miss back to the origin.
+ */
+function invalidationPathsFor(changedKeys) {
+  const paths = changedKeys
+    .filter((key) => !SHORT_CACHE_EXTS.has(path.extname(key).toLowerCase()))
+    .map((key) => `/${key}`)
+    .sort();
+
+  if (paths.length > MAX_INVALIDATION_PATHS) {
+    return { paths: ["/*"], truncated: true, candidateCount: paths.length };
+  }
+  return { paths, truncated: false, candidateCount: paths.length };
 }
 
 function walkFiles(dir, base = dir, acc = []) {
@@ -184,6 +234,22 @@ async function main() {
 
   console.log(
     `Diff: ${toUpload.length} to upload, ${toDelete.length} to delete, ${unchanged} unchanged`
+  );
+
+  const invalidation = invalidationPathsFor([...toUpload, ...toDelete]);
+  if (args.invalidationManifest) {
+    fs.writeFileSync(
+      args.invalidationManifest,
+      JSON.stringify(invalidation, null, 2)
+    );
+  }
+  const pathCount = invalidation.paths.length;
+  console.log(
+    pathCount === 0
+      ? "Invalidation: none needed, every changed object revalidates on request"
+      : invalidation.truncated
+        ? `Invalidation: wildcard, ${invalidation.candidateCount} immutable objects changed`
+        : `Invalidation: ${pathCount} ${pathCount === 1 ? "path" : "paths"}`
   );
 
   if (args.dryRun) {

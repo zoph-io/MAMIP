@@ -98,13 +98,33 @@ jobs:
 
       - name: Deploy to S3 (content-diff, changed files only)
         working-directory: ./website
-        run: node scripts/deploy-s3.mjs --bucket ${{ env.S3_BUCKET }}
-
-      - name: Create CloudFront invalidation
         run: |
+          node scripts/deploy-s3.mjs \
+            --bucket ${{ env.S3_BUCKET }} \
+            --invalidation-manifest invalidation.json
+
+      # Only the immutable objects that actually changed. Every HTML, JSON and
+      # XML file is served "max-age=0, must-revalidate", so CloudFront already
+      # revalidates it against S3 and the old blanket "/*" flushed the whole
+      # edge cache thirteen times a day for nothing. deploy-s3.mjs falls back to
+      # a wildcard when enough immutable objects changed to make naming them
+      # more expensive than the wildcard, which bills as a single path.
+      - name: Invalidate changed CloudFront paths
+        working-directory: ./website
+        run: |
+          paths=$(jq -r '.paths | join(" ")' invalidation.json)
+          if [ -z "$paths" ]; then
+            echo "No immutable objects changed; nothing to invalidate."
+            exit 0
+          fi
+          echo "Invalidating: $paths"
+          # $paths is deliberately unquoted so it splits into one argument per
+          # path, but the fallback value is "/*" and the shell would expand that
+          # against the filesystem into /bin /etc /usr and so on.
+          set -f
           aws cloudfront create-invalidation \
             --distribution-id ${{ env.CLOUDFRONT_DISTRIBUTION_ID }} \
-            --paths "/*"
+            --paths $paths
 
       - name: Deployment summary
         run: |
