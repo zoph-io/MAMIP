@@ -1,0 +1,28 @@
+{
+    "PolicyVersion": {
+        "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "supportplans:AcceptSupportAgreement",
+                        "supportplans:CancelSupportAgreement",
+                        "supportplans:CreateSupportAgreement",
+                        "supportplans:GetSupportAgreement",
+                        "supportplans:ListSupportAgreements",
+                        "supportplans:ListSupportAgreementRevisions",
+                        "supportplans:RejectSupportAgreement",
+                        "supportplans:StartSupportPlanUpdate",
+                        "supportplans:UpdateSupportAgreement",
+                        "organizations:ListAccounts"
+                    ],
+                    "Resource": "*"
+                }
+            ]
+        },
+        "VersionId": "v1",
+        "IsDefaultVersion": true,
+        "CreateDate": "2026-07-31T17:12:23+00:00"
+    }
+}
