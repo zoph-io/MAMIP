@@ -558,9 +558,8 @@ resource "aws_lambda_function" "change_recorder" {
 
   environment {
     variables = {
-      CHANGES_TABLE              = aws_dynamodb_table.policy_changes.name
-      DISCORD_WEBHOOK_SSM        = local.discord_webhook_ssm
-      DISCORD_PUBLIC_WEBHOOK_SSM = local.discord_public_webhook_ssm
+      CHANGES_TABLE       = aws_dynamodb_table.policy_changes.name
+      DISCORD_WEBHOOK_SSM = local.discord_webhook_ssm
     }
   }
 }
@@ -712,6 +711,10 @@ resource "aws_lambda_function" "instant_notifier" {
       BLUESKY_QUEUE_URL     = local.bluesky_fifo_queue_url
       TELEGRAM_TOKEN_SSM    = local.telegram_token_ssm
       TELEGRAM_CHAT_ID      = var.telegram_chat_id
+      # Public Discord is published here rather than from change-recorder, for
+      # the same reason as Bluesky and Telegram: this is where the diffs are
+      # resolved and the never-before-seen actions are classified.
+      DISCORD_PUBLIC_WEBHOOK_SSM = local.discord_public_webhook_ssm
     }
   }
 }
@@ -1047,12 +1050,10 @@ resource "aws_iam_role_policy" "change_recorder" {
         Resource = [aws_sqs_queue.changes.arn]
       },
       {
-        Effect = "Allow"
-        Action = ["ssm:GetParameter"]
-        Resource = [
-          "arn:aws:ssm:${var.aws_region}:${data.aws_caller_identity.current.account_id}:parameter${local.discord_webhook_ssm}",
-          "arn:aws:ssm:${var.aws_region}:${data.aws_caller_identity.current.account_id}:parameter${local.discord_public_webhook_ssm}",
-        ]
+        # Ops webhook only: the public embed moved to instant-notifier.
+        Effect   = "Allow"
+        Action   = ["ssm:GetParameter"]
+        Resource = ["arn:aws:ssm:${var.aws_region}:${data.aws_caller_identity.current.account_id}:parameter${local.discord_webhook_ssm}"]
       },
       {
         Effect   = "Allow"
@@ -1179,6 +1180,7 @@ resource "aws_iam_role_policy" "instant_notifier" {
         Action = ["ssm:GetParameter"]
         Resource = [
           "arn:aws:ssm:${var.aws_region}:${data.aws_caller_identity.current.account_id}:parameter${local.discord_webhook_ssm}",
+          "arn:aws:ssm:${var.aws_region}:${data.aws_caller_identity.current.account_id}:parameter${local.discord_public_webhook_ssm}",
           "arn:aws:ssm:${var.aws_region}:${data.aws_caller_identity.current.account_id}:parameter${local.telegram_token_ssm}",
         ]
       },

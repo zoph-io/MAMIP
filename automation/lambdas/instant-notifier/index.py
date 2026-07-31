@@ -30,6 +30,12 @@ BLUESKY_TAGS = "#AWS #IAM #CloudSecurity"
 TELEGRAM_MAX_BLOCKS = 5
 TELEGRAM_MAX_ACTIONS = 12
 
+# Discord embed caps. Fields are the roomiest surface any short-form channel
+# gives us, so this is where the full action list goes.
+DISCORD_TITLE_LIMIT = 256
+DISCORD_DESC_LIMIT = 4096
+DISCORD_FIELD_LIMIT = 1024
+
 subs_table = dynamodb.Table(SUBSCRIPTIONS_TABLE)
 
 
@@ -81,6 +87,31 @@ def batch_actions(changes):
         added.update(change.get("actions_added") or [])
         removed.update(change.get("actions_removed") or [])
     return sorted(added), sorted(removed)
+
+
+def ordered_new_actions(change):
+    """A change's never-before-seen actions, the new service's own first.
+
+    A policy that introduces a prefix usually adds unrelated actions in the same
+    commit, and an alphabetical list buries odb: behind apigateway: for the
+    reader who came for odb.
+    """
+    actions = change.get("new_actions") or []
+    prefixes = set(change.get("new_service_prefixes") or [])
+    if not prefixes:
+        return actions
+    return sorted(actions, key=lambda a: (iam_metadata.service_of(a) not in prefixes, a))
+
+
+def batch_summary(changes, policy_names):
+    """"12 AWS managed IAM policies updated: 75 actions added"."""
+    added, removed = batch_actions(changes)
+    return (
+        policy_diff.plural(
+            len(policy_names), "AWS managed IAM policy", "AWS managed IAM policies"
+        )
+        + f" updated: {policy_diff.action_delta_phrase(added, removed)}"
+    )
 
 
 def build_bluesky_post(changes, policy_names):
@@ -190,15 +221,7 @@ def _telegram_block(change, max_actions):
     where += f", {esc(version)})" if version else ")"
 
     escalations = iam_metadata.permissions_management(actions)
-
-    # The new service's own actions lead. A policy that introduces a prefix
-    # usually adds unrelated actions in the same commit, and an alphabetical list
-    # buried odb: behind apigateway: for the reader who came for odb.
-    if prefixes:
-        wanted = set(prefixes)
-        actions = sorted(
-            actions, key=lambda a: (iam_metadata.service_of(a) not in wanted, a)
-        )
+    actions = ordered_new_actions(change)
 
     shown = [esc(a) for a in actions[:max_actions]]
     left = count - len(shown)
@@ -261,6 +284,127 @@ def build_telegram_post(changes):
         if len(body) <= telegram_publisher.MESSAGE_LIMIT:
             return body
     return body[: telegram_publisher.MESSAGE_LIMIT]
+
+
+def _discord_field(items, limit=DISCORD_FIELD_LIMIT):
+    """As many comma-joined items as a Discord field holds, plus a remainder count."""
+    shown, used = [], 0
+    for item in items:
+        cost = len(item) + (2 if shown else 0)
+        # Reserve room for the " and N more" tail rather than overflowing it.
+        if used + cost > limit - 20:
+            break
+        shown.append(item)
+        used += cost
+    if not shown:
+        return ""
+    left = len(items) - len(shown)
+    return ", ".join(shown) + (f" and {left} more" if left else "")
+
+
+def build_discord_public(changes, policy_names, commit_url):
+    """The public Discord embed, as keyword arguments for send_public.
+
+    Discord allows far more room than Bluesky and renders structured fields, so
+    it is the only short-form channel that can carry the whole action list. The
+    shape still mirrors the others: the discovery leads when there is one, and
+    the routine case leads with the delta rather than a list of policy names.
+    """
+    prefixes = new_service_prefixes(changes)
+    discoveries = sorted(
+        (c for c in changes if policy_diff.is_discovery(c)),
+        key=policy_diff.discovery_rank,
+    )
+    added, removed = batch_actions(changes)
+    escalations = iam_metadata.permissions_management(added)
+
+    fields = []
+    if discoveries:
+        lead = discoveries[0]
+        new_actions = ordered_new_actions(lead)
+        named = [iam_metadata.label_service(p) for p in prefixes]
+        url = policy_url(lead["name"])
+        color = discord.COLOR_WARNING
+
+        if prefixes:
+            title = policy_diff.sentence(policy_diff.new_service_phrase(prefixes))
+            # Past a handful, the names belong in a field: a paragraph of them
+            # pushes the finding itself off the top of the embed.
+            if len(named) <= 3:
+                subject = f"**{', '.join(named)}**"
+            else:
+                subject = policy_diff.plural(
+                    len(named), "service prefix", "service prefixes"
+                )
+                fields.append(("New AWS services", _discord_field(named), False))
+            description = (
+                f"{subject} appeared in an AWS managed IAM policy for the first "
+                f"time, in {lead['name']}."
+            )
+        else:
+            title = policy_diff.sentence(
+                policy_diff.never_before_seen(len(new_actions))
+            )
+            services = ", ".join(
+                iam_metadata.label_service(p)
+                for p in iam_metadata.services_of(new_actions)
+            )
+            description = f"On {services}, first seen in {lead['name']}."
+
+        if new_actions:
+            fields.append(
+                ("Never-before-seen actions", _discord_field(new_actions), False)
+            )
+        if len(discoveries) > 1:
+            fields.append(
+                (
+                    "Other discoveries in this run",
+                    _discord_field([c["name"] for c in discoveries[1:]]),
+                    False,
+                )
+            )
+        # The discovery is the headline, but the reader still wants to know how
+        # big the run was. Bluesky has no room for both; Discord does.
+        fields.append(("This run", batch_summary(changes, policy_names), False))
+    else:
+        title = (
+            policy_diff.plural(
+                len(policy_names), "AWS managed IAM policy", "AWS managed IAM policies"
+            )
+            + " updated"
+        )
+        description = policy_diff.sentence(
+            policy_diff.action_delta_phrase(added, removed)
+        )
+        color = discord.COLOR_INFO
+        url = f"{SITE_URL}/policies"
+
+    if escalations:
+        fields.append(
+            ("Permissions management", _discord_field(escalations), False)
+        )
+
+    services = [
+        iam_metadata.label_service(p)
+        for p in iam_metadata.services_of(added + removed)
+    ]
+    if services:
+        fields.append(("Services", _discord_field(services), False))
+
+    fields.append(("Policies", _discord_field(policy_names), False))
+    if commit_url:
+        fields.append(("Commit", f"[View the diff]({commit_url})", True))
+
+    # Discord rejects the whole embed over an empty field value, which is the
+    # one way a single absurdly long name could cost us the post entirely.
+    return {
+        "title": title[:DISCORD_TITLE_LIMIT],
+        "description": description[:DISCORD_DESC_LIMIT],
+        "color": color,
+        "fields": [f for f in fields if f[1]],
+        "footer": "IAM policies",
+        "url": url,
+    }
 
 
 def build_subject(changes):
@@ -378,6 +522,9 @@ def handler(event, context):
             # would fall silent whenever nobody holds an instant subscription.
             bluesky_publisher.post(build_bluesky_post(policy_changes, policy_names))
             telegram_publisher.post(build_telegram_post(policy_changes))
+            discord.send_public(
+                **build_discord_public(policy_changes, policy_names, commit_url)
+            )
 
             subscribers = get_instant_subscribers()
             if not subscribers:

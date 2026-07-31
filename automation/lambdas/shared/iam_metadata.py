@@ -66,7 +66,13 @@ def service_name(prefix):
 def label_service(prefix):
     """"Amazon Bedrock (bedrock)" when the name is known, else just the prefix."""
     name = service_name(prefix)
-    return f"{name} ({prefix})" if name != prefix else str(prefix)
+    if name == prefix:
+        return str(prefix)
+    # Some names already end in their own acronym, and "AWS Identity and Access
+    # Management (IAM) (iam)" reads like a mistake.
+    if name.lower().endswith(f"({str(prefix).lower()})"):
+        return name
+    return f"{name} ({prefix})"
 
 
 def service_of(action):

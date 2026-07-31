@@ -147,11 +147,12 @@ jobs:
             echo "No public Discord webhook in SSM, skipping"
             exit 0
           fi
+          # Reader-facing, so it names the announcements rather than the git
+          # plumbing that stored them. The ops embed above keeps the file count.
           TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
           PAYLOAD=$(jq -n \
-            --arg title "GuardDuty announcements synced" \
-            --arg desc "${{ steps.query.outputs.CHANGE_COUNT }} new ${{ steps.query.outputs.CHANGE_NOUN }} committed to git" \
-            --arg count "${{ steps.query.outputs.CHANGE_COUNT }}" \
+            --arg title "${{ steps.query.outputs.CHANGE_COUNT }} new GuardDuty ${{ steps.query.outputs.CHANGE_NOUN }}" \
+            --arg desc "Archived and searchable on iamtrail.com, with the full announcement text and detection date." \
             --arg url "https://iamtrail.com/guardduty" \
             --arg ts "$TIMESTAMP" \
             '{
@@ -160,7 +161,6 @@ jobs:
                 description: $desc,
                 url: $url,
                 color: 3066993,
-                fields: [{name: "New files", value: $count, inline: true}],
                 footer: {text: "iamtrail.com"},
                 timestamp: $ts
               }]

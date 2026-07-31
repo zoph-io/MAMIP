@@ -2,12 +2,14 @@
 
 ## Bluesky
 
-IAM policies (ECS runbook), GuardDuty (Lambda + optional GitHub sync), and endpoint changes (GitHub Actions) enqueue plain text to the FIFO queue consumed by `qbsky-mamip-prod` in `eu-west-1`. Posts are prefixed with `[Policies]`, `[GuardDuty]`, or `[Endpoints]` on [@iamtrail.bsky.social](https://bsky.app/profile/iamtrail.bsky.social).
+IAM policies (instant-notifier Lambda), GuardDuty (Lambda + optional GitHub sync), and endpoint changes (GitHub Actions) enqueue plain text to the FIFO queue consumed by `qbsky-mamip-prod` in `eu-west-1`, posted as [@iamtrail.bsky.social](https://bsky.app/profile/iamtrail.bsky.social). Posts open with the finding itself and close with hashtags; the old `[Policies]` / `[GuardDuty]` / `[Endpoints]` prefixes were removed because they spent characters on a label the reader already had from the account.
 
 ## Discord
 
-- **Internal ops** (`/iamtrail/discord-webhook-url` in SSM): errors, run summaries, and operator alerts. Used by Lambdas via `DISCORD_WEBHOOK_SSM` and by `runbook-prod.sh` for failures.
-- **Invite-only channel** (`/iamtrail/discord-public-webhook-url` in SSM, SecureString): same high-level events as Bluesky for a private Discord audience. Not linked from the public website (iamtrail.com only promotes Bluesky and RSS). Lambdas and the runbook read the webhook from SSM; GitHub Actions use the OIDC role.
+- **Internal ops** (`/iamtrail/discord-webhook-url` in SSM): errors, run summaries, and operator alerts. Used by Lambdas via `DISCORD_WEBHOOK_SSM` and by `runbook-prod.sh` for failures. Deliberately terse; the canonical reader-facing vocabulary does not apply here.
+- **Invite-only channel** (`/iamtrail/discord-public-webhook-url` in SSM, SecureString): the same events as Bluesky, but embeds allow far more room, so this is the only short-form channel that carries the full action list, the permissions-management callout, and the services touched. Not linked from the public website (iamtrail.com only promotes Bluesky and RSS). Lambdas and the runbook read the webhook from SSM; GitHub Actions use the OIDC role.
+
+The public policy-change embed is built by **instant-notifier**, not change-recorder, for the same reason as Bluesky and Telegram: that Lambda is where diffs are resolved and never-before-seen actions are classified. change-recorder only ever receives a list of policy names, which cannot produce more than a "something changed" post.
 
 ## X / Twitter
 

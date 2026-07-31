@@ -320,7 +320,7 @@ function buildDiscordDescription(changes, commitHash) {
     } else if (c.type === "new_region") {
       lines.push(`**${label}** \`${c.partition}\`\n\`${c.id}\` - ${c.description}`);
     } else if (c.type === "new_service") {
-      lines.push(`**${label}** \`${c.partition}\`\n\`${c.id}\` (${c.endpoint_count || 0} endpoints)`);
+      lines.push(`**${label}** \`${c.partition}\`\n\`${c.id}\` (${plural(c.endpoint_count || 0, "endpoint")})`);
     } else {
       lines.push(`**${label}** \`${c.partition}\`\n${c.description}`);
     }

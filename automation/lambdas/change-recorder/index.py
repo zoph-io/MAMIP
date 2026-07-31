@@ -77,20 +77,17 @@ def handler(event, context):
             if commit_url:
                 fields.append(("Commit", f"[View]({commit_url})", True))
 
+            # Ops only. The public Discord embed is published by the
+            # instant-notifier Lambda alongside Bluesky and Telegram, because
+            # that is where the diffs are resolved and the never-before-seen
+            # actions are classified. All this Lambda ever sees is a list of
+            # policy names, which is exactly the "something changed" post the
+            # channels were rewritten to stop sending.
             discord.send(
                 "Policy Changes Recorded",
                 preview,
                 discord.COLOR_SUCCESS,
                 fields=fields,
-            )
-
-            plural = "policy" if len(policy_names) == 1 else "policies"
-            discord.send_public(
-                "IAM policy updates",
-                f"{len(policy_names)} AWS managed IAM {plural} updated.\n{preview}",
-                discord.COLOR_SUCCESS,
-                fields=fields,
-                url="https://iamtrail.com/policies",
             )
 
         except Exception as e:

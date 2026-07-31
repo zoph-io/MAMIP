@@ -13,6 +13,9 @@ TABLE_NAME = os.environ.get("GUARDDUTY_TABLE", "")
 BLUESKY_LIMIT = 300
 BLUESKY_TAGS = "#AWS #GuardDuty #CloudSecurity"
 
+# Discord truncates an embed description past this, so cut it ourselves.
+DISCORD_DESC_LIMIT = 4096
+
 TYPE_CONFIG = {
     "NEW_FINDINGS": {
         "detail_key": "findingDetails",
@@ -141,10 +144,14 @@ def _process_typed(message, msg_type, table, today, timestamp_id, now):
             footer="GuardDuty Monitor",
         )
 
+        # The public embed names the finding in the title and explains it in the
+        # body. It used to do the opposite: a generic title and a description
+        # that was only the finding type ID, so the channel announced
+        # "Execution:Runtime/SuspiciousTool" and never said what that meant.
         page_url = link if link else "https://iamtrail.com/guardduty"
         discord.send_public(
-            config["discord_title"],
-            short_desc or full_desc[:200],
+            f"{config['discord_title']}: {short_desc}" if short_desc else config["discord_title"],
+            full_desc[:DISCORD_DESC_LIMIT] or short_desc,
             config["discord_color"],
             fields=fields,
             footer="GuardDuty",
@@ -194,10 +201,13 @@ def _process_general(message, table, today, timestamp_id, now):
             footer="GuardDuty Monitor",
         )
 
+        # Title carries the announcement, body carries the whole text: Discord
+        # allows 4096 characters, so there is no reason to cut it at 300 the way
+        # the ops embed does.
         page_url = link if link else "https://iamtrail.com/guardduty"
         discord.send_public(
-            GENERAL_CONFIG["discord_title"],
-            f"**{title}**\n{body[:300]}",
+            f"{GENERAL_CONFIG['discord_title']}: {title}" if title else GENERAL_CONFIG["discord_title"],
+            body[:DISCORD_DESC_LIMIT],
             GENERAL_CONFIG["discord_color"],
             fields=fields,
             footer="GuardDuty",
