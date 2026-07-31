@@ -118,14 +118,38 @@ function cacheControlFor(key) {
 const MAX_INVALIDATION_PATHS = 40;
 
 /**
+ * Next.js derives these filenames from their own content, so a change to the
+ * bytes is a change to the path. The new path was never in any cache and the
+ * old path is no longer referenced by any HTML, which makes invalidating either
+ * one pointless.
+ */
+const CONTENT_ADDRESSED_PREFIX = "_next/static/";
+
+/**
+ * CloudFront rejects an invalidation path containing a character RFC 1738 calls
+ * unsafe, and Next.js names the chunks for a dynamic route after the route, so
+ * a normal build produces keys like `app/policies/[name]/page-abc.js`. Only
+ * these characters may be encoded: percent-encoding anything else makes
+ * CloudFront look for a path that does not exist and silently skip the file.
+ */
+function encodeInvalidationPath(key) {
+  return `/${key}`.replace(/[^\u0021-\u007e]|["<>#%{}|\\^~[\]`]/g, (char) =>
+    Array.from(new TextEncoder().encode(char))
+      .map((byte) => `%${byte.toString(16).toUpperCase().padStart(2, "0")}`)
+      .join("")
+  );
+}
+
+/**
  * The paths a deploy actually has to invalidate.
  *
  * Everything short-cached (.html/.json/.xml/.txt) ships
  * "max-age=0, must-revalidate", so CloudFront already revalidates it against S3
- * on every request and an invalidation changes nothing for it. Immutable
- * objects are the real target: Next.js hashes its asset filenames, so in
- * practice this is the per-policy Open Graph images, which keep their path and
- * change their bytes.
+ * on every request and an invalidation changes nothing for it. Content-
+ * addressed assets get a new path whenever they change, so they need nothing
+ * either. What is left is the narrow case of an immutable object that keeps its
+ * path and changes its bytes, which here means the per-policy Open Graph
+ * images.
  *
  * The previous blanket "/*" therefore bought no freshness and dumped the entire
  * edge cache roughly thirteen times a day, making every asset on the next
@@ -134,7 +158,8 @@ const MAX_INVALIDATION_PATHS = 40;
 function invalidationPathsFor(changedKeys) {
   const paths = changedKeys
     .filter((key) => !SHORT_CACHE_EXTS.has(path.extname(key).toLowerCase()))
-    .map((key) => `/${key}`)
+    .filter((key) => !key.startsWith(CONTENT_ADDRESSED_PREFIX))
+    .map(encodeInvalidationPath)
     .sort();
 
   if (paths.length > MAX_INVALIDATION_PATHS) {
