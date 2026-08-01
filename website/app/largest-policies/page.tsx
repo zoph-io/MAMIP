@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import RelatedPages from "@/components/RelatedPages";
 
 export const metadata: Metadata = {
   title: "Largest AWS Managed IAM Policies by Action Count",
@@ -95,6 +96,8 @@ export default async function LargestPoliciesPage() {
           })}
         </div>
       </div>
+
+      <RelatedPages current="/largest-policies" />
     </div>
   );
 }

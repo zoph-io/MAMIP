@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import RelatedPages from "@/components/RelatedPages";
 
 export const metadata: Metadata = {
   title: "Deprecated AWS Managed IAM Policies",
@@ -75,6 +76,8 @@ export default async function DeprecatedPage() {
           ))}
         </div>
       </div>
+
+      <RelatedPages current="/deprecated" />
     </div>
   );
 }

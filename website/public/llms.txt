@@ -11,17 +11,22 @@ IAMTrail is an unofficial archive and is not affiliated with, endorsed by, or sp
 ## Key pages
 
 - [Home](https://iamtrail.com/): Dashboard with archive stats, recently changed policies, and charts.
-- [Policies](https://iamtrail.com/policies): Full searchable list of tracked AWS Managed IAM Policies.
+- [Changes](https://iamtrail.com/changes): Reverse-chronological timeline of every recorded policy change, searchable and filterable.
+- [Policies](https://iamtrail.com/policies): Full searchable list of tracked AWS Managed IAM Policies. Also the site search endpoint, at /policies?q=, which accepts a policy name or an IAM action such as s3:GetObject.
+- [Discoveries](https://iamtrail.com/discoveries): Never-before-seen IAM actions and new AWS services, as they first appear in a managed policy.
 - [Brand new policies](https://iamtrail.com/brand-new): Policies still on their first version.
 - [Deprecated policies](https://iamtrail.com/deprecated): Policies AWS has deprecated.
 - [Most active policies](https://iamtrail.com/most-active): Policies with the most revisions.
 - [Largest policies](https://iamtrail.com/largest-policies): Policies with the most actions.
 - [Service growth](https://iamtrail.com/service-growth): AWS service namespace growth over time.
-- [Account lookup](https://iamtrail.com/accounts): Identify the owners of one or many AWS account IDs at once, powered by the fwdcloudsec/known_aws_accounts dataset.
-- [Security findings](https://iamtrail.com/findings): IAM Access Analyzer findings and pathfinding.cloud path overlap.
 - [Endpoints](https://iamtrail.com/endpoints): AWS endpoint changes from botocore, covering new regions, services, and expansions.
 - [GuardDuty](https://iamtrail.com/guardduty): GuardDuty announcements for new findings, features, and regions.
+- [Account lookup](https://iamtrail.com/accounts): Identify the owners of one or many AWS account IDs at once, powered by the fwdcloudsec/known_aws_accounts dataset.
+- [Security findings](https://iamtrail.com/findings): IAM Access Analyzer findings and pathfinding.cloud path overlap.
 - [Subscribe](https://iamtrail.com/subscribe): Email digest of policy changes. Double opt-in, one-click unsubscribe.
+- [Feeds](https://iamtrail.com/feeds): Directory of every RSS feed and the other notification channels.
+- [JSON API](https://iamtrail.com/api): Free, versioned, static JSON endpoints under /api/v1/. No key, no sign-up.
+- [Usage stats](https://iamtrail.com/usage): Aggregate notification usage, showing how many readers the digests reach.
 - [About](https://iamtrail.com/about): How the archive works, credits, and disclaimer.
 
 ## Machine-readable feeds

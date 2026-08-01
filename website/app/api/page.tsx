@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { Braces, Code2, Terminal } from "lucide-react";
+import RelatedPages from "@/components/RelatedPages";
 
 export const metadata: Metadata = {
   title: "API",
@@ -259,6 +260,8 @@ export default function ApiPage() {
           can be narrowed to specific policies.
         </p>
       </section>
+
+      <RelatedPages current="/api" />
     </div>
   );
 }

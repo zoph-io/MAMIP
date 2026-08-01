@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
+import RelatedPages from "@/components/RelatedPages";
 
 type AccessAnalyzerFindingType =
   | "ERROR"
@@ -733,6 +734,8 @@ export default function FindingsPage() {
           </p>
         </div>
       )}
+
+      <RelatedPages current="/findings" />
     </div>
   );
 }

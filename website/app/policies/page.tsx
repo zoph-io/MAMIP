@@ -36,8 +36,9 @@ const MAX_LISTED_ACTIONS = 12;
 
 function PoliciesContent() {
   const searchParams = useSearchParams();
+  const queryParam = searchParams.get("q") || "";
   const [policies, setPolicies] = useState<Policy[]>([]);
-  const [searchTerm, setSearchTerm] = useState(searchParams.get("q") || "");
+  const [searchTerm, setSearchTerm] = useState(queryParam);
   const [sortBy, setSortBy] = useState<"name" | "modified" | "versions">(
     "modified"
   );
@@ -82,6 +83,12 @@ function PoliciesContent() {
       })
       .catch(() => setActionIndexState("failed"));
   }, [isActionQuery]);
+
+  // The navbar search pushes to /policies?q=, which does not remount this
+  // component when a reader is already here, so adopt the param when it moves.
+  useEffect(() => {
+    setSearchTerm(queryParam);
+  }, [queryParam]);
 
   // Keep the URL shareable, and make the SearchAction in the site's structured
   // data true: it has always advertised /policies?q=.

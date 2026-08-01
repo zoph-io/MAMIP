@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useMemo } from "react";
 import { Search, X } from "lucide-react";
+import RelatedPages from "@/components/RelatedPages";
 
 const ACCOUNT_ID_LENGTH = 12;
 const MIN_DIGITS = 3;
@@ -447,6 +448,8 @@ export default function AccountsPage() {
           </p>
         </div>
       </div>
+
+      <RelatedPages current="/accounts" />
     </div>
   );
 }

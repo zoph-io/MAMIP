@@ -1,5 +1,6 @@
 import StatsCard from "@/components/StatsCard";
 import GuardDutyFeed from "@/components/GuardDutyFeed";
+import RelatedPages from "@/components/RelatedPages";
 import { Shield, Sparkles, Globe, Clock, Rss } from "lucide-react";
 
 async function getGuardDutyData() {
@@ -151,6 +152,8 @@ export default async function GuardDutyPage() {
         </h2>
         <GuardDutyFeed announcements={announcements} />
       </div>
+
+      <RelatedPages current="/guardduty" />
     </div>
   );
 }

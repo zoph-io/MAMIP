@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import RelatedPages from "@/components/RelatedPages";
 
 export const metadata: Metadata = {
   title: "AWS Service Growth Timeline",
@@ -134,6 +135,8 @@ export default async function ServiceGrowthPage() {
           );
         })}
       </div>
+
+      <RelatedPages current="/service-growth" />
     </div>
   );
 }

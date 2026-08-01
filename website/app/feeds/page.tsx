@@ -1,5 +1,6 @@
 import { Rss, Shield, Globe, FileText, Layers, Sparkles } from "lucide-react";
 import type { Metadata } from "next";
+import RelatedPages from "@/components/RelatedPages";
 
 export const metadata: Metadata = {
   title: "RSS Feeds",
@@ -151,6 +152,8 @@ export default function FeedsPage() {
           tags.
         </p>
       </div>
+
+      <RelatedPages current="/feeds" />
     </div>
   );
 }

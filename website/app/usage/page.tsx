@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import StatsCard from "@/components/StatsCard";
 import UsageBreakdown from "@/components/UsageBreakdown";
+import RelatedPages from "@/components/RelatedPages";
 
 const SITE = "https://iamtrail.com";
 
@@ -281,6 +282,8 @@ export default function UsagePage() {
           </Link>
         </p>
       </section>
+
+      <RelatedPages current="/usage" />
     </div>
   );
 }

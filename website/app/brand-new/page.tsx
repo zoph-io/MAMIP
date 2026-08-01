@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import RelatedPages from "@/components/RelatedPages";
 
 export const metadata: Metadata = {
   title: "Brand New (v1) AWS Managed IAM Policies",
@@ -87,6 +88,8 @@ export default async function BrandNewPage() {
           </p>
         </div>
       )}
+
+      <RelatedPages current="/brand-new" />
     </div>
   );
 }

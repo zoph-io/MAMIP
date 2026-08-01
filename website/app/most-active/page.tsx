@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import RelatedPages from "@/components/RelatedPages";
 
 export const metadata: Metadata = {
   title: "Most Active AWS Managed IAM Policies",
@@ -94,6 +95,8 @@ export default async function MostActivePage() {
           })}
         </div>
       </div>
+
+      <RelatedPages current="/most-active" />
     </div>
   );
 }

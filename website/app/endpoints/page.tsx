@@ -2,6 +2,7 @@ import StatsCard from "@/components/StatsCard";
 import EndpointChangeFeed from "@/components/EndpointChangeFeed";
 import EndpointInsights from "@/components/EndpointInsights";
 import PartitionExplorer from "@/components/PartitionExplorer";
+import RelatedPages from "@/components/RelatedPages";
 import {
   Globe,
   Server,
@@ -222,6 +223,8 @@ export default async function EndpointsPage() {
           <PartitionExplorer partitions={currentState.partitions} />
         </div>
       </div>
+
+      <RelatedPages current="/endpoints" />
     </div>
   );
 }
