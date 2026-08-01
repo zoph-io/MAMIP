@@ -461,7 +461,7 @@ export default function PolicyDetailClient({
             Policy Document
           </h2>
           <a
-            href={`https://github.com/zoph-io/IAMTrail/blob/master/policies/${policy.name}`}
+            href={`https://github.com/zoph-io/IAMTrail/blob/main/policies/${policy.name}`}
             target="_blank"
             rel="noopener noreferrer"
             className="text-xs font-mono text-red-600 dark:text-red-400 hover:underline"
@@ -509,7 +509,7 @@ export default function PolicyDetailClient({
               Version History ({policy.history.length} recorded)
             </h2>
             <a
-              href={`https://github.com/zoph-io/IAMTrail/commits/master/policies/${policy.name}`}
+              href={`https://github.com/zoph-io/IAMTrail/commits/main/policies/${policy.name}`}
               target="_blank"
               rel="noopener noreferrer"
               className="text-xs font-mono text-red-600 dark:text-red-400 hover:underline"

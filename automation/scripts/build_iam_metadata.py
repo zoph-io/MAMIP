@@ -14,7 +14,7 @@ facts from it:
 Both fit in about a hundred kilobytes, small enough to ride along in the Lambda
 zip. The result is committed rather than rebuilt in CI: the Service Authorization
 Reference moves slowly, and a committed file keeps the deploy from having to push
-to master. Refresh with `make iam-metadata` and review the diff.
+to main. Refresh with `make iam-metadata` and review the diff.
 
 Stdlib only, so it runs on a bare runner.
 """

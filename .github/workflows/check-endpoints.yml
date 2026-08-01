@@ -144,10 +144,10 @@ jobs:
           git config --local user.name "IAMTrail Endpoint Monitor"
           git add data/endpoints.json data/endpoint-changes/
           git commit -m "endpoints: ${{ env.ENDPOINT_SUMMARY }}"
-          git push origin master
+          git push origin HEAD:${{ github.ref_name }}
 
       - name: Trigger website deployment
         if: steps.check.outputs.CHANGES_DETECTED == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh workflow run deploy-cloudfront.yml --ref master
+        run: gh workflow run deploy-cloudfront.yml --ref ${{ github.ref_name }}

@@ -111,7 +111,7 @@ apply:
 		-compact-warnings
 
 ################ Subscriptions Infrastructure ###
-# Deploy subscription infra locally without pushing to master.
+# Deploy subscription infra locally without pushing to main.
 # Uses -target to scope to subscription resources only.
 
 SUBSCRIPTION_TARGETS = \
@@ -193,7 +193,7 @@ action-registry:
 	@python3 automation/scripts/build_action_registry.py
 
 # Not run in CI on purpose: the Service Authorization Reference moves slowly, and
-# committing the refresh keeps the deploy from having to push to master.
+# committing the refresh keeps the deploy from having to push to main.
 iam-metadata:
 	@echo "📚 Refreshing IAM metadata from iam-dataset..."
 	@python3 automation/scripts/build_iam_metadata.py

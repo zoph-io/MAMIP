@@ -237,9 +237,11 @@ process_changes() {
             # Tag the run with a single summary tag
             git tag "${DATE}-update-${#ALL_COMMITS[@]}-policies"
 
-            # Push commits first, then tags separately
-            log "Pushing ${#ALL_COMMITS[@]} commits to master"
-            git push origin master
+            # Push commits first, then tags separately. clone_repo takes whatever
+            # branch GitHub reports as default, so pushing HEAD keeps this working
+            # across a rename instead of pinning a branch name that may move.
+            log "Pushing ${#ALL_COMMITS[@]} commits to $(git rev-parse --abbrev-ref HEAD)"
+            git push origin HEAD
             git push origin --tags
 
             # Notify only once the commits are on GitHub, otherwise consumers
@@ -281,7 +283,7 @@ main() {
 
     if [[ "$RESULT_STATUS" == "changes" ]]; then
         discord_notify 3066993 "Policy Changes Detected" \
-            "${RESULT_COMMIT_COUNT} policies updated and pushed to master" \
+            "${RESULT_COMMIT_COUNT} policies updated and pushed" \
             "Duration:${duration}" \
             "Policies Scanned:${POLICY_COUNT}" \
             "Updated:${RESULT_POLICY_NAMES:0:200}" \

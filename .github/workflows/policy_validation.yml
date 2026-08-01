@@ -54,8 +54,8 @@ jobs:
           git stash --include-untracked
 
           # Sync with latest remote
-          git fetch origin master
-          git reset --hard origin/master
+          git fetch origin ${{ github.ref_name }}
+          git reset --hard origin/${{ github.ref_name }}
 
           # Re-apply our changes
           git stash pop || true
@@ -68,9 +68,9 @@ jobs:
 
           # Push with retry logic
           for i in 1 2 3; do
-            git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git HEAD:master && break
+            git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git HEAD:${{ github.ref_name }} && break
             echo "Push failed, retrying ($i/3)..."
             sleep 5
-            git fetch origin master
-            git rebase origin/master -X theirs || git rebase --abort
+            git fetch origin ${{ github.ref_name }}
+            git rebase origin/${{ github.ref_name }} -X theirs || git rebase --abort
           done

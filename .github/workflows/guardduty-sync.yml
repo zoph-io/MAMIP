@@ -186,10 +186,10 @@ jobs:
           git config --local user.name "IAMTrail GuardDuty Monitor"
           git add data/guardduty/
           git commit -m "guardduty: ${{ steps.query.outputs.CHANGE_COUNT }} new ${{ steps.query.outputs.CHANGE_NOUN }}"
-          git push origin master
+          git push origin HEAD:${{ github.ref_name }}
 
       - name: Trigger website deployment
         if: steps.query.outputs.CHANGES_DETECTED == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh workflow run deploy-cloudfront.yml --ref master
+        run: gh workflow run deploy-cloudfront.yml --ref ${{ github.ref_name }}

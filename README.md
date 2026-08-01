@@ -6,7 +6,7 @@
 
 _Previously known as MAMIP (Monitor AWS Managed IAM Policies)._
 
-[![Build Status](https://github.com/zoph-io/IAMTrail/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/zoph-io/IAMTrail/actions/workflows/main.yml)
+[![Build Status](https://github.com/zoph-io/IAMTrail/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/zoph-io/IAMTrail/actions/workflows/main.yml)
 [![License](https://img.shields.io/badge/license-GPL--3.0-blue.svg)](LICENSE)
 [![Website](https://img.shields.io/badge/website-iamtrail.com-brightgreen)](https://iamtrail.com)
 
