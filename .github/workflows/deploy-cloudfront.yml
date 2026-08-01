@@ -3,7 +3,6 @@ name: Deploy Website to CloudFront
 on:
   push:
     branches:
-      - master
       - main
     paths:
       - "policies/**"
