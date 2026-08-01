@@ -29,7 +29,7 @@ Explore AWS Managed IAM Policies through a searchable web interface at **[iamtra
 - Syntax-highlighted JSON policy viewer
 - New (v1) policy tracking to spot new AWS services
 - Policy validation findings from AWS Access Analyzer
-- [Known AWS Account lookup](https://iamtrail.com/accounts) - identify who owns an AWS account ID, powered by the [fwdcloudsec/known_aws_accounts](https://github.com/fwdcloudsec/known_aws_accounts) community dataset
+- [Known AWS Account lookup](https://iamtrail.com/accounts) - identify who owns one or a whole list of AWS account IDs, powered by the [fwdcloudsec/known_aws_accounts](https://github.com/fwdcloudsec/known_aws_accounts) community dataset
 
 ---
 

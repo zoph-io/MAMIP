@@ -1,6 +1,11 @@
 "use client";
 
 import { useState, useEffect, useMemo } from "react";
+import { Search, X } from "lucide-react";
+
+const ACCOUNT_ID_LENGTH = 12;
+const MIN_DIGITS = 3;
+const MAX_LOOKUPS = 200;
 
 interface KnownAccount {
   name: string;
@@ -15,6 +20,42 @@ interface SearchResult {
   type?: string;
   accountId: string;
   sources: string[];
+}
+
+interface LookupGroup {
+  query: string;
+  matches: SearchResult[];
+}
+
+function plural(count: number, singular: string, pluralForm?: string) {
+  return `${count} ${count === 1 ? singular : pluralForm || `${singular}s`}`;
+}
+
+/**
+ * Pull account IDs out of whatever the visitor pasted. Every run of digits is a
+ * candidate, so a CSV column, a newline-separated list and a full role ARN all
+ * parse without asking anyone to clean up their clipboard first.
+ */
+function parseAccountIds(raw: string) {
+  const ids: string[] = [];
+  const seen = new Set<string>();
+  let skipped = 0;
+
+  for (const run of raw.match(/\d+/g) || []) {
+    if (run.length > ACCOUNT_ID_LENGTH) {
+      skipped++;
+      continue;
+    }
+    if (run.length < MIN_DIGITS || seen.has(run)) continue;
+    seen.add(run);
+    ids.push(run);
+  }
+
+  return {
+    ids: ids.slice(0, MAX_LOOKUPS),
+    skipped,
+    truncated: ids.length > MAX_LOOKUPS,
+  };
 }
 
 export default function AccountsPage() {
@@ -39,31 +80,50 @@ export default function AccountsPage() {
       });
   }, []);
 
-  const results = useMemo<SearchResult[]>(() => {
-    const trimmed = query.trim();
-    if (!trimmed || trimmed.length < 3) return [];
+  const { ids, skipped, truncated } = useMemo(
+    () => parseAccountIds(query),
+    [query]
+  );
 
-    const matches: SearchResult[] = [];
+  const groups = useMemo<LookupGroup[]>(() => {
+    if (ids.length === 0) return [];
+
+    const byQuery = new Map<string, SearchResult[]>(ids.map((id) => [id, []]));
+    // A complete ID can only ever match itself, so it costs a set lookup rather
+    // than a substring test against every account in the dataset.
+    const complete = new Set(ids.filter((id) => id.length === ACCOUNT_ID_LENGTH));
+    const partials = ids.filter((id) => id.length < ACCOUNT_ID_LENGTH);
+
     for (const entry of accounts) {
       for (const accountId of entry.accounts) {
-        if (accountId.includes(trimmed)) {
-          matches.push({
-            name: entry.name,
-            type: entry.type,
-            accountId,
-            sources: entry.source || [],
-          });
+        const matched: string[] = [];
+        if (complete.has(accountId)) matched.push(accountId);
+        for (const partial of partials) {
+          if (accountId.includes(partial)) matched.push(partial);
         }
+        if (matched.length === 0) continue;
+
+        const result: SearchResult = {
+          name: entry.name,
+          type: entry.type,
+          accountId,
+          sources: entry.source || [],
+        };
+        for (const key of matched) byQuery.get(key)?.push(result);
       }
     }
-    return matches;
-  }, [query, accounts]);
+
+    return ids.map((id) => ({ query: id, matches: byQuery.get(id) || [] }));
+  }, [ids, accounts]);
 
   const totalAccounts = useMemo(() => {
     return accounts.reduce((sum, entry) => sum + entry.accounts.length, 0);
   }, [accounts]);
 
-  const searched = query.trim().length >= 3;
+  const identified = groups.filter((group) => group.matches.length > 0).length;
+  const unknown = groups.length - identified;
+  const searched = ids.length > 0;
+  const rows = Math.min(Math.max(query.split("\n").length, 3), 12);
 
   return (
     <div className="max-w-4xl mx-auto space-y-6">
@@ -73,47 +133,58 @@ export default function AccountsPage() {
           AWS Account Lookup
         </h1>
         <p className="text-sm text-zinc-600 dark:text-zinc-400 max-w-2xl">
-          Found an unknown account ID in your CloudTrail logs, S3 bucket
-          policies, or IAM trust relationships? Paste it here to identify the
-          owner.
+          Found unknown account IDs in your CloudTrail logs, S3 bucket policies,
+          or IAM trust relationships? Paste one or a whole list here to identify
+          the owners.
         </p>
       </div>
 
       {/* Search Box */}
       <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg p-5">
         <label htmlFor="account-search" className="sr-only">
-          AWS Account ID
+          AWS Account IDs
         </label>
         <div className="relative">
-          <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-            <svg
-              className="h-4 w-4 text-zinc-400"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
+          <div className="absolute left-4 top-3.5 pointer-events-none">
+            <Search className="h-4 w-4 text-zinc-400" />
           </div>
-          <input
+          <textarea
             id="account-search"
-            type="text"
-            inputMode="numeric"
-            placeholder="Paste an AWS Account ID (e.g. 464622532012)"
+            placeholder="Paste one or more AWS Account IDs, one per line (e.g. 464622532012)"
             value={query}
-            onChange={(e) => setQuery(e.target.value.replace(/[^0-9]/g, ""))}
-            className="w-full pl-12 pr-4 py-3 text-base font-mono bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all"
-            maxLength={12}
+            onChange={(e) => setQuery(e.target.value)}
+            rows={rows}
+            spellCheck={false}
+            className="w-full pl-12 pr-10 py-3 text-base font-mono leading-6 bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all resize-y"
             autoFocus
           />
+          {query.length > 0 && (
+            <button
+              type="button"
+              onClick={() => setQuery("")}
+              aria-label="Clear"
+              className="absolute right-3 top-3 p-1 rounded text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          )}
         </div>
         {!loading && (
           <p className="mt-3 text-xs font-mono text-zinc-400 dark:text-zinc-500 text-center">
+            {searched && (
+              <span className="text-zinc-500 dark:text-zinc-400">
+                {plural(ids.length, "account ID")} detected /{" "}
+              </span>
+            )}
             {accounts.length} vendors / {totalAccounts.toLocaleString()}{" "}
             known account IDs indexed
+          </p>
+        )}
+        {(skipped > 0 || truncated) && (
+          <p className="mt-2 text-xs font-mono text-amber-600 dark:text-amber-400 text-center">
+            {skipped > 0 &&
+              `${plural(skipped, "entry", "entries")} skipped, an AWS account ID is 12 digits. `}
+            {truncated && `Only the first ${MAX_LOOKUPS} IDs are looked up.`}
           </p>
         )}
       </div>
@@ -169,40 +240,65 @@ export default function AccountsPage() {
       {/* Results */}
       {!loading && !error && searched && (
         <div className="space-y-3">
-          {results.length > 0 ? (
-            <>
-              <p className="text-xs font-mono font-medium text-zinc-500 dark:text-zinc-400">
-                {results.length} match{results.length !== 1 ? "es" : ""} found
-              </p>
-              <div className="space-y-3">
-                {results.map((result, idx) => (
-                  <div
-                    key={`${result.accountId}-${idx}`}
-                    className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg p-5 hover:border-red-300 dark:hover:border-red-800 transition-colors"
-                  >
-                    <div className="flex items-start justify-between gap-4">
-                      <div className="flex-1 min-w-0">
+          <p className="text-xs font-mono font-medium text-zinc-500 dark:text-zinc-400">
+            {groups.length === 1
+              ? `${plural(groups[0].matches.length, "match", "matches")} found`
+              : `${identified} of ${plural(groups.length, "account ID")} identified`}
+          </p>
+
+          {groups.map((group) => (
+            <div
+              key={group.query}
+              className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg p-5 hover:border-red-300 dark:hover:border-red-800 transition-colors"
+            >
+              <div className="flex items-center gap-2 flex-wrap">
+                <code
+                  className={`px-2 py-0.5 rounded text-sm font-mono font-medium border ${
+                    group.matches.length > 0
+                      ? "bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300 border-red-200 dark:border-red-800"
+                      : "bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 border-zinc-200 dark:border-zinc-700"
+                  }`}
+                >
+                  {group.query}
+                </code>
+                {group.matches.length === 0 && (
+                  <span className="text-xs font-mono text-zinc-500 dark:text-zinc-400">
+                    not in the known accounts database
+                  </span>
+                )}
+                {group.query.length < ACCOUNT_ID_LENGTH &&
+                  group.matches.length > 0 && (
+                    <span className="text-xs font-mono text-zinc-400 dark:text-zinc-500">
+                      partial ID, {plural(group.matches.length, "account")}{" "}
+                      matched
+                    </span>
+                  )}
+              </div>
+
+              {group.matches.length > 0 && (
+                <div className="mt-3 space-y-3">
+                  {group.matches.map((result, idx) => (
+                    <div
+                      key={`${result.name}-${result.accountId}-${idx}`}
+                      className="pt-3 border-t border-zinc-100 dark:border-zinc-800 first:pt-0 first:border-t-0"
+                    >
+                      <div className="flex items-center gap-2 flex-wrap">
                         <h3 className="text-base font-semibold text-zinc-900 dark:text-white">
                           {result.name}
                         </h3>
-                        <div className="mt-1 flex items-center gap-2 flex-wrap">
-                          <code className="px-2 py-0.5 bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300 rounded text-sm font-mono font-medium border border-red-200 dark:border-red-800">
+                        {result.type && (
+                          <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono font-medium bg-amber-50 text-amber-700 dark:bg-amber-900/20 dark:text-amber-300 border border-amber-200 dark:border-amber-800">
+                            {result.type}
+                          </span>
+                        )}
+                        {result.accountId !== group.query && (
+                          <code className="px-2 py-0.5 bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 rounded text-xs font-mono border border-zinc-200 dark:border-zinc-700">
                             {result.accountId}
                           </code>
-                          {result.type && (
-                            <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono font-medium bg-amber-50 text-amber-700 dark:bg-amber-900/20 dark:text-amber-300 border border-amber-200 dark:border-amber-800">
-                              {result.type}
-                            </span>
-                          )}
-                        </div>
+                        )}
                       </div>
-                    </div>
-                    {result.sources.length > 0 && (
-                      <div className="mt-3 pt-3 border-t border-zinc-100 dark:border-zinc-800">
-                        <p className="text-[10px] font-mono font-semibold text-zinc-400 dark:text-zinc-500 mb-2 uppercase tracking-widest">
-                          Documentation
-                        </p>
-                        <div className="space-y-1">
+                      {result.sources.length > 0 && (
+                        <div className="mt-2 space-y-1">
                           {result.sources.map((source, sIdx) => (
                             <a
                               key={sIdx}
@@ -215,23 +311,22 @@ export default function AccountsPage() {
                             </a>
                           ))}
                         </div>
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </>
-          ) : (
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+
+          {unknown > 0 && (
             <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg p-8 text-center">
               <h3 className="text-base font-semibold font-mono text-zinc-900 dark:text-white mb-2">
-                No match found
+                {plural(unknown, "account ID")} not found
               </h3>
-              <p className="text-zinc-600 dark:text-zinc-400 text-sm">
-                Account ID <code className="px-1.5 py-0.5 bg-zinc-100 dark:bg-zinc-800 rounded text-sm font-mono">{query}</code>{" "}
-                was not found in the known accounts database.
-              </p>
-              <p className="text-zinc-500 dark:text-zinc-500 text-sm mt-4">
-                Know who owns this account? Help the community by opening a PR.
+              <p className="text-zinc-500 dark:text-zinc-500 text-sm">
+                Know who owns {unknown === 1 ? "it" : "them"}? Help the
+                community by opening a PR.
               </p>
               <a
                 href="https://github.com/fwdcloudsec/known_aws_accounts"
@@ -253,7 +348,8 @@ export default function AccountsPage() {
       {!loading && !error && !searched && (
         <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg p-8 text-center">
           <p className="text-zinc-600 dark:text-zinc-400 text-sm">
-            Enter at least 3 digits of an AWS account ID above to search.
+            Paste one or more AWS account IDs above to search, one per line.
+            Three digits is enough for a partial match.
           </p>
         </div>
       )}

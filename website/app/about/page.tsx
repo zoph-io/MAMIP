@@ -215,7 +215,8 @@ export default function AboutPage() {
               </h3>
             </div>
             <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-              Identify AWS account owners from an account ID, powered by the{" "}
+              Identify AWS account owners from one or a list of account IDs,
+              powered by the{" "}
               <span className="font-medium">
                 fwdcloudsec/known_aws_accounts
               </span>{" "}
