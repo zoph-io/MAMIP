@@ -25,7 +25,12 @@
                         "timestream-influxdb:ListDbClusters",
                         "timestream-influxdb:ListDbInstancesForCluster",
                         "timestream-influxdb:RebootDbInstance",
-                        "timestream-influxdb:RebootDbCluster"
+                        "timestream-influxdb:RebootDbCluster",
+                        "timestream-influxdb:CreateDbBackup",
+                        "timestream-influxdb:GetDbBackup",
+                        "timestream-influxdb:ListDbBackups",
+                        "timestream-influxdb:DeleteDbBackup",
+                        "timestream-influxdb:RestoreFromDbBackup"
                     ],
                     "Resource": [
                         "arn:aws:timestream-influxdb:*:*:*"
@@ -86,8 +91,8 @@
                 }
             ]
         },
-        "VersionId": "v9",
+        "VersionId": "v10",
         "IsDefaultVersion": true,
-        "CreateDate": "2026-02-12T17:59:52+00:00"
+        "CreateDate": "2026-08-03T22:57:25+00:00"
     }
 }
