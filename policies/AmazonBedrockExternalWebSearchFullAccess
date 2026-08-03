@@ -1,0 +1,22 @@
+{
+    "PolicyVersion": {
+        "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Sid": "AmazonBedrockExternalWebSearchFullAccess",
+                    "Effect": "Allow",
+                    "Action": [
+                        "bedrock-websearch:InvokeSearch",
+                        "bedrock-websearch:InvokeFetch",
+                        "bedrock-websearch:ExternalWebAccess"
+                    ],
+                    "Resource": "arn:aws:bedrock-websearch:*:*:*"
+                }
+            ]
+        },
+        "VersionId": "v1",
+        "IsDefaultVersion": true,
+        "CreateDate": "2026-08-03T16:57:20+00:00"
+    }
+}
