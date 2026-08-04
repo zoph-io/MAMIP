@@ -85,6 +85,15 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "BedrockWebSearch",
+                    "Effect": "Allow",
+                    "Action": [
+                        "bedrock-websearch:InvokeSearch",
+                        "bedrock-websearch:InvokeFetch"
+                    ],
+                    "Resource": "arn:aws:bedrock-websearch:*:*:*"
+                },
+                {
                     "Sid": "MarketplaceOperationsFromBedrockFor3pModels",
                     "Effect": "Allow",
                     "Action": [
@@ -104,8 +113,8 @@
                 }
             ]
         },
-        "VersionId": "v8",
+        "VersionId": "v9",
         "IsDefaultVersion": true,
-        "CreateDate": "2026-04-09T04:42:19+00:00"
+        "CreateDate": "2026-08-04T05:27:24+00:00"
     }
 }
