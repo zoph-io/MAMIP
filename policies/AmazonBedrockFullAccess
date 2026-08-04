@@ -20,6 +20,15 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "BedrockWebSearch",
+                    "Effect": "Allow",
+                    "Action": [
+                        "bedrock-websearch:InvokeSearch",
+                        "bedrock-websearch:InvokeFetch"
+                    ],
+                    "Resource": "arn:aws:bedrock-websearch:*:*:*"
+                },
+                {
                     "Sid": "DescribeKey",
                     "Effect": "Allow",
                     "Action": [
@@ -220,8 +229,8 @@
                 }
             ]
         },
-        "VersionId": "v10",
+        "VersionId": "v11",
         "IsDefaultVersion": true,
-        "CreateDate": "2026-02-12T17:59:03+00:00"
+        "CreateDate": "2026-08-04T05:42:21+00:00"
     }
 }
