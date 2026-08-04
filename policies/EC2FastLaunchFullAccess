@@ -187,6 +187,24 @@
                     }
                 },
                 {
+                    "Sid": "CloudFormationTagOnCreate",
+                    "Effect": "Allow",
+                    "Action": [
+                        "cloudformation:TagResource"
+                    ],
+                    "Resource": [
+                        "arn:aws:cloudformation:*:*:stack/EC2FastLaunch*/*"
+                    ],
+                    "Condition": {
+                        "StringEquals": {
+                            "cloudformation:CreateAction": "CreateStack"
+                        },
+                        "ForAnyValue:StringLike": {
+                            "aws:CalledVia": "ec2fastlaunch.amazonaws.com"
+                        }
+                    }
+                },
+                {
                     "Sid": "EC2LaunchTemplateModify",
                     "Effect": "Allow",
                     "Action": [
@@ -300,8 +318,8 @@
                 }
             ]
         },
-        "VersionId": "v4",
+        "VersionId": "v5",
         "IsDefaultVersion": true,
-        "CreateDate": "2026-02-12T18:01:13+00:00"
+        "CreateDate": "2026-08-04T20:27:26+00:00"
     }
 }
