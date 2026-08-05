@@ -1,0 +1,20 @@
+{
+    "PolicyVersion": {
+        "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Sid": "AllowWritingSystemLogs",
+                    "Effect": "Allow",
+                    "Action": [
+                        "bedrock-agentcore:PutSystemLogEvents"
+                    ],
+                    "Resource": "arn:aws:bedrock-agentcore:*:*:capacity-provider/*"
+                }
+            ]
+        },
+        "VersionId": "v1",
+        "IsDefaultVersion": true,
+        "CreateDate": "2026-08-05T13:27:25+00:00"
+    }
+}
