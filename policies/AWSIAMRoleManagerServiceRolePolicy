@@ -11,11 +11,22 @@
                         "access-analyzer:DeleteServiceLinkedAnalyzer"
                     ],
                     "Resource": "*"
+                },
+                {
+                    "Sid": "CreateAccessAnalyzerServiceLinkedRole",
+                    "Effect": "Allow",
+                    "Action": "iam:CreateServiceLinkedRole",
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:AWSServiceName": "access-analyzer.amazonaws.com"
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2026-07-15T23:57:12+00:00"
+        "CreateDate": "2026-08-05T19:42:25+00:00"
     }
 }
