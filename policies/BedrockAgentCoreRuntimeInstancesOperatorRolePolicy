@@ -290,7 +290,8 @@
                         "iam:PassRole"
                     ],
                     "Resource": [
-                        "arn:aws:iam::*:role/AmazonBedrockAgentCoreCapacityProviderDefaultInstanceRole*"
+                        "arn:aws:iam::*:role/AmazonBedrockAgentCoreCapacityProviderDefaultInstanceRole*",
+                        "arn:aws:iam::*:role/service-role/AmazonBedrockAgentCoreCapacityProviderDefaultInstanceRole*"
                     ],
                     "Condition": {
                         "StringLike": {
@@ -300,8 +301,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2026-08-05T11:27:19+00:00"
+        "CreateDate": "2026-08-06T10:12:23+00:00"
     }
 }
