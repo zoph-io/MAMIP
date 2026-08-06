@@ -1,0 +1,38 @@
+[
+  {
+    "findingDetails": "The action bedrock-agentcore:PutSystemLogEvents does not exist.",
+    "findingType": "ERROR",
+    "issueCode": "INVALID_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 0
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 0
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 104,
+            "offset": 104
+          },
+          "end": {
+            "line": 1,
+            "column": 142,
+            "offset": 142
+          }
+        }
+      }
+    ]
+  }
+]
