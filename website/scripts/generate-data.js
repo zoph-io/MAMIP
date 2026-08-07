@@ -1709,11 +1709,41 @@ function smartTruncate(text, max) {
 const FEED_TTL_MINUTES = 60;
 
 /**
- * An item's guid is only a permalink when it genuinely is a URL. Declaring
- * isPermaLink="true" on a synthetic string invites readers to resolve it.
+ * Drop the URLs out of a run of text.
+ *
+ * Slack linkifies a bare hostname as readily as one with a scheme, so a scheme
+ * is not what makes something a link there.
  */
-function isUrl(value) {
-  return typeof value === "string" && /^https?:\/\//.test(value);
+function stripUrls(text) {
+  return String(text)
+    .replace(/\bhttps?:\/\/\S+/gi, "")
+    .replace(/\bwww\.\S+/gi, "")
+    .replace(/[ \t]{2,}/g, " ")
+    .trim();
+}
+
+/**
+ * Leave an item with exactly one destination: its own <link>.
+ *
+ * Slack's RSS app posts the item and then unfurls every URL it finds in it, so a
+ * body that repeated its own link and added a GitHub one produced two previews
+ * for one change, and the 41-link odb discovery blew past Slack's five-link
+ * ceiling and got no preview at all. Anchors are unwrapped rather than dropped
+ * so the text they wrapped, usually a policy or action name, survives.
+ *
+ * The feeds below are written not to emit links in the first place, so this is
+ * the net rather than the mechanism: AWS writes the GuardDuty announcements and
+ * is free to put a URL in one.
+ */
+let strippedLinkCount = 0;
+function sanitizeDescription(html) {
+  const unlinked = String(html)
+    .replace(/<a\b[^>]*>([\s\S]*?)<\/a>/gi, "$1")
+    .replace(/<\/?a\b[^>]*>/gi, "")
+    .replace(/\bhttps?:\/\/\S+/gi, "")
+    .replace(/\bwww\.\S+/gi, "");
+  if (unlinked !== String(html)) strippedLinkCount++;
+  return unlinked.replace(/[ \t]{2,}/g, " ");
 }
 
 function buildRSSFeed(channel, items) {
@@ -1725,12 +1755,15 @@ function buildRSSFeed(channel, items) {
       const enclosure = item.enclosure
         ? `\n      <enclosure url="${escapeXml(item.enclosure.url)}" length="${item.enclosure.length}" type="${escapeXml(item.enclosure.type)}" />`
         : "";
+      // A guid identifies an item, it is not a destination. Declaring one a
+      // permalink invites a reader to resolve it, and several of ours are
+      // GitHub commit URLs kept for provenance rather than for reading.
       return `    <item>
       <title>${escapeXml(item.title)}</title>
       <link>${escapeXml(item.link)}</link>
-      <guid isPermaLink="${isUrl(item.guid) ? "true" : "false"}">${escapeXml(item.guid)}</guid>
+      <guid isPermaLink="false">${escapeXml(item.guid)}</guid>
       <pubDate>${toRFC2822(item.date)}</pubDate>${categories}${enclosure}
-      <description><![CDATA[${item.description}]]></description>
+      <description><![CDATA[${sanitizeDescription(item.description)}]]></description>
     </item>`;
     })
     .join("\n");
@@ -1770,8 +1803,17 @@ function policyEnclosure(policyName) {
   }
 }
 
+/**
+ * How many names an enumeration prints before it says "and N more".
+ *
+ * Slack truncates a long item, so a body that listed 40 actions pushed the one
+ * sentence that says what happened out of view. The full list is on the page the
+ * item links to.
+ */
+const FEED_LIST_CAP = 8;
+
 /** "iam:PassRole, s3:GetObject and 4 more", so a description names names. */
-function listActions(actions, cap = 12) {
+function listActions(actions, cap = FEED_LIST_CAP) {
   const shown = actions.slice(0, cap).map((a) => escapeXml(a));
   const extra = actions.length - shown.length;
   const body = shown.join(", ");
@@ -1779,17 +1821,37 @@ function listActions(actions, cap = 12) {
 }
 
 /**
- * What a single policy change actually did, in words and then in detail.
+ * Assemble an item body from paragraphs, one per line of source.
+ *
+ * The newlines are the point: Slack flattens the HTML rather than rendering it,
+ * and a body written on a single line came out as "was updated.View the diff on
+ * GitHub". A real newline between blocks survives tag stripping in any client.
+ */
+function feedBody(blocks) {
+  return blocks
+    .filter(Boolean)
+    .map((block) => `<p>${block}</p>`)
+    .join("\n");
+}
+
+/**
+ * What a single policy change actually did, as a lead sentence and the detail
+ * lines under it.
+ *
+ * The two are returned apart rather than as finished markup because the lead is
+ * only worth printing when the title cannot already carry it: a commit touching
+ * one policy has that policy in its title, and repeating it a line below is the
+ * kind of restatement that makes a feed read like noise. A commit touching six
+ * needs every one of them named.
  *
  * Falls back to naming the policy when no delta is available, which happens for
  * a commit older than the window data/policy-change-deltas.json covers.
  */
 function describePolicyChange(policyName, delta, meta) {
-  const policyUrl = `${SITE_URL}/policies/${encodeURIComponent(policyName)}/`;
-  const link = `<a href="${policyUrl}">${escapeXml(policyName)}</a>`;
+  const name = escapeXml(policyName);
 
   if (!delta) {
-    return `<p>${link} was updated.</p>`;
+    return { lead: `${name} was updated.`, details: [] };
   }
 
   const added = delta.actionsAdded || [];
@@ -1797,23 +1859,21 @@ function describePolicyChange(policyName, delta, meta) {
   const escalations = added.filter((a) =>
     meta.permissionsManagement.has(a.toLowerCase())
   );
-  const parts = [];
+  const blocks = [];
 
   const version = delta.versionId ? ` (${escapeXml(delta.versionId)})` : "";
-  parts.push(
-    `<p>${link}${version}: ${escapeXml(
-      wording.actionDeltaPhrase(added, removed)
-    )}.</p>`
-  );
+  const lead = `${escapeXml(
+    wording.sentence(wording.actionDeltaPhrase(added, removed))
+  )} in ${name}${version}.`;
 
   if (delta.newServicePrefixes && delta.newServicePrefixes.length) {
     const named = delta.newServicePrefixes
       .map((p) => escapeXml(serviceLabel(p, meta)))
       .join(", ");
-    parts.push(
-      `<p><strong>${escapeXml(
+    blocks.push(
+      `<strong>${escapeXml(
         wording.sentence(wording.newServicePhrase(delta.newServicePrefixes))
-      )}</strong>: ${named}. Never seen in any AWS managed policy before.</p>`
+      )}</strong>: ${named}. Never seen in any AWS managed policy before.`
     );
   }
 
@@ -1822,29 +1882,27 @@ function describePolicyChange(policyName, delta, meta) {
       !(delta.newServicePrefixes || []).includes(a.split(":", 1)[0].toLowerCase())
   );
   if (newActions.length) {
-    parts.push(
-      `<p><strong>${escapeXml(
+    blocks.push(
+      `<strong>${escapeXml(
         wording.sentence(wording.neverBeforeSeen(newActions.length))
-      )}</strong>: ${listActions(newActions)}</p>`
+      )}</strong>: ${listActions(newActions)}`
     );
   }
 
   if (escalations.length) {
-    parts.push(
-      `<p><strong>Permissions management</strong>: ${listActions(
-        escalations
-      )}</p>`
+    blocks.push(
+      `<strong>Permissions management</strong>: ${listActions(escalations)}`
     );
   }
 
   if (added.length) {
-    parts.push(`<p>Actions added: ${listActions(added)}</p>`);
+    blocks.push(`Actions added: ${listActions(added)}`);
   }
   if (removed.length) {
-    parts.push(`<p>Actions removed: ${listActions(removed)}</p>`);
+    blocks.push(`Actions removed: ${listActions(removed)}`);
   }
 
-  return parts.join("");
+  return { lead, details: blocks };
 }
 
 /** "Amazon Bedrock (bedrock)", or the bare prefix when iam-dataset has no name. */
@@ -1883,8 +1941,17 @@ function groupDiscoveredActions(actions) {
   return [...groups.values()];
 }
 
-/** The headline for one policy change, leading with the strongest signal. */
-function policyChangeTitle(policyName, delta) {
+/**
+ * The headline for one policy change, leading with the strongest signal.
+ *
+ * A change that grants iam:PassRole used to read as an ordinary "2 actions
+ * added", so the one line a reader scans in a feed or in Slack gave no reason to
+ * open it. Permissions management now rides along with the action count, below
+ * a new service and a never-before-seen action but above everything else. The
+ * clause is built the way build_bluesky_post builds its own, so the two channels
+ * word one finding identically.
+ */
+function policyChangeTitle(policyName, delta, meta) {
   if (!delta) return `${policyName} updated`;
 
   if (delta.newServicePrefixes && delta.newServicePrefixes.length) {
@@ -1903,11 +1970,20 @@ function policyChangeTitle(policyName, delta) {
     return `Policy removed: ${policyName}`;
   }
 
+  const escalations = meta
+    ? (delta.actionsAdded || []).filter((a) =>
+        meta.permissionsManagement.has(a.toLowerCase())
+      )
+    : [];
   const suffix = delta.versionId ? ` (${delta.versionId})` : "";
-  return `${policyName}: ${wording.actionDeltaPhrase(
+  const lead = `${policyName}: ${wording.actionDeltaPhrase(
     delta.actionsAdded,
     delta.actionsRemoved
   )}${suffix}`;
+  if (!escalations.length) return lead;
+  return `${lead}. ${wording.sentence(
+    wording.permissionsManagementPhrase(escalations)
+  )}`;
 }
 
 /**
@@ -1966,7 +2042,7 @@ function normalizeDelta(delta, meta) {
     policyName: delta.policyName,
     versionId: delta.versionId || null,
     status: delta.status || "modified",
-    headline: policyChangeTitle(delta.policyName, delta),
+    headline: policyChangeTitle(delta.policyName, delta, meta),
     summary: phrases.summary,
     phrases,
     actionsAdded: added,
@@ -2037,13 +2113,16 @@ function summarizeEndpointChanges(record) {
  */
 function describeEndpointChange(change) {
   const partition = change.partition ? ` [${escapeXml(change.partition)}]` : "";
-  return `<li>${escapeXml(change.description || change.id || "")}${partition}</li>`;
+  // The leading newline is what keeps the bullets apart in a client that strips
+  // the tags instead of rendering the list, Slack among them.
+  return `\n<li>${escapeXml(change.description || change.id || "")}${partition}</li>`;
 }
 
 function generateRSSFeeds(policyData, endpointsData, guarddutyData) {
   console.log("\n📡 Generating RSS feeds...");
 
   const MAX_ITEMS = 50;
+  const MAX_POLICIES_PER_ITEM = 6;
   const deltas = loadPolicyChangeDeltas();
   const meta = loadIamMetadata();
 
@@ -2075,14 +2154,28 @@ function generateRSSFeeds(policyData, endpointsData, guarddutyData) {
 
       const title =
         names.length === 1
-          ? policyChangeTitle(changes[0].name, changes[0].delta)
+          ? policyChangeTitle(changes[0].name, changes[0].delta, meta)
           : `${wording.plural(names.length, "IAM policy", "IAM policies")} updated: ${names
               .slice(0, 3)
               .join(", ")}${names.length > 3 ? ` and ${names.length - 3} more` : ""}`;
 
-      const body = changes
-        .map((c) => describePolicyChange(c.name, c.delta, meta))
-        .join("");
+      // A bulk-reformat commit touches hundreds of policies. Describing them all
+      // buries the lead in Slack, and the page the item links to has the rest.
+      const described = changes.slice(0, MAX_POLICIES_PER_ITEM);
+      const remaining = changes.length - described.length;
+      const body = feedBody([
+        ...described.flatMap(({ name, delta }) => {
+          const { lead, details } = describePolicyChange(name, delta, meta);
+          // With one policy the title already said this; with several, nothing
+          // else tells the reader which policy the detail lines belong to.
+          return names.length === 1 && details.length
+            ? details
+            : [lead, ...details];
+        }),
+        remaining > 0
+          ? `And ${wording.plural(remaining, "more policy", "more policies")} in this change.`
+          : "",
+      ]);
 
       // Categories let a reader filter by service, which is the axis they
       // actually care about when a feed carries hundreds of policy names.
@@ -2095,15 +2188,19 @@ function generateRSSFeeds(policyData, endpointsData, guarddutyData) {
 
       return {
         title,
+        // One destination per item. A commit touching several policies has no
+        // single policy page, and /changes is the timeline those rows appear in.
         link:
           names.length === 1
             ? `${SITE_URL}/policies/${encodeURIComponent(names[0])}/`
-            : `${SITE_URL}/policies/`,
+            : `${SITE_URL}/changes/`,
+        // The commit URL stays the identifier, so provenance survives and no
+        // reader replays the items it has already seen.
         guid: commitUrl,
         date: commit.date,
         categories: ["IAM Policy", ...[...services].sort().slice(0, 10)],
         enclosure: names.length === 1 ? policyEnclosure(names[0]) : null,
-        description: `${body}<p><a href="${commitUrl}">View the diff on GitHub</a></p>`,
+        description: body,
       };
     });
 
@@ -2125,21 +2222,25 @@ function generateRSSFeeds(policyData, endpointsData, guarddutyData) {
     .slice(0, MAX_ITEMS)
     .map((r) => {
       const summary = summarizeEndpointChanges(r);
-      const changeList = (r.changes || []).map(describeEndpointChange).join("");
+      const all = r.changes || [];
+      const changeList =
+        all.slice(0, FEED_LIST_CAP).map(describeEndpointChange).join("") +
+        (all.length > FEED_LIST_CAP
+          ? `\n<li>and ${all.length - FEED_LIST_CAP} more</li>`
+          : "");
       const partitions = [
         ...new Set((r.changes || []).map((c) => c.partition).filter(Boolean)),
       ].sort();
       return {
         title: `Endpoint changes: ${summary}`,
         link: `${SITE_URL}/endpoints/`,
+        // The botocore commit stays the identifier rather than a second link.
         guid: r.botocore_commit_url || `iamtrail:endpoints:${r.detected_at}`,
         date: r.detected_at,
         categories: ["Endpoints", ...partitions],
-        description: `<p>${escapeXml(summary)}</p><ul>${changeList}</ul>${
-          r.botocore_commit_url
-            ? `<p><a href="${escapeXml(r.botocore_commit_url)}">botocore commit</a></p>`
-            : ""
-        }`,
+        description: `<p>${escapeXml(
+          wording.sentence(summary)
+        )} in the AWS endpoint data.</p>\n<ul>${changeList}\n</ul>`,
       };
     });
 
@@ -2183,20 +2284,24 @@ function generateRSSFeeds(policyData, endpointsData, guarddutyData) {
       // Findings store the finding type ID in short_description (use it verbatim).
       // Features/regions/general truncate descriptions mid-word; build a clean
       // word-boundary title from the full description instead.
+      //
+      // AWS writes this text and is free to put a URL in it, which Slack would
+      // unfurl as a second destination, so it is stripped before use.
       const isFinding = FINDING_TYPES.has(a.type);
-      const sourceText = isFinding
+      const rawSourceText = isFinding
         ? a.short_description || a.description || ""
         : a.description || a.short_description || "";
+      const sourceText = stripUrls(rawSourceText);
       const cleanTitle = isFinding
         ? sourceText
         : smartTruncate(sourceText, 120);
       const title = cleanTitle ? `${label}: ${cleanTitle}` : label;
 
-      const descParts = [];
-      if (a.description) descParts.push(`<p>${escapeXml(a.description)}</p>`);
-      if (a.link) descParts.push(`<p><a href="${escapeXml(a.link)}">AWS Documentation</a></p>`);
-      if (a.gist_url) descParts.push(`<p><a href="${escapeXml(a.gist_url)}">Raw SNS message</a></p>`);
-      descParts.push(`<p><a href="${SITE_URL}/guardduty/">View on IAMTrail</a></p>`);
+      // The AWS documentation and the raw SNS message are both one click away on
+      // /guardduty, which is where the item points, so neither is repeated here.
+      const body = feedBody([
+        escapeXml(stripUrls(a.description || "") || cleanTitle || label),
+      ]);
 
       // AWS publishes several findings in one SNS batch, so detected_at and type
       // are shared. Keying on those alone gave two distinct findings the same
@@ -2205,17 +2310,19 @@ function generateRSSFeeds(policyData, endpointsData, guarddutyData) {
       // link is deliberately not part of the chain: several announcements can
       // point at one documentation page (every retired finding links to the same
       // "retired findings" page), so it identifies a topic, not an announcement.
+      // Slugged from the text as AWS wrote it, so stripping URLs out of what a
+      // reader sees cannot renumber an item a subscriber has already been sent.
       const guid =
         a.gist_url ||
-        `iamtrail:guardduty:${a.detected_at}:${a.type}:${slugify(sourceText)}`;
+        `iamtrail:guardduty:${a.detected_at}:${a.type}:${slugify(rawSourceText)}`;
 
       return {
         title,
-        link: a.link || a.gist_url || `${SITE_URL}/guardduty/`,
+        link: `${SITE_URL}/guardduty/`,
         guid,
         date: a.detected_at,
         categories: ["GuardDuty", label.replace(/^GuardDuty /, "")],
-        description: descParts.join(""),
+        description: body,
       };
     });
 
@@ -2243,29 +2350,18 @@ function generateRSSFeeds(policyData, endpointsData, guarddutyData) {
       guid: `iamtrail:discovery:service:${s.prefix}`,
       date: s.firstSeen,
       categories: ["Discovery", "New AWS service", s.prefix],
-      description:
-        `<p><strong>${escapeXml(serviceLabel(s.prefix, meta))}</strong> appeared in an AWS managed IAM policy ` +
-        `for the first time, in <a href="${SITE_URL}/policies/${encodeURIComponent(
-          s.firstPolicy
-        )}/">${escapeXml(s.firstPolicy)}</a>.</p>` +
-        `<p>${escapeXml(wording.plural(s.actionCount, "action"))} on this prefix ${
+      description: feedBody([
+        `<strong>${escapeXml(serviceLabel(s.prefix, meta))}</strong> appeared in an AWS managed IAM policy ` +
+          `for the first time, in ${escapeXml(s.firstPolicy)}.`,
+        `${escapeXml(wording.plural(s.actionCount, "action"))} on this prefix ${
           s.actionCount === 1 ? "is" : "are"
-        } now tracked.</p>` +
-        `<p><a href="${SITE_URL}/discoveries/">View all discoveries</a></p>`,
+        } now tracked.`,
+      ]),
     })),
     ...groupDiscoveredActions(policyData.discoveredActions || []).map((g) => {
       const escalations = g.actions.filter((a) =>
         meta.permissionsManagement.has(a.toLowerCase())
       );
-      const links = g.actions
-        .slice(0, 40)
-        .map((a) =>
-          g.hasPage[a]
-            ? `<a href="${SITE_URL}/actions/${iamActionToSlug(a)}/">${escapeXml(a)}</a>`
-            : escapeXml(a)
-        )
-        .join(", ");
-      const extra = g.actions.length - Math.min(g.actions.length, 40);
       const single = g.actions.length === 1;
 
       return {
@@ -2282,22 +2378,19 @@ function generateRSSFeeds(policyData, endpointsData, guarddutyData) {
         guid: `iamtrail:discovery:actions:${g.firstSeen}:${g.prefix}`,
         date: g.firstSeen,
         categories: ["Discovery", "Never-before-seen action", g.prefix],
-        description:
-          `<p>${escapeXml(
+        description: feedBody([
+          `${escapeXml(
             wording.sentence(wording.neverBeforeSeen(g.actions.length))
           )} on <strong>${escapeXml(serviceLabel(g.prefix, meta))}</strong>, ` +
-          `first seen in ${[...g.policies]
-            .slice(0, 3)
-            .map(
-              (p) =>
-                `<a href="${SITE_URL}/policies/${encodeURIComponent(p)}/">${escapeXml(p)}</a>`
-            )
-            .join(", ")}.</p>` +
-          (escalations.length
-            ? `<p><strong>Permissions management</strong>: ${listActions(escalations)}</p>`
-            : "") +
-          `<p>${links}${extra > 0 ? ` and ${extra} more` : ""}</p>` +
-          `<p><a href="${SITE_URL}/discoveries/">View all discoveries</a></p>`,
+            `first seen in ${[...g.policies]
+              .slice(0, 3)
+              .map((p) => escapeXml(p))
+              .join(", ")}.`,
+          escalations.length
+            ? `<strong>Permissions management</strong>: ${listActions(escalations)}`
+            : "",
+          listActions(g.actions),
+        ]),
       };
     }),
   ]
@@ -2345,6 +2438,14 @@ function generateRSSFeeds(policyData, endpointsData, guarddutyData) {
   );
   fs.writeFileSync(path.join(FEEDS_DIR, "all.xml"), allFeed);
   console.log(`   📡 All-in-One feed: ${allItems.length} items`);
+
+  // Expected to be zero: the feeds above are written not to emit links at all,
+  // so a non-zero count means one crept back in and the net caught it.
+  if (strippedLinkCount > 0) {
+    console.log(
+      `   ⚠️  Stripped links from ${wording.plural(strippedLinkCount, "feed item")}`
+    );
+  }
 }
 
 async function main() {

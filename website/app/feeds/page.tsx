@@ -143,6 +143,15 @@ export default function FeedsPage() {
           </li>
           <li>Add a new subscription and paste the URL</li>
         </ol>
+        <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-3">
+          In Slack, run{" "}
+          <code className="px-1 py-0.5 bg-zinc-200 dark:bg-zinc-800 rounded">
+            /feed subscribe &lt;url&gt;
+          </code>{" "}
+          in the channel you want. Every item carries exactly one link, the page
+          for that change, so Slack posts one preview per change instead of one
+          per link.
+        </p>
         <p className="text-xs text-zinc-500 dark:text-zinc-500 mt-3">
           Most RSS readers also auto-discover feeds from any IAMTrail page via
           the standard{" "}
