@@ -291,7 +291,10 @@
                     "Condition": {
                         "StringEquals": {
                             "aws:CalledViaLast": "account.amazonaws.com",
-                            "organizations:ServicePrincipal": "sso.amazonaws.com"
+                            "organizations:ServicePrincipal": [
+                                "sso.amazonaws.com",
+                                "account-access.amazonaws.com"
+                            ]
                         }
                     }
                 },
@@ -359,8 +362,8 @@
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2026-07-23T00:42:22+00:00"
+        "CreateDate": "2026-08-07T00:27:26+00:00"
     }
 }
