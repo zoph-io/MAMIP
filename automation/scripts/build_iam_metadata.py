@@ -81,10 +81,33 @@ def build(definition):
     return sorted(permissions), dict(sorted(service_names.items()))
 
 
+def unchanged(permissions, service_names, path):
+    """True when the file already says exactly this.
+
+    A daily refresh would otherwise stamp a new generatedAt every run and commit a
+    one-line diff every day, which buries the days the upstream dataset actually
+    moved and triggers a website deploy for nothing.
+    """
+    try:
+        with path.open() as handle:
+            current = json.load(handle)
+    except (OSError, ValueError):
+        return False
+    return (
+        current.get("permissionsManagement") == permissions
+        and current.get("serviceNames") == service_names
+        and current.get("schemaVersion") == SCHEMA_VERSION
+    )
+
+
 def write(permissions, service_names, root):
     """One entry per line, so refreshing the file yields a readable diff."""
     path = root / METADATA_PATH
     path.parent.mkdir(parents=True, exist_ok=True)
+
+    if unchanged(permissions, service_names, path):
+        print(f"{path} already matches upstream, leaving it untouched")
+        return
 
     head = {
         "schemaVersion": SCHEMA_VERSION,

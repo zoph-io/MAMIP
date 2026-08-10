@@ -6,7 +6,10 @@ Lambda zip, so there is no network call and no cold-start penalty beyond parsing
 about forty kilobytes once per container.
 
 Every lookup degrades to something usable when the file is absent, because a
-notification that names a bare service prefix is still worth sending.
+notification that names a bare service prefix is still worth sending. It alerts on
+the way down, though: with no metadata, nothing is ever flagged as permissions
+management, so a policy granting iam:PassRole reads exactly like a routine update,
+and that is the line a security reader follows this for.
 """
 
 import json
@@ -22,6 +25,24 @@ _permissions_management = frozenset()
 _service_names = {}
 
 
+def _alert(reason):
+    """Log the degradation and page the ops channel.
+
+    _load runs once per container, so this cannot repeat within a run.
+    discord_notifier is imported lazily so this module stays usable wherever it is
+    not bundled, such as a local script.
+    """
+    print(f"[iam_metadata] {reason}")
+    try:
+        import discord_notifier
+
+        discord_notifier.send(
+            "IAM metadata is unavailable", reason, discord_notifier.COLOR_ERROR
+        )
+    except Exception as e:
+        print(f"[iam_metadata] Could not raise the alert: {e}")
+
+
 def _load():
     global _loaded, _permissions_management, _service_names
     if _loaded:
@@ -34,7 +55,14 @@ def _load():
         _permissions_management = frozenset(data.get("permissionsManagement") or [])
         _service_names = data.get("serviceNames") or {}
     except Exception as e:
-        print(f"[iam_metadata] Could not load {METADATA_FILE}: {e}")
+        _alert(f"Could not load {METADATA_FILE}: {e}.")
+
+    if not _permissions_management:
+        _alert(
+            f"{METADATA_FILE} lists no permissions-management actions, so no "
+            "notification will flag privilege escalation. A policy granting "
+            "iam:PassRole will read like a routine update."
+        )
 
 
 def is_permissions_management(action):

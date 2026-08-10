@@ -61,6 +61,25 @@ def clear_cache():
 # ──────────────────────────────
 
 
+def _alert(reason):
+    """Log a degradation and page the ops channel about it.
+
+    discord_notifier is imported lazily so this module still works wherever it is not
+    bundled, and so an alert can never be the thing that breaks a notification.
+    """
+    print(f"[policy_diff] {reason}")
+    try:
+        import discord_notifier
+
+        discord_notifier.send(
+            "Policy diffs are degraded",
+            reason,
+            discord_notifier.COLOR_ERROR,
+        )
+    except Exception as e:
+        print(f"[policy_diff] Could not raise the alert: {e}")
+
+
 def _github_token():
     global _token
     if _token is not None:
@@ -80,7 +99,14 @@ def _github_token():
             _token = ""
 
     if not _token:
-        print("[policy_diff] No GitHub token available, diffs may be rate limited")
+        # 60 requests/hour unauthenticated, shared across Lambda egress IPs, so this
+        # does not merely slow diffs down: it makes them fail, and a failed diff
+        # publishes as "no action added or removed". Once per cold start, since the
+        # empty token is cached above.
+        _alert(
+            "No GitHub token is available, so diffs will be rate limited and "
+            "changes will publish with an unknown action delta."
+        )
     return _token
 
 
@@ -501,12 +527,16 @@ def new_service_phrase(prefixes):
     return f"{count} new AWS services"
 
 
-def action_delta_phrase(added, removed):
+def action_delta_phrase(added, removed, unknown=False):
     """"3 actions added, 1 removed", or how a change with no action delta reads.
 
     AWS reissues a policy version for a Resource or Condition edit far more often
     than for a permission change, so the no-delta wording is the common case and
     has to say something truthful rather than imply nothing happened.
+
+    Pass unknown=True when the diff could not be loaded. Claiming "no action added or
+    removed" there asserts something nobody checked, and it is word for word what a
+    genuinely uneventful change says, so a GitHub outage would read as a quiet day.
     """
     if added and removed:
         return f"{plural(len(added), 'action')} added, {len(removed)} removed"
@@ -514,7 +544,25 @@ def action_delta_phrase(added, removed):
         return f"{plural(len(added), 'action')} added"
     if removed:
         return f"{plural(len(removed), 'action')} removed"
+    if unknown:
+        return "action delta unavailable, the diff could not be loaded"
     return "scope changed, no action added or removed"
+
+
+def unresolved(changes):
+    """The names of changes we tried to read from GitHub and could not.
+
+    A record that never had a detail budget is not a failure. One that did and came
+    back empty means the API was unreachable, so every phrase derived from it is a
+    guess: actions_added is empty because nothing was read, not because nothing
+    changed, and is_discovery is False for the same reason. Callers must alert on a
+    non-empty result rather than publish the empty delta as fact.
+    """
+    return [
+        c["name"]
+        for c in changes
+        if c.get("detailed", True) and not c.get("resolved")
+    ]
 
 
 def permissions_management_phrase(actions):

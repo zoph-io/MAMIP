@@ -1,0 +1,91 @@
+name: "[Prod] IAMTrail - Scraper Image"
+
+# The container the hourly Fargate scraper runs. Until this existed it reached
+# production only when somebody ran `make build-docker` from a laptop, so a fix to
+# script-fargate.sh or a base-image security patch could sit in main indefinitely
+# while the workflow that uploads the runbook stayed green and made everything look
+# healthy.
+#
+# The task definition pulls :latest on every scheduled run, so the next hourly run
+# picks this up without a deploy.
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "automation/Dockerfile"
+      - "automation/script-fargate.sh"
+      - "automation/requirements.txt"
+      - ".github/workflows/scraper-image.yml"
+  workflow_dispatch:
+
+env:
+  aws_region: "eu-west-1"
+  # Fargate runs this task on arm64, so the image has to match or the task fails to
+  # start with an exec format error.
+  platform: "linux/arm64"
+  image: "567589703415.dkr.ecr.eu-west-1.amazonaws.com/mamip-ecr-prod"
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  build:
+    name: "Build and push"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: AWS IAM Assume Role
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: ${{ env.aws_region }}
+          role-to-assume: ${{ secrets.ROLE_TO_ASSUME }}
+          role-duration-seconds: 1200
+          role-session-name: GH-Actions-IAMTrail-ScraperImage
+
+      - name: Log in to Amazon ECR
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Set up QEMU
+        # The runner is x86, the image is arm64.
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: ./automation
+          platforms: ${{ env.platform }}
+          push: true
+          # Tagged with the commit as well as :latest, so an incident can tell which
+          # commit the running task was built from.
+          tags: |
+            ${{ env.image }}:latest
+            ${{ env.image }}:${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Report failure to the ops channel
+        if: failure()
+        run: |
+          URL=$(aws ssm get-parameter --name "/iamtrail/discord-webhook-url" \
+            --with-decryption --region "${{ env.aws_region }}" \
+            --query 'Parameter.Value' --output text)
+          RUN="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          PAYLOAD=$(jq -n --arg url "$RUN" --arg ts "$(date -u +%Y-%m-%dT%H:%M:%SZ)" '{
+            embeds: [{
+              title: "Scraper image build failed",
+              description: "The hourly Fargate scraper keeps running the previous image, so any change to the container or its base is not live.",
+              url: $url,
+              color: 15158332,
+              footer: {text: "IAMTrail - scraper image"},
+              timestamp: $ts
+            }]
+          }')
+          curl -fsS -o /dev/null -H "Content-Type: application/json" -d "$PAYLOAD" "$URL"

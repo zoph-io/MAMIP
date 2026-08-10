@@ -18,10 +18,10 @@ X changed" into "policy X gained these three actions", which is what the feeds
 need and what the GitHub API would otherwise have to be asked for.
 
 Writes data/action-registry.json and data/policy-change-deltas.json, and with
---seed loads the registry into DynamoDB for the notification Lambdas, which
+--sync reconciles the DynamoDB registry the notification Lambdas read, which
 cannot walk git history themselves.
 
-Stdlib only unless --seed is passed, so it runs on a bare runner.
+Stdlib only unless --sync is passed, so it runs on a bare runner.
 """
 
 import argparse
@@ -336,41 +336,102 @@ def write_deltas(deltas, root):
     print(f"Wrote {path} ({len(deltas)} changes)")
 
 
-def seed(entries, table_name):
-    """Bulk-load the registry, then mark it seeded.
+def read_table(table):
+    """Every row the registry table currently holds, as {entry: rest of the item}."""
+    rows, kwargs = {}, {}
+    while True:
+        page = table.scan(**kwargs)
+        for item in page.get("Items", []):
+            rows[item.pop("entry")] = item
+        if "LastEvaluatedKey" not in page:
+            break
+        kwargs["ExclusiveStartKey"] = page["LastEvaluatedKey"]
+    return rows
 
-    The sentinel is written last and on purpose: the Lambdas refuse to classify
-    without it, so a run that dies midway leaves the table inert rather than
-    reporting every already-known action as a discovery.
+
+def sync(entries, table_name):
+    """Reconcile the registry table with the archive, writing only what differs.
+
+    Run on every deploy, this is the reconciliation that action_registry's
+    MAX_FIRST_SIGHTINGS cap already assumes exists: a run that tripped the cap, or a
+    table Terraform recreated empty, is healed on the next push instead of leaving
+    discovery detection blind until somebody notices the channels have gone quiet.
+
+    Only missing and stale rows are written, because a full rewrite would cost one
+    write per known action on every deploy for the handful a normal day adds. Git
+    history is authoritative, so a row a Lambda claimed live, carrying the time it
+    ran and an abbreviated SHA, is replaced by the commit's own values.
+
+    A row the archive no longer knows about is left alone rather than deleted: only a
+    rewritten history produces one, and losing a real first sighting would re-announce
+    a known action. It is reported instead, since it can suppress a true discovery.
+
+    The marker is written last and on purpose, exactly as the bulk load did: the
+    Lambdas refuse to classify without it, so a run that dies midway leaves a fresh
+    table inert rather than reporting all 12k known actions as discoveries.
     """
     import boto3
 
     table = boto3.resource("dynamodb").Table(table_name)
-    with table.batch_writer(overwrite_by_pkeys=["entry"]) as batch:
-        for written, (key, value) in enumerate(entries.items(), start=1):
-            batch.put_item(Item={"entry": key, **value})
-            if written % 5000 == 0:
-                print(f"  seeded {written}/{len(entries)}")
+    existing = read_table(table)
 
+    missing = [key for key in entries if key not in existing]
+    stale = [
+        key
+        for key, value in entries.items()
+        if key in existing and existing[key] != value
+    ]
+    orphans = [
+        key
+        for key in existing
+        if key not in entries and not key.startswith("meta#")
+    ]
+
+    held = len(existing) - sum(1 for key in existing if key.startswith("meta#"))
+    print(
+        f"Registry sync: {len(entries)} in the archive, {held} in {table_name}, "
+        f"{len(missing)} to add, {len(stale)} to correct"
+    )
+
+    pending = sorted(missing + stale)
+    if pending:
+        with table.batch_writer(overwrite_by_pkeys=["entry"]) as batch:
+            for written, key in enumerate(pending, start=1):
+                batch.put_item(Item={"entry": key, **entries[key]})
+                if written % 5000 == 0:
+                    print(f"  wrote {written}/{len(pending)}")
+
+    if orphans:
+        listed = ", ".join(sorted(orphans)[:5])
+        print(
+            f"  {len(orphans)} rows are absent from the archive and were left in "
+            f"place, which can hide a real discovery: {listed}"
+            + (" ..." if len(orphans) > 5 else "")
+        )
+
+    now = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
     actions, services = counts(entries)
     table.put_item(
         Item={
             "entry": SEEDED_KEY,
-            "seeded_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+            # Kept from the original load, so the bootstrap date survives every
+            # later sync and stays available for an incident timeline.
+            "seeded_at": existing.get(SEEDED_KEY, {}).get("seeded_at", now),
+            "synced_at": now,
             "action_count": actions,
             "service_count": services,
             "schema_version": SCHEMA_VERSION,
         }
     )
-    print(f"Seeded {len(entries)} entries into {table_name}")
+    print(f"Wrote {len(pending)} rows to {table_name} ({actions} actions, {services} services known)")
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
-        "--seed",
+        "--sync",
         metavar="TABLE",
-        help="also load the registry into this DynamoDB table",
+        help="also reconcile this DynamoDB table, which the notification Lambdas read",
     )
     parser.add_argument(
         "--no-write",
@@ -401,8 +462,8 @@ def main():
     if not args.no_write:
         write_registry(entries, root)
         write_deltas(deltas, root)
-    if args.seed:
-        seed(entries, args.seed)
+    if args.sync:
+        sync(entries, args.sync)
     return 0
 
 

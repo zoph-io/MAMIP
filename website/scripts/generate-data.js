@@ -52,22 +52,45 @@ function displayAuthorName(name) {
  * a prefix new to AWS can arrive inside a policy that has existed since 2019.
  *
  * Keys are lowercased there because IAM matches actions case-insensitively and
- * AWS is inconsistent about it. Returns empty maps when the file is absent, so
- * the site still builds without it.
+ * AWS is inconsistent about it. Required: the build fails rather than publishing a
+ * site with no discoveries in it.
  *
  * Anything whose first sighting is the archive's own first commit is flagged
  * sinceStart: those actions already existed in 2019 when tracking began, so their
  * date is the archive's floor and says nothing about when AWS shipped them.
  */
-function loadActionRegistry() {
-  if (!fs.existsSync(ACTION_REGISTRY_JSON)) {
-    console.log(
-      "   ⚠️  No data/action-registry.json found, action pages will omit first-seen dates"
-    );
-    return { actions: {}, services: {}, actionLabels: {}, archiveStart: "" };
+/**
+ * Read a generated data file the build cannot honestly do without.
+ *
+ * These loaders used to fall back to empty maps so the site would still build. That
+ * was worse than a failed build: /discoveries rendered empty, the feeds dropped
+ * their permissions-management callouts, and the deploy went green, so the site
+ * published "nothing ever happened" with no signal to anyone. The deploy workflow
+ * regenerates all of these immediately before this script runs, so an absent or
+ * unparseable file is a defect and must stop the deploy.
+ */
+function readRequired(file, whatBreaks, howToFix) {
+  const shown = path.relative(process.cwd(), file);
+  if (!fs.existsSync(file)) {
+    console.error(`\n❌ Missing ${shown}\n   ${whatBreaks}\n   Fix: ${howToFix}\n`);
+    process.exit(1);
   }
+  try {
+    return JSON.parse(fs.readFileSync(file, "utf8"));
+  } catch (e) {
+    console.error(
+      `\n❌ Could not parse ${shown}: ${e.message}\n   ${whatBreaks}\n   Fix: ${howToFix}\n`
+    );
+    process.exit(1);
+  }
+}
 
-  const raw = JSON.parse(fs.readFileSync(ACTION_REGISTRY_JSON, "utf8"));
+function loadActionRegistry() {
+  const raw = readRequired(
+    ACTION_REGISTRY_JSON,
+    "Without it every action page loses its first-seen date and /discoveries and the discoveries feed render empty, which reads as though AWS has never shipped a new action.",
+    "python3 automation/scripts/build_action_registry.py"
+  );
   const entries = Object.entries(raw.entries || {});
 
   // Derived rather than hardcoded, so a rebased or re-imported archive stays right.
@@ -118,8 +141,8 @@ function loadActionRegistry() {
  * Insertion order is the file's own newest-first order, so iterating the values
  * gives a ready-made timeline for /changes.
  *
- * Returns an empty map when the file is absent, so the feeds fall back to naming
- * the policy rather than failing the build.
+ * Required: the build fails rather than publishing feeds that name a policy without
+ * ever saying what changed in it.
  *
  * Memoized: the per-policy history, the changes timeline, the public API and the
  * feeds all want the same map, and it is a 400 KB parse.
@@ -128,15 +151,11 @@ let policyChangeDeltasCache = null;
 function loadPolicyChangeDeltas() {
   if (policyChangeDeltasCache) return policyChangeDeltasCache;
 
-  if (!fs.existsSync(POLICY_DELTAS_JSON)) {
-    console.log(
-      "   ⚠️  No data/policy-change-deltas.json found, feeds will omit action changes"
-    );
-    policyChangeDeltasCache = new Map();
-    return policyChangeDeltasCache;
-  }
-
-  const raw = JSON.parse(fs.readFileSync(POLICY_DELTAS_JSON, "utf8"));
+  const raw = readRequired(
+    POLICY_DELTAS_JSON,
+    "Without it /changes is empty and every feed item says only that a policy was updated, instead of which actions were added or removed.",
+    "python3 automation/scripts/build_action_registry.py"
+  );
   const byCommit = new Map();
   for (const change of raw.changes || []) {
     if (!change.sha || !change.policyName) continue;
@@ -157,15 +176,11 @@ let iamMetadataCache = null;
 function loadIamMetadata() {
   if (iamMetadataCache) return iamMetadataCache;
 
-  if (!fs.existsSync(IAM_METADATA_JSON)) {
-    console.log(
-      "   ⚠️  No data/iam-metadata.json found, feeds will show bare service prefixes"
-    );
-    iamMetadataCache = { permissionsManagement: new Set(), serviceNames: {} };
-    return iamMetadataCache;
-  }
-
-  const raw = JSON.parse(fs.readFileSync(IAM_METADATA_JSON, "utf8"));
+  const raw = readRequired(
+    IAM_METADATA_JSON,
+    "Without it no feed item flags permissions management, so a policy granting iam:PassRole reads like any routine update, and services show as bare prefixes.",
+    "python3 automation/scripts/build_iam_metadata.py"
+  );
   iamMetadataCache = {
     permissionsManagement: new Set(raw.permissionsManagement || []),
     serviceNames: raw.serviceNames || {},

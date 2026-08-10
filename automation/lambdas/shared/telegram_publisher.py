@@ -43,6 +43,30 @@ _ssm = boto3.client("ssm")
 _token = None
 
 
+_alerted = set()
+
+
+def _alert(reason):
+    """Log a dark channel and page the ops channel about it.
+
+    Deduplicated per process, because a bulk day calls post() repeatedly and would
+    otherwise spend the run reporting the same outage. discord_notifier is imported
+    lazily so this module stays usable wherever it is not bundled.
+    """
+    print(f"[telegram_publisher] {reason}")
+    if reason in _alerted:
+        return
+    _alerted.add(reason)
+    try:
+        import discord_notifier
+
+        discord_notifier.send(
+            "Telegram is not publishing", reason, discord_notifier.COLOR_ERROR
+        )
+    except Exception as e:
+        print(f"[telegram_publisher] Could not raise the alert: {e}")
+
+
 def _get_token():
     global _token
     if _token:
@@ -55,7 +79,7 @@ def _get_token():
         _token = resp["Parameter"]["Value"]
         return _token
     except Exception as e:
-        print(f"[telegram_publisher] Failed to read SSM parameter: {e}")
+        _alert(f"Could not read the bot token from {param_name}: {e}.")
         return None
 
 
@@ -101,9 +125,23 @@ def _send_once(url, payload):
 
 
 def post(text):
-    """Send one message to the channel. Never raises - logs errors instead."""
+    """Send one message to the channel. Never raises - alerts and returns False.
+
+    An empty body is legitimate silence: the channel is discoveries-only, so most
+    runs have nothing to say. Missing config is not, and it looks identical from the
+    outside, which is why it alerts instead of returning quietly.
+    """
+    if not text:
+        return False
+
     token = _get_token()
-    if not token or not CHAT_ID or not text:
+    if not token or not CHAT_ID:
+        _alert(
+            "The Telegram channel is dark: "
+            + ("no bot token could be read. " if not token else "")
+            + ("TELEGRAM_CHAT_ID is unset. " if not CHAT_ID else "")
+            + "A reader cannot tell this from a week with no discoveries."
+        )
         return False
 
     if len(text) > MESSAGE_LIMIT:
@@ -129,5 +167,5 @@ def post(text):
         time.sleep(retry)
         return _send_once(url, payload) is None
     except Exception as e:
-        print(f"[telegram_publisher] Failed to post to Telegram: {e}")
+        _alert(f"A post to the Telegram channel was lost: {e}.")
         return False

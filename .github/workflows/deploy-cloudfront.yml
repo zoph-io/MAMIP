@@ -66,11 +66,20 @@ jobs:
             nextjs-${{ hashFiles('website/package-lock.json') }}-
 
       - name: Rebuild first-seen action registry and change deltas
-        # Full replay of the archive, ~3s, stdlib only. Keeps the discoveries page,
-        # the action first-seen dates and the per-commit action deltas the RSS
-        # feeds render current, instead of serving whatever was last committed.
-        # Needs the fetch-depth: 0 checkout above.
-        run: python3 automation/scripts/build_action_registry.py
+        # Full replay of the archive, ~3s. Keeps the discoveries page, the action
+        # first-seen dates and the per-commit action deltas the RSS feeds render
+        # current, instead of serving whatever was last committed.
+        #
+        # --sync then reconciles the DynamoDB table the notification Lambdas read,
+        # which they cannot rebuild themselves. Without it the table is only ever
+        # populated by hand, and it went unseeded for eleven days after launch while
+        # every channel reported quiet weeks. Writes only the rows that are missing
+        # or that a Lambda claimed live with approximate metadata, so a normal deploy
+        # writes a handful. Needs the fetch-depth: 0 checkout and the credentials
+        # configured above; boto3 is not on the runner image.
+        run: |
+          python3 -m pip install --quiet --disable-pip-version-check boto3
+          python3 automation/scripts/build_action_registry.py --sync iamtrail-action-registry
 
       - name: Generate policy data
         working-directory: ./website

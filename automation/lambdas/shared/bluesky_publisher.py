@@ -22,9 +22,43 @@ def _client():
     return _sqs_client
 
 
+_alerted = set()
+
+
+def _alert(reason):
+    """Log a dark feed and page the ops channel about it.
+
+    Deduplicated per process so a bulk day does not spend the run reporting the same
+    outage, and discord_notifier is imported lazily so this module stays usable
+    wherever it is not bundled.
+    """
+    print(f"[bluesky_publisher] {reason}")
+    if reason in _alerted:
+        return
+    _alerted.add(reason)
+    try:
+        import discord_notifier
+
+        discord_notifier.send(
+            "Bluesky is not publishing", reason, discord_notifier.COLOR_ERROR
+        )
+    except Exception as e:
+        print(f"[bluesky_publisher] Could not raise the alert: {e}")
+
+
 def post(text, group_id="1"):
-    """Send text to the Bluesky FIFO queue. Never raises - logs errors instead."""
-    if not QUEUE_URL or not text:
+    """Send text to the Bluesky FIFO queue. Never raises - alerts and returns False.
+
+    Nothing to say is legitimate. A missing queue URL is not, and followers cannot
+    tell the two apart, so it alerts rather than returning quietly.
+    """
+    if not text:
+        return False
+    if not QUEUE_URL:
+        _alert(
+            "BLUESKY_QUEUE_URL is unset, so the feed is dark and a follower cannot "
+            "tell this from a quiet day."
+        )
         return False
     try:
         _client().send_message(
@@ -34,5 +68,5 @@ def post(text, group_id="1"):
         )
         return True
     except Exception as e:
-        print(f"[bluesky_publisher] Failed to enqueue Bluesky post: {e}")
+        _alert(f"A Bluesky post was lost on the way to the queue: {e}.")
         return False

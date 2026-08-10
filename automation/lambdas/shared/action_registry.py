@@ -13,7 +13,11 @@ wins a conditional write, so the answer is identical whichever Lambda asks first
 and stays stable when the same change is re-rendered by the next day's digest.
 
 Never raises: a registry that is unavailable or unseeded degrades to "no
-discoveries", which renders exactly like the emails did before this existed.
+discoveries", which renders exactly like the emails did before this existed. That
+is the right failure direction, since an empty registry would otherwise announce
+all 12k known actions at once, but it is indistinguishable from a quiet week from
+the outside, so every path that reaches it alerts the ops channel rather than only
+printing to a log group nobody reads.
 """
 
 import os
@@ -34,8 +38,8 @@ BATCH_SIZE = 100
 # Reads are batched and cheap, but each first sighting costs one conditional
 # write, so only the slow path is capped. A day that trips this is either an AWS
 # rewrite of unprecedented scale or a broken registry, and both want a loud log
-# rather than a Lambda that times out. The next backfill reconciles anything
-# skipped, since git history is authoritative.
+# rather than a Lambda that times out. The --sync on the next deploy reconciles
+# anything skipped, since git history is authoritative.
 MAX_FIRST_SIGHTINGS = 500
 
 # policy_diff encodes effect and match semantics into its labels, so the bare
@@ -44,6 +48,28 @@ _LABEL_PREFIXES = ("Deny ", "NotAction ")
 
 _resource = None
 _table = None
+
+
+def _alert(reason):
+    """Log an inert registry and page the ops channel about it.
+
+    discord_notifier is imported here rather than at module scope so this module
+    still works wherever it is not bundled, and because an alert about a broken
+    registry must never be the thing that breaks classification.
+    """
+    print(f"[action_registry] {reason}")
+    try:
+        import discord_notifier
+
+        discord_notifier.send(
+            "Discovery detection is inert",
+            f"{reason} Until this is fixed, no change can be reported as "
+            "never-before-seen on any channel.",
+            discord_notifier.COLOR_ERROR,
+            fields=[("Registry table", TABLE_NAME or "unset", True)],
+        )
+    except Exception as e:
+        print(f"[action_registry] Could not raise the alert: {e}")
 
 
 def _get_table():
@@ -113,12 +139,13 @@ def _is_seeded(table):
     try:
         item = table.get_item(Key={"entry": SEEDED_KEY}).get("Item")
     except ClientError as e:
-        print(f"[action_registry] Could not read the seed marker: {e}")
+        _alert(f"Could not read the registry's seed marker: {e}.")
         return False
     if not item:
-        print(
-            "[action_registry] Registry is not seeded, skipping discovery "
-            "detection. Run build_action_registry.py --seed."
+        _alert(
+            "The registry holds no seed marker, so it has never been loaded. "
+            "A deploy reconciles it, or run build_action_registry.py --sync "
+            f"{TABLE_NAME} by hand."
         )
         return False
     return True
@@ -180,13 +207,21 @@ def classify(changes):
     A key counts as a discovery for a change when the registry's first sighting
     is that change's own commit, whether it was just claimed or was already
     recorded by an earlier pass over the same commit.
+
+    Also sets "classified" on each change, so a caller about to write "nothing new
+    this week" can tell a clean run from one that never managed to look. Without that
+    flag an empty new_actions means both things at once, which is how eleven recaps
+    went out asserting quiet weeks over two brand-new AWS services.
     """
     if not changes:
         return changes
 
+    for c in changes:
+        c["classified"] = False
+
     table = _get_table()
     if table is None:
-        print("[action_registry] No registry table configured, skipping")
+        _alert("No registry table is configured. Set ACTION_REGISTRY_TABLE.")
         return changes
 
     try:
@@ -196,6 +231,10 @@ def classify(changes):
         per_change = [(c, _candidates(c)) for c in changes]
         keys = sorted({k for _, cands in per_change for k in cands})
         if not keys:
+            # No candidate actions at all, so there is genuinely nothing to find and
+            # this counts as a complete answer rather than a failure to look.
+            for c in changes:
+                c["classified"] = True
             return changes
 
         existing = _fetch(keys)
@@ -203,15 +242,21 @@ def classify(changes):
         # Which commit owns each key's first sighting.
         owner = {k: item.get("first_commit_sha", "") for k, item in existing.items()}
         claimed = 0
+        capped = set()
         for change, cands in per_change:
             for key in sorted(cands):
                 if key in owner:
                     continue
                 if claimed >= MAX_FIRST_SIGHTINGS:
-                    print(
-                        f"[action_registry] Hit the {MAX_FIRST_SIGHTINGS} first-sighting "
-                        "cap, remaining actions stay unclassified until the next backfill"
-                    )
+                    # Once per run, not once per key: a bulk day would otherwise
+                    # spend hundreds of Discord posts saying the same thing.
+                    if not capped:
+                        _alert(
+                            f"Hit the {MAX_FIRST_SIGHTINGS} first-sighting cap, so "
+                            "the remaining actions in this run are reported as "
+                            "routine until the next deploy sync reconciles them."
+                        )
+                    capped.add(id(change))
                     owner[key] = ""
                     continue
                 owner[key] = _claim(table, key, change)
@@ -226,6 +271,8 @@ def classify(changes):
                 (services if key.startswith(SERVICE_KEY) else actions).append(display)
             change["new_service_prefixes"] = sorted(services)
             change["new_actions"] = sorted(actions)
+            # A change whose keys ran past the cap was only partly looked at.
+            change["classified"] = id(change) not in capped
 
         discovered = sum(
             1 for c in changes if c["new_service_prefixes"] or c["new_actions"]
@@ -238,5 +285,5 @@ def classify(changes):
         return changes
 
     except Exception as e:
-        print(f"[action_registry] Classification failed, continuing without it: {e}")
+        _alert(f"Classification failed and was skipped: {e}.")
         return changes

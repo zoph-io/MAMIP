@@ -110,7 +110,10 @@ def batch_summary(changes, policy_names):
         policy_diff.plural(
             len(policy_names), "AWS managed IAM policy", "AWS managed IAM policies"
         )
-        + f" updated: {policy_diff.action_delta_phrase(added, removed)}"
+        + " updated: "
+        + policy_diff.action_delta_phrase(
+            added, removed, unknown=bool(policy_diff.unresolved(changes))
+        )
     )
 
 
@@ -158,7 +161,10 @@ def build_bluesky_post(changes, policy_names):
 
     lead = (
         f"{policy_diff.plural(count, 'AWS managed IAM policy', 'AWS managed IAM policies')}"
-        f" updated: {policy_diff.action_delta_phrase(added, removed)}"
+        " updated: "
+        + policy_diff.action_delta_phrase(
+            added, removed, unknown=bool(policy_diff.unresolved(changes))
+        )
     )
     if escalations:
         lead += f". {policy_diff.sentence(policy_diff.permissions_management_phrase(escalations))}"
@@ -374,7 +380,9 @@ def build_discord_public(changes, policy_names, commit_url):
             + " updated"
         )
         description = policy_diff.sentence(
-            policy_diff.action_delta_phrase(added, removed)
+            policy_diff.action_delta_phrase(
+                added, removed, unknown=bool(policy_diff.unresolved(changes))
+            )
         )
         color = discord.COLOR_INFO
         url = f"{SITE_URL}/policies"
@@ -517,6 +525,22 @@ def handler(event, context):
 
             policy_changes = policy_diff.resolve_changes(rows)
             action_registry.classify(policy_changes)
+
+            # An unreadable diff is not a quiet change. Everything below derives its
+            # wording from actions_added, which is empty here because nothing was
+            # read, so the posts understate the run and no discovery can be found in
+            # it. Loud, because this is indistinguishable from an uneventful day.
+            blind = policy_diff.unresolved(policy_changes)
+            if blind:
+                discord.send(
+                    "Diffs could not be resolved",
+                    f"{policy_diff.plural(len(blind), 'change')} published without a "
+                    "readable diff, so the action delta is unknown and a "
+                    "never-before-seen action in them would have been missed. "
+                    "Usually a GitHub API outage or an expired token.",
+                    discord.COLOR_ERROR,
+                    fields=[("Policies", ", ".join(blind[:10]), False)],
+                )
 
             # Public feeds go out before the subscriber check, otherwise they
             # would fall silent whenever nobody holds an instant subscription.

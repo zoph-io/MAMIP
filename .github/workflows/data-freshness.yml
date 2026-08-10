@@ -1,0 +1,109 @@
+name: "[Prod] IAMTrail - Data Freshness"
+
+# Every derived input IAMTrail depends on has an owner here.
+#
+# Each of these used to be refreshed only when somebody remembered a Makefile
+# target. The action registry spent its first eleven days empty, so every channel
+# reported quiet weeks past two brand-new AWS service prefixes. The IAM metadata was
+# ten days stale, which drops the permissions-management callout that a security
+# reader is actually here for. The pathfinding catalog was four months stale.
+
+on:
+  schedule:
+    # Between the scraper's hourly commit window and the 08:00 UTC digest, so the
+    # digest reads a registry reconciled the same morning.
+    - cron: "20 5 * * *"
+  workflow_dispatch:
+
+env:
+  aws_region: "eu-west-1"
+  action_registry_table: "iamtrail-action-registry"
+
+permissions:
+  id-token: write
+  contents: write
+  actions: write
+
+jobs:
+  refresh:
+    name: "Reconcile derived data"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # The registry replays every commit that ever touched policies/.
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: AWS IAM Assume Role
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: ${{ env.aws_region }}
+          role-to-assume: ${{ secrets.ROLE_TO_ASSUME }}
+          role-duration-seconds: 900
+          role-session-name: GH-Actions-IAMTrail-DataFreshness
+
+      - name: Reconcile the action registry the notification Lambdas read
+        # The website deploy syncs this too, but only when site content changes, so
+        # on its own it is a schedule hidden behind an unrelated trigger. This is the
+        # unconditional one. Idempotent: one scan, then one write per action the
+        # archive gained since yesterday.
+        run: |
+          python3 -m pip install --quiet --disable-pip-version-check boto3
+          python3 automation/scripts/build_action_registry.py --no-write --sync "${{ env.action_registry_table }}"
+
+      - name: Refresh IAM access levels and service names
+        # Rewrites nothing when upstream has not moved, so a quiet day leaves no diff.
+        run: python3 automation/scripts/build_iam_metadata.py
+
+      - name: Refresh the pathfinding privilege escalation catalog
+        run: |
+          curl -fsSL --retry 3 --retry-delay 5 \
+            "https://pathfinding.cloud/paths.json" -o data/pathfinding/paths.json
+          # A truncated download is still a 200, and an empty catalog would silently
+          # clear every privilege-escalation finding on the site.
+          python3 -c "import json,sys; d=json.load(open('data/pathfinding/paths.json')); sys.exit(0 if d else 1)"
+
+      - name: Commit whatever moved upstream
+        id: commit
+        run: |
+          git config --local user.email "iamtrail-bot@noreply.github.com"
+          git config --local user.name "IAMTrail Data Freshness"
+          git add data/iam-metadata.json data/pathfinding/paths.json
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "Neither dataset moved upstream today"
+          else
+            git commit -m "data: refresh IAM metadata and pathfinding catalog"
+            git push origin HEAD:${{ github.ref_name }}
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Trigger website deployment
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run deploy-cloudfront.yml --ref ${{ github.ref_name }}
+
+      - name: Report failure to the ops channel
+        # A scheduled job that quietly starts failing is the same class of bug this
+        # workflow exists to prevent: nobody watches the Actions tab, so this is the
+        # only signal that derived data has stopped being refreshed.
+        if: failure()
+        run: |
+          URL=$(aws ssm get-parameter --name "/iamtrail/discord-webhook-url" \
+            --with-decryption --region "${{ env.aws_region }}" \
+            --query 'Parameter.Value' --output text)
+          RUN="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          PAYLOAD=$(jq -n --arg url "$RUN" --arg ts "$(date -u +%Y-%m-%dT%H:%M:%SZ)" '{
+            embeds: [{
+              title: "Data freshness run failed",
+              description: "The action registry, the IAM metadata or the pathfinding catalog was not refreshed. Discovery detection and the permissions-management callouts drift until this passes.",
+              url: $url,
+              color: 15158332,
+              footer: {text: "IAMTrail - data freshness"},
+              timestamp: $ts
+            }]
+          }')
+          curl -fsS -o /dev/null -H "Content-Type: application/json" -d "$PAYLOAD" "$URL"

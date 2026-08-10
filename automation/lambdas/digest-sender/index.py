@@ -294,7 +294,23 @@ def build_telegram_recap(now, policy_changes, endpoint_changes, guardduty_change
             + policy_diff.plural(len(with_new_actions), "policy", "policies")
         )
     if not prefixes and not with_new_actions:
-        lines.append("No never-before-seen actions or services this week")
+        # A change that could not be classified, or whose diff could not be read, is
+        # not evidence of a quiet week: new_actions is empty because nothing looked,
+        # not because nothing happened. Asserting the quiet week anyway is what put
+        # eleven false recaps out over two brand-new AWS services.
+        blind = [
+            c
+            for c in policy_changes
+            if not c.get("classified")
+            or (c.get("detailed", True) and not c.get("resolved"))
+        ]
+        if blind:
+            lines.append(
+                "Could not check for never-before-seen actions or new AWS services "
+                "this week"
+            )
+        else:
+            lines.append("No never-before-seen actions or services this week")
 
     if endpoint_changes:
         lines.append(policy_diff.plural(len(endpoint_changes), "AWS endpoint change"))
@@ -355,13 +371,20 @@ def handler(event, context):
         # Daily and weekly share these record objects, so one pass annotates both.
         action_registry.classify(list(_resolved_changes.values()))
 
-        failed = [
-            c["name"]
-            for c in _resolved_changes.values()
-            if c["detailed"] and not c["resolved"]
-        ]
+        # A change we could not read renders as "no action added or removed" and can
+        # never be a discovery, which is exactly what a genuinely uneventful change
+        # looks like, so this cannot stay a log line.
+        failed = policy_diff.unresolved(list(_resolved_changes.values()))
         if failed:
-            print(f"Could not resolve diffs for {len(failed)}: {failed[:10]}")
+            discord.send(
+                "Diffs could not be resolved",
+                f"{policy_diff.plural(len(failed), 'change')} went into today's "
+                "digest without a readable diff, so their action delta is unknown "
+                "and any never-before-seen action in them was missed. Usually a "
+                "GitHub API outage or an expired token.",
+                discord.COLOR_ERROR,
+                fields=[("Policies", ", ".join(failed[:10]), False)],
+            )
 
         # Posted before the per-subscriber loop, so a slow or partly failing send
         # cannot cost the channel its weekly pulse.

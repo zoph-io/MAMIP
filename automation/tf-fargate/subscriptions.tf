@@ -325,11 +325,14 @@ resource "aws_dynamodb_table" "policy_changes" {
 # ──────────────────────────────────────
 
 # Earliest sighting of every IAM action and service prefix in the archive, so a
-# notification can say "never seen before" without walking git history. Seeded by
-# automation/scripts/build_action_registry.py and appended to as changes arrive.
+# notification can say "never seen before" without walking git history. Appended to
+# as changes arrive, and reconciled against the archive by
+# automation/scripts/build_action_registry.py --sync on every website deploy.
 # Deliberately no TTL: an expired entry would re-announce a known action.
 # No point-in-time recovery either: every entry is derivable from the archive, so
-# a rebuild from git is faster than a restore and costs nothing.
+# a rebuild from git is faster than a restore and costs nothing. That only holds
+# because the deploy rebuilds it; creating this table without the sync leaves every
+# channel unable to report a discovery, which is how launch went.
 resource "aws_dynamodb_table" "action_registry" {
   name         = "iamtrail-action-registry"
   billing_mode = "PAY_PER_REQUEST"

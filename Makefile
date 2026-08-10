@@ -35,7 +35,7 @@ help:
 	@echo "	website-sync - sync existing build to S3 (no rebuild)"
 	@echo "	website-clean - clean website build artifacts"
 	@echo ""
-	@echo "Data:"
+	@echo "Data (all of these run automatically; these targets are for local preview only):"
 	@echo "	action-registry - rebuild data/action-registry.json and data/policy-change-deltas.json from git history"
 	@echo "	iam-metadata - refresh data/iam-metadata.json from iam-dataset (access levels, service names)"
 	@echo ""
@@ -58,7 +58,10 @@ ENV ?= prod
 ECR ?= 567589703415.dkr.ecr.eu-west-1.amazonaws.com/mamip-ecr-$(ENV)
 ################################################
 
-# Automation is done by Github Actions
+# Local escape hatch only. .github/workflows/scraper-image.yml builds and pushes this
+# on every change to automation/Dockerfile, script-fargate.sh or requirements.txt.
+# Do not make this the way the image reaches production: it spent months as the only
+# path, so a base-image patch landed in main and never shipped.
 login:
 	@aws ecr get-login-password --region $(AWS_REGION) | docker login --username AWS --password-stdin $(ECR)
 
@@ -188,12 +191,14 @@ infra-apply-all:
 ####################################################
 
 ################ Data ##########################
+# Local preview only. Production owns both of these: the website deploy rebuilds the
+# registry and reconciles it into DynamoDB, and .github/workflows/data-freshness.yml
+# refreshes all of it daily and commits whatever moved. Nothing here is a prerequisite
+# for anything, and nothing production needs waits on somebody running it.
 action-registry:
 	@echo "🔁 Replaying the archive into the action registry and change deltas..."
 	@python3 automation/scripts/build_action_registry.py
 
-# Not run in CI on purpose: the Service Authorization Reference moves slowly, and
-# committing the refresh keeps the deploy from having to push to main.
 iam-metadata:
 	@echo "📚 Refreshing IAM metadata from iam-dataset..."
 	@python3 automation/scripts/build_iam_metadata.py
