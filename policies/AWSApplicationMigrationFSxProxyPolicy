@@ -19,7 +19,8 @@
                     "Effect": "Allow",
                     "Action": [
                         "fsx:DescribeVolumes",
-                        "fsx:DescribeStorageVirtualMachines"
+                        "fsx:DescribeStorageVirtualMachines",
+                        "fsx:DescribeSnapshots"
                     ],
                     "Resource": "*"
                 },
@@ -67,11 +68,55 @@
                             "aws:ResourceTag/AWSApplicationMigrationServiceManaged": "false"
                         }
                     }
+                },
+                {
+                    "Sid": "FSxCreateSnapshot",
+                    "Effect": "Allow",
+                    "Action": "fsx:CreateSnapshot",
+                    "Resource": "arn:aws:fsx:*:*:snapshot/*/*",
+                    "Condition": {
+                        "Null": {
+                            "aws:RequestTag/AWSApplicationMigrationServiceManaged": "false"
+                        }
+                    }
+                },
+                {
+                    "Sid": "FSxCreateSnapshotVolume",
+                    "Effect": "Allow",
+                    "Action": "fsx:CreateSnapshot",
+                    "Resource": "arn:aws:fsx:*:*:volume/*/*",
+                    "Condition": {
+                        "Null": {
+                            "aws:ResourceTag/AWSApplicationMigrationServiceManaged": "false"
+                        }
+                    }
+                },
+                {
+                    "Sid": "FSxDeleteSnapshot",
+                    "Effect": "Allow",
+                    "Action": "fsx:DeleteSnapshot",
+                    "Resource": "arn:aws:fsx:*:*:snapshot/*/*",
+                    "Condition": {
+                        "Null": {
+                            "aws:ResourceTag/AWSApplicationMigrationServiceManaged": "false"
+                        }
+                    }
+                },
+                {
+                    "Sid": "FSxTagSnapshot",
+                    "Effect": "Allow",
+                    "Action": "fsx:TagResource",
+                    "Resource": "arn:aws:fsx:*:*:snapshot/*/*",
+                    "Condition": {
+                        "Null": {
+                            "aws:RequestTag/AWSApplicationMigrationServiceManaged": "false"
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2026-05-31T13:12:14+00:00"
+        "CreateDate": "2026-08-09T12:17:24+00:00"
     }
 }
