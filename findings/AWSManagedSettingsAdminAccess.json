@@ -936,6 +936,42 @@
     ]
   },
   {
+    "findingDetails": "The action payments:GetDefaultPaymentProfile does not exist.",
+    "findingType": "ERROR",
+    "issueCode": "INVALID_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 12
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 26
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 4901,
+            "offset": 4901
+          },
+          "end": {
+            "line": 1,
+            "column": 4936,
+            "offset": 4936
+          }
+        }
+      }
+    ]
+  },
+  {
     "findingDetails": "The action organizations:CreateBuilderIdOwnedAccount does not exist.",
     "findingType": "ERROR",
     "issueCode": "INVALID_ACTION",
@@ -959,13 +995,13 @@
         "span": {
           "start": {
             "line": 1,
-            "column": 6040,
-            "offset": 6040
+            "column": 6077,
+            "offset": 6077
           },
           "end": {
             "line": 1,
-            "column": 6083,
-            "offset": 6083
+            "column": 6120,
+            "offset": 6120
           }
         }
       }
