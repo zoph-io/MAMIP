@@ -275,7 +275,9 @@
                         "account-access:ListApplications",
                         "account-access:CreateApplication",
                         "account-access:CreateEntitlement",
-                        "signin:DeleteConsoleAuthorizationConfiguration"
+                        "signin:DeleteConsoleAuthorizationConfiguration",
+                        "signin:DeleteResourcePermissionStatement",
+                        "signin:ListResourcePermissionStatements"
                     ],
                     "Resource": "*",
                     "Condition": {
@@ -354,6 +356,8 @@
                     "Action": [
                         "organizations:DeletePolicy",
                         "organizations:DetachPolicy",
+                        "organizations:AttachPolicy",
+                        "organizations:CreatePolicy",
                         "organizations:ListPolicies",
                         "organizations:ListRoots"
                     ],
@@ -428,8 +432,8 @@
                 }
             ]
         },
-        "VersionId": "v5",
+        "VersionId": "v6",
         "IsDefaultVersion": true,
-        "CreateDate": "2026-08-13T22:37:08+00:00"
+        "CreateDate": "2026-08-14T20:07:09+00:00"
     }
 }
