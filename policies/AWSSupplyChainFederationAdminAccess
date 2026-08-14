@@ -83,6 +83,31 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "BuilderIDCollaboration",
+                    "Effect": "Allow",
+                    "Action": [
+                        "builderid:CreateInvitation",
+                        "builderid:ListInvitations",
+                        "builderid:DeleteInvitation",
+                        "builderid:DisassociateCollaborator"
+                    ],
+                    "Resource": "*"
+                },
+                {
+                    "Sid": "IdentityStoreCollaboration",
+                    "Effect": "Allow",
+                    "Action": [
+                        "identitystore:ReserveUser",
+                        "identitystore:DeleteUser"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
+                },
+                {
                     "Sid": "AppflowConnectorProfile",
                     "Effect": "Allow",
                     "Action": [
@@ -263,8 +288,8 @@
                 }
             ]
         },
-        "VersionId": "v9",
+        "VersionId": "v10",
         "IsDefaultVersion": true,
-        "CreateDate": "2026-02-12T18:02:20+00:00"
+        "CreateDate": "2026-08-14T21:07:21+00:00"
     }
 }
