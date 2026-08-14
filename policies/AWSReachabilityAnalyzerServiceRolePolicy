@@ -34,7 +34,11 @@
                         "ec2:DescribeTransitGatewayRouteTables",
                         "ec2:DescribeTransitGatewayVpcAttachments",
                         "ec2:DescribeTransitGateways",
+                        "ec2:DescribeTransitGatewayPolicyTables",
+                        "ec2:GetTransitGatewayPolicyTableEntries",
+                        "ec2:GetTransitGatewayPolicyTableAssociations",
                         "ec2:DescribeVpcEndpointServiceConfigurations",
+                        "ec2:DescribeAddresses",
                         "ec2:DescribeVpcEndpoints",
                         "ec2:DescribeVpcPeeringConnections",
                         "ec2:DescribeVpcs",
@@ -52,6 +56,7 @@
                         "elasticloadbalancing:DescribeTargetGroups",
                         "elasticloadbalancing:DescribeTargetHealth",
                         "network-firewall:DescribeFirewall",
+                        "network-firewall:DescribeFirewallMetadata",
                         "network-firewall:DescribeFirewallPolicy",
                         "network-firewall:DescribeResourcePolicy",
                         "network-firewall:DescribeRuleGroup",
@@ -89,8 +94,8 @@
                 }
             ]
         },
-        "VersionId": "v4",
+        "VersionId": "v5",
         "IsDefaultVersion": true,
-        "CreateDate": "2024-09-10T16:04:52+00:00"
+        "CreateDate": "2026-08-14T17:17:24+00:00"
     }
 }
