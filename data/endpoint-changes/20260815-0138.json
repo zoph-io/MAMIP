@@ -1,0 +1,25 @@
+{
+  "detected_at": "2026-08-15T01:38:09.385Z",
+  "botocore_commit": "2ac8c143941d9abb460916a586d8b766cfc12d30",
+  "botocore_commit_url": "https://github.com/boto/botocore/commit/2ac8c143941d9abb460916a586d8b766cfc12d30",
+  "summary": "1 new service, 1 service expansion",
+  "changes": [
+    {
+      "type": "service_expansion",
+      "partition": "aws",
+      "service": "osis",
+      "id": "osis",
+      "new_regions": [
+        "eu-west-3"
+      ],
+      "description": "osis expanded to eu-west-3"
+    },
+    {
+      "type": "new_service",
+      "partition": "aws-us-gov",
+      "id": "osis",
+      "description": "osis (2 endpoints)",
+      "endpoint_count": 2
+    }
+  ]
+}
