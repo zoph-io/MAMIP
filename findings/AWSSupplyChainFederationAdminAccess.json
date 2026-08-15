@@ -39,6 +39,150 @@
     ]
   },
   {
+    "findingDetails": "The service builderid:CreateInvitation specified in the action does not exist.",
+    "findingType": "ERROR",
+    "issueCode": "INVALID_SERVICE_IN_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 5
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 0
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 1664,
+            "offset": 1664
+          },
+          "end": {
+            "line": 1,
+            "column": 1692,
+            "offset": 1692
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "The service builderid:ListInvitations specified in the action does not exist.",
+    "findingType": "ERROR",
+    "issueCode": "INVALID_SERVICE_IN_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 5
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 1
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 1694,
+            "offset": 1694
+          },
+          "end": {
+            "line": 1,
+            "column": 1721,
+            "offset": 1721
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "The service builderid:DeleteInvitation specified in the action does not exist.",
+    "findingType": "ERROR",
+    "issueCode": "INVALID_SERVICE_IN_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 5
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 2
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 1723,
+            "offset": 1723
+          },
+          "end": {
+            "line": 1,
+            "column": 1751,
+            "offset": 1751
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "The service builderid:DisassociateCollaborator specified in the action does not exist.",
+    "findingType": "ERROR",
+    "issueCode": "INVALID_SERVICE_IN_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 5
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 3
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 1753,
+            "offset": 1753
+          },
+          "end": {
+            "line": 1,
+            "column": 1789,
+            "offset": 1789
+          }
+        }
+      }
+    ]
+  },
+  {
     "findingDetails": "Use the operator type String instead of operator ARN for the condition key kms:EncryptionContext:aws:sso:instance-arn.",
     "findingType": "WARNING",
     "issueCode": "TYPE_MISMATCH",
@@ -50,7 +194,7 @@
             "value": "Statement"
           },
           {
-            "index": 15
+            "index": 17
           },
           {
             "value": "Condition"
@@ -65,13 +209,13 @@
         "span": {
           "start": {
             "line": 1,
-            "column": 4202,
-            "offset": 4202
+            "column": 4639,
+            "offset": 4639
           },
           "end": {
             "line": 1,
-            "column": 4246,
-            "offset": 4246
+            "column": 4683,
+            "offset": 4683
           }
         }
       }
@@ -89,7 +233,7 @@
             "value": "Statement"
           },
           {
-            "index": 16
+            "index": 18
           },
           {
             "value": "Condition"
@@ -104,13 +248,13 @@
         "span": {
           "start": {
             "line": 1,
-            "column": 4465,
-            "offset": 4465
+            "column": 4902,
+            "offset": 4902
           },
           "end": {
             "line": 1,
-            "column": 4524,
-            "offset": 4524
+            "column": 4961,
+            "offset": 4961
           }
         }
       }
