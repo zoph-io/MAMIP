@@ -76,6 +76,7 @@
                         "backup:ListTags",
                         "batch:DescribeComputeEnvironments",
                         "batch:DescribeJobDefinitions",
+                        "bedrock:GetAgent",
                         "bedrock:GetAgentAlias",
                         "bedrock:GetAgentKnowledgeBase",
                         "bedrock:GetCustomModel",
@@ -223,6 +224,7 @@
                         "cloudformation:DescribeStack*",
                         "cloudformation:GetStackPolicy",
                         "cloudformation:GetTemplate",
+                        "cloudformation:ListStackResources",
                         "cloudformation:ListStack*",
                         "cloudfront:Get*",
                         "cloudfront:List*",
@@ -460,6 +462,7 @@
                         "glue:GetDatabases",
                         "glue:GetDataCatalogEncryptionSettings",
                         "glue:GetDevEndpoints",
+                        "glue:GetJobBookmark",
                         "glue:GetJobs",
                         "glue:GetResourcePolicy",
                         "glue:GetSecurityConfiguration",
@@ -570,6 +573,7 @@
                         "lambda:GetFunctionConcurrency",
                         "lambda:GetFunctionConfiguration",
                         "lambda:GetFunctionEventInvokeConfig",
+                        "lambda:GetFunctionUrlConfig",
                         "lambda:GetLayerVersionPolicy",
                         "lambda:GetPolicy",
                         "lambda:GetRuntimeManagementConfig",
@@ -915,6 +919,7 @@
                         "sso-directory:ListExternalIdPConfigurationsForDirectory",
                         "states:DescribeStateMachine",
                         "states:ListStateMachines",
+                        "states:ListTagsForResource",
                         "storagegateway:DescribeBandwidthRateLimit",
                         "storagegateway:DescribeCache",
                         "storagegateway:DescribeCachediSCSIVolumes",
@@ -1047,8 +1052,8 @@
                 }
             ]
         },
-        "VersionId": "v91",
+        "VersionId": "v92",
         "IsDefaultVersion": true,
-        "CreateDate": "2026-07-21T17:42:29+00:00"
+        "CreateDate": "2026-08-17T15:27:26+00:00"
     }
 }
