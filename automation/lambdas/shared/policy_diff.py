@@ -10,12 +10,15 @@ JSON diff. Two constraints shape the rendering:
   carried by words and by the +/- gutter, never by colour alone.
 - The GitHub API allows 60 requests/hour to unauthenticated callers and Lambda
   egress IPs are shared, so a token is required for diffs to be reliable.
+- git %h is unique in the scraper's clone, not in GitHub's object store. An
+  abbreviated SHA that 422s is expanded via the policy's recent commits.
 """
 
 import json
 import os
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 
 GITHUB_REPO = os.environ.get("GITHUB_REPO", "zoph-io/IAMTrail")
@@ -155,6 +158,60 @@ def _commit(sha):
     return data
 
 
+def _expand_commit_sha(sha, policy_name=""):
+    """Turn an abbreviated SHA GitHub cannot resolve into the full 40-char form.
+
+    git %h is unique in the scraper's clone, not in GitHub's object store. A
+    prefix like 0984465a 422s the commit API even though the commit exists, and
+    raw.githubusercontent.com 404s the same way. Listing recent commits (for the
+    policy file when we have its name) recovers the full SHA for DynamoDB rows
+    that still carry the old abbrev.
+    """
+    if not sha or len(sha) < 7 or len(sha) >= 40:
+        return sha
+
+    query = "per_page=30"
+    if policy_name:
+        query = (
+            f"path={urllib.parse.quote(POLICY_PREFIX + policy_name, safe='/')}&"
+            + query
+        )
+    raw = _http_get(
+        f"https://api.github.com/repos/{GITHUB_REPO}/commits?{query}",
+        "application/vnd.github+json",
+    )
+    if not raw:
+        return sha
+    try:
+        commits = json.loads(raw)
+    except ValueError as e:
+        print(f"[policy_diff] Could not parse commit list for {policy_name or sha}: {e}")
+        return sha
+    if not isinstance(commits, list):
+        return sha
+
+    matches = []
+    for commit in commits:
+        full = commit.get("sha", "") if isinstance(commit, dict) else ""
+        if full.startswith(sha) and full not in matches:
+            matches.append(full)
+
+    if len(matches) == 1:
+        print(
+            f"[policy_diff] Expanded {sha} to {matches[0]}"
+            + (f" for {policy_name}" if policy_name else "")
+        )
+        return matches[0]
+    if len(matches) > 1:
+        print(f"[policy_diff] SHA {sha} matches {len(matches)} recent commits")
+    else:
+        print(
+            f"[policy_diff] SHA {sha} matched no recent commit"
+            + (f" of {policy_name}" if policy_name else "")
+        )
+    return sha
+
+
 def wait_for_commit(commit_sha):
     """Poll until a commit is readable through the GitHub API.
 
@@ -170,6 +227,13 @@ def wait_for_commit(commit_sha):
         if _commit(commit_sha):
             return True
         _commit_cache.pop(commit_sha, None)
+        if len(commit_sha) < 40:
+            expanded = _expand_commit_sha(commit_sha)
+            if expanded != commit_sha:
+                commit_sha = expanded
+                if _commit(commit_sha):
+                    return True
+                _commit_cache.pop(commit_sha, None)
         if attempt < COMMIT_VISIBILITY_ATTEMPTS - 1:
             print(
                 f"[policy_diff] Commit {commit_sha[:8]} not visible yet, "
@@ -427,11 +491,19 @@ def resolve_change(commit_sha, policy_name, commit_url=""):
         return change
 
     commit = _commit(commit_sha)
+    if not commit and len(commit_sha) < 40:
+        expanded = _expand_commit_sha(commit_sha, policy_name)
+        if expanded != commit_sha:
+            commit_sha = expanded
+            change["commit_sha"] = expanded
+            commit = _commit(commit_sha)
     if not commit:
         return change
 
-    if not change["commit_url"]:
-        change["commit_url"] = commit.get("html_url", "")
+    if commit.get("html_url"):
+        change["commit_url"] = commit["html_url"]
+    elif not change["commit_url"]:
+        change["commit_url"] = f"https://github.com/{GITHUB_REPO}/commit/{commit_sha}"
 
     path = POLICY_PREFIX + policy_name
     entry = next(
@@ -550,19 +622,23 @@ def action_delta_phrase(added, removed, unknown=False):
 
 
 def unresolved(changes):
-    """The names of changes we tried to read from GitHub and could not.
+    """Labels of changes we tried to read from GitHub and could not.
 
     A record that never had a detail budget is not a failure. One that did and came
     back empty means the API was unreachable, so every phrase derived from it is a
     guess: actions_added is empty because nothing was read, not because nothing
     changed, and is_discovery is False for the same reason. Callers must alert on a
     non-empty result rather than publish the empty delta as fact.
+
+    The SHA is included so an abbreviated-SHA 422 is diagnosable, instead of
+    looking like a token outage.
     """
-    return [
-        c["name"]
-        for c in changes
-        if c.get("detailed", True) and not c.get("resolved")
-    ]
+    labels = []
+    for change in changes:
+        if change.get("detailed", True) and not change.get("resolved"):
+            sha = change.get("commit_sha") or "no sha"
+            labels.append(f"{change['name']} ({sha[:12] if len(sha) > 12 else sha})")
+    return labels
 
 
 def permissions_management_phrase(actions):

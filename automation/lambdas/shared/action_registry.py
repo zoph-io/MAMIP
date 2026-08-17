@@ -104,9 +104,11 @@ def is_literal_action(value):
 def same_commit(left, right):
     """True when two SHAs identify the same commit, at either abbreviation.
 
-    The registry stores full SHAs from git log, while notifications carry the
-    abbreviated form the scraper produces with %h, so an equality test would
-    never match and every re-render would look like a fresh discovery.
+    The registry stores full SHAs from git log. Notifications used to carry the
+    abbreviated %h the scraper produced, so an equality test would never match
+    and every re-render would look like a fresh discovery. The scraper now
+    stores %H; prefix matching remains so DynamoDB rows from before that change
+    still match.
     """
     if not left or not right:
         return False

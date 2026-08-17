@@ -381,7 +381,8 @@ def handler(event, context):
                 f"{policy_diff.plural(len(failed), 'change')} went into today's "
                 "digest without a readable diff, so their action delta is unknown "
                 "and any never-before-seen action in them was missed. Usually a "
-                "GitHub API outage or an expired token.",
+                "GitHub API outage, an expired token, or an abbreviated SHA "
+                "GitHub cannot resolve.",
                 discord.COLOR_ERROR,
                 fields=[("Policies", ", ".join(failed[:10]), False)],
             )

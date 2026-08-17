@@ -206,7 +206,11 @@ process_changes() {
                 log "Committing $file with version $POLICY_VERSION"
                 git add "$file"
                 git commit -m "$COMMIT_MESSAGE"
-                COMMIT_ID=$(git log --format="%h" -n 1)
+                # Full 40-char SHA. git %h is unique in this clone, not in GitHub's
+                # object store: 0984465a 422s the commit API and 404s the raw CDN,
+                # so the digest published SageMakerStudioUserIAMDefaultExecutionPolicy
+                # with an unknown action delta.
+                COMMIT_ID=$(git log --format="%H" -n 1)
                 ALL_COMMITS+=("$COMMIT_ID")
                 POLICY_COMMIT_MAP["$POLICY_NAME"]="$COMMIT_ID"
             fi

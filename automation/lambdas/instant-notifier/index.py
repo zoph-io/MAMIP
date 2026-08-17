@@ -537,7 +537,8 @@ def handler(event, context):
                     f"{policy_diff.plural(len(blind), 'change')} published without a "
                     "readable diff, so the action delta is unknown and a "
                     "never-before-seen action in them would have been missed. "
-                    "Usually a GitHub API outage or an expired token.",
+                    "Usually a GitHub API outage, an expired token, or an "
+                    "abbreviated SHA GitHub cannot resolve.",
                     discord.COLOR_ERROR,
                     fields=[("Policies", ", ".join(blind[:10]), False)],
                 )
