@@ -41,7 +41,6 @@
                     ],
                     "Condition": {
                         "StringEquals": {
-                            "ec2:AuthorizedService": "sagemaker.amazonaws.com",
                             "ec2:Permission": "INSTANCE-ATTACH",
                             "aws:ResourceTag/AmazonSageMakerManaged": "true",
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
@@ -113,8 +112,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2026-07-30T19:42:26+00:00"
+        "CreateDate": "2026-08-17T21:07:28+00:00"
     }
 }
