@@ -83,11 +83,26 @@
                             "aws:ResourceTag/AWSElasticDisasterRecoveryManaged": "false"
                         }
                     }
+                },
+                {
+                    "Sid": "DRSReadOnlyAccess9",
+                    "Effect": "Allow",
+                    "Action": [
+                        "drs:GetRecoveryPlan",
+                        "drs:ListRecoveryPlans",
+                        "drs:GetRecoveryPlanStep",
+                        "drs:ListRecoveryPlanSteps",
+                        "drs:GetRecoveryPlanExecution",
+                        "drs:ListRecoveryPlanExecutions",
+                        "drs:GetRecoveryPlanExecutionStep",
+                        "drs:ListRecoveryPlanExecutionSteps"
+                    ],
+                    "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v5",
+        "VersionId": "v6",
         "IsDefaultVersion": true,
-        "CreateDate": "2024-07-29T19:39:26+00:00"
+        "CreateDate": "2026-08-18T14:47:15+00:00"
     }
 }
