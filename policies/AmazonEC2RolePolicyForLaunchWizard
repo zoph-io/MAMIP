@@ -68,6 +68,36 @@
                 },
                 {
                     "Effect": "Allow",
+                    "Action": "ec2:CreateVolume",
+                    "Resource": "arn:aws:ec2:*:*:volume/*",
+                    "Condition": {
+                        "StringLike": {
+                            "aws:RequestTag/LaunchWizardResourceGroupID": "*"
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "ec2:CreateTags",
+                    "Resource": "arn:aws:ec2:*:*:volume/*",
+                    "Condition": {
+                        "StringEquals": {
+                            "ec2:CreateAction": "CreateVolume"
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "ec2:CreateTags",
+                    "Resource": "arn:aws:ec2:*:*:volume/*",
+                    "Condition": {
+                        "StringLike": {
+                            "ec2:ResourceTag/LaunchWizardResourceGroupID": "*"
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
                     "Action": [
                         "s3:GetObject",
                         "s3:ListBucket",
@@ -166,8 +196,8 @@
                 }
             ]
         },
-        "VersionId": "v11",
+        "VersionId": "v12",
         "IsDefaultVersion": true,
-        "CreateDate": "2024-09-25T22:40:50+00:00"
+        "CreateDate": "2026-08-18T19:27:15+00:00"
     }
 }
