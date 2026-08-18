@@ -8503,7 +8503,8 @@
     "limitations": "This path provides administrative access only if the passed role has administrative permissions (e.g., AdministratorAccess or an equivalent custom policy). If only limited roles are available, you gain access limited to those permissions. However, even limited access may enable multi-hop attacks.\n\nThis path requires the attacker to already have Remote Code Execution (RCE) on an EC2 instance with the appropriate instance role permissions \u2014 a significant prerequisite compared to paths that only require an IAM user or role. In practice, this scenario arises when an EC2 instance running a vulnerable web application or workload has an overly permissive instance role.\n",
     "discoveryAttribution": {
       "firstDocumented": {
-        "source": "ReverseC Labs",
+        "author": "Tom Taylor-MacLean and Mohit Gupta",
+        "organization": "Reversec",
         "date": 2025,
         "link": "https://labs.reversec.com/posts/2025/08/another-ecs-privilege-escalation-path"
       }
@@ -8718,7 +8719,7 @@
     },
     "gitMetadata": {
       "created": "2026-02-16T14:01:45Z",
-      "lastUpdated": "2026-05-31T01:32:59Z",
+      "lastUpdated": "2026-08-17T19:04:04Z",
       "contributors": [
         {
           "name": "Seth Art",
@@ -8829,7 +8830,8 @@
     "limitations": "This path provides administrative access only if the passed role has administrative permissions (e.g., AdministratorAccess or an equivalent custom policy). If only limited roles are available, you gain access limited to those permissions. However, even limited access may enable multi-hop attacks.\n\nThis path requires an existing task definition in the cluster. The `--overrides` parameter allows overriding the `taskRoleArn` and container commands at runtime without creating a new task definition. This path uses the Fargate launch type and does not require an EC2 container instance \u2014 see ECS-009 for the EC2 launch type equivalent.\n",
     "discoveryAttribution": {
       "firstDocumented": {
-        "source": "ReverseC Labs",
+        "author": "Tom Taylor-MacLean and Mohit Gupta",
+        "organization": "Reversec",
         "date": 2025,
         "link": "https://labs.reversec.com/posts/2025/08/another-ecs-privilege-escalation-path"
       },
@@ -9041,7 +9043,7 @@
     },
     "gitMetadata": {
       "created": "2026-02-16T14:01:45Z",
-      "lastUpdated": "2026-05-31T01:32:59Z",
+      "lastUpdated": "2026-08-17T19:04:04Z",
       "contributors": [
         {
           "name": "Seth Art",
