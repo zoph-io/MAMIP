@@ -1,0 +1,74 @@
+[
+  {
+    "findingDetails": "The action wafv2:ValidateNetworkSecurityManagerWebACLConfiguration does not exist.",
+    "findingType": "ERROR",
+    "issueCode": "INVALID_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 12
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 9
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 2756,
+            "offset": 2756
+          },
+          "end": {
+            "line": 1,
+            "column": 2813,
+            "offset": 2813
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "The action wafv2:ValidateNetworkSecurityManagerRuleConfiguration does not exist.",
+    "findingType": "ERROR",
+    "issueCode": "INVALID_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 12
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 10
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 2815,
+            "offset": 2815
+          },
+          "end": {
+            "line": 1,
+            "column": 2870,
+            "offset": 2870
+          }
+        }
+      }
+    ]
+  }
+]

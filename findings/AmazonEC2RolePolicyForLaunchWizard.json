@@ -78,6 +78,84 @@
     ]
   },
   {
+    "findingDetails": "We recommend replacing the key aws:RequestTag/LaunchWizardResourceGroupID in the condition block of StringLike with {aws:RequestTag/LaunchWizardResourceGroupID: false} to ensure better enforcement of the condition.",
+    "findingType": "SUGGESTION",
+    "issueCode": "EQUIVALENT_TO_NULL_FALSE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 4
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringLike"
+          },
+          {
+            "value": "aws:RequestTag/LaunchWizardResourceGroupID"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 1236,
+            "offset": 1236
+          },
+          "end": {
+            "line": 1,
+            "column": 1239,
+            "offset": 1239
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "We recommend replacing the key ec2:ResourceTag/LaunchWizardResourceGroupID in the condition block of StringLike with {ec2:ResourceTag/LaunchWizardResourceGroupID: false} to ensure better enforcement of the condition.",
+    "findingType": "SUGGESTION",
+    "issueCode": "EQUIVALENT_TO_NULL_FALSE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-suggestion-equivalent-to-null-false",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 6
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "StringLike"
+          },
+          {
+            "value": "ec2:ResourceTag/LaunchWizardResourceGroupID"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 1566,
+            "offset": 1566
+          },
+          "end": {
+            "line": 1,
+            "column": 1569,
+            "offset": 1569
+          }
+        }
+      }
+    ]
+  },
+  {
     "findingDetails": "We recommend replacing the key ssm:resourceTag/LaunchWizardApplicationType in the condition block of StringLike with {ssm:resourceTag/LaunchWizardApplicationType: false} to ensure better enforcement of the condition.",
     "findingType": "SUGGESTION",
     "issueCode": "EQUIVALENT_TO_NULL_FALSE",
@@ -89,7 +167,7 @@
             "value": "Statement"
           },
           {
-            "index": 8
+            "index": 11
           },
           {
             "value": "Condition"
@@ -104,13 +182,13 @@
         "span": {
           "start": {
             "line": 1,
-            "column": 2403,
-            "offset": 2403
+            "column": 2906,
+            "offset": 2906
           },
           "end": {
             "line": 1,
-            "column": 2406,
-            "offset": 2406
+            "column": 2909,
+            "offset": 2909
           }
         }
       }

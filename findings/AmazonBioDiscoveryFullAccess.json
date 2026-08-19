@@ -1,0 +1,80 @@
+[
+  {
+    "findingDetails": "Use the operator type String instead of operator ARN for the condition key kms:EncryptionContext:aws:sso:instance-arn.",
+    "findingType": "WARNING",
+    "issueCode": "TYPE_MISMATCH",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-general-warning-type-mismatch",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 4
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "ArnLike"
+          },
+          {
+            "key": "kms:EncryptionContext:aws:sso:instance-arn"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 1798,
+            "offset": 1798
+          },
+          "end": {
+            "line": 1,
+            "column": 1842,
+            "offset": 1842
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "Use the operator type String instead of operator ARN for the condition key kms:EncryptionContext:aws:identitystore:identitystore-arn.",
+    "findingType": "WARNING",
+    "issueCode": "TYPE_MISMATCH",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-general-warning-type-mismatch",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 5
+          },
+          {
+            "value": "Condition"
+          },
+          {
+            "value": "ArnLike"
+          },
+          {
+            "key": "kms:EncryptionContext:aws:identitystore:identitystore-arn"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 2073,
+            "offset": 2073
+          },
+          "end": {
+            "line": 1,
+            "column": 2132,
+            "offset": 2132
+          }
+        }
+      }
+    ]
+  }
+]
