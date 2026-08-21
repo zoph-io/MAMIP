@@ -65,7 +65,8 @@
                     "Effect": "Allow",
                     "Action": [
                         "cloudformation:CreateStack",
-                        "cloudformation:TagResource"
+                        "cloudformation:TagResource",
+                        "cloudformation:UntagResource"
                     ],
                     "Resource": [
                         "arn:aws:cloudformation:*:*:stack/DataZone*"
@@ -331,8 +332,8 @@
                 }
             ]
         },
-        "VersionId": "v4",
+        "VersionId": "v5",
         "IsDefaultVersion": true,
-        "CreateDate": "2024-10-23T18:29:09+00:00"
+        "CreateDate": "2026-08-21T22:27:22+00:00"
     }
 }
