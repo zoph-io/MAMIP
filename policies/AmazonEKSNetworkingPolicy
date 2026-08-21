@@ -17,7 +17,12 @@
                         "ForAllValues:StringEquals": {
                             "aws:TagKeys": [
                                 "eks:eks-cluster-name",
-                                "eks:kubernetes-cni-node-name"
+                                "eks:kubernetes-cni-node-name",
+                                "sgp.eks.amazonaws.com/instance-id",
+                                "sgp.eks.amazonaws.com/trunk-eni-id",
+                                "sgp.eks.amazonaws.com/vlan-id",
+                                "sgp.eks.amazonaws.com/managed",
+                                "sgp.eks.amazonaws.com/policy-ref"
                             ]
                         }
                     }
@@ -69,11 +74,19 @@
                             "aws:ResourceTag/eks:eks-cluster-name": "${aws:PrincipalTag/eks:eks-cluster-name}"
                         }
                     }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "ec2:AssociateTrunkInterface",
+                        "ec2:DisassociateTrunkInterface"
+                    ],
+                    "Resource": "*"
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2026-02-20T19:12:09+00:00"
+        "CreateDate": "2026-08-21T17:27:32+00:00"
     }
 }
