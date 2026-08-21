@@ -28,7 +28,9 @@
                     "Effect": "Allow",
                     "Action": [
                         "organizations:DescribeOrganization",
-                        "organizations:ListAccounts"
+                        "organizations:ListAccounts",
+                        "organizations:ListDelegatedAdministrators",
+                        "organizations:ListPolicies"
                     ],
                     "Resource": "*"
                 },
@@ -52,8 +54,8 @@
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2026-07-23T00:42:16+00:00"
+        "CreateDate": "2026-08-21T18:07:16+00:00"
     }
 }
