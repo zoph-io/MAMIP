@@ -83,6 +83,19 @@
                     "Resource": "*"
                 },
                 {
+                    "Sid": "S3BucketTagReadPermissions",
+                    "Effect": "Allow",
+                    "Action": [
+                        "s3:ListTagsForResource"
+                    ],
+                    "Resource": "arn:aws:s3:::*",
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:PrincipalAccount": "${aws:ResourceAccount}"
+                        }
+                    }
+                },
+                {
                     "Sid": "RecoveryPointTaggingPermissions",
                     "Effect": "Allow",
                     "Action": [
@@ -97,8 +110,8 @@
                 }
             ]
         },
-        "VersionId": "v4",
+        "VersionId": "v5",
         "IsDefaultVersion": true,
-        "CreateDate": "2024-05-17T17:12:03+00:00"
+        "CreateDate": "2026-08-24T18:17:18+00:00"
     }
 }
