@@ -8,7 +8,8 @@
                     "Effect": "Allow",
                     "Action": [
                         "cloudformation:CreateStack",
-                        "cloudformation:TagResource"
+                        "cloudformation:TagResource",
+                        "cloudformation:UntagResource"
                     ],
                     "Resource": [
                         "arn:aws:cloudformation:*:*:stack/DataZone*"
@@ -1950,15 +1951,14 @@
                     }
                 },
                 {
-                    "Sid": "SMAppDelete",
+                    "Sid": "SMApp",
                     "Effect": "Allow",
-                    "Action": "sagemaker:DeleteApp",
-                    "Resource": [
-                        "arn:aws:sagemaker:*:*:app/*/*/codeeditor/*",
-                        "arn:aws:sagemaker:*:*:app/*/*/CodeEditor/*",
-                        "arn:aws:sagemaker:*:*:app/*/*/jupyterlab/*",
-                        "arn:aws:sagemaker:*:*:app/*/*/JupyterLab/*"
+                    "Action": [
+                        "sagemaker:CreateApp",
+                        "sagemaker:AddTags",
+                        "sagemaker:DeleteApp"
                     ],
+                    "Resource": "arn:aws:sagemaker:*:*:app/*",
                     "Condition": {
                         "Null": {
                             "aws:ResourceTag/AmazonDataZoneProject": "false"
@@ -2999,8 +2999,8 @@
                 }
             ]
         },
-        "VersionId": "v81",
+        "VersionId": "v82",
         "IsDefaultVersion": true,
-        "CreateDate": "2026-06-04T21:27:16+00:00"
+        "CreateDate": "2026-08-24T20:37:11+00:00"
     }
 }
