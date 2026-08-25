@@ -62,17 +62,17 @@ const personSchema = {
 
 export default function AboutPage() {
   return (
-    <div className="max-w-4xl mx-auto space-y-10">
+    <div className="space-y-10">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
       />
       {/* Header */}
       <div className="py-8 border-b border-zinc-100 dark:border-zinc-800">
-        <h1 className="text-3xl font-bold font-mono text-zinc-900 dark:text-white mb-3">
+        <h1 className="text-2xl font-bold font-mono text-zinc-900 dark:text-white mb-2">
           About IAMTrail
         </h1>
-        <p className="text-base text-zinc-600 dark:text-zinc-400 max-w-2xl">
+        <p className="text-sm text-zinc-600 dark:text-zinc-400 max-w-3xl">
           An unofficial archive tracking AWS Managed IAM Policy changes,
           endpoint updates, and GuardDuty announcements since 2019 - with full
           version history, diffs, and dedicated RSS feeds.

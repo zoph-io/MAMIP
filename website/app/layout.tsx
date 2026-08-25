@@ -116,7 +116,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className="min-h-screen bg-white dark:bg-zinc-950"
+        className="min-h-screen bg-white dark:bg-zinc-950 font-sans"
         suppressHydrationWarning
       >
         <NavBar />

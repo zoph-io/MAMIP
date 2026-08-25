@@ -217,7 +217,7 @@ function ManageContent() {
   if (error && !subscription) {
     return (
       <div className="max-w-lg mx-auto py-16 text-center">
-        <h1 className="text-xl font-bold font-mono text-zinc-900 dark:text-white mb-4">
+        <h1 className="text-2xl font-bold font-mono text-zinc-900 dark:text-white mb-4">
           Invalid or expired link
         </h1>
         <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-6">{error}</p>
@@ -232,7 +232,7 @@ function ManageContent() {
   }
 
   return (
-    <div className="max-w-2xl mx-auto space-y-6">
+    <div className="space-y-6">
       <div className="py-8 border-b border-zinc-100 dark:border-zinc-800">
         <h1 className="text-2xl font-bold font-mono text-zinc-900 dark:text-white mb-2">
           Manage Subscription

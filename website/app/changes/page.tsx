@@ -59,53 +59,55 @@ export default async function ChangesPage() {
   const { changes, stats } = data;
 
   return (
-    <div className="max-w-4xl mx-auto space-y-8">
+    <div className="space-y-8">
       <div className="py-8 border-b border-zinc-100 dark:border-zinc-800">
-        <div className="flex items-center gap-3 mb-2">
-          <h1 className="text-2xl font-bold font-mono text-zinc-900 dark:text-white">
-            Changes
-          </h1>
-          <a
-            href="/feeds/iam-policies.xml"
-            title="Subscribe via RSS"
-            className="text-zinc-400 hover:text-orange-500 dark:text-zinc-500 dark:hover:text-orange-400 transition-colors"
-          >
-            <Rss className="w-5 h-5" />
-          </a>
+        <div className="max-w-3xl">
+          <div className="flex items-center gap-3 mb-2">
+            <h1 className="text-2xl font-bold font-mono text-zinc-900 dark:text-white">
+              Changes
+            </h1>
+            <a
+              href="/feeds/iam-policies.xml"
+              title="Subscribe via RSS"
+              className="text-zinc-400 hover:text-orange-500 dark:text-zinc-500 dark:hover:text-orange-400 transition-colors"
+            >
+              <Rss className="w-5 h-5" />
+            </a>
+          </div>
+          <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+            Every recent change to an AWS Managed IAM Policy, newest first, with
+            the actions added and removed named in full. AWS reissues a policy
+            version for a Resource or Condition edit more often than for a
+            permission change, so a change with no action delta is normal and says
+            so rather than implying nothing happened.
+          </p>
+          <p className="mt-3 text-xs text-zinc-500 dark:text-zinc-400">
+            {stats.total.toLocaleString("en-US")} changes between{" "}
+            {formatDay(stats.oldest)} and {formatDay(stats.newest)}.{" "}
+            {stats.discoveries.toLocaleString("en-US")} named something never seen
+            anywhere in the archive before, and{" "}
+            {stats.permissionsManagement.toLocaleString("en-US")} added a
+            permissions management action. Older changes are in each policy&apos;s
+            own version history, back to 2019.
+          </p>
+          <p className="mt-3 text-xs text-zinc-500 dark:text-zinc-400">
+            These land in real time in the{" "}
+            <a
+              href="/feeds/iam-policies.xml"
+              className="text-red-600 dark:text-red-400 hover:underline font-medium"
+            >
+              IAM policies RSS feed
+            </a>{" "}
+            and by email via{" "}
+            <Link
+              href="/subscribe"
+              className="text-red-600 dark:text-red-400 hover:underline font-medium"
+            >
+              digests
+            </Link>
+            .
+          </p>
         </div>
-        <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-          Every recent change to an AWS Managed IAM Policy, newest first, with
-          the actions added and removed named in full. AWS reissues a policy
-          version for a Resource or Condition edit more often than for a
-          permission change, so a change with no action delta is normal and says
-          so rather than implying nothing happened.
-        </p>
-        <p className="mt-3 text-xs text-zinc-500 dark:text-zinc-400">
-          {stats.total.toLocaleString("en-US")} changes between{" "}
-          {formatDay(stats.oldest)} and {formatDay(stats.newest)}.{" "}
-          {stats.discoveries.toLocaleString("en-US")} named something never seen
-          anywhere in the archive before, and{" "}
-          {stats.permissionsManagement.toLocaleString("en-US")} added a
-          permissions management action. Older changes are in each policy&apos;s
-          own version history, back to 2019.
-        </p>
-        <p className="mt-3 text-xs text-zinc-500 dark:text-zinc-400">
-          These land in real time in the{" "}
-          <a
-            href="/feeds/iam-policies.xml"
-            className="text-red-600 dark:text-red-400 hover:underline font-medium"
-          >
-            IAM policies RSS feed
-          </a>{" "}
-          and by email via{" "}
-          <Link
-            href="/subscribe"
-            className="text-red-600 dark:text-red-400 hover:underline font-medium"
-          >
-            digests
-          </Link>
-          .
-        </p>
       </div>
 
       <ChangeTimeline

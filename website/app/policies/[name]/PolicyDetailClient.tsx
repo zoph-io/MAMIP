@@ -255,7 +255,7 @@ export default function PolicyDetailClient({
   if (error || !policy) {
     return (
       <div className="text-center py-16">
-        <h1 className="text-xl font-bold font-mono text-zinc-900 dark:text-white mb-2">
+        <h1 className="text-2xl font-bold font-mono text-zinc-900 dark:text-white mb-2">
           Policy Not Found
         </h1>
         <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-6">

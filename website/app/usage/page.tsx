@@ -94,12 +94,12 @@ export default function UsagePage() {
       : [];
 
   return (
-    <div className="max-w-5xl mx-auto space-y-10 pb-16">
+    <div className="space-y-10">
       <div className="py-8 border-b border-zinc-200 dark:border-zinc-800">
-        <h1 className="text-3xl font-bold font-mono text-zinc-900 dark:text-white mb-3">
+        <h1 className="text-2xl font-bold font-mono text-zinc-900 dark:text-white mb-2">
           Notification usage
         </h1>
-        <p className="text-base text-zinc-600 dark:text-zinc-400 max-w-2xl">
+        <p className="text-sm text-zinc-600 dark:text-zinc-400 max-w-3xl">
           Aggregate, privacy-preserving statistics about how people use
           IAMTrail email notifications. Numbers are regenerated when the site
           is deployed; they are not a live stream.

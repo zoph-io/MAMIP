@@ -67,29 +67,31 @@ function Snippet({ children }: { children: string }) {
 
 export default function ApiPage() {
   return (
-    <div className="max-w-4xl mx-auto space-y-10">
+    <div className="space-y-10">
       <div className="py-8 border-b border-zinc-100 dark:border-zinc-800">
-        <div className="flex items-center gap-3 mb-2">
-          <Braces className="w-7 h-7 text-red-600 dark:text-red-400" />
-          <h1 className="text-2xl font-bold font-mono text-zinc-900 dark:text-white">
-            API
-          </h1>
-          <span className="inline-block px-2 py-0.5 text-[10px] font-mono font-semibold uppercase tracking-widest bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 rounded">
-            v1
-          </span>
+        <div className="max-w-3xl">
+          <div className="flex items-center gap-3 mb-2">
+            <Braces className="w-7 h-7 text-red-600 dark:text-red-400" />
+            <h1 className="text-2xl font-bold font-mono text-zinc-900 dark:text-white">
+              API
+            </h1>
+            <span className="inline-block px-2 py-0.5 text-[10px] font-mono font-semibold uppercase tracking-widest bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 rounded">
+              v1
+            </span>
+          </div>
+          <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+            The whole archive as JSON. No key and no sign-up - these are static
+            files on the same CloudFront distribution that serves the site,
+            regenerated on every deploy. Use them in a script, a dashboard, or a
+            CI check that fails when a policy you depend on changes.
+          </p>
+          <p className="mt-3 text-xs text-zinc-500 dark:text-zinc-400">
+            Base URL:{" "}
+            <code className="font-mono text-zinc-700 dark:text-zinc-300">
+              {BASE}
+            </code>
+          </p>
         </div>
-        <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-          The whole archive as JSON. No key and no sign-up - these are static
-          files on the same CloudFront distribution that serves the site,
-          regenerated on every deploy. Use them in a script, a dashboard, or a
-          CI check that fails when a policy you depend on changes.
-        </p>
-        <p className="mt-3 text-xs text-zinc-500 dark:text-zinc-400">
-          Base URL:{" "}
-          <code className="font-mono text-zinc-700 dark:text-zinc-300">
-            {BASE}
-          </code>
-        </p>
       </div>
 
       <section className="space-y-4">

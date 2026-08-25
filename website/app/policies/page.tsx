@@ -186,7 +186,7 @@ function PoliciesContent() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="py-4 border-b border-zinc-100 dark:border-zinc-800">
+      <div className="py-8 border-b border-zinc-100 dark:border-zinc-800">
         <div className="flex items-center gap-3 mb-1">
           <h1 className="text-2xl font-bold font-mono text-zinc-900 dark:text-white">
             All Policies

@@ -64,61 +64,63 @@ export default async function DiscoveriesPage() {
   const { services, actions, stats, archiveStart } = data;
 
   return (
-    <div className="max-w-4xl mx-auto space-y-8">
+    <div className="space-y-8">
       <div className="py-8 border-b border-zinc-100 dark:border-zinc-800">
-        <div className="flex items-center gap-3 mb-2">
-          <h1 className="text-2xl font-bold font-mono text-zinc-900 dark:text-white">
-            Discoveries
-          </h1>
-          <a
-            href="/feeds/discoveries.xml"
-            title="Subscribe via RSS"
-            className="text-zinc-400 hover:text-orange-500 dark:text-zinc-500 dark:hover:text-orange-400 transition-colors"
-          >
-            <Rss className="w-5 h-5" />
-          </a>
-        </div>
-        <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-          IAM actions and service prefixes appearing for the first time anywhere
-          in the AWS managed policy archive. AWS usually ships the IAM component
-          of a service before the SDK and the docs, so a brand-new prefix is
-          often the earliest public sign of something unannounced.
-        </p>
-        <p className="mt-3 text-xs text-zinc-500 dark:text-zinc-400">
-          {stats.totalNewServices} service prefixes and{" "}
-          {stats.totalNewActions.toLocaleString("en-US")} actions have appeared
-          since tracking began on {archiveStart}. A further{" "}
-          {stats.servicesSinceStart} prefixes were already present at that point,
-          so they have no discoverable first sighting and are excluded here.
-        </p>
-        {TELEGRAM_URL ? (
-          <p className="mt-3 text-xs text-zinc-500 dark:text-zinc-400">
-            These land in real time on the read-only{" "}
-            <a
-              href={TELEGRAM_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-red-600 dark:text-red-400 hover:underline font-medium"
-            >
-              Telegram channel
-            </a>{" "}
-            , by email via the{" "}
-            <Link
-              href="/subscribe"
-              className="text-red-600 dark:text-red-400 hover:underline font-medium"
-            >
-              discoveries topic
-            </Link>
-            , and in the{" "}
+        <div className="max-w-3xl">
+          <div className="flex items-center gap-3 mb-2">
+            <h1 className="text-2xl font-bold font-mono text-zinc-900 dark:text-white">
+              Discoveries
+            </h1>
             <a
               href="/feeds/discoveries.xml"
-              className="text-red-600 dark:text-red-400 hover:underline font-medium"
+              title="Subscribe via RSS"
+              className="text-zinc-400 hover:text-orange-500 dark:text-zinc-500 dark:hover:text-orange-400 transition-colors"
             >
-              discoveries RSS feed
+              <Rss className="w-5 h-5" />
             </a>
-            .
+          </div>
+          <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+            IAM actions and service prefixes appearing for the first time anywhere
+            in the AWS managed policy archive. AWS usually ships the IAM component
+            of a service before the SDK and the docs, so a brand-new prefix is
+            often the earliest public sign of something unannounced.
           </p>
-        ) : null}
+          <p className="mt-3 text-xs text-zinc-500 dark:text-zinc-400">
+            {stats.totalNewServices} service prefixes and{" "}
+            {stats.totalNewActions.toLocaleString("en-US")} actions have appeared
+            since tracking began on {archiveStart}. A further{" "}
+            {stats.servicesSinceStart} prefixes were already present at that point,
+            so they have no discoverable first sighting and are excluded here.
+          </p>
+          {TELEGRAM_URL ? (
+            <p className="mt-3 text-xs text-zinc-500 dark:text-zinc-400">
+              These land in real time on the read-only{" "}
+              <a
+                href={TELEGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-red-600 dark:text-red-400 hover:underline font-medium"
+              >
+                Telegram channel
+              </a>{" "}
+              , by email via the{" "}
+              <Link
+                href="/subscribe"
+                className="text-red-600 dark:text-red-400 hover:underline font-medium"
+              >
+                discoveries topic
+              </Link>
+              , and in the{" "}
+              <a
+                href="/feeds/discoveries.xml"
+                className="text-red-600 dark:text-red-400 hover:underline font-medium"
+              >
+                discoveries RSS feed
+              </a>
+              .
+            </p>
+          ) : null}
+        </div>
       </div>
 
       <DiscoveryExplorer

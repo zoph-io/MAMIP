@@ -127,13 +127,13 @@ export default function AccountsPage() {
   const rows = Math.min(Math.max(query.split("\n").length, 3), 12);
 
   return (
-    <div className="max-w-4xl mx-auto space-y-6">
+    <div className="space-y-6">
       {/* Header */}
       <div className="py-8 border-b border-zinc-100 dark:border-zinc-800">
         <h1 className="text-2xl font-bold font-mono text-zinc-900 dark:text-white mb-2">
           AWS Account Lookup
         </h1>
-        <p className="text-sm text-zinc-600 dark:text-zinc-400 max-w-2xl">
+        <p className="text-sm text-zinc-600 dark:text-zinc-400 max-w-3xl">
           Found unknown account IDs in your CloudTrail logs, S3 bucket policies,
           or IAM trust relationships? Paste one or a whole list here to identify
           the owners.
