@@ -1,0 +1,26 @@
+{
+    "PolicyVersion": {
+        "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Sid": "AllowChatActions",
+                    "Effect": "Allow",
+                    "Action": [
+                        "aidevops:CreateChat",
+                        "aidevops:SendMessage"
+                    ],
+                    "Resource": "arn:aws:aidevops:*:*:agentspace/${aws:PrincipalTag/AgentSpaceId}",
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
+                }
+            ]
+        },
+        "VersionId": "v1",
+        "IsDefaultVersion": true,
+        "CreateDate": "2026-08-26T21:07:07+00:00"
+    }
+}
