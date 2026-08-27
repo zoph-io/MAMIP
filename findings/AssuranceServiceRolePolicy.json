@@ -1,0 +1,850 @@
+[
+  {
+    "findingDetails": "The 12794 characters in the identity policy, excluding whitespace, exceed the 10240 character maximum for inline and managed policies. We recommend that you use multiple granular policies.",
+    "findingType": "WARNING",
+    "issueCode": "POLICY_SIZE_EXCEEDS_IDENTITY_POLICY_QUOTA",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-general-warning-policy-size-exceeds-identity-policy-quota",
+    "locations": [
+      {
+        "path": [],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 0,
+            "offset": 0
+          },
+          "end": {
+            "line": 1,
+            "column": 13245,
+            "offset": 13245
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "The service assurance:CreateComment specified in the action does not exist.",
+    "findingType": "ERROR",
+    "issueCode": "INVALID_SERVICE_IN_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 5
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 0
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 12572,
+            "offset": 12572
+          },
+          "end": {
+            "line": 1,
+            "column": 12597,
+            "offset": 12597
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "The service assurance:DownloadEvidence specified in the action does not exist.",
+    "findingType": "ERROR",
+    "issueCode": "INVALID_SERVICE_IN_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 5
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 1
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 12599,
+            "offset": 12599
+          },
+          "end": {
+            "line": 1,
+            "column": 12627,
+            "offset": 12627
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "The service assurance:GetAssessment specified in the action does not exist.",
+    "findingType": "ERROR",
+    "issueCode": "INVALID_SERVICE_IN_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 5
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 2
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 12629,
+            "offset": 12629
+          },
+          "end": {
+            "line": 1,
+            "column": 12654,
+            "offset": 12654
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "The service assurance:GetComment specified in the action does not exist.",
+    "findingType": "ERROR",
+    "issueCode": "INVALID_SERVICE_IN_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 5
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 3
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 12656,
+            "offset": 12656
+          },
+          "end": {
+            "line": 1,
+            "column": 12678,
+            "offset": 12678
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "The service assurance:GetControl specified in the action does not exist.",
+    "findingType": "ERROR",
+    "issueCode": "INVALID_SERVICE_IN_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 5
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 4
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 12680,
+            "offset": 12680
+          },
+          "end": {
+            "line": 1,
+            "column": 12702,
+            "offset": 12702
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "The service assurance:GetEnvironment specified in the action does not exist.",
+    "findingType": "ERROR",
+    "issueCode": "INVALID_SERVICE_IN_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 5
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 5
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 12704,
+            "offset": 12704
+          },
+          "end": {
+            "line": 1,
+            "column": 12730,
+            "offset": 12730
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "The service assurance:GetEvidence specified in the action does not exist.",
+    "findingType": "ERROR",
+    "issueCode": "INVALID_SERVICE_IN_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 5
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 6
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 12732,
+            "offset": 12732
+          },
+          "end": {
+            "line": 1,
+            "column": 12755,
+            "offset": 12755
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "The service assurance:GetProject specified in the action does not exist.",
+    "findingType": "ERROR",
+    "issueCode": "INVALID_SERVICE_IN_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 5
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 7
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 12757,
+            "offset": 12757
+          },
+          "end": {
+            "line": 1,
+            "column": 12779,
+            "offset": 12779
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "The service assurance:GetTask specified in the action does not exist.",
+    "findingType": "ERROR",
+    "issueCode": "INVALID_SERVICE_IN_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 5
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 8
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 12781,
+            "offset": 12781
+          },
+          "end": {
+            "line": 1,
+            "column": 12800,
+            "offset": 12800
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "The service assurance:ListAssessmentAnnotations specified in the action does not exist.",
+    "findingType": "ERROR",
+    "issueCode": "INVALID_SERVICE_IN_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 5
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 9
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 12802,
+            "offset": 12802
+          },
+          "end": {
+            "line": 1,
+            "column": 12839,
+            "offset": 12839
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "The service assurance:ListAssessments specified in the action does not exist.",
+    "findingType": "ERROR",
+    "issueCode": "INVALID_SERVICE_IN_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 5
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 10
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 12841,
+            "offset": 12841
+          },
+          "end": {
+            "line": 1,
+            "column": 12868,
+            "offset": 12868
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "The service assurance:ListComments specified in the action does not exist.",
+    "findingType": "ERROR",
+    "issueCode": "INVALID_SERVICE_IN_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 5
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 11
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 12870,
+            "offset": 12870
+          },
+          "end": {
+            "line": 1,
+            "column": 12894,
+            "offset": 12894
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "The service assurance:ListControls specified in the action does not exist.",
+    "findingType": "ERROR",
+    "issueCode": "INVALID_SERVICE_IN_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 5
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 12
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 12896,
+            "offset": 12896
+          },
+          "end": {
+            "line": 1,
+            "column": 12920,
+            "offset": 12920
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "The service assurance:ListDiscoveredResources specified in the action does not exist.",
+    "findingType": "ERROR",
+    "issueCode": "INVALID_SERVICE_IN_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 5
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 13
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 12922,
+            "offset": 12922
+          },
+          "end": {
+            "line": 1,
+            "column": 12957,
+            "offset": 12957
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "The service assurance:ListEnabledFrameworks specified in the action does not exist.",
+    "findingType": "ERROR",
+    "issueCode": "INVALID_SERVICE_IN_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 5
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 14
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 12959,
+            "offset": 12959
+          },
+          "end": {
+            "line": 1,
+            "column": 12992,
+            "offset": 12992
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "The service assurance:ListEvidence specified in the action does not exist.",
+    "findingType": "ERROR",
+    "issueCode": "INVALID_SERVICE_IN_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 5
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 15
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 12994,
+            "offset": 12994
+          },
+          "end": {
+            "line": 1,
+            "column": 13018,
+            "offset": 13018
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "The service assurance:ListEvidenceAnnotations specified in the action does not exist.",
+    "findingType": "ERROR",
+    "issueCode": "INVALID_SERVICE_IN_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 5
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 16
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 13020,
+            "offset": 13020
+          },
+          "end": {
+            "line": 1,
+            "column": 13055,
+            "offset": 13055
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "The service assurance:ListProjects specified in the action does not exist.",
+    "findingType": "ERROR",
+    "issueCode": "INVALID_SERVICE_IN_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 5
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 17
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 13057,
+            "offset": 13057
+          },
+          "end": {
+            "line": 1,
+            "column": 13081,
+            "offset": 13081
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "The service assurance:ListTasks specified in the action does not exist.",
+    "findingType": "ERROR",
+    "issueCode": "INVALID_SERVICE_IN_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 5
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 18
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 13083,
+            "offset": 13083
+          },
+          "end": {
+            "line": 1,
+            "column": 13104,
+            "offset": 13104
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "The service assurance:StartResourceDiscovery specified in the action does not exist.",
+    "findingType": "ERROR",
+    "issueCode": "INVALID_SERVICE_IN_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 5
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 19
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 13106,
+            "offset": 13106
+          },
+          "end": {
+            "line": 1,
+            "column": 13140,
+            "offset": 13140
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "The service assurance:UpdateTask specified in the action does not exist.",
+    "findingType": "ERROR",
+    "issueCode": "INVALID_SERVICE_IN_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 5
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 20
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 13142,
+            "offset": 13142
+          },
+          "end": {
+            "line": 1,
+            "column": 13164,
+            "offset": 13164
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "The service assurance:UploadEvidence specified in the action does not exist.",
+    "findingType": "ERROR",
+    "issueCode": "INVALID_SERVICE_IN_ACTION",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service-in-action",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 5
+          },
+          {
+            "value": "Action"
+          },
+          {
+            "index": 21
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 13166,
+            "offset": 13166
+          },
+          "end": {
+            "line": 1,
+            "column": 13192,
+            "offset": 13192
+          }
+        }
+      }
+    ]
+  },
+  {
+    "findingDetails": "The service assurance does not exist. Use a valid service name.",
+    "findingType": "ERROR",
+    "issueCode": "INVALID_SERVICE",
+    "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-service",
+    "locations": [
+      {
+        "path": [
+          {
+            "value": "Statement"
+          },
+          {
+            "index": 5
+          },
+          {
+            "value": "Resource"
+          }
+        ],
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 13207,
+            "offset": 13207
+          },
+          "end": {
+            "line": 1,
+            "column": 13242,
+            "offset": 13242
+          }
+        }
+      }
+    ]
+  }
+]
