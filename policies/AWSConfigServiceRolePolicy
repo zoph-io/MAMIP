@@ -250,6 +250,7 @@
                         "bedrock-agentcore:GetPolicy",
                         "bedrock-agentcore:GetPolicyEngine",
                         "bedrock-agentcore:GetPolicyEngineSummary",
+                        "bedrock-agentcore:GetPolicyGeneration",
                         "bedrock-agentcore:GetPolicySummary",
                         "bedrock-agentcore:GetTokenVault",
                         "bedrock-agentcore:GetWorkloadIdentity",
@@ -268,6 +269,7 @@
                         "bedrock-agentcore:ListPolicies",
                         "bedrock-agentcore:ListPolicyEngines",
                         "bedrock-agentcore:ListPolicyEngineSummaries",
+                        "bedrock-agentcore:ListPolicyGenerations",
                         "bedrock-agentcore:ListPolicySummaries",
                         "bedrock-agentcore:ListTagsForResource",
                         "bedrock-agentcore:ListWorkloadIdentities",
@@ -1168,14 +1170,7 @@
                         "iotevents:ListDetectorModels",
                         "iotevents:ListInputs",
                         "iotevents:ListTagsForResource",
-                        "iotfleethub:DescribeApplication"
-                    ],
-                    "Resource": "*"
-                },
-                {
-                    "Sid": "AWSConfigServiceRolePolicyStatementID2",
-                    "Effect": "Allow",
-                    "Action": [
+                        "iotfleethub:DescribeApplication",
                         "iotfleethub:ListApplications",
                         "iotfleetwise:GetCampaign",
                         "iotfleetwise:GetDecoderManifest",
@@ -1184,7 +1179,14 @@
                         "iotfleetwise:GetSignalCatalog",
                         "iotfleetwise:GetStateTemplate",
                         "iotfleetwise:GetVehicle",
-                        "iotfleetwise:ListCampaigns",
+                        "iotfleetwise:ListCampaigns"
+                    ],
+                    "Resource": "*"
+                },
+                {
+                    "Sid": "AWSConfigServiceRolePolicyStatementID2",
+                    "Effect": "Allow",
+                    "Action": [
                         "iotfleetwise:ListDecoderManifestNetworkInterfaces",
                         "iotfleetwise:ListDecoderManifests",
                         "iotfleetwise:ListDecoderManifestSignals",
@@ -1972,6 +1974,7 @@
                         "sagemaker:DescribeCluster",
                         "sagemaker:DescribeClusterSchedulerConfig",
                         "sagemaker:DescribeCodeRepository",
+                        "sagemaker:DescribeComputeQuota",
                         "sagemaker:DescribeContext",
                         "sagemaker:DescribeDataQualityJobDefinition",
                         "sagemaker:DescribeDeviceFleet",
@@ -2005,11 +2008,13 @@
                         "sagemaker:DescribeOptimizationJob",
                         "sagemaker:DescribePartnerApp",
                         "sagemaker:DescribePipeline",
+                        "sagemaker:DescribePipelineExecution",
                         "sagemaker:DescribeProcessingJob",
                         "sagemaker:DescribeProject",
                         "sagemaker:DescribeSpace",
                         "sagemaker:DescribeStudioLifecycleConfig",
                         "sagemaker:DescribeTrainingJob",
+                        "sagemaker:DescribeTrainingPlan",
                         "sagemaker:DescribeTrial",
                         "sagemaker:DescribeTrialComponent",
                         "sagemaker:DescribeUserProfile",
@@ -2025,6 +2030,7 @@
                         "sagemaker:ListClusters",
                         "sagemaker:ListClusterSchedulerConfigs",
                         "sagemaker:ListCodeRepositories",
+                        "sagemaker:ListComputeQuotas",
                         "sagemaker:ListContexts",
                         "sagemaker:ListDataQualityJobDefinitions",
                         "sagemaker:ListDeviceFleets",
@@ -2059,6 +2065,7 @@
                         "sagemaker:ListNotebookInstances",
                         "sagemaker:ListOptimizationJobs",
                         "sagemaker:ListPartnerApps",
+                        "sagemaker:ListPipelineExecutions",
                         "sagemaker:ListPipelines",
                         "sagemaker:ListProcessingJobs",
                         "sagemaker:ListProjects",
@@ -2066,6 +2073,7 @@
                         "sagemaker:ListStudioLifecycleConfigs",
                         "sagemaker:ListTags",
                         "sagemaker:ListTrainingJobs",
+                        "sagemaker:ListTrainingPlans",
                         "sagemaker:ListTrialComponents",
                         "sagemaker:ListTrials",
                         "sagemaker:ListUserProfiles",
@@ -2408,8 +2416,8 @@
                 }
             ]
         },
-        "VersionId": "v94",
+        "VersionId": "v95",
         "IsDefaultVersion": true,
-        "CreateDate": "2026-07-30T23:27:21+00:00"
+        "CreateDate": "2026-08-27T22:07:08+00:00"
     }
 }
