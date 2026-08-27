@@ -1048,7 +1048,8 @@
                     "Action": [
                         "glue:PassConnection",
                         "glue:GetConnection",
-                        "glue:GetConnections"
+                        "glue:GetConnections",
+                        "glue:RefreshOAuth2Tokens"
                     ],
                     "Resource": "*",
                     "Condition": {
@@ -1062,7 +1063,8 @@
                     "Effect": "Allow",
                     "Action": [
                         "glue:GetConnection",
-                        "glue:GetConnections"
+                        "glue:GetConnections",
+                        "glue:RefreshOAuth2Tokens"
                     ],
                     "Resource": "arn:aws:glue:*:*:catalog"
                 },
@@ -2817,8 +2819,8 @@
                 }
             ]
         },
-        "VersionId": "v74",
+        "VersionId": "v75",
         "IsDefaultVersion": true,
-        "CreateDate": "2026-08-11T20:07:26+00:00"
+        "CreateDate": "2026-08-27T20:57:08+00:00"
     }
 }
