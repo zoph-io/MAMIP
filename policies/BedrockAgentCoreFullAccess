@@ -111,6 +111,37 @@
                     }
                 },
                 {
+                    "Sid": "BedrockAgentCorePolicyKMSGrantsAccess",
+                    "Effect": "Allow",
+                    "Action": [
+                        "kms:CreateGrant"
+                    ],
+                    "Resource": [
+                        "arn:aws:kms:*:*:key/*"
+                    ],
+                    "Condition": {
+                        "ForAllValues:StringEquals": {
+                            "kms:GrantOperations": [
+                                "Encrypt",
+                                "Decrypt",
+                                "GenerateDataKey",
+                                "GenerateDataKeyWithoutPlaintext",
+                                "ReEncryptFrom",
+                                "ReEncryptTo"
+                            ]
+                        },
+                        "StringEquals": {
+                            "kms:GrantConstraintType": "EncryptionContextSubset"
+                        },
+                        "StringLike": {
+                            "kms:EncryptionContext:aws:bedrock-agentcore-policy:policy-engine-arn": "arn:aws*:bedrock-agentcore:*:*:policy-engine/*",
+                            "kms:ViaService": [
+                                "bedrock-agentcore.*.amazonaws.com"
+                            ]
+                        }
+                    }
+                },
+                {
                     "Sid": "BedrockAgentCoreS3Access",
                     "Effect": "Allow",
                     "Action": [
@@ -434,8 +465,8 @@
                 }
             ]
         },
-        "VersionId": "v19",
+        "VersionId": "v20",
         "IsDefaultVersion": true,
-        "CreateDate": "2026-08-11T19:07:29+00:00"
+        "CreateDate": "2026-09-01T22:17:08+00:00"
     }
 }
