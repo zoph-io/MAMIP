@@ -29,6 +29,14 @@
                         "ce:ListCostAllocationTagBackfillHistory",
                         "ce:DescribeCostCategoryDefinition",
                         "ce:ListCostCategoryDefinitions",
+                        "ce:StartCommitmentPurchaseAnalysis",
+                        "ce:ListCommitmentPurchaseAnalyses",
+                        "ce:GetCommitmentPurchaseAnalysis",
+                        "ce:StartSavingsPlansPurchaseRecommendationGeneration",
+                        "ce:ListSavingsPlansPurchaseRecommendationGeneration",
+                        "ce:GetSavingsPlanPurchaseRecommendationDetails",
+                        "budgets:DescribeBudgetActionsForAccount",
+                        "budgets:DescribeBudgetActionsForBudget",
                         "budgets:ViewBudget",
                         "cost-optimization-hub:GetRecommendation",
                         "cost-optimization-hub:ListRecommendations",
@@ -81,7 +89,10 @@
                         "logs:StartQuery",
                         "logs:GetQueryResults",
                         "billing:GetBillingView",
+                        "billing:GetEnterpriseSupportChargeSummary",
+                        "billing:GetEnterpriseSupportContractDetails",
                         "billing:ListBillingViews",
+                        "billing:ListEnterpriseSupportLinkedAccountCharges",
                         "billing:ListSourceViewsForBillingView",
                         "billing:GetResourcePolicy",
                         "billingconductor:ListBillingGroups",
@@ -116,7 +127,12 @@
                         "aco-automation:ListTagsForResource",
                         "billing:GetCredits",
                         "billing:GetCreditAllocationHistory",
-                        "health:DescribeEvents"
+                        "health:DescribeEvents",
+                        "savingsplans:DescribeSavingsPlans",
+                        "savingsplans:DescribeSavingsPlanRates",
+                        "savingsplans:DescribeSavingsPlansOfferings",
+                        "savingsplans:DescribeSavingsPlansOfferingRates",
+                        "savingsplans:ListTagsForResource"
                     ],
                     "Resource": "*"
                 },
@@ -155,8 +171,8 @@
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2026-08-19T19:27:11+00:00"
+        "CreateDate": "2026-09-01T16:27:06+00:00"
     }
 }
