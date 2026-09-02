@@ -162,7 +162,8 @@
                         "arn:aws:cloudformation:*:*:stack/AtxInfrastructureStack-*/*",
                         "arn:aws:cloudformation:*:*:stack/atx-*",
                         "arn:aws:cloudformation:*:*:stack/atx-*/*",
-                        "arn:aws:cloudformation:*:*:stack/AtxSecurityAgentStack-*/*"
+                        "arn:aws:cloudformation:*:*:stack/AtxSecurityAgentStack-*/*",
+                        "arn:aws:cloudformation:*:*:stack/AtxDispatcherStack/*"
                     ],
                     "Condition": {
                         "StringEquals": {
@@ -278,11 +279,22 @@
                             "aws:ResourceAccount": "${aws:PrincipalAccount}"
                         }
                     }
+                },
+                {
+                    "Sid": "SQSEnqueueToDispatcher",
+                    "Effect": "Allow",
+                    "Action": "sqs:SendMessage",
+                    "Resource": "arn:aws:sqs:*:*:atx-dispatcher-queue",
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2026-07-28T15:42:28+00:00"
+        "CreateDate": "2026-09-02T21:27:07+00:00"
     }
 }
