@@ -1,0 +1,18 @@
+{
+  "type": "NEW_FEATURES",
+  "detected_at": "2026-09-01T23:44:07Z",
+  "description": "As part of our ongoing investment in giving you more control over how GuardDuty detects threats in your environment, Amazon GuardDuty now lets you customize your detection coverage with Custom Detection Rules, a library of pre-built rules you can selectively enable to detect activity you do not expect to occur in specific AWS accounts. These rules allow you to enable detection of activity or actions that are routine in one account but a sign of compromise in another, such as sharing an AMI, deleting VPC Flow Logs, or signing in without MFA. Each rule is mapped to established threat technique vocabulary from MITRE ATT&CK® and the AWS Threat Technique Catalog. Rules support both a live mode, which generates findings when a rule triggers, and a dry run mode, which lets you measure signal volume via CloudWatch metrics before enabling live detection. Delegated GuardDuty administrator accounts can centrally enable these detection rules across all member accounts.",
+  "short_description": "As part of our ongoing investment in giving you more control over how GuardDuty detects threats in your environment, Amazon GuardDuty now lets you cus",
+  "link": "https://docs.aws.amazon.com/guardduty/latest/ug/custom-detection-rules.html",
+  "gist_url": "",
+  "raw_sns_message": {
+    "version": "1",
+    "type": "NEW_FEATURES",
+    "featureDetails": [
+      {
+        "featureDescription": "As part of our ongoing investment in giving you more control over how GuardDuty detects threats in your environment, Amazon GuardDuty now lets you customize your detection coverage with Custom Detection Rules, a library of pre-built rules you can selectively enable to detect activity you do not expect to occur in specific AWS accounts. These rules allow you to enable detection of activity or actions that are routine in one account but a sign of compromise in another, such as sharing an AMI, deleting VPC Flow Logs, or signing in without MFA. Each rule is mapped to established threat technique vocabulary from MITRE ATT&CK® and the AWS Threat Technique Catalog. Rules support both a live mode, which generates findings when a rule triggers, and a dry run mode, which lets you measure signal volume via CloudWatch metrics before enabling live detection. Delegated GuardDuty administrator accounts can centrally enable these detection rules across all member accounts.",
+        "featureLink": "https://docs.aws.amazon.com/guardduty/latest/ug/custom-detection-rules.html"
+      }
+    ]
+  }
+}
