@@ -246,11 +246,28 @@
                             ]
                         }
                     }
+                },
+                {
+                    "Sid": "CloudFormationTagOnCreate",
+                    "Effect": "Allow",
+                    "Action": [
+                        "cloudformation:TagResource",
+                        "cloudformation:UntagResource"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "cloudformation:CreateAction": [
+                                "CreateStack",
+                                "UpdateStack"
+                            ]
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v21",
+        "VersionId": "v22",
         "IsDefaultVersion": true,
-        "CreateDate": "2024-08-13T19:39:37+00:00"
+        "CreateDate": "2026-09-02T14:47:07+00:00"
     }
 }
