@@ -35,19 +35,35 @@
                     ]
                 },
                 {
-                    "Action": "iam:CreateServiceLinkedRole",
                     "Effect": "Allow",
-                    "Resource": "*",
+                    "Action": "iam:CreateServiceLinkedRole",
+                    "Resource": "arn:aws:iam::*:role/aws-service-role/mq.amazonaws.com/AWSServiceRoleForAmazonMQ",
                     "Condition": {
                         "StringLike": {
                             "iam:AWSServiceName": "mq.amazonaws.com"
                         }
                     }
+                },
+                {
+                    "Sid": "CloudFormationTagOnCreate",
+                    "Effect": "Allow",
+                    "Action": [
+                        "cloudformation:TagResource",
+                        "cloudformation:UntagResource"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "cloudformation:CreateAction": [
+                                "CreateStack"
+                            ]
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v5",
+        "VersionId": "v6",
         "IsDefaultVersion": true,
-        "CreateDate": "2020-11-04T16:34:09+00:00"
+        "CreateDate": "2026-09-03T22:47:07+00:00"
     }
 }
