@@ -70,11 +70,41 @@
                             "aws:ResourceTag/createdBy": "AWSForWordPressPlugin"
                         }
                     }
+                },
+                {
+                    "Sid": "CloudFormationTagOnCreateStack",
+                    "Effect": "Allow",
+                    "Action": [
+                        "cloudformation:TagResource",
+                        "cloudformation:UntagResource"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:RequestedRegion": "us-east-1",
+                            "cloudformation:CreateAction": "CreateStack"
+                        }
+                    }
+                },
+                {
+                    "Sid": "CloudFormationTagOnUpdateStack",
+                    "Effect": "Allow",
+                    "Action": [
+                        "cloudformation:TagResource",
+                        "cloudformation:UntagResource"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceTag/createdBy": "AWSForWordPressPlugin",
+                            "cloudformation:CreateAction": "UpdateStack"
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v2",
+        "VersionId": "v3",
         "IsDefaultVersion": true,
-        "CreateDate": "2020-01-20T23:20:47+00:00"
+        "CreateDate": "2026-09-03T20:17:07+00:00"
     }
 }
