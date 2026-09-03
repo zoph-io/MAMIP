@@ -7,7 +7,6 @@
                     "Action": [
                         "autoscaling:*",
                         "cloudwatch:*",
-                        "cloudformation:CreateStack",
                         "cloudformation:DescribeStackEvents",
                         "datapipeline:Describe*",
                         "datapipeline:ListPipelines",
@@ -58,6 +57,35 @@
                     ],
                     "Effect": "Allow",
                     "Resource": "*"
+                },
+                {
+                    "Sid": "CloudFormationCreateStackSameAccount",
+                    "Effect": "Allow",
+                    "Action": [
+                        "cloudformation:CreateStack"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
+                },
+                {
+                    "Sid": "CloudFormationTagOnCreate",
+                    "Effect": "Allow",
+                    "Action": [
+                        "cloudformation:TagResource"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "cloudformation:CreateAction": [
+                                "CreateStack"
+                            ],
+                            "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                        }
+                    }
                 },
                 {
                     "Effect": "Allow",
@@ -157,8 +185,8 @@
                 }
             ]
         },
-        "VersionId": "v5",
+        "VersionId": "v6",
         "IsDefaultVersion": true,
-        "CreateDate": "2019-12-03T16:48:34+00:00"
+        "CreateDate": "2026-09-02T23:37:07+00:00"
     }
 }
