@@ -43,12 +43,7 @@
                         "ec2:ModifyOdbNetworkPeering",
                         "ec2:DeleteOdbNetworkPeering"
                     ],
-                    "Resource": "*",
-                    "Condition": {
-                        "ForAnyValue:StringEquals": {
-                            "aws:CalledVia": "odb.amazonaws.com"
-                        }
-                    }
+                    "Resource": "*"
                 },
                 {
                     "Sid": "AllowSLRActions",
@@ -80,8 +75,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2026-08-07T01:12:22+00:00"
+        "CreateDate": "2026-09-04T21:37:08+00:00"
     }
 }
