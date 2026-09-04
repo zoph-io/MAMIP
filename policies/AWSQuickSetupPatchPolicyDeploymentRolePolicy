@@ -337,11 +337,32 @@
                     "Resource": [
                         "arn:aws:iam::*:role/AWS-QuickSetup-*"
                     ]
+                },
+                {
+                    "Sid": "CfnTagOnMutate",
+                    "Effect": "Allow",
+                    "Action": [
+                        "cloudformation:TagResource",
+                        "cloudformation:UntagResource"
+                    ],
+                    "Resource": [
+                        "arn:aws:cloudformation:*:*:stack/StackSet-AWS-QuickSetup-*"
+                    ],
+                    "Condition": {
+                        "StringEquals": {
+                            "cloudformation:CreateAction": [
+                                "CreateStack",
+                                "UpdateStack",
+                                "CreateChangeSet",
+                                "ExecuteChangeSet"
+                            ]
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2024-06-26T09:57:02+00:00"
+        "CreateDate": "2026-09-04T08:47:07+00:00"
     }
 }
