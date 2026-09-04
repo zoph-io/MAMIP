@@ -172,6 +172,7 @@
                     "Sid": "SageMakerBYOIPermissions",
                     "Effect": "Allow",
                     "Action": [
+                        "sagemaker:DescribeAppImageConfig",
                         "sagemaker:DescribeImageVersion",
                         "sagemaker:ListImageVersions"
                     ],
@@ -1292,8 +1293,8 @@
                 }
             ]
         },
-        "VersionId": "v42",
+        "VersionId": "v43",
         "IsDefaultVersion": true,
-        "CreateDate": "2026-08-11T22:27:17+00:00"
+        "CreateDate": "2026-09-04T18:57:08+00:00"
     }
 }
