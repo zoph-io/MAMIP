@@ -16,13 +16,7 @@
                         "cloudformation:CreateStack",
                         "cloudformation:DescribeStacks",
                         "cloudformation:DescribeStackEvents",
-                        "cloudformation:DescribeStackResources"
-                    ],
-                    "Resource": "*"
-                },
-                {
-                    "Effect": "Allow",
-                    "Action": [
+                        "cloudformation:DescribeStackResources",
                         "ec2:TerminateInstances",
                         "ec2:DeleteSecurityGroup",
                         "ec2:AuthorizeSecurityGroupIngress"
@@ -97,11 +91,26 @@
                             "iam:PassedToService": "ec2.amazonaws.com"
                         }
                     }
+                },
+                {
+                    "Sid": "CloudFormationTagOnCreate",
+                    "Effect": "Allow",
+                    "Action": [
+                        "cloudformation:TagResource"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "cloudformation:CreateAction": [
+                                "CreateStack"
+                            ]
+                        }
+                    }
                 }
             ]
         },
-        "VersionId": "v8",
+        "VersionId": "v9",
         "IsDefaultVersion": true,
-        "CreateDate": "2022-01-17T14:06:15+00:00"
+        "CreateDate": "2026-09-03T23:17:07+00:00"
     }
 }
