@@ -16,6 +16,8 @@
                         "odb:GetCloudAutonomousVmCluster",
                         "odb:DeleteCloudAutonomousVmCluster",
                         "odb:ListCloudAutonomousVmClusters",
+                        "odb:AssociateIamRoleToResource",
+                        "odb:DisassociateIamRoleFromResource",
                         "odb:ListDbServers",
                         "odb:GetOdbNetwork",
                         "odb:ListOdbNetworks",
@@ -50,7 +52,8 @@
                     "Sid": "AllowOutboundIntegrationActions",
                     "Effect": "Allow",
                     "Action": [
-                        "odb:CreateOutboundIntegration"
+                        "odb:CreateOutboundIntegration",
+                        "odb:UpdateOutboundIntegration"
                     ],
                     "Resource": [
                         "arn:aws:odb:*:*:cloud-autonomous-vm-cluster/*"
@@ -58,8 +61,8 @@
                 }
             ]
         },
-        "VersionId": "v1",
+        "VersionId": "v2",
         "IsDefaultVersion": true,
-        "CreateDate": "2026-08-07T01:12:28+00:00"
+        "CreateDate": "2026-09-04T21:17:07+00:00"
     }
 }
