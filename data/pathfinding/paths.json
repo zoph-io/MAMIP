@@ -2679,7 +2679,7 @@
   },
   {
     "id": "bedrock-005",
-    "name": "iam:PassRole + bedrock-agentcore:CreateHarness + bedrock-agentcore:CreateAgentRuntime + bedrock-agentcore:CreateAgentRuntimeEndpoint + bedrock-agentcore:CreateWorkloadIdentity + bedrock-agentcore:CreateMemory + bedrock-agentcore:GetMemory + bedrock-agentcore:GetAgentRuntime + bedrock-agentcore:GetHarness + bedrock-agentcore:InvokeAgentRuntimeCommand",
+    "name": "iam:PassRole + bedrock-agentcore:CreateHarness + bedrock-agentcore:CreateAgentRuntime + bedrock-agentcore:CreateAgentRuntimeEndpoint + bedrock-agentcore:CreateWorkloadIdentity + bedrock-agentcore:GetAgentRuntime + bedrock-agentcore:GetHarness + bedrock-agentcore:InvokeAgentRuntimeCommand",
     "category": "new-passrole",
     "services": [
       "iam",
@@ -2706,14 +2706,6 @@
         {
           "permission": "bedrock-agentcore:CreateWorkloadIdentity",
           "resourceConstraints": "Required to create the workload identity the underlying runtime needs"
-        },
-        {
-          "permission": "bedrock-agentcore:CreateMemory",
-          "resourceConstraints": "AWS requires this permission on every CreateHarness call regardless of the memory configuration chosen, including when memory is explicitly disabled"
-        },
-        {
-          "permission": "bedrock-agentcore:GetMemory",
-          "resourceConstraints": "Required alongside CreateMemory as part of CreateHarness's managed-memory provisioning"
         },
         {
           "permission": "bedrock-agentcore:GetAgentRuntime",
@@ -2761,7 +2753,7 @@
         {
           "step": 2,
           "command": "CREATE_OUTPUT=$(aws bedrock-agentcore-control create-harness \\\n  --harness-name atk_harness \\\n  --execution-role-arn $EXECUTION_ROLE \\\n  --model \"{\\\"bedrockModelConfig\\\":{\\\"modelId\\\":\\\"$MODEL_ID\\\"}}\" \\\n  --memory '{\"disabled\":{}}')\nHARNESS_ARN=$(echo \"$CREATE_OUTPUT\" | jq -r .harness.arn)\nHARNESS_ID=$(echo \"$CREATE_OUTPUT\" | jq -r .harness.harnessId)\n",
-          "description": "Create a harness with the privileged execution role. CreateHarness provisions a runtime, endpoint, workload identity and memory resource under the hood, hence the longer permission chain. Memory is disabled since this attack never uses the managed agent loop, but AWS still requires the memory-related permissions on every CreateHarness call"
+          "description": "Create a harness with the privileged execution role. CreateHarness provisions a runtime, endpoint and workload identity under the hood, hence the longer permission chain. Memory is disabled because the attack never uses the managed agent loop"
         },
         {
           "step": 3,
@@ -2890,7 +2882,7 @@
           "from": "start",
           "to": "harness",
           "label": "iam:PassRole + bedrock-agentcore:CreateHarness",
-          "description": "Create a new AgentCore Harness and pass the target role to it as the execution role. The harness provisions a runtime on a Firecracker microVM with access to MMDS.\n\nCommand:\n```bash\naws bedrock-agentcore-control create-harness \\\n  --harness-name atk_harness \\\n  --execution-role-arn $EXECUTION_ROLE \\\n  --model '{\"bedrockModelConfig\":{\"modelId\":\"<model-id>\"}}'\n```\n"
+          "description": "Create a new AgentCore Harness and pass the target role to it as the execution role. The harness provisions a runtime on a Firecracker microVM with access to MMDS.\n\nCommand:\n```bash\naws bedrock-agentcore-control create-harness \\\n  --harness-name atk_harness \\\n  --execution-role-arn $EXECUTION_ROLE \\\n  --model '{\"bedrockModelConfig\":{\"modelId\":\"<model-id>\"}}' \\\n  --memory '{\"disabled\":{}}'\n```\n"
         },
         {
           "from": "harness",
@@ -2964,17 +2956,17 @@
     },
     "gitMetadata": {
       "created": "2026-06-15T19:04:36Z",
-      "lastUpdated": "2026-08-24T13:22:24Z",
+      "lastUpdated": "2026-08-28T15:49:59Z",
       "contributors": [
-        {
-          "name": "Seth Art",
-          "email": "seth.art@datadoghq.com",
-          "githubUsername": "sethsec"
-        },
         {
           "name": "MrCloudSec",
           "email": "sgarcia@beyondtrust.com",
           "githubUsername": "MrCloudSec"
+        },
+        {
+          "name": "Seth Art",
+          "email": "seth.art@datadoghq.com",
+          "githubUsername": "sethsec"
         }
       ]
     },
