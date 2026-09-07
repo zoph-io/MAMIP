@@ -36,6 +36,26 @@
                 {
                     "Effect": "Allow",
                     "Action": [
+                        "cloudformation:TagResource",
+                        "cloudformation:UntagResource"
+                    ],
+                    "Resource": [
+                        "arn:aws:cloudformation:*:*:stack/StackSet-AWS-QuickSetup-JITNA-*"
+                    ],
+                    "Condition": {
+                        "StringEquals": {
+                            "cloudformation:CreateAction": [
+                                "CreateStack",
+                                "UpdateStack",
+                                "CreateChangeSet",
+                                "ExecuteChangeSet"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
                         "ssm:CreateAssociation",
                         "ssm:UpdateAssociation",
                         "ssm:DeleteAssociation",
@@ -145,8 +165,8 @@
                 }
             ]
         },
-        "VersionId": "v3",
+        "VersionId": "v4",
         "IsDefaultVersion": true,
-        "CreateDate": "2026-02-12T18:01:45+00:00"
+        "CreateDate": "2026-09-07T12:27:08+00:00"
     }
 }
