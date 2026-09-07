@@ -35,6 +35,27 @@
                     ]
                 },
                 {
+                    "Sid": "CfnTagOnMutate",
+                    "Effect": "Allow",
+                    "Action": [
+                        "cloudformation:TagResource",
+                        "cloudformation:UntagResource"
+                    ],
+                    "Resource": [
+                        "arn:aws:cloudformation:*:*:stack/StackSet-AWS-QuickSetup-*"
+                    ],
+                    "Condition": {
+                        "StringEquals": {
+                            "cloudformation:CreateAction": [
+                                "CreateStack",
+                                "UpdateStack",
+                                "CreateChangeSet",
+                                "ExecuteChangeSet"
+                            ]
+                        }
+                    }
+                },
+                {
                     "Sid": "RGroupsGet",
                     "Effect": "Allow",
                     "Action": [
@@ -351,8 +372,8 @@
                 }
             ]
         },
-        "VersionId": "v13",
+        "VersionId": "v14",
         "IsDefaultVersion": true,
-        "CreateDate": "2026-02-12T18:00:53+00:00"
+        "CreateDate": "2026-09-07T15:07:07+00:00"
     }
 }
